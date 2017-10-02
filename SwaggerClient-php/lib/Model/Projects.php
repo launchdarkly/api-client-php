@@ -1,6 +1,6 @@
 <?php
 /**
- * Links
+ * Projects
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Links Class Doc Comment
+ * Projects Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Links implements ArrayAccess
+class Projects implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,14 +47,18 @@ class Links implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Links';
+    protected static $swaggerModelName = 'Projects';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'self' => '\Swagger\Client\Model\Link'
+        '_links' => '\Swagger\Client\Model\Links',
+        '_id' => 'string',
+        'key' => 'string',
+        'name' => 'string',
+        'items' => '\Swagger\Client\Model\Project[]'
     ];
 
     /**
@@ -62,7 +66,11 @@ class Links implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'self' => null
+        '_links' => null,
+        '_id' => null,
+        'key' => null,
+        'name' => null,
+        'items' => null
     ];
 
     public static function swaggerTypes()
@@ -80,7 +88,11 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'self' => 'self'
+        '_links' => '_links',
+        '_id' => '_id',
+        'key' => 'key',
+        'name' => 'name',
+        'items' => 'items'
     ];
 
 
@@ -89,7 +101,11 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'self' => 'setSelf'
+        '_links' => 'setLinks',
+        '_id' => 'setId',
+        'key' => 'setKey',
+        'name' => 'setName',
+        'items' => 'setItems'
     ];
 
 
@@ -98,7 +114,11 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'self' => 'getSelf'
+        '_links' => 'getLinks',
+        '_id' => 'getId',
+        'key' => 'getKey',
+        'name' => 'getName',
+        'items' => 'getItems'
     ];
 
     public static function attributeMap()
@@ -132,7 +152,11 @@ class Links implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['self'] = isset($data['self']) ? $data['self'] : null;
+        $this->container['_links'] = isset($data['_links']) ? $data['_links'] : null;
+        $this->container['_id'] = isset($data['_id']) ? $data['_id'] : null;
+        $this->container['key'] = isset($data['key']) ? $data['key'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
     }
 
     /**
@@ -161,22 +185,106 @@ class Links implements ArrayAccess
 
 
     /**
-     * Gets self
-     * @return \Swagger\Client\Model\Link
+     * Gets _links
+     * @return \Swagger\Client\Model\Links
      */
-    public function getSelf()
+    public function getLinks()
     {
-        return $this->container['self'];
+        return $this->container['_links'];
     }
 
     /**
-     * Sets self
-     * @param \Swagger\Client\Model\Link $self
+     * Sets _links
+     * @param \Swagger\Client\Model\Links $_links
      * @return $this
      */
-    public function setSelf($self)
+    public function setLinks($_links)
     {
-        $this->container['self'] = $self;
+        $this->container['_links'] = $_links;
+
+        return $this;
+    }
+
+    /**
+     * Gets _id
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['_id'];
+    }
+
+    /**
+     * Sets _id
+     * @param string $_id
+     * @return $this
+     */
+    public function setId($_id)
+    {
+        $this->container['_id'] = $_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets key
+     * @return string
+     */
+    public function getKey()
+    {
+        return $this->container['key'];
+    }
+
+    /**
+     * Sets key
+     * @param string $key
+     * @return $this
+     */
+    public function setKey($key)
+    {
+        $this->container['key'] = $key;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     * @param string $name
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets items
+     * @return \Swagger\Client\Model\Project[]
+     */
+    public function getItems()
+    {
+        return $this->container['items'];
+    }
+
+    /**
+     * Sets items
+     * @param \Swagger\Client\Model\Project[] $items
+     * @return $this
+     */
+    public function setItems($items)
+    {
+        $this->container['items'] = $items;
 
         return $this;
     }

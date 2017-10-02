@@ -1,6 +1,6 @@
 <?php
 /**
- * Links
+ * Rollout
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Links Class Doc Comment
+ * Rollout Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Links implements ArrayAccess
+class Rollout implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,14 +47,14 @@ class Links implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Links';
+    protected static $swaggerModelName = 'Rollout';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'self' => '\Swagger\Client\Model\Link'
+        'variations' => '\Swagger\Client\Model\WeightedVariation[]'
     ];
 
     /**
@@ -62,7 +62,7 @@ class Links implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'self' => null
+        'variations' => null
     ];
 
     public static function swaggerTypes()
@@ -80,7 +80,7 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'self' => 'self'
+        'variations' => 'variations'
     ];
 
 
@@ -89,7 +89,7 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'self' => 'setSelf'
+        'variations' => 'setVariations'
     ];
 
 
@@ -98,7 +98,7 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'self' => 'getSelf'
+        'variations' => 'getVariations'
     ];
 
     public static function attributeMap()
@@ -132,7 +132,7 @@ class Links implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['self'] = isset($data['self']) ? $data['self'] : null;
+        $this->container['variations'] = isset($data['variations']) ? $data['variations'] : null;
     }
 
     /**
@@ -161,22 +161,22 @@ class Links implements ArrayAccess
 
 
     /**
-     * Gets self
-     * @return \Swagger\Client\Model\Link
+     * Gets variations
+     * @return \Swagger\Client\Model\WeightedVariation[]
      */
-    public function getSelf()
+    public function getVariations()
     {
-        return $this->container['self'];
+        return $this->container['variations'];
     }
 
     /**
-     * Sets self
-     * @param \Swagger\Client\Model\Link $self
+     * Sets variations
+     * @param \Swagger\Client\Model\WeightedVariation[] $variations
      * @return $this
      */
-    public function setSelf($self)
+    public function setVariations($variations)
     {
-        $this->container['self'] = $self;
+        $this->container['variations'] = $variations;
 
         return $this;
     }

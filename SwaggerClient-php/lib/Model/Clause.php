@@ -1,6 +1,6 @@
 <?php
 /**
- * Links
+ * Clause
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Links Class Doc Comment
+ * Clause Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Links implements ArrayAccess
+class Clause implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,14 +47,17 @@ class Links implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Links';
+    protected static $swaggerModelName = 'Clause';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'self' => '\Swagger\Client\Model\Link'
+        'attribute' => 'string',
+        'op' => 'string',
+        'values' => 'string[]',
+        'negate' => 'bool'
     ];
 
     /**
@@ -62,7 +65,10 @@ class Links implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'self' => null
+        'attribute' => null,
+        'op' => null,
+        'values' => null,
+        'negate' => null
     ];
 
     public static function swaggerTypes()
@@ -80,7 +86,10 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'self' => 'self'
+        'attribute' => 'attribute',
+        'op' => 'op',
+        'values' => 'values',
+        'negate' => 'negate'
     ];
 
 
@@ -89,7 +98,10 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'self' => 'setSelf'
+        'attribute' => 'setAttribute',
+        'op' => 'setOp',
+        'values' => 'setValues',
+        'negate' => 'setNegate'
     ];
 
 
@@ -98,7 +110,10 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'self' => 'getSelf'
+        'attribute' => 'getAttribute',
+        'op' => 'getOp',
+        'values' => 'getValues',
+        'negate' => 'getNegate'
     ];
 
     public static function attributeMap()
@@ -132,7 +147,10 @@ class Links implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['self'] = isset($data['self']) ? $data['self'] : null;
+        $this->container['attribute'] = isset($data['attribute']) ? $data['attribute'] : null;
+        $this->container['op'] = isset($data['op']) ? $data['op'] : null;
+        $this->container['values'] = isset($data['values']) ? $data['values'] : null;
+        $this->container['negate'] = isset($data['negate']) ? $data['negate'] : null;
     }
 
     /**
@@ -161,22 +179,85 @@ class Links implements ArrayAccess
 
 
     /**
-     * Gets self
-     * @return \Swagger\Client\Model\Link
+     * Gets attribute
+     * @return string
      */
-    public function getSelf()
+    public function getAttribute()
     {
-        return $this->container['self'];
+        return $this->container['attribute'];
     }
 
     /**
-     * Sets self
-     * @param \Swagger\Client\Model\Link $self
+     * Sets attribute
+     * @param string $attribute
      * @return $this
      */
-    public function setSelf($self)
+    public function setAttribute($attribute)
     {
-        $this->container['self'] = $self;
+        $this->container['attribute'] = $attribute;
+
+        return $this;
+    }
+
+    /**
+     * Gets op
+     * @return string
+     */
+    public function getOp()
+    {
+        return $this->container['op'];
+    }
+
+    /**
+     * Sets op
+     * @param string $op
+     * @return $this
+     */
+    public function setOp($op)
+    {
+        $this->container['op'] = $op;
+
+        return $this;
+    }
+
+    /**
+     * Gets values
+     * @return string[]
+     */
+    public function getValues()
+    {
+        return $this->container['values'];
+    }
+
+    /**
+     * Sets values
+     * @param string[] $values
+     * @return $this
+     */
+    public function setValues($values)
+    {
+        $this->container['values'] = $values;
+
+        return $this;
+    }
+
+    /**
+     * Gets negate
+     * @return bool
+     */
+    public function getNegate()
+    {
+        return $this->container['negate'];
+    }
+
+    /**
+     * Sets negate
+     * @param bool $negate
+     * @return $this
+     */
+    public function setNegate($negate)
+    {
+        $this->container['negate'] = $negate;
 
         return $this;
     }

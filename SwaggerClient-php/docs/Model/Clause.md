@@ -1,9 +1,12 @@
-# Links
+# Clause
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**self** | [**\Swagger\Client\Model\Link**](Link.md) |  | [optional] 
+**attribute** | **string** |  | [optional] 
+**op** | **string** |  | [optional] 
+**values** | **string[]** |  | [optional] 
+**negate** | **bool** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

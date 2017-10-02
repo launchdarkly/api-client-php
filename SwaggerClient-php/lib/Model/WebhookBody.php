@@ -1,6 +1,6 @@
 <?php
 /**
- * Links
+ * WebhookBody
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Links Class Doc Comment
+ * WebhookBody Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Links implements ArrayAccess
+class WebhookBody implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,14 +47,17 @@ class Links implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Links';
+    protected static $swaggerModelName = 'webhookBody';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'self' => '\Swagger\Client\Model\Link'
+        'url' => 'string',
+        'secret' => 'string',
+        'sign' => 'bool',
+        'on' => 'bool'
     ];
 
     /**
@@ -62,7 +65,10 @@ class Links implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'self' => null
+        'url' => null,
+        'secret' => null,
+        'sign' => null,
+        'on' => null
     ];
 
     public static function swaggerTypes()
@@ -80,7 +86,10 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'self' => 'self'
+        'url' => 'url',
+        'secret' => 'secret',
+        'sign' => 'sign',
+        'on' => 'on'
     ];
 
 
@@ -89,7 +98,10 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'self' => 'setSelf'
+        'url' => 'setUrl',
+        'secret' => 'setSecret',
+        'sign' => 'setSign',
+        'on' => 'setOn'
     ];
 
 
@@ -98,7 +110,10 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'self' => 'getSelf'
+        'url' => 'getUrl',
+        'secret' => 'getSecret',
+        'sign' => 'getSign',
+        'on' => 'getOn'
     ];
 
     public static function attributeMap()
@@ -132,7 +147,10 @@ class Links implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['self'] = isset($data['self']) ? $data['self'] : null;
+        $this->container['url'] = isset($data['url']) ? $data['url'] : null;
+        $this->container['secret'] = isset($data['secret']) ? $data['secret'] : null;
+        $this->container['sign'] = isset($data['sign']) ? $data['sign'] : null;
+        $this->container['on'] = isset($data['on']) ? $data['on'] : null;
     }
 
     /**
@@ -144,6 +162,15 @@ class Links implements ArrayAccess
     {
         $invalid_properties = [];
 
+        if ($this->container['url'] === null) {
+            $invalid_properties[] = "'url' can't be null";
+        }
+        if ($this->container['sign'] === null) {
+            $invalid_properties[] = "'sign' can't be null";
+        }
+        if ($this->container['on'] === null) {
+            $invalid_properties[] = "'on' can't be null";
+        }
         return $invalid_properties;
     }
 
@@ -156,27 +183,99 @@ class Links implements ArrayAccess
     public function valid()
     {
 
+        if ($this->container['url'] === null) {
+            return false;
+        }
+        if ($this->container['sign'] === null) {
+            return false;
+        }
+        if ($this->container['on'] === null) {
+            return false;
+        }
         return true;
     }
 
 
     /**
-     * Gets self
-     * @return \Swagger\Client\Model\Link
+     * Gets url
+     * @return string
      */
-    public function getSelf()
+    public function getUrl()
     {
-        return $this->container['self'];
+        return $this->container['url'];
     }
 
     /**
-     * Sets self
-     * @param \Swagger\Client\Model\Link $self
+     * Sets url
+     * @param string $url
      * @return $this
      */
-    public function setSelf($self)
+    public function setUrl($url)
     {
-        $this->container['self'] = $self;
+        $this->container['url'] = $url;
+
+        return $this;
+    }
+
+    /**
+     * Gets secret
+     * @return string
+     */
+    public function getSecret()
+    {
+        return $this->container['secret'];
+    }
+
+    /**
+     * Sets secret
+     * @param string $secret
+     * @return $this
+     */
+    public function setSecret($secret)
+    {
+        $this->container['secret'] = $secret;
+
+        return $this;
+    }
+
+    /**
+     * Gets sign
+     * @return bool
+     */
+    public function getSign()
+    {
+        return $this->container['sign'];
+    }
+
+    /**
+     * Sets sign
+     * @param bool $sign
+     * @return $this
+     */
+    public function setSign($sign)
+    {
+        $this->container['sign'] = $sign;
+
+        return $this;
+    }
+
+    /**
+     * Gets on
+     * @return bool
+     */
+    public function getOn()
+    {
+        return $this->container['on'];
+    }
+
+    /**
+     * Sets on
+     * @param bool $on
+     * @return $this
+     */
+    public function setOn($on)
+    {
+        $this->container['on'] = $on;
 
         return $this;
     }

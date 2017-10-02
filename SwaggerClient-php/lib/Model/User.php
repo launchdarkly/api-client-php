@@ -1,6 +1,6 @@
 <?php
 /**
- * Links
+ * User
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Links Class Doc Comment
+ * User Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Links implements ArrayAccess
+class User implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,14 +47,18 @@ class Links implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Links';
+    protected static $swaggerModelName = 'User';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'self' => '\Swagger\Client\Model\Link'
+        'last_ping' => 'string',
+        'environment_id' => 'string',
+        'owner_id' => 'string',
+        'user' => 'object',
+        'avatar' => 'string'
     ];
 
     /**
@@ -62,7 +66,11 @@ class Links implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'self' => null
+        'last_ping' => null,
+        'environment_id' => null,
+        'owner_id' => null,
+        'user' => null,
+        'avatar' => null
     ];
 
     public static function swaggerTypes()
@@ -80,7 +88,11 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'self' => 'self'
+        'last_ping' => 'lastPing',
+        'environment_id' => 'environmentId',
+        'owner_id' => 'ownerId',
+        'user' => 'user',
+        'avatar' => 'avatar'
     ];
 
 
@@ -89,7 +101,11 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'self' => 'setSelf'
+        'last_ping' => 'setLastPing',
+        'environment_id' => 'setEnvironmentId',
+        'owner_id' => 'setOwnerId',
+        'user' => 'setUser',
+        'avatar' => 'setAvatar'
     ];
 
 
@@ -98,7 +114,11 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'self' => 'getSelf'
+        'last_ping' => 'getLastPing',
+        'environment_id' => 'getEnvironmentId',
+        'owner_id' => 'getOwnerId',
+        'user' => 'getUser',
+        'avatar' => 'getAvatar'
     ];
 
     public static function attributeMap()
@@ -132,7 +152,11 @@ class Links implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['self'] = isset($data['self']) ? $data['self'] : null;
+        $this->container['last_ping'] = isset($data['last_ping']) ? $data['last_ping'] : null;
+        $this->container['environment_id'] = isset($data['environment_id']) ? $data['environment_id'] : null;
+        $this->container['owner_id'] = isset($data['owner_id']) ? $data['owner_id'] : null;
+        $this->container['user'] = isset($data['user']) ? $data['user'] : null;
+        $this->container['avatar'] = isset($data['avatar']) ? $data['avatar'] : null;
     }
 
     /**
@@ -161,22 +185,106 @@ class Links implements ArrayAccess
 
 
     /**
-     * Gets self
-     * @return \Swagger\Client\Model\Link
+     * Gets last_ping
+     * @return string
      */
-    public function getSelf()
+    public function getLastPing()
     {
-        return $this->container['self'];
+        return $this->container['last_ping'];
     }
 
     /**
-     * Sets self
-     * @param \Swagger\Client\Model\Link $self
+     * Sets last_ping
+     * @param string $last_ping
      * @return $this
      */
-    public function setSelf($self)
+    public function setLastPing($last_ping)
     {
-        $this->container['self'] = $self;
+        $this->container['last_ping'] = $last_ping;
+
+        return $this;
+    }
+
+    /**
+     * Gets environment_id
+     * @return string
+     */
+    public function getEnvironmentId()
+    {
+        return $this->container['environment_id'];
+    }
+
+    /**
+     * Sets environment_id
+     * @param string $environment_id
+     * @return $this
+     */
+    public function setEnvironmentId($environment_id)
+    {
+        $this->container['environment_id'] = $environment_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets owner_id
+     * @return string
+     */
+    public function getOwnerId()
+    {
+        return $this->container['owner_id'];
+    }
+
+    /**
+     * Sets owner_id
+     * @param string $owner_id
+     * @return $this
+     */
+    public function setOwnerId($owner_id)
+    {
+        $this->container['owner_id'] = $owner_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets user
+     * @return object
+     */
+    public function getUser()
+    {
+        return $this->container['user'];
+    }
+
+    /**
+     * Sets user
+     * @param object $user
+     * @return $this
+     */
+    public function setUser($user)
+    {
+        $this->container['user'] = $user;
+
+        return $this;
+    }
+
+    /**
+     * Gets avatar
+     * @return string
+     */
+    public function getAvatar()
+    {
+        return $this->container['avatar'];
+    }
+
+    /**
+     * Sets avatar
+     * @param string $avatar
+     * @return $this
+     */
+    public function setAvatar($avatar)
+    {
+        $this->container['avatar'] = $avatar;
 
         return $this;
     }

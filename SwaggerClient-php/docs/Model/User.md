@@ -1,9 +1,13 @@
-# Links
+# User
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**self** | [**\Swagger\Client\Model\Link**](Link.md) |  | [optional] 
+**last_ping** | **string** |  | [optional] 
+**environment_id** | **string** |  | [optional] 
+**owner_id** | **string** |  | [optional] 
+**user** | **object** |  | [optional] 
+**avatar** | **string** |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

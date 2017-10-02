@@ -1,6 +1,6 @@
 <?php
 /**
- * Links
+ * Project
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Links Class Doc Comment
+ * Project Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Links implements ArrayAccess
+class Project implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,14 +47,15 @@ class Links implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Links';
+    protected static $swaggerModelName = 'Project';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'self' => '\Swagger\Client\Model\Link'
+        '_links' => '\Swagger\Client\Model\Links',
+        'items' => '\Swagger\Client\Model\Environment[]'
     ];
 
     /**
@@ -62,7 +63,8 @@ class Links implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'self' => null
+        '_links' => null,
+        'items' => null
     ];
 
     public static function swaggerTypes()
@@ -80,7 +82,8 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'self' => 'self'
+        '_links' => '_links',
+        'items' => 'items'
     ];
 
 
@@ -89,7 +92,8 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'self' => 'setSelf'
+        '_links' => 'setLinks',
+        'items' => 'setItems'
     ];
 
 
@@ -98,7 +102,8 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'self' => 'getSelf'
+        '_links' => 'getLinks',
+        'items' => 'getItems'
     ];
 
     public static function attributeMap()
@@ -132,7 +137,8 @@ class Links implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['self'] = isset($data['self']) ? $data['self'] : null;
+        $this->container['_links'] = isset($data['_links']) ? $data['_links'] : null;
+        $this->container['items'] = isset($data['items']) ? $data['items'] : null;
     }
 
     /**
@@ -161,22 +167,43 @@ class Links implements ArrayAccess
 
 
     /**
-     * Gets self
-     * @return \Swagger\Client\Model\Link
+     * Gets _links
+     * @return \Swagger\Client\Model\Links
      */
-    public function getSelf()
+    public function getLinks()
     {
-        return $this->container['self'];
+        return $this->container['_links'];
     }
 
     /**
-     * Sets self
-     * @param \Swagger\Client\Model\Link $self
+     * Sets _links
+     * @param \Swagger\Client\Model\Links $_links
      * @return $this
      */
-    public function setSelf($self)
+    public function setLinks($_links)
     {
-        $this->container['self'] = $self;
+        $this->container['_links'] = $_links;
+
+        return $this;
+    }
+
+    /**
+     * Gets items
+     * @return \Swagger\Client\Model\Environment[]
+     */
+    public function getItems()
+    {
+        return $this->container['items'];
+    }
+
+    /**
+     * Sets items
+     * @param \Swagger\Client\Model\Environment[] $items
+     * @return $this
+     */
+    public function setItems($items)
+    {
+        $this->container['items'] = $items;
 
         return $this;
     }

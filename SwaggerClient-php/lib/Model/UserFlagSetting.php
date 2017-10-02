@@ -1,6 +1,6 @@
 <?php
 /**
- * Links
+ * UserFlagSetting
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Links Class Doc Comment
+ * UserFlagSetting Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Links implements ArrayAccess
+class UserFlagSetting implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,14 +47,16 @@ class Links implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Links';
+    protected static $swaggerModelName = 'UserFlagSetting';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'self' => '\Swagger\Client\Model\Link'
+        '_links' => '\Swagger\Client\Model\Links',
+        '_value' => 'bool',
+        'setting' => 'bool'
     ];
 
     /**
@@ -62,7 +64,9 @@ class Links implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'self' => null
+        '_links' => null,
+        '_value' => null,
+        'setting' => null
     ];
 
     public static function swaggerTypes()
@@ -80,7 +84,9 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'self' => 'self'
+        '_links' => '_links',
+        '_value' => '_value',
+        'setting' => 'setting'
     ];
 
 
@@ -89,7 +95,9 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'self' => 'setSelf'
+        '_links' => 'setLinks',
+        '_value' => 'setValue',
+        'setting' => 'setSetting'
     ];
 
 
@@ -98,7 +106,9 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'self' => 'getSelf'
+        '_links' => 'getLinks',
+        '_value' => 'getValue',
+        'setting' => 'getSetting'
     ];
 
     public static function attributeMap()
@@ -132,7 +142,9 @@ class Links implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['self'] = isset($data['self']) ? $data['self'] : null;
+        $this->container['_links'] = isset($data['_links']) ? $data['_links'] : null;
+        $this->container['_value'] = isset($data['_value']) ? $data['_value'] : null;
+        $this->container['setting'] = isset($data['setting']) ? $data['setting'] : null;
     }
 
     /**
@@ -161,22 +173,64 @@ class Links implements ArrayAccess
 
 
     /**
-     * Gets self
-     * @return \Swagger\Client\Model\Link
+     * Gets _links
+     * @return \Swagger\Client\Model\Links
      */
-    public function getSelf()
+    public function getLinks()
     {
-        return $this->container['self'];
+        return $this->container['_links'];
     }
 
     /**
-     * Sets self
-     * @param \Swagger\Client\Model\Link $self
+     * Sets _links
+     * @param \Swagger\Client\Model\Links $_links
      * @return $this
      */
-    public function setSelf($self)
+    public function setLinks($_links)
     {
-        $this->container['self'] = $self;
+        $this->container['_links'] = $_links;
+
+        return $this;
+    }
+
+    /**
+     * Gets _value
+     * @return bool
+     */
+    public function getValue()
+    {
+        return $this->container['_value'];
+    }
+
+    /**
+     * Sets _value
+     * @param bool $_value
+     * @return $this
+     */
+    public function setValue($_value)
+    {
+        $this->container['_value'] = $_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets setting
+     * @return bool
+     */
+    public function getSetting()
+    {
+        return $this->container['setting'];
+    }
+
+    /**
+     * Sets setting
+     * @param bool $setting
+     * @return $this
+     */
+    public function setSetting($setting)
+    {
+        $this->container['setting'] = $setting;
 
         return $this;
     }

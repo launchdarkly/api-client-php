@@ -1,6 +1,6 @@
 <?php
 /**
- * Links
+ * Variation
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Links Class Doc Comment
+ * Variation Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Links implements ArrayAccess
+class Variation implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,14 +47,16 @@ class Links implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Links';
+    protected static $swaggerModelName = 'Variation';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'self' => '\Swagger\Client\Model\Link'
+        'name' => 'string',
+        'description' => 'string',
+        'value' => 'object'
     ];
 
     /**
@@ -62,7 +64,9 @@ class Links implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'self' => null
+        'name' => null,
+        'description' => null,
+        'value' => null
     ];
 
     public static function swaggerTypes()
@@ -80,7 +84,9 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'self' => 'self'
+        'name' => 'name',
+        'description' => 'description',
+        'value' => 'value'
     ];
 
 
@@ -89,7 +95,9 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'self' => 'setSelf'
+        'name' => 'setName',
+        'description' => 'setDescription',
+        'value' => 'setValue'
     ];
 
 
@@ -98,7 +106,9 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'self' => 'getSelf'
+        'name' => 'getName',
+        'description' => 'getDescription',
+        'value' => 'getValue'
     ];
 
     public static function attributeMap()
@@ -132,7 +142,9 @@ class Links implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['self'] = isset($data['self']) ? $data['self'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['description'] = isset($data['description']) ? $data['description'] : null;
+        $this->container['value'] = isset($data['value']) ? $data['value'] : null;
     }
 
     /**
@@ -144,6 +156,9 @@ class Links implements ArrayAccess
     {
         $invalid_properties = [];
 
+        if ($this->container['value'] === null) {
+            $invalid_properties[] = "'value' can't be null";
+        }
         return $invalid_properties;
     }
 
@@ -156,27 +171,72 @@ class Links implements ArrayAccess
     public function valid()
     {
 
+        if ($this->container['value'] === null) {
+            return false;
+        }
         return true;
     }
 
 
     /**
-     * Gets self
-     * @return \Swagger\Client\Model\Link
+     * Gets name
+     * @return string
      */
-    public function getSelf()
+    public function getName()
     {
-        return $this->container['self'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets self
-     * @param \Swagger\Client\Model\Link $self
+     * Sets name
+     * @param string $name
      * @return $this
      */
-    public function setSelf($self)
+    public function setName($name)
     {
-        $this->container['self'] = $self;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     * @return string
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     * @param string $description
+     * @return $this
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets value
+     * @return object
+     */
+    public function getValue()
+    {
+        return $this->container['value'];
+    }
+
+    /**
+     * Sets value
+     * @param object $value
+     * @return $this
+     */
+    public function setValue($value)
+    {
+        $this->container['value'] = $value;
 
         return $this;
     }

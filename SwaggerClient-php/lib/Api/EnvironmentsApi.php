@@ -1,6 +1,6 @@
 <?php
 /**
- * WebhooksApi
+ * EnvironmentsApi
  * PHP version 5
  *
  * @category Class
@@ -34,14 +34,14 @@ use \Swagger\Client\Configuration;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * WebhooksApi Class Doc Comment
+ * EnvironmentsApi Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class WebhooksApi
+class EnvironmentsApi
 {
     /**
      * API Client
@@ -79,7 +79,7 @@ class WebhooksApi
      *
      * @param \Swagger\Client\ApiClient $apiClient set the API client
      *
-     * @return WebhooksApi
+     * @return EnvironmentsApi
      */
     public function setApiClient(\Swagger\Client\ApiClient $apiClient)
     {
@@ -88,37 +88,43 @@ class WebhooksApi
     }
 
     /**
-     * Operation deleteWebhook
+     * Operation deleteEnvironment
      *
-     * Delete a webhook by ID
+     * Delete an environment by ID
      *
-     * @param string $resource_id The resource ID (required)
+     * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
+     * @param string $environment_key The environment key (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return void
      */
-    public function deleteWebhook($resource_id)
+    public function deleteEnvironment($project_key, $environment_key)
     {
-        list($response) = $this->deleteWebhookWithHttpInfo($resource_id);
+        list($response) = $this->deleteEnvironmentWithHttpInfo($project_key, $environment_key);
         return $response;
     }
 
     /**
-     * Operation deleteWebhookWithHttpInfo
+     * Operation deleteEnvironmentWithHttpInfo
      *
-     * Delete a webhook by ID
+     * Delete an environment by ID
      *
-     * @param string $resource_id The resource ID (required)
+     * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
+     * @param string $environment_key The environment key (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteWebhookWithHttpInfo($resource_id)
+    public function deleteEnvironmentWithHttpInfo($project_key, $environment_key)
     {
-        // verify the required parameter 'resource_id' is set
-        if ($resource_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $resource_id when calling deleteWebhook');
+        // verify the required parameter 'project_key' is set
+        if ($project_key === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $project_key when calling deleteEnvironment');
+        }
+        // verify the required parameter 'environment_key' is set
+        if ($environment_key === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $environment_key when calling deleteEnvironment');
         }
         // parse inputs
-        $resourcePath = "/webhooks/{resourceId}";
+        $resourcePath = "/environments/{projectKey}/{environmentKey}";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -130,10 +136,18 @@ class WebhooksApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // path params
-        if ($resource_id !== null) {
+        if ($project_key !== null) {
             $resourcePath = str_replace(
-                "{" . "resourceId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($resource_id),
+                "{" . "projectKey" . "}",
+                $this->apiClient->getSerializer()->toPathValue($project_key),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($environment_key !== null) {
+            $resourcePath = str_replace(
+                "{" . "environmentKey" . "}",
+                $this->apiClient->getSerializer()->toPathValue($environment_key),
                 $resourcePath
             );
         }
@@ -158,7 +172,7 @@ class WebhooksApi
                 $httpBody,
                 $headerParams,
                 null,
-                '/webhooks/{resourceId}'
+                '/environments/{projectKey}/{environmentKey}'
             );
 
             return [null, $statusCode, $httpHeader];
@@ -171,37 +185,43 @@ class WebhooksApi
     }
 
     /**
-     * Operation getWebhook
+     * Operation getEnvironment
      *
-     * Get a webhook by ID
+     * Get an environment by key.
      *
-     * @param string $resource_id The resource ID (required)
+     * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
+     * @param string $environment_key The environment key (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\Webhook
+     * @return \Swagger\Client\Model\Environment
      */
-    public function getWebhook($resource_id)
+    public function getEnvironment($project_key, $environment_key)
     {
-        list($response) = $this->getWebhookWithHttpInfo($resource_id);
+        list($response) = $this->getEnvironmentWithHttpInfo($project_key, $environment_key);
         return $response;
     }
 
     /**
-     * Operation getWebhookWithHttpInfo
+     * Operation getEnvironmentWithHttpInfo
      *
-     * Get a webhook by ID
+     * Get an environment by key.
      *
-     * @param string $resource_id The resource ID (required)
+     * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
+     * @param string $environment_key The environment key (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\Webhook, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\Environment, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getWebhookWithHttpInfo($resource_id)
+    public function getEnvironmentWithHttpInfo($project_key, $environment_key)
     {
-        // verify the required parameter 'resource_id' is set
-        if ($resource_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $resource_id when calling getWebhook');
+        // verify the required parameter 'project_key' is set
+        if ($project_key === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $project_key when calling getEnvironment');
+        }
+        // verify the required parameter 'environment_key' is set
+        if ($environment_key === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $environment_key when calling getEnvironment');
         }
         // parse inputs
-        $resourcePath = "/webhooks/{resourceId}";
+        $resourcePath = "/environments/{projectKey}/{environmentKey}";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -213,10 +233,18 @@ class WebhooksApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // path params
-        if ($resource_id !== null) {
+        if ($project_key !== null) {
             $resourcePath = str_replace(
-                "{" . "resourceId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($resource_id),
+                "{" . "projectKey" . "}",
+                $this->apiClient->getSerializer()->toPathValue($project_key),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($environment_key !== null) {
+            $resourcePath = str_replace(
+                "{" . "environmentKey" . "}",
+                $this->apiClient->getSerializer()->toPathValue($environment_key),
                 $resourcePath
             );
         }
@@ -240,15 +268,15 @@ class WebhooksApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Webhook',
-                '/webhooks/{resourceId}'
+                '\Swagger\Client\Model\Environment',
+                '/environments/{projectKey}/{environmentKey}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Webhook', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Environment', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Webhook', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Environment', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -258,116 +286,49 @@ class WebhooksApi
     }
 
     /**
-     * Operation getWebhooks
+     * Operation patchEnvironment
      *
-     * Fetch a list of all webhooks
+     * Modify an environment by ID
      *
+     * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
+     * @param string $environment_key The environment key (required)
+     * @param \Swagger\Client\Model\PatchDelta[] $patch_delta http://jsonpatch.com/ (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\Webhooks
+     * @return void
      */
-    public function getWebhooks()
+    public function patchEnvironment($project_key, $environment_key, $patch_delta)
     {
-        list($response) = $this->getWebhooksWithHttpInfo();
+        list($response) = $this->patchEnvironmentWithHttpInfo($project_key, $environment_key, $patch_delta);
         return $response;
     }
 
     /**
-     * Operation getWebhooksWithHttpInfo
+     * Operation patchEnvironmentWithHttpInfo
      *
-     * Fetch a list of all webhooks
+     * Modify an environment by ID
      *
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\Webhooks, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function getWebhooksWithHttpInfo()
-    {
-        // parse inputs
-        $resourcePath = "/webhooks";
-        $httpBody = '';
-        $queryParams = [];
-        $headerParams = [];
-        $formParams = [];
-        $_header_accept = $this->apiClient->selectHeaderAccept(['application/json']);
-        if (!is_null($_header_accept)) {
-            $headerParams['Accept'] = $_header_accept;
-        }
-        $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
-
-
-        // for model (json/xml)
-        if (isset($_tempBody)) {
-            $httpBody = $_tempBody; // $_tempBody is the method argument, if present
-        } elseif (count($formParams) > 0) {
-            $httpBody = $formParams; // for HTTP post (form)
-        }
-        // this endpoint requires API key authentication
-        $apiKey = $this->apiClient->getApiKeyWithPrefix('Authorization');
-        if (strlen($apiKey) !== 0) {
-            $headerParams['Authorization'] = $apiKey;
-        }
-        // make the API Call
-        try {
-            list($response, $statusCode, $httpHeader) = $this->apiClient->callApi(
-                $resourcePath,
-                'GET',
-                $queryParams,
-                $httpBody,
-                $headerParams,
-                '\Swagger\Client\Model\Webhooks',
-                '/webhooks'
-            );
-
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Webhooks', $httpHeader), $statusCode, $httpHeader];
-        } catch (ApiException $e) {
-            switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Webhooks', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
-            }
-
-            throw $e;
-        }
-    }
-
-    /**
-     * Operation patchWebhook
-     *
-     * Modify a webhook by ID
-     *
-     * @param string $resource_id The resource ID (required)
+     * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
+     * @param string $environment_key The environment key (required)
      * @param \Swagger\Client\Model\PatchDelta[] $patch_delta http://jsonpatch.com/ (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\Webhook
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function patchWebhook($resource_id, $patch_delta)
+    public function patchEnvironmentWithHttpInfo($project_key, $environment_key, $patch_delta)
     {
-        list($response) = $this->patchWebhookWithHttpInfo($resource_id, $patch_delta);
-        return $response;
-    }
-
-    /**
-     * Operation patchWebhookWithHttpInfo
-     *
-     * Modify a webhook by ID
-     *
-     * @param string $resource_id The resource ID (required)
-     * @param \Swagger\Client\Model\PatchDelta[] $patch_delta http://jsonpatch.com/ (required)
-     * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\Webhook, HTTP status code, HTTP response headers (array of strings)
-     */
-    public function patchWebhookWithHttpInfo($resource_id, $patch_delta)
-    {
-        // verify the required parameter 'resource_id' is set
-        if ($resource_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $resource_id when calling patchWebhook');
+        // verify the required parameter 'project_key' is set
+        if ($project_key === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $project_key when calling patchEnvironment');
+        }
+        // verify the required parameter 'environment_key' is set
+        if ($environment_key === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $environment_key when calling patchEnvironment');
         }
         // verify the required parameter 'patch_delta' is set
         if ($patch_delta === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $patch_delta when calling patchWebhook');
+            throw new \InvalidArgumentException('Missing the required parameter $patch_delta when calling patchEnvironment');
         }
         // parse inputs
-        $resourcePath = "/webhooks/{resourceId}";
+        $resourcePath = "/environments/{projectKey}/{environmentKey}";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -379,10 +340,18 @@ class WebhooksApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // path params
-        if ($resource_id !== null) {
+        if ($project_key !== null) {
             $resourcePath = str_replace(
-                "{" . "resourceId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($resource_id),
+                "{" . "projectKey" . "}",
+                $this->apiClient->getSerializer()->toPathValue($project_key),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($environment_key !== null) {
+            $resourcePath = str_replace(
+                "{" . "environmentKey" . "}",
+                $this->apiClient->getSerializer()->toPathValue($environment_key),
                 $resourcePath
             );
         }
@@ -411,17 +380,13 @@ class WebhooksApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Webhook',
-                '/webhooks/{resourceId}'
+                null,
+                '/environments/{projectKey}/{environmentKey}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Webhook', $httpHeader), $statusCode, $httpHeader];
+            return [null, $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Webhook', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
             }
 
             throw $e;
@@ -429,37 +394,43 @@ class WebhooksApi
     }
 
     /**
-     * Operation postWebhook
+     * Operation postEnvironment
      *
-     * Create a webhook
+     * Create an environment
      *
-     * @param \Swagger\Client\Model\WebhookBody $webhook_body New webhook (required)
+     * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
+     * @param \Swagger\Client\Model\EnvironmentBody $environment_body New environment (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return void
      */
-    public function postWebhook($webhook_body)
+    public function postEnvironment($project_key, $environment_body)
     {
-        list($response) = $this->postWebhookWithHttpInfo($webhook_body);
+        list($response) = $this->postEnvironmentWithHttpInfo($project_key, $environment_body);
         return $response;
     }
 
     /**
-     * Operation postWebhookWithHttpInfo
+     * Operation postEnvironmentWithHttpInfo
      *
-     * Create a webhook
+     * Create an environment
      *
-     * @param \Swagger\Client\Model\WebhookBody $webhook_body New webhook (required)
+     * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
+     * @param \Swagger\Client\Model\EnvironmentBody $environment_body New environment (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postWebhookWithHttpInfo($webhook_body)
+    public function postEnvironmentWithHttpInfo($project_key, $environment_body)
     {
-        // verify the required parameter 'webhook_body' is set
-        if ($webhook_body === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $webhook_body when calling postWebhook');
+        // verify the required parameter 'project_key' is set
+        if ($project_key === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $project_key when calling postEnvironment');
+        }
+        // verify the required parameter 'environment_body' is set
+        if ($environment_body === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $environment_body when calling postEnvironment');
         }
         // parse inputs
-        $resourcePath = "/webhooks";
+        $resourcePath = "/environments/{projectKey}";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -470,10 +441,18 @@ class WebhooksApi
         }
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
+        // path params
+        if ($project_key !== null) {
+            $resourcePath = str_replace(
+                "{" . "projectKey" . "}",
+                $this->apiClient->getSerializer()->toPathValue($project_key),
+                $resourcePath
+            );
+        }
         // body params
         $_tempBody = null;
-        if (isset($webhook_body)) {
-            $_tempBody = $webhook_body;
+        if (isset($environment_body)) {
+            $_tempBody = $environment_body;
         }
 
         // for model (json/xml)
@@ -496,7 +475,7 @@ class WebhooksApi
                 $httpBody,
                 $headerParams,
                 null,
-                '/webhooks'
+                '/environments/{projectKey}'
             );
 
             return [null, $statusCode, $httpHeader];

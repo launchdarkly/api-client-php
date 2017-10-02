@@ -1,6 +1,6 @@
 <?php
 /**
- * Links
+ * Member
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Links Class Doc Comment
+ * Member Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Links implements ArrayAccess
+class Member implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,14 +47,20 @@ class Links implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Links';
+    protected static $swaggerModelName = 'Member';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'self' => '\Swagger\Client\Model\Link'
+        '_links' => '\Swagger\Client\Model\Links',
+        '_id' => 'string',
+        'role' => 'string',
+        'email' => 'string',
+        '_pending_invite' => 'bool',
+        'is_beta' => 'bool',
+        'custom_roles' => 'string[]'
     ];
 
     /**
@@ -62,7 +68,13 @@ class Links implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'self' => null
+        '_links' => null,
+        '_id' => null,
+        'role' => null,
+        'email' => null,
+        '_pending_invite' => null,
+        'is_beta' => null,
+        'custom_roles' => null
     ];
 
     public static function swaggerTypes()
@@ -80,7 +92,13 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'self' => 'self'
+        '_links' => '_links',
+        '_id' => '_id',
+        'role' => 'role',
+        'email' => 'email',
+        '_pending_invite' => '_pendingInvite',
+        'is_beta' => 'isBeta',
+        'custom_roles' => 'customRoles'
     ];
 
 
@@ -89,7 +107,13 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'self' => 'setSelf'
+        '_links' => 'setLinks',
+        '_id' => 'setId',
+        'role' => 'setRole',
+        'email' => 'setEmail',
+        '_pending_invite' => 'setPendingInvite',
+        'is_beta' => 'setIsBeta',
+        'custom_roles' => 'setCustomRoles'
     ];
 
 
@@ -98,7 +122,13 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'self' => 'getSelf'
+        '_links' => 'getLinks',
+        '_id' => 'getId',
+        'role' => 'getRole',
+        'email' => 'getEmail',
+        '_pending_invite' => 'getPendingInvite',
+        'is_beta' => 'getIsBeta',
+        'custom_roles' => 'getCustomRoles'
     ];
 
     public static function attributeMap()
@@ -132,7 +162,13 @@ class Links implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['self'] = isset($data['self']) ? $data['self'] : null;
+        $this->container['_links'] = isset($data['_links']) ? $data['_links'] : null;
+        $this->container['_id'] = isset($data['_id']) ? $data['_id'] : null;
+        $this->container['role'] = isset($data['role']) ? $data['role'] : null;
+        $this->container['email'] = isset($data['email']) ? $data['email'] : null;
+        $this->container['_pending_invite'] = isset($data['_pending_invite']) ? $data['_pending_invite'] : null;
+        $this->container['is_beta'] = isset($data['is_beta']) ? $data['is_beta'] : null;
+        $this->container['custom_roles'] = isset($data['custom_roles']) ? $data['custom_roles'] : null;
     }
 
     /**
@@ -161,22 +197,148 @@ class Links implements ArrayAccess
 
 
     /**
-     * Gets self
-     * @return \Swagger\Client\Model\Link
+     * Gets _links
+     * @return \Swagger\Client\Model\Links
      */
-    public function getSelf()
+    public function getLinks()
     {
-        return $this->container['self'];
+        return $this->container['_links'];
     }
 
     /**
-     * Sets self
-     * @param \Swagger\Client\Model\Link $self
+     * Sets _links
+     * @param \Swagger\Client\Model\Links $_links
      * @return $this
      */
-    public function setSelf($self)
+    public function setLinks($_links)
     {
-        $this->container['self'] = $self;
+        $this->container['_links'] = $_links;
+
+        return $this;
+    }
+
+    /**
+     * Gets _id
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['_id'];
+    }
+
+    /**
+     * Sets _id
+     * @param string $_id
+     * @return $this
+     */
+    public function setId($_id)
+    {
+        $this->container['_id'] = $_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets role
+     * @return string
+     */
+    public function getRole()
+    {
+        return $this->container['role'];
+    }
+
+    /**
+     * Sets role
+     * @param string $role
+     * @return $this
+     */
+    public function setRole($role)
+    {
+        $this->container['role'] = $role;
+
+        return $this;
+    }
+
+    /**
+     * Gets email
+     * @return string
+     */
+    public function getEmail()
+    {
+        return $this->container['email'];
+    }
+
+    /**
+     * Sets email
+     * @param string $email
+     * @return $this
+     */
+    public function setEmail($email)
+    {
+        $this->container['email'] = $email;
+
+        return $this;
+    }
+
+    /**
+     * Gets _pending_invite
+     * @return bool
+     */
+    public function getPendingInvite()
+    {
+        return $this->container['_pending_invite'];
+    }
+
+    /**
+     * Sets _pending_invite
+     * @param bool $_pending_invite
+     * @return $this
+     */
+    public function setPendingInvite($_pending_invite)
+    {
+        $this->container['_pending_invite'] = $_pending_invite;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_beta
+     * @return bool
+     */
+    public function getIsBeta()
+    {
+        return $this->container['is_beta'];
+    }
+
+    /**
+     * Sets is_beta
+     * @param bool $is_beta
+     * @return $this
+     */
+    public function setIsBeta($is_beta)
+    {
+        $this->container['is_beta'] = $is_beta;
+
+        return $this;
+    }
+
+    /**
+     * Gets custom_roles
+     * @return string[]
+     */
+    public function getCustomRoles()
+    {
+        return $this->container['custom_roles'];
+    }
+
+    /**
+     * Sets custom_roles
+     * @param string[] $custom_roles
+     * @return $this
+     */
+    public function setCustomRoles($custom_roles)
+    {
+        $this->container['custom_roles'] = $custom_roles;
 
         return $this;
     }

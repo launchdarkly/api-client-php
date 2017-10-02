@@ -1,6 +1,6 @@
 <?php
 /**
- * Links
+ * AuditLogEntryTarget
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Links Class Doc Comment
+ * AuditLogEntryTarget Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Links implements ArrayAccess
+class AuditLogEntryTarget implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,14 +47,16 @@ class Links implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Links';
+    protected static $swaggerModelName = 'AuditLogEntry_target';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'self' => '\Swagger\Client\Model\Link'
+        '_links' => '\Swagger\Client\Model\Links',
+        'name' => 'string',
+        'resources' => 'string[]'
     ];
 
     /**
@@ -62,7 +64,9 @@ class Links implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'self' => null
+        '_links' => null,
+        'name' => null,
+        'resources' => null
     ];
 
     public static function swaggerTypes()
@@ -80,7 +84,9 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'self' => 'self'
+        '_links' => '_links',
+        'name' => 'name',
+        'resources' => 'resources'
     ];
 
 
@@ -89,7 +95,9 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'self' => 'setSelf'
+        '_links' => 'setLinks',
+        'name' => 'setName',
+        'resources' => 'setResources'
     ];
 
 
@@ -98,7 +106,9 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'self' => 'getSelf'
+        '_links' => 'getLinks',
+        'name' => 'getName',
+        'resources' => 'getResources'
     ];
 
     public static function attributeMap()
@@ -132,7 +142,9 @@ class Links implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['self'] = isset($data['self']) ? $data['self'] : null;
+        $this->container['_links'] = isset($data['_links']) ? $data['_links'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['resources'] = isset($data['resources']) ? $data['resources'] : null;
     }
 
     /**
@@ -161,22 +173,64 @@ class Links implements ArrayAccess
 
 
     /**
-     * Gets self
-     * @return \Swagger\Client\Model\Link
+     * Gets _links
+     * @return \Swagger\Client\Model\Links
      */
-    public function getSelf()
+    public function getLinks()
     {
-        return $this->container['self'];
+        return $this->container['_links'];
     }
 
     /**
-     * Sets self
-     * @param \Swagger\Client\Model\Link $self
+     * Sets _links
+     * @param \Swagger\Client\Model\Links $_links
      * @return $this
      */
-    public function setSelf($self)
+    public function setLinks($_links)
     {
-        $this->container['self'] = $self;
+        $this->container['_links'] = $_links;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     * @param string $name
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets resources
+     * @return string[]
+     */
+    public function getResources()
+    {
+        return $this->container['resources'];
+    }
+
+    /**
+     * Sets resources
+     * @param string[] $resources
+     * @return $this
+     */
+    public function setResources($resources)
+    {
+        $this->container['resources'] = $resources;
 
         return $this;
     }

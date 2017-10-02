@@ -1,9 +1,11 @@
-# Links
+# Variation
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**self** | [**\Swagger\Client\Model\Link**](Link.md) |  | [optional] 
+**name** | **string** |  | [optional] 
+**description** | **string** |  | [optional] 
+**value** | **object** |  | 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

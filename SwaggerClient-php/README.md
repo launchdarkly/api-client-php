@@ -62,13 +62,13 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\RootApi();
+$api_instance = new Swagger\Client\Api\AuditLogApi();
 
 try {
-    $result = $api_instance->getRoot();
+    $result = $api_instance->getAuditLogEntries();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling RootApi->getRoot: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling AuditLogApi->getAuditLogEntries: ', $e->getMessage(), PHP_EOL;
 }
 
 ?>
@@ -80,22 +80,74 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
+*AuditLogApi* | [**getAuditLogEntries**](docs/Api/AuditLogApi.md#getauditlogentries) | **GET** /auditlog | Fetch a list of all webhooks
+*AuditLogApi* | [**getAuditLogEntry**](docs/Api/AuditLogApi.md#getauditlogentry) | **GET** /auditlog/{resourceId} | Get a webhook by ID
+*EnvironmentsApi* | [**deleteEnvironment**](docs/Api/EnvironmentsApi.md#deleteenvironment) | **DELETE** /environments/{projectKey}/{environmentKey} | Delete an environment by ID
+*EnvironmentsApi* | [**getEnvironment**](docs/Api/EnvironmentsApi.md#getenvironment) | **GET** /environments/{projectKey}/{environmentKey} | Get an environment by key.
+*EnvironmentsApi* | [**patchEnvironment**](docs/Api/EnvironmentsApi.md#patchenvironment) | **PATCH** /environments/{projectKey}/{environmentKey} | Modify an environment by ID
+*EnvironmentsApi* | [**postEnvironment**](docs/Api/EnvironmentsApi.md#postenvironment) | **POST** /environments/{projectKey} | Create an environment
+*FlagsApi* | [**deleteFeatureFlag**](docs/Api/FlagsApi.md#deletefeatureflag) | **DELETE** /flags/{projectKey}/{featureFlagKey} | Delete a feature flag by ID
+*FlagsApi* | [**getFeatureFlag**](docs/Api/FlagsApi.md#getfeatureflag) | **GET** /flags/{projectKey}/{featureFlagKey} | Get a single feature flag by key.
+*FlagsApi* | [**getFeatureFlagStatus**](docs/Api/FlagsApi.md#getfeatureflagstatus) | **GET** /flag-statuses/{projectKey}/{environmentKey} | Get a list of statuses for all feature flags
+*FlagsApi* | [**getFeatureFlagStatuses**](docs/Api/FlagsApi.md#getfeatureflagstatuses) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get a list of statuses for all feature flags
+*FlagsApi* | [**getFeatureFlags**](docs/Api/FlagsApi.md#getfeatureflags) | **GET** /flags/{projectKey} | Get a list of all features in the given project.
+*FlagsApi* | [**patchFeatureFlag**](docs/Api/FlagsApi.md#patchfeatureflag) | **PATCH** /flags/{projectKey}/{featureFlagKey} | Modify a feature flag by ID
+*FlagsApi* | [**postFeatureFlag**](docs/Api/FlagsApi.md#postfeatureflag) | **POST** /flags/{projectKey} | Create a feature flag
+*ProjectsApi* | [**deleteProject**](docs/Api/ProjectsApi.md#deleteproject) | **DELETE** /projects/{projectKey} | Delete a project by ID
+*ProjectsApi* | [**getProject**](docs/Api/ProjectsApi.md#getproject) | **GET** /projects/{projectKey} | Get a project by key.
+*ProjectsApi* | [**getProjects**](docs/Api/ProjectsApi.md#getprojects) | **GET** /projects | Returns a list of all projects in the account.
+*ProjectsApi* | [**patchProject**](docs/Api/ProjectsApi.md#patchproject) | **PATCH** /projects/{projectKey} | Modify a project by ID
+*ProjectsApi* | [**postProject**](docs/Api/ProjectsApi.md#postproject) | **POST** /projects | Create a project
 *RootApi* | [**getRoot**](docs/Api/RootApi.md#getroot) | **GET** / | Get the root resource
-*WebhooksApi* | [**deleteWebhook**](docs/Api/WebhooksApi.md#deletewebhook) | **DELETE** /webhooks/{webhookId} | Delete a webhook by ID
-*WebhooksApi* | [**getWebhook**](docs/Api/WebhooksApi.md#getwebhook) | **GET** /webhooks/{webhookId} | Get a webhook by ID
+*UserSettingsApi* | [**getUserFlagSetting**](docs/Api/UserSettingsApi.md#getuserflagsetting) | **GET** /users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Get a user by key.
+*UserSettingsApi* | [**getUserFlagSettings**](docs/Api/UserSettingsApi.md#getuserflagsettings) | **GET** /users/{projectKey}/{environmentKey}/{userKey}/flags | Lists the current flag settings for a given user.
+*UserSettingsApi* | [**putFlagSetting**](docs/Api/UserSettingsApi.md#putflagsetting) | **PUT** /users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Specifically enable or disable a feature flag for a user based on their key.
+*UsersApi* | [**deleteUser**](docs/Api/UsersApi.md#deleteuser) | **DELETE** /users/{projectKey}/{environmentKey}/{userKey} | Delete a user by ID
+*UsersApi* | [**getSearchUsers**](docs/Api/UsersApi.md#getsearchusers) | **GET** /user-search/{projectKey}/{environmentKey} | Search users in LaunchDarkly based on their last active date, or a search query.
+*UsersApi* | [**getUser**](docs/Api/UsersApi.md#getuser) | **GET** /users/{projectKey}/{environmentKey}/{userKey} | Get a user by key.
+*UsersApi* | [**getUsers**](docs/Api/UsersApi.md#getusers) | **GET** /users/{projectKey}/{environmentKey} | List all users in the environment.
+*WebhooksApi* | [**deleteWebhook**](docs/Api/WebhooksApi.md#deletewebhook) | **DELETE** /webhooks/{resourceId} | Delete a webhook by ID
+*WebhooksApi* | [**getWebhook**](docs/Api/WebhooksApi.md#getwebhook) | **GET** /webhooks/{resourceId} | Get a webhook by ID
 *WebhooksApi* | [**getWebhooks**](docs/Api/WebhooksApi.md#getwebhooks) | **GET** /webhooks | Fetch a list of all webhooks
-*WebhooksApi* | [**patchWebhook**](docs/Api/WebhooksApi.md#patchwebhook) | **PATCH** /webhooks/{webhookId} | Modify a webhook by ID
+*WebhooksApi* | [**patchWebhook**](docs/Api/WebhooksApi.md#patchwebhook) | **PATCH** /webhooks/{resourceId} | Modify a webhook by ID
 *WebhooksApi* | [**postWebhook**](docs/Api/WebhooksApi.md#postwebhook) | **POST** /webhooks | Create a webhook
 
 
 ## Documentation For Models
 
+ - [AuditLogEntries](docs/Model/AuditLogEntries.md)
+ - [AuditLogEntry](docs/Model/AuditLogEntry.md)
+ - [AuditLogEntryTarget](docs/Model/AuditLogEntryTarget.md)
+ - [Clause](docs/Model/Clause.md)
+ - [Environment](docs/Model/Environment.md)
+ - [EnvironmentBody](docs/Model/EnvironmentBody.md)
+ - [FeatureFlag](docs/Model/FeatureFlag.md)
+ - [FeatureFlagBody](docs/Model/FeatureFlagBody.md)
+ - [FeatureFlagConfig](docs/Model/FeatureFlagConfig.md)
+ - [FeatureFlagConfigFallthrough](docs/Model/FeatureFlagConfigFallthrough.md)
+ - [FeatureFlagStatus](docs/Model/FeatureFlagStatus.md)
+ - [FeatureFlagStatuses](docs/Model/FeatureFlagStatuses.md)
+ - [FeatureFlags](docs/Model/FeatureFlags.md)
  - [Link](docs/Model/Link.md)
  - [Links](docs/Model/Links.md)
+ - [Member](docs/Model/Member.md)
  - [PatchDelta](docs/Model/PatchDelta.md)
+ - [Project](docs/Model/Project.md)
+ - [ProjectBody](docs/Model/ProjectBody.md)
+ - [Projects](docs/Model/Projects.md)
+ - [Rollout](docs/Model/Rollout.md)
+ - [Rule](docs/Model/Rule.md)
+ - [Target](docs/Model/Target.md)
+ - [User](docs/Model/User.md)
+ - [UserFlagSetting](docs/Model/UserFlagSetting.md)
+ - [UserFlagSettings](docs/Model/UserFlagSettings.md)
+ - [UserSettingsBody](docs/Model/UserSettingsBody.md)
+ - [Users](docs/Model/Users.md)
+ - [Variation](docs/Model/Variation.md)
  - [Webhook](docs/Model/Webhook.md)
- - [WebhookPost](docs/Model/WebhookPost.md)
+ - [WebhookBody](docs/Model/WebhookBody.md)
  - [Webhooks](docs/Model/Webhooks.md)
+ - [WeightedVariation](docs/Model/WeightedVariation.md)
 
 
 ## Documentation For Authorization

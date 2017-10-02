@@ -1,20 +1,20 @@
-# Swagger\Client\WebhooksApi
+# Swagger\Client\ProjectsApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteWebhook**](WebhooksApi.md#deleteWebhook) | **DELETE** /webhooks/{resourceId} | Delete a webhook by ID
-[**getWebhook**](WebhooksApi.md#getWebhook) | **GET** /webhooks/{resourceId} | Get a webhook by ID
-[**getWebhooks**](WebhooksApi.md#getWebhooks) | **GET** /webhooks | Fetch a list of all webhooks
-[**patchWebhook**](WebhooksApi.md#patchWebhook) | **PATCH** /webhooks/{resourceId} | Modify a webhook by ID
-[**postWebhook**](WebhooksApi.md#postWebhook) | **POST** /webhooks | Create a webhook
+[**deleteProject**](ProjectsApi.md#deleteProject) | **DELETE** /projects/{projectKey} | Delete a project by ID
+[**getProject**](ProjectsApi.md#getProject) | **GET** /projects/{projectKey} | Get a project by key.
+[**getProjects**](ProjectsApi.md#getProjects) | **GET** /projects | Returns a list of all projects in the account.
+[**patchProject**](ProjectsApi.md#patchProject) | **PATCH** /projects/{projectKey} | Modify a project by ID
+[**postProject**](ProjectsApi.md#postProject) | **POST** /projects | Create a project
 
 
-# **deleteWebhook**
-> deleteWebhook($resource_id)
+# **deleteProject**
+> deleteProject($project_key)
 
-Delete a webhook by ID
+Delete a project by ID
 
 ### Example
 ```php
@@ -26,13 +26,13 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\WebhooksApi();
-$resource_id = "resource_id_example"; // string | The resource ID
+$api_instance = new Swagger\Client\Api\ProjectsApi();
+$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
 
 try {
-    $api_instance->deleteWebhook($resource_id);
+    $api_instance->deleteProject($project_key);
 } catch (Exception $e) {
-    echo 'Exception when calling WebhooksApi->deleteWebhook: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ProjectsApi->deleteProject: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -41,7 +41,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource_id** | **string**| The resource ID |
+ **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
 
 ### Return type
 
@@ -58,10 +58,10 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getWebhook**
-> \Swagger\Client\Model\Webhook getWebhook($resource_id)
+# **getProject**
+> \Swagger\Client\Model\Project getProject($project_key)
 
-Get a webhook by ID
+Get a project by key.
 
 ### Example
 ```php
@@ -73,14 +73,14 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\WebhooksApi();
-$resource_id = "resource_id_example"; // string | The resource ID
+$api_instance = new Swagger\Client\Api\ProjectsApi();
+$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
 
 try {
-    $result = $api_instance->getWebhook($resource_id);
+    $result = $api_instance->getProject($project_key);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling WebhooksApi->getWebhook: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ProjectsApi->getProject: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -89,11 +89,11 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource_id** | **string**| The resource ID |
+ **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
 
 ### Return type
 
-[**\Swagger\Client\Model\Webhook**](../Model/Webhook.md)
+[**\Swagger\Client\Model\Project**](../Model/Project.md)
 
 ### Authorization
 
@@ -106,10 +106,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **getWebhooks**
-> \Swagger\Client\Model\Webhooks getWebhooks()
+# **getProjects**
+> \Swagger\Client\Model\Projects getProjects()
 
-Fetch a list of all webhooks
+Returns a list of all projects in the account.
 
 ### Example
 ```php
@@ -121,13 +121,13 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\WebhooksApi();
+$api_instance = new Swagger\Client\Api\ProjectsApi();
 
 try {
-    $result = $api_instance->getWebhooks();
+    $result = $api_instance->getProjects();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling WebhooksApi->getWebhooks: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ProjectsApi->getProjects: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -137,7 +137,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**\Swagger\Client\Model\Webhooks**](../Model/Webhooks.md)
+[**\Swagger\Client\Model\Projects**](../Model/Projects.md)
 
 ### Authorization
 
@@ -150,10 +150,10 @@ This endpoint does not need any parameter.
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **patchWebhook**
-> \Swagger\Client\Model\Webhook patchWebhook($resource_id, $patch_delta)
+# **patchProject**
+> patchProject($project_key, $patch_delta)
 
-Modify a webhook by ID
+Modify a project by ID
 
 ### Example
 ```php
@@ -165,15 +165,14 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\WebhooksApi();
-$resource_id = "resource_id_example"; // string | The resource ID
+$api_instance = new Swagger\Client\Api\ProjectsApi();
+$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
 $patch_delta = array(new \Swagger\Client\Model\PatchDelta()); // \Swagger\Client\Model\PatchDelta[] | http://jsonpatch.com/
 
 try {
-    $result = $api_instance->patchWebhook($resource_id, $patch_delta);
-    print_r($result);
+    $api_instance->patchProject($project_key, $patch_delta);
 } catch (Exception $e) {
-    echo 'Exception when calling WebhooksApi->patchWebhook: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ProjectsApi->patchProject: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -182,12 +181,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource_id** | **string**| The resource ID |
+ **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
  **patch_delta** | [**\Swagger\Client\Model\PatchDelta[]**](../Model/PatchDelta.md)| http://jsonpatch.com/ |
 
 ### Return type
 
-[**\Swagger\Client\Model\Webhook**](../Model/Webhook.md)
+void (empty response body)
 
 ### Authorization
 
@@ -200,10 +199,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **postWebhook**
-> postWebhook($webhook_body)
+# **postProject**
+> postProject($project_body)
 
-Create a webhook
+Create a project
 
 ### Example
 ```php
@@ -215,13 +214,13 @@ Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorizatio
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\WebhooksApi();
-$webhook_body = new \Swagger\Client\Model\WebhookBody(); // \Swagger\Client\Model\WebhookBody | New webhook
+$api_instance = new Swagger\Client\Api\ProjectsApi();
+$project_body = new \Swagger\Client\Model\ProjectBody(); // \Swagger\Client\Model\ProjectBody | New project
 
 try {
-    $api_instance->postWebhook($webhook_body);
+    $api_instance->postProject($project_body);
 } catch (Exception $e) {
-    echo 'Exception when calling WebhooksApi->postWebhook: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ProjectsApi->postProject: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -230,7 +229,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **webhook_body** | [**\Swagger\Client\Model\WebhookBody**](../Model/WebhookBody.md)| New webhook |
+ **project_body** | [**\Swagger\Client\Model\ProjectBody**](../Model/ProjectBody.md)| New project |
 
 ### Return type
 

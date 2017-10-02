@@ -1,6 +1,6 @@
 <?php
 /**
- * WebhooksApi
+ * ProjectsApi
  * PHP version 5
  *
  * @category Class
@@ -34,14 +34,14 @@ use \Swagger\Client\Configuration;
 use \Swagger\Client\ObjectSerializer;
 
 /**
- * WebhooksApi Class Doc Comment
+ * ProjectsApi Class Doc Comment
  *
  * @category Class
  * @package  Swagger\Client
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class WebhooksApi
+class ProjectsApi
 {
     /**
      * API Client
@@ -79,7 +79,7 @@ class WebhooksApi
      *
      * @param \Swagger\Client\ApiClient $apiClient set the API client
      *
-     * @return WebhooksApi
+     * @return ProjectsApi
      */
     public function setApiClient(\Swagger\Client\ApiClient $apiClient)
     {
@@ -88,37 +88,37 @@ class WebhooksApi
     }
 
     /**
-     * Operation deleteWebhook
+     * Operation deleteProject
      *
-     * Delete a webhook by ID
+     * Delete a project by ID
      *
-     * @param string $resource_id The resource ID (required)
+     * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return void
      */
-    public function deleteWebhook($resource_id)
+    public function deleteProject($project_key)
     {
-        list($response) = $this->deleteWebhookWithHttpInfo($resource_id);
+        list($response) = $this->deleteProjectWithHttpInfo($project_key);
         return $response;
     }
 
     /**
-     * Operation deleteWebhookWithHttpInfo
+     * Operation deleteProjectWithHttpInfo
      *
-     * Delete a webhook by ID
+     * Delete a project by ID
      *
-     * @param string $resource_id The resource ID (required)
+     * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function deleteWebhookWithHttpInfo($resource_id)
+    public function deleteProjectWithHttpInfo($project_key)
     {
-        // verify the required parameter 'resource_id' is set
-        if ($resource_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $resource_id when calling deleteWebhook');
+        // verify the required parameter 'project_key' is set
+        if ($project_key === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $project_key when calling deleteProject');
         }
         // parse inputs
-        $resourcePath = "/webhooks/{resourceId}";
+        $resourcePath = "/projects/{projectKey}";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -130,10 +130,10 @@ class WebhooksApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // path params
-        if ($resource_id !== null) {
+        if ($project_key !== null) {
             $resourcePath = str_replace(
-                "{" . "resourceId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($resource_id),
+                "{" . "projectKey" . "}",
+                $this->apiClient->getSerializer()->toPathValue($project_key),
                 $resourcePath
             );
         }
@@ -158,7 +158,7 @@ class WebhooksApi
                 $httpBody,
                 $headerParams,
                 null,
-                '/webhooks/{resourceId}'
+                '/projects/{projectKey}'
             );
 
             return [null, $statusCode, $httpHeader];
@@ -171,37 +171,37 @@ class WebhooksApi
     }
 
     /**
-     * Operation getWebhook
+     * Operation getProject
      *
-     * Get a webhook by ID
+     * Get a project by key.
      *
-     * @param string $resource_id The resource ID (required)
+     * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\Webhook
+     * @return \Swagger\Client\Model\Project
      */
-    public function getWebhook($resource_id)
+    public function getProject($project_key)
     {
-        list($response) = $this->getWebhookWithHttpInfo($resource_id);
+        list($response) = $this->getProjectWithHttpInfo($project_key);
         return $response;
     }
 
     /**
-     * Operation getWebhookWithHttpInfo
+     * Operation getProjectWithHttpInfo
      *
-     * Get a webhook by ID
+     * Get a project by key.
      *
-     * @param string $resource_id The resource ID (required)
+     * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\Webhook, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\Project, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getWebhookWithHttpInfo($resource_id)
+    public function getProjectWithHttpInfo($project_key)
     {
-        // verify the required parameter 'resource_id' is set
-        if ($resource_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $resource_id when calling getWebhook');
+        // verify the required parameter 'project_key' is set
+        if ($project_key === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $project_key when calling getProject');
         }
         // parse inputs
-        $resourcePath = "/webhooks/{resourceId}";
+        $resourcePath = "/projects/{projectKey}";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -213,10 +213,10 @@ class WebhooksApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // path params
-        if ($resource_id !== null) {
+        if ($project_key !== null) {
             $resourcePath = str_replace(
-                "{" . "resourceId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($resource_id),
+                "{" . "projectKey" . "}",
+                $this->apiClient->getSerializer()->toPathValue($project_key),
                 $resourcePath
             );
         }
@@ -240,15 +240,15 @@ class WebhooksApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Webhook',
-                '/webhooks/{resourceId}'
+                '\Swagger\Client\Model\Project',
+                '/projects/{projectKey}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Webhook', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Project', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Webhook', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Project', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -258,31 +258,31 @@ class WebhooksApi
     }
 
     /**
-     * Operation getWebhooks
+     * Operation getProjects
      *
-     * Fetch a list of all webhooks
+     * Returns a list of all projects in the account.
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\Webhooks
+     * @return \Swagger\Client\Model\Projects
      */
-    public function getWebhooks()
+    public function getProjects()
     {
-        list($response) = $this->getWebhooksWithHttpInfo();
+        list($response) = $this->getProjectsWithHttpInfo();
         return $response;
     }
 
     /**
-     * Operation getWebhooksWithHttpInfo
+     * Operation getProjectsWithHttpInfo
      *
-     * Fetch a list of all webhooks
+     * Returns a list of all projects in the account.
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\Webhooks, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \Swagger\Client\Model\Projects, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getWebhooksWithHttpInfo()
+    public function getProjectsWithHttpInfo()
     {
         // parse inputs
-        $resourcePath = "/webhooks";
+        $resourcePath = "/projects";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -313,15 +313,15 @@ class WebhooksApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Webhooks',
-                '/webhooks'
+                '\Swagger\Client\Model\Projects',
+                '/projects'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Webhooks', $httpHeader), $statusCode, $httpHeader];
+            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Projects', $httpHeader), $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
                 case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Webhooks', $e->getResponseHeaders());
+                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Projects', $e->getResponseHeaders());
                     $e->setResponseObject($data);
                     break;
             }
@@ -331,43 +331,43 @@ class WebhooksApi
     }
 
     /**
-     * Operation patchWebhook
+     * Operation patchProject
      *
-     * Modify a webhook by ID
+     * Modify a project by ID
      *
-     * @param string $resource_id The resource ID (required)
+     * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @param \Swagger\Client\Model\PatchDelta[] $patch_delta http://jsonpatch.com/ (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return \Swagger\Client\Model\Webhook
+     * @return void
      */
-    public function patchWebhook($resource_id, $patch_delta)
+    public function patchProject($project_key, $patch_delta)
     {
-        list($response) = $this->patchWebhookWithHttpInfo($resource_id, $patch_delta);
+        list($response) = $this->patchProjectWithHttpInfo($project_key, $patch_delta);
         return $response;
     }
 
     /**
-     * Operation patchWebhookWithHttpInfo
+     * Operation patchProjectWithHttpInfo
      *
-     * Modify a webhook by ID
+     * Modify a project by ID
      *
-     * @param string $resource_id The resource ID (required)
+     * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @param \Swagger\Client\Model\PatchDelta[] $patch_delta http://jsonpatch.com/ (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
-     * @return array of \Swagger\Client\Model\Webhook, HTTP status code, HTTP response headers (array of strings)
+     * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function patchWebhookWithHttpInfo($resource_id, $patch_delta)
+    public function patchProjectWithHttpInfo($project_key, $patch_delta)
     {
-        // verify the required parameter 'resource_id' is set
-        if ($resource_id === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $resource_id when calling patchWebhook');
+        // verify the required parameter 'project_key' is set
+        if ($project_key === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $project_key when calling patchProject');
         }
         // verify the required parameter 'patch_delta' is set
         if ($patch_delta === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $patch_delta when calling patchWebhook');
+            throw new \InvalidArgumentException('Missing the required parameter $patch_delta when calling patchProject');
         }
         // parse inputs
-        $resourcePath = "/webhooks/{resourceId}";
+        $resourcePath = "/projects/{projectKey}";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -379,10 +379,10 @@ class WebhooksApi
         $headerParams['Content-Type'] = $this->apiClient->selectHeaderContentType(['application/json']);
 
         // path params
-        if ($resource_id !== null) {
+        if ($project_key !== null) {
             $resourcePath = str_replace(
-                "{" . "resourceId" . "}",
-                $this->apiClient->getSerializer()->toPathValue($resource_id),
+                "{" . "projectKey" . "}",
+                $this->apiClient->getSerializer()->toPathValue($project_key),
                 $resourcePath
             );
         }
@@ -411,17 +411,13 @@ class WebhooksApi
                 $queryParams,
                 $httpBody,
                 $headerParams,
-                '\Swagger\Client\Model\Webhook',
-                '/webhooks/{resourceId}'
+                null,
+                '/projects/{projectKey}'
             );
 
-            return [$this->apiClient->getSerializer()->deserialize($response, '\Swagger\Client\Model\Webhook', $httpHeader), $statusCode, $httpHeader];
+            return [null, $statusCode, $httpHeader];
         } catch (ApiException $e) {
             switch ($e->getCode()) {
-                case 200:
-                    $data = $this->apiClient->getSerializer()->deserialize($e->getResponseBody(), '\Swagger\Client\Model\Webhook', $e->getResponseHeaders());
-                    $e->setResponseObject($data);
-                    break;
             }
 
             throw $e;
@@ -429,37 +425,37 @@ class WebhooksApi
     }
 
     /**
-     * Operation postWebhook
+     * Operation postProject
      *
-     * Create a webhook
+     * Create a project
      *
-     * @param \Swagger\Client\Model\WebhookBody $webhook_body New webhook (required)
+     * @param \Swagger\Client\Model\ProjectBody $project_body New project (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return void
      */
-    public function postWebhook($webhook_body)
+    public function postProject($project_body)
     {
-        list($response) = $this->postWebhookWithHttpInfo($webhook_body);
+        list($response) = $this->postProjectWithHttpInfo($project_body);
         return $response;
     }
 
     /**
-     * Operation postWebhookWithHttpInfo
+     * Operation postProjectWithHttpInfo
      *
-     * Create a webhook
+     * Create a project
      *
-     * @param \Swagger\Client\Model\WebhookBody $webhook_body New webhook (required)
+     * @param \Swagger\Client\Model\ProjectBody $project_body New project (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postWebhookWithHttpInfo($webhook_body)
+    public function postProjectWithHttpInfo($project_body)
     {
-        // verify the required parameter 'webhook_body' is set
-        if ($webhook_body === null) {
-            throw new \InvalidArgumentException('Missing the required parameter $webhook_body when calling postWebhook');
+        // verify the required parameter 'project_body' is set
+        if ($project_body === null) {
+            throw new \InvalidArgumentException('Missing the required parameter $project_body when calling postProject');
         }
         // parse inputs
-        $resourcePath = "/webhooks";
+        $resourcePath = "/projects";
         $httpBody = '';
         $queryParams = [];
         $headerParams = [];
@@ -472,8 +468,8 @@ class WebhooksApi
 
         // body params
         $_tempBody = null;
-        if (isset($webhook_body)) {
-            $_tempBody = $webhook_body;
+        if (isset($project_body)) {
+            $_tempBody = $project_body;
         }
 
         // for model (json/xml)
@@ -496,7 +492,7 @@ class WebhooksApi
                 $httpBody,
                 $headerParams,
                 null,
-                '/webhooks'
+                '/projects'
             );
 
             return [null, $statusCode, $httpHeader];

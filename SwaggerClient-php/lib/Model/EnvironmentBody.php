@@ -1,6 +1,6 @@
 <?php
 /**
- * Links
+ * EnvironmentBody
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Links Class Doc Comment
+ * EnvironmentBody Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Links implements ArrayAccess
+class EnvironmentBody implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,14 +47,17 @@ class Links implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Links';
+    protected static $swaggerModelName = 'environmentBody';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'self' => '\Swagger\Client\Model\Link'
+        'name' => 'string',
+        'key' => 'string',
+        'color' => 'string',
+        'default_ttl' => 'float'
     ];
 
     /**
@@ -62,7 +65,10 @@ class Links implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'self' => null
+        'name' => null,
+        'key' => null,
+        'color' => null,
+        'default_ttl' => null
     ];
 
     public static function swaggerTypes()
@@ -80,7 +86,10 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'self' => 'self'
+        'name' => 'name',
+        'key' => 'key',
+        'color' => 'color',
+        'default_ttl' => 'defaultTtl'
     ];
 
 
@@ -89,7 +98,10 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'self' => 'setSelf'
+        'name' => 'setName',
+        'key' => 'setKey',
+        'color' => 'setColor',
+        'default_ttl' => 'setDefaultTtl'
     ];
 
 
@@ -98,7 +110,10 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'self' => 'getSelf'
+        'name' => 'getName',
+        'key' => 'getKey',
+        'color' => 'getColor',
+        'default_ttl' => 'getDefaultTtl'
     ];
 
     public static function attributeMap()
@@ -132,7 +147,10 @@ class Links implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['self'] = isset($data['self']) ? $data['self'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['key'] = isset($data['key']) ? $data['key'] : null;
+        $this->container['color'] = isset($data['color']) ? $data['color'] : null;
+        $this->container['default_ttl'] = isset($data['default_ttl']) ? $data['default_ttl'] : null;
     }
 
     /**
@@ -144,6 +162,15 @@ class Links implements ArrayAccess
     {
         $invalid_properties = [];
 
+        if ($this->container['name'] === null) {
+            $invalid_properties[] = "'name' can't be null";
+        }
+        if ($this->container['key'] === null) {
+            $invalid_properties[] = "'key' can't be null";
+        }
+        if ($this->container['color'] === null) {
+            $invalid_properties[] = "'color' can't be null";
+        }
         return $invalid_properties;
     }
 
@@ -156,27 +183,99 @@ class Links implements ArrayAccess
     public function valid()
     {
 
+        if ($this->container['name'] === null) {
+            return false;
+        }
+        if ($this->container['key'] === null) {
+            return false;
+        }
+        if ($this->container['color'] === null) {
+            return false;
+        }
         return true;
     }
 
 
     /**
-     * Gets self
-     * @return \Swagger\Client\Model\Link
+     * Gets name
+     * @return string
      */
-    public function getSelf()
+    public function getName()
     {
-        return $this->container['self'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets self
-     * @param \Swagger\Client\Model\Link $self
+     * Sets name
+     * @param string $name
      * @return $this
      */
-    public function setSelf($self)
+    public function setName($name)
     {
-        $this->container['self'] = $self;
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets key
+     * @return string
+     */
+    public function getKey()
+    {
+        return $this->container['key'];
+    }
+
+    /**
+     * Sets key
+     * @param string $key
+     * @return $this
+     */
+    public function setKey($key)
+    {
+        $this->container['key'] = $key;
+
+        return $this;
+    }
+
+    /**
+     * Gets color
+     * @return string
+     */
+    public function getColor()
+    {
+        return $this->container['color'];
+    }
+
+    /**
+     * Sets color
+     * @param string $color A color swatch (as an RGB hex value with no leading '#', e.g. C8C8C8)
+     * @return $this
+     */
+    public function setColor($color)
+    {
+        $this->container['color'] = $color;
+
+        return $this;
+    }
+
+    /**
+     * Gets default_ttl
+     * @return float
+     */
+    public function getDefaultTtl()
+    {
+        return $this->container['default_ttl'];
+    }
+
+    /**
+     * Sets default_ttl
+     * @param float $default_ttl
+     * @return $this
+     */
+    public function setDefaultTtl($default_ttl)
+    {
+        $this->container['default_ttl'] = $default_ttl;
 
         return $this;
     }

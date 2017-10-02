@@ -1,6 +1,6 @@
 <?php
 /**
- * Links
+ * FeatureFlagStatus
  *
  * PHP version 5
  *
@@ -32,14 +32,14 @@ namespace Swagger\Client\Model;
 use \ArrayAccess;
 
 /**
- * Links Class Doc Comment
+ * FeatureFlagStatus Class Doc Comment
  *
  * @category    Class
  * @package     Swagger\Client
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class Links implements ArrayAccess
+class FeatureFlagStatus implements ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -47,14 +47,17 @@ class Links implements ArrayAccess
       * The original name of the model.
       * @var string
       */
-    protected static $swaggerModelName = 'Links';
+    protected static $swaggerModelName = 'FeatureFlagStatus';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'self' => '\Swagger\Client\Model\Link'
+        '_links' => '\Swagger\Client\Model\Links',
+        'name' => 'string',
+        'last_requested' => 'string',
+        'default' => 'bool'
     ];
 
     /**
@@ -62,7 +65,10 @@ class Links implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'self' => null
+        '_links' => null,
+        'name' => null,
+        'last_requested' => null,
+        'default' => null
     ];
 
     public static function swaggerTypes()
@@ -80,7 +86,10 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'self' => 'self'
+        '_links' => '_links',
+        'name' => 'name',
+        'last_requested' => 'lastRequested',
+        'default' => 'default'
     ];
 
 
@@ -89,7 +98,10 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'self' => 'setSelf'
+        '_links' => 'setLinks',
+        'name' => 'setName',
+        'last_requested' => 'setLastRequested',
+        'default' => 'setDefault'
     ];
 
 
@@ -98,7 +110,10 @@ class Links implements ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'self' => 'getSelf'
+        '_links' => 'getLinks',
+        'name' => 'getName',
+        'last_requested' => 'getLastRequested',
+        'default' => 'getDefault'
     ];
 
     public static function attributeMap()
@@ -132,7 +147,10 @@ class Links implements ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['self'] = isset($data['self']) ? $data['self'] : null;
+        $this->container['_links'] = isset($data['_links']) ? $data['_links'] : null;
+        $this->container['name'] = isset($data['name']) ? $data['name'] : null;
+        $this->container['last_requested'] = isset($data['last_requested']) ? $data['last_requested'] : null;
+        $this->container['default'] = isset($data['default']) ? $data['default'] : null;
     }
 
     /**
@@ -161,22 +179,85 @@ class Links implements ArrayAccess
 
 
     /**
-     * Gets self
-     * @return \Swagger\Client\Model\Link
+     * Gets _links
+     * @return \Swagger\Client\Model\Links
      */
-    public function getSelf()
+    public function getLinks()
     {
-        return $this->container['self'];
+        return $this->container['_links'];
     }
 
     /**
-     * Sets self
-     * @param \Swagger\Client\Model\Link $self
+     * Sets _links
+     * @param \Swagger\Client\Model\Links $_links
      * @return $this
      */
-    public function setSelf($self)
+    public function setLinks($_links)
     {
-        $this->container['self'] = $self;
+        $this->container['_links'] = $_links;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     * @param string $name
+     * @return $this
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_requested
+     * @return string
+     */
+    public function getLastRequested()
+    {
+        return $this->container['last_requested'];
+    }
+
+    /**
+     * Sets last_requested
+     * @param string $last_requested
+     * @return $this
+     */
+    public function setLastRequested($last_requested)
+    {
+        $this->container['last_requested'] = $last_requested;
+
+        return $this;
+    }
+
+    /**
+     * Gets default
+     * @return bool
+     */
+    public function getDefault()
+    {
+        return $this->container['default'];
+    }
+
+    /**
+     * Sets default
+     * @param bool $default
+     * @return $this
+     */
+    public function setDefault($default)
+    {
+        $this->container['default'] = $default;
 
         return $this;
     }
