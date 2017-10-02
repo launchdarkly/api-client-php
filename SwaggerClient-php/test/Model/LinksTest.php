@@ -78,13 +78,6 @@ class LinksTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test attribute "parent"
-     */
-    public function testPropertyParent()
-    {
-    }
-
-    /**
      * Test attribute "self"
      */
     public function testPropertySelf()
