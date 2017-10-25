@@ -85,7 +85,7 @@ class ProjectsApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for getProject
      *
-     * Get a project by key..
+     * Fetch a single project by key..
      *
      */
     public function testGetProject()

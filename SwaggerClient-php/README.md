@@ -80,8 +80,8 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
-*AuditLogApi* | [**getAuditLogEntries**](docs/Api/AuditLogApi.md#getauditlogentries) | **GET** /auditlog | Fetch a list of all webhooks
-*AuditLogApi* | [**getAuditLogEntry**](docs/Api/AuditLogApi.md#getauditlogentry) | **GET** /auditlog/{resourceId} | Get a webhook by ID
+*AuditLogApi* | [**getAuditLogEntries**](docs/Api/AuditLogApi.md#getauditlogentries) | **GET** /auditlog | Fetch a list of all audit log entries
+*AuditLogApi* | [**getAuditLogEntry**](docs/Api/AuditLogApi.md#getauditlogentry) | **GET** /auditlog/{resourceId} | Get an audit log entry by ID
 *EnvironmentsApi* | [**deleteEnvironment**](docs/Api/EnvironmentsApi.md#deleteenvironment) | **DELETE** /environments/{projectKey}/{environmentKey} | Delete an environment by ID
 *EnvironmentsApi* | [**getEnvironment**](docs/Api/EnvironmentsApi.md#getenvironment) | **GET** /environments/{projectKey}/{environmentKey} | Get an environment by key.
 *EnvironmentsApi* | [**patchEnvironment**](docs/Api/EnvironmentsApi.md#patchenvironment) | **PATCH** /environments/{projectKey}/{environmentKey} | Modify an environment by ID
@@ -92,9 +92,9 @@ Class | Method | HTTP request | Description
 *FlagsApi* | [**getFeatureFlagStatuses**](docs/Api/FlagsApi.md#getfeatureflagstatuses) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get a list of statuses for all feature flags
 *FlagsApi* | [**getFeatureFlags**](docs/Api/FlagsApi.md#getfeatureflags) | **GET** /flags/{projectKey} | Get a list of all features in the given project.
 *FlagsApi* | [**patchFeatureFlag**](docs/Api/FlagsApi.md#patchfeatureflag) | **PATCH** /flags/{projectKey}/{featureFlagKey} | Modify a feature flag by ID
-*FlagsApi* | [**postFeatureFlag**](docs/Api/FlagsApi.md#postfeatureflag) | **POST** /flags/{projectKey} | Create a feature flag
+*FlagsApi* | [**postFeatureFlag**](docs/Api/FlagsApi.md#postfeatureflag) | **POST** /flags/{projectKey} | Creates a new feature flag.
 *ProjectsApi* | [**deleteProject**](docs/Api/ProjectsApi.md#deleteproject) | **DELETE** /projects/{projectKey} | Delete a project by ID
-*ProjectsApi* | [**getProject**](docs/Api/ProjectsApi.md#getproject) | **GET** /projects/{projectKey} | Get a project by key.
+*ProjectsApi* | [**getProject**](docs/Api/ProjectsApi.md#getproject) | **GET** /projects/{projectKey} | Fetch a single project by key.
 *ProjectsApi* | [**getProjects**](docs/Api/ProjectsApi.md#getprojects) | **GET** /projects | Returns a list of all projects in the account.
 *ProjectsApi* | [**patchProject**](docs/Api/ProjectsApi.md#patchproject) | **PATCH** /projects/{projectKey} | Modify a project by ID
 *ProjectsApi* | [**postProject**](docs/Api/ProjectsApi.md#postproject) | **POST** /projects | Create a project

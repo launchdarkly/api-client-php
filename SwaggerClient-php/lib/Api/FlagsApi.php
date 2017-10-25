@@ -721,7 +721,7 @@ class FlagsApi
     /**
      * Operation postFeatureFlag
      *
-     * Create a feature flag
+     * Creates a new feature flag.
      *
      * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @param \Swagger\Client\Model\FeatureFlagBody $feature_flag_body Create a new feature flag (required)
@@ -737,7 +737,7 @@ class FlagsApi
     /**
      * Operation postFeatureFlagWithHttpInfo
      *
-     * Create a feature flag
+     * Creates a new feature flag.
      *
      * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @param \Swagger\Client\Model\FeatureFlagBody $feature_flag_body Create a new feature flag (required)

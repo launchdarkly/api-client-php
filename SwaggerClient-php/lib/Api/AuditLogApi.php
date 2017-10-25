@@ -90,7 +90,7 @@ class AuditLogApi
     /**
      * Operation getAuditLogEntries
      *
-     * Fetch a list of all webhooks
+     * Fetch a list of all audit log entries
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return \Swagger\Client\Model\AuditLogEntries
@@ -104,7 +104,7 @@ class AuditLogApi
     /**
      * Operation getAuditLogEntriesWithHttpInfo
      *
-     * Fetch a list of all webhooks
+     * Fetch a list of all audit log entries
      *
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of \Swagger\Client\Model\AuditLogEntries, HTTP status code, HTTP response headers (array of strings)
@@ -163,7 +163,7 @@ class AuditLogApi
     /**
      * Operation getAuditLogEntry
      *
-     * Get a webhook by ID
+     * Get an audit log entry by ID
      *
      * @param string $resource_id The resource ID (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -178,7 +178,7 @@ class AuditLogApi
     /**
      * Operation getAuditLogEntryWithHttpInfo
      *
-     * Get a webhook by ID
+     * Get an audit log entry by ID
      *
      * @param string $resource_id The resource ID (required)
      * @throws \Swagger\Client\ApiException on non-2xx response

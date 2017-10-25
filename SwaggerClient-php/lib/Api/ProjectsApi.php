@@ -173,7 +173,7 @@ class ProjectsApi
     /**
      * Operation getProject
      *
-     * Get a project by key.
+     * Fetch a single project by key.
      *
      * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @throws \Swagger\Client\ApiException on non-2xx response
@@ -188,7 +188,7 @@ class ProjectsApi
     /**
      * Operation getProjectWithHttpInfo
      *
-     * Get a project by key.
+     * Fetch a single project by key.
      *
      * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @throws \Swagger\Client\ApiException on non-2xx response

@@ -75,7 +75,7 @@ class AuditLogApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for getAuditLogEntries
      *
-     * Fetch a list of all webhooks.
+     * Fetch a list of all audit log entries.
      *
      */
     public function testGetAuditLogEntries()
@@ -85,7 +85,7 @@ class AuditLogApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for getAuditLogEntry
      *
-     * Get a webhook by ID.
+     * Get an audit log entry by ID.
      *
      */
     public function testGetAuditLogEntry()

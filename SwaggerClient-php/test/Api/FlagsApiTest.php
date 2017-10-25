@@ -135,7 +135,7 @@ class FlagsApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for postFeatureFlag
      *
-     * Create a feature flag.
+     * Creates a new feature flag..
      *
      */
     public function testPostFeatureFlag()
