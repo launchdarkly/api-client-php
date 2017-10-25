@@ -240,7 +240,7 @@ class Environment implements ArrayAccess
 
     /**
      * Sets _id
-     * @param string $_id
+     * @param string $_id The unique id for the environment
      * @return $this
      */
     public function setId($_id)
@@ -261,7 +261,7 @@ class Environment implements ArrayAccess
 
     /**
      * Sets key
-     * @param string $key
+     * @param string $key The key for the environment
      * @return $this
      */
     public function setKey($key)
@@ -282,7 +282,7 @@ class Environment implements ArrayAccess
 
     /**
      * Sets name
-     * @param string $name
+     * @param string $name The name of the environment
      * @return $this
      */
     public function setName($name)
@@ -303,7 +303,7 @@ class Environment implements ArrayAccess
 
     /**
      * Sets api_key
-     * @param string $api_key
+     * @param string $api_key The SDK key for backend LaunchDarkly SDKs
      * @return $this
      */
     public function setApiKey($api_key)
@@ -324,7 +324,7 @@ class Environment implements ArrayAccess
 
     /**
      * Sets mobile_key
-     * @param string $mobile_key
+     * @param string $mobile_key The SDK key for mobile LaunchDarkly SDKs
      * @return $this
      */
     public function setMobileKey($mobile_key)
@@ -345,7 +345,7 @@ class Environment implements ArrayAccess
 
     /**
      * Sets color
-     * @param string $color
+     * @param string $color The swatch color for the environment
      * @return $this
      */
     public function setColor($color)
@@ -366,7 +366,7 @@ class Environment implements ArrayAccess
 
     /**
      * Sets default_ttl
-     * @param float $default_ttl
+     * @param float $default_ttl The default TTL
      * @return $this
      */
     public function setDefaultTtl($default_ttl)
@@ -387,7 +387,7 @@ class Environment implements ArrayAccess
 
     /**
      * Sets secure_mode
-     * @param bool $secure_mode
+     * @param bool $secure_mode Determines if this environment is in safe mode
      * @return $this
      */
     public function setSecureMode($secure_mode)

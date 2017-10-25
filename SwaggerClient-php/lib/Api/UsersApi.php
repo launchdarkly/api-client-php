@@ -201,14 +201,14 @@ class UsersApi
     /**
      * Operation getSearchUsers
      *
-     * Search users in LaunchDarkly based on their last active date, or a search query.
+     * Search users in LaunchDarkly based on their last active date, or a search query. It should not be used to enumerate all users in LaunchDarkly-- use the List users API resource.
      *
      * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @param string $environment_key The environment key (required)
      * @param string $q Search query (optional)
      * @param float $limit Pagination limit (optional)
      * @param float $offset Specifies the first item to return in the collection (optional)
-     * @param float $after A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag (optional)
+     * @param int $after A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return \Swagger\Client\Model\Users
      */
@@ -221,14 +221,14 @@ class UsersApi
     /**
      * Operation getSearchUsersWithHttpInfo
      *
-     * Search users in LaunchDarkly based on their last active date, or a search query.
+     * Search users in LaunchDarkly based on their last active date, or a search query. It should not be used to enumerate all users in LaunchDarkly-- use the List users API resource.
      *
      * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @param string $environment_key The environment key (required)
      * @param string $q Search query (optional)
      * @param float $limit Pagination limit (optional)
      * @param float $offset Specifies the first item to return in the collection (optional)
-     * @param float $after A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag (optional)
+     * @param int $after A unix epoch time in milliseconds specifying the maximum last time a user requested a feature flag (optional)
      * @throws \Swagger\Client\ApiException on non-2xx response
      * @return array of \Swagger\Client\Model\Users, HTTP status code, HTTP response headers (array of strings)
      */
@@ -441,7 +441,7 @@ class UsersApi
     /**
      * Operation getUsers
      *
-     * List all users in the environment.
+     * List all users in the environment. Includes the total count of users. In each page, there will be up to 'limit' users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection.
      *
      * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @param string $environment_key The environment key (required)
@@ -458,7 +458,7 @@ class UsersApi
     /**
      * Operation getUsersWithHttpInfo
      *
-     * List all users in the environment.
+     * List all users in the environment. Includes the total count of users. In each page, there will be up to 'limit' users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection.
      *
      * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @param string $environment_key The environment key (required)

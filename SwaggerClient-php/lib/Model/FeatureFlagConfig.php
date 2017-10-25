@@ -74,7 +74,7 @@ class FeatureFlagConfig implements ArrayAccess
         'archived' => null,
         'salt' => null,
         'sel' => null,
-        'last_modified' => null,
+        'last_modified' => 'int64',
         'version' => null,
         'targets' => null,
         'rules' => null,

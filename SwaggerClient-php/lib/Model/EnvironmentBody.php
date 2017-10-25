@@ -207,7 +207,7 @@ class EnvironmentBody implements ArrayAccess
 
     /**
      * Sets name
-     * @param string $name
+     * @param string $name The name of the new environment
      * @return $this
      */
     public function setName($name)
@@ -228,7 +228,7 @@ class EnvironmentBody implements ArrayAccess
 
     /**
      * Sets key
-     * @param string $key
+     * @param string $key A project-unique key for the new environment
      * @return $this
      */
     public function setKey($key)
@@ -270,7 +270,7 @@ class EnvironmentBody implements ArrayAccess
 
     /**
      * Sets default_ttl
-     * @param float $default_ttl
+     * @param float $default_ttl The default TTL for the new environment
      * @return $this
      */
     public function setDefaultTtl($default_ttl)

@@ -57,7 +57,7 @@ class FeatureFlag implements ArrayAccess
         'key' => 'string',
         'name' => 'string',
         'kind' => 'string',
-        'creation_date' => 'float',
+        'creation_date' => 'int',
         'include_in_snippet' => 'bool',
         'temporary' => 'bool',
         'maintainer_id' => 'string',
@@ -76,7 +76,7 @@ class FeatureFlag implements ArrayAccess
         'key' => null,
         'name' => null,
         'kind' => null,
-        'creation_date' => null,
+        'creation_date' => 'int64',
         'include_in_snippet' => null,
         'temporary' => null,
         'maintainer_id' => null,
@@ -291,7 +291,7 @@ class FeatureFlag implements ArrayAccess
 
     /**
      * Gets creation_date
-     * @return float
+     * @return int
      */
     public function getCreationDate()
     {
@@ -300,7 +300,7 @@ class FeatureFlag implements ArrayAccess
 
     /**
      * Sets creation_date
-     * @param float $creation_date
+     * @param int $creation_date
      * @return $this
      */
     public function setCreationDate($creation_date)

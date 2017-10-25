@@ -187,7 +187,7 @@ class EnvironmentsApi
     /**
      * Operation getEnvironment
      *
-     * Get an environment by key.
+     * Get an environment given a project and key.
      *
      * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @param string $environment_key The environment key (required)
@@ -203,7 +203,7 @@ class EnvironmentsApi
     /**
      * Operation getEnvironmentWithHttpInfo
      *
-     * Get an environment by key.
+     * Get an environment given a project and key.
      *
      * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @param string $environment_key The environment key (required)
@@ -396,7 +396,7 @@ class EnvironmentsApi
     /**
      * Operation postEnvironment
      *
-     * Create an environment
+     * Create a new environment in a specified project with a given name, key, and swatch color.
      *
      * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @param \Swagger\Client\Model\EnvironmentBody $environment_body New environment (required)
@@ -412,7 +412,7 @@ class EnvironmentsApi
     /**
      * Operation postEnvironmentWithHttpInfo
      *
-     * Create an environment
+     * Create a new environment in a specified project with a given name, key, and swatch color.
      *
      * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @param \Swagger\Client\Model\EnvironmentBody $environment_body New environment (required)

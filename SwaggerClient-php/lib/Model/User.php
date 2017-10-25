@@ -54,7 +54,7 @@ class User implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'last_ping' => 'string',
+        'last_ping' => 'int',
         'environment_id' => 'string',
         'owner_id' => 'string',
         'user' => 'object',
@@ -66,7 +66,7 @@ class User implements ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'last_ping' => null,
+        'last_ping' => 'int64',
         'environment_id' => null,
         'owner_id' => null,
         'user' => null,
@@ -186,7 +186,7 @@ class User implements ArrayAccess
 
     /**
      * Gets last_ping
-     * @return string
+     * @return int
      */
     public function getLastPing()
     {
@@ -195,7 +195,7 @@ class User implements ArrayAccess
 
     /**
      * Sets last_ping
-     * @param string $last_ping
+     * @param int $last_ping
      * @return $this
      */
     public function setLastPing($last_ping)

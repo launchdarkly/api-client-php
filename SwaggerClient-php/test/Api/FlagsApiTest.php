@@ -125,7 +125,7 @@ class FlagsApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for patchFeatureFlag
      *
-     * Modify a feature flag by ID.
+     * Perform a partial update to a feature..
      *
      */
     public function testPatchFeatureFlag()

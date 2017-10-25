@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_links** | [**\Swagger\Client\Model\Links**](Links.md) |  | [optional] 
 **_id** | **string** |  | [optional] 
-**date** | **float** |  | [optional] 
+**date** | **int** |  | [optional] 
 **kind** | **string** |  | [optional] 
 **name** | **string** |  | [optional] 
 **description** | **string** |  | [optional] 

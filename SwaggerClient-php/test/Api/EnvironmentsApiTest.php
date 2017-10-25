@@ -85,7 +85,7 @@ class EnvironmentsApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for getEnvironment
      *
-     * Get an environment by key..
+     * Get an environment given a project and key..
      *
      */
     public function testGetEnvironment()
@@ -105,7 +105,7 @@ class EnvironmentsApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for postEnvironment
      *
-     * Create an environment.
+     * Create a new environment in a specified project with a given name, key, and swatch color..
      *
      */
     public function testPostEnvironment()

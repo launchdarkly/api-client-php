@@ -56,7 +56,7 @@ class AuditLogEntry implements ArrayAccess
     protected static $swaggerTypes = [
         '_links' => '\Swagger\Client\Model\Links',
         '_id' => 'string',
-        'date' => 'float',
+        'date' => 'int',
         'kind' => 'string',
         'name' => 'string',
         'description' => 'string',
@@ -73,7 +73,7 @@ class AuditLogEntry implements ArrayAccess
     protected static $swaggerFormats = [
         '_links' => null,
         '_id' => null,
-        'date' => null,
+        'date' => 'int64',
         'kind' => null,
         'name' => null,
         'description' => null,
@@ -258,7 +258,7 @@ class AuditLogEntry implements ArrayAccess
 
     /**
      * Gets date
-     * @return float
+     * @return int
      */
     public function getDate()
     {
@@ -267,7 +267,7 @@ class AuditLogEntry implements ArrayAccess
 
     /**
      * Sets date
-     * @param float $date
+     * @param int $date
      * @return $this
      */
     public function setDate($date)

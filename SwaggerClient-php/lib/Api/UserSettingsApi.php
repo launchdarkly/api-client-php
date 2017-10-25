@@ -219,7 +219,7 @@ class UserSettingsApi
     /**
      * Operation getUserFlagSettings
      *
-     * Lists the current flag settings for a given user.
+     * Fetch a single flag setting for a user by key.
      *
      * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @param string $environment_key The environment key (required)
@@ -236,7 +236,7 @@ class UserSettingsApi
     /**
      * Operation getUserFlagSettingsWithHttpInfo
      *
-     * Lists the current flag settings for a given user.
+     * Fetch a single flag setting for a user by key.
      *
      * @param string $project_key The project key, used to tie the flags together under one project so they can be managed together. (required)
      * @param string $environment_key The environment key (required)

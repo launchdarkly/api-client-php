@@ -85,7 +85,7 @@ class UsersApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for getSearchUsers
      *
-     * Search users in LaunchDarkly based on their last active date, or a search query..
+     * Search users in LaunchDarkly based on their last active date, or a search query. It should not be used to enumerate all users in LaunchDarkly-- use the List users API resource..
      *
      */
     public function testGetSearchUsers()
@@ -105,7 +105,7 @@ class UsersApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for getUsers
      *
-     * List all users in the environment..
+     * List all users in the environment. Includes the total count of users. In each page, there will be up to 'limit' users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection..
      *
      */
     public function testGetUsers()

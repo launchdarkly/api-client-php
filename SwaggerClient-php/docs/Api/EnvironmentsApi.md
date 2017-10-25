@@ -5,9 +5,9 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteEnvironment**](EnvironmentsApi.md#deleteEnvironment) | **DELETE** /environments/{projectKey}/{environmentKey} | Delete an environment by ID
-[**getEnvironment**](EnvironmentsApi.md#getEnvironment) | **GET** /environments/{projectKey}/{environmentKey} | Get an environment by key.
+[**getEnvironment**](EnvironmentsApi.md#getEnvironment) | **GET** /environments/{projectKey}/{environmentKey} | Get an environment given a project and key.
 [**patchEnvironment**](EnvironmentsApi.md#patchEnvironment) | **PATCH** /environments/{projectKey}/{environmentKey} | Modify an environment by ID
-[**postEnvironment**](EnvironmentsApi.md#postEnvironment) | **POST** /environments/{projectKey} | Create an environment
+[**postEnvironment**](EnvironmentsApi.md#postEnvironment) | **POST** /environments/{projectKey} | Create a new environment in a specified project with a given name, key, and swatch color.
 
 
 # **deleteEnvironment**
@@ -62,7 +62,7 @@ void (empty response body)
 # **getEnvironment**
 > \Swagger\Client\Model\Environment getEnvironment($project_key, $environment_key)
 
-Get an environment by key.
+Get an environment given a project and key.
 
 ### Example
 ```php
@@ -163,7 +163,7 @@ void (empty response body)
 # **postEnvironment**
 > postEnvironment($project_key, $environment_body)
 
-Create an environment
+Create a new environment in a specified project with a given name, key, and swatch color.
 
 ### Example
 ```php

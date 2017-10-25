@@ -85,7 +85,7 @@ class UserSettingsApiTest extends \PHPUnit_Framework_TestCase
     /**
      * Test case for getUserFlagSettings
      *
-     * Lists the current flag settings for a given user..
+     * Fetch a single flag setting for a user by key..
      *
      */
     public function testGetUserFlagSettings()

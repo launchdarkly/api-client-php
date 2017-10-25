@@ -56,7 +56,7 @@ class FeatureFlagStatus implements ArrayAccess
     protected static $swaggerTypes = [
         '_links' => '\Swagger\Client\Model\Links',
         'name' => 'string',
-        'last_requested' => 'string',
+        'last_requested' => 'int',
         'default' => 'bool'
     ];
 
@@ -67,7 +67,7 @@ class FeatureFlagStatus implements ArrayAccess
     protected static $swaggerFormats = [
         '_links' => null,
         'name' => null,
-        'last_requested' => null,
+        'last_requested' => 'int64',
         'default' => null
     ];
 
@@ -222,7 +222,7 @@ class FeatureFlagStatus implements ArrayAccess
 
     /**
      * Gets last_requested
-     * @return string
+     * @return int
      */
     public function getLastRequested()
     {
@@ -231,7 +231,7 @@ class FeatureFlagStatus implements ArrayAccess
 
     /**
      * Sets last_requested
-     * @param string $last_requested
+     * @param int $last_requested
      * @return $this
      */
     public function setLastRequested($last_requested)
