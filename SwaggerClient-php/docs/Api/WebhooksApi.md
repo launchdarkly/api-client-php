@@ -4,17 +4,17 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteWebhook**](WebhooksApi.md#deleteWebhook) | **DELETE** /webhooks/{resourceId} | Delete a webhook by ID
-[**getWebhook**](WebhooksApi.md#getWebhook) | **GET** /webhooks/{resourceId} | Get a webhook by ID
-[**getWebhooks**](WebhooksApi.md#getWebhooks) | **GET** /webhooks | Fetch a list of all webhooks
-[**patchWebhook**](WebhooksApi.md#patchWebhook) | **PATCH** /webhooks/{resourceId} | Modify a webhook by ID
-[**postWebhook**](WebhooksApi.md#postWebhook) | **POST** /webhooks | Create a webhook
+[**deleteWebhook**](WebhooksApi.md#deleteWebhook) | **DELETE** /webhooks/{resourceId} | Delete a webhook by ID.
+[**getWebhook**](WebhooksApi.md#getWebhook) | **GET** /webhooks/{resourceId} | Get a webhook by ID.
+[**getWebhooks**](WebhooksApi.md#getWebhooks) | **GET** /webhooks | Fetch a list of all webhooks.
+[**patchWebhook**](WebhooksApi.md#patchWebhook) | **PATCH** /webhooks/{resourceId} | Modify a webhook by ID.
+[**postWebhook**](WebhooksApi.md#postWebhook) | **POST** /webhooks | Create a webhook.
 
 
 # **deleteWebhook**
 > deleteWebhook($resource_id)
 
-Delete a webhook by ID
+Delete a webhook by ID.
 
 ### Example
 ```php
@@ -22,15 +22,20 @@ Delete a webhook by ID
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: Token
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\WebhooksApi();
-$resource_id = "resource_id_example"; // string | The resource ID
+$apiInstance = new Swagger\Client\Api\WebhooksApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$resource_id = "resource_id_example"; // string | The resource ID.
 
 try {
-    $api_instance->deleteWebhook($resource_id);
+    $apiInstance->deleteWebhook($resource_id);
 } catch (Exception $e) {
     echo 'Exception when calling WebhooksApi->deleteWebhook: ', $e->getMessage(), PHP_EOL;
 }
@@ -41,7 +46,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource_id** | **string**| The resource ID |
+ **resource_id** | **string**| The resource ID. |
 
 ### Return type
 
@@ -61,7 +66,7 @@ void (empty response body)
 # **getWebhook**
 > \Swagger\Client\Model\Webhook getWebhook($resource_id)
 
-Get a webhook by ID
+Get a webhook by ID.
 
 ### Example
 ```php
@@ -69,15 +74,20 @@ Get a webhook by ID
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: Token
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\WebhooksApi();
-$resource_id = "resource_id_example"; // string | The resource ID
+$apiInstance = new Swagger\Client\Api\WebhooksApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$resource_id = "resource_id_example"; // string | The resource ID.
 
 try {
-    $result = $api_instance->getWebhook($resource_id);
+    $result = $apiInstance->getWebhook($resource_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhooksApi->getWebhook: ', $e->getMessage(), PHP_EOL;
@@ -89,7 +99,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource_id** | **string**| The resource ID |
+ **resource_id** | **string**| The resource ID. |
 
 ### Return type
 
@@ -109,7 +119,7 @@ Name | Type | Description  | Notes
 # **getWebhooks**
 > \Swagger\Client\Model\Webhooks getWebhooks()
 
-Fetch a list of all webhooks
+Fetch a list of all webhooks.
 
 ### Example
 ```php
@@ -117,14 +127,19 @@ Fetch a list of all webhooks
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: Token
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\WebhooksApi();
+$apiInstance = new Swagger\Client\Api\WebhooksApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 
 try {
-    $result = $api_instance->getWebhooks();
+    $result = $apiInstance->getWebhooks();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhooksApi->getWebhooks: ', $e->getMessage(), PHP_EOL;
@@ -153,7 +168,7 @@ This endpoint does not need any parameter.
 # **patchWebhook**
 > \Swagger\Client\Model\Webhook patchWebhook($resource_id, $patch_delta)
 
-Modify a webhook by ID
+Modify a webhook by ID.
 
 ### Example
 ```php
@@ -161,16 +176,21 @@ Modify a webhook by ID
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: Token
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\WebhooksApi();
-$resource_id = "resource_id_example"; // string | The resource ID
-$patch_delta = array(new \Swagger\Client\Model\PatchDelta()); // \Swagger\Client\Model\PatchDelta[] | http://jsonpatch.com/
+$apiInstance = new Swagger\Client\Api\WebhooksApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$resource_id = "resource_id_example"; // string | The resource ID.
+$patch_delta = array(new \Swagger\Client\Model\PatchOperation()); // \Swagger\Client\Model\PatchOperation[] | Requires a JSON Patch representation of the desired changes to the project. 'http://jsonpatch.com/'
 
 try {
-    $result = $api_instance->patchWebhook($resource_id, $patch_delta);
+    $result = $apiInstance->patchWebhook($resource_id, $patch_delta);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhooksApi->patchWebhook: ', $e->getMessage(), PHP_EOL;
@@ -182,8 +202,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **resource_id** | **string**| The resource ID |
- **patch_delta** | [**\Swagger\Client\Model\PatchDelta[]**](../Model/PatchDelta.md)| http://jsonpatch.com/ |
+ **resource_id** | **string**| The resource ID. |
+ **patch_delta** | [**\Swagger\Client\Model\PatchOperation[]**](../Model/PatchOperation.md)| Requires a JSON Patch representation of the desired changes to the project. &#39;http://jsonpatch.com/&#39; |
 
 ### Return type
 
@@ -203,7 +223,7 @@ Name | Type | Description  | Notes
 # **postWebhook**
 > postWebhook($webhook_body)
 
-Create a webhook
+Create a webhook.
 
 ### Example
 ```php
@@ -211,15 +231,20 @@ Create a webhook
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: Token
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\WebhooksApi();
-$webhook_body = new \Swagger\Client\Model\WebhookBody(); // \Swagger\Client\Model\WebhookBody | New webhook
+$apiInstance = new Swagger\Client\Api\WebhooksApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$webhook_body = new \Swagger\Client\Model\WebhookBody(); // \Swagger\Client\Model\WebhookBody | New webhook.
 
 try {
-    $api_instance->postWebhook($webhook_body);
+    $apiInstance->postWebhook($webhook_body);
 } catch (Exception $e) {
     echo 'Exception when calling WebhooksApi->postWebhook: ', $e->getMessage(), PHP_EOL;
 }
@@ -230,7 +255,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **webhook_body** | [**\Swagger\Client\Model\WebhookBody**](../Model/WebhookBody.md)| New webhook |
+ **webhook_body** | [**\Swagger\Client\Model\WebhookBody**](../Model/WebhookBody.md)| New webhook. |
 
 ### Return type
 

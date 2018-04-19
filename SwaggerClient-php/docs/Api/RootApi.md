@@ -4,13 +4,15 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getRoot**](RootApi.md#getRoot) | **GET** / | Get the root resource
+[**getRoot**](RootApi.md#getRoot) | **GET** / | 
 
 
 # **getRoot**
 > \Swagger\Client\Model\Links getRoot()
 
-Get the root resource
+
+
+You can issue a GET request to the root resource to find all of the resource categories supported by the API.
 
 ### Example
 ```php
@@ -18,14 +20,19 @@ Get the root resource
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: Token
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\RootApi();
+$apiInstance = new Swagger\Client\Api\RootApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 
 try {
-    $result = $api_instance->getRoot();
+    $result = $apiInstance->getRoot();
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling RootApi->getRoot: ', $e->getMessage(), PHP_EOL;

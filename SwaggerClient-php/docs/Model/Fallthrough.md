@@ -1,11 +1,10 @@
-# PatchDelta
+# Fallthrough
 
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**op** | **string** |  | 
-**path** | **string** |  | 
-**value** | **object** |  | 
+**variation** | **int** |  | [optional] 
+**rollout** | [**\Swagger\Client\Model\Rollout**](Rollout.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 

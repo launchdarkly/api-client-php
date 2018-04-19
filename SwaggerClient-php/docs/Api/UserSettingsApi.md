@@ -4,7 +4,7 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getUserFlagSetting**](UserSettingsApi.md#getUserFlagSetting) | **GET** /users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Get a user by key.
+[**getUserFlagSetting**](UserSettingsApi.md#getUserFlagSetting) | **GET** /users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Fetch a single flag setting for a user by key.
 [**getUserFlagSettings**](UserSettingsApi.md#getUserFlagSettings) | **GET** /users/{projectKey}/{environmentKey}/{userKey}/flags | Fetch a single flag setting for a user by key.
 [**putFlagSetting**](UserSettingsApi.md#putFlagSetting) | **PUT** /users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Specifically enable or disable a feature flag for a user based on their key.
 
@@ -12,7 +12,7 @@ Method | HTTP request | Description
 # **getUserFlagSetting**
 > \Swagger\Client\Model\UserFlagSetting getUserFlagSetting($project_key, $environment_key, $user_key, $feature_flag_key)
 
-Get a user by key.
+Fetch a single flag setting for a user by key.
 
 ### Example
 ```php
@@ -20,18 +20,23 @@ Get a user by key.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: Token
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\UserSettingsApi();
+$apiInstance = new Swagger\Client\Api\UserSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
-$environment_key = "environment_key_example"; // string | The environment key
-$user_key = "user_key_example"; // string | The user's key
+$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+$user_key = "user_key_example"; // string | The user's key.
 $feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
 
 try {
-    $result = $api_instance->getUserFlagSetting($project_key, $environment_key, $user_key, $feature_flag_key);
+    $result = $apiInstance->getUserFlagSetting($project_key, $environment_key, $user_key, $feature_flag_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserSettingsApi->getUserFlagSetting: ', $e->getMessage(), PHP_EOL;
@@ -44,8 +49,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
- **environment_key** | **string**| The environment key |
- **user_key** | **string**| The user&#39;s key |
+ **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
+ **user_key** | **string**| The user&#39;s key. |
  **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
 
 ### Return type
@@ -74,17 +79,22 @@ Fetch a single flag setting for a user by key.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: Token
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\UserSettingsApi();
+$apiInstance = new Swagger\Client\Api\UserSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
-$environment_key = "environment_key_example"; // string | The environment key
-$user_key = "user_key_example"; // string | The user's key
+$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+$user_key = "user_key_example"; // string | The user's key.
 
 try {
-    $result = $api_instance->getUserFlagSettings($project_key, $environment_key, $user_key);
+    $result = $apiInstance->getUserFlagSettings($project_key, $environment_key, $user_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserSettingsApi->getUserFlagSettings: ', $e->getMessage(), PHP_EOL;
@@ -97,8 +107,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
- **environment_key** | **string**| The environment key |
- **user_key** | **string**| The user&#39;s key |
+ **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
+ **user_key** | **string**| The user&#39;s key. |
 
 ### Return type
 
@@ -126,19 +136,24 @@ Specifically enable or disable a feature flag for a user based on their key.
 require_once(__DIR__ . '/vendor/autoload.php');
 
 // Configure API key authorization: Token
-Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+$config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+// $config = Swagger\Client\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$api_instance = new Swagger\Client\Api\UserSettingsApi();
+$apiInstance = new Swagger\Client\Api\UserSettingsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
 $project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
-$environment_key = "environment_key_example"; // string | The environment key
-$user_key = "user_key_example"; // string | The user's key
+$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+$user_key = "user_key_example"; // string | The user's key.
 $feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
 $user_settings_body = new \Swagger\Client\Model\UserSettingsBody(); // \Swagger\Client\Model\UserSettingsBody | 
 
 try {
-    $api_instance->putFlagSetting($project_key, $environment_key, $user_key, $feature_flag_key, $user_settings_body);
+    $apiInstance->putFlagSetting($project_key, $environment_key, $user_key, $feature_flag_key, $user_settings_body);
 } catch (Exception $e) {
     echo 'Exception when calling UserSettingsApi->putFlagSetting: ', $e->getMessage(), PHP_EOL;
 }
@@ -150,8 +165,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
- **environment_key** | **string**| The environment key |
- **user_key** | **string**| The user&#39;s key |
+ **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
+ **user_key** | **string**| The user&#39;s key. |
  **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
  **user_settings_body** | [**\Swagger\Client\Model\UserSettingsBody**](../Model/UserSettingsBody.md)|  |
 
