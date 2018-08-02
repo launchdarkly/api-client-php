@@ -5,6 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** | A human-friendly name for the feature flag. Remember to note if this flag is intended to be temporary or permanent. | 
 **key** | **string** | A unique key that will be used to reference the flag in your code. | 
+**description** | **string** | A description of the feature flag. | [optional] 
 **variations** | [**\Swagger\Client\Model\Variation[]**](Variation.md) | An array of possible variations for the flag. | 
 **temporary** | **bool** | Whether or not the flag is a temporary flag. | [optional] 
 **tags** | **string[]** | Tags for the feature flag. | [optional] 
