@@ -198,7 +198,7 @@ $apiInstance = new LaunchDarklyApi\Api\EnvironmentsApi(
     $config
 );
 $project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
-$environment_body = new \LaunchDarklyApi\Model\EnvironmentBody(); // \LaunchDarklyApi\Model\EnvironmentBody | New environment.
+$environment_body = new \LaunchDarklyApi\Model\EnvironmentPost(); // \LaunchDarklyApi\Model\EnvironmentPost | New environment.
 
 try {
     $apiInstance->postEnvironment($project_key, $environment_body);
@@ -213,7 +213,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
- **environment_body** | [**\LaunchDarklyApi\Model\EnvironmentBody**](../Model/EnvironmentBody.md)| New environment. |
+ **environment_body** | [**\LaunchDarklyApi\Model\EnvironmentPost**](../Model/EnvironmentPost.md)| New environment. |
 
 ### Return type
 

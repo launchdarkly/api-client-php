@@ -351,7 +351,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **postFeatureFlag**
-> postFeatureFlag($project_key, $feature_flag_body)
+> postFeatureFlag($project_key, $feature_flag_body, $clone)
 
 Creates a new feature flag.
 
@@ -373,9 +373,10 @@ $apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
 );
 $project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
 $feature_flag_body = new \LaunchDarklyApi\Model\FeatureFlagBody(); // \LaunchDarklyApi\Model\FeatureFlagBody | Create a new feature flag.
+$clone = "clone_example"; // string | The key of the feature flag to be cloned. The key identifies the flag in your code.  For example, setting clone=flagKey will copy the full targeting configuration for all environments (including on/off state) from the original flag to the new flag.
 
 try {
-    $apiInstance->postFeatureFlag($project_key, $feature_flag_body);
+    $apiInstance->postFeatureFlag($project_key, $feature_flag_body, $clone);
 } catch (Exception $e) {
     echo 'Exception when calling FeatureFlagsApi->postFeatureFlag: ', $e->getMessage(), PHP_EOL;
 }
@@ -388,6 +389,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
  **feature_flag_body** | [**\LaunchDarklyApi\Model\FeatureFlagBody**](../Model/FeatureFlagBody.md)| Create a new feature flag. |
+ **clone** | **string**| The key of the feature flag to be cloned. The key identifies the flag in your code.  For example, setting clone&#x3D;flagKey will copy the full targeting configuration for all environments (including on/off state) from the original flag to the new flag. | [optional]
 
 ### Return type
 
