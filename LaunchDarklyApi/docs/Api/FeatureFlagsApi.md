@@ -351,7 +351,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **postFeatureFlag**
-> postFeatureFlag($project_key, $feature_flag_body, $clone)
+> \LaunchDarklyApi\Model\FeatureFlag postFeatureFlag($project_key, $feature_flag_body, $clone)
 
 Creates a new feature flag.
 
@@ -376,7 +376,8 @@ $feature_flag_body = new \LaunchDarklyApi\Model\FeatureFlagBody(); // \LaunchDar
 $clone = "clone_example"; // string | The key of the feature flag to be cloned. The key identifies the flag in your code.  For example, setting clone=flagKey will copy the full targeting configuration for all environments (including on/off state) from the original flag to the new flag.
 
 try {
-    $apiInstance->postFeatureFlag($project_key, $feature_flag_body, $clone);
+    $result = $apiInstance->postFeatureFlag($project_key, $feature_flag_body, $clone);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FeatureFlagsApi->postFeatureFlag: ', $e->getMessage(), PHP_EOL;
 }
@@ -393,7 +394,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\LaunchDarklyApi\Model\FeatureFlag**](../Model/FeatureFlag.md)
 
 ### Authorization
 

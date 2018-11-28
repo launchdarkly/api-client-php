@@ -67,6 +67,7 @@ class FeatureFlag implements ModelInterface, ArrayAccess
         'maintainer_id' => 'string',
         'tags' => 'string[]',
         'variations' => '\LaunchDarklyApi\Model\Variation[]',
+        '_version' => 'int',
         'custom_properties' => '\LaunchDarklyApi\Model\CustomProperties',
         '_links' => '\LaunchDarklyApi\Model\Links',
         '_maintainer' => '\LaunchDarklyApi\Model\Member',
@@ -89,6 +90,7 @@ class FeatureFlag implements ModelInterface, ArrayAccess
         'maintainer_id' => null,
         'tags' => null,
         'variations' => null,
+        '_version' => null,
         'custom_properties' => null,
         '_links' => null,
         '_maintainer' => null,
@@ -132,6 +134,7 @@ class FeatureFlag implements ModelInterface, ArrayAccess
         'maintainer_id' => 'maintainerId',
         'tags' => 'tags',
         'variations' => 'variations',
+        '_version' => '_version',
         'custom_properties' => 'customProperties',
         '_links' => '_links',
         '_maintainer' => '_maintainer',
@@ -154,6 +157,7 @@ class FeatureFlag implements ModelInterface, ArrayAccess
         'maintainer_id' => 'setMaintainerId',
         'tags' => 'setTags',
         'variations' => 'setVariations',
+        '_version' => 'setVersion',
         'custom_properties' => 'setCustomProperties',
         '_links' => 'setLinks',
         '_maintainer' => 'setMaintainer',
@@ -176,6 +180,7 @@ class FeatureFlag implements ModelInterface, ArrayAccess
         'maintainer_id' => 'getMaintainerId',
         'tags' => 'getTags',
         'variations' => 'getVariations',
+        '_version' => 'getVersion',
         'custom_properties' => 'getCustomProperties',
         '_links' => 'getLinks',
         '_maintainer' => 'getMaintainer',
@@ -252,6 +257,7 @@ class FeatureFlag implements ModelInterface, ArrayAccess
         $this->container['maintainer_id'] = isset($data['maintainer_id']) ? $data['maintainer_id'] : null;
         $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
         $this->container['variations'] = isset($data['variations']) ? $data['variations'] : null;
+        $this->container['_version'] = isset($data['_version']) ? $data['_version'] : null;
         $this->container['custom_properties'] = isset($data['custom_properties']) ? $data['custom_properties'] : null;
         $this->container['_links'] = isset($data['_links']) ? $data['_links'] : null;
         $this->container['_maintainer'] = isset($data['_maintainer']) ? $data['_maintainer'] : null;
@@ -519,6 +525,30 @@ class FeatureFlag implements ModelInterface, ArrayAccess
     public function setVariations($variations)
     {
         $this->container['variations'] = $variations;
+
+        return $this;
+    }
+
+    /**
+     * Gets _version
+     *
+     * @return int
+     */
+    public function getVersion()
+    {
+        return $this->container['_version'];
+    }
+
+    /**
+     * Sets _version
+     *
+     * @param int $_version _version
+     *
+     * @return $this
+     */
+    public function setVersion($_version)
+    {
+        $this->container['_version'] = $_version;
 
         return $this;
     }

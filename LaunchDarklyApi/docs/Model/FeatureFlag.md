@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **maintainer_id** | **string** | The ID of the member that should maintain this flag. | [optional] 
 **tags** | **string[]** | An array of tags for this feature flag. | [optional] 
 **variations** | [**\LaunchDarklyApi\Model\Variation[]**](Variation.md) | The variations for this feature flag. | [optional] 
+**_version** | **int** |  | [optional] 
 **custom_properties** | [**\LaunchDarklyApi\Model\CustomProperties**](CustomProperties.md) |  | [optional] 
 **_links** | [**\LaunchDarklyApi\Model\Links**](Links.md) |  | [optional] 
 **_maintainer** | [**\LaunchDarklyApi\Model\Member**](Member.md) |  | [optional] 

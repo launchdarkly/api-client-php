@@ -148,6 +148,13 @@ class FeatureFlagTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
+     * Test attribute "_version"
+     */
+    public function testPropertyVersion()
+    {
+    }
+
+    /**
      * Test attribute "custom_properties"
      */
     public function testPropertyCustomProperties()
