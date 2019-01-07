@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **tags** | **string[]** | An array of tags for this feature flag. | [optional] 
 **variations** | [**\LaunchDarklyApi\Model\Variation[]**](Variation.md) | The variations for this feature flag. | [optional] 
 **_version** | **int** |  | [optional] 
-**custom_properties** | [**\LaunchDarklyApi\Model\CustomProperties**](CustomProperties.md) |  | [optional] 
+**custom_properties** | [**map[string,\LaunchDarklyApi\Model\CustomProperty]**](CustomProperty.md) | A mapping of keys to CustomProperty entries. | [optional] 
 **_links** | [**\LaunchDarklyApi\Model\Links**](Links.md) |  | [optional] 
 **_maintainer** | [**\LaunchDarklyApi\Model\Member**](Member.md) |  | [optional] 
 **environments** | [**map[string,\LaunchDarklyApi\Model\FeatureFlagConfig]**](FeatureFlagConfig.md) |  | [optional] 
