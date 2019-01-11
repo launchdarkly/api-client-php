@@ -10,7 +10,6 @@ Name | Type | Description | Notes
 **last_modified** | **int** |  | [optional] 
 **version** | **int** |  | [optional] 
 **targets** | [**\LaunchDarklyApi\Model\Target[]**](Target.md) |  | [optional] 
-**goal_ids** | **string[]** |  | [optional] 
 **rules** | [**\LaunchDarklyApi\Model\Rule[]**](Rule.md) |  | [optional] 
 **fallthrough** | [**\LaunchDarklyApi\Model\Fallthrough**](Fallthrough.md) |  | [optional] 
 **off_variation** | **int** |  | [optional] 
