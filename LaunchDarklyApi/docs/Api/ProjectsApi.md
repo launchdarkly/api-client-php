@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **postProject**
-> postProject($project_body)
+> \LaunchDarklyApi\Model\Project postProject($project_body)
 
 Create a new project with the given key and name.
 
@@ -244,7 +244,8 @@ $apiInstance = new LaunchDarklyApi\Api\ProjectsApi(
 $project_body = new \LaunchDarklyApi\Model\ProjectBody(); // \LaunchDarklyApi\Model\ProjectBody | Project keys must be unique within an account.
 
 try {
-    $apiInstance->postProject($project_body);
+    $result = $apiInstance->postProject($project_body);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectsApi->postProject: ', $e->getMessage(), PHP_EOL;
 }
@@ -259,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\LaunchDarklyApi\Model\Project**](../Model/Project.md)
 
 ### Authorization
 

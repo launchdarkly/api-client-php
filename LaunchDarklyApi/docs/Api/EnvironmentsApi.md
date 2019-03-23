@@ -177,7 +177,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **postEnvironment**
-> postEnvironment($project_key, $environment_body)
+> \LaunchDarklyApi\Model\Environment postEnvironment($project_key, $environment_body)
 
 Create a new environment in a specified project with a given name, key, and swatch color.
 
@@ -201,7 +201,8 @@ $project_key = "project_key_example"; // string | The project key, used to tie t
 $environment_body = new \LaunchDarklyApi\Model\EnvironmentPost(); // \LaunchDarklyApi\Model\EnvironmentPost | New environment.
 
 try {
-    $apiInstance->postEnvironment($project_key, $environment_body);
+    $result = $apiInstance->postEnvironment($project_key, $environment_body);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EnvironmentsApi->postEnvironment: ', $e->getMessage(), PHP_EOL;
 }
@@ -217,7 +218,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\LaunchDarklyApi\Model\Environment**](../Model/Environment.md)
 
 ### Authorization
 

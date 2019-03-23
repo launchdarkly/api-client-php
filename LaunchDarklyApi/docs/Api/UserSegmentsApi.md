@@ -241,7 +241,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **postUserSegment**
-> postUserSegment($project_key, $environment_key, $user_segment_body)
+> \LaunchDarklyApi\Model\UserSegment postUserSegment($project_key, $environment_key, $user_segment_body)
 
 Creates a new user segment.
 
@@ -266,7 +266,8 @@ $environment_key = "environment_key_example"; // string | The environment key, u
 $user_segment_body = new \LaunchDarklyApi\Model\UserSegmentBody(); // \LaunchDarklyApi\Model\UserSegmentBody | Create a new user segment.
 
 try {
-    $apiInstance->postUserSegment($project_key, $environment_key, $user_segment_body);
+    $result = $apiInstance->postUserSegment($project_key, $environment_key, $user_segment_body);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserSegmentsApi->postUserSegment: ', $e->getMessage(), PHP_EOL;
 }
@@ -283,7 +284,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\LaunchDarklyApi\Model\UserSegment**](../Model/UserSegment.md)
 
 ### Authorization
 

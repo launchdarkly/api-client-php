@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **postCustomRole**
-> postCustomRole($custom_role_body)
+> \LaunchDarklyApi\Model\CustomRole postCustomRole($custom_role_body)
 
 Create a new custom role.
 
@@ -244,7 +244,8 @@ $apiInstance = new LaunchDarklyApi\Api\CustomRolesApi(
 $custom_role_body = new \LaunchDarklyApi\Model\CustomRoleBody(); // \LaunchDarklyApi\Model\CustomRoleBody | New role or roles to create.
 
 try {
-    $apiInstance->postCustomRole($custom_role_body);
+    $result = $apiInstance->postCustomRole($custom_role_body);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomRolesApi->postCustomRole: ', $e->getMessage(), PHP_EOL;
 }
@@ -259,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\LaunchDarklyApi\Model\CustomRole**](../Model/CustomRole.md)
 
 ### Authorization
 

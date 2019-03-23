@@ -5,7 +5,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_links** | [**\LaunchDarklyApi\Model\Links**](Links.md) |  | [optional] 
 **name** | **string** | Name of the custom role. | [optional] 
-**key** | [**\LaunchDarklyApi\Model\CustomRoleKeyOrId**](CustomRoleKeyOrId.md) |  | [optional] 
+**key** | **string** | The 20-hexdigit id or the key for a custom role. | [optional] 
 **description** | **string** | Description of the custom role. | [optional] 
 **_id** | [**\LaunchDarklyApi\Model\Id**](Id.md) |  | [optional] 
 **policy** | [**\LaunchDarklyApi\Model\Policy[]**](Policy.md) |  | [optional] 

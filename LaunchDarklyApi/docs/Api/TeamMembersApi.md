@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **postMembers**
-> postMembers($members_body)
+> \LaunchDarklyApi\Model\Members postMembers($members_body)
 
 Invite new members.
 
@@ -244,7 +244,8 @@ $apiInstance = new LaunchDarklyApi\Api\TeamMembersApi(
 $members_body = array(new \LaunchDarklyApi\Model\MembersBody()); // \LaunchDarklyApi\Model\MembersBody[] | New members to invite.
 
 try {
-    $apiInstance->postMembers($members_body);
+    $result = $apiInstance->postMembers($members_body);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TeamMembersApi->postMembers: ', $e->getMessage(), PHP_EOL;
 }
@@ -259,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\LaunchDarklyApi\Model\Members**](../Model/Members.md)
 
 ### Authorization
 

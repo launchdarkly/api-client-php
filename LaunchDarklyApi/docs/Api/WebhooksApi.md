@@ -221,7 +221,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **postWebhook**
-> postWebhook($webhook_body)
+> \LaunchDarklyApi\Model\Webhook postWebhook($webhook_body)
 
 Create a webhook.
 
@@ -244,7 +244,8 @@ $apiInstance = new LaunchDarklyApi\Api\WebhooksApi(
 $webhook_body = new \LaunchDarklyApi\Model\WebhookBody(); // \LaunchDarklyApi\Model\WebhookBody | New webhook.
 
 try {
-    $apiInstance->postWebhook($webhook_body);
+    $result = $apiInstance->postWebhook($webhook_body);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WebhooksApi->postWebhook: ', $e->getMessage(), PHP_EOL;
 }
@@ -259,7 +260,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\LaunchDarklyApi\Model\Webhook**](../Model/Webhook.md)
 
 ### Authorization
 
