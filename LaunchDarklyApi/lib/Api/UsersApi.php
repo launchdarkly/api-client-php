@@ -365,7 +365,7 @@ class UsersApi
      * @param  string $q Search query. (optional)
      * @param  int $limit Pagination limit. (optional)
      * @param  int $offset Specifies the first item to return in the collection. (optional)
-     * @param  float $after A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. (optional)
+     * @param  int $after A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. (optional)
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -387,7 +387,7 @@ class UsersApi
      * @param  string $q Search query. (optional)
      * @param  int $limit Pagination limit. (optional)
      * @param  int $offset Specifies the first item to return in the collection. (optional)
-     * @param  float $after A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. (optional)
+     * @param  int $after A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. (optional)
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
@@ -467,7 +467,7 @@ class UsersApi
      * @param  string $q Search query. (optional)
      * @param  int $limit Pagination limit. (optional)
      * @param  int $offset Specifies the first item to return in the collection. (optional)
-     * @param  float $after A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. (optional)
+     * @param  int $after A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -492,7 +492,7 @@ class UsersApi
      * @param  string $q Search query. (optional)
      * @param  int $limit Pagination limit. (optional)
      * @param  int $offset Specifies the first item to return in the collection. (optional)
-     * @param  float $after A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. (optional)
+     * @param  int $after A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
@@ -547,7 +547,7 @@ class UsersApi
      * @param  string $q Search query. (optional)
      * @param  int $limit Pagination limit. (optional)
      * @param  int $offset Specifies the first item to return in the collection. (optional)
-     * @param  float $after A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. (optional)
+     * @param  int $after A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request

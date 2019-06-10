@@ -92,7 +92,7 @@ $environment_key = "environment_key_example"; // string | The environment key, u
 $q = "q_example"; // string | Search query.
 $limit = 56; // int | Pagination limit.
 $offset = 56; // int | Specifies the first item to return in the collection.
-$after = 8.14; // float | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp.
+$after = 789; // int | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp.
 
 try {
     $result = $apiInstance->getSearchUsers($project_key, $environment_key, $q, $limit, $offset, $after);
@@ -112,7 +112,7 @@ Name | Type | Description  | Notes
  **q** | **string**| Search query. | [optional]
  **limit** | **int**| Pagination limit. | [optional]
  **offset** | **int**| Specifies the first item to return in the collection. | [optional]
- **after** | **float**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. | [optional]
+ **after** | **int**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned will have occured after this timestamp. | [optional]
 
 ### Return type
 
