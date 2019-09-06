@@ -152,4 +152,18 @@ class EnvironmentTest extends \PHPUnit_Framework_TestCase
     public function testPropertyTags()
     {
     }
+
+    /**
+     * Test attribute "require_comments"
+     */
+    public function testPropertyRequireComments()
+    {
+    }
+
+    /**
+     * Test attribute "confirm_changes"
+     */
+    public function testPropertyConfirmChanges()
+    {
+    }
 }

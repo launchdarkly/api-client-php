@@ -67,7 +67,9 @@ class Environment implements ModelInterface, ArrayAccess
         'default_ttl' => 'float',
         'secure_mode' => 'bool',
         'default_track_events' => 'bool',
-        'tags' => 'string[]'
+        'tags' => 'string[]',
+        'require_comments' => 'bool',
+        'confirm_changes' => 'bool'
     ];
 
     /**
@@ -86,7 +88,9 @@ class Environment implements ModelInterface, ArrayAccess
         'default_ttl' => null,
         'secure_mode' => null,
         'default_track_events' => null,
-        'tags' => null
+        'tags' => null,
+        'require_comments' => null,
+        'confirm_changes' => null
     ];
 
     /**
@@ -126,7 +130,9 @@ class Environment implements ModelInterface, ArrayAccess
         'default_ttl' => 'defaultTtl',
         'secure_mode' => 'secureMode',
         'default_track_events' => 'defaultTrackEvents',
-        'tags' => 'tags'
+        'tags' => 'tags',
+        'require_comments' => 'requireComments',
+        'confirm_changes' => 'confirmChanges'
     ];
 
     /**
@@ -145,7 +151,9 @@ class Environment implements ModelInterface, ArrayAccess
         'default_ttl' => 'setDefaultTtl',
         'secure_mode' => 'setSecureMode',
         'default_track_events' => 'setDefaultTrackEvents',
-        'tags' => 'setTags'
+        'tags' => 'setTags',
+        'require_comments' => 'setRequireComments',
+        'confirm_changes' => 'setConfirmChanges'
     ];
 
     /**
@@ -164,7 +172,9 @@ class Environment implements ModelInterface, ArrayAccess
         'default_ttl' => 'getDefaultTtl',
         'secure_mode' => 'getSecureMode',
         'default_track_events' => 'getDefaultTrackEvents',
-        'tags' => 'getTags'
+        'tags' => 'getTags',
+        'require_comments' => 'getRequireComments',
+        'confirm_changes' => 'getConfirmChanges'
     ];
 
     /**
@@ -238,6 +248,8 @@ class Environment implements ModelInterface, ArrayAccess
         $this->container['secure_mode'] = isset($data['secure_mode']) ? $data['secure_mode'] : null;
         $this->container['default_track_events'] = isset($data['default_track_events']) ? $data['default_track_events'] : null;
         $this->container['tags'] = isset($data['tags']) ? $data['tags'] : null;
+        $this->container['require_comments'] = isset($data['require_comments']) ? $data['require_comments'] : null;
+        $this->container['confirm_changes'] = isset($data['confirm_changes']) ? $data['confirm_changes'] : null;
     }
 
     /**
@@ -524,6 +536,54 @@ class Environment implements ModelInterface, ArrayAccess
     public function setTags($tags)
     {
         $this->container['tags'] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Gets require_comments
+     *
+     * @return bool
+     */
+    public function getRequireComments()
+    {
+        return $this->container['require_comments'];
+    }
+
+    /**
+     * Sets require_comments
+     *
+     * @param bool $require_comments Determines if this environment requires comments for flag and segment changes.
+     *
+     * @return $this
+     */
+    public function setRequireComments($require_comments)
+    {
+        $this->container['require_comments'] = $require_comments;
+
+        return $this;
+    }
+
+    /**
+     * Gets confirm_changes
+     *
+     * @return bool
+     */
+    public function getConfirmChanges()
+    {
+        return $this->container['confirm_changes'];
+    }
+
+    /**
+     * Sets confirm_changes
+     *
+     * @param bool $confirm_changes Determines if this environment requires confirmation for flag and segment changes.
+     *
+     * @return $this
+     */
+    public function setConfirmChanges($confirm_changes)
+    {
+        $this->container['confirm_changes'] = $confirm_changes;
 
         return $this;
     }
