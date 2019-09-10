@@ -4,7 +4,7 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**copyFeatureFlag**](FeatureFlagsApi.md#copyFeatureFlag) | **POST** /flags/{projectKey}/{environmentKey}/{featureFlagKey}/copy | Copies the feature flag configuration from one environment to the same feature flag in another environment.
+[**copyFeatureFlag**](FeatureFlagsApi.md#copyFeatureFlag) | **POST** /flags/{projectKey}/{featureFlagKey}/copy | Copies the feature flag configuration from one environment to the same feature flag in another environment.
 [**deleteFeatureFlag**](FeatureFlagsApi.md#deleteFeatureFlag) | **DELETE** /flags/{projectKey}/{featureFlagKey} | Delete a feature flag in all environments. Be careful-- only delete feature flags that are no longer being used by your application.
 [**getFeatureFlag**](FeatureFlagsApi.md#getFeatureFlag) | **GET** /flags/{projectKey}/{featureFlagKey} | Get a single feature flag by key.
 [**getFeatureFlagStatus**](FeatureFlagsApi.md#getFeatureFlagStatus) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get the status for a particular feature flag.
@@ -15,7 +15,7 @@ Method | HTTP request | Description
 
 
 # **copyFeatureFlag**
-> \LaunchDarklyApi\Model\FeatureFlag copyFeatureFlag($project_key, $environment_key, $feature_flag_key)
+> \LaunchDarklyApi\Model\FeatureFlag copyFeatureFlag($project_key, $feature_flag_key, $feature_flag_copy_body)
 
 Copies the feature flag configuration from one environment to the same feature flag in another environment.
 
@@ -36,11 +36,11 @@ $apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
     $config
 );
 $project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
-$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 $feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
+$feature_flag_copy_body = new \LaunchDarklyApi\Model\FeatureFlagCopyBody(); // \LaunchDarklyApi\Model\FeatureFlagCopyBody | Copy feature flag configurations between environments.
 
 try {
-    $result = $apiInstance->copyFeatureFlag($project_key, $environment_key, $feature_flag_key);
+    $result = $apiInstance->copyFeatureFlag($project_key, $feature_flag_key, $feature_flag_copy_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FeatureFlagsApi->copyFeatureFlag: ', $e->getMessage(), PHP_EOL;
@@ -53,8 +53,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
- **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
  **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
+ **feature_flag_copy_body** | [**\LaunchDarklyApi\Model\FeatureFlagCopyBody**](../Model/FeatureFlagCopyBody.md)| Copy feature flag configurations between environments. |
 
 ### Return type
 
