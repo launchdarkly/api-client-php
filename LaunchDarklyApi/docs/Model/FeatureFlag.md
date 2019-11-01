@@ -19,6 +19,8 @@ Name | Type | Description | Notes
 **_links** | [**\LaunchDarklyApi\Model\Links**](Links.md) |  | [optional] 
 **_maintainer** | [**\LaunchDarklyApi\Model\Member**](Member.md) |  | [optional] 
 **environments** | [**map[string,\LaunchDarklyApi\Model\FeatureFlagConfig]**](FeatureFlagConfig.md) |  | [optional] 
+**archived_date** | **float** | A unix epoch time in milliseconds specifying the archived time of this flag. | [optional] 
+**archived** | **bool** | Whether or not this flag is archived. | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
