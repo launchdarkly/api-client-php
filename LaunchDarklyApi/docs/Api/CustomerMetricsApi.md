@@ -1,25 +1,25 @@
-# LaunchDarklyApi\UsageApi
+# LaunchDarklyApi\CustomerMetricsApi
 
 All URIs are relative to *https://app.launchdarkly.com/api/v2*
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getEvaluations**](UsageApi.md#getEvaluations) | **GET** /usage/evaluations/{envId}/{flagKey} | [BETA] Get events usage by event id and the feature flag key.
-[**getEvent**](UsageApi.md#getEvent) | **GET** /usage/events/{type} | [BETA] Get events usage by event type.
-[**getEvents**](UsageApi.md#getEvents) | **GET** /usage/events | [BETA] Get events usage endpoints.
-[**getMAU**](UsageApi.md#getMAU) | **GET** /usage/mau | [BETA] Get monthly active user data.
-[**getMAUByCategory**](UsageApi.md#getMAUByCategory) | **GET** /usage/mau/bycategory | [BETA] Get monthly active user data by category.
-[**getStream**](UsageApi.md#getStream) | **GET** /usage/streams/{source} | [BETA] Get a stream endpoint and return timeseries data.
-[**getStreamBySDK**](UsageApi.md#getStreamBySDK) | **GET** /usage/streams/{source}/bysdkversion | [BETA] Get a stream timeseries data by source show sdk version metadata.
-[**getStreamSDKVersion**](UsageApi.md#getStreamSDKVersion) | **GET** /usage/streams/{source}/sdkversions | [BETA] Get a stream timeseries data by source and show all sdk version associated.
-[**getStreams**](UsageApi.md#getStreams) | **GET** /usage/streams | [BETA] Returns a list of all streams.
-[**getUsage**](UsageApi.md#getUsage) | **GET** /usage | [BETA] Returns of the usage endpoints available.
+[**getEvaluations**](CustomerMetricsApi.md#getEvaluations) | **GET** /usage/evaluations/{envId}/{flagKey} | Get events usage by event id and the feature flag key.
+[**getEvent**](CustomerMetricsApi.md#getEvent) | **GET** /usage/events/{type} | Get events usage by event type.
+[**getEvents**](CustomerMetricsApi.md#getEvents) | **GET** /usage/events | Get events usage endpoints.
+[**getMAU**](CustomerMetricsApi.md#getMAU) | **GET** /usage/mau | Get monthly active user data.
+[**getMAUByCategory**](CustomerMetricsApi.md#getMAUByCategory) | **GET** /usage/mau/bycategory | Get monthly active user data by category.
+[**getStream**](CustomerMetricsApi.md#getStream) | **GET** /usage/streams/{source} | Get a stream endpoint and return timeseries data.
+[**getStreamBySDK**](CustomerMetricsApi.md#getStreamBySDK) | **GET** /usage/streams/{source}/bysdkversion | Get a stream timeseries data by source show sdk version metadata.
+[**getStreamSDKVersion**](CustomerMetricsApi.md#getStreamSDKVersion) | **GET** /usage/streams/{source}/sdkversions | Get a stream timeseries data by source and show all sdk version associated.
+[**getStreams**](CustomerMetricsApi.md#getStreams) | **GET** /usage/streams | Returns a list of all streams.
+[**getUsage**](CustomerMetricsApi.md#getUsage) | **GET** /usage | Returns of the usage endpoints available.
 
 
 # **getEvaluations**
 > \LaunchDarklyApi\Model\StreamSDKVersion getEvaluations($env_id, $flag_key)
 
-[BETA] Get events usage by event id and the feature flag key.
+Get events usage by event id and the feature flag key.
 
 ### Example
 ```php
@@ -31,7 +31,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new LaunchDarklyApi\Api\UsageApi(
+$apiInstance = new LaunchDarklyApi\Api\CustomerMetricsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -44,7 +44,7 @@ try {
     $result = $apiInstance->getEvaluations($env_id, $flag_key);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UsageApi->getEvaluations: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CustomerMetricsApi->getEvaluations: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -74,7 +74,7 @@ Name | Type | Description  | Notes
 # **getEvent**
 > \LaunchDarklyApi\Model\StreamSDKVersion getEvent($type)
 
-[BETA] Get events usage by event type.
+Get events usage by event type.
 
 ### Example
 ```php
@@ -86,7 +86,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new LaunchDarklyApi\Api\UsageApi(
+$apiInstance = new LaunchDarklyApi\Api\CustomerMetricsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -98,7 +98,7 @@ try {
     $result = $apiInstance->getEvent($type);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UsageApi->getEvent: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CustomerMetricsApi->getEvent: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -127,7 +127,7 @@ Name | Type | Description  | Notes
 # **getEvents**
 > \LaunchDarklyApi\Model\Events getEvents()
 
-[BETA] Get events usage endpoints.
+Get events usage endpoints.
 
 ### Example
 ```php
@@ -139,7 +139,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new LaunchDarklyApi\Api\UsageApi(
+$apiInstance = new LaunchDarklyApi\Api\CustomerMetricsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -150,7 +150,7 @@ try {
     $result = $apiInstance->getEvents();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UsageApi->getEvents: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CustomerMetricsApi->getEvents: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -176,7 +176,7 @@ This endpoint does not need any parameter.
 # **getMAU**
 > \LaunchDarklyApi\Model\MAU getMAU()
 
-[BETA] Get monthly active user data.
+Get monthly active user data.
 
 ### Example
 ```php
@@ -188,7 +188,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new LaunchDarklyApi\Api\UsageApi(
+$apiInstance = new LaunchDarklyApi\Api\CustomerMetricsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -199,7 +199,7 @@ try {
     $result = $apiInstance->getMAU();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UsageApi->getMAU: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CustomerMetricsApi->getMAU: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -225,7 +225,7 @@ This endpoint does not need any parameter.
 # **getMAUByCategory**
 > \LaunchDarklyApi\Model\MAUbyCategory getMAUByCategory()
 
-[BETA] Get monthly active user data by category.
+Get monthly active user data by category.
 
 ### Example
 ```php
@@ -237,7 +237,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new LaunchDarklyApi\Api\UsageApi(
+$apiInstance = new LaunchDarklyApi\Api\CustomerMetricsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -248,7 +248,7 @@ try {
     $result = $apiInstance->getMAUByCategory();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UsageApi->getMAUByCategory: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CustomerMetricsApi->getMAUByCategory: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -274,7 +274,7 @@ This endpoint does not need any parameter.
 # **getStream**
 > \LaunchDarklyApi\Model\Stream getStream($source)
 
-[BETA] Get a stream endpoint and return timeseries data.
+Get a stream endpoint and return timeseries data.
 
 ### Example
 ```php
@@ -286,7 +286,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new LaunchDarklyApi\Api\UsageApi(
+$apiInstance = new LaunchDarklyApi\Api\CustomerMetricsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -298,7 +298,7 @@ try {
     $result = $apiInstance->getStream($source);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UsageApi->getStream: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CustomerMetricsApi->getStream: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -327,7 +327,7 @@ Name | Type | Description  | Notes
 # **getStreamBySDK**
 > \LaunchDarklyApi\Model\StreamBySDK getStreamBySDK($source)
 
-[BETA] Get a stream timeseries data by source show sdk version metadata.
+Get a stream timeseries data by source show sdk version metadata.
 
 ### Example
 ```php
@@ -339,7 +339,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new LaunchDarklyApi\Api\UsageApi(
+$apiInstance = new LaunchDarklyApi\Api\CustomerMetricsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -351,7 +351,7 @@ try {
     $result = $apiInstance->getStreamBySDK($source);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UsageApi->getStreamBySDK: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CustomerMetricsApi->getStreamBySDK: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -380,7 +380,7 @@ Name | Type | Description  | Notes
 # **getStreamSDKVersion**
 > \LaunchDarklyApi\Model\StreamSDKVersion getStreamSDKVersion($source)
 
-[BETA] Get a stream timeseries data by source and show all sdk version associated.
+Get a stream timeseries data by source and show all sdk version associated.
 
 ### Example
 ```php
@@ -392,7 +392,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new LaunchDarklyApi\Api\UsageApi(
+$apiInstance = new LaunchDarklyApi\Api\CustomerMetricsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -404,7 +404,7 @@ try {
     $result = $apiInstance->getStreamSDKVersion($source);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UsageApi->getStreamSDKVersion: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CustomerMetricsApi->getStreamSDKVersion: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -433,7 +433,7 @@ Name | Type | Description  | Notes
 # **getStreams**
 > \LaunchDarklyApi\Model\Streams getStreams()
 
-[BETA] Returns a list of all streams.
+Returns a list of all streams.
 
 ### Example
 ```php
@@ -445,7 +445,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new LaunchDarklyApi\Api\UsageApi(
+$apiInstance = new LaunchDarklyApi\Api\CustomerMetricsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -456,7 +456,7 @@ try {
     $result = $apiInstance->getStreams();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UsageApi->getStreams: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CustomerMetricsApi->getStreams: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -482,7 +482,7 @@ This endpoint does not need any parameter.
 # **getUsage**
 > \LaunchDarklyApi\Model\Usage getUsage()
 
-[BETA] Returns of the usage endpoints available.
+Returns of the usage endpoints available.
 
 ### Example
 ```php
@@ -494,7 +494,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
-$apiInstance = new LaunchDarklyApi\Api\UsageApi(
+$apiInstance = new LaunchDarklyApi\Api\CustomerMetricsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -505,7 +505,7 @@ try {
     $result = $apiInstance->getUsage();
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling UsageApi->getUsage: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling CustomerMetricsApi->getUsage: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
