@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **_id** | [**\LaunchDarklyApi\Model\Id**](Id.md) |  | [optional] 
 **key** | **string** |  | [optional] 
 **name** | **string** |  | [optional] 
+**include_in_snippet_by_default** | **bool** |  | [optional] 
 **environments** | [**\LaunchDarklyApi\Model\Environment[]**](Environment.md) |  | [optional] 
 **tags** | **string[]** | An array of tags for this project. | [optional] 
 
