@@ -5,6 +5,7 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteMember**](TeamMembersApi.md#deleteMember) | **DELETE** /members/{memberId} | Delete a team member by ID.
+[**getMe**](TeamMembersApi.md#getMe) | **GET** /members/me | Get the current team member associated with the token
 [**getMember**](TeamMembersApi.md#getMember) | **GET** /members/{memberId} | Get a single team member by ID.
 [**getMembers**](TeamMembersApi.md#getMembers) | **GET** /members | Returns a list of all members in the account.
 [**patchMember**](TeamMembersApi.md#patchMember) | **PATCH** /members/{memberId} | Modify a team member by ID.
@@ -51,6 +52,55 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[Token](../../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getMe**
+> \LaunchDarklyApi\Model\Member getMe()
+
+Get the current team member associated with the token
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Token
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new LaunchDarklyApi\Api\TeamMembersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+
+try {
+    $result = $apiInstance->getMe();
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TeamMembersApi->getMe: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+This endpoint does not need any parameter.
+
+### Return type
+
+[**\LaunchDarklyApi\Model\Member**](../Model/Member.md)
 
 ### Authorization
 
@@ -117,7 +167,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getMembers**
-> \LaunchDarklyApi\Model\Members getMembers()
+> \LaunchDarklyApi\Model\Members getMembers($limit, $number, $filter, $sort)
 
 Returns a list of all members in the account.
 
@@ -137,9 +187,13 @@ $apiInstance = new LaunchDarklyApi\Api\TeamMembersApi(
     new GuzzleHttp\Client(),
     $config
 );
+$limit = 8.14; // float | The number of objects to return. Defaults to -1, which returns everything.
+$number = true; // bool | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items.
+$filter = "filter_example"; // string | A comma-separated list of filters. Each filter is of the form field:value.
+$sort = "sort_example"; // string | A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order.
 
 try {
-    $result = $apiInstance->getMembers();
+    $result = $apiInstance->getMembers($limit, $number, $filter, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TeamMembersApi->getMembers: ', $e->getMessage(), PHP_EOL;
@@ -148,7 +202,13 @@ try {
 ```
 
 ### Parameters
-This endpoint does not need any parameter.
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **float**| The number of objects to return. Defaults to -1, which returns everything. | [optional]
+ **number** | **bool**| Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. | [optional]
+ **filter** | **string**| A comma-separated list of filters. Each filter is of the form field:value. | [optional]
+ **sort** | **string**| A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order. | [optional]
 
 ### Return type
 

@@ -149,7 +149,7 @@ $apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
 );
 $project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
 $feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
-$env = "env_example"; // string | By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env=production will restrict the returned configurations to just your production environment.
+$env = array("env_example"); // string[] | By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env=[\"production\"] will restrict the returned configurations to just your production environment.
 
 try {
     $result = $apiInstance->getFeatureFlag($project_key, $feature_flag_key, $env);
@@ -166,7 +166,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
  **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
- **env** | **string**| By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env&#x3D;production will restrict the returned configurations to just your production environment. | [optional]
+ **env** | [**string[]**](../Model/string.md)| By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env&#x3D;[\&quot;production\&quot;] will restrict the returned configurations to just your production environment. | [optional]
 
 ### Return type
 
@@ -351,7 +351,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getFeatureFlags**
-> \LaunchDarklyApi\Model\FeatureFlags getFeatureFlags($project_key, $env, $summary, $archived, $tag)
+> \LaunchDarklyApi\Model\FeatureFlags getFeatureFlags($project_key, $env, $summary, $archived, $limit, $number, $filter, $sort, $tag)
 
 Get a list of all features in the given project.
 
@@ -372,13 +372,17 @@ $apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
     $config
 );
 $project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
-$env = "env_example"; // string | By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env=production will restrict the returned configurations to just your production environment.
+$env = array("env_example"); // string[] | By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env=[\"production\"] will restrict the returned configurations to just your production environment.
 $summary = true; // bool | By default in api version >= 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary=0 to include these fields for each flag returned.
 $archived = true; // bool | When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags.
+$limit = 8.14; // float | The number of objects to return. Defaults to -1, which returns everything.
+$number = true; // bool | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items.
+$filter = "filter_example"; // string | A comma-separated list of filters. Each filter is of the form field:value.
+$sort = "sort_example"; // string | A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order.
 $tag = "tag_example"; // string | Filter by tag. A tag can be used to group flags across projects.
 
 try {
-    $result = $apiInstance->getFeatureFlags($project_key, $env, $summary, $archived, $tag);
+    $result = $apiInstance->getFeatureFlags($project_key, $env, $summary, $archived, $limit, $number, $filter, $sort, $tag);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FeatureFlagsApi->getFeatureFlags: ', $e->getMessage(), PHP_EOL;
@@ -391,9 +395,13 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
- **env** | **string**| By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env&#x3D;production will restrict the returned configurations to just your production environment. | [optional]
+ **env** | [**string[]**](../Model/string.md)| By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env&#x3D;[\&quot;production\&quot;] will restrict the returned configurations to just your production environment. | [optional]
  **summary** | **bool**| By default in api version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned. | [optional]
  **archived** | **bool**| When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags. | [optional]
+ **limit** | **float**| The number of objects to return. Defaults to -1, which returns everything. | [optional]
+ **number** | **bool**| Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. | [optional]
+ **filter** | **string**| A comma-separated list of filters. Each filter is of the form field:value. | [optional]
+ **sort** | **string**| A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order. | [optional]
  **tag** | **string**| Filter by tag. A tag can be used to group flags across projects. | [optional]
 
 ### Return type

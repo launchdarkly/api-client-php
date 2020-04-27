@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **email** | **string** |  | [optional] 
 **first_name** | **string** |  | [optional] 
 **last_name** | **string** |  | [optional] 
+**_verified** | **bool** |  | [optional] 
 **_pending_invite** | **bool** |  | [optional] 
 **is_beta** | **bool** |  | [optional] 
 **custom_roles** | [**\LaunchDarklyApi\Model\Id[]**](Id.md) |  | [optional] 
