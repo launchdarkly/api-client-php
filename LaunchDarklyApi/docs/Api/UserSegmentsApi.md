@@ -5,8 +5,10 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteUserSegment**](UserSegmentsApi.md#deleteUserSegment) | **DELETE** /segments/{projectKey}/{environmentKey}/{userSegmentKey} | Delete a user segment.
+[**getExpiringUserTargetsOnSegment**](UserSegmentsApi.md#getExpiringUserTargetsOnSegment) | **GET** /segments/{projectKey}/{userSegmentKey}/expiring-user-targets/{environmentKey} | Get expiring user targets for user segment
 [**getUserSegment**](UserSegmentsApi.md#getUserSegment) | **GET** /segments/{projectKey}/{environmentKey}/{userSegmentKey} | Get a single user segment by key.
 [**getUserSegments**](UserSegmentsApi.md#getUserSegments) | **GET** /segments/{projectKey}/{environmentKey} | Get a list of all user segments in the given project.
+[**patchExpiringUserTargetsOnSegment**](UserSegmentsApi.md#patchExpiringUserTargetsOnSegment) | **PATCH** /segments/{projectKey}/{userSegmentKey}/expiring-user-targets/{environmentKey} | Update, add, or delete expiring user targets on user segment
 [**patchUserSegment**](UserSegmentsApi.md#patchUserSegment) | **PATCH** /segments/{projectKey}/{environmentKey}/{userSegmentKey} | Perform a partial update to a user segment.
 [**postUserSegment**](UserSegmentsApi.md#postUserSegment) | **POST** /segments/{projectKey}/{environmentKey} | Creates a new user segment.
 
@@ -55,6 +57,63 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[Token](../../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getExpiringUserTargetsOnSegment**
+> \LaunchDarklyApi\Model\UserTargetingExpirationForSegment getExpiringUserTargetsOnSegment($project_key, $environment_key, $user_segment_key)
+
+Get expiring user targets for user segment
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Token
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new LaunchDarklyApi\Api\UserSegmentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
+$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+$user_segment_key = "user_segment_key_example"; // string | The user segment's key. The key identifies the user segment in your code.
+
+try {
+    $result = $apiInstance->getExpiringUserTargetsOnSegment($project_key, $environment_key, $user_segment_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling UserSegmentsApi->getExpiringUserTargetsOnSegment: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
+ **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
+ **user_segment_key** | **string**| The user segment&#39;s key. The key identifies the user segment in your code. |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\UserTargetingExpirationForSegment**](../Model/UserTargetingExpirationForSegment.md)
 
 ### Authorization
 
@@ -169,6 +228,65 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\LaunchDarklyApi\Model\UserSegments**](../Model/UserSegments.md)
+
+### Authorization
+
+[Token](../../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **patchExpiringUserTargetsOnSegment**
+> \LaunchDarklyApi\Model\UserTargetingExpirationForSegment patchExpiringUserTargetsOnSegment($project_key, $environment_key, $user_segment_key, $semantic_patch_with_comment)
+
+Update, add, or delete expiring user targets on user segment
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Token
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new LaunchDarklyApi\Api\UserSegmentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
+$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+$user_segment_key = "user_segment_key_example"; // string | The user segment's key. The key identifies the user segment in your code.
+$semantic_patch_with_comment = new \stdClass; // object | Requires a Semantic Patch representation of the desired changes to the resource. 'https://apidocs.launchdarkly.com/reference#updates-via-semantic-patches'. The addition of comments is also supported.
+
+try {
+    $result = $apiInstance->patchExpiringUserTargetsOnSegment($project_key, $environment_key, $user_segment_key, $semantic_patch_with_comment);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling UserSegmentsApi->patchExpiringUserTargetsOnSegment: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
+ **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
+ **user_segment_key** | **string**| The user segment&#39;s key. The key identifies the user segment in your code. |
+ **semantic_patch_with_comment** | **object**| Requires a Semantic Patch representation of the desired changes to the resource. &#39;https://apidocs.launchdarkly.com/reference#updates-via-semantic-patches&#39;. The addition of comments is also supported. |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\UserTargetingExpirationForSegment**](../Model/UserTargetingExpirationForSegment.md)
 
 ### Authorization
 

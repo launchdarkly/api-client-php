@@ -167,7 +167,7 @@ Name | Type | Description  | Notes
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
 # **getMembers**
-> \LaunchDarklyApi\Model\Members getMembers($limit, $number, $filter, $sort)
+> \LaunchDarklyApi\Model\Members getMembers($limit, $offset, $filter, $sort)
 
 Returns a list of all members in the account.
 
@@ -188,12 +188,12 @@ $apiInstance = new LaunchDarklyApi\Api\TeamMembersApi(
     $config
 );
 $limit = 8.14; // float | The number of objects to return. Defaults to -1, which returns everything.
-$number = true; // bool | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items.
+$offset = 8.14; // float | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items.
 $filter = "filter_example"; // string | A comma-separated list of filters. Each filter is of the form field:value.
 $sort = "sort_example"; // string | A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order.
 
 try {
-    $result = $apiInstance->getMembers($limit, $number, $filter, $sort);
+    $result = $apiInstance->getMembers($limit, $offset, $filter, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TeamMembersApi->getMembers: ', $e->getMessage(), PHP_EOL;
@@ -206,7 +206,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **float**| The number of objects to return. Defaults to -1, which returns everything. | [optional]
- **number** | **bool**| Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. | [optional]
+ **offset** | **float**| Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. | [optional]
  **filter** | **string**| A comma-separated list of filters. Each filter is of the form field:value. | [optional]
  **sort** | **string**| A comma-separated list of fields to sort by. A field prefixed by a - will be sorted in descending order. | [optional]
 
