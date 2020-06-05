@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **name** | **string** | Name of the feature flag. | [optional] 
 **description** | **string** | Description of the feature flag. | [optional] 
 **kind** | **string** | Whether the feature flag is a boolean flag or multivariate. | [optional] 
-**creation_date** | **float** | A unix epoch time in milliseconds specifying the creation time of this flag. | [optional] 
+**creation_date** | **int** | A unix epoch time in milliseconds specifying the creation time of this flag. | [optional] 
 **include_in_snippet** | **bool** |  | [optional] 
 **temporary** | **bool** | Whether or not this flag is temporary. | [optional] 
 **maintainer_id** | **string** | The ID of the member that should maintain this flag. | [optional] 
@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **_links** | [**\LaunchDarklyApi\Model\Links**](Links.md) |  | [optional] 
 **_maintainer** | [**\LaunchDarklyApi\Model\Member**](Member.md) |  | [optional] 
 **environments** | [**map[string,\LaunchDarklyApi\Model\FeatureFlagConfig]**](FeatureFlagConfig.md) |  | [optional] 
-**archived_date** | **float** | A unix epoch time in milliseconds specifying the archived time of this flag. | [optional] 
+**archived_date** | **int** | A unix epoch time in milliseconds specifying the archived time of this flag. | [optional] 
 **archived** | **bool** | Whether or not this flag is archived. | [optional] 
 **defaults** | [**\LaunchDarklyApi\Model\Defaults**](Defaults.md) |  | [optional] 
 
