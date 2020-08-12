@@ -433,7 +433,7 @@ $apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
 $project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
 $env = array("env_example"); // string[] | By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env=[\"production\"] will restrict the returned configurations to just your production environment.
 $summary = true; // bool | By default in api version >= 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary=0 to include these fields for each flag returned.
-$archived = true; // bool | When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags.
+$archived = true; // bool | When set to 1, only archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags.
 $limit = 8.14; // float | The number of objects to return. Defaults to -1, which returns everything.
 $offset = 8.14; // float | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items.
 $filter = "filter_example"; // string | A comma-separated list of filters. Each filter is of the form field:value.
@@ -456,7 +456,7 @@ Name | Type | Description  | Notes
  **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
  **env** | [**string[]**](../Model/string.md)| By default, each feature will include configurations for each environment. You can filter environments with the env query parameter. For example, setting env&#x3D;[\&quot;production\&quot;] will restrict the returned configurations to just your production environment. | [optional]
  **summary** | **bool**| By default in api version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned. | [optional]
- **archived** | **bool**| When set to 1, archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags. | [optional]
+ **archived** | **bool**| When set to 1, only archived flags will be included in the list of flags returned.  By default, archived flags are not included in the list of flags. | [optional]
  **limit** | **float**| The number of objects to return. Defaults to -1, which returns everything. | [optional]
  **offset** | **float**| Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first 10 items and then return the next limit items. | [optional]
  **filter** | **string**| A comma-separated list of filters. Each filter is of the form field:value. | [optional]
