@@ -1,6 +1,6 @@
 <?php
 /**
- * StreamLinks
+ * ClientSideAvailability
  *
  * PHP version 5
  *
@@ -33,14 +33,14 @@ use \ArrayAccess;
 use \LaunchDarklyApi\ObjectSerializer;
 
 /**
- * StreamLinks Class Doc Comment
+ * ClientSideAvailability Class Doc Comment
  *
  * @category Class
  * @package  LaunchDarklyApi
  * @author   Swagger Codegen team
  * @link     https://github.com/swagger-api/swagger-codegen
  */
-class StreamLinks implements ModelInterface, ArrayAccess
+class ClientSideAvailability implements ModelInterface, ArrayAccess
 {
     const DISCRIMINATOR = null;
 
@@ -49,7 +49,7 @@ class StreamLinks implements ModelInterface, ArrayAccess
       *
       * @var string
       */
-    protected static $swaggerModelName = 'StreamLinks';
+    protected static $swaggerModelName = 'ClientSideAvailability';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -57,9 +57,8 @@ class StreamLinks implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerTypes = [
-        'parent' => '\LaunchDarklyApi\Model\Link',
-        'self' => '\LaunchDarklyApi\Model\Link',
-        'subseries' => '\LaunchDarklyApi\Model\Link[]'
+        'using_environment_id' => 'bool',
+        'using_mobile_key' => 'bool'
     ];
 
     /**
@@ -68,9 +67,8 @@ class StreamLinks implements ModelInterface, ArrayAccess
       * @var string[]
       */
     protected static $swaggerFormats = [
-        'parent' => null,
-        'self' => null,
-        'subseries' => null
+        'using_environment_id' => null,
+        'using_mobile_key' => null
     ];
 
     /**
@@ -100,9 +98,8 @@ class StreamLinks implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $attributeMap = [
-        'parent' => 'parent',
-        'self' => 'self',
-        'subseries' => 'subseries'
+        'using_environment_id' => 'usingEnvironmentId',
+        'using_mobile_key' => 'usingMobileKey'
     ];
 
     /**
@@ -111,9 +108,8 @@ class StreamLinks implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $setters = [
-        'parent' => 'setParent',
-        'self' => 'setSelf',
-        'subseries' => 'setSubseries'
+        'using_environment_id' => 'setUsingEnvironmentId',
+        'using_mobile_key' => 'setUsingMobileKey'
     ];
 
     /**
@@ -122,9 +118,8 @@ class StreamLinks implements ModelInterface, ArrayAccess
      * @var string[]
      */
     protected static $getters = [
-        'parent' => 'getParent',
-        'self' => 'getSelf',
-        'subseries' => 'getSubseries'
+        'using_environment_id' => 'getUsingEnvironmentId',
+        'using_mobile_key' => 'getUsingMobileKey'
     ];
 
     /**
@@ -187,9 +182,8 @@ class StreamLinks implements ModelInterface, ArrayAccess
      */
     public function __construct(array $data = null)
     {
-        $this->container['parent'] = isset($data['parent']) ? $data['parent'] : null;
-        $this->container['self'] = isset($data['self']) ? $data['self'] : null;
-        $this->container['subseries'] = isset($data['subseries']) ? $data['subseries'] : null;
+        $this->container['using_environment_id'] = isset($data['using_environment_id']) ? $data['using_environment_id'] : null;
+        $this->container['using_mobile_key'] = isset($data['using_mobile_key']) ? $data['using_mobile_key'] : null;
     }
 
     /**
@@ -217,73 +211,49 @@ class StreamLinks implements ModelInterface, ArrayAccess
 
 
     /**
-     * Gets parent
+     * Gets using_environment_id
      *
-     * @return \LaunchDarklyApi\Model\Link
+     * @return bool
      */
-    public function getParent()
+    public function getUsingEnvironmentId()
     {
-        return $this->container['parent'];
+        return $this->container['using_environment_id'];
     }
 
     /**
-     * Sets parent
+     * Sets using_environment_id
      *
-     * @param \LaunchDarklyApi\Model\Link $parent parent
+     * @param bool $using_environment_id When set to true, this flag will be available to SDKs using the client-side id.
      *
      * @return $this
      */
-    public function setParent($parent)
+    public function setUsingEnvironmentId($using_environment_id)
     {
-        $this->container['parent'] = $parent;
+        $this->container['using_environment_id'] = $using_environment_id;
 
         return $this;
     }
 
     /**
-     * Gets self
+     * Gets using_mobile_key
      *
-     * @return \LaunchDarklyApi\Model\Link
+     * @return bool
      */
-    public function getSelf()
+    public function getUsingMobileKey()
     {
-        return $this->container['self'];
+        return $this->container['using_mobile_key'];
     }
 
     /**
-     * Sets self
+     * Sets using_mobile_key
      *
-     * @param \LaunchDarklyApi\Model\Link $self self
+     * @param bool $using_mobile_key When set to true, this flag will be available to SDKS using a mobile key.
      *
      * @return $this
      */
-    public function setSelf($self)
+    public function setUsingMobileKey($using_mobile_key)
     {
-        $this->container['self'] = $self;
-
-        return $this;
-    }
-
-    /**
-     * Gets subseries
-     *
-     * @return \LaunchDarklyApi\Model\Link[]
-     */
-    public function getSubseries()
-    {
-        return $this->container['subseries'];
-    }
-
-    /**
-     * Sets subseries
-     *
-     * @param \LaunchDarklyApi\Model\Link[] $subseries Links to endpoints that are in the request path.
-     *
-     * @return $this
-     */
-    public function setSubseries($subseries)
-    {
-        $this->container['subseries'] = $subseries;
+        $this->container['using_mobile_key'] = $using_mobile_key;
 
         return $this;
     }

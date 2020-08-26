@@ -1,6 +1,6 @@
 <?php
 /**
- * TokenBodyTest
+ * ClientSideAvailabilityTest
  *
  * PHP version 5
  *
@@ -30,15 +30,15 @@
 namespace LaunchDarklyApi;
 
 /**
- * TokenBodyTest Class Doc Comment
+ * ClientSideAvailabilityTest Class Doc Comment
  *
  * @category    Class
- * @description TokenBody
+ * @description ClientSideAvailability
  * @package     LaunchDarklyApi
  * @author      Swagger Codegen team
  * @link        https://github.com/swagger-api/swagger-codegen
  */
-class TokenBodyTest extends \PHPUnit_Framework_TestCase
+class ClientSideAvailabilityTest extends \PHPUnit_Framework_TestCase
 {
 
     /**
@@ -70,51 +70,23 @@ class TokenBodyTest extends \PHPUnit_Framework_TestCase
     }
 
     /**
-     * Test "TokenBody"
+     * Test "ClientSideAvailability"
      */
-    public function testTokenBody()
+    public function testClientSideAvailability()
     {
     }
 
     /**
-     * Test attribute "name"
+     * Test attribute "using_environment_id"
      */
-    public function testPropertyName()
+    public function testPropertyUsingEnvironmentId()
     {
     }
 
     /**
-     * Test attribute "role"
+     * Test attribute "using_mobile_key"
      */
-    public function testPropertyRole()
-    {
-    }
-
-    /**
-     * Test attribute "custom_role_ids"
-     */
-    public function testPropertyCustomRoleIds()
-    {
-    }
-
-    /**
-     * Test attribute "inline_role"
-     */
-    public function testPropertyInlineRole()
-    {
-    }
-
-    /**
-     * Test attribute "service_token"
-     */
-    public function testPropertyServiceToken()
-    {
-    }
-
-    /**
-     * Test attribute "default_api_version"
-     */
-    public function testPropertyDefaultApiVersion()
+    public function testPropertyUsingMobileKey()
     {
     }
 }
