@@ -11,6 +11,7 @@ Method | HTTP request | Description
 [**patchExpiringUserTargetsOnSegment**](UserSegmentsApi.md#patchExpiringUserTargetsOnSegment) | **PATCH** /segments/{projectKey}/{userSegmentKey}/expiring-user-targets/{environmentKey} | Update, add, or delete expiring user targets on user segment
 [**patchUserSegment**](UserSegmentsApi.md#patchUserSegment) | **PATCH** /segments/{projectKey}/{environmentKey}/{userSegmentKey} | Perform a partial update to a user segment.
 [**postUserSegment**](UserSegmentsApi.md#postUserSegment) | **POST** /segments/{projectKey}/{environmentKey} | Creates a new user segment.
+[**updatedUnboundedSegmentTargets**](UserSegmentsApi.md#updatedUnboundedSegmentTargets) | **POST** /segments/{projectKey}/{environmentKey}/{userSegmentKey}/unbounded-users | Update targets included or excluded in an unbounded segment
 
 
 # **deleteUserSegment**
@@ -403,6 +404,64 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\LaunchDarklyApi\Model\UserSegment**](../Model/UserSegment.md)
+
+### Authorization
+
+[Token](../../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **updatedUnboundedSegmentTargets**
+> updatedUnboundedSegmentTargets($project_key, $environment_key, $user_segment_key, $unbounded_segment_targets_body)
+
+Update targets included or excluded in an unbounded segment
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Token
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new LaunchDarklyApi\Api\UserSegmentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
+$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+$user_segment_key = "user_segment_key_example"; // string | The user segment's key. The key identifies the user segment in your code.
+$unbounded_segment_targets_body = new \LaunchDarklyApi\Model\UnboundedSegmentTargetsBody(); // \LaunchDarklyApi\Model\UnboundedSegmentTargetsBody | Add or remove user targets to the included or excluded lists on an unbounded segment
+
+try {
+    $apiInstance->updatedUnboundedSegmentTargets($project_key, $environment_key, $user_segment_key, $unbounded_segment_targets_body);
+} catch (Exception $e) {
+    echo 'Exception when calling UserSegmentsApi->updatedUnboundedSegmentTargets: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
+ **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
+ **user_segment_key** | **string**| The user segment&#39;s key. The key identifies the user segment in your code. |
+ **unbounded_segment_targets_body** | [**\LaunchDarklyApi\Model\UnboundedSegmentTargetsBody**](../Model/UnboundedSegmentTargetsBody.md)| Add or remove user targets to the included or excluded lists on an unbounded segment |
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
