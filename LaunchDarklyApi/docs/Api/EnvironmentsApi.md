@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**getEnvironment**](EnvironmentsApi.md#getEnvironment) | **GET** /projects/{projectKey}/environments/{environmentKey} | Get an environment given a project and key.
 [**patchEnvironment**](EnvironmentsApi.md#patchEnvironment) | **PATCH** /projects/{projectKey}/environments/{environmentKey} | Modify an environment by ID.
 [**postEnvironment**](EnvironmentsApi.md#postEnvironment) | **POST** /projects/{projectKey}/environments | Create a new environment in a specified project with a given name, key, and swatch color.
+[**resetEnvironmentMobileKey**](EnvironmentsApi.md#resetEnvironmentMobileKey) | **POST** /projects/{projectKey}/environments/{environmentKey}/mobileKey | Reset an environment&#39;s mobile key with an optional expiry time for the old key.
+[**resetEnvironmentSDKKey**](EnvironmentsApi.md#resetEnvironmentSDKKey) | **POST** /projects/{projectKey}/environments/{environmentKey}/apiKey | Reset an environment&#39;s SDK key with an optional expiry time for the old key.
 
 
 # **deleteEnvironment**
@@ -215,6 +217,120 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
  **environment_body** | [**\LaunchDarklyApi\Model\EnvironmentPost**](../Model/EnvironmentPost.md)| New environment. |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\Environment**](../Model/Environment.md)
+
+### Authorization
+
+[Token](../../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **resetEnvironmentMobileKey**
+> \LaunchDarklyApi\Model\Environment resetEnvironmentMobileKey($project_key, $environment_key, $expiry)
+
+Reset an environment's mobile key with an optional expiry time for the old key.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Token
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new LaunchDarklyApi\Api\EnvironmentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
+$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+$expiry = 789; // int | An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately
+
+try {
+    $result = $apiInstance->resetEnvironmentMobileKey($project_key, $environment_key, $expiry);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EnvironmentsApi->resetEnvironmentMobileKey: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
+ **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
+ **expiry** | **int**| An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately | [optional]
+
+### Return type
+
+[**\LaunchDarklyApi\Model\Environment**](../Model/Environment.md)
+
+### Authorization
+
+[Token](../../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **resetEnvironmentSDKKey**
+> \LaunchDarklyApi\Model\Environment resetEnvironmentSDKKey($project_key, $environment_key, $expiry)
+
+Reset an environment's SDK key with an optional expiry time for the old key.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Token
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new LaunchDarklyApi\Api\EnvironmentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
+$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+$expiry = 789; // int | An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately
+
+try {
+    $result = $apiInstance->resetEnvironmentSDKKey($project_key, $environment_key, $expiry);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EnvironmentsApi->resetEnvironmentSDKKey: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
+ **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
+ **expiry** | **int**| An expiration time for the old environment SDK or mobile key, expressed as a Unix epoch time in milliseconds. By default, the key will expire immediately | [optional]
 
 ### Return type
 
