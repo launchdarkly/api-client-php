@@ -16,6 +16,7 @@ Name | Type | Description | Notes
 **tags** | **string[]** | An array of tags for this environment. | [optional] 
 **require_comments** | **bool** | Determines if this environment requires comments for flag and segment changes. | [optional] 
 **confirm_changes** | **bool** | Determines if this environment requires confirmation for flag and segment changes. | [optional] 
+**approval_settings** | [**\LaunchDarklyApi\Model\EnvironmentApprovalSettings**](EnvironmentApprovalSettings.md) |  | [optional] 
 
 [[Back to Model list]](../README.md#documentation-for-models) [[Back to API list]](../README.md#documentation-for-api-endpoints) [[Back to README]](../README.md)
 
