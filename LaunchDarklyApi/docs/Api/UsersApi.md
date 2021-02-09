@@ -6,7 +6,6 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteUser**](UsersApi.md#deleteUser) | **DELETE** /users/{projectKey}/{environmentKey}/{userKey} | Delete a user by ID.
 [**getSearchUsers**](UsersApi.md#getSearchUsers) | **GET** /user-search/{projectKey}/{environmentKey} | Search users in LaunchDarkly based on their last active date, or a search query. It should not be used to enumerate all users in LaunchDarkly-- use the List users API resource.
-[**getUser**](UsersApi.md#getUser) | **GET** /users/{projectKey}/{environmentKey}/{userKey} | Get a user by key.
 [**getUsers**](UsersApi.md#getUsers) | **GET** /users/{projectKey}/{environmentKey} | List all users in the environment. Includes the total count of users. In each page, there will be up to &#39;limit&#39; users returned (default 20). This is useful for exporting all users in the system for further analysis. Paginated collections will include a next link containing a URL with the next set of elements in the collection.
 
 
@@ -117,63 +116,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\LaunchDarklyApi\Model\Users**](../Model/Users.md)
-
-### Authorization
-
-[Token](../../README.md#Token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **getUser**
-> \LaunchDarklyApi\Model\User getUser($project_key, $environment_key, $user_key)
-
-Get a user by key.
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure API key authorization: Token
-$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-$apiInstance = new LaunchDarklyApi\Api\UsersApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
-$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-$user_key = "user_key_example"; // string | The user's key.
-
-try {
-    $result = $apiInstance->getUser($project_key, $environment_key, $user_key);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling UsersApi->getUser: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
- **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
- **user_key** | **string**| The user&#39;s key. |
-
-### Return type
-
-[**\LaunchDarklyApi\Model\User**](../Model/User.md)
 
 ### Authorization
 

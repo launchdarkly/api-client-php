@@ -5,22 +5,28 @@ All URIs are relative to *https://app.launchdarkly.com/api/v2*
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**copyFeatureFlag**](FeatureFlagsApi.md#copyFeatureFlag) | **POST** /flags/{projectKey}/{featureFlagKey}/copy | Copies the feature flag configuration from one environment to the same feature flag in another environment.
+[**deleteApprovalRequest**](FeatureFlagsApi.md#deleteApprovalRequest) | **DELETE** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{approvalRequestId} | Delete an approval request for a feature flag config
 [**deleteFeatureFlag**](FeatureFlagsApi.md#deleteFeatureFlag) | **DELETE** /flags/{projectKey}/{featureFlagKey} | Delete a feature flag in all environments. Be careful-- only delete feature flags that are no longer being used by your application.
-[**deleteFeatureFlagApprovalRequest**](FeatureFlagsApi.md#deleteFeatureFlagApprovalRequest) | **DELETE** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId} | Delete an approval request for a feature flag
+[**deleteFlagConfigScheduledChanges**](FeatureFlagsApi.md#deleteFlagConfigScheduledChanges) | **DELETE** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{scheduledChangeId} | Delete a scheduled change on a feature flag in an environment.
+[**getApprovalRequest**](FeatureFlagsApi.md#getApprovalRequest) | **GET** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{approvalRequestId} | Get a single approval request for a feature flag config
+[**getApprovalRequests**](FeatureFlagsApi.md#getApprovalRequests) | **GET** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | Get all approval requests for a feature flag config
 [**getExpiringUserTargets**](FeatureFlagsApi.md#getExpiringUserTargets) | **GET** /flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey} | Get expiring user targets for feature flag
 [**getFeatureFlag**](FeatureFlagsApi.md#getFeatureFlag) | **GET** /flags/{projectKey}/{featureFlagKey} | Get a single feature flag by key.
-[**getFeatureFlagApprovalRequest**](FeatureFlagsApi.md#getFeatureFlagApprovalRequest) | **GET** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId} | Get a single approval request for a feature flag
-[**getFeatureFlagApprovalRequests**](FeatureFlagsApi.md#getFeatureFlagApprovalRequests) | **GET** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | Get all approval requests for a feature flag
 [**getFeatureFlagStatus**](FeatureFlagsApi.md#getFeatureFlagStatus) | **GET** /flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get the status for a particular feature flag.
 [**getFeatureFlagStatusAcrossEnvironments**](FeatureFlagsApi.md#getFeatureFlagStatusAcrossEnvironments) | **GET** /flag-status/{projectKey}/{featureFlagKey} | Get the status for a particular feature flag across environments
 [**getFeatureFlagStatuses**](FeatureFlagsApi.md#getFeatureFlagStatuses) | **GET** /flag-statuses/{projectKey}/{environmentKey} | Get a list of statuses for all feature flags. The status includes the last time the feature flag was requested, as well as the state of the flag.
 [**getFeatureFlags**](FeatureFlagsApi.md#getFeatureFlags) | **GET** /flags/{projectKey} | Get a list of all features in the given project.
+[**getFlagConfigScheduledChange**](FeatureFlagsApi.md#getFlagConfigScheduledChange) | **GET** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{scheduledChangeId} | Get a scheduled change on a feature flag by id.
+[**getFlagConfigScheduledChanges**](FeatureFlagsApi.md#getFlagConfigScheduledChanges) | **GET** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes | Get all scheduled workflows for a feature flag by key.
+[**getFlagConfigScheduledChangesConflicts**](FeatureFlagsApi.md#getFlagConfigScheduledChangesConflicts) | **POST** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes-conflicts | Lists conflicts between the given instructions and any existing scheduled changes for the feature flag. The actual HTTP verb should be REPORT, not POST.
 [**patchExpiringUserTargets**](FeatureFlagsApi.md#patchExpiringUserTargets) | **PATCH** /flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey} | Update, add, or delete expiring user targets on feature flag
 [**patchFeatureFlag**](FeatureFlagsApi.md#patchFeatureFlag) | **PATCH** /flags/{projectKey}/{featureFlagKey} | Perform a partial update to a feature.
-[**postApplyFeatureFlagApprovalRequest**](FeatureFlagsApi.md#postApplyFeatureFlagApprovalRequest) | **POST** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId}/apply | Apply approval request for a feature flag
+[**patchFlagConfigScheduledChange**](FeatureFlagsApi.md#patchFlagConfigScheduledChange) | **PATCH** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{scheduledChangeId} | Updates an existing scheduled-change on a feature flag in an environment.
+[**postApplyApprovalRequest**](FeatureFlagsApi.md#postApplyApprovalRequest) | **POST** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{approvalRequestId}/apply | Apply approval request for a feature flag config
+[**postApprovalRequest**](FeatureFlagsApi.md#postApprovalRequest) | **POST** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{approvalRequestId} | Create an approval request for a feature flag config
 [**postFeatureFlag**](FeatureFlagsApi.md#postFeatureFlag) | **POST** /flags/{projectKey} | Creates a new feature flag.
-[**postFeatureFlagApprovalRequest**](FeatureFlagsApi.md#postFeatureFlagApprovalRequest) | **POST** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId} | Create an approval request for a feature flag
-[**postReviewFeatureFlagApprovalRequest**](FeatureFlagsApi.md#postReviewFeatureFlagApprovalRequest) | **POST** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{featureFlagApprovalRequestId}/review | Review approval request for a feature flag
+[**postFlagConfigScheduledChanges**](FeatureFlagsApi.md#postFlagConfigScheduledChanges) | **POST** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes | Creates a new scheduled change for a feature flag.
+[**postReviewApprovalRequest**](FeatureFlagsApi.md#postReviewApprovalRequest) | **POST** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{approvalRequestId}/review | Review approval request for a feature flag config
 
 
 # **copyFeatureFlag**
@@ -68,6 +74,66 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\LaunchDarklyApi\Model\FeatureFlag**](../Model/FeatureFlag.md)
+
+### Authorization
+
+[Token](../../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **deleteApprovalRequest**
+> deleteApprovalRequest($project_key, $environment_key, $feature_flag_key, $approval_request_id, $approval_request_config_body)
+
+Delete an approval request for a feature flag config
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Token
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
+$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+$feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
+$approval_request_id = "approval_request_id_example"; // string | The approval request ID
+$approval_request_config_body = new \LaunchDarklyApi\Model\ApprovalRequestConfigBody(); // \LaunchDarklyApi\Model\ApprovalRequestConfigBody | Create a new approval request
+
+try {
+    $apiInstance->deleteApprovalRequest($project_key, $environment_key, $feature_flag_key, $approval_request_id, $approval_request_config_body);
+} catch (Exception $e) {
+    echo 'Exception when calling FeatureFlagsApi->deleteApprovalRequest: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
+ **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
+ **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
+ **approval_request_id** | **string**| The approval request ID |
+ **approval_request_config_body** | [**\LaunchDarklyApi\Model\ApprovalRequestConfigBody**](../Model/ApprovalRequestConfigBody.md)| Create a new approval request | [optional]
+
+### Return type
+
+void (empty response body)
 
 ### Authorization
 
@@ -134,10 +200,10 @@ void (empty response body)
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **deleteFeatureFlagApprovalRequest**
-> deleteFeatureFlagApprovalRequest($project_key, $environment_key, $feature_flag_key, $feature_flag_approval_request_id, $feature_flag_approval_request_config_body)
+# **deleteFlagConfigScheduledChanges**
+> deleteFlagConfigScheduledChanges($project_key, $feature_flag_key, $environment_key, $scheduled_change_id)
 
-Delete an approval request for a feature flag
+Delete a scheduled change on a feature flag in an environment.
 
 ### Example
 ```php
@@ -156,15 +222,14 @@ $apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
     $config
 );
 $project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
-$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 $feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
-$feature_flag_approval_request_id = "feature_flag_approval_request_id_example"; // string | The feature flag approval request ID
-$feature_flag_approval_request_config_body = new \LaunchDarklyApi\Model\FeatureFlagApprovalRequestConfigBody(); // \LaunchDarklyApi\Model\FeatureFlagApprovalRequestConfigBody | Create a new feature flag approval request
+$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+$scheduled_change_id = "scheduled_change_id_example"; // string | The id of the scheduled change
 
 try {
-    $apiInstance->deleteFeatureFlagApprovalRequest($project_key, $environment_key, $feature_flag_key, $feature_flag_approval_request_id, $feature_flag_approval_request_config_body);
+    $apiInstance->deleteFlagConfigScheduledChanges($project_key, $feature_flag_key, $environment_key, $scheduled_change_id);
 } catch (Exception $e) {
-    echo 'Exception when calling FeatureFlagsApi->deleteFeatureFlagApprovalRequest: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FeatureFlagsApi->deleteFlagConfigScheduledChanges: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -174,14 +239,129 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
- **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
  **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
- **feature_flag_approval_request_id** | **string**| The feature flag approval request ID |
- **feature_flag_approval_request_config_body** | [**\LaunchDarklyApi\Model\FeatureFlagApprovalRequestConfigBody**](../Model/FeatureFlagApprovalRequestConfigBody.md)| Create a new feature flag approval request | [optional]
+ **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
+ **scheduled_change_id** | **string**| The id of the scheduled change |
 
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[Token](../../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getApprovalRequest**
+> \LaunchDarklyApi\Model\ApprovalRequests getApprovalRequest($project_key, $feature_flag_key, $environment_key, $approval_request_id)
+
+Get a single approval request for a feature flag config
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Token
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
+$feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
+$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+$approval_request_id = "approval_request_id_example"; // string | The approval request ID
+
+try {
+    $result = $apiInstance->getApprovalRequest($project_key, $feature_flag_key, $environment_key, $approval_request_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling FeatureFlagsApi->getApprovalRequest: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
+ **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
+ **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
+ **approval_request_id** | **string**| The approval request ID |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\ApprovalRequests**](../Model/ApprovalRequests.md)
+
+### Authorization
+
+[Token](../../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getApprovalRequests**
+> \LaunchDarklyApi\Model\ApprovalRequests getApprovalRequests($project_key, $feature_flag_key, $environment_key)
+
+Get all approval requests for a feature flag config
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Token
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
+$feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
+$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+
+try {
+    $result = $apiInstance->getApprovalRequests($project_key, $feature_flag_key, $environment_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling FeatureFlagsApi->getApprovalRequests: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
+ **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
+ **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\ApprovalRequests**](../Model/ApprovalRequests.md)
 
 ### Authorization
 
@@ -296,122 +476,6 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\LaunchDarklyApi\Model\FeatureFlag**](../Model/FeatureFlag.md)
-
-### Authorization
-
-[Token](../../README.md#Token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **getFeatureFlagApprovalRequest**
-> \LaunchDarklyApi\Model\FeatureFlagApprovalRequests getFeatureFlagApprovalRequest($project_key, $feature_flag_key, $environment_key, $feature_flag_approval_request_id)
-
-Get a single approval request for a feature flag
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure API key authorization: Token
-$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-$apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
-$feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
-$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-$feature_flag_approval_request_id = "feature_flag_approval_request_id_example"; // string | The feature flag approval request ID
-
-try {
-    $result = $apiInstance->getFeatureFlagApprovalRequest($project_key, $feature_flag_key, $environment_key, $feature_flag_approval_request_id);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling FeatureFlagsApi->getFeatureFlagApprovalRequest: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
- **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
- **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
- **feature_flag_approval_request_id** | **string**| The feature flag approval request ID |
-
-### Return type
-
-[**\LaunchDarklyApi\Model\FeatureFlagApprovalRequests**](../Model/FeatureFlagApprovalRequests.md)
-
-### Authorization
-
-[Token](../../README.md#Token)
-
-### HTTP request headers
-
- - **Content-Type**: application/json
- - **Accept**: application/json
-
-[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
-
-# **getFeatureFlagApprovalRequests**
-> \LaunchDarklyApi\Model\FeatureFlagApprovalRequests getFeatureFlagApprovalRequests($project_key, $feature_flag_key, $environment_key)
-
-Get all approval requests for a feature flag
-
-### Example
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-// Configure API key authorization: Token
-$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-$apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
-$feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
-$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-
-try {
-    $result = $apiInstance->getFeatureFlagApprovalRequests($project_key, $feature_flag_key, $environment_key);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling FeatureFlagsApi->getFeatureFlagApprovalRequests: ', $e->getMessage(), PHP_EOL;
-}
-?>
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
- **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
- **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
-
-### Return type
-
-[**\LaunchDarklyApi\Model\FeatureFlagApprovalRequests**](../Model/FeatureFlagApprovalRequests.md)
 
 ### Authorization
 
@@ -660,6 +724,181 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
+# **getFlagConfigScheduledChange**
+> \LaunchDarklyApi\Model\FeatureFlagScheduledChange getFlagConfigScheduledChange($project_key, $feature_flag_key, $environment_key, $scheduled_change_id)
+
+Get a scheduled change on a feature flag by id.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Token
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
+$feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
+$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+$scheduled_change_id = "scheduled_change_id_example"; // string | The id of the scheduled change
+
+try {
+    $result = $apiInstance->getFlagConfigScheduledChange($project_key, $feature_flag_key, $environment_key, $scheduled_change_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling FeatureFlagsApi->getFlagConfigScheduledChange: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
+ **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
+ **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
+ **scheduled_change_id** | **string**| The id of the scheduled change |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\FeatureFlagScheduledChange**](../Model/FeatureFlagScheduledChange.md)
+
+### Authorization
+
+[Token](../../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getFlagConfigScheduledChanges**
+> \LaunchDarklyApi\Model\FeatureFlagScheduledChanges getFlagConfigScheduledChanges($project_key, $feature_flag_key, $environment_key)
+
+Get all scheduled workflows for a feature flag by key.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Token
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
+$feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
+$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+
+try {
+    $result = $apiInstance->getFlagConfigScheduledChanges($project_key, $feature_flag_key, $environment_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling FeatureFlagsApi->getFlagConfigScheduledChanges: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
+ **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
+ **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\FeatureFlagScheduledChanges**](../Model/FeatureFlagScheduledChanges.md)
+
+### Authorization
+
+[Token](../../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **getFlagConfigScheduledChangesConflicts**
+> \LaunchDarklyApi\Model\FeatureFlagScheduledChangesConflicts getFlagConfigScheduledChangesConflicts($project_key, $feature_flag_key, $environment_key, $flag_config_scheduled_changes_conflicts_body)
+
+Lists conflicts between the given instructions and any existing scheduled changes for the feature flag. The actual HTTP verb should be REPORT, not POST.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Token
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
+$feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
+$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+$flag_config_scheduled_changes_conflicts_body = new \LaunchDarklyApi\Model\FlagConfigScheduledChangesConflictsBody(); // \LaunchDarklyApi\Model\FlagConfigScheduledChangesConflictsBody | Used to determine if a semantic patch will result in conflicts with scheduled changes on a feature flag.
+
+try {
+    $result = $apiInstance->getFlagConfigScheduledChangesConflicts($project_key, $feature_flag_key, $environment_key, $flag_config_scheduled_changes_conflicts_body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling FeatureFlagsApi->getFlagConfigScheduledChangesConflicts: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
+ **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
+ **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
+ **flag_config_scheduled_changes_conflicts_body** | [**\LaunchDarklyApi\Model\FlagConfigScheduledChangesConflictsBody**](../Model/FlagConfigScheduledChangesConflictsBody.md)| Used to determine if a semantic patch will result in conflicts with scheduled changes on a feature flag. |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\FeatureFlagScheduledChangesConflicts**](../Model/FeatureFlagScheduledChangesConflicts.md)
+
+### Authorization
+
+[Token](../../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
 # **patchExpiringUserTargets**
 > \LaunchDarklyApi\Model\UserTargetingExpirationForFlags patchExpiringUserTargets($project_key, $environment_key, $feature_flag_key, $semantic_patch_with_comment)
 
@@ -776,10 +1015,71 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **postApplyFeatureFlagApprovalRequest**
-> \LaunchDarklyApi\Model\FeatureFlagApprovalRequests postApplyFeatureFlagApprovalRequest($project_key, $feature_flag_key, $environment_key, $feature_flag_approval_request_id, $feature_flag_approval_request_apply_config_body)
+# **patchFlagConfigScheduledChange**
+> \LaunchDarklyApi\Model\FeatureFlagScheduledChange patchFlagConfigScheduledChange($project_key, $feature_flag_key, $flag_config_scheduled_changes_patch_body, $environment_key, $scheduled_change_id)
 
-Apply approval request for a feature flag
+Updates an existing scheduled-change on a feature flag in an environment.
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Token
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
+$feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
+$flag_config_scheduled_changes_patch_body = new \LaunchDarklyApi\Model\FlagConfigScheduledChangesPatchBody(); // \LaunchDarklyApi\Model\FlagConfigScheduledChangesPatchBody | Update scheduled changes on a feature flag.
+$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+$scheduled_change_id = "scheduled_change_id_example"; // string | The id of the scheduled change
+
+try {
+    $result = $apiInstance->patchFlagConfigScheduledChange($project_key, $feature_flag_key, $flag_config_scheduled_changes_patch_body, $environment_key, $scheduled_change_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling FeatureFlagsApi->patchFlagConfigScheduledChange: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
+ **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
+ **flag_config_scheduled_changes_patch_body** | [**\LaunchDarklyApi\Model\FlagConfigScheduledChangesPatchBody**](../Model/FlagConfigScheduledChangesPatchBody.md)| Update scheduled changes on a feature flag. |
+ **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
+ **scheduled_change_id** | **string**| The id of the scheduled change |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\FeatureFlagScheduledChange**](../Model/FeatureFlagScheduledChange.md)
+
+### Authorization
+
+[Token](../../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **postApplyApprovalRequest**
+> \LaunchDarklyApi\Model\ApprovalRequests postApplyApprovalRequest($project_key, $feature_flag_key, $environment_key, $approval_request_id, $approval_request_apply_config_body)
+
+Apply approval request for a feature flag config
 
 ### Example
 ```php
@@ -800,14 +1100,14 @@ $apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
 $project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
 $feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
 $environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-$feature_flag_approval_request_id = "feature_flag_approval_request_id_example"; // string | The feature flag approval request ID
-$feature_flag_approval_request_apply_config_body = new \LaunchDarklyApi\Model\FeatureFlagApprovalRequestApplyConfigBody(); // \LaunchDarklyApi\Model\FeatureFlagApprovalRequestApplyConfigBody | Apply a new feature flag approval request
+$approval_request_id = "approval_request_id_example"; // string | The approval request ID
+$approval_request_apply_config_body = new \LaunchDarklyApi\Model\ApprovalRequestApplyConfigBody(); // \LaunchDarklyApi\Model\ApprovalRequestApplyConfigBody | Apply an approval request
 
 try {
-    $result = $apiInstance->postApplyFeatureFlagApprovalRequest($project_key, $feature_flag_key, $environment_key, $feature_flag_approval_request_id, $feature_flag_approval_request_apply_config_body);
+    $result = $apiInstance->postApplyApprovalRequest($project_key, $feature_flag_key, $environment_key, $approval_request_id, $approval_request_apply_config_body);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FeatureFlagsApi->postApplyFeatureFlagApprovalRequest: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FeatureFlagsApi->postApplyApprovalRequest: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -819,12 +1119,73 @@ Name | Type | Description  | Notes
  **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
  **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
  **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
- **feature_flag_approval_request_id** | **string**| The feature flag approval request ID |
- **feature_flag_approval_request_apply_config_body** | [**\LaunchDarklyApi\Model\FeatureFlagApprovalRequestApplyConfigBody**](../Model/FeatureFlagApprovalRequestApplyConfigBody.md)| Apply a new feature flag approval request |
+ **approval_request_id** | **string**| The approval request ID |
+ **approval_request_apply_config_body** | [**\LaunchDarklyApi\Model\ApprovalRequestApplyConfigBody**](../Model/ApprovalRequestApplyConfigBody.md)| Apply an approval request |
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\FeatureFlagApprovalRequests**](../Model/FeatureFlagApprovalRequests.md)
+[**\LaunchDarklyApi\Model\ApprovalRequests**](../Model/ApprovalRequests.md)
+
+### Authorization
+
+[Token](../../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **postApprovalRequest**
+> \LaunchDarklyApi\Model\ApprovalRequest postApprovalRequest($project_key, $feature_flag_key, $environment_key, $approval_request_id, $approval_request_config_body)
+
+Create an approval request for a feature flag config
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Token
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
+$feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
+$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+$approval_request_id = "approval_request_id_example"; // string | The approval request ID
+$approval_request_config_body = new \LaunchDarklyApi\Model\ApprovalRequestConfigBody(); // \LaunchDarklyApi\Model\ApprovalRequestConfigBody | Create a new approval request
+
+try {
+    $result = $apiInstance->postApprovalRequest($project_key, $feature_flag_key, $environment_key, $approval_request_id, $approval_request_config_body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling FeatureFlagsApi->postApprovalRequest: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
+ **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
+ **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
+ **approval_request_id** | **string**| The approval request ID |
+ **approval_request_config_body** | [**\LaunchDarklyApi\Model\ApprovalRequestConfigBody**](../Model/ApprovalRequestConfigBody.md)| Create a new approval request | [optional]
+
+### Return type
+
+[**\LaunchDarklyApi\Model\ApprovalRequest**](../Model/ApprovalRequest.md)
 
 ### Authorization
 
@@ -894,10 +1255,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **postFeatureFlagApprovalRequest**
-> \LaunchDarklyApi\Model\FeatureFlagApprovalRequest postFeatureFlagApprovalRequest($project_key, $feature_flag_key, $environment_key, $feature_flag_approval_request_id, $feature_flag_approval_request_config_body)
+# **postFlagConfigScheduledChanges**
+> \LaunchDarklyApi\Model\FeatureFlagScheduledChange postFlagConfigScheduledChanges($project_key, $flag_config_scheduled_changes_post_body, $feature_flag_key, $environment_key)
 
-Create an approval request for a feature flag
+Creates a new scheduled change for a feature flag.
 
 ### Example
 ```php
@@ -916,16 +1277,15 @@ $apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
     $config
 );
 $project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
+$flag_config_scheduled_changes_post_body = new \LaunchDarklyApi\Model\FlagConfigScheduledChangesPostBody(); // \LaunchDarklyApi\Model\FlagConfigScheduledChangesPostBody | Create scheduled changes on a feature flag.
 $feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
 $environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-$feature_flag_approval_request_id = "feature_flag_approval_request_id_example"; // string | The feature flag approval request ID
-$feature_flag_approval_request_config_body = new \LaunchDarklyApi\Model\FeatureFlagApprovalRequestConfigBody(); // \LaunchDarklyApi\Model\FeatureFlagApprovalRequestConfigBody | Create a new feature flag approval request
 
 try {
-    $result = $apiInstance->postFeatureFlagApprovalRequest($project_key, $feature_flag_key, $environment_key, $feature_flag_approval_request_id, $feature_flag_approval_request_config_body);
+    $result = $apiInstance->postFlagConfigScheduledChanges($project_key, $flag_config_scheduled_changes_post_body, $feature_flag_key, $environment_key);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FeatureFlagsApi->postFeatureFlagApprovalRequest: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FeatureFlagsApi->postFlagConfigScheduledChanges: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -935,14 +1295,13 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
+ **flag_config_scheduled_changes_post_body** | [**\LaunchDarklyApi\Model\FlagConfigScheduledChangesPostBody**](../Model/FlagConfigScheduledChangesPostBody.md)| Create scheduled changes on a feature flag. |
  **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
  **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
- **feature_flag_approval_request_id** | **string**| The feature flag approval request ID |
- **feature_flag_approval_request_config_body** | [**\LaunchDarklyApi\Model\FeatureFlagApprovalRequestConfigBody**](../Model/FeatureFlagApprovalRequestConfigBody.md)| Create a new feature flag approval request | [optional]
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\FeatureFlagApprovalRequest**](../Model/FeatureFlagApprovalRequest.md)
+[**\LaunchDarklyApi\Model\FeatureFlagScheduledChange**](../Model/FeatureFlagScheduledChange.md)
 
 ### Authorization
 
@@ -955,10 +1314,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **postReviewFeatureFlagApprovalRequest**
-> \LaunchDarklyApi\Model\FeatureFlagApprovalRequests postReviewFeatureFlagApprovalRequest($project_key, $feature_flag_key, $environment_key, $feature_flag_approval_request_id, $feature_flag_approval_request_review_config_body)
+# **postReviewApprovalRequest**
+> \LaunchDarklyApi\Model\ApprovalRequests postReviewApprovalRequest($project_key, $feature_flag_key, $environment_key, $approval_request_id, $approval_request_review_config_body)
 
-Review approval request for a feature flag
+Review approval request for a feature flag config
 
 ### Example
 ```php
@@ -979,14 +1338,14 @@ $apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
 $project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
 $feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
 $environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
-$feature_flag_approval_request_id = "feature_flag_approval_request_id_example"; // string | The feature flag approval request ID
-$feature_flag_approval_request_review_config_body = new \LaunchDarklyApi\Model\FeatureFlagApprovalRequestReviewConfigBody(); // \LaunchDarklyApi\Model\FeatureFlagApprovalRequestReviewConfigBody | Review a feature flag approval request
+$approval_request_id = "approval_request_id_example"; // string | The approval request ID
+$approval_request_review_config_body = new \LaunchDarklyApi\Model\ApprovalRequestReviewConfigBody(); // \LaunchDarklyApi\Model\ApprovalRequestReviewConfigBody | Review an approval request
 
 try {
-    $result = $apiInstance->postReviewFeatureFlagApprovalRequest($project_key, $feature_flag_key, $environment_key, $feature_flag_approval_request_id, $feature_flag_approval_request_review_config_body);
+    $result = $apiInstance->postReviewApprovalRequest($project_key, $feature_flag_key, $environment_key, $approval_request_id, $approval_request_review_config_body);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling FeatureFlagsApi->postReviewFeatureFlagApprovalRequest: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FeatureFlagsApi->postReviewApprovalRequest: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -998,12 +1357,12 @@ Name | Type | Description  | Notes
  **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
  **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
  **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
- **feature_flag_approval_request_id** | **string**| The feature flag approval request ID |
- **feature_flag_approval_request_review_config_body** | [**\LaunchDarklyApi\Model\FeatureFlagApprovalRequestReviewConfigBody**](../Model/FeatureFlagApprovalRequestReviewConfigBody.md)| Review a feature flag approval request |
+ **approval_request_id** | **string**| The approval request ID |
+ **approval_request_review_config_body** | [**\LaunchDarklyApi\Model\ApprovalRequestReviewConfigBody**](../Model/ApprovalRequestReviewConfigBody.md)| Review an approval request |
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\FeatureFlagApprovalRequests**](../Model/FeatureFlagApprovalRequests.md)
+[**\LaunchDarklyApi\Model\ApprovalRequests**](../Model/ApprovalRequests.md)
 
 ### Authorization
 
