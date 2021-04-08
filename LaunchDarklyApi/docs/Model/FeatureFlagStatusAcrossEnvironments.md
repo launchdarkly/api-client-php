@@ -3,7 +3,7 @@
 ## Properties
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_links** | [**\LaunchDarklyApi\Model\Links**](Links.md) |  | [optional] 
+**_links** | [**\LaunchDarklyApi\Model\FeatureFlagStatusLinks**](FeatureFlagStatusLinks.md) |  | [optional] 
 **key** | **string** |  | [optional] 
 **environments** | [**map[string,\LaunchDarklyApi\Model\FeatureFlagStatusForQueriedEnvironment]**](FeatureFlagStatusForQueriedEnvironment.md) |  | [optional] 
 

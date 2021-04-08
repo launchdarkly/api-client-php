@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**patchExpiringUserTargetsOnSegment**](UserSegmentsApi.md#patchExpiringUserTargetsOnSegment) | **PATCH** /segments/{projectKey}/{userSegmentKey}/expiring-user-targets/{environmentKey} | Update, add, or delete expiring user targets on user segment
 [**patchUserSegment**](UserSegmentsApi.md#patchUserSegment) | **PATCH** /segments/{projectKey}/{environmentKey}/{userSegmentKey} | Perform a partial update to a user segment.
 [**postUserSegment**](UserSegmentsApi.md#postUserSegment) | **POST** /segments/{projectKey}/{environmentKey} | Creates a new user segment.
-[**updatedUnboundedSegmentTargets**](UserSegmentsApi.md#updatedUnboundedSegmentTargets) | **POST** /segments/{projectKey}/{environmentKey}/{userSegmentKey}/unbounded-users | Update targets included or excluded in an unbounded segment
+[**updatedBigSegmentTargets**](UserSegmentsApi.md#updatedBigSegmentTargets) | **POST** /segments/{projectKey}/{environmentKey}/{userSegmentKey}/users | Update targets included or excluded in a big segment
 
 
 # **deleteUserSegment**
@@ -416,10 +416,10 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **updatedUnboundedSegmentTargets**
-> updatedUnboundedSegmentTargets($project_key, $environment_key, $user_segment_key, $unbounded_segment_targets_body)
+# **updatedBigSegmentTargets**
+> updatedBigSegmentTargets($project_key, $environment_key, $user_segment_key, $big_segment_targets_body)
 
-Update targets included or excluded in an unbounded segment
+Update targets included or excluded in a big segment
 
 ### Example
 ```php
@@ -440,12 +440,12 @@ $apiInstance = new LaunchDarklyApi\Api\UserSegmentsApi(
 $project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
 $environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
 $user_segment_key = "user_segment_key_example"; // string | The user segment's key. The key identifies the user segment in your code.
-$unbounded_segment_targets_body = new \LaunchDarklyApi\Model\UnboundedSegmentTargetsBody(); // \LaunchDarklyApi\Model\UnboundedSegmentTargetsBody | Add or remove user targets to the included or excluded lists on an unbounded segment
+$big_segment_targets_body = new \LaunchDarklyApi\Model\BigSegmentTargetsBody(); // \LaunchDarklyApi\Model\BigSegmentTargetsBody | Add or remove user targets to the included or excluded lists on a big segment. Contact your account manager for early access to this feature.
 
 try {
-    $apiInstance->updatedUnboundedSegmentTargets($project_key, $environment_key, $user_segment_key, $unbounded_segment_targets_body);
+    $apiInstance->updatedBigSegmentTargets($project_key, $environment_key, $user_segment_key, $big_segment_targets_body);
 } catch (Exception $e) {
-    echo 'Exception when calling UserSegmentsApi->updatedUnboundedSegmentTargets: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling UserSegmentsApi->updatedBigSegmentTargets: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
@@ -457,7 +457,7 @@ Name | Type | Description  | Notes
  **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
  **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
  **user_segment_key** | **string**| The user segment&#39;s key. The key identifies the user segment in your code. |
- **unbounded_segment_targets_body** | [**\LaunchDarklyApi\Model\UnboundedSegmentTargetsBody**](../Model/UnboundedSegmentTargetsBody.md)| Add or remove user targets to the included or excluded lists on an unbounded segment |
+ **big_segment_targets_body** | [**\LaunchDarklyApi\Model\BigSegmentTargetsBody**](../Model/BigSegmentTargetsBody.md)| Add or remove user targets to the included or excluded lists on a big segment. Contact your account manager for early access to this feature. |
 
 ### Return type
 
