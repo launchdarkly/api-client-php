@@ -8,6 +8,8 @@ Method | HTTP request | Description
 [**deleteApprovalRequest**](FeatureFlagsApi.md#deleteApprovalRequest) | **DELETE** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{approvalRequestId} | Delete an approval request for a feature flag config
 [**deleteFeatureFlag**](FeatureFlagsApi.md#deleteFeatureFlag) | **DELETE** /flags/{projectKey}/{featureFlagKey} | Delete a feature flag in all environments. Be careful-- only delete feature flags that are no longer being used by your application.
 [**deleteFlagConfigScheduledChanges**](FeatureFlagsApi.md#deleteFlagConfigScheduledChanges) | **DELETE** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{scheduledChangeId} | Delete a scheduled change on a feature flag in an environment.
+[**flagsProjectKeyEnvironmentKeyFeatureFlagKeyDependentFlagsGet**](FeatureFlagsApi.md#flagsProjectKeyEnvironmentKeyFeatureFlagKeyDependentFlagsGet) | **GET** /flags/{projectKey}/{environmentKey}/{featureFlagKey}/dependent-flags | Get dependent flags for the flag in the environment specified in path parameters
+[**flagsProjectKeyFeatureFlagKeyDependentFlagsGet**](FeatureFlagsApi.md#flagsProjectKeyFeatureFlagKeyDependentFlagsGet) | **GET** /flags/{projectKey}/{featureFlagKey}/dependent-flags | Get dependent flags across all environments for the flag specified in the path parameters
 [**getApprovalRequest**](FeatureFlagsApi.md#getApprovalRequest) | **GET** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{approvalRequestId} | Get a single approval request for a feature flag config
 [**getApprovalRequests**](FeatureFlagsApi.md#getApprovalRequests) | **GET** /projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | Get all approval requests for a feature flag config
 [**getExpiringUserTargets**](FeatureFlagsApi.md#getExpiringUserTargets) | **GET** /flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey} | Get expiring user targets for feature flag
@@ -246,6 +248,118 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[Token](../../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **flagsProjectKeyEnvironmentKeyFeatureFlagKeyDependentFlagsGet**
+> \LaunchDarklyApi\Model\DependentFlagsByEnvironment flagsProjectKeyEnvironmentKeyFeatureFlagKeyDependentFlagsGet($project_key, $environment_key, $feature_flag_key)
+
+Get dependent flags for the flag in the environment specified in path parameters
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Token
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
+$environment_key = "environment_key_example"; // string | The environment key, used to tie together flag configuration and users under one environment so they can be managed together.
+$feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
+
+try {
+    $result = $apiInstance->flagsProjectKeyEnvironmentKeyFeatureFlagKeyDependentFlagsGet($project_key, $environment_key, $feature_flag_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling FeatureFlagsApi->flagsProjectKeyEnvironmentKeyFeatureFlagKeyDependentFlagsGet: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
+ **environment_key** | **string**| The environment key, used to tie together flag configuration and users under one environment so they can be managed together. |
+ **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\DependentFlagsByEnvironment**](../Model/DependentFlagsByEnvironment.md)
+
+### Authorization
+
+[Token](../../README.md#Token)
+
+### HTTP request headers
+
+ - **Content-Type**: application/json
+ - **Accept**: application/json
+
+[[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
+
+# **flagsProjectKeyFeatureFlagKeyDependentFlagsGet**
+> \LaunchDarklyApi\Model\MultiEnvironmentDependentFlags flagsProjectKeyFeatureFlagKeyDependentFlagsGet($project_key, $feature_flag_key)
+
+Get dependent flags across all environments for the flag specified in the path parameters
+
+### Example
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+// Configure API key authorization: Token
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+$apiInstance = new LaunchDarklyApi\Api\FeatureFlagsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = "project_key_example"; // string | The project key, used to tie the flags together under one project so they can be managed together.
+$feature_flag_key = "feature_flag_key_example"; // string | The feature flag's key. The key identifies the flag in your code.
+
+try {
+    $result = $apiInstance->flagsProjectKeyFeatureFlagKeyDependentFlagsGet($project_key, $feature_flag_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling FeatureFlagsApi->flagsProjectKeyFeatureFlagKeyDependentFlagsGet: ', $e->getMessage(), PHP_EOL;
+}
+?>
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key, used to tie the flags together under one project so they can be managed together. |
+ **feature_flag_key** | **string**| The feature flag&#39;s key. The key identifies the flag in your code. |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\MultiEnvironmentDependentFlags**](../Model/MultiEnvironmentDependentFlags.md)
 
 ### Authorization
 

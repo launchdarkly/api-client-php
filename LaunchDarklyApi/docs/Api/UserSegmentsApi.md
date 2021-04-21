@@ -11,7 +11,7 @@ Method | HTTP request | Description
 [**patchExpiringUserTargetsOnSegment**](UserSegmentsApi.md#patchExpiringUserTargetsOnSegment) | **PATCH** /segments/{projectKey}/{userSegmentKey}/expiring-user-targets/{environmentKey} | Update, add, or delete expiring user targets on user segment
 [**patchUserSegment**](UserSegmentsApi.md#patchUserSegment) | **PATCH** /segments/{projectKey}/{environmentKey}/{userSegmentKey} | Perform a partial update to a user segment.
 [**postUserSegment**](UserSegmentsApi.md#postUserSegment) | **POST** /segments/{projectKey}/{environmentKey} | Creates a new user segment.
-[**updatedBigSegmentTargets**](UserSegmentsApi.md#updatedBigSegmentTargets) | **POST** /segments/{projectKey}/{environmentKey}/{userSegmentKey}/users | Update targets included or excluded in a big segment
+[**updateBigSegmentTargets**](UserSegmentsApi.md#updateBigSegmentTargets) | **POST** /segments/{projectKey}/{environmentKey}/{userSegmentKey}/users | Update targets included or excluded in a big segment
 
 
 # **deleteUserSegment**
@@ -416,8 +416,8 @@ Name | Type | Description  | Notes
 
 [[Back to top]](#) [[Back to API list]](../../README.md#documentation-for-api-endpoints) [[Back to Model list]](../../README.md#documentation-for-models) [[Back to README]](../../README.md)
 
-# **updatedBigSegmentTargets**
-> updatedBigSegmentTargets($project_key, $environment_key, $user_segment_key, $big_segment_targets_body)
+# **updateBigSegmentTargets**
+> updateBigSegmentTargets($project_key, $environment_key, $user_segment_key, $big_segment_targets_body)
 
 Update targets included or excluded in a big segment
 
@@ -443,9 +443,9 @@ $user_segment_key = "user_segment_key_example"; // string | The user segment's k
 $big_segment_targets_body = new \LaunchDarklyApi\Model\BigSegmentTargetsBody(); // \LaunchDarklyApi\Model\BigSegmentTargetsBody | Add or remove user targets to the included or excluded lists on a big segment. Contact your account manager for early access to this feature.
 
 try {
-    $apiInstance->updatedBigSegmentTargets($project_key, $environment_key, $user_segment_key, $big_segment_targets_body);
+    $apiInstance->updateBigSegmentTargets($project_key, $environment_key, $user_segment_key, $big_segment_targets_body);
 } catch (Exception $e) {
-    echo 'Exception when calling UserSegmentsApi->updatedBigSegmentTargets: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling UserSegmentsApi->updateBigSegmentTargets: ', $e->getMessage(), PHP_EOL;
 }
 ?>
 ```
