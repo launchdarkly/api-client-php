@@ -22,6 +22,7 @@ docs/Api/ProjectsApi.md
 docs/Api/RelayProxyConfigurationsApi.md
 docs/Api/ScheduledChangesApi.md
 docs/Api/SegmentsApi.md
+docs/Api/TeamsBetaApi.md
 docs/Api/UserSettingsApi.md
 docs/Api/UsersApi.md
 docs/Api/UsersBetaApi.md
@@ -51,6 +52,8 @@ docs/Model/CustomRole.md
 docs/Model/CustomRolePost.md
 docs/Model/CustomRolePostData.md
 docs/Model/CustomRoles.md
+docs/Model/CustomWorkflowMeta.md
+docs/Model/CustomWorkflowStageMeta.md
 docs/Model/DefaultClientSideAvailabilityPost.md
 docs/Model/Defaults.md
 docs/Model/DependentFlag.md
@@ -125,6 +128,8 @@ docs/Model/PatchOperation.md
 docs/Model/PatchSegmentInstruction.md
 docs/Model/PatchSegmentRequest.md
 docs/Model/PatchWithComment.md
+docs/Model/PermissionGrantInput.md
+docs/Model/PermissionGrantRep.md
 docs/Model/PostApprovalRequestApplyRequest.md
 docs/Model/PostApprovalRequestReviewRequest.md
 docs/Model/PostFlagScheduledChangesInput.md
@@ -165,6 +170,10 @@ docs/Model/StatisticsRoot.md
 docs/Model/SubjectDataRep.md
 docs/Model/Target.md
 docs/Model/TargetResourceRep.md
+docs/Model/TeamCollectionRep.md
+docs/Model/TeamPatchInput.md
+docs/Model/TeamPostInput.md
+docs/Model/TeamRep.md
 docs/Model/TitleRep.md
 docs/Model/Token.md
 docs/Model/TokenDataRep.md
@@ -208,6 +217,7 @@ lib/Api/ProjectsApi.php
 lib/Api/RelayProxyConfigurationsApi.php
 lib/Api/ScheduledChangesApi.php
 lib/Api/SegmentsApi.php
+lib/Api/TeamsBetaApi.php
 lib/Api/UserSettingsApi.php
 lib/Api/UsersApi.php
 lib/Api/UsersBetaApi.php
@@ -240,6 +250,8 @@ lib/Model/CustomRole.php
 lib/Model/CustomRolePost.php
 lib/Model/CustomRolePostData.php
 lib/Model/CustomRoles.php
+lib/Model/CustomWorkflowMeta.php
+lib/Model/CustomWorkflowStageMeta.php
 lib/Model/DefaultClientSideAvailabilityPost.php
 lib/Model/Defaults.php
 lib/Model/DependentFlag.php
@@ -315,6 +327,8 @@ lib/Model/PatchOperation.php
 lib/Model/PatchSegmentInstruction.php
 lib/Model/PatchSegmentRequest.php
 lib/Model/PatchWithComment.php
+lib/Model/PermissionGrantInput.php
+lib/Model/PermissionGrantRep.php
 lib/Model/PostApprovalRequestApplyRequest.php
 lib/Model/PostApprovalRequestReviewRequest.php
 lib/Model/PostFlagScheduledChangesInput.php
@@ -355,6 +369,10 @@ lib/Model/StatisticsRoot.php
 lib/Model/SubjectDataRep.php
 lib/Model/Target.php
 lib/Model/TargetResourceRep.php
+lib/Model/TeamCollectionRep.php
+lib/Model/TeamPatchInput.php
+lib/Model/TeamPostInput.php
+lib/Model/TeamRep.php
 lib/Model/TitleRep.php
 lib/Model/Token.php
 lib/Model/TokenDataRep.php
@@ -399,6 +417,7 @@ test/Api/ProjectsApiTest.php
 test/Api/RelayProxyConfigurationsApiTest.php
 test/Api/ScheduledChangesApiTest.php
 test/Api/SegmentsApiTest.php
+test/Api/TeamsBetaApiTest.php
 test/Api/UserSettingsApiTest.php
 test/Api/UsersApiTest.php
 test/Api/UsersBetaApiTest.php
@@ -428,6 +447,8 @@ test/Model/CustomRolePostDataTest.php
 test/Model/CustomRolePostTest.php
 test/Model/CustomRoleTest.php
 test/Model/CustomRolesTest.php
+test/Model/CustomWorkflowMetaTest.php
+test/Model/CustomWorkflowStageMetaTest.php
 test/Model/DefaultClientSideAvailabilityPostTest.php
 test/Model/DefaultsTest.php
 test/Model/DependentFlagEnvironmentTest.php
@@ -502,6 +523,8 @@ test/Model/PatchOperationTest.php
 test/Model/PatchSegmentInstructionTest.php
 test/Model/PatchSegmentRequestTest.php
 test/Model/PatchWithCommentTest.php
+test/Model/PermissionGrantInputTest.php
+test/Model/PermissionGrantRepTest.php
 test/Model/PostApprovalRequestApplyRequestTest.php
 test/Model/PostApprovalRequestReviewRequestTest.php
 test/Model/PostFlagScheduledChangesInputTest.php
@@ -542,6 +565,10 @@ test/Model/StatisticsRootTest.php
 test/Model/SubjectDataRepTest.php
 test/Model/TargetResourceRepTest.php
 test/Model/TargetTest.php
+test/Model/TeamCollectionRepTest.php
+test/Model/TeamPatchInputTest.php
+test/Model/TeamPostInputTest.php
+test/Model/TeamRepTest.php
 test/Model/TitleRepTest.php
 test/Model/TokenDataRepTest.php
 test/Model/TokenTest.php
