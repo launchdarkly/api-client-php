@@ -77,7 +77,8 @@ class UserSegment implements ModelInterface, ArrayAccess, \JsonSerializable
         'generation' => 'int',
         '_unbounded_metadata' => '\LaunchDarklyApi\Model\SegmentMetadata',
         '_external' => 'string',
-        '_external_link' => 'string'
+        '_external_link' => 'string',
+        '_import_in_progress' => 'bool'
     ];
 
     /**
@@ -105,7 +106,8 @@ class UserSegment implements ModelInterface, ArrayAccess, \JsonSerializable
         'generation' => null,
         '_unbounded_metadata' => null,
         '_external' => null,
-        '_external_link' => null
+        '_external_link' => null,
+        '_import_in_progress' => null
     ];
 
     /**
@@ -152,7 +154,8 @@ class UserSegment implements ModelInterface, ArrayAccess, \JsonSerializable
         'generation' => 'generation',
         '_unbounded_metadata' => '_unboundedMetadata',
         '_external' => '_external',
-        '_external_link' => '_externalLink'
+        '_external_link' => '_externalLink',
+        '_import_in_progress' => '_importInProgress'
     ];
 
     /**
@@ -178,7 +181,8 @@ class UserSegment implements ModelInterface, ArrayAccess, \JsonSerializable
         'generation' => 'setGeneration',
         '_unbounded_metadata' => 'setUnboundedMetadata',
         '_external' => 'setExternal',
-        '_external_link' => 'setExternalLink'
+        '_external_link' => 'setExternalLink',
+        '_import_in_progress' => 'setImportInProgress'
     ];
 
     /**
@@ -204,7 +208,8 @@ class UserSegment implements ModelInterface, ArrayAccess, \JsonSerializable
         'generation' => 'getGeneration',
         '_unbounded_metadata' => 'getUnboundedMetadata',
         '_external' => 'getExternal',
-        '_external_link' => 'getExternalLink'
+        '_external_link' => 'getExternalLink',
+        '_import_in_progress' => 'getImportInProgress'
     ];
 
     /**
@@ -282,6 +287,7 @@ class UserSegment implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['_unbounded_metadata'] = $data['_unbounded_metadata'] ?? null;
         $this->container['_external'] = $data['_external'] ?? null;
         $this->container['_external_link'] = $data['_external_link'] ?? null;
+        $this->container['_import_in_progress'] = $data['_import_in_progress'] ?? null;
     }
 
     /**
@@ -763,6 +769,30 @@ class UserSegment implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setExternalLink($_external_link)
     {
         $this->container['_external_link'] = $_external_link;
+
+        return $this;
+    }
+
+    /**
+     * Gets _import_in_progress
+     *
+     * @return bool|null
+     */
+    public function getImportInProgress()
+    {
+        return $this->container['_import_in_progress'];
+    }
+
+    /**
+     * Sets _import_in_progress
+     *
+     * @param bool|null $_import_in_progress _import_in_progress
+     *
+     * @return self
+     */
+    public function setImportInProgress($_import_in_progress)
+    {
+        $this->container['_import_in_progress'] = $_import_in_progress;
 
         return $this;
     }

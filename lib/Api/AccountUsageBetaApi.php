@@ -129,7 +129,7 @@ class AccountUsageBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\SeriesListRep
+     * @return \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getEvaluationsUsage($proj_key, $env_key, $flag_key, $from = null, $to = null, $tz = null)
     {
@@ -151,7 +151,7 @@ class AccountUsageBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\SeriesListRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getEvaluationsUsageWithHttpInfo($proj_key, $env_key, $flag_key, $from = null, $to = null, $tz = null)
     {
@@ -198,6 +198,66 @@ class AccountUsageBetaApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\LaunchDarklyApi\Model\InvalidRequestErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\InvalidRequestErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\LaunchDarklyApi\Model\NotFoundErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\NotFoundErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\SeriesListRep';
@@ -219,6 +279,46 @@ class AccountUsageBetaApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\SeriesListRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -481,7 +581,7 @@ class AccountUsageBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\SeriesListRep
+     * @return \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getEventsUsage($type, $from = null, $to = null)
     {
@@ -500,7 +600,7 @@ class AccountUsageBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\SeriesListRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getEventsUsageWithHttpInfo($type, $from = null, $to = null)
     {
@@ -547,6 +647,66 @@ class AccountUsageBetaApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\LaunchDarklyApi\Model\InvalidRequestErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\InvalidRequestErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\LaunchDarklyApi\Model\NotFoundErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\NotFoundErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\SeriesListRep';
@@ -568,6 +728,46 @@ class AccountUsageBetaApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\SeriesListRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -782,7 +982,7 @@ class AccountUsageBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\SdkListRep
+     * @return \LaunchDarklyApi\Model\SdkListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getMauSdksByType($from = null, $to = null, $sdktype = null)
     {
@@ -801,7 +1001,7 @@ class AccountUsageBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\SdkListRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\SdkListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMauSdksByTypeWithHttpInfo($from = null, $to = null, $sdktype = null)
     {
@@ -848,6 +1048,54 @@ class AccountUsageBetaApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\LaunchDarklyApi\Model\InvalidRequestErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\InvalidRequestErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\SdkListRep';
@@ -869,6 +1117,38 @@ class AccountUsageBetaApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\SdkListRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1085,7 +1365,7 @@ class AccountUsageBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\SeriesListRep
+     * @return \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getMauUsage($from = null, $to = null, $project = null, $environment = null, $sdktype = null, $sdk = null, $anonymous = null, $groupby = null)
     {
@@ -1109,7 +1389,7 @@ class AccountUsageBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\SeriesListRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMauUsageWithHttpInfo($from = null, $to = null, $project = null, $environment = null, $sdktype = null, $sdk = null, $anonymous = null, $groupby = null)
     {
@@ -1156,6 +1436,54 @@ class AccountUsageBetaApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\LaunchDarklyApi\Model\InvalidRequestErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\InvalidRequestErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\SeriesListRep';
@@ -1177,6 +1505,38 @@ class AccountUsageBetaApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\SeriesListRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1457,7 +1817,7 @@ class AccountUsageBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\SeriesListRep
+     * @return \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getMauUsageByCategory($from = null, $to = null)
     {
@@ -1475,7 +1835,7 @@ class AccountUsageBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\SeriesListRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getMauUsageByCategoryWithHttpInfo($from = null, $to = null)
     {
@@ -1522,6 +1882,66 @@ class AccountUsageBetaApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\LaunchDarklyApi\Model\InvalidRequestErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\InvalidRequestErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\LaunchDarklyApi\Model\NotFoundErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\NotFoundErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\SeriesListRep';
@@ -1543,6 +1963,46 @@ class AccountUsageBetaApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\SeriesListRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1741,7 +2201,7 @@ class AccountUsageBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\SeriesListRep
+     * @return \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getStreamUsage($source, $from = null, $to = null, $tz = null)
     {
@@ -1761,7 +2221,7 @@ class AccountUsageBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\SeriesListRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getStreamUsageWithHttpInfo($source, $from = null, $to = null, $tz = null)
     {
@@ -1808,6 +2268,66 @@ class AccountUsageBetaApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\LaunchDarklyApi\Model\InvalidRequestErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\InvalidRequestErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\LaunchDarklyApi\Model\NotFoundErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\NotFoundErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\SeriesListRep';
@@ -1829,6 +2349,46 @@ class AccountUsageBetaApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\SeriesListRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2060,7 +2620,7 @@ class AccountUsageBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\SeriesListRep
+     * @return \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getStreamUsageBySdkVersion($source, $from = null, $to = null, $tz = null, $sdk = null, $version = null)
     {
@@ -2082,7 +2642,7 @@ class AccountUsageBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\SeriesListRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getStreamUsageBySdkVersionWithHttpInfo($source, $from = null, $to = null, $tz = null, $sdk = null, $version = null)
     {
@@ -2129,6 +2689,66 @@ class AccountUsageBetaApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\LaunchDarklyApi\Model\InvalidRequestErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\InvalidRequestErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\LaunchDarklyApi\Model\NotFoundErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\NotFoundErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\SeriesListRep';
@@ -2150,6 +2770,46 @@ class AccountUsageBetaApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\SeriesListRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2404,7 +3064,7 @@ class AccountUsageBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\SdkVersionListRep
+     * @return \LaunchDarklyApi\Model\SdkVersionListRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getStreamUsageSdkversion($source)
     {
@@ -2421,7 +3081,7 @@ class AccountUsageBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\SdkVersionListRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\SdkVersionListRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getStreamUsageSdkversionWithHttpInfo($source)
     {
@@ -2468,6 +3128,42 @@ class AccountUsageBetaApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\SdkVersionListRep';
@@ -2489,6 +3185,30 @@ class AccountUsageBetaApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\SdkVersionListRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);

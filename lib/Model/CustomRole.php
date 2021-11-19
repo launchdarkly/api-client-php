@@ -60,13 +60,14 @@ class CustomRole implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        '_links' => 'array<string,\LaunchDarklyApi\Model\Link>',
-        'name' => 'string',
-        'key' => 'string',
-        'description' => 'string',
         '_id' => 'string',
+        '_links' => 'array<string,\LaunchDarklyApi\Model\Link>',
+        '_access' => '\LaunchDarklyApi\Model\AccessRep',
+        'description' => 'string',
+        'key' => 'string',
+        'name' => 'string',
         'policy' => '\LaunchDarklyApi\Model\Statement[]',
-        '_access' => '\LaunchDarklyApi\Model\AccessRep'
+        'base_permissions' => 'string'
     ];
 
     /**
@@ -77,13 +78,14 @@ class CustomRole implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        '_links' => null,
-        'name' => null,
-        'key' => null,
-        'description' => null,
         '_id' => null,
+        '_links' => null,
+        '_access' => null,
+        'description' => null,
+        'key' => null,
+        'name' => null,
         'policy' => null,
-        '_access' => null
+        'base_permissions' => null
     ];
 
     /**
@@ -113,13 +115,14 @@ class CustomRole implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        '_links' => '_links',
-        'name' => 'name',
-        'key' => 'key',
-        'description' => 'description',
         '_id' => '_id',
+        '_links' => '_links',
+        '_access' => '_access',
+        'description' => 'description',
+        'key' => 'key',
+        'name' => 'name',
         'policy' => 'policy',
-        '_access' => '_access'
+        'base_permissions' => 'basePermissions'
     ];
 
     /**
@@ -128,13 +131,14 @@ class CustomRole implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        '_links' => 'setLinks',
-        'name' => 'setName',
-        'key' => 'setKey',
-        'description' => 'setDescription',
         '_id' => 'setId',
+        '_links' => 'setLinks',
+        '_access' => 'setAccess',
+        'description' => 'setDescription',
+        'key' => 'setKey',
+        'name' => 'setName',
         'policy' => 'setPolicy',
-        '_access' => 'setAccess'
+        'base_permissions' => 'setBasePermissions'
     ];
 
     /**
@@ -143,13 +147,14 @@ class CustomRole implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        '_links' => 'getLinks',
-        'name' => 'getName',
-        'key' => 'getKey',
-        'description' => 'getDescription',
         '_id' => 'getId',
+        '_links' => 'getLinks',
+        '_access' => 'getAccess',
+        'description' => 'getDescription',
+        'key' => 'getKey',
+        'name' => 'getName',
         'policy' => 'getPolicy',
-        '_access' => 'getAccess'
+        'base_permissions' => 'getBasePermissions'
     ];
 
     /**
@@ -209,13 +214,14 @@ class CustomRole implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['_links'] = $data['_links'] ?? null;
-        $this->container['name'] = $data['name'] ?? null;
-        $this->container['key'] = $data['key'] ?? null;
-        $this->container['description'] = $data['description'] ?? null;
         $this->container['_id'] = $data['_id'] ?? null;
-        $this->container['policy'] = $data['policy'] ?? null;
+        $this->container['_links'] = $data['_links'] ?? null;
         $this->container['_access'] = $data['_access'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['key'] = $data['key'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['policy'] = $data['policy'] ?? null;
+        $this->container['base_permissions'] = $data['base_permissions'] ?? null;
     }
 
     /**
@@ -227,17 +233,17 @@ class CustomRole implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['_id'] === null) {
+            $invalidProperties[] = "'_id' can't be null";
+        }
         if ($this->container['_links'] === null) {
             $invalidProperties[] = "'_links' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['key'] === null) {
             $invalidProperties[] = "'key' can't be null";
         }
-        if ($this->container['_id'] === null) {
-            $invalidProperties[] = "'_id' can't be null";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
         }
         if ($this->container['policy'] === null) {
             $invalidProperties[] = "'policy' can't be null";
@@ -256,6 +262,30 @@ class CustomRole implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets _id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['_id'];
+    }
+
+    /**
+     * Sets _id
+     *
+     * @param string $_id _id
+     *
+     * @return self
+     */
+    public function setId($_id)
+    {
+        $this->container['_id'] = $_id;
+
+        return $this;
+    }
 
     /**
      * Gets _links
@@ -282,49 +312,25 @@ class CustomRole implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets name
+     * Gets _access
      *
-     * @return string
+     * @return \LaunchDarklyApi\Model\AccessRep|null
      */
-    public function getName()
+    public function getAccess()
     {
-        return $this->container['name'];
+        return $this->container['_access'];
     }
 
     /**
-     * Sets name
+     * Sets _access
      *
-     * @param string $name name
+     * @param \LaunchDarklyApi\Model\AccessRep|null $_access _access
      *
      * @return self
      */
-    public function setName($name)
+    public function setAccess($_access)
     {
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets key
-     *
-     * @return string
-     */
-    public function getKey()
-    {
-        return $this->container['key'];
-    }
-
-    /**
-     * Sets key
-     *
-     * @param string $key key
-     *
-     * @return self
-     */
-    public function setKey($key)
-    {
-        $this->container['key'] = $key;
+        $this->container['_access'] = $_access;
 
         return $this;
     }
@@ -354,25 +360,49 @@ class CustomRole implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets _id
+     * Gets key
      *
      * @return string
      */
-    public function getId()
+    public function getKey()
     {
-        return $this->container['_id'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets _id
+     * Sets key
      *
-     * @param string $_id _id
+     * @param string $key key
      *
      * @return self
      */
-    public function setId($_id)
+    public function setKey($key)
     {
-        $this->container['_id'] = $_id;
+        $this->container['key'] = $key;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
 
         return $this;
     }
@@ -402,25 +432,25 @@ class CustomRole implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets _access
+     * Gets base_permissions
      *
-     * @return \LaunchDarklyApi\Model\AccessRep|null
+     * @return string|null
      */
-    public function getAccess()
+    public function getBasePermissions()
     {
-        return $this->container['_access'];
+        return $this->container['base_permissions'];
     }
 
     /**
-     * Sets _access
+     * Sets base_permissions
      *
-     * @param \LaunchDarklyApi\Model\AccessRep|null $_access _access
+     * @param string|null $base_permissions base_permissions
      *
      * @return self
      */
-    public function setAccess($_access)
+    public function setBasePermissions($base_permissions)
     {
-        $this->container['_access'] = $_access;
+        $this->container['base_permissions'] = $base_permissions;
 
         return $this;
     }

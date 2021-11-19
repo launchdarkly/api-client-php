@@ -115,4 +115,13 @@ class CustomRolePostDataTest extends TestCase
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "base_permissions"
+     */
+    public function testPropertyBasePermissions()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
 }

@@ -180,6 +180,46 @@ class CodeReferencesApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -290,11 +330,11 @@ class CodeReferencesApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 ['application/json']
             );
         }
@@ -419,6 +459,46 @@ class CodeReferencesApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -520,11 +600,11 @@ class CodeReferencesApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -592,7 +672,7 @@ class CodeReferencesApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\BranchRep
+     * @return \LaunchDarklyApi\Model\BranchRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getBranch($repo, $branch, $proj_key = null, $flag_key = null)
     {
@@ -612,7 +692,7 @@ class CodeReferencesApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\BranchRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\BranchRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBranchWithHttpInfo($repo, $branch, $proj_key = null, $flag_key = null)
     {
@@ -659,6 +739,66 @@ class CodeReferencesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\LaunchDarklyApi\Model\InvalidRequestErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\InvalidRequestErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\LaunchDarklyApi\Model\NotFoundErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\NotFoundErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\BranchRep';
@@ -680,6 +820,46 @@ class CodeReferencesApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\BranchRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -909,7 +1089,7 @@ class CodeReferencesApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\BranchCollectionRep
+     * @return \LaunchDarklyApi\Model\BranchCollectionRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getBranches($repo)
     {
@@ -926,7 +1106,7 @@ class CodeReferencesApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\BranchCollectionRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\BranchCollectionRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getBranchesWithHttpInfo($repo)
     {
@@ -973,6 +1153,66 @@ class CodeReferencesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\LaunchDarklyApi\Model\InvalidRequestErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\InvalidRequestErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\LaunchDarklyApi\Model\NotFoundErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\NotFoundErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\BranchCollectionRep';
@@ -994,6 +1234,46 @@ class CodeReferencesApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\BranchCollectionRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1175,13 +1455,13 @@ class CodeReferencesApi
      * List extinctions
      *
      * @param  string $repo_name Filter results to a specific repository (optional)
-     * @param  string $branch_name Filter results to a specific branch (optional)
+     * @param  string $branch_name Filter results to a specific branch. By default, only the default branch will be queried for extinctions. (optional)
      * @param  string $proj_key Filter results to a specific project (optional)
      * @param  string $flag_key Filter results to a specific flag key (optional)
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\ExtinctionCollectionRep
+     * @return \LaunchDarklyApi\Model\ExtinctionCollectionRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getExtinctions($repo_name = null, $branch_name = null, $proj_key = null, $flag_key = null)
     {
@@ -1195,13 +1475,13 @@ class CodeReferencesApi
      * List extinctions
      *
      * @param  string $repo_name Filter results to a specific repository (optional)
-     * @param  string $branch_name Filter results to a specific branch (optional)
+     * @param  string $branch_name Filter results to a specific branch. By default, only the default branch will be queried for extinctions. (optional)
      * @param  string $proj_key Filter results to a specific project (optional)
      * @param  string $flag_key Filter results to a specific flag key (optional)
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\ExtinctionCollectionRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\ExtinctionCollectionRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getExtinctionsWithHttpInfo($repo_name = null, $branch_name = null, $proj_key = null, $flag_key = null)
     {
@@ -1248,6 +1528,42 @@ class CodeReferencesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\ExtinctionCollectionRep';
@@ -1273,6 +1589,30 @@ class CodeReferencesApi
                     );
                     $e->setResponseObject($data);
                     break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -1284,7 +1624,7 @@ class CodeReferencesApi
      * List extinctions
      *
      * @param  string $repo_name Filter results to a specific repository (optional)
-     * @param  string $branch_name Filter results to a specific branch (optional)
+     * @param  string $branch_name Filter results to a specific branch. By default, only the default branch will be queried for extinctions. (optional)
      * @param  string $proj_key Filter results to a specific project (optional)
      * @param  string $flag_key Filter results to a specific flag key (optional)
      *
@@ -1307,7 +1647,7 @@ class CodeReferencesApi
      * List extinctions
      *
      * @param  string $repo_name Filter results to a specific repository (optional)
-     * @param  string $branch_name Filter results to a specific branch (optional)
+     * @param  string $branch_name Filter results to a specific branch. By default, only the default branch will be queried for extinctions. (optional)
      * @param  string $proj_key Filter results to a specific project (optional)
      * @param  string $flag_key Filter results to a specific flag key (optional)
      *
@@ -1356,7 +1696,7 @@ class CodeReferencesApi
      * Create request for operation 'getExtinctions'
      *
      * @param  string $repo_name Filter results to a specific repository (optional)
-     * @param  string $branch_name Filter results to a specific branch (optional)
+     * @param  string $branch_name Filter results to a specific branch. By default, only the default branch will be queried for extinctions. (optional)
      * @param  string $proj_key Filter results to a specific project (optional)
      * @param  string $flag_key Filter results to a specific flag key (optional)
      *
@@ -1495,7 +1835,7 @@ class CodeReferencesApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\RepositoryCollectionRep
+     * @return \LaunchDarklyApi\Model\RepositoryCollectionRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getRepositories($with_branches = null, $with_references_for_default_branch = null, $proj_key = null, $flag_key = null)
     {
@@ -1515,7 +1855,7 @@ class CodeReferencesApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\RepositoryCollectionRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\RepositoryCollectionRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRepositoriesWithHttpInfo($with_branches = null, $with_references_for_default_branch = null, $proj_key = null, $flag_key = null)
     {
@@ -1562,6 +1902,42 @@ class CodeReferencesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\RepositoryCollectionRep';
@@ -1583,6 +1959,30 @@ class CodeReferencesApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\RepositoryCollectionRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1806,7 +2206,7 @@ class CodeReferencesApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\RepositoryRep
+     * @return \LaunchDarklyApi\Model\RepositoryRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getRepository($repo)
     {
@@ -1823,7 +2223,7 @@ class CodeReferencesApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\RepositoryRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\RepositoryRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRepositoryWithHttpInfo($repo)
     {
@@ -1870,6 +2270,66 @@ class CodeReferencesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\LaunchDarklyApi\Model\InvalidRequestErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\InvalidRequestErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\LaunchDarklyApi\Model\NotFoundErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\NotFoundErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\RepositoryRep';
@@ -1891,6 +2351,46 @@ class CodeReferencesApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\RepositoryRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2074,7 +2574,7 @@ class CodeReferencesApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\StatisticsRoot
+     * @return \LaunchDarklyApi\Model\StatisticsRoot|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getRootStatistic()
     {
@@ -2090,7 +2590,7 @@ class CodeReferencesApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\StatisticsRoot, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\StatisticsRoot|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getRootStatisticWithHttpInfo()
     {
@@ -2137,6 +2637,54 @@ class CodeReferencesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\LaunchDarklyApi\Model\NotFoundErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\NotFoundErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\StatisticsRoot';
@@ -2158,6 +2706,38 @@ class CodeReferencesApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\StatisticsRoot',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2326,7 +2906,7 @@ class CodeReferencesApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\StatisticCollectionRep
+     * @return \LaunchDarklyApi\Model\StatisticCollectionRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getStatistics($proj_key, $flag_key = null)
     {
@@ -2344,7 +2924,7 @@ class CodeReferencesApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\StatisticCollectionRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\StatisticCollectionRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getStatisticsWithHttpInfo($proj_key, $flag_key = null)
     {
@@ -2391,6 +2971,54 @@ class CodeReferencesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\LaunchDarklyApi\Model\NotFoundErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\NotFoundErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\StatisticCollectionRep';
@@ -2412,6 +3040,38 @@ class CodeReferencesApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\StatisticCollectionRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2611,7 +3271,7 @@ class CodeReferencesApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\RepositoryRep
+     * @return \LaunchDarklyApi\Model\RepositoryRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function patchRepository($repo, $patch_operation)
     {
@@ -2629,7 +3289,7 @@ class CodeReferencesApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\RepositoryRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\RepositoryRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function patchRepositoryWithHttpInfo($repo, $patch_operation)
     {
@@ -2676,6 +3336,66 @@ class CodeReferencesApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\LaunchDarklyApi\Model\InvalidRequestErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\InvalidRequestErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\LaunchDarklyApi\Model\NotFoundErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\NotFoundErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\RepositoryRep';
@@ -2697,6 +3417,46 @@ class CodeReferencesApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\RepositoryRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2894,15 +3654,15 @@ class CodeReferencesApi
      *
      * @param  string $repo The repository name (required)
      * @param  string $branch The url-encoded branch name (required)
-     * @param  \LaunchDarklyApi\Model\InlineObject[] $inline_object inline_object (required)
+     * @param  \LaunchDarklyApi\Model\ExtinctionRep[] $extinction_rep extinction_rep (required)
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function postExtinction($repo, $branch, $inline_object)
+    public function postExtinction($repo, $branch, $extinction_rep)
     {
-        $this->postExtinctionWithHttpInfo($repo, $branch, $inline_object);
+        $this->postExtinctionWithHttpInfo($repo, $branch, $extinction_rep);
     }
 
     /**
@@ -2912,15 +3672,15 @@ class CodeReferencesApi
      *
      * @param  string $repo The repository name (required)
      * @param  string $branch The url-encoded branch name (required)
-     * @param  \LaunchDarklyApi\Model\InlineObject[] $inline_object (required)
+     * @param  \LaunchDarklyApi\Model\ExtinctionRep[] $extinction_rep (required)
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postExtinctionWithHttpInfo($repo, $branch, $inline_object)
+    public function postExtinctionWithHttpInfo($repo, $branch, $extinction_rep)
     {
-        $request = $this->postExtinctionRequest($repo, $branch, $inline_object);
+        $request = $this->postExtinctionRequest($repo, $branch, $extinction_rep);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2954,6 +3714,46 @@ class CodeReferencesApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -2966,14 +3766,14 @@ class CodeReferencesApi
      *
      * @param  string $repo The repository name (required)
      * @param  string $branch The url-encoded branch name (required)
-     * @param  \LaunchDarklyApi\Model\InlineObject[] $inline_object (required)
+     * @param  \LaunchDarklyApi\Model\ExtinctionRep[] $extinction_rep (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postExtinctionAsync($repo, $branch, $inline_object)
+    public function postExtinctionAsync($repo, $branch, $extinction_rep)
     {
-        return $this->postExtinctionAsyncWithHttpInfo($repo, $branch, $inline_object)
+        return $this->postExtinctionAsyncWithHttpInfo($repo, $branch, $extinction_rep)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -2988,15 +3788,15 @@ class CodeReferencesApi
      *
      * @param  string $repo The repository name (required)
      * @param  string $branch The url-encoded branch name (required)
-     * @param  \LaunchDarklyApi\Model\InlineObject[] $inline_object (required)
+     * @param  \LaunchDarklyApi\Model\ExtinctionRep[] $extinction_rep (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postExtinctionAsyncWithHttpInfo($repo, $branch, $inline_object)
+    public function postExtinctionAsyncWithHttpInfo($repo, $branch, $extinction_rep)
     {
         $returnType = '';
-        $request = $this->postExtinctionRequest($repo, $branch, $inline_object);
+        $request = $this->postExtinctionRequest($repo, $branch, $extinction_rep);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3026,12 +3826,12 @@ class CodeReferencesApi
      *
      * @param  string $repo The repository name (required)
      * @param  string $branch The url-encoded branch name (required)
-     * @param  \LaunchDarklyApi\Model\InlineObject[] $inline_object (required)
+     * @param  \LaunchDarklyApi\Model\ExtinctionRep[] $extinction_rep (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postExtinctionRequest($repo, $branch, $inline_object)
+    public function postExtinctionRequest($repo, $branch, $extinction_rep)
     {
         // verify the required parameter 'repo' is set
         if ($repo === null || (is_array($repo) && count($repo) === 0)) {
@@ -3045,14 +3845,14 @@ class CodeReferencesApi
                 'Missing the required parameter $branch when calling postExtinction'
             );
         }
-        // verify the required parameter 'inline_object' is set
-        if ($inline_object === null || (is_array($inline_object) && count($inline_object) === 0)) {
+        // verify the required parameter 'extinction_rep' is set
+        if ($extinction_rep === null || (is_array($extinction_rep) && count($extinction_rep) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $inline_object when calling postExtinction'
+                'Missing the required parameter $extinction_rep when calling postExtinction'
             );
         }
 
-        $resourcePath = '/api/v2/code-refs/repositories/{repo}/branches/{branch}';
+        $resourcePath = '/api/v2/code-refs/repositories/{repo}/branches/{branch}/extinction-events';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];
@@ -3081,21 +3881,21 @@ class CodeReferencesApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 ['application/json']
             );
         }
 
         // for model (json/xml)
-        if (isset($inline_object)) {
+        if (isset($extinction_rep)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($inline_object));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($extinction_rep));
             } else {
-                $httpBody = $inline_object;
+                $httpBody = $extinction_rep;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {
@@ -3156,11 +3956,12 @@ class CodeReferencesApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return void
+     * @return \LaunchDarklyApi\Model\RepositoryRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\StatusConflictErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function postRepository($repository_post)
     {
-        $this->postRepositoryWithHttpInfo($repository_post);
+        list($response) = $this->postRepositoryWithHttpInfo($repository_post);
+        return $response;
     }
 
     /**
@@ -3172,7 +3973,7 @@ class CodeReferencesApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of null, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\RepositoryRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\StatusConflictErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function postRepositoryWithHttpInfo($repository_post)
     {
@@ -3206,10 +4007,144 @@ class CodeReferencesApi
                 );
             }
 
-            return [null, $statusCode, $response->getHeaders()];
+            switch($statusCode) {
+                case 200:
+                    if ('\LaunchDarklyApi\Model\RepositoryRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RepositoryRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\LaunchDarklyApi\Model\InvalidRequestErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\InvalidRequestErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 409:
+                    if ('\LaunchDarklyApi\Model\StatusConflictErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\StatusConflictErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\LaunchDarklyApi\Model\RepositoryRep';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RepositoryRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\StatusConflictErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -3247,14 +4182,24 @@ class CodeReferencesApi
      */
     public function postRepositoryAsyncWithHttpInfo($repository_post)
     {
-        $returnType = '';
+        $returnType = '\LaunchDarklyApi\Model\RepositoryRep';
         $request = $this->postRepositoryRequest($repository_post);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
             ->then(
                 function ($response) use ($returnType) {
-                    return [null, $response->getStatusCode(), $response->getHeaders()];
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
                 },
                 function ($exception) {
                     $response = $exception->getResponse();
@@ -3303,11 +4248,11 @@ class CodeReferencesApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 ['application/json']
             );
         }
@@ -3376,15 +4321,15 @@ class CodeReferencesApi
      *
      * @param  string $repo The repository name (required)
      * @param  string $branch The url-encoded branch name (required)
-     * @param  \LaunchDarklyApi\Model\BranchRep $branch_rep branch_rep (required)
+     * @param  \LaunchDarklyApi\Model\PutBranch $put_branch put_branch (required)
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return void
      */
-    public function putBranch($repo, $branch, $branch_rep)
+    public function putBranch($repo, $branch, $put_branch)
     {
-        $this->putBranchWithHttpInfo($repo, $branch, $branch_rep);
+        $this->putBranchWithHttpInfo($repo, $branch, $put_branch);
     }
 
     /**
@@ -3394,15 +4339,15 @@ class CodeReferencesApi
      *
      * @param  string $repo The repository name (required)
      * @param  string $branch The url-encoded branch name (required)
-     * @param  \LaunchDarklyApi\Model\BranchRep $branch_rep (required)
+     * @param  \LaunchDarklyApi\Model\PutBranch $put_branch (required)
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of null, HTTP status code, HTTP response headers (array of strings)
      */
-    public function putBranchWithHttpInfo($repo, $branch, $branch_rep)
+    public function putBranchWithHttpInfo($repo, $branch, $put_branch)
     {
-        $request = $this->putBranchRequest($repo, $branch, $branch_rep);
+        $request = $this->putBranchRequest($repo, $branch, $put_branch);
 
         try {
             $options = $this->createHttpClientOption();
@@ -3436,6 +4381,54 @@ class CodeReferencesApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\StatusConflictErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -3448,14 +4441,14 @@ class CodeReferencesApi
      *
      * @param  string $repo The repository name (required)
      * @param  string $branch The url-encoded branch name (required)
-     * @param  \LaunchDarklyApi\Model\BranchRep $branch_rep (required)
+     * @param  \LaunchDarklyApi\Model\PutBranch $put_branch (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putBranchAsync($repo, $branch, $branch_rep)
+    public function putBranchAsync($repo, $branch, $put_branch)
     {
-        return $this->putBranchAsyncWithHttpInfo($repo, $branch, $branch_rep)
+        return $this->putBranchAsyncWithHttpInfo($repo, $branch, $put_branch)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3470,15 +4463,15 @@ class CodeReferencesApi
      *
      * @param  string $repo The repository name (required)
      * @param  string $branch The url-encoded branch name (required)
-     * @param  \LaunchDarklyApi\Model\BranchRep $branch_rep (required)
+     * @param  \LaunchDarklyApi\Model\PutBranch $put_branch (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function putBranchAsyncWithHttpInfo($repo, $branch, $branch_rep)
+    public function putBranchAsyncWithHttpInfo($repo, $branch, $put_branch)
     {
         $returnType = '';
-        $request = $this->putBranchRequest($repo, $branch, $branch_rep);
+        $request = $this->putBranchRequest($repo, $branch, $put_branch);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3508,12 +4501,12 @@ class CodeReferencesApi
      *
      * @param  string $repo The repository name (required)
      * @param  string $branch The url-encoded branch name (required)
-     * @param  \LaunchDarklyApi\Model\BranchRep $branch_rep (required)
+     * @param  \LaunchDarklyApi\Model\PutBranch $put_branch (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function putBranchRequest($repo, $branch, $branch_rep)
+    public function putBranchRequest($repo, $branch, $put_branch)
     {
         // verify the required parameter 'repo' is set
         if ($repo === null || (is_array($repo) && count($repo) === 0)) {
@@ -3527,10 +4520,10 @@ class CodeReferencesApi
                 'Missing the required parameter $branch when calling putBranch'
             );
         }
-        // verify the required parameter 'branch_rep' is set
-        if ($branch_rep === null || (is_array($branch_rep) && count($branch_rep) === 0)) {
+        // verify the required parameter 'put_branch' is set
+        if ($put_branch === null || (is_array($put_branch) && count($put_branch) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $branch_rep when calling putBranch'
+                'Missing the required parameter $put_branch when calling putBranch'
             );
         }
 
@@ -3563,21 +4556,21 @@ class CodeReferencesApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 ['application/json']
             );
         }
 
         // for model (json/xml)
-        if (isset($branch_rep)) {
+        if (isset($put_branch)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($branch_rep));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($put_branch));
             } else {
-                $httpBody = $branch_rep;
+                $httpBody = $put_branch;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

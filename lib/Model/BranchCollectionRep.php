@@ -255,7 +255,7 @@ class BranchCollectionRep implements ModelInterface, ArrayAccess, \JsonSerializa
     /**
      * Sets items
      *
-     * @param \LaunchDarklyApi\Model\BranchRep[] $items items
+     * @param \LaunchDarklyApi\Model\BranchRep[] $items An array of branches
      *
      * @return self
      */

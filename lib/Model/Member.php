@@ -76,7 +76,8 @@ class Member implements ModelInterface, ArrayAccess, \JsonSerializable
         '_last_seen_metadata' => '\LaunchDarklyApi\Model\LastSeenMetadata',
         '_integration_metadata' => '\LaunchDarklyApi\Model\IntegrationMetadata',
         'teams' => '\LaunchDarklyApi\Model\MemberTeamSummaryRep[]',
-        'permission_grants' => '\LaunchDarklyApi\Model\MemberPermissionGrantSummaryRep[]'
+        'permission_grants' => '\LaunchDarklyApi\Model\MemberPermissionGrantSummaryRep[]',
+        'creation_date' => 'int'
     ];
 
     /**
@@ -103,7 +104,8 @@ class Member implements ModelInterface, ArrayAccess, \JsonSerializable
         '_last_seen_metadata' => null,
         '_integration_metadata' => null,
         'teams' => null,
-        'permission_grants' => null
+        'permission_grants' => null,
+        'creation_date' => 'int64'
     ];
 
     /**
@@ -149,7 +151,8 @@ class Member implements ModelInterface, ArrayAccess, \JsonSerializable
         '_last_seen_metadata' => '_lastSeenMetadata',
         '_integration_metadata' => '_integrationMetadata',
         'teams' => 'teams',
-        'permission_grants' => 'permissionGrants'
+        'permission_grants' => 'permissionGrants',
+        'creation_date' => 'creationDate'
     ];
 
     /**
@@ -174,7 +177,8 @@ class Member implements ModelInterface, ArrayAccess, \JsonSerializable
         '_last_seen_metadata' => 'setLastSeenMetadata',
         '_integration_metadata' => 'setIntegrationMetadata',
         'teams' => 'setTeams',
-        'permission_grants' => 'setPermissionGrants'
+        'permission_grants' => 'setPermissionGrants',
+        'creation_date' => 'setCreationDate'
     ];
 
     /**
@@ -199,7 +203,8 @@ class Member implements ModelInterface, ArrayAccess, \JsonSerializable
         '_last_seen_metadata' => 'getLastSeenMetadata',
         '_integration_metadata' => 'getIntegrationMetadata',
         'teams' => 'getTeams',
-        'permission_grants' => 'getPermissionGrants'
+        'permission_grants' => 'getPermissionGrants',
+        'creation_date' => 'getCreationDate'
     ];
 
     /**
@@ -276,6 +281,7 @@ class Member implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['_integration_metadata'] = $data['_integration_metadata'] ?? null;
         $this->container['teams'] = $data['teams'] ?? null;
         $this->container['permission_grants'] = $data['permission_grants'] ?? null;
+        $this->container['creation_date'] = $data['creation_date'] ?? null;
     }
 
     /**
@@ -316,6 +322,9 @@ class Member implements ModelInterface, ArrayAccess, \JsonSerializable
         }
         if ($this->container['_last_seen'] === null) {
             $invalidProperties[] = "'_last_seen' can't be null";
+        }
+        if ($this->container['creation_date'] === null) {
+            $invalidProperties[] = "'creation_date' can't be null";
         }
         return $invalidProperties;
     }
@@ -736,6 +745,30 @@ class Member implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setPermissionGrants($permission_grants)
     {
         $this->container['permission_grants'] = $permission_grants;
+
+        return $this;
+    }
+
+    /**
+     * Gets creation_date
+     *
+     * @return int
+     */
+    public function getCreationDate()
+    {
+        return $this->container['creation_date'];
+    }
+
+    /**
+     * Sets creation_date
+     *
+     * @param int $creation_date creation_date
+     *
+     * @return self
+     */
+    public function setCreationDate($creation_date)
+    {
+        $this->container['creation_date'] = $creation_date;
 
         return $this;
     }

@@ -258,7 +258,7 @@ class ExtinctionRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets revision
      *
-     * @param string $revision revision
+     * @param string $revision The identifier for the revision where flag became extinct. For example, a commit SHA.
      *
      * @return self
      */
@@ -282,7 +282,7 @@ class ExtinctionRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets message
      *
-     * @param string $message message
+     * @param string $message Description of the extinction. For example, the commit message for the revision.
      *
      * @return self
      */
@@ -330,7 +330,7 @@ class ExtinctionRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets flag_key
      *
-     * @param string $flag_key flag_key
+     * @param string $flag_key The feature flag key
      *
      * @return self
      */
@@ -354,7 +354,7 @@ class ExtinctionRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets proj_key
      *
-     * @param string $proj_key proj_key
+     * @param string $proj_key The project key
      *
      * @return self
      */

@@ -184,6 +184,38 @@ class ApprovalsApi
 
         } catch (ApiException $e) {
             switch ($e->getCode()) {
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
             }
             throw $e;
         }
@@ -336,11 +368,11 @@ class ApprovalsApi
 
         if ($multipart) {
             $headers = $this->headerSelector->selectHeadersForMultipart(
-                []
+                ['application/json']
             );
         } else {
             $headers = $this->headerSelector->selectHeaders(
-                [],
+                ['application/json'],
                 []
             );
         }
@@ -408,7 +440,7 @@ class ApprovalsApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse
+     * @return \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getApproval($project_key, $feature_flag_key, $environment_key, $id)
     {
@@ -428,7 +460,7 @@ class ApprovalsApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getApprovalWithHttpInfo($project_key, $feature_flag_key, $environment_key, $id)
     {
@@ -475,6 +507,54 @@ class ApprovalsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\LaunchDarklyApi\Model\NotFoundErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\NotFoundErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse';
@@ -496,6 +576,38 @@ class ApprovalsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -733,7 +845,7 @@ class ApprovalsApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\FlagConfigApprovalRequestsResponse
+     * @return \LaunchDarklyApi\Model\FlagConfigApprovalRequestsResponse|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getApprovals($project_key, $feature_flag_key, $environment_key)
     {
@@ -752,7 +864,7 @@ class ApprovalsApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\FlagConfigApprovalRequestsResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\FlagConfigApprovalRequestsResponse|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getApprovalsWithHttpInfo($project_key, $feature_flag_key, $environment_key)
     {
@@ -799,6 +911,54 @@ class ApprovalsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\LaunchDarklyApi\Model\NotFoundErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\NotFoundErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\FlagConfigApprovalRequestsResponse';
@@ -820,6 +980,38 @@ class ApprovalsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\FlagConfigApprovalRequestsResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1041,7 +1233,7 @@ class ApprovalsApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse
+     * @return \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function postApprovalRequest($project_key, $feature_flag_key, $environment_key, $create_flag_config_approval_request_request)
     {
@@ -1061,7 +1253,7 @@ class ApprovalsApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function postApprovalRequestWithHttpInfo($project_key, $feature_flag_key, $environment_key, $create_flag_config_approval_request_request)
     {
@@ -1108,6 +1300,54 @@ class ApprovalsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\LaunchDarklyApi\Model\InvalidRequestErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\InvalidRequestErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse';
@@ -1129,6 +1369,38 @@ class ApprovalsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1366,7 +1638,7 @@ class ApprovalsApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse
+     * @return \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function postApprovalRequestApplyRequest($project_key, $feature_flag_key, $environment_key, $id, $post_approval_request_apply_request)
     {
@@ -1387,7 +1659,7 @@ class ApprovalsApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function postApprovalRequestApplyRequestWithHttpInfo($project_key, $feature_flag_key, $environment_key, $id, $post_approval_request_apply_request)
     {
@@ -1434,6 +1706,66 @@ class ApprovalsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\LaunchDarklyApi\Model\InvalidRequestErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\InvalidRequestErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\LaunchDarklyApi\Model\NotFoundErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\NotFoundErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse';
@@ -1455,6 +1787,46 @@ class ApprovalsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1709,7 +2081,7 @@ class ApprovalsApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse
+     * @return \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function postApprovalRequestReview($project_key, $feature_flag_key, $environment_key, $id, $post_approval_request_review_request)
     {
@@ -1730,7 +2102,7 @@ class ApprovalsApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function postApprovalRequestReviewWithHttpInfo($project_key, $feature_flag_key, $environment_key, $id, $post_approval_request_review_request)
     {
@@ -1777,6 +2149,66 @@ class ApprovalsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\LaunchDarklyApi\Model\InvalidRequestErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\InvalidRequestErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\LaunchDarklyApi\Model\NotFoundErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\NotFoundErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse';
@@ -1798,6 +2230,46 @@ class ApprovalsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2051,7 +2523,7 @@ class ApprovalsApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse
+     * @return \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\StatusConflictErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function postFlagCopyConfigApprovalRequest($project_key, $feature_flag_key, $environment_key, $create_copy_flag_config_approval_request_request)
     {
@@ -2071,7 +2543,7 @@ class ApprovalsApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\StatusConflictErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function postFlagCopyConfigApprovalRequestWithHttpInfo($project_key, $feature_flag_key, $environment_key, $create_copy_flag_config_approval_request_request)
     {
@@ -2118,6 +2590,66 @@ class ApprovalsApi
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
+                case 400:
+                    if ('\LaunchDarklyApi\Model\InvalidRequestErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\InvalidRequestErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 403:
+                    if ('\LaunchDarklyApi\Model\ForbiddenErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ForbiddenErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 409:
+                    if ('\LaunchDarklyApi\Model\StatusConflictErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\StatusConflictErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 429:
+                    if ('\LaunchDarklyApi\Model\RateLimitedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\RateLimitedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
             }
 
             $returnType = '\LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse';
@@ -2139,6 +2671,46 @@ class ApprovalsApi
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
                         '\LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 409:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\StatusConflictErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2260,7 +2832,7 @@ class ApprovalsApi
             );
         }
 
-        $resourcePath = '/api/v2/projects/{projectKey}/flags/{featureFlagKey}/copy/environments/{environmentKey}/approval-requests-flag-copy';
+        $resourcePath = '/api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests-flag-copy';
         $formParams = [];
         $queryParams = [];
         $headerParams = [];

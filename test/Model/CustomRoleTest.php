@@ -81,6 +81,15 @@ class CustomRoleTest extends TestCase
     }
 
     /**
+     * Test attribute "_id"
+     */
+    public function testPropertyId()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "_links"
      */
     public function testPropertyLinks()
@@ -90,18 +99,9 @@ class CustomRoleTest extends TestCase
     }
 
     /**
-     * Test attribute "name"
+     * Test attribute "_access"
      */
-    public function testPropertyName()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "key"
-     */
-    public function testPropertyKey()
+    public function testPropertyAccess()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
@@ -117,9 +117,18 @@ class CustomRoleTest extends TestCase
     }
 
     /**
-     * Test attribute "_id"
+     * Test attribute "key"
      */
-    public function testPropertyId()
+    public function testPropertyKey()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "name"
+     */
+    public function testPropertyName()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
@@ -135,9 +144,9 @@ class CustomRoleTest extends TestCase
     }
 
     /**
-     * Test attribute "_access"
+     * Test attribute "base_permissions"
      */
-    public function testPropertyAccess()
+    public function testPropertyBasePermissions()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

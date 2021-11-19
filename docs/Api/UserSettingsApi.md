@@ -342,7 +342,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

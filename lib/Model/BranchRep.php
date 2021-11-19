@@ -221,6 +221,18 @@ class BranchRep implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['head'] === null) {
+            $invalidProperties[] = "'head' can't be null";
+        }
+        if ($this->container['sync_time'] === null) {
+            $invalidProperties[] = "'sync_time' can't be null";
+        }
+        if ($this->container['_links'] === null) {
+            $invalidProperties[] = "'_links' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -239,7 +251,7 @@ class BranchRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -249,7 +261,7 @@ class BranchRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string $name The branch name
      *
      * @return self
      */
@@ -263,7 +275,7 @@ class BranchRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets head
      *
-     * @return string|null
+     * @return string
      */
     public function getHead()
     {
@@ -273,7 +285,7 @@ class BranchRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets head
      *
-     * @param string|null $head head
+     * @param string $head An ID representing the branch HEAD. For example, a commit SHA.
      *
      * @return self
      */
@@ -297,7 +309,7 @@ class BranchRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets update_sequence_id
      *
-     * @param int|null $update_sequence_id update_sequence_id
+     * @param int|null $update_sequence_id An optional ID used to prevent older data from overwriting newer data
      *
      * @return self
      */
@@ -311,7 +323,7 @@ class BranchRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets sync_time
      *
-     * @return int|null
+     * @return int
      */
     public function getSyncTime()
     {
@@ -321,7 +333,7 @@ class BranchRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets sync_time
      *
-     * @param int|null $sync_time sync_time
+     * @param int $sync_time sync_time
      *
      * @return self
      */
@@ -345,7 +357,7 @@ class BranchRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets references
      *
-     * @param \LaunchDarklyApi\Model\ReferenceRep[]|null $references references
+     * @param \LaunchDarklyApi\Model\ReferenceRep[]|null $references An array of flag references found on the branch
      *
      * @return self
      */
@@ -359,7 +371,7 @@ class BranchRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets _links
      *
-     * @return array<string,mixed>|null
+     * @return array<string,mixed>
      */
     public function getLinks()
     {
@@ -369,7 +381,7 @@ class BranchRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets _links
      *
-     * @param array<string,mixed>|null $_links _links
+     * @param array<string,mixed> $_links _links
      *
      * @return self
      */

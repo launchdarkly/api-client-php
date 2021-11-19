@@ -203,6 +203,12 @@ class ReferenceRep implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['path'] === null) {
+            $invalidProperties[] = "'path' can't be null";
+        }
+        if ($this->container['hunks'] === null) {
+            $invalidProperties[] = "'hunks' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -221,7 +227,7 @@ class ReferenceRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets path
      *
-     * @return string|null
+     * @return string
      */
     public function getPath()
     {
@@ -231,7 +237,7 @@ class ReferenceRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets path
      *
-     * @param string|null $path path
+     * @param string $path File path of the reference
      *
      * @return self
      */
@@ -255,7 +261,7 @@ class ReferenceRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hint
      *
-     * @param string|null $hint hint
+     * @param string|null $hint Programming language used in the file
      *
      * @return self
      */
@@ -269,7 +275,7 @@ class ReferenceRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets hunks
      *
-     * @return \LaunchDarklyApi\Model\HunkRep[]|null
+     * @return \LaunchDarklyApi\Model\HunkRep[]
      */
     public function getHunks()
     {
@@ -279,7 +285,7 @@ class ReferenceRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hunks
      *
-     * @param \LaunchDarklyApi\Model\HunkRep[]|null $hunks hunks
+     * @param \LaunchDarklyApi\Model\HunkRep[] $hunks hunks
      *
      * @return self
      */

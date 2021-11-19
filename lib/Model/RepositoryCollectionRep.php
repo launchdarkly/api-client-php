@@ -255,7 +255,7 @@ class RepositoryCollectionRep implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets items
      *
-     * @param \LaunchDarklyApi\Model\RepositoryRep[] $items items
+     * @param \LaunchDarklyApi\Model\RepositoryRep[] $items An array of repositories
      *
      * @return self
      */

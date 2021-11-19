@@ -221,6 +221,12 @@ class TeamPostInput implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['key'] === null) {
+            $invalidProperties[] = "'key' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -249,7 +255,7 @@ class TeamPostInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets custom_role_keys
      *
-     * @param string[]|null $custom_role_keys custom_role_keys
+     * @param string[]|null $custom_role_keys List of custom role keys the team will access
      *
      * @return self
      */
@@ -273,7 +279,7 @@ class TeamPostInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets description
      *
-     * @param string|null $description description
+     * @param string|null $description A description of the team
      *
      * @return self
      */
@@ -287,7 +293,7 @@ class TeamPostInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets key
      *
-     * @return string|null
+     * @return string
      */
     public function getKey()
     {
@@ -297,7 +303,7 @@ class TeamPostInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets key
      *
-     * @param string|null $key key
+     * @param string $key The team's key or ID
      *
      * @return self
      */
@@ -321,7 +327,7 @@ class TeamPostInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets member_ids
      *
-     * @param string[]|null $member_ids member_ids
+     * @param string[]|null $member_ids A list of member IDs who belong to the team
      *
      * @return self
      */
@@ -335,7 +341,7 @@ class TeamPostInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets name
      *
-     * @return string|null
+     * @return string
      */
     public function getName()
     {
@@ -345,7 +351,7 @@ class TeamPostInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string|null $name name
+     * @param string $name A human-friendly name for the team
      *
      * @return self
      */
@@ -369,7 +375,7 @@ class TeamPostInput implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets permission_grants
      *
-     * @param \LaunchDarklyApi\Model\PermissionGrantInput[]|null $permission_grants permission_grants
+     * @param \LaunchDarklyApi\Model\PermissionGrantInput[]|null $permission_grants A list of permission grants to apply to the team. Can use \"maintainTeam\" to add team maintainers
      *
      * @return self
      */

@@ -6,8 +6,8 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  |
 **source_link** | **string** |  | [optional]
-**commit_url_template** | **string** |  | [optional]
-**hunk_url_template** | **string** |  | [optional]
+**commit_url_template** | **string** | A template for constructing a valid URL to view the commit | [optional]
+**hunk_url_template** | **string** | A template for constructing a valid URL to view the hunk | [optional]
 **type** | **string** | Optionally specify a repository type. The default value is &lt;code&gt;custom&lt;/code&gt; | [optional]
 **default_branch** | **string** | The default branch, if not specified, is &lt;code&gt;master&lt;/code&gt; | [optional]
 

@@ -241,4 +241,13 @@ class UserSegmentTest extends TestCase
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "_import_in_progress"
+     */
+    public function testPropertyImportInProgress()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
 }

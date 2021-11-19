@@ -255,7 +255,7 @@ class ExtinctionCollectionRep implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets items
      *
-     * @param array<string,\LaunchDarklyApi\Model\ExtinctionRep[]> $items items
+     * @param array<string,\LaunchDarklyApi\Model\ExtinctionRep[]> $items An array of extinction events
      *
      * @return self
      */

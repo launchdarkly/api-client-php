@@ -19,7 +19,7 @@ deleteMember($id)
 
 Delete account member
 
-Delete a single account member by ID
+Delete a single account member by ID. Requests to delete account members will not work if SCIM is enabled for the account.
 
 ### Example
 
@@ -66,7 +66,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -165,7 +165,7 @@ $apiInstance = new LaunchDarklyApi\Api\AccountMembersApi(
 );
 $limit = 56; // int | The number of members to return in the response. Defaults to 20.
 $offset = 56; // int | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first ten items and then return the next `limit` items.
-$filter = 'filter_example'; // string | A comma-separated list of filters. Each filter is of the form `field:value`. Supported fields are explained below.
+$filter = 'filter_example'; // string | A comma-separated list of filters. Each filter is of the form `field:value`. Supported fields are explained above.
 $sort = 'sort_example'; // string | A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order.
 
 try {
@@ -182,7 +182,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **limit** | **int**| The number of members to return in the response. Defaults to 20. | [optional]
  **offset** | **int**| Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first ten items and then return the next &#x60;limit&#x60; items. | [optional]
- **filter** | **string**| A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained below. | [optional]
+ **filter** | **string**| A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained above. | [optional]
  **sort** | **string**| A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. | [optional]
 
 ### Return type
@@ -210,7 +210,7 @@ patchMember($id, $patch_operation): \LaunchDarklyApi\Model\Member
 
 Modify an account member
 
-Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member.
+Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member. Requests to update account members will not work if SCIM is enabled for the account.
 
 ### Example
 
@@ -269,12 +269,12 @@ Name | Type | Description  | Notes
 ## `postMembers()`
 
 ```php
-postMembers($inline_object1): \LaunchDarklyApi\Model\Members
+postMembers($new_member_form): \LaunchDarklyApi\Model\Members
 ```
 
 Invite new members
 
-> ### Full use of this API resource is only available to accounts with paid subscriptions > > The ability to bulk invite members is a paid feature. Single members may be invited if not on a paid plan.  Invite one or more new members to join an account. Each member is sent an invitation. Members with \"admin\" or \"owner\" roles may create new members, as well as anyone with a \"createMember\" permission for \"member/\\*\". If a member cannot be invited, the entire request is rejected and no members are invited from that request.  Each member _must_ have an `email` field and either a `role` or a `customRoles` field. If any of the fields are not populated correctly, the request is rejected with the reason specified in the \"message\" field of the response.  _No more than 50 members may be created per request._  A request may also fail because of conflicts with existing members. These conflicts are reported using the additional `code` and `invalid_emails` response fields with the following possible values for `code`:  - **email_already_exists_in_account**: A member with this email address already exists in this account. - **email_taken_in_different_account**: A member with this email address exists in another account. - **duplicate_email**s: This request contains two or more members with the same email address.  A request that fails for one of the above reasons returns an HTTP response code of 400 (Bad Request).
+> ### Full use of this API resource is only available to accounts with paid subscriptions > > The ability to bulk invite members is a paid feature. Single members may be invited if not on a paid plan.  Invite one or more new members to join an account. Each member is sent an invitation. Members with \"admin\" or \"owner\" roles may create new members, as well as anyone with a \"createMember\" permission for \"member/\\*\". If a member cannot be invited, the entire request is rejected and no members are invited from that request.  Each member _must_ have an `email` field and either a `role` or a `customRoles` field. If any of the fields are not populated correctly, the request is rejected with the reason specified in the \"message\" field of the response.  Requests to create account members will not work if SCIM is enabled for the account.  _No more than 50 members may be created per request._  A request may also fail because of conflicts with existing members. These conflicts are reported using the additional `code` and `invalid_emails` response fields with the following possible values for `code`:  - **email_already_exists_in_account**: A member with this email address already exists in this account. - **email_taken_in_different_account**: A member with this email address exists in another account. - **duplicate_email**s: This request contains two or more members with the same email address.  A request that fails for one of the above reasons returns an HTTP response code of 400 (Bad Request).
 
 ### Example
 
@@ -295,10 +295,10 @@ $apiInstance = new LaunchDarklyApi\Api\AccountMembersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$inline_object1 = array(new \LaunchDarklyApi\Model\InlineObject1()); // \LaunchDarklyApi\Model\InlineObject1[]
+$new_member_form = array(new \LaunchDarklyApi\Model\NewMemberForm()); // \LaunchDarklyApi\Model\NewMemberForm[]
 
 try {
-    $result = $apiInstance->postMembers($inline_object1);
+    $result = $apiInstance->postMembers($new_member_form);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountMembersApi->postMembers: ', $e->getMessage(), PHP_EOL;
@@ -309,7 +309,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **inline_object1** | [**\LaunchDarklyApi\Model\InlineObject1[]**](../Model/InlineObject1.md)|  |
+ **new_member_form** | [**\LaunchDarklyApi\Model\NewMemberForm[]**](../Model/NewMemberForm.md)|  |
 
 ### Return type
 

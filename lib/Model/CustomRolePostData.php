@@ -63,7 +63,8 @@ class CustomRolePostData implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => 'string',
         'key' => 'string',
         'description' => 'string',
-        'policy' => '\LaunchDarklyApi\Model\StatementPost[]'
+        'policy' => '\LaunchDarklyApi\Model\StatementPost[]',
+        'base_permissions' => 'string'
     ];
 
     /**
@@ -77,7 +78,8 @@ class CustomRolePostData implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => null,
         'key' => null,
         'description' => null,
-        'policy' => null
+        'policy' => null,
+        'base_permissions' => null
     ];
 
     /**
@@ -110,7 +112,8 @@ class CustomRolePostData implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => 'name',
         'key' => 'key',
         'description' => 'description',
-        'policy' => 'policy'
+        'policy' => 'policy',
+        'base_permissions' => 'basePermissions'
     ];
 
     /**
@@ -122,7 +125,8 @@ class CustomRolePostData implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => 'setName',
         'key' => 'setKey',
         'description' => 'setDescription',
-        'policy' => 'setPolicy'
+        'policy' => 'setPolicy',
+        'base_permissions' => 'setBasePermissions'
     ];
 
     /**
@@ -134,7 +138,8 @@ class CustomRolePostData implements ModelInterface, ArrayAccess, \JsonSerializab
         'name' => 'getName',
         'key' => 'getKey',
         'description' => 'getDescription',
-        'policy' => 'getPolicy'
+        'policy' => 'getPolicy',
+        'base_permissions' => 'getBasePermissions'
     ];
 
     /**
@@ -198,6 +203,7 @@ class CustomRolePostData implements ModelInterface, ArrayAccess, \JsonSerializab
         $this->container['key'] = $data['key'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
         $this->container['policy'] = $data['policy'] ?? null;
+        $this->container['base_permissions'] = $data['base_permissions'] ?? null;
     }
 
     /**
@@ -325,6 +331,30 @@ class CustomRolePostData implements ModelInterface, ArrayAccess, \JsonSerializab
     public function setPolicy($policy)
     {
         $this->container['policy'] = $policy;
+
+        return $this;
+    }
+
+    /**
+     * Gets base_permissions
+     *
+     * @return string|null
+     */
+    public function getBasePermissions()
+    {
+        return $this->container['base_permissions'];
+    }
+
+    /**
+     * Sets base_permissions
+     *
+     * @param string|null $base_permissions base_permissions
+     *
+     * @return self
+     */
+    public function setBasePermissions($base_permissions)
+    {
+        $this->container['base_permissions'] = $base_permissions;
 
         return $this;
     }

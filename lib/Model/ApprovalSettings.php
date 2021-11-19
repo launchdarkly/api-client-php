@@ -115,7 +115,7 @@ class ApprovalSettings implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'required' => 'Required',
+        'required' => 'required',
         'bypass_approvals_for_pending_changes' => 'bypassApprovalsForPendingChanges',
         'min_num_approvals' => 'minNumApprovals',
         'can_review_own_request' => 'canReviewOwnRequest',

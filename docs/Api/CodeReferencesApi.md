@@ -14,7 +14,7 @@ Method | HTTP request | Description
 [**getRootStatistic()**](CodeReferencesApi.md#getRootStatistic) | **GET** /api/v2/code-refs/statistics | Get links to code reference repositories for each project
 [**getStatistics()**](CodeReferencesApi.md#getStatistics) | **GET** /api/v2/code-refs/statistics/{projKey} | Get number of code references for flags
 [**patchRepository()**](CodeReferencesApi.md#patchRepository) | **PATCH** /api/v2/code-refs/repositories/{repo} | Update repository
-[**postExtinction()**](CodeReferencesApi.md#postExtinction) | **POST** /api/v2/code-refs/repositories/{repo}/branches/{branch} | Create extinction
+[**postExtinction()**](CodeReferencesApi.md#postExtinction) | **POST** /api/v2/code-refs/repositories/{repo}/branches/{branch}/extinction-events | Create extinction
 [**postRepository()**](CodeReferencesApi.md#postRepository) | **POST** /api/v2/code-refs/repositories | Create repository
 [**putBranch()**](CodeReferencesApi.md#putBranch) | **PUT** /api/v2/code-refs/repositories/{repo}/branches/{branch} | Upsert branch
 
@@ -76,7 +76,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -137,7 +137,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -303,7 +303,7 @@ $apiInstance = new LaunchDarklyApi\Api\CodeReferencesApi(
     $config
 );
 $repo_name = 'repo_name_example'; // string | Filter results to a specific repository
-$branch_name = 'branch_name_example'; // string | Filter results to a specific branch
+$branch_name = 'branch_name_example'; // string | Filter results to a specific branch. By default, only the default branch will be queried for extinctions.
 $proj_key = 'proj_key_example'; // string | Filter results to a specific project
 $flag_key = 'flag_key_example'; // string | Filter results to a specific flag key
 
@@ -320,7 +320,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **repo_name** | **string**| Filter results to a specific repository | [optional]
- **branch_name** | **string**| Filter results to a specific branch | [optional]
+ **branch_name** | **string**| Filter results to a specific branch. By default, only the default branch will be queried for extinctions. | [optional]
  **proj_key** | **string**| Filter results to a specific project | [optional]
  **flag_key** | **string**| Filter results to a specific flag key | [optional]
 
@@ -661,7 +661,7 @@ Name | Type | Description  | Notes
 ## `postExtinction()`
 
 ```php
-postExtinction($repo, $branch, $inline_object)
+postExtinction($repo, $branch, $extinction_rep)
 ```
 
 Create extinction
@@ -689,10 +689,10 @@ $apiInstance = new LaunchDarklyApi\Api\CodeReferencesApi(
 );
 $repo = 'repo_example'; // string | The repository name
 $branch = 'branch_example'; // string | The url-encoded branch name
-$inline_object = array(new \LaunchDarklyApi\Model\InlineObject()); // \LaunchDarklyApi\Model\InlineObject[]
+$extinction_rep = array(new \LaunchDarklyApi\Model\ExtinctionRep()); // \LaunchDarklyApi\Model\ExtinctionRep[]
 
 try {
-    $apiInstance->postExtinction($repo, $branch, $inline_object);
+    $apiInstance->postExtinction($repo, $branch, $extinction_rep);
 } catch (Exception $e) {
     echo 'Exception when calling CodeReferencesApi->postExtinction: ', $e->getMessage(), PHP_EOL;
 }
@@ -704,7 +704,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **repo** | **string**| The repository name |
  **branch** | **string**| The url-encoded branch name |
- **inline_object** | [**\LaunchDarklyApi\Model\InlineObject[]**](../Model/InlineObject.md)|  |
+ **extinction_rep** | [**\LaunchDarklyApi\Model\ExtinctionRep[]**](../Model/ExtinctionRep.md)|  |
 
 ### Return type
 
@@ -717,7 +717,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -726,7 +726,7 @@ void (empty response body)
 ## `postRepository()`
 
 ```php
-postRepository($repository_post)
+postRepository($repository_post): \LaunchDarklyApi\Model\RepositoryRep
 ```
 
 Create repository
@@ -755,7 +755,8 @@ $apiInstance = new LaunchDarklyApi\Api\CodeReferencesApi(
 $repository_post = new \LaunchDarklyApi\Model\RepositoryPost(); // \LaunchDarklyApi\Model\RepositoryPost
 
 try {
-    $apiInstance->postRepository($repository_post);
+    $result = $apiInstance->postRepository($repository_post);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CodeReferencesApi->postRepository: ', $e->getMessage(), PHP_EOL;
 }
@@ -769,7 +770,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\LaunchDarklyApi\Model\RepositoryRep**](../Model/RepositoryRep.md)
 
 ### Authorization
 
@@ -778,7 +779,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -787,7 +788,7 @@ void (empty response body)
 ## `putBranch()`
 
 ```php
-putBranch($repo, $branch, $branch_rep)
+putBranch($repo, $branch, $put_branch)
 ```
 
 Upsert branch
@@ -815,10 +816,10 @@ $apiInstance = new LaunchDarklyApi\Api\CodeReferencesApi(
 );
 $repo = 'repo_example'; // string | The repository name
 $branch = 'branch_example'; // string | The url-encoded branch name
-$branch_rep = new \LaunchDarklyApi\Model\BranchRep(); // \LaunchDarklyApi\Model\BranchRep
+$put_branch = new \LaunchDarklyApi\Model\PutBranch(); // \LaunchDarklyApi\Model\PutBranch
 
 try {
-    $apiInstance->putBranch($repo, $branch, $branch_rep);
+    $apiInstance->putBranch($repo, $branch, $put_branch);
 } catch (Exception $e) {
     echo 'Exception when calling CodeReferencesApi->putBranch: ', $e->getMessage(), PHP_EOL;
 }
@@ -830,7 +831,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **repo** | **string**| The repository name |
  **branch** | **string**| The url-encoded branch name |
- **branch_rep** | [**\LaunchDarklyApi\Model\BranchRep**](../Model/BranchRep.md)|  |
+ **put_branch** | [**\LaunchDarklyApi\Model\PutBranch**](../Model/PutBranch.md)|  |
 
 ### Return type
 
@@ -843,7 +844,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

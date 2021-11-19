@@ -66,7 +66,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: Not defined
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)
@@ -75,7 +75,7 @@ void (empty response body)
 ## `getCustomRole()`
 
 ```php
-getCustomRole($key): \LaunchDarklyApi\Model\CustomRolePost
+getCustomRole($key): \LaunchDarklyApi\Model\CustomRole
 ```
 
 Get custom role
@@ -119,7 +119,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\CustomRolePost**](../Model/CustomRolePost.md)
+[**\LaunchDarklyApi\Model\CustomRole**](../Model/CustomRole.md)
 
 ### Authorization
 
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
 ## `postCustomRole()`
 
 ```php
-postCustomRole($statement_post): \LaunchDarklyApi\Model\CustomRole
+postCustomRole($custom_role_post): \LaunchDarklyApi\Model\CustomRole
 ```
 
 Create custom role
@@ -286,10 +286,10 @@ $apiInstance = new LaunchDarklyApi\Api\CustomRolesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$statement_post = array(new \LaunchDarklyApi\Model\StatementPost()); // \LaunchDarklyApi\Model\StatementPost[]
+$custom_role_post = new \LaunchDarklyApi\Model\CustomRolePost(); // \LaunchDarklyApi\Model\CustomRolePost
 
 try {
-    $result = $apiInstance->postCustomRole($statement_post);
+    $result = $apiInstance->postCustomRole($custom_role_post);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomRolesApi->postCustomRole: ', $e->getMessage(), PHP_EOL;
@@ -300,7 +300,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **statement_post** | [**\LaunchDarklyApi\Model\StatementPost[]**](../Model/StatementPost.md)|  |
+ **custom_role_post** | [**\LaunchDarklyApi\Model\CustomRolePost**](../Model/CustomRolePost.md)|  |
 
 ### Return type
 

@@ -75,7 +75,7 @@ class TeamsBetaApiTest extends TestCase
     /**
      * Test case for deleteTeam
      *
-     * Delete team by key.
+     * Delete team.
      *
      */
     public function testDeleteTeam()
@@ -87,7 +87,7 @@ class TeamsBetaApiTest extends TestCase
     /**
      * Test case for getTeam
      *
-     * Get team by key.
+     * Get team.
      *
      */
     public function testGetTeam()
@@ -99,7 +99,7 @@ class TeamsBetaApiTest extends TestCase
     /**
      * Test case for getTeams
      *
-     * Get all teams.
+     * List teams.
      *
      */
     public function testGetTeams()
@@ -111,7 +111,7 @@ class TeamsBetaApiTest extends TestCase
     /**
      * Test case for patchTeam
      *
-     * Patch team by key.
+     * Update team.
      *
      */
     public function testPatchTeam()

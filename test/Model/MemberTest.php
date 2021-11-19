@@ -232,4 +232,13 @@ class MemberTest extends TestCase
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "creation_date"
+     */
+    public function testPropertyCreationDate()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
 }

@@ -21,5 +21,6 @@ Name | Type | Description | Notes
 **_integration_metadata** | [**\LaunchDarklyApi\Model\IntegrationMetadata**](IntegrationMetadata.md) |  | [optional]
 **teams** | [**\LaunchDarklyApi\Model\MemberTeamSummaryRep[]**](MemberTeamSummaryRep.md) |  | [optional]
 **permission_grants** | [**\LaunchDarklyApi\Model\MemberPermissionGrantSummaryRep[]**](MemberPermissionGrantSummaryRep.md) |  | [optional]
+**creation_date** | **int** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

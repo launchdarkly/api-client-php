@@ -79,7 +79,7 @@ class FlagConfigApprovalRequestResponse implements ModelInterface, ArrayAccess, 
         'operating_on_id' => 'string',
         'integration_metadata' => '\LaunchDarklyApi\Model\IntegrationMetadata',
         'source' => '\LaunchDarklyApi\Model\CopiedFromEnv',
-        'custom_workflow_meta_data' => '\LaunchDarklyApi\Model\CustomWorkflowMeta'
+        'custom_workflow_metadata' => '\LaunchDarklyApi\Model\CustomWorkflowMeta'
     ];
 
     /**
@@ -109,7 +109,7 @@ class FlagConfigApprovalRequestResponse implements ModelInterface, ArrayAccess, 
         'operating_on_id' => null,
         'integration_metadata' => null,
         'source' => null,
-        'custom_workflow_meta_data' => null
+        'custom_workflow_metadata' => null
     ];
 
     /**
@@ -158,7 +158,7 @@ class FlagConfigApprovalRequestResponse implements ModelInterface, ArrayAccess, 
         'operating_on_id' => 'operatingOnId',
         'integration_metadata' => 'integrationMetadata',
         'source' => 'source',
-        'custom_workflow_meta_data' => 'customWorkflowMetaData'
+        'custom_workflow_metadata' => 'customWorkflowMetadata'
     ];
 
     /**
@@ -186,7 +186,7 @@ class FlagConfigApprovalRequestResponse implements ModelInterface, ArrayAccess, 
         'operating_on_id' => 'setOperatingOnId',
         'integration_metadata' => 'setIntegrationMetadata',
         'source' => 'setSource',
-        'custom_workflow_meta_data' => 'setCustomWorkflowMetaData'
+        'custom_workflow_metadata' => 'setCustomWorkflowMetadata'
     ];
 
     /**
@@ -214,7 +214,7 @@ class FlagConfigApprovalRequestResponse implements ModelInterface, ArrayAccess, 
         'operating_on_id' => 'getOperatingOnId',
         'integration_metadata' => 'getIntegrationMetadata',
         'source' => 'getSource',
-        'custom_workflow_meta_data' => 'getCustomWorkflowMetaData'
+        'custom_workflow_metadata' => 'getCustomWorkflowMetadata'
     ];
 
     /**
@@ -293,7 +293,7 @@ class FlagConfigApprovalRequestResponse implements ModelInterface, ArrayAccess, 
         $this->container['operating_on_id'] = $data['operating_on_id'] ?? null;
         $this->container['integration_metadata'] = $data['integration_metadata'] ?? null;
         $this->container['source'] = $data['source'] ?? null;
-        $this->container['custom_workflow_meta_data'] = $data['custom_workflow_meta_data'] ?? null;
+        $this->container['custom_workflow_metadata'] = $data['custom_workflow_metadata'] ?? null;
     }
 
     /**
@@ -810,25 +810,25 @@ class FlagConfigApprovalRequestResponse implements ModelInterface, ArrayAccess, 
     }
 
     /**
-     * Gets custom_workflow_meta_data
+     * Gets custom_workflow_metadata
      *
      * @return \LaunchDarklyApi\Model\CustomWorkflowMeta|null
      */
-    public function getCustomWorkflowMetaData()
+    public function getCustomWorkflowMetadata()
     {
-        return $this->container['custom_workflow_meta_data'];
+        return $this->container['custom_workflow_metadata'];
     }
 
     /**
-     * Sets custom_workflow_meta_data
+     * Sets custom_workflow_metadata
      *
-     * @param \LaunchDarklyApi\Model\CustomWorkflowMeta|null $custom_workflow_meta_data custom_workflow_meta_data
+     * @param \LaunchDarklyApi\Model\CustomWorkflowMeta|null $custom_workflow_metadata custom_workflow_metadata
      *
      * @return self
      */
-    public function setCustomWorkflowMetaData($custom_workflow_meta_data)
+    public function setCustomWorkflowMetadata($custom_workflow_metadata)
     {
-        $this->container['custom_workflow_meta_data'] = $custom_workflow_meta_data;
+        $this->container['custom_workflow_metadata'] = $custom_workflow_metadata;
 
         return $this;
     }

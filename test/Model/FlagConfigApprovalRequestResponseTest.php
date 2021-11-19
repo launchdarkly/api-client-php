@@ -252,9 +252,9 @@ class FlagConfigApprovalRequestResponseTest extends TestCase
     }
 
     /**
-     * Test attribute "custom_workflow_meta_data"
+     * Test attribute "custom_workflow_metadata"
      */
-    public function testPropertyCustomWorkflowMetaData()
+    public function testPropertyCustomWorkflowMetadata()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

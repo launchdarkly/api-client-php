@@ -22,5 +22,6 @@ Name | Type | Description | Notes
 **_unbounded_metadata** | [**\LaunchDarklyApi\Model\SegmentMetadata**](SegmentMetadata.md) |  | [optional]
 **_external** | **string** |  | [optional]
 **_external_link** | **string** |  | [optional]
+**_import_in_progress** | **bool** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

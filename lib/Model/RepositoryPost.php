@@ -326,7 +326,7 @@ class RepositoryPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets commit_url_template
      *
-     * @param string|null $commit_url_template commit_url_template
+     * @param string|null $commit_url_template A template for constructing a valid URL to view the commit
      *
      * @return self
      */
@@ -350,7 +350,7 @@ class RepositoryPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hunk_url_template
      *
-     * @param string|null $hunk_url_template hunk_url_template
+     * @param string|null $hunk_url_template A template for constructing a valid URL to view the hunk
      *
      * @return self
      */

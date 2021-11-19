@@ -213,6 +213,23 @@ class RepositoryRep implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    const TYPE_GITHUB = 'github';
+    const TYPE_BITBUCKET = 'bitbucket';
+    const TYPE_CUSTOM = 'custom';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getTypeAllowableValues()
+    {
+        return [
+            self::TYPE_GITHUB,
+            self::TYPE_BITBUCKET,
+            self::TYPE_CUSTOM,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -257,6 +274,15 @@ class RepositoryRep implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['type'] === null) {
             $invalidProperties[] = "'type' can't be null";
         }
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!is_null($this->container['type']) && !in_array($this->container['type'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'type', must be one of '%s'",
+                $this->container['type'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['default_branch'] === null) {
             $invalidProperties[] = "'default_branch' can't be null";
         }
@@ -297,7 +323,7 @@ class RepositoryRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets name
      *
-     * @param string $name name
+     * @param string $name The repository name
      *
      * @return self
      */
@@ -321,7 +347,7 @@ class RepositoryRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets source_link
      *
-     * @param string|null $source_link source_link
+     * @param string|null $source_link A URL to access the repository
      *
      * @return self
      */
@@ -345,7 +371,7 @@ class RepositoryRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets commit_url_template
      *
-     * @param string|null $commit_url_template commit_url_template
+     * @param string|null $commit_url_template A template for constructing a valid URL to view the commit
      *
      * @return self
      */
@@ -369,7 +395,7 @@ class RepositoryRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets hunk_url_template
      *
-     * @param string|null $hunk_url_template hunk_url_template
+     * @param string|null $hunk_url_template A template for constructing a valid URL to view the hunk
      *
      * @return self
      */
@@ -393,12 +419,22 @@ class RepositoryRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets type
      *
-     * @param string $type type
+     * @param string $type The type of repository
      *
      * @return self
      */
     public function setType($type)
     {
+        $allowedValues = $this->getTypeAllowableValues();
+        if (!in_array($type, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'type', must be one of '%s'",
+                    $type,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['type'] = $type;
 
         return $this;
@@ -417,7 +453,7 @@ class RepositoryRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets default_branch
      *
-     * @param string $default_branch default_branch
+     * @param string $default_branch The repository's default branch
      *
      * @return self
      */
@@ -441,7 +477,7 @@ class RepositoryRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets enabled
      *
-     * @param bool $enabled enabled
+     * @param bool $enabled Whether or not a repository is enabled for code reference scanning
      *
      * @return self
      */
@@ -465,7 +501,7 @@ class RepositoryRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets version
      *
-     * @param int $version version
+     * @param int $version The version of the repository's saved information
      *
      * @return self
      */
@@ -489,7 +525,7 @@ class RepositoryRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets branches
      *
-     * @param \LaunchDarklyApi\Model\BranchRep[]|null $branches branches
+     * @param \LaunchDarklyApi\Model\BranchRep[]|null $branches An array of the repository's branches that have been scanned for code references
      *
      * @return self
      */

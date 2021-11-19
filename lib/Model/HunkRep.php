@@ -215,6 +215,9 @@ class HunkRep implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['starting_line_number'] === null) {
+            $invalidProperties[] = "'starting_line_number' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -233,7 +236,7 @@ class HunkRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets starting_line_number
      *
-     * @return int|null
+     * @return int
      */
     public function getStartingLineNumber()
     {
@@ -243,7 +246,7 @@ class HunkRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets starting_line_number
      *
-     * @param int|null $starting_line_number starting_line_number
+     * @param int $starting_line_number Line number of beginning of code reference hunk
      *
      * @return self
      */
@@ -267,7 +270,7 @@ class HunkRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets lines
      *
-     * @param string|null $lines lines
+     * @param string|null $lines Contextual lines of code that include the referenced feature flag
      *
      * @return self
      */
@@ -291,7 +294,7 @@ class HunkRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets proj_key
      *
-     * @param string|null $proj_key proj_key
+     * @param string|null $proj_key The project key
      *
      * @return self
      */
@@ -315,7 +318,7 @@ class HunkRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets flag_key
      *
-     * @param string|null $flag_key flag_key
+     * @param string|null $flag_key The feature flag key
      *
      * @return self
      */
@@ -339,7 +342,7 @@ class HunkRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets aliases
      *
-     * @param string[]|null $aliases aliases
+     * @param string[]|null $aliases An array of flag key aliases
      *
      * @return self
      */

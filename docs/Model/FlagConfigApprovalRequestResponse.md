@@ -23,6 +23,6 @@ Name | Type | Description | Notes
 **operating_on_id** | **string** | ID of scheduled change to edit or delete | [optional]
 **integration_metadata** | [**\LaunchDarklyApi\Model\IntegrationMetadata**](IntegrationMetadata.md) |  | [optional]
 **source** | [**\LaunchDarklyApi\Model\CopiedFromEnv**](CopiedFromEnv.md) |  | [optional]
-**custom_workflow_meta_data** | [**\LaunchDarklyApi\Model\CustomWorkflowMeta**](CustomWorkflowMeta.md) |  | [optional]
+**custom_workflow_metadata** | [**\LaunchDarklyApi\Model\CustomWorkflowMeta**](CustomWorkflowMeta.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
