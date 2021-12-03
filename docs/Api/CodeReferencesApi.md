@@ -661,7 +661,7 @@ Name | Type | Description  | Notes
 ## `postExtinction()`
 
 ```php
-postExtinction($repo, $branch, $extinction_rep)
+postExtinction($repo, $branch, $extinction)
 ```
 
 Create extinction
@@ -689,10 +689,10 @@ $apiInstance = new LaunchDarklyApi\Api\CodeReferencesApi(
 );
 $repo = 'repo_example'; // string | The repository name
 $branch = 'branch_example'; // string | The url-encoded branch name
-$extinction_rep = array(new \LaunchDarklyApi\Model\ExtinctionRep()); // \LaunchDarklyApi\Model\ExtinctionRep[]
+$extinction = array(new \LaunchDarklyApi\Model\Extinction()); // \LaunchDarklyApi\Model\Extinction[]
 
 try {
-    $apiInstance->postExtinction($repo, $branch, $extinction_rep);
+    $apiInstance->postExtinction($repo, $branch, $extinction);
 } catch (Exception $e) {
     echo 'Exception when calling CodeReferencesApi->postExtinction: ', $e->getMessage(), PHP_EOL;
 }
@@ -704,7 +704,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **repo** | **string**| The repository name |
  **branch** | **string**| The url-encoded branch name |
- **extinction_rep** | [**\LaunchDarklyApi\Model\ExtinctionRep[]**](../Model/ExtinctionRep.md)|  |
+ **extinction** | [**\LaunchDarklyApi\Model\Extinction[]**](../Model/Extinction.md)|  |
 
 ### Return type
 

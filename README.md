@@ -99,11 +99,11 @@ Paginated collections include `first`, `last`, `next`, and `prev` links containi
 
 ## Updates
 
-Resources that accept partial updates use the `PATCH` verb, and support the [JSON Patch](http://tools.ietf.org/html/rfc6902) format. Some resources also support the [JSON Merge Patch](https://tools.ietf.org/html/rfc7386) format. In addition, some resources support optional comments that can be submitted with updates. Comments appear in outgoing webhooks, the audit log, and other integrations.
+Resources that accept partial updates use the `PATCH` verb, and support the [JSON Patch](https://datatracker.ietf.org/doc/html/rfc6902) format. Some resources also support the [JSON Merge Patch](https://datatracker.ietf.org/doc/html/rfc7386) format. In addition, some resources support optional comments that can be submitted with updates. Comments appear in outgoing webhooks, the audit log, and other integrations.
 
 ### Updates via JSON Patch
 
-[JSON Patch](http://tools.ietf.org/html/rfc6902) is a way to specify the modifications to perform on a resource. For example, in this feature flag representation:
+[JSON Patch](https://datatracker.ietf.org/doc/html/rfc6902) is a way to specify the modifications to perform on a resource. For example, in this feature flag representation:
 
 ```json
 {
@@ -135,7 +135,7 @@ Attributes that aren't editable, like a resource's `_links`, have names that sta
 
 ### Updates via JSON Merge Patch
 
-The API also supports the [JSON Merge Patch](https://tools.ietf.org/html/rfc7386) format, as well as the [Update feature flag](/tag/Feature-flags#operation/patchFeatureFlag) resource.
+The API also supports the [JSON Merge Patch](https://datatracker.ietf.org/doc/html/rfc7386) format, as well as the [Update feature flag](/tag/Feature-flags#operation/patchFeatureFlag) resource.
 
 JSON Merge Patch is less expressive than JSON Patch but in many cases, it is simpler to construct a merge patch document. For example, you can change a feature flag's description with the following merge patch document:
 
@@ -640,6 +640,7 @@ Class | Method | HTTP request | Description
 *WebhooksApi* | [**patchWebhook**](docs/Api/WebhooksApi.md#patchwebhook) | **PATCH** /api/v2/webhooks/{id} | Update webhook
 *WebhooksApi* | [**postWebhook**](docs/Api/WebhooksApi.md#postwebhook) | **POST** /api/v2/webhooks | Creates a webhook
 *WorkflowsBetaApi* | [**deleteWorkflow**](docs/Api/WorkflowsBetaApi.md#deleteworkflow) | **DELETE** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows/{workflowId} | Delete workflow
+*WorkflowsBetaApi* | [**getCustomWorkflow**](docs/Api/WorkflowsBetaApi.md#getcustomworkflow) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows/{workflowId} | Get custom workflow
 *WorkflowsBetaApi* | [**getWorkflows**](docs/Api/WorkflowsBetaApi.md#getworkflows) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows | Get workflows
 *WorkflowsBetaApi* | [**postWorkflow**](docs/Api/WorkflowsBetaApi.md#postworkflow) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows | Create workflow
 
@@ -688,6 +689,7 @@ Class | Method | HTTP request | Description
 - [DependentFlag](docs/Model/DependentFlag.md)
 - [DependentFlagEnvironment](docs/Model/DependentFlagEnvironment.md)
 - [DependentFlagsByEnvironment](docs/Model/DependentFlagsByEnvironment.md)
+- [DerivedAttribute](docs/Model/DerivedAttribute.md)
 - [Destination](docs/Model/Destination.md)
 - [DestinationPost](docs/Model/DestinationPost.md)
 - [Destinations](docs/Model/Destinations.md)
@@ -709,8 +711,8 @@ Class | Method | HTTP request | Description
 - [ExpiringUserTargetGetResponse](docs/Model/ExpiringUserTargetGetResponse.md)
 - [ExpiringUserTargetItem](docs/Model/ExpiringUserTargetItem.md)
 - [ExpiringUserTargetPatchResponse](docs/Model/ExpiringUserTargetPatchResponse.md)
+- [Extinction](docs/Model/Extinction.md)
 - [ExtinctionCollectionRep](docs/Model/ExtinctionCollectionRep.md)
-- [ExtinctionRep](docs/Model/ExtinctionRep.md)
 - [FeatureFlag](docs/Model/FeatureFlag.md)
 - [FeatureFlagBody](docs/Model/FeatureFlagBody.md)
 - [FeatureFlagConfig](docs/Model/FeatureFlagConfig.md)
@@ -731,7 +733,6 @@ Class | Method | HTTP request | Description
 - [FlagSummary](docs/Model/FlagSummary.md)
 - [ForbiddenErrorRep](docs/Model/ForbiddenErrorRep.md)
 - [HunkRep](docs/Model/HunkRep.md)
-- [InlineResponse200](docs/Model/InlineResponse200.md)
 - [IntegrationMetadata](docs/Model/IntegrationMetadata.md)
 - [IntegrationStatus](docs/Model/IntegrationStatus.md)
 - [InvalidRequestErrorRep](docs/Model/InvalidRequestErrorRep.md)
@@ -749,6 +750,7 @@ Class | Method | HTTP request | Description
 - [MetricListingRep](docs/Model/MetricListingRep.md)
 - [MetricPost](docs/Model/MetricPost.md)
 - [MetricRep](docs/Model/MetricRep.md)
+- [MetricSeen](docs/Model/MetricSeen.md)
 - [Modification](docs/Model/Modification.md)
 - [MultiEnvironmentDependentFlag](docs/Model/MultiEnvironmentDependentFlag.md)
 - [MultiEnvironmentDependentFlags](docs/Model/MultiEnvironmentDependentFlags.md)
@@ -825,12 +827,12 @@ Class | Method | HTTP request | Description
 - [UserFlagSetting](docs/Model/UserFlagSetting.md)
 - [UserFlagSettings](docs/Model/UserFlagSettings.md)
 - [UserRecord](docs/Model/UserRecord.md)
+- [UserRecordRep](docs/Model/UserRecordRep.md)
 - [UserSegment](docs/Model/UserSegment.md)
 - [UserSegmentRule](docs/Model/UserSegmentRule.md)
 - [UserSegments](docs/Model/UserSegments.md)
 - [Users](docs/Model/Users.md)
 - [ValuePut](docs/Model/ValuePut.md)
-- [Variate](docs/Model/Variate.md)
 - [Variation](docs/Model/Variation.md)
 - [VariationOrRolloutRep](docs/Model/VariationOrRolloutRep.md)
 - [VariationSummary](docs/Model/VariationSummary.md)
@@ -867,5 +869,5 @@ support@launchdarkly.com
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `2.0`
-    - Package version: `6.0.2`
+    - Package version: `7.0.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

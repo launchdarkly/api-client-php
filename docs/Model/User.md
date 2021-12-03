@@ -4,12 +4,18 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**last_ping** | [**\DateTime**](\DateTime.md) |  | [optional]
-**environment_id** | **string** |  | [optional]
-**owner_id** | **string** |  | [optional]
-**user** | [**\LaunchDarklyApi\Model\User**](User.md) |  | [optional]
-**sort_value** | **mixed** |  | [optional]
-**_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) |  | [optional]
-**_access** | [**\LaunchDarklyApi\Model\AccessRep**](AccessRep.md) |  | [optional]
+**key** | **string** |  | [optional]
+**secondary** | **string** |  | [optional]
+**ip** | **string** |  | [optional]
+**country** | **string** |  | [optional]
+**email** | **string** |  | [optional]
+**first_name** | **string** |  | [optional]
+**last_name** | **string** |  | [optional]
+**avatar** | **string** |  | [optional]
+**name** | **string** |  | [optional]
+**anonymous** | **bool** |  | [optional]
+**custom** | **array<string,mixed>** |  | [optional]
+**derived** | [**array<string,\LaunchDarklyApi\Model\DerivedAttribute>**](DerivedAttribute.md) |  | [optional]
+**private_attrs** | **string[]** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

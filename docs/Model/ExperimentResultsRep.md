@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **series** | [**\LaunchDarklyApi\Model\ExperimentTimeSeriesSlice[]**](ExperimentTimeSeriesSlice.md) |  | [optional]
 **stats** | [**\LaunchDarklyApi\Model\ExperimentStatsRep**](ExperimentStatsRep.md) |  | [optional]
 **granularity** | **string** |  | [optional]
+**metric_seen** | [**\LaunchDarklyApi\Model\MetricSeen**](MetricSeen.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

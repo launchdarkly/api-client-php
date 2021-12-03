@@ -201,7 +201,7 @@ patchProject($project_key, $patch_operation): \LaunchDarklyApi\Model\Project
 
 Update project
 
-Update a project. Requires a [JSON Patch](http://tools.ietf.org/html/rfc6902) representation of the desired changes to the project.
+Update a project. Requires a [JSON Patch](https://datatracker.ietf.org/doc/html/rfc6902) representation of the desired changes to the project.
 
 ### Example
 

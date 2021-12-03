@@ -71,6 +71,7 @@ docs/Model/Defaults.md
 docs/Model/DependentFlag.md
 docs/Model/DependentFlagEnvironment.md
 docs/Model/DependentFlagsByEnvironment.md
+docs/Model/DerivedAttribute.md
 docs/Model/Destination.md
 docs/Model/DestinationPost.md
 docs/Model/Destinations.md
@@ -92,8 +93,8 @@ docs/Model/ExpiringUserTargetError.md
 docs/Model/ExpiringUserTargetGetResponse.md
 docs/Model/ExpiringUserTargetItem.md
 docs/Model/ExpiringUserTargetPatchResponse.md
+docs/Model/Extinction.md
 docs/Model/ExtinctionCollectionRep.md
-docs/Model/ExtinctionRep.md
 docs/Model/FeatureFlag.md
 docs/Model/FeatureFlagBody.md
 docs/Model/FeatureFlagConfig.md
@@ -114,7 +115,6 @@ docs/Model/FlagStatusRep.md
 docs/Model/FlagSummary.md
 docs/Model/ForbiddenErrorRep.md
 docs/Model/HunkRep.md
-docs/Model/InlineResponse200.md
 docs/Model/IntegrationMetadata.md
 docs/Model/IntegrationStatus.md
 docs/Model/InvalidRequestErrorRep.md
@@ -132,6 +132,7 @@ docs/Model/MetricCollectionRep.md
 docs/Model/MetricListingRep.md
 docs/Model/MetricPost.md
 docs/Model/MetricRep.md
+docs/Model/MetricSeen.md
 docs/Model/Modification.md
 docs/Model/MultiEnvironmentDependentFlag.md
 docs/Model/MultiEnvironmentDependentFlags.md
@@ -208,12 +209,12 @@ docs/Model/UserAttributeNamesRep.md
 docs/Model/UserFlagSetting.md
 docs/Model/UserFlagSettings.md
 docs/Model/UserRecord.md
+docs/Model/UserRecordRep.md
 docs/Model/UserSegment.md
 docs/Model/UserSegmentRule.md
 docs/Model/UserSegments.md
 docs/Model/Users.md
 docs/Model/ValuePut.md
-docs/Model/Variate.md
 docs/Model/Variation.md
 docs/Model/VariationOrRolloutRep.md
 docs/Model/VariationSummary.md
@@ -293,6 +294,7 @@ lib/Model/Defaults.php
 lib/Model/DependentFlag.php
 lib/Model/DependentFlagEnvironment.php
 lib/Model/DependentFlagsByEnvironment.php
+lib/Model/DerivedAttribute.php
 lib/Model/Destination.php
 lib/Model/DestinationPost.php
 lib/Model/Destinations.php
@@ -314,8 +316,8 @@ lib/Model/ExpiringUserTargetError.php
 lib/Model/ExpiringUserTargetGetResponse.php
 lib/Model/ExpiringUserTargetItem.php
 lib/Model/ExpiringUserTargetPatchResponse.php
+lib/Model/Extinction.php
 lib/Model/ExtinctionCollectionRep.php
-lib/Model/ExtinctionRep.php
 lib/Model/FeatureFlag.php
 lib/Model/FeatureFlagBody.php
 lib/Model/FeatureFlagConfig.php
@@ -336,7 +338,6 @@ lib/Model/FlagStatusRep.php
 lib/Model/FlagSummary.php
 lib/Model/ForbiddenErrorRep.php
 lib/Model/HunkRep.php
-lib/Model/InlineResponse200.php
 lib/Model/IntegrationMetadata.php
 lib/Model/IntegrationStatus.php
 lib/Model/InvalidRequestErrorRep.php
@@ -354,6 +355,7 @@ lib/Model/MetricCollectionRep.php
 lib/Model/MetricListingRep.php
 lib/Model/MetricPost.php
 lib/Model/MetricRep.php
+lib/Model/MetricSeen.php
 lib/Model/ModelInterface.php
 lib/Model/Modification.php
 lib/Model/MultiEnvironmentDependentFlag.php
@@ -431,12 +433,12 @@ lib/Model/UserAttributeNamesRep.php
 lib/Model/UserFlagSetting.php
 lib/Model/UserFlagSettings.php
 lib/Model/UserRecord.php
+lib/Model/UserRecordRep.php
 lib/Model/UserSegment.php
 lib/Model/UserSegmentRule.php
 lib/Model/UserSegments.php
 lib/Model/Users.php
 lib/Model/ValuePut.php
-lib/Model/Variate.php
 lib/Model/Variation.php
 lib/Model/VariationOrRolloutRep.php
 lib/Model/VariationSummary.php
@@ -514,6 +516,7 @@ test/Model/DefaultsTest.php
 test/Model/DependentFlagEnvironmentTest.php
 test/Model/DependentFlagTest.php
 test/Model/DependentFlagsByEnvironmentTest.php
+test/Model/DerivedAttributeTest.php
 test/Model/DestinationPostTest.php
 test/Model/DestinationTest.php
 test/Model/DestinationsTest.php
@@ -536,7 +539,7 @@ test/Model/ExpiringUserTargetGetResponseTest.php
 test/Model/ExpiringUserTargetItemTest.php
 test/Model/ExpiringUserTargetPatchResponseTest.php
 test/Model/ExtinctionCollectionRepTest.php
-test/Model/ExtinctionRepTest.php
+test/Model/ExtinctionTest.php
 test/Model/FeatureFlagBodyTest.php
 test/Model/FeatureFlagConfigTest.php
 test/Model/FeatureFlagScheduledChangeTest.php
@@ -557,7 +560,6 @@ test/Model/FlagStatusRepTest.php
 test/Model/FlagSummaryTest.php
 test/Model/ForbiddenErrorRepTest.php
 test/Model/HunkRepTest.php
-test/Model/InlineResponse200Test.php
 test/Model/IntegrationMetadataTest.php
 test/Model/IntegrationStatusTest.php
 test/Model/InvalidRequestErrorRepTest.php
@@ -575,6 +577,7 @@ test/Model/MetricCollectionRepTest.php
 test/Model/MetricListingRepTest.php
 test/Model/MetricPostTest.php
 test/Model/MetricRepTest.php
+test/Model/MetricSeenTest.php
 test/Model/ModificationTest.php
 test/Model/MultiEnvironmentDependentFlagTest.php
 test/Model/MultiEnvironmentDependentFlagsTest.php
@@ -649,6 +652,7 @@ test/Model/UrlPostTest.php
 test/Model/UserAttributeNamesRepTest.php
 test/Model/UserFlagSettingTest.php
 test/Model/UserFlagSettingsTest.php
+test/Model/UserRecordRepTest.php
 test/Model/UserRecordTest.php
 test/Model/UserSegmentRuleTest.php
 test/Model/UserSegmentTest.php
@@ -656,7 +660,6 @@ test/Model/UserSegmentsTest.php
 test/Model/UserTest.php
 test/Model/UsersTest.php
 test/Model/ValuePutTest.php
-test/Model/VariateTest.php
 test/Model/VariationOrRolloutRepTest.php
 test/Model/VariationSummaryTest.php
 test/Model/VariationTest.php

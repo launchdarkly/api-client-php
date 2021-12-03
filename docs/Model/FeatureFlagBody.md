@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **description** | **string** | Description of the feature flag | [optional]
 **include_in_snippet** | **bool** | Deprecated, use clientSideAvailability. Whether or not this flag should be made available to the client-side JavaScript SDK | [optional]
 **client_side_availability** | [**\LaunchDarklyApi\Model\ClientSideAvailabilityPost**](ClientSideAvailabilityPost.md) |  | [optional]
-**variations** | [**\LaunchDarklyApi\Model\Variate[]**](Variate.md) | An array of possible variations for the flag | [optional]
+**variations** | [**\LaunchDarklyApi\Model\Variation[]**](Variation.md) | An array of possible variations for the flag | [optional]
 **variation_json_schema** | **mixed** |  | [optional]
 **temporary** | **bool** | Whether or not the flag is a temporary flag | [optional]
 **tags** | **string[]** | Tags for the feature flag | [optional]

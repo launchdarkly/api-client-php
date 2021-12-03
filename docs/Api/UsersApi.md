@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 ## `getUser()`
 
 ```php
-getUser($proj_key, $env_key, $key): \LaunchDarklyApi\Model\User
+getUser($proj_key, $env_key, $key): \LaunchDarklyApi\Model\UserRecord
 ```
 
 Get user
@@ -204,7 +204,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\User**](../Model/User.md)
+[**\LaunchDarklyApi\Model\UserRecord**](../Model/UserRecord.md)
 
 ### Authorization
 

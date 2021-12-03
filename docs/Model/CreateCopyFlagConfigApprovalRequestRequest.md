@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **comment** | **string** | A comment describing the approval request | [optional]
-**description** | **string** |  | [optional]
+**description** | **string** |  |
 **notify_member_ids** | **string[]** | An array of member IDs. These members are notified to review the approval request. |
 **source** | [**\LaunchDarklyApi\Model\SourceFlag**](SourceFlag.md) |  |
 **included_actions** | **string[]** |  | [optional]

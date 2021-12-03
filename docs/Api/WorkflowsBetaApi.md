@@ -5,6 +5,7 @@ All URIs are relative to https://app.launchdarkly.com.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteWorkflow()**](WorkflowsBetaApi.md#deleteWorkflow) | **DELETE** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows/{workflowId} | Delete workflow
+[**getCustomWorkflow()**](WorkflowsBetaApi.md#getCustomWorkflow) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows/{workflowId} | Get custom workflow
 [**getWorkflows()**](WorkflowsBetaApi.md#getWorkflows) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows | Get workflows
 [**postWorkflow()**](WorkflowsBetaApi.md#postWorkflow) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows | Create workflow
 
@@ -62,6 +63,74 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getCustomWorkflow()`
+
+```php
+getCustomWorkflow($project_key, $feature_flag_key, $environment_key, $workflow_id): \LaunchDarklyApi\Model\CustomWorkflowOutputRep
+```
+
+Get custom workflow
+
+Get a specific workflow by ID
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\WorkflowsBetaApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = 'project_key_example'; // string | The project key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag's key
+$environment_key = 'environment_key_example'; // string | The environment key
+$workflow_id = 'workflow_id_example'; // string | The workflow ID
+
+try {
+    $result = $apiInstance->getCustomWorkflow($project_key, $feature_flag_key, $environment_key, $workflow_id);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling WorkflowsBetaApi->getCustomWorkflow: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key |
+ **feature_flag_key** | **string**| The feature flag&#39;s key |
+ **environment_key** | **string**| The environment key |
+ **workflow_id** | **string**| The workflow ID |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\CustomWorkflowOutputRep**](../Model/CustomWorkflowOutputRep.md)
 
 ### Authorization
 
