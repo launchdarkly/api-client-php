@@ -124,4 +124,13 @@ class PutBranchTest extends TestCase
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "commit_time"
+     */
+    public function testPropertyCommitTime()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
 }

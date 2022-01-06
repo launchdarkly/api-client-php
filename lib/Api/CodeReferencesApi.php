@@ -1487,14 +1487,16 @@ class CodeReferencesApi
      * @param  string $branch_name Filter results to a specific branch. By default, only the default branch will be queried for extinctions. (optional)
      * @param  string $proj_key Filter results to a specific project (optional)
      * @param  string $flag_key Filter results to a specific flag key (optional)
+     * @param  int $from Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;to&#x60;. (optional)
+     * @param  int $to Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;from&#x60;. (optional)
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \LaunchDarklyApi\Model\ExtinctionCollectionRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
-    public function getExtinctions($repo_name = null, $branch_name = null, $proj_key = null, $flag_key = null)
+    public function getExtinctions($repo_name = null, $branch_name = null, $proj_key = null, $flag_key = null, $from = null, $to = null)
     {
-        list($response) = $this->getExtinctionsWithHttpInfo($repo_name, $branch_name, $proj_key, $flag_key);
+        list($response) = $this->getExtinctionsWithHttpInfo($repo_name, $branch_name, $proj_key, $flag_key, $from, $to);
         return $response;
     }
 
@@ -1507,14 +1509,16 @@ class CodeReferencesApi
      * @param  string $branch_name Filter results to a specific branch. By default, only the default branch will be queried for extinctions. (optional)
      * @param  string $proj_key Filter results to a specific project (optional)
      * @param  string $flag_key Filter results to a specific flag key (optional)
+     * @param  int $from Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;to&#x60;. (optional)
+     * @param  int $to Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;from&#x60;. (optional)
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \LaunchDarklyApi\Model\ExtinctionCollectionRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getExtinctionsWithHttpInfo($repo_name = null, $branch_name = null, $proj_key = null, $flag_key = null)
+    public function getExtinctionsWithHttpInfo($repo_name = null, $branch_name = null, $proj_key = null, $flag_key = null, $from = null, $to = null)
     {
-        $request = $this->getExtinctionsRequest($repo_name, $branch_name, $proj_key, $flag_key);
+        $request = $this->getExtinctionsRequest($repo_name, $branch_name, $proj_key, $flag_key, $from, $to);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1663,13 +1667,15 @@ class CodeReferencesApi
      * @param  string $branch_name Filter results to a specific branch. By default, only the default branch will be queried for extinctions. (optional)
      * @param  string $proj_key Filter results to a specific project (optional)
      * @param  string $flag_key Filter results to a specific flag key (optional)
+     * @param  int $from Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;to&#x60;. (optional)
+     * @param  int $to Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;from&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getExtinctionsAsync($repo_name = null, $branch_name = null, $proj_key = null, $flag_key = null)
+    public function getExtinctionsAsync($repo_name = null, $branch_name = null, $proj_key = null, $flag_key = null, $from = null, $to = null)
     {
-        return $this->getExtinctionsAsyncWithHttpInfo($repo_name, $branch_name, $proj_key, $flag_key)
+        return $this->getExtinctionsAsyncWithHttpInfo($repo_name, $branch_name, $proj_key, $flag_key, $from, $to)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1686,14 +1692,16 @@ class CodeReferencesApi
      * @param  string $branch_name Filter results to a specific branch. By default, only the default branch will be queried for extinctions. (optional)
      * @param  string $proj_key Filter results to a specific project (optional)
      * @param  string $flag_key Filter results to a specific flag key (optional)
+     * @param  int $from Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;to&#x60;. (optional)
+     * @param  int $to Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;from&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getExtinctionsAsyncWithHttpInfo($repo_name = null, $branch_name = null, $proj_key = null, $flag_key = null)
+    public function getExtinctionsAsyncWithHttpInfo($repo_name = null, $branch_name = null, $proj_key = null, $flag_key = null, $from = null, $to = null)
     {
         $returnType = '\LaunchDarklyApi\Model\ExtinctionCollectionRep';
-        $request = $this->getExtinctionsRequest($repo_name, $branch_name, $proj_key, $flag_key);
+        $request = $this->getExtinctionsRequest($repo_name, $branch_name, $proj_key, $flag_key, $from, $to);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1735,11 +1743,13 @@ class CodeReferencesApi
      * @param  string $branch_name Filter results to a specific branch. By default, only the default branch will be queried for extinctions. (optional)
      * @param  string $proj_key Filter results to a specific project (optional)
      * @param  string $flag_key Filter results to a specific flag key (optional)
+     * @param  int $from Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;to&#x60;. (optional)
+     * @param  int $to Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;from&#x60;. (optional)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getExtinctionsRequest($repo_name = null, $branch_name = null, $proj_key = null, $flag_key = null)
+    public function getExtinctionsRequest($repo_name = null, $branch_name = null, $proj_key = null, $flag_key = null, $from = null, $to = null)
     {
 
         $resourcePath = '/api/v2/code-refs/extinctions';
@@ -1791,6 +1801,28 @@ class CodeReferencesApi
             }
             else {
                 $queryParams['flagKey'] = $flag_key;
+            }
+        }
+        // query params
+        if ($from !== null) {
+            if('form' === 'form' && is_array($from)) {
+                foreach($from as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['from'] = $from;
+            }
+        }
+        // query params
+        if ($to !== null) {
+            if('form' === 'form' && is_array($to)) {
+                foreach($to as $key => $value) {
+                    $queryParams[$key] = $value;
+                }
+            }
+            else {
+                $queryParams['to'] = $to;
             }
         }
 

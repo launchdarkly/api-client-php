@@ -9,6 +9,7 @@ Method | HTTP request | Description
 [**getTeams()**](TeamsBetaApi.md#getTeams) | **GET** /api/v2/teams | List teams
 [**patchTeam()**](TeamsBetaApi.md#patchTeam) | **PATCH** /api/v2/teams/{key} | Update team
 [**postTeam()**](TeamsBetaApi.md#postTeam) | **POST** /api/v2/teams | Create team
+[**postTeamMembers()**](TeamsBetaApi.md#postTeamMembers) | **POST** /api/v2/teams/{key}/members | Add members to team
 
 
 ## `deleteTeam()`
@@ -75,7 +76,7 @@ void (empty response body)
 ## `getTeam()`
 
 ```php
-getTeam($key): \LaunchDarklyApi\Model\TeamRep
+getTeam($key): \LaunchDarklyApi\Model\ExpandedTeamRep
 ```
 
 Get team
@@ -119,7 +120,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\TeamRep**](../Model/TeamRep.md)
+[**\LaunchDarklyApi\Model\ExpandedTeamRep**](../Model/ExpandedTeamRep.md)
 
 ### Authorization
 
@@ -203,7 +204,7 @@ Name | Type | Description  | Notes
 ## `patchTeam()`
 
 ```php
-patchTeam($key, $team_patch_input): \LaunchDarklyApi\Model\TeamCollectionRep
+patchTeam($key, $team_patch_input): \LaunchDarklyApi\Model\ExpandedTeamRep
 ```
 
 Update team
@@ -249,7 +250,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\TeamCollectionRep**](../Model/TeamCollectionRep.md)
+[**\LaunchDarklyApi\Model\ExpandedTeamRep**](../Model/ExpandedTeamRep.md)
 
 ### Authorization
 
@@ -320,6 +321,70 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `postTeamMembers()`
+
+```php
+postTeamMembers($key, $file): \LaunchDarklyApi\Model\TeamImportsRep
+```
+
+Add members to team
+
+Add multiple members to an existing team by uploading a CSV file of member email addresses. Your CSV file must include email addresses in the first column. You can include data in additional columns, but LaunchDarkly ignores all data outside the first column. Headers are optional.  **Members are only added on a `201` response.** A `207` indicates the CSV file contains a combination of valid and invalid entries and will _not_ result in any members being added to the team.  On a `207` response, if an entry contains bad user input the `message` field will contain the row number as well as the reason for the error. The `message` field will be omitted if the entry is valid.  Example `207` response: ```json {   \"items\": [     {       \"status\": \"success\",       \"value\": \"a-valid-email@launchdarkly.com\"     },     {       \"message\": \"Line 2: empty row\",       \"status\": \"error\",       \"value\": \"\"     },     {       \"message\": \"Line 3: email already exists in the specified team\",       \"status\": \"error\",       \"value\": \"existing-team-member@launchdarkly.com\"     },     {       \"message\": \"Line 4: invalid email formatting\",       \"status\": \"error\",       \"value\": \"invalid email format\"     }   ] } ```  Message | Resolution --- | --- Empty row | This line is blank. Add an email address and try again. Duplicate entry | This email address appears in the file twice. Remove the email from the file and try again. Email already exists in the specified team | This member is already on your team. Remove the email from the file and try again. Invalid formatting | This email address is not formatted correctly. Fix the formatting and try again. Email does not belong to a LaunchDarkly member | The email address doesn't belong to a LaunchDarkly account member. Invite them to LaunchDarkly, then re-add them to the team.  On a `400` response, the `message` field may contain errors specific to this endpoint.  Example `400` response: ```json {   \"code\": \"invalid_request\",   \"message\": \"Unable to process file\" } ```  Message | Resolution --- | --- Unable to process file | LaunchDarkly could not process the file for an unspecified reason. Review your file for errors and try again. File exceeds 25mb | Break up your file into multiple files of less than 25mbs each. All emails have invalid formatting | None of the email addresses in the file are in the correct format. Fix the formatting and try again. All emails belong to existing team members | All listed members are already on this team. Populate the file with member emails that do not belong to the team and try again. File is empty | The CSV file does not contain any email addresses. Populate the file and try again. No emails belong to members of your LaunchDarkly organization | None of the email addresses belong to members of your LaunchDarkly account. Invite these members to LaunchDarkly, then re-add them to the team.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\TeamsBetaApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$key = 'key_example'; // string | The team key
+$file = "/path/to/file.txt"; // \SplFileObject | CSV file containing email addresses
+
+try {
+    $result = $apiInstance->postTeamMembers($key, $file);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TeamsBetaApi->postTeamMembers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **key** | **string**| The team key |
+ **file** | **\SplFileObject****\SplFileObject**| CSV file containing email addresses | [optional]
+
+### Return type
+
+[**\LaunchDarklyApi\Model\TeamImportsRep**](../Model/TeamImportsRep.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `multipart/form-data`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

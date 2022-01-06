@@ -133,4 +133,13 @@ class RuleTest extends TestCase
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "ref"
+     */
+    public function testPropertyRef()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
 }

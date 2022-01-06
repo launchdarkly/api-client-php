@@ -523,6 +523,7 @@ Class | Method | HTTP request | Description
 *AccountMembersApi* | [**getMember**](docs/Api/AccountMembersApi.md#getmember) | **GET** /api/v2/members/{id} | Get account member
 *AccountMembersApi* | [**getMembers**](docs/Api/AccountMembersApi.md#getmembers) | **GET** /api/v2/members | List account members
 *AccountMembersApi* | [**patchMember**](docs/Api/AccountMembersApi.md#patchmember) | **PATCH** /api/v2/members/{id} | Modify an account member
+*AccountMembersApi* | [**postMemberTeams**](docs/Api/AccountMembersApi.md#postmemberteams) | **POST** /api/v2/members/{id}/teams | Add member to teams
 *AccountMembersApi* | [**postMembers**](docs/Api/AccountMembersApi.md#postmembers) | **POST** /api/v2/members | Invite new members
 *AccountUsageBetaApi* | [**getEvaluationsUsage**](docs/Api/AccountUsageBetaApi.md#getevaluationsusage) | **GET** /api/v2/usage/evaluations/{projKey}/{envKey}/{flagKey} | Get evaluations usage
 *AccountUsageBetaApi* | [**getEventsUsage**](docs/Api/AccountUsageBetaApi.md#geteventsusage) | **GET** /api/v2/usage/events/{type} | Get events usage
@@ -585,6 +586,16 @@ Class | Method | HTTP request | Description
 *FeatureFlagsApi* | [**postFeatureFlag**](docs/Api/FeatureFlagsApi.md#postfeatureflag) | **POST** /api/v2/flags/{projKey} | Create a feature flag
 *FeatureFlagsBetaApi* | [**getDependentFlags**](docs/Api/FeatureFlagsBetaApi.md#getdependentflags) | **GET** /api/v2/flags/{projKey}/{flagKey}/dependent-flags | List dependent feature flags
 *FeatureFlagsBetaApi* | [**getDependentFlagsByEnv**](docs/Api/FeatureFlagsBetaApi.md#getdependentflagsbyenv) | **GET** /api/v2/flags/{projKey}/{envKey}/{flagKey}/dependent-flags | List dependent feature flags by environment
+*FlagTriggersApi* | [**createTriggerWorkflow**](docs/Api/FlagTriggersApi.md#createtriggerworkflow) | **POST** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey} | Create flag trigger
+*FlagTriggersApi* | [**deleteTriggerWorkflow**](docs/Api/FlagTriggersApi.md#deletetriggerworkflow) | **DELETE** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey}/{id} | Delete flag trigger
+*FlagTriggersApi* | [**getTriggerWorkflowById**](docs/Api/FlagTriggersApi.md#gettriggerworkflowbyid) | **GET** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey}/{id} | Get flag trigger by ID
+*FlagTriggersApi* | [**getTriggerWorkflows**](docs/Api/FlagTriggersApi.md#gettriggerworkflows) | **GET** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey} | List flag triggers
+*FlagTriggersApi* | [**patchTriggerWorkflow**](docs/Api/FlagTriggersApi.md#patchtriggerworkflow) | **PATCH** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey}/{id} | Update flag trigger
+*IntegrationAuditLogSubscriptionsApi* | [**createSubscription**](docs/Api/IntegrationAuditLogSubscriptionsApi.md#createsubscription) | **POST** /api/v2/integrations/{integrationKey} | Create audit log subscription
+*IntegrationAuditLogSubscriptionsApi* | [**deleteSubscription**](docs/Api/IntegrationAuditLogSubscriptionsApi.md#deletesubscription) | **DELETE** /api/v2/integrations/{integrationKey}/{id} | Delete audit log subscription
+*IntegrationAuditLogSubscriptionsApi* | [**getSubscriptionByID**](docs/Api/IntegrationAuditLogSubscriptionsApi.md#getsubscriptionbyid) | **GET** /api/v2/integrations/{integrationKey}/{id} | Get audit log subscription by ID
+*IntegrationAuditLogSubscriptionsApi* | [**getSubscriptions**](docs/Api/IntegrationAuditLogSubscriptionsApi.md#getsubscriptions) | **GET** /api/v2/integrations/{integrationKey} | Get audit log subscriptions by integration
+*IntegrationAuditLogSubscriptionsApi* | [**updateSubscription**](docs/Api/IntegrationAuditLogSubscriptionsApi.md#updatesubscription) | **PATCH** /api/v2/integrations/{integrationKey}/{id} | Update audit log subscription
 *MetricsApi* | [**deleteMetric**](docs/Api/MetricsApi.md#deletemetric) | **DELETE** /api/v2/metrics/{projectKey}/{key} | Delete metric
 *MetricsApi* | [**getMetric**](docs/Api/MetricsApi.md#getmetric) | **GET** /api/v2/metrics/{projectKey}/{key} | Get metric
 *MetricsApi* | [**getMetrics**](docs/Api/MetricsApi.md#getmetrics) | **GET** /api/v2/metrics/{projectKey} | List metrics
@@ -624,6 +635,7 @@ Class | Method | HTTP request | Description
 *TeamsBetaApi* | [**getTeams**](docs/Api/TeamsBetaApi.md#getteams) | **GET** /api/v2/teams | List teams
 *TeamsBetaApi* | [**patchTeam**](docs/Api/TeamsBetaApi.md#patchteam) | **PATCH** /api/v2/teams/{key} | Update team
 *TeamsBetaApi* | [**postTeam**](docs/Api/TeamsBetaApi.md#postteam) | **POST** /api/v2/teams | Create team
+*TeamsBetaApi* | [**postTeamMembers**](docs/Api/TeamsBetaApi.md#postteammembers) | **POST** /api/v2/teams/{key}/members | Add members to team
 *UserSettingsApi* | [**getExpiringFlagsForUser**](docs/Api/UserSettingsApi.md#getexpiringflagsforuser) | **GET** /api/v2/users/{projKey}/{userKey}/expiring-user-targets/{envKey} | Get expiring dates on flags for user
 *UserSettingsApi* | [**getUserFlagSetting**](docs/Api/UserSettingsApi.md#getuserflagsetting) | **GET** /api/v2/users/{projKey}/{envKey}/{key}/flags/{featureKey} | Get flag setting for user
 *UserSettingsApi* | [**getUserFlagSettings**](docs/Api/UserSettingsApi.md#getuserflagsettings) | **GET** /api/v2/users/{projKey}/{envKey}/{key}/flags | List flag settings for user
@@ -679,6 +691,7 @@ Class | Method | HTTP request | Description
 - [CustomRolePost](docs/Model/CustomRolePost.md)
 - [CustomRolePostData](docs/Model/CustomRolePostData.md)
 - [CustomRoles](docs/Model/CustomRoles.md)
+- [CustomRolesRep](docs/Model/CustomRolesRep.md)
 - [CustomWorkflowInputRep](docs/Model/CustomWorkflowInputRep.md)
 - [CustomWorkflowMeta](docs/Model/CustomWorkflowMeta.md)
 - [CustomWorkflowOutputRep](docs/Model/CustomWorkflowOutputRep.md)
@@ -696,6 +709,7 @@ Class | Method | HTTP request | Description
 - [Environment](docs/Model/Environment.md)
 - [EnvironmentPost](docs/Model/EnvironmentPost.md)
 - [ExecutionOutputRep](docs/Model/ExecutionOutputRep.md)
+- [ExpandedTeamRep](docs/Model/ExpandedTeamRep.md)
 - [ExperimentAllocationRep](docs/Model/ExperimentAllocationRep.md)
 - [ExperimentEnabledPeriodRep](docs/Model/ExperimentEnabledPeriodRep.md)
 - [ExperimentEnvironmentSettingRep](docs/Model/ExperimentEnvironmentSettingRep.md)
@@ -731,19 +745,26 @@ Class | Method | HTTP request | Description
 - [FlagScheduledChangesInput](docs/Model/FlagScheduledChangesInput.md)
 - [FlagStatusRep](docs/Model/FlagStatusRep.md)
 - [FlagSummary](docs/Model/FlagSummary.md)
+- [FlagTriggerInput](docs/Model/FlagTriggerInput.md)
 - [ForbiddenErrorRep](docs/Model/ForbiddenErrorRep.md)
 - [HunkRep](docs/Model/HunkRep.md)
+- [Integration](docs/Model/Integration.md)
 - [IntegrationMetadata](docs/Model/IntegrationMetadata.md)
 - [IntegrationStatus](docs/Model/IntegrationStatus.md)
+- [IntegrationStatusRep](docs/Model/IntegrationStatusRep.md)
+- [IntegrationSubscriptionStatusRep](docs/Model/IntegrationSubscriptionStatusRep.md)
+- [Integrations](docs/Model/Integrations.md)
 - [InvalidRequestErrorRep](docs/Model/InvalidRequestErrorRep.md)
 - [IpList](docs/Model/IpList.md)
 - [LastSeenMetadata](docs/Model/LastSeenMetadata.md)
 - [Link](docs/Model/Link.md)
 - [Member](docs/Model/Member.md)
 - [MemberDataRep](docs/Model/MemberDataRep.md)
+- [MemberImportItemRep](docs/Model/MemberImportItemRep.md)
 - [MemberPermissionGrantSummaryRep](docs/Model/MemberPermissionGrantSummaryRep.md)
 - [MemberSummaryRep](docs/Model/MemberSummaryRep.md)
 - [MemberTeamSummaryRep](docs/Model/MemberTeamSummaryRep.md)
+- [MemberTeamsFormPost](docs/Model/MemberTeamsFormPost.md)
 - [Members](docs/Model/Members.md)
 - [MethodNotAllowedErrorRep](docs/Model/MethodNotAllowedErrorRep.md)
 - [MetricCollectionRep](docs/Model/MetricCollectionRep.md)
@@ -775,6 +796,7 @@ Class | Method | HTTP request | Description
 - [PubNubDetailRep](docs/Model/PubNubDetailRep.md)
 - [PutBranch](docs/Model/PutBranch.md)
 - [RateLimitedErrorRep](docs/Model/RateLimitedErrorRep.md)
+- [RecentTriggerBody](docs/Model/RecentTriggerBody.md)
 - [ReferenceRep](docs/Model/ReferenceRep.md)
 - [RelayAutoConfigCollectionRep](docs/Model/RelayAutoConfigCollectionRep.md)
 - [RelayAutoConfigPost](docs/Model/RelayAutoConfigPost.md)
@@ -810,9 +832,11 @@ Class | Method | HTTP request | Description
 - [StatisticsRoot](docs/Model/StatisticsRoot.md)
 - [StatusConflictErrorRep](docs/Model/StatusConflictErrorRep.md)
 - [SubjectDataRep](docs/Model/SubjectDataRep.md)
+- [SubscriptionPost](docs/Model/SubscriptionPost.md)
 - [Target](docs/Model/Target.md)
 - [TargetResourceRep](docs/Model/TargetResourceRep.md)
 - [TeamCollectionRep](docs/Model/TeamCollectionRep.md)
+- [TeamImportsRep](docs/Model/TeamImportsRep.md)
 - [TeamPatchInput](docs/Model/TeamPatchInput.md)
 - [TeamPostInput](docs/Model/TeamPostInput.md)
 - [TeamRep](docs/Model/TeamRep.md)
@@ -820,6 +844,9 @@ Class | Method | HTTP request | Description
 - [Token](docs/Model/Token.md)
 - [TokenDataRep](docs/Model/TokenDataRep.md)
 - [Tokens](docs/Model/Tokens.md)
+- [TriggerPost](docs/Model/TriggerPost.md)
+- [TriggerWorkflowCollectionRep](docs/Model/TriggerWorkflowCollectionRep.md)
+- [TriggerWorkflowRep](docs/Model/TriggerWorkflowRep.md)
 - [UnauthorizedErrorRep](docs/Model/UnauthorizedErrorRep.md)
 - [UrlPost](docs/Model/UrlPost.md)
 - [User](docs/Model/User.md)
@@ -869,5 +896,5 @@ support@launchdarkly.com
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `2.0`
-    - Package version: `7.0.0`
+    - Package version: `7.1.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

@@ -75,7 +75,7 @@ class MetricListingRep implements ModelInterface, ArrayAccess, \JsonSerializable
         '_maintainer' => '\LaunchDarklyApi\Model\MemberSummaryRep',
         'description' => 'string',
         'is_numeric' => 'bool',
-        'success_criteria' => 'int',
+        'success_criteria' => 'string',
         'unit' => 'string',
         'event_key' => 'string'
     ];
@@ -251,6 +251,8 @@ class MetricListingRep implements ModelInterface, ArrayAccess, \JsonSerializable
     const KIND_PAGEVIEW = 'pageview';
     const KIND_CLICK = 'click';
     const KIND_CUSTOM = 'custom';
+    const SUCCESS_CRITERIA_HIGHER_THAN_BASELINE = 'HigherThanBaseline';
+    const SUCCESS_CRITERIA_LOWER_THAN_BASELINE = 'LowerThanBaseline';
 
     /**
      * Gets allowable values of the enum
@@ -263,6 +265,19 @@ class MetricListingRep implements ModelInterface, ArrayAccess, \JsonSerializable
             self::KIND_PAGEVIEW,
             self::KIND_CLICK,
             self::KIND_CUSTOM,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSuccessCriteriaAllowableValues()
+    {
+        return [
+            self::SUCCESS_CRITERIA_HIGHER_THAN_BASELINE,
+            self::SUCCESS_CRITERIA_LOWER_THAN_BASELINE,
         ];
     }
 
@@ -340,6 +355,15 @@ class MetricListingRep implements ModelInterface, ArrayAccess, \JsonSerializable
         if ($this->container['_creation_date'] === null) {
             $invalidProperties[] = "'_creation_date' can't be null";
         }
+        $allowedValues = $this->getSuccessCriteriaAllowableValues();
+        if (!is_null($this->container['success_criteria']) && !in_array($this->container['success_criteria'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'success_criteria', must be one of '%s'",
+                $this->container['success_criteria'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -728,7 +752,7 @@ class MetricListingRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets success_criteria
      *
-     * @return int|null
+     * @return string|null
      */
     public function getSuccessCriteria()
     {
@@ -738,12 +762,22 @@ class MetricListingRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets success_criteria
      *
-     * @param int|null $success_criteria success_criteria
+     * @param string|null $success_criteria success_criteria
      *
      * @return self
      */
     public function setSuccessCriteria($success_criteria)
     {
+        $allowedValues = $this->getSuccessCriteriaAllowableValues();
+        if (!is_null($success_criteria) && !in_array($success_criteria, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'success_criteria', must be one of '%s'",
+                    $success_criteria,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['success_criteria'] = $success_criteria;
 
         return $this;

@@ -70,7 +70,7 @@ class MetricPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'is_numeric' => 'bool',
         'unit' => 'string',
         'event_key' => 'string',
-        'success_criteria' => 'int',
+        'success_criteria' => 'string',
         'tags' => 'string[]'
     ];
 
@@ -221,6 +221,8 @@ class MetricPost implements ModelInterface, ArrayAccess, \JsonSerializable
     const KIND_PAGEVIEW = 'pageview';
     const KIND_CLICK = 'click';
     const KIND_CUSTOM = 'custom';
+    const SUCCESS_CRITERIA_HIGHER_THAN_BASELINE = 'HigherThanBaseline';
+    const SUCCESS_CRITERIA_LOWER_THAN_BASELINE = 'LowerThanBaseline';
 
     /**
      * Gets allowable values of the enum
@@ -233,6 +235,19 @@ class MetricPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::KIND_PAGEVIEW,
             self::KIND_CLICK,
             self::KIND_CUSTOM,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSuccessCriteriaAllowableValues()
+    {
+        return [
+            self::SUCCESS_CRITERIA_HIGHER_THAN_BASELINE,
+            self::SUCCESS_CRITERIA_LOWER_THAN_BASELINE,
         ];
     }
 
@@ -285,6 +300,15 @@ class MetricPost implements ModelInterface, ArrayAccess, \JsonSerializable
             $invalidProperties[] = sprintf(
                 "invalid value '%s' for 'kind', must be one of '%s'",
                 $this->container['kind'],
+                implode("', '", $allowedValues)
+            );
+        }
+
+        $allowedValues = $this->getSuccessCriteriaAllowableValues();
+        if (!is_null($this->container['success_criteria']) && !in_array($this->container['success_criteria'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'success_criteria', must be one of '%s'",
+                $this->container['success_criteria'],
                 implode("', '", $allowedValues)
             );
         }
@@ -557,7 +581,7 @@ class MetricPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets success_criteria
      *
-     * @return int|null
+     * @return string|null
      */
     public function getSuccessCriteria()
     {
@@ -567,12 +591,22 @@ class MetricPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets success_criteria
      *
-     * @param int|null $success_criteria success_criteria
+     * @param string|null $success_criteria success_criteria
      *
      * @return self
      */
     public function setSuccessCriteria($success_criteria)
     {
+        $allowedValues = $this->getSuccessCriteriaAllowableValues();
+        if (!is_null($success_criteria) && !in_array($success_criteria, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'success_criteria', must be one of '%s'",
+                    $success_criteria,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
         $this->container['success_criteria'] = $success_criteria;
 
         return $this;

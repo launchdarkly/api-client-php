@@ -220,7 +220,7 @@ patchFlagConfigScheduledChange($project_key, $feature_flag_key, $environment_key
 
 Update scheduled changes workflow
 
-Update a scheduled change, overriding existing instructions with the new ones.<br /><br />Requires a semantic patch representation of the desired changes to the resource. To learn more about semantic patches, read [Updates](/#section/Updates/Updates-via-semantic-patches)
+Update a scheduled change, overriding existing instructions with the new ones.<br /><br />Requires a semantic patch representation of the desired changes to the resource. To learn more about semantic patches, read [Updates](/reference#updates-via-semantic-patches).
 
 ### Example
 

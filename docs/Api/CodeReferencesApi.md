@@ -276,7 +276,7 @@ Name | Type | Description  | Notes
 ## `getExtinctions()`
 
 ```php
-getExtinctions($repo_name, $branch_name, $proj_key, $flag_key): \LaunchDarklyApi\Model\ExtinctionCollectionRep
+getExtinctions($repo_name, $branch_name, $proj_key, $flag_key, $from, $to): \LaunchDarklyApi\Model\ExtinctionCollectionRep
 ```
 
 List extinctions
@@ -306,9 +306,11 @@ $repo_name = 'repo_name_example'; // string | Filter results to a specific repos
 $branch_name = 'branch_name_example'; // string | Filter results to a specific branch. By default, only the default branch will be queried for extinctions.
 $proj_key = 'proj_key_example'; // string | Filter results to a specific project
 $flag_key = 'flag_key_example'; // string | Filter results to a specific flag key
+$from = 56; // int | Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with `to`.
+$to = 56; // int | Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with `from`.
 
 try {
-    $result = $apiInstance->getExtinctions($repo_name, $branch_name, $proj_key, $flag_key);
+    $result = $apiInstance->getExtinctions($repo_name, $branch_name, $proj_key, $flag_key, $from, $to);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CodeReferencesApi->getExtinctions: ', $e->getMessage(), PHP_EOL;
@@ -323,6 +325,8 @@ Name | Type | Description  | Notes
  **branch_name** | **string**| Filter results to a specific branch. By default, only the default branch will be queried for extinctions. | [optional]
  **proj_key** | **string**| Filter results to a specific project | [optional]
  **flag_key** | **string**| Filter results to a specific flag key | [optional]
+ **from** | **int**| Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;to&#x60;. | [optional]
+ **to** | **int**| Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;from&#x60;. | [optional]
 
 ### Return type
 

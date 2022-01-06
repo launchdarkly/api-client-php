@@ -14,7 +14,7 @@ Name | Type | Description | Notes
 **is_numeric** | **bool** |  | [optional]
 **unit** | **string** |  | [optional]
 **event_key** | **string** | Required for custom metrics | [optional]
-**success_criteria** | **int** |  | [optional]
+**success_criteria** | **string** |  | [optional]
 **tags** | **string[]** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

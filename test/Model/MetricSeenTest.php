@@ -90,9 +90,9 @@ class MetricSeenTest extends TestCase
     }
 
     /**
-     * Test attribute "minutes_ago"
+     * Test attribute "timestamp"
      */
-    public function testPropertyMinutesAgo()
+    public function testPropertyTimestamp()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

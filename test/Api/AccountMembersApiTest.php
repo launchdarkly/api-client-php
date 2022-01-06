@@ -121,6 +121,18 @@ class AccountMembersApiTest extends TestCase
     }
 
     /**
+     * Test case for postMemberTeams
+     *
+     * Add member to teams.
+     *
+     */
+    public function testPostMemberTeams()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for postMembers
      *
      * Invite new members.

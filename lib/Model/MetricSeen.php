@@ -61,7 +61,7 @@ class MetricSeen implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         'ever' => 'bool',
-        'minutes_ago' => 'int'
+        'timestamp' => 'int'
     ];
 
     /**
@@ -73,7 +73,7 @@ class MetricSeen implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         'ever' => null,
-        'minutes_ago' => 'int64'
+        'timestamp' => 'int64'
     ];
 
     /**
@@ -104,7 +104,7 @@ class MetricSeen implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         'ever' => 'ever',
-        'minutes_ago' => 'minutesAgo'
+        'timestamp' => 'timestamp'
     ];
 
     /**
@@ -114,7 +114,7 @@ class MetricSeen implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         'ever' => 'setEver',
-        'minutes_ago' => 'setMinutesAgo'
+        'timestamp' => 'setTimestamp'
     ];
 
     /**
@@ -124,7 +124,7 @@ class MetricSeen implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         'ever' => 'getEver',
-        'minutes_ago' => 'getMinutesAgo'
+        'timestamp' => 'getTimestamp'
     ];
 
     /**
@@ -185,7 +185,7 @@ class MetricSeen implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(array $data = null)
     {
         $this->container['ever'] = $data['ever'] ?? null;
-        $this->container['minutes_ago'] = $data['minutes_ago'] ?? null;
+        $this->container['timestamp'] = $data['timestamp'] ?? null;
     }
 
     /**
@@ -237,25 +237,25 @@ class MetricSeen implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
-     * Gets minutes_ago
+     * Gets timestamp
      *
      * @return int|null
      */
-    public function getMinutesAgo()
+    public function getTimestamp()
     {
-        return $this->container['minutes_ago'];
+        return $this->container['timestamp'];
     }
 
     /**
-     * Sets minutes_ago
+     * Sets timestamp
      *
-     * @param int|null $minutes_ago minutes_ago
+     * @param int|null $timestamp timestamp
      *
      * @return self
      */
-    public function setMinutesAgo($minutes_ago)
+    public function setTimestamp($timestamp)
     {
-        $this->container['minutes_ago'] = $minutes_ago;
+        $this->container['timestamp'] = $timestamp;
 
         return $this;
     }

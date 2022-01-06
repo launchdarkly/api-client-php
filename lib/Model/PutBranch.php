@@ -64,7 +64,8 @@ class PutBranch implements ModelInterface, ArrayAccess, \JsonSerializable
         'head' => 'string',
         'update_sequence_id' => 'int',
         'sync_time' => 'int',
-        'references' => '\LaunchDarklyApi\Model\ReferenceRep[]'
+        'references' => '\LaunchDarklyApi\Model\ReferenceRep[]',
+        'commit_time' => 'int'
     ];
 
     /**
@@ -79,7 +80,8 @@ class PutBranch implements ModelInterface, ArrayAccess, \JsonSerializable
         'head' => null,
         'update_sequence_id' => 'int64',
         'sync_time' => 'int64',
-        'references' => null
+        'references' => null,
+        'commit_time' => 'int64'
     ];
 
     /**
@@ -113,7 +115,8 @@ class PutBranch implements ModelInterface, ArrayAccess, \JsonSerializable
         'head' => 'head',
         'update_sequence_id' => 'updateSequenceId',
         'sync_time' => 'syncTime',
-        'references' => 'references'
+        'references' => 'references',
+        'commit_time' => 'commitTime'
     ];
 
     /**
@@ -126,7 +129,8 @@ class PutBranch implements ModelInterface, ArrayAccess, \JsonSerializable
         'head' => 'setHead',
         'update_sequence_id' => 'setUpdateSequenceId',
         'sync_time' => 'setSyncTime',
-        'references' => 'setReferences'
+        'references' => 'setReferences',
+        'commit_time' => 'setCommitTime'
     ];
 
     /**
@@ -139,7 +143,8 @@ class PutBranch implements ModelInterface, ArrayAccess, \JsonSerializable
         'head' => 'getHead',
         'update_sequence_id' => 'getUpdateSequenceId',
         'sync_time' => 'getSyncTime',
-        'references' => 'getReferences'
+        'references' => 'getReferences',
+        'commit_time' => 'getCommitTime'
     ];
 
     /**
@@ -204,6 +209,7 @@ class PutBranch implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['update_sequence_id'] = $data['update_sequence_id'] ?? null;
         $this->container['sync_time'] = $data['sync_time'] ?? null;
         $this->container['references'] = $data['references'] ?? null;
+        $this->container['commit_time'] = $data['commit_time'] ?? null;
     }
 
     /**
@@ -355,6 +361,30 @@ class PutBranch implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setReferences($references)
     {
         $this->container['references'] = $references;
+
+        return $this;
+    }
+
+    /**
+     * Gets commit_time
+     *
+     * @return int|null
+     */
+    public function getCommitTime()
+    {
+        return $this->container['commit_time'];
+    }
+
+    /**
+     * Sets commit_time
+     *
+     * @param int|null $commit_time commit_time
+     *
+     * @return self
+     */
+    public function setCommitTime($commit_time)
+    {
+        $this->container['commit_time'] = $commit_time;
 
         return $this;
     }

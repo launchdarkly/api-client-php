@@ -65,7 +65,8 @@ class Rule implements ModelInterface, ArrayAccess, \JsonSerializable
         'rollout' => '\LaunchDarklyApi\Model\Rollout',
         'clauses' => '\LaunchDarklyApi\Model\Clause[]',
         'track_events' => 'bool',
-        'description' => 'string'
+        'description' => 'string',
+        'ref' => 'string'
     ];
 
     /**
@@ -81,7 +82,8 @@ class Rule implements ModelInterface, ArrayAccess, \JsonSerializable
         'rollout' => null,
         'clauses' => null,
         'track_events' => null,
-        'description' => null
+        'description' => null,
+        'ref' => null
     ];
 
     /**
@@ -116,7 +118,8 @@ class Rule implements ModelInterface, ArrayAccess, \JsonSerializable
         'rollout' => 'rollout',
         'clauses' => 'clauses',
         'track_events' => 'trackEvents',
-        'description' => 'description'
+        'description' => 'description',
+        'ref' => 'ref'
     ];
 
     /**
@@ -130,7 +133,8 @@ class Rule implements ModelInterface, ArrayAccess, \JsonSerializable
         'rollout' => 'setRollout',
         'clauses' => 'setClauses',
         'track_events' => 'setTrackEvents',
-        'description' => 'setDescription'
+        'description' => 'setDescription',
+        'ref' => 'setRef'
     ];
 
     /**
@@ -144,7 +148,8 @@ class Rule implements ModelInterface, ArrayAccess, \JsonSerializable
         'rollout' => 'getRollout',
         'clauses' => 'getClauses',
         'track_events' => 'getTrackEvents',
-        'description' => 'getDescription'
+        'description' => 'getDescription',
+        'ref' => 'getRef'
     ];
 
     /**
@@ -210,6 +215,7 @@ class Rule implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['clauses'] = $data['clauses'] ?? null;
         $this->container['track_events'] = $data['track_events'] ?? null;
         $this->container['description'] = $data['description'] ?? null;
+        $this->container['ref'] = $data['ref'] ?? null;
     }
 
     /**
@@ -382,6 +388,30 @@ class Rule implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setDescription($description)
     {
         $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets ref
+     *
+     * @return string|null
+     */
+    public function getRef()
+    {
+        return $this->container['ref'];
+    }
+
+    /**
+     * Sets ref
+     *
+     * @param string|null $ref ref
+     *
+     * @return self
+     */
+    public function setRef($ref)
+    {
+        $this->container['ref'] = $ref;
 
         return $this;
     }

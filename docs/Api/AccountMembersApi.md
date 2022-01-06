@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**getMember()**](AccountMembersApi.md#getMember) | **GET** /api/v2/members/{id} | Get account member
 [**getMembers()**](AccountMembersApi.md#getMembers) | **GET** /api/v2/members | List account members
 [**patchMember()**](AccountMembersApi.md#patchMember) | **PATCH** /api/v2/members/{id} | Modify an account member
+[**postMemberTeams()**](AccountMembersApi.md#postMemberTeams) | **POST** /api/v2/members/{id}/teams | Add member to teams
 [**postMembers()**](AccountMembersApi.md#postMembers) | **POST** /api/v2/members | Invite new members
 
 
@@ -210,7 +211,7 @@ patchMember($id, $patch_operation): \LaunchDarklyApi\Model\Member
 
 Modify an account member
 
-Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member. Requests to update account members will not work if SCIM is enabled for the account.
+Update a single account member. The request should be a valid JSON Patch document describing the changes to be made to the member.  To update fields in the account member object that are arrays, set the `path` to the name of the field and then append `/<array index>`. Using `/0` appends to the beginning of the array. For example, to add a new custom role to a member, use the following request body:  ```   [     {       \"op\": \"add\",       \"path\": \"/customRoles/0\",       \"value\": \"some-role-id\"     }   ] ```  Requests to update account members will not work if SCIM is enabled for the account.
 
 ### Example
 
@@ -248,6 +249,70 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| The member ID |
  **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\Member**](../Model/Member.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `postMemberTeams()`
+
+```php
+postMemberTeams($id, $member_teams_form_post): \LaunchDarklyApi\Model\Member
+```
+
+Add member to teams
+
+Add member to team(s)
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\AccountMembersApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$id = 'id_example'; // string | The member ID
+$member_teams_form_post = new \LaunchDarklyApi\Model\MemberTeamsFormPost(); // \LaunchDarklyApi\Model\MemberTeamsFormPost
+
+try {
+    $result = $apiInstance->postMemberTeams($id, $member_teams_form_post);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountMembersApi->postMemberTeams: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **id** | **string**| The member ID |
+ **member_teams_form_post** | [**\LaunchDarklyApi\Model\MemberTeamsFormPost**](../Model/MemberTeamsFormPost.md)|  |
 
 ### Return type
 

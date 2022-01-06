@@ -19,7 +19,7 @@ Name | Type | Description | Notes
 **_maintainer** | [**\LaunchDarklyApi\Model\MemberSummaryRep**](MemberSummaryRep.md) |  | [optional]
 **description** | **string** |  | [optional]
 **is_numeric** | **bool** |  | [optional]
-**success_criteria** | **int** |  | [optional]
+**success_criteria** | **string** |  | [optional]
 **unit** | **string** |  | [optional]
 **event_key** | **string** |  | [optional]
 

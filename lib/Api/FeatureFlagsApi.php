@@ -2757,7 +2757,6 @@ class FeatureFlagsApi
      * @param  string $tag Filter feature flags by tag (optional)
      * @param  int $limit The number of feature flags to return. Defaults to -1, which returns all flags (optional)
      * @param  int $offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next limit items (optional)
-     * @param  string $query A string that matches against the flags&#39; keys and names. It is not case sensitive (optional)
      * @param  bool $archived A boolean to filter the list to archived flags. When this is absent, only unarchived flags will be returned (optional)
      * @param  bool $summary By default in API version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned (optional)
      * @param  string $filter A comma-separated list of filters. Each filter is of the form field:value (optional)
@@ -2767,9 +2766,9 @@ class FeatureFlagsApi
      * @throws \InvalidArgumentException
      * @return \LaunchDarklyApi\Model\FeatureFlags|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
-    public function getFeatureFlags($proj_key, $env = null, $tag = null, $limit = null, $offset = null, $query = null, $archived = null, $summary = null, $filter = null, $sort = null)
+    public function getFeatureFlags($proj_key, $env = null, $tag = null, $limit = null, $offset = null, $archived = null, $summary = null, $filter = null, $sort = null)
     {
-        list($response) = $this->getFeatureFlagsWithHttpInfo($proj_key, $env, $tag, $limit, $offset, $query, $archived, $summary, $filter, $sort);
+        list($response) = $this->getFeatureFlagsWithHttpInfo($proj_key, $env, $tag, $limit, $offset, $archived, $summary, $filter, $sort);
         return $response;
     }
 
@@ -2783,7 +2782,6 @@ class FeatureFlagsApi
      * @param  string $tag Filter feature flags by tag (optional)
      * @param  int $limit The number of feature flags to return. Defaults to -1, which returns all flags (optional)
      * @param  int $offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next limit items (optional)
-     * @param  string $query A string that matches against the flags&#39; keys and names. It is not case sensitive (optional)
      * @param  bool $archived A boolean to filter the list to archived flags. When this is absent, only unarchived flags will be returned (optional)
      * @param  bool $summary By default in API version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned (optional)
      * @param  string $filter A comma-separated list of filters. Each filter is of the form field:value (optional)
@@ -2793,9 +2791,9 @@ class FeatureFlagsApi
      * @throws \InvalidArgumentException
      * @return array of \LaunchDarklyApi\Model\FeatureFlags|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
-    public function getFeatureFlagsWithHttpInfo($proj_key, $env = null, $tag = null, $limit = null, $offset = null, $query = null, $archived = null, $summary = null, $filter = null, $sort = null)
+    public function getFeatureFlagsWithHttpInfo($proj_key, $env = null, $tag = null, $limit = null, $offset = null, $archived = null, $summary = null, $filter = null, $sort = null)
     {
-        $request = $this->getFeatureFlagsRequest($proj_key, $env, $tag, $limit, $offset, $query, $archived, $summary, $filter, $sort);
+        $request = $this->getFeatureFlagsRequest($proj_key, $env, $tag, $limit, $offset, $archived, $summary, $filter, $sort);
 
         try {
             $options = $this->createHttpClientOption();
@@ -2985,7 +2983,6 @@ class FeatureFlagsApi
      * @param  string $tag Filter feature flags by tag (optional)
      * @param  int $limit The number of feature flags to return. Defaults to -1, which returns all flags (optional)
      * @param  int $offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next limit items (optional)
-     * @param  string $query A string that matches against the flags&#39; keys and names. It is not case sensitive (optional)
      * @param  bool $archived A boolean to filter the list to archived flags. When this is absent, only unarchived flags will be returned (optional)
      * @param  bool $summary By default in API version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned (optional)
      * @param  string $filter A comma-separated list of filters. Each filter is of the form field:value (optional)
@@ -2994,9 +2991,9 @@ class FeatureFlagsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFeatureFlagsAsync($proj_key, $env = null, $tag = null, $limit = null, $offset = null, $query = null, $archived = null, $summary = null, $filter = null, $sort = null)
+    public function getFeatureFlagsAsync($proj_key, $env = null, $tag = null, $limit = null, $offset = null, $archived = null, $summary = null, $filter = null, $sort = null)
     {
-        return $this->getFeatureFlagsAsyncWithHttpInfo($proj_key, $env, $tag, $limit, $offset, $query, $archived, $summary, $filter, $sort)
+        return $this->getFeatureFlagsAsyncWithHttpInfo($proj_key, $env, $tag, $limit, $offset, $archived, $summary, $filter, $sort)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -3014,7 +3011,6 @@ class FeatureFlagsApi
      * @param  string $tag Filter feature flags by tag (optional)
      * @param  int $limit The number of feature flags to return. Defaults to -1, which returns all flags (optional)
      * @param  int $offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next limit items (optional)
-     * @param  string $query A string that matches against the flags&#39; keys and names. It is not case sensitive (optional)
      * @param  bool $archived A boolean to filter the list to archived flags. When this is absent, only unarchived flags will be returned (optional)
      * @param  bool $summary By default in API version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned (optional)
      * @param  string $filter A comma-separated list of filters. Each filter is of the form field:value (optional)
@@ -3023,10 +3019,10 @@ class FeatureFlagsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function getFeatureFlagsAsyncWithHttpInfo($proj_key, $env = null, $tag = null, $limit = null, $offset = null, $query = null, $archived = null, $summary = null, $filter = null, $sort = null)
+    public function getFeatureFlagsAsyncWithHttpInfo($proj_key, $env = null, $tag = null, $limit = null, $offset = null, $archived = null, $summary = null, $filter = null, $sort = null)
     {
         $returnType = '\LaunchDarklyApi\Model\FeatureFlags';
-        $request = $this->getFeatureFlagsRequest($proj_key, $env, $tag, $limit, $offset, $query, $archived, $summary, $filter, $sort);
+        $request = $this->getFeatureFlagsRequest($proj_key, $env, $tag, $limit, $offset, $archived, $summary, $filter, $sort);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -3069,7 +3065,6 @@ class FeatureFlagsApi
      * @param  string $tag Filter feature flags by tag (optional)
      * @param  int $limit The number of feature flags to return. Defaults to -1, which returns all flags (optional)
      * @param  int $offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next limit items (optional)
-     * @param  string $query A string that matches against the flags&#39; keys and names. It is not case sensitive (optional)
      * @param  bool $archived A boolean to filter the list to archived flags. When this is absent, only unarchived flags will be returned (optional)
      * @param  bool $summary By default in API version &gt;&#x3D; 1, flags will _not_ include their list of prerequisites, targets or rules.  Set summary&#x3D;0 to include these fields for each flag returned (optional)
      * @param  string $filter A comma-separated list of filters. Each filter is of the form field:value (optional)
@@ -3078,7 +3073,7 @@ class FeatureFlagsApi
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function getFeatureFlagsRequest($proj_key, $env = null, $tag = null, $limit = null, $offset = null, $query = null, $archived = null, $summary = null, $filter = null, $sort = null)
+    public function getFeatureFlagsRequest($proj_key, $env = null, $tag = null, $limit = null, $offset = null, $archived = null, $summary = null, $filter = null, $sort = null)
     {
         // verify the required parameter 'proj_key' is set
         if ($proj_key === null || (is_array($proj_key) && count($proj_key) === 0)) {
@@ -3136,17 +3131,6 @@ class FeatureFlagsApi
             }
             else {
                 $queryParams['offset'] = $offset;
-            }
-        }
-        // query params
-        if ($query !== null) {
-            if('form' === 'form' && is_array($query)) {
-                foreach($query as $key => $value) {
-                    $queryParams[$key] = $value;
-                }
-            }
-            else {
-                $queryParams['query'] = $query;
             }
         }
         // query params
