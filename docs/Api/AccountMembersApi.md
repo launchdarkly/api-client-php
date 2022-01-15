@@ -233,7 +233,7 @@ $apiInstance = new LaunchDarklyApi\Api\AccountMembersApi(
     $config
 );
 $id = 'id_example'; // string | The member ID
-$patch_operation = array(new \LaunchDarklyApi\Model\PatchOperation()); // \LaunchDarklyApi\Model\PatchOperation[]
+$patch_operation = [{"op":"add","path":"/role","value":"writer"}]; // \LaunchDarklyApi\Model\PatchOperation[]
 
 try {
     $result = $apiInstance->patchMember($id, $patch_operation);
@@ -270,7 +270,7 @@ Name | Type | Description  | Notes
 ## `postMemberTeams()`
 
 ```php
-postMemberTeams($id, $member_teams_form_post): \LaunchDarklyApi\Model\Member
+postMemberTeams($id, $member_teams_post_input): \LaunchDarklyApi\Model\Member
 ```
 
 Add member to teams
@@ -297,10 +297,10 @@ $apiInstance = new LaunchDarklyApi\Api\AccountMembersApi(
     $config
 );
 $id = 'id_example'; // string | The member ID
-$member_teams_form_post = new \LaunchDarklyApi\Model\MemberTeamsFormPost(); // \LaunchDarklyApi\Model\MemberTeamsFormPost
+$member_teams_post_input = new \LaunchDarklyApi\Model\MemberTeamsPostInput(); // \LaunchDarklyApi\Model\MemberTeamsPostInput
 
 try {
-    $result = $apiInstance->postMemberTeams($id, $member_teams_form_post);
+    $result = $apiInstance->postMemberTeams($id, $member_teams_post_input);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountMembersApi->postMemberTeams: ', $e->getMessage(), PHP_EOL;
@@ -312,7 +312,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **id** | **string**| The member ID |
- **member_teams_form_post** | [**\LaunchDarklyApi\Model\MemberTeamsFormPost**](../Model/MemberTeamsFormPost.md)|  |
+ **member_teams_post_input** | [**\LaunchDarklyApi\Model\MemberTeamsPostInput**](../Model/MemberTeamsPostInput.md)|  |
 
 ### Return type
 

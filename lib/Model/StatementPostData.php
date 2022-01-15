@@ -215,12 +215,6 @@ class StatementPostData implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['resources'] === null) {
-            $invalidProperties[] = "'resources' can't be null";
-        }
-        if ($this->container['actions'] === null) {
-            $invalidProperties[] = "'actions' can't be null";
-        }
         if ($this->container['effect'] === null) {
             $invalidProperties[] = "'effect' can't be null";
         }
@@ -242,7 +236,7 @@ class StatementPostData implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets resources
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getResources()
     {
@@ -252,7 +246,7 @@ class StatementPostData implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets resources
      *
-     * @param string[] $resources Resource specifier strings
+     * @param string[]|null $resources Resource specifier strings
      *
      * @return self
      */
@@ -290,7 +284,7 @@ class StatementPostData implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets actions
      *
-     * @return string[]
+     * @return string[]|null
      */
     public function getActions()
     {
@@ -300,7 +294,7 @@ class StatementPostData implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets actions
      *
-     * @param string[] $actions Actions to perform on a resource
+     * @param string[]|null $actions Actions to perform on a resource
      *
      * @return self
      */

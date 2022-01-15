@@ -208,7 +208,7 @@ patchMetric($project_key, $key, $patch_operation): \LaunchDarklyApi\Model\Metric
 
 Update metric
 
-Patch a environment by key.
+Patch a metric by key.
 
 ### Example
 
@@ -231,7 +231,7 @@ $apiInstance = new LaunchDarklyApi\Api\MetricsApi(
 );
 $project_key = 'project_key_example'; // string | The project key
 $key = 'key_example'; // string | The metric key
-$patch_operation = array(new \LaunchDarklyApi\Model\PatchOperation()); // \LaunchDarklyApi\Model\PatchOperation[]
+$patch_operation = [{"op":"replace","path":"/name","value":"my-updated-metric"}]; // \LaunchDarklyApi\Model\PatchOperation[]
 
 try {
     $result = $apiInstance->patchMetric($project_key, $key, $patch_operation);

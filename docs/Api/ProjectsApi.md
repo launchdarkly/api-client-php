@@ -223,7 +223,7 @@ $apiInstance = new LaunchDarklyApi\Api\ProjectsApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$patch_operation = array(new \LaunchDarklyApi\Model\PatchOperation()); // \LaunchDarklyApi\Model\PatchOperation[]
+$patch_operation = [{"op":"add","path":"/tags/0","value":"another-tag"}]; // \LaunchDarklyApi\Model\PatchOperation[]
 
 try {
     $result = $apiInstance->patchProject($project_key, $patch_operation);

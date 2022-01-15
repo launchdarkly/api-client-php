@@ -223,7 +223,7 @@ $apiInstance = new LaunchDarklyApi\Api\WebhooksApi(
     $config
 );
 $id = 'id_example'; // string | The ID of the webhook to update
-$patch_operation = array(new \LaunchDarklyApi\Model\PatchOperation()); // \LaunchDarklyApi\Model\PatchOperation[]
+$patch_operation = [{"op":"replace","path":"/on","value":false}]; // \LaunchDarklyApi\Model\PatchOperation[]
 
 try {
     $result = $apiInstance->patchWebhook($id, $patch_operation);

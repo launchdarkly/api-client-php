@@ -1563,15 +1563,15 @@ class AccountMembersApi
      * Add member to teams
      *
      * @param  string $id The member ID (required)
-     * @param  \LaunchDarklyApi\Model\MemberTeamsFormPost $member_teams_form_post member_teams_form_post (required)
+     * @param  \LaunchDarklyApi\Model\MemberTeamsPostInput $member_teams_post_input member_teams_post_input (required)
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return \LaunchDarklyApi\Model\Member|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\StatusConflictErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
-    public function postMemberTeams($id, $member_teams_form_post)
+    public function postMemberTeams($id, $member_teams_post_input)
     {
-        list($response) = $this->postMemberTeamsWithHttpInfo($id, $member_teams_form_post);
+        list($response) = $this->postMemberTeamsWithHttpInfo($id, $member_teams_post_input);
         return $response;
     }
 
@@ -1581,15 +1581,15 @@ class AccountMembersApi
      * Add member to teams
      *
      * @param  string $id The member ID (required)
-     * @param  \LaunchDarklyApi\Model\MemberTeamsFormPost $member_teams_form_post (required)
+     * @param  \LaunchDarklyApi\Model\MemberTeamsPostInput $member_teams_post_input (required)
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
      * @return array of \LaunchDarklyApi\Model\Member|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\StatusConflictErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
-    public function postMemberTeamsWithHttpInfo($id, $member_teams_form_post)
+    public function postMemberTeamsWithHttpInfo($id, $member_teams_post_input)
     {
-        $request = $this->postMemberTeamsRequest($id, $member_teams_form_post);
+        $request = $this->postMemberTeamsRequest($id, $member_teams_post_input);
 
         try {
             $options = $this->createHttpClientOption();
@@ -1775,14 +1775,14 @@ class AccountMembersApi
      * Add member to teams
      *
      * @param  string $id The member ID (required)
-     * @param  \LaunchDarklyApi\Model\MemberTeamsFormPost $member_teams_form_post (required)
+     * @param  \LaunchDarklyApi\Model\MemberTeamsPostInput $member_teams_post_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postMemberTeamsAsync($id, $member_teams_form_post)
+    public function postMemberTeamsAsync($id, $member_teams_post_input)
     {
-        return $this->postMemberTeamsAsyncWithHttpInfo($id, $member_teams_form_post)
+        return $this->postMemberTeamsAsyncWithHttpInfo($id, $member_teams_post_input)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -1796,15 +1796,15 @@ class AccountMembersApi
      * Add member to teams
      *
      * @param  string $id The member ID (required)
-     * @param  \LaunchDarklyApi\Model\MemberTeamsFormPost $member_teams_form_post (required)
+     * @param  \LaunchDarklyApi\Model\MemberTeamsPostInput $member_teams_post_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function postMemberTeamsAsyncWithHttpInfo($id, $member_teams_form_post)
+    public function postMemberTeamsAsyncWithHttpInfo($id, $member_teams_post_input)
     {
         $returnType = '\LaunchDarklyApi\Model\Member';
-        $request = $this->postMemberTeamsRequest($id, $member_teams_form_post);
+        $request = $this->postMemberTeamsRequest($id, $member_teams_post_input);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -1843,12 +1843,12 @@ class AccountMembersApi
      * Create request for operation 'postMemberTeams'
      *
      * @param  string $id The member ID (required)
-     * @param  \LaunchDarklyApi\Model\MemberTeamsFormPost $member_teams_form_post (required)
+     * @param  \LaunchDarklyApi\Model\MemberTeamsPostInput $member_teams_post_input (required)
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function postMemberTeamsRequest($id, $member_teams_form_post)
+    public function postMemberTeamsRequest($id, $member_teams_post_input)
     {
         // verify the required parameter 'id' is set
         if ($id === null || (is_array($id) && count($id) === 0)) {
@@ -1856,10 +1856,10 @@ class AccountMembersApi
                 'Missing the required parameter $id when calling postMemberTeams'
             );
         }
-        // verify the required parameter 'member_teams_form_post' is set
-        if ($member_teams_form_post === null || (is_array($member_teams_form_post) && count($member_teams_form_post) === 0)) {
+        // verify the required parameter 'member_teams_post_input' is set
+        if ($member_teams_post_input === null || (is_array($member_teams_post_input) && count($member_teams_post_input) === 0)) {
             throw new \InvalidArgumentException(
-                'Missing the required parameter $member_teams_form_post when calling postMemberTeams'
+                'Missing the required parameter $member_teams_post_input when calling postMemberTeams'
             );
         }
 
@@ -1894,11 +1894,11 @@ class AccountMembersApi
         }
 
         // for model (json/xml)
-        if (isset($member_teams_form_post)) {
+        if (isset($member_teams_post_input)) {
             if ($headers['Content-Type'] === 'application/json') {
-                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($member_teams_form_post));
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($member_teams_post_input));
             } else {
-                $httpBody = $member_teams_form_post;
+                $httpBody = $member_teams_post_input;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

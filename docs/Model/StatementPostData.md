@@ -4,9 +4,9 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**resources** | **string[]** | Resource specifier strings |
+**resources** | **string[]** | Resource specifier strings | [optional]
 **not_resources** | **string[]** | Targeted resources are the resources NOT in this list. The \&quot;resources\&quot; field must be empty to use this field. | [optional]
-**actions** | **string[]** | Actions to perform on a resource |
+**actions** | **string[]** | Actions to perform on a resource | [optional]
 **not_actions** | **string[]** | Targeted actions are the actions NOT in this list. The \&quot;actions\&quot; field must be empty to use this field. | [optional]
 **effect** | **string** |  |
 

@@ -136,7 +136,7 @@ docs/Model/MemberImportItemRep.md
 docs/Model/MemberPermissionGrantSummaryRep.md
 docs/Model/MemberSummaryRep.md
 docs/Model/MemberTeamSummaryRep.md
-docs/Model/MemberTeamsFormPost.md
+docs/Model/MemberTeamsPostInput.md
 docs/Model/Members.md
 docs/Model/MethodNotAllowedErrorRep.md
 docs/Model/MetricCollectionRep.md
@@ -376,7 +376,7 @@ lib/Model/MemberImportItemRep.php
 lib/Model/MemberPermissionGrantSummaryRep.php
 lib/Model/MemberSummaryRep.php
 lib/Model/MemberTeamSummaryRep.php
-lib/Model/MemberTeamsFormPost.php
+lib/Model/MemberTeamsPostInput.php
 lib/Model/Members.php
 lib/Model/MethodNotAllowedErrorRep.php
 lib/Model/MetricCollectionRep.php
@@ -614,7 +614,7 @@ test/Model/MemberImportItemRepTest.php
 test/Model/MemberPermissionGrantSummaryRepTest.php
 test/Model/MemberSummaryRepTest.php
 test/Model/MemberTeamSummaryRepTest.php
-test/Model/MemberTeamsFormPostTest.php
+test/Model/MemberTeamsPostInputTest.php
 test/Model/MemberTest.php
 test/Model/MembersTest.php
 test/Model/MethodNotAllowedErrorRepTest.php

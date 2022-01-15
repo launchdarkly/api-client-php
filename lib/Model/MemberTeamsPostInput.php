@@ -1,6 +1,6 @@
 <?php
 /**
- * StatementPost
+ * MemberTeamsPostInput
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \LaunchDarklyApi\ObjectSerializer;
 
 /**
- * StatementPost Class Doc Comment
+ * MemberTeamsPostInput Class Doc Comment
  *
  * @category Class
  * @package  LaunchDarklyApi
@@ -43,7 +43,7 @@ use \LaunchDarklyApi\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class StatementPost implements ModelInterface, ArrayAccess, \JsonSerializable
+class MemberTeamsPostInput implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class StatementPost implements ModelInterface, ArrayAccess, \JsonSerializable
       *
       * @var string
       */
-    protected static $openAPIModelName = 'StatementPost';
+    protected static $openAPIModelName = 'MemberTeamsPostInput';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,11 +60,7 @@ class StatementPost implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
-        'resources' => 'string[]',
-        'not_resources' => 'string[]',
-        'actions' => 'string[]',
-        'not_actions' => 'string[]',
-        'effect' => 'string'
+        'team_keys' => 'string[]'
     ];
 
     /**
@@ -75,11 +71,7 @@ class StatementPost implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'resources' => null,
-        'not_resources' => null,
-        'actions' => null,
-        'not_actions' => null,
-        'effect' => null
+        'team_keys' => null
     ];
 
     /**
@@ -109,11 +101,7 @@ class StatementPost implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
-        'resources' => 'resources',
-        'not_resources' => 'notResources',
-        'actions' => 'actions',
-        'not_actions' => 'notActions',
-        'effect' => 'effect'
+        'team_keys' => 'teamKeys'
     ];
 
     /**
@@ -122,11 +110,7 @@ class StatementPost implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
-        'resources' => 'setResources',
-        'not_resources' => 'setNotResources',
-        'actions' => 'setActions',
-        'not_actions' => 'setNotActions',
-        'effect' => 'setEffect'
+        'team_keys' => 'setTeamKeys'
     ];
 
     /**
@@ -135,11 +119,7 @@ class StatementPost implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
-        'resources' => 'getResources',
-        'not_resources' => 'getNotResources',
-        'actions' => 'getActions',
-        'not_actions' => 'getNotActions',
-        'effect' => 'getEffect'
+        'team_keys' => 'getTeamKeys'
     ];
 
     /**
@@ -199,11 +179,7 @@ class StatementPost implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
-        $this->container['resources'] = $data['resources'] ?? null;
-        $this->container['not_resources'] = $data['not_resources'] ?? null;
-        $this->container['actions'] = $data['actions'] ?? null;
-        $this->container['not_actions'] = $data['not_actions'] ?? null;
-        $this->container['effect'] = $data['effect'] ?? null;
+        $this->container['team_keys'] = $data['team_keys'] ?? null;
     }
 
     /**
@@ -215,8 +191,8 @@ class StatementPost implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
-        if ($this->container['effect'] === null) {
-            $invalidProperties[] = "'effect' can't be null";
+        if ($this->container['team_keys'] === null) {
+            $invalidProperties[] = "'team_keys' can't be null";
         }
         return $invalidProperties;
     }
@@ -234,121 +210,25 @@ class StatementPost implements ModelInterface, ArrayAccess, \JsonSerializable
 
 
     /**
-     * Gets resources
+     * Gets team_keys
      *
-     * @return string[]|null
+     * @return string[]
      */
-    public function getResources()
+    public function getTeamKeys()
     {
-        return $this->container['resources'];
+        return $this->container['team_keys'];
     }
 
     /**
-     * Sets resources
+     * Sets team_keys
      *
-     * @param string[]|null $resources Resource specifier strings
+     * @param string[] $team_keys List of team keys
      *
      * @return self
      */
-    public function setResources($resources)
+    public function setTeamKeys($team_keys)
     {
-        $this->container['resources'] = $resources;
-
-        return $this;
-    }
-
-    /**
-     * Gets not_resources
-     *
-     * @return string[]|null
-     */
-    public function getNotResources()
-    {
-        return $this->container['not_resources'];
-    }
-
-    /**
-     * Sets not_resources
-     *
-     * @param string[]|null $not_resources Targeted resources are the resources NOT in this list. The \"resources\" field must be empty to use this field.
-     *
-     * @return self
-     */
-    public function setNotResources($not_resources)
-    {
-        $this->container['not_resources'] = $not_resources;
-
-        return $this;
-    }
-
-    /**
-     * Gets actions
-     *
-     * @return string[]|null
-     */
-    public function getActions()
-    {
-        return $this->container['actions'];
-    }
-
-    /**
-     * Sets actions
-     *
-     * @param string[]|null $actions Actions to perform on a resource
-     *
-     * @return self
-     */
-    public function setActions($actions)
-    {
-        $this->container['actions'] = $actions;
-
-        return $this;
-    }
-
-    /**
-     * Gets not_actions
-     *
-     * @return string[]|null
-     */
-    public function getNotActions()
-    {
-        return $this->container['not_actions'];
-    }
-
-    /**
-     * Sets not_actions
-     *
-     * @param string[]|null $not_actions Targeted actions are the actions NOT in this list. The \"actions\" field must be empty to use this field.
-     *
-     * @return self
-     */
-    public function setNotActions($not_actions)
-    {
-        $this->container['not_actions'] = $not_actions;
-
-        return $this;
-    }
-
-    /**
-     * Gets effect
-     *
-     * @return string
-     */
-    public function getEffect()
-    {
-        return $this->container['effect'];
-    }
-
-    /**
-     * Sets effect
-     *
-     * @param string $effect effect
-     *
-     * @return self
-     */
-    public function setEffect($effect)
-    {
-        $this->container['effect'] = $effect;
+        $this->container['team_keys'] = $team_keys;
 
         return $this;
     }

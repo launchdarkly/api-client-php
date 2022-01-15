@@ -628,7 +628,7 @@ $apiInstance = new LaunchDarklyApi\Api\CodeReferencesApi(
     $config
 );
 $repo = 'repo_example'; // string | The repository name
-$patch_operation = array(new \LaunchDarklyApi\Model\PatchOperation()); // \LaunchDarklyApi\Model\PatchOperation[]
+$patch_operation = [{"op":"replace","path":"/defaultBranch","value":"main"}]; // \LaunchDarklyApi\Model\PatchOperation[]
 
 try {
     $result = $apiInstance->patchRepository($repo, $patch_operation);

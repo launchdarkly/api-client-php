@@ -295,7 +295,7 @@ $apiInstance = new LaunchDarklyApi\Api\IntegrationAuditLogSubscriptionsApi(
 );
 $integration_key = 'integration_key_example'; // string | The integration key
 $id = 'id_example'; // string | The ID of the audit log subscription
-$patch_operation = array(new \LaunchDarklyApi\Model\PatchOperation()); // \LaunchDarklyApi\Model\PatchOperation[]
+$patch_operation = [{"op":"replace","path":"/on","value":false}]; // \LaunchDarklyApi\Model\PatchOperation[]
 
 try {
     $result = $apiInstance->updateSubscription($integration_key, $id, $patch_operation);
