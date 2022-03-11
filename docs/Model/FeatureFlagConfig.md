@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **off_variation** | **int** |  | [optional]
 **prerequisites** | [**\LaunchDarklyApi\Model\Prerequisite[]**](Prerequisite.md) |  |
 **_site** | [**\LaunchDarklyApi\Model\Link**](Link.md) |  |
-**_access** | [**\LaunchDarklyApi\Model\AccessRep**](AccessRep.md) |  | [optional]
+**_access** | [**\LaunchDarklyApi\Model\Access**](Access.md) |  | [optional]
 **_environment_name** | **string** |  |
 **track_events** | **bool** |  |
 **track_events_fallthrough** | **bool** |  |

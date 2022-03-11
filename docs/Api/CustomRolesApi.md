@@ -4,17 +4,17 @@ All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteCustomRole()**](CustomRolesApi.md#deleteCustomRole) | **DELETE** /api/v2/roles/{key} | Delete custom role
-[**getCustomRole()**](CustomRolesApi.md#getCustomRole) | **GET** /api/v2/roles/{key} | Get custom role
+[**deleteCustomRole()**](CustomRolesApi.md#deleteCustomRole) | **DELETE** /api/v2/roles/{customRoleKey} | Delete custom role
+[**getCustomRole()**](CustomRolesApi.md#getCustomRole) | **GET** /api/v2/roles/{customRoleKey} | Get custom role
 [**getCustomRoles()**](CustomRolesApi.md#getCustomRoles) | **GET** /api/v2/roles | List custom roles
-[**patchCustomRole()**](CustomRolesApi.md#patchCustomRole) | **PATCH** /api/v2/roles/{key} | Update custom role
+[**patchCustomRole()**](CustomRolesApi.md#patchCustomRole) | **PATCH** /api/v2/roles/{customRoleKey} | Update custom role
 [**postCustomRole()**](CustomRolesApi.md#postCustomRole) | **POST** /api/v2/roles | Create custom role
 
 
 ## `deleteCustomRole()`
 
 ```php
-deleteCustomRole($key)
+deleteCustomRole($custom_role_key)
 ```
 
 Delete custom role
@@ -40,10 +40,10 @@ $apiInstance = new LaunchDarklyApi\Api\CustomRolesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$key = 'key_example'; // string | The key of the custom role to delete
+$custom_role_key = 'custom_role_key_example'; // string | The custom role key
 
 try {
-    $apiInstance->deleteCustomRole($key);
+    $apiInstance->deleteCustomRole($custom_role_key);
 } catch (Exception $e) {
     echo 'Exception when calling CustomRolesApi->deleteCustomRole: ', $e->getMessage(), PHP_EOL;
 }
@@ -53,7 +53,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **string**| The key of the custom role to delete |
+ **custom_role_key** | **string**| The custom role key |
 
 ### Return type
 
@@ -75,7 +75,7 @@ void (empty response body)
 ## `getCustomRole()`
 
 ```php
-getCustomRole($key): \LaunchDarklyApi\Model\CustomRole
+getCustomRole($custom_role_key): \LaunchDarklyApi\Model\CustomRole
 ```
 
 Get custom role
@@ -101,10 +101,10 @@ $apiInstance = new LaunchDarklyApi\Api\CustomRolesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$key = 'key_example'; // string | The custom role's key or ID
+$custom_role_key = 'custom_role_key_example'; // string | The custom role key or ID
 
 try {
-    $result = $apiInstance->getCustomRole($key);
+    $result = $apiInstance->getCustomRole($custom_role_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomRolesApi->getCustomRole: ', $e->getMessage(), PHP_EOL;
@@ -115,7 +115,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **string**| The custom role&#39;s key or ID |
+ **custom_role_key** | **string**| The custom role key or ID |
 
 ### Return type
 
@@ -196,12 +196,12 @@ This endpoint does not need any parameter.
 ## `patchCustomRole()`
 
 ```php
-patchCustomRole($key, $patch_with_comment): \LaunchDarklyApi\Model\CustomRole
+patchCustomRole($custom_role_key, $patch_with_comment): \LaunchDarklyApi\Model\CustomRole
 ```
 
 Update custom role
 
-Update a single custom role. The request must be a valid JSON Patch document describing the changes to be made to the custom role.
+Update a single custom role. The request must be a valid JSON Patch document describing the changes to be made to the custom role. To add an element to the `policy` array, set the `path` to `/policy` and then append `/<array index>`. Using `/0` adds to the beginning of the array.
 
 ### Example
 
@@ -222,11 +222,11 @@ $apiInstance = new LaunchDarklyApi\Api\CustomRolesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$key = 'key_example'; // string | The key of the custom role to update
-$patch_with_comment = new \LaunchDarklyApi\Model\PatchWithComment(); // \LaunchDarklyApi\Model\PatchWithComment
+$custom_role_key = 'custom_role_key_example'; // string | The custom role key
+$patch_with_comment = {"patch":[{"op":"add","path":"/policy/0","value":{"actions":["updateOn"],"effect":"allow","resources":["proj/*:env/qa:flag/*"]}}]}; // \LaunchDarklyApi\Model\PatchWithComment
 
 try {
-    $result = $apiInstance->patchCustomRole($key, $patch_with_comment);
+    $result = $apiInstance->patchCustomRole($custom_role_key, $patch_with_comment);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomRolesApi->patchCustomRole: ', $e->getMessage(), PHP_EOL;
@@ -237,7 +237,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **string**| The key of the custom role to update |
+ **custom_role_key** | **string**| The custom role key |
  **patch_with_comment** | [**\LaunchDarklyApi\Model\PatchWithComment**](../Model/PatchWithComment.md)|  |
 
 ### Return type
@@ -286,7 +286,7 @@ $apiInstance = new LaunchDarklyApi\Api\CustomRolesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$custom_role_post = new \LaunchDarklyApi\Model\CustomRolePost(); // \LaunchDarklyApi\Model\CustomRolePost
+$custom_role_post = {"basePermissions":"reader","description":"A role for members of the ops team","key":"ops-team","name":"Ops team","policy":[{"actions":["updateOn"],"effect":"allow","resources":["proj/*:env/production:flag/*"]}]}; // \LaunchDarklyApi\Model\CustomRolePost
 
 try {
     $result = $apiInstance->postCustomRole($custom_role_post);

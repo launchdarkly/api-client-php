@@ -417,10 +417,10 @@ Updates to our REST API include support for the latest features in LaunchDarkly.
 You can set the API version on a specific request by sending an `LD-API-Version` header, as shown in the example below:
 
 ```
-LD-API-Version: 20191212
+LD-API-Version: 20210729
 ```
 
-The header value is the version number of the API version you'd like to request. The number for each version corresponds to the date the version was released. In the example above the version `20191212` corresponds to December 12, 2019.
+The header value is the version number of the API version you'd like to request. The number for each version corresponds to the date the version was released in yyyymmdd format. In the example above the version `20210729` corresponds to July 29, 2021.
 
 ### Setting the API version per access token
 
@@ -435,6 +435,14 @@ If you would like to upgrade your integration to use a new API version, you can 
 > We recommend that you set the API version header explicitly in any client or integration you build.
 >
 > Only rely on the access token API version during manual testing.
+
+### API version changelog
+
+| Version | Changes |
+|---|---|
+| `20210729` | <ul><li>Changed the [create approval request](/tag/Approvals#operation/postApprovalRequest) return value. It now returns HTTP Status Code `201` instead of `200`.</li><li> Changed the [get users](/tag/Users#operation/getUser) return value. It now returns a user record, not a user. </li><li> Added additional optional fields to environment, segments, flags, members, and segments, including the ability to create Big Segments. </li><li> Added default values for flag variations when new environments are created. </li><li> Added filtering and pagination for getting flags and members, including `limit`, `number`, `filter`, and `sort` query parameters. </li><li> Added endpoints for expiring user targets for flags and segments, scheduled changes, access tokens, Relay Proxy configuration, integrations and subscriptions, and approvals. </li></ul> |
+| `20191212` | <ul><li>[List feature flags](/tag/Feature-flags#operation/getFeatureFlags) now defaults to sending summaries of feature flag configurations, equivalent to setting the query parameter `summary=true`. Summaries omit flag targeting rules and individual user targets from the payload. </li><li> Added endpoints for flags, flag status, projects, environments, users, audit logs, members, users, custom roles, segments, usage, streams, events, and data export. </li></ul> |
+| `20160426` | <ul><li>Initial versioning of API. Tokens created before versioning have their version set to this.</li></ul> |
 
 
 For more information, please visit [https://support.launchdarkly.com](https://support.launchdarkly.com).
@@ -525,7 +533,7 @@ Class | Method | HTTP request | Description
 *AccountMembersApi* | [**patchMember**](docs/Api/AccountMembersApi.md#patchmember) | **PATCH** /api/v2/members/{id} | Modify an account member
 *AccountMembersApi* | [**postMemberTeams**](docs/Api/AccountMembersApi.md#postmemberteams) | **POST** /api/v2/members/{id}/teams | Add member to teams
 *AccountMembersApi* | [**postMembers**](docs/Api/AccountMembersApi.md#postmembers) | **POST** /api/v2/members | Invite new members
-*AccountUsageBetaApi* | [**getEvaluationsUsage**](docs/Api/AccountUsageBetaApi.md#getevaluationsusage) | **GET** /api/v2/usage/evaluations/{projKey}/{envKey}/{flagKey} | Get evaluations usage
+*AccountUsageBetaApi* | [**getEvaluationsUsage**](docs/Api/AccountUsageBetaApi.md#getevaluationsusage) | **GET** /api/v2/usage/evaluations/{projectKey}/{environmentKey}/{featureFlagKey} | Get evaluations usage
 *AccountUsageBetaApi* | [**getEventsUsage**](docs/Api/AccountUsageBetaApi.md#geteventsusage) | **GET** /api/v2/usage/events/{type} | Get events usage
 *AccountUsageBetaApi* | [**getMauSdksByType**](docs/Api/AccountUsageBetaApi.md#getmausdksbytype) | **GET** /api/v2/usage/mau/sdks | Get MAU SDKs by type
 *AccountUsageBetaApi* | [**getMauUsage**](docs/Api/AccountUsageBetaApi.md#getmauusage) | **GET** /api/v2/usage/mau | Get MAU usage
@@ -550,56 +558,67 @@ Class | Method | HTTP request | Description
 *CodeReferencesApi* | [**getRepositories**](docs/Api/CodeReferencesApi.md#getrepositories) | **GET** /api/v2/code-refs/repositories | List repositories
 *CodeReferencesApi* | [**getRepository**](docs/Api/CodeReferencesApi.md#getrepository) | **GET** /api/v2/code-refs/repositories/{repo} | Get repository
 *CodeReferencesApi* | [**getRootStatistic**](docs/Api/CodeReferencesApi.md#getrootstatistic) | **GET** /api/v2/code-refs/statistics | Get links to code reference repositories for each project
-*CodeReferencesApi* | [**getStatistics**](docs/Api/CodeReferencesApi.md#getstatistics) | **GET** /api/v2/code-refs/statistics/{projKey} | Get number of code references for flags
+*CodeReferencesApi* | [**getStatistics**](docs/Api/CodeReferencesApi.md#getstatistics) | **GET** /api/v2/code-refs/statistics/{projectKey} | Get number of code references for flags
 *CodeReferencesApi* | [**patchRepository**](docs/Api/CodeReferencesApi.md#patchrepository) | **PATCH** /api/v2/code-refs/repositories/{repo} | Update repository
 *CodeReferencesApi* | [**postExtinction**](docs/Api/CodeReferencesApi.md#postextinction) | **POST** /api/v2/code-refs/repositories/{repo}/branches/{branch}/extinction-events | Create extinction
 *CodeReferencesApi* | [**postRepository**](docs/Api/CodeReferencesApi.md#postrepository) | **POST** /api/v2/code-refs/repositories | Create repository
 *CodeReferencesApi* | [**putBranch**](docs/Api/CodeReferencesApi.md#putbranch) | **PUT** /api/v2/code-refs/repositories/{repo}/branches/{branch} | Upsert branch
-*CustomRolesApi* | [**deleteCustomRole**](docs/Api/CustomRolesApi.md#deletecustomrole) | **DELETE** /api/v2/roles/{key} | Delete custom role
-*CustomRolesApi* | [**getCustomRole**](docs/Api/CustomRolesApi.md#getcustomrole) | **GET** /api/v2/roles/{key} | Get custom role
+*CustomRolesApi* | [**deleteCustomRole**](docs/Api/CustomRolesApi.md#deletecustomrole) | **DELETE** /api/v2/roles/{customRoleKey} | Delete custom role
+*CustomRolesApi* | [**getCustomRole**](docs/Api/CustomRolesApi.md#getcustomrole) | **GET** /api/v2/roles/{customRoleKey} | Get custom role
 *CustomRolesApi* | [**getCustomRoles**](docs/Api/CustomRolesApi.md#getcustomroles) | **GET** /api/v2/roles | List custom roles
-*CustomRolesApi* | [**patchCustomRole**](docs/Api/CustomRolesApi.md#patchcustomrole) | **PATCH** /api/v2/roles/{key} | Update custom role
+*CustomRolesApi* | [**patchCustomRole**](docs/Api/CustomRolesApi.md#patchcustomrole) | **PATCH** /api/v2/roles/{customRoleKey} | Update custom role
 *CustomRolesApi* | [**postCustomRole**](docs/Api/CustomRolesApi.md#postcustomrole) | **POST** /api/v2/roles | Create custom role
-*DataExportDestinationsApi* | [**deleteDestination**](docs/Api/DataExportDestinationsApi.md#deletedestination) | **DELETE** /api/v2/destinations/{projKey}/{envKey}/{id} | Delete Data Export destination
-*DataExportDestinationsApi* | [**getDestination**](docs/Api/DataExportDestinationsApi.md#getdestination) | **GET** /api/v2/destinations/{projKey}/{envKey}/{id} | Get destination
+*DataExportDestinationsApi* | [**deleteDestination**](docs/Api/DataExportDestinationsApi.md#deletedestination) | **DELETE** /api/v2/destinations/{projectKey}/{environmentKey}/{id} | Delete Data Export destination
+*DataExportDestinationsApi* | [**getDestination**](docs/Api/DataExportDestinationsApi.md#getdestination) | **GET** /api/v2/destinations/{projectKey}/{environmentKey}/{id} | Get destination
 *DataExportDestinationsApi* | [**getDestinations**](docs/Api/DataExportDestinationsApi.md#getdestinations) | **GET** /api/v2/destinations | List destinations
-*DataExportDestinationsApi* | [**patchDestination**](docs/Api/DataExportDestinationsApi.md#patchdestination) | **PATCH** /api/v2/destinations/{projKey}/{envKey}/{id} | Update Data Export destination
-*DataExportDestinationsApi* | [**postDestination**](docs/Api/DataExportDestinationsApi.md#postdestination) | **POST** /api/v2/destinations/{projKey}/{envKey} | Create data export destination
+*DataExportDestinationsApi* | [**patchDestination**](docs/Api/DataExportDestinationsApi.md#patchdestination) | **PATCH** /api/v2/destinations/{projectKey}/{environmentKey}/{id} | Update Data Export destination
+*DataExportDestinationsApi* | [**postDestination**](docs/Api/DataExportDestinationsApi.md#postdestination) | **POST** /api/v2/destinations/{projectKey}/{environmentKey} | Create data export destination
 *EnvironmentsApi* | [**deleteEnvironment**](docs/Api/EnvironmentsApi.md#deleteenvironment) | **DELETE** /api/v2/projects/{projectKey}/environments/{environmentKey} | Delete environment
 *EnvironmentsApi* | [**getEnvironment**](docs/Api/EnvironmentsApi.md#getenvironment) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey} | Get environment
 *EnvironmentsApi* | [**patchEnvironment**](docs/Api/EnvironmentsApi.md#patchenvironment) | **PATCH** /api/v2/projects/{projectKey}/environments/{environmentKey} | Update environment
 *EnvironmentsApi* | [**postEnvironment**](docs/Api/EnvironmentsApi.md#postenvironment) | **POST** /api/v2/projects/{projectKey}/environments | Create environment
-*EnvironmentsApi* | [**resetEnvironmentMobileKey**](docs/Api/EnvironmentsApi.md#resetenvironmentmobilekey) | **POST** /api/v2/projects/{projectKey}/environments/{envKey}/mobileKey | Reset environment mobile SDK key
-*EnvironmentsApi* | [**resetEnvironmentSDKKey**](docs/Api/EnvironmentsApi.md#resetenvironmentsdkkey) | **POST** /api/v2/projects/{projectKey}/environments/{envKey}/apiKey | Reset environment SDK key
-*ExperimentsBetaApi* | [**getExperiment**](docs/Api/ExperimentsBetaApi.md#getexperiment) | **GET** /api/v2/flags/{projKey}/{flagKey}/experiments/{envKey}/{metricKey} | Get experiment results
-*ExperimentsBetaApi* | [**resetExperiment**](docs/Api/ExperimentsBetaApi.md#resetexperiment) | **DELETE** /api/v2/flags/{projKey}/{flagKey}/experiments/{envKey}/{metricKey}/results | Reset experiment results
-*FeatureFlagsApi* | [**copyFeatureFlag**](docs/Api/FeatureFlagsApi.md#copyfeatureflag) | **POST** /api/v2/flags/{projKey}/{featureFlagKey}/copy | Copy feature flag
-*FeatureFlagsApi* | [**deleteFeatureFlag**](docs/Api/FeatureFlagsApi.md#deletefeatureflag) | **DELETE** /api/v2/flags/{projKey}/{key} | Delete feature flag
-*FeatureFlagsApi* | [**getExpiringUserTargets**](docs/Api/FeatureFlagsApi.md#getexpiringusertargets) | **GET** /api/v2/flags/{projKey}/{flagKey}/expiring-user-targets/{envKey} | Get expiring user targets for feature flag
-*FeatureFlagsApi* | [**getFeatureFlag**](docs/Api/FeatureFlagsApi.md#getfeatureflag) | **GET** /api/v2/flags/{projKey}/{key} | Get feature flag
-*FeatureFlagsApi* | [**getFeatureFlagStatus**](docs/Api/FeatureFlagsApi.md#getfeatureflagstatus) | **GET** /api/v2/flag-statuses/{projKey}/{envKey}/{key} | Get feature flag status
-*FeatureFlagsApi* | [**getFeatureFlagStatusAcrossEnvironments**](docs/Api/FeatureFlagsApi.md#getfeatureflagstatusacrossenvironments) | **GET** /api/v2/flag-status/{projKey}/{key} | Get flag status across environments
-*FeatureFlagsApi* | [**getFeatureFlagStatuses**](docs/Api/FeatureFlagsApi.md#getfeatureflagstatuses) | **GET** /api/v2/flag-statuses/{projKey}/{envKey} | List feature flag statuses
-*FeatureFlagsApi* | [**getFeatureFlags**](docs/Api/FeatureFlagsApi.md#getfeatureflags) | **GET** /api/v2/flags/{projKey} | List feature flags
-*FeatureFlagsApi* | [**patchExpiringUserTargets**](docs/Api/FeatureFlagsApi.md#patchexpiringusertargets) | **PATCH** /api/v2/flags/{projKey}/{flagKey}/expiring-user-targets/{envKey} | Update expiring user targets on feature flag
-*FeatureFlagsApi* | [**patchFeatureFlag**](docs/Api/FeatureFlagsApi.md#patchfeatureflag) | **PATCH** /api/v2/flags/{projKey}/{key} | Update feature flag
-*FeatureFlagsApi* | [**postFeatureFlag**](docs/Api/FeatureFlagsApi.md#postfeatureflag) | **POST** /api/v2/flags/{projKey} | Create a feature flag
-*FeatureFlagsBetaApi* | [**getDependentFlags**](docs/Api/FeatureFlagsBetaApi.md#getdependentflags) | **GET** /api/v2/flags/{projKey}/{flagKey}/dependent-flags | List dependent feature flags
-*FeatureFlagsBetaApi* | [**getDependentFlagsByEnv**](docs/Api/FeatureFlagsBetaApi.md#getdependentflagsbyenv) | **GET** /api/v2/flags/{projKey}/{envKey}/{flagKey}/dependent-flags | List dependent feature flags by environment
-*FlagTriggersApi* | [**createTriggerWorkflow**](docs/Api/FlagTriggersApi.md#createtriggerworkflow) | **POST** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey} | Create flag trigger
-*FlagTriggersApi* | [**deleteTriggerWorkflow**](docs/Api/FlagTriggersApi.md#deletetriggerworkflow) | **DELETE** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey}/{id} | Delete flag trigger
-*FlagTriggersApi* | [**getTriggerWorkflowById**](docs/Api/FlagTriggersApi.md#gettriggerworkflowbyid) | **GET** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey}/{id} | Get flag trigger by ID
-*FlagTriggersApi* | [**getTriggerWorkflows**](docs/Api/FlagTriggersApi.md#gettriggerworkflows) | **GET** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey} | List flag triggers
-*FlagTriggersApi* | [**patchTriggerWorkflow**](docs/Api/FlagTriggersApi.md#patchtriggerworkflow) | **PATCH** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey}/{id} | Update flag trigger
+*EnvironmentsApi* | [**resetEnvironmentMobileKey**](docs/Api/EnvironmentsApi.md#resetenvironmentmobilekey) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/mobileKey | Reset environment mobile SDK key
+*EnvironmentsApi* | [**resetEnvironmentSDKKey**](docs/Api/EnvironmentsApi.md#resetenvironmentsdkkey) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/apiKey | Reset environment SDK key
+*ExperimentsBetaApi* | [**getExperiment**](docs/Api/ExperimentsBetaApi.md#getexperiment) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey} | Get experiment results
+*ExperimentsBetaApi* | [**resetExperiment**](docs/Api/ExperimentsBetaApi.md#resetexperiment) | **DELETE** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey}/results | Reset experiment results
+*FeatureFlagsApi* | [**copyFeatureFlag**](docs/Api/FeatureFlagsApi.md#copyfeatureflag) | **POST** /api/v2/flags/{projectKey}/{featureFlagKey}/copy | Copy feature flag
+*FeatureFlagsApi* | [**deleteFeatureFlag**](docs/Api/FeatureFlagsApi.md#deletefeatureflag) | **DELETE** /api/v2/flags/{projectKey}/{featureFlagKey} | Delete feature flag
+*FeatureFlagsApi* | [**getExpiringUserTargets**](docs/Api/FeatureFlagsApi.md#getexpiringusertargets) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey} | Get expiring user targets for feature flag
+*FeatureFlagsApi* | [**getFeatureFlag**](docs/Api/FeatureFlagsApi.md#getfeatureflag) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey} | Get feature flag
+*FeatureFlagsApi* | [**getFeatureFlagStatus**](docs/Api/FeatureFlagsApi.md#getfeatureflagstatus) | **GET** /api/v2/flag-statuses/{projectKey}/{environmentKey}/{featureFlagKey} | Get feature flag status
+*FeatureFlagsApi* | [**getFeatureFlagStatusAcrossEnvironments**](docs/Api/FeatureFlagsApi.md#getfeatureflagstatusacrossenvironments) | **GET** /api/v2/flag-status/{projectKey}/{featureFlagKey} | Get flag status across environments
+*FeatureFlagsApi* | [**getFeatureFlagStatuses**](docs/Api/FeatureFlagsApi.md#getfeatureflagstatuses) | **GET** /api/v2/flag-statuses/{projectKey}/{environmentKey} | List feature flag statuses
+*FeatureFlagsApi* | [**getFeatureFlags**](docs/Api/FeatureFlagsApi.md#getfeatureflags) | **GET** /api/v2/flags/{projectKey} | List feature flags
+*FeatureFlagsApi* | [**patchExpiringUserTargets**](docs/Api/FeatureFlagsApi.md#patchexpiringusertargets) | **PATCH** /api/v2/flags/{projectKey}/{featureFlagKey}/expiring-user-targets/{environmentKey} | Update expiring user targets on feature flag
+*FeatureFlagsApi* | [**patchFeatureFlag**](docs/Api/FeatureFlagsApi.md#patchfeatureflag) | **PATCH** /api/v2/flags/{projectKey}/{featureFlagKey} | Update feature flag
+*FeatureFlagsApi* | [**postFeatureFlag**](docs/Api/FeatureFlagsApi.md#postfeatureflag) | **POST** /api/v2/flags/{projectKey} | Create a feature flag
+*FeatureFlagsBetaApi* | [**getDependentFlags**](docs/Api/FeatureFlagsBetaApi.md#getdependentflags) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/dependent-flags | List dependent feature flags
+*FeatureFlagsBetaApi* | [**getDependentFlagsByEnv**](docs/Api/FeatureFlagsBetaApi.md#getdependentflagsbyenv) | **GET** /api/v2/flags/{projectKey}/{environmentKey}/{featureFlagKey}/dependent-flags | List dependent feature flags by environment
+*FlagLinksBetaApi* | [**createFlagLink**](docs/Api/FlagLinksBetaApi.md#createflaglink) | **POST** /api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey} | Create flag link
+*FlagLinksBetaApi* | [**deleteFlagLink**](docs/Api/FlagLinksBetaApi.md#deleteflaglink) | **DELETE** /api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}/{id} | Delete flag link
+*FlagLinksBetaApi* | [**getFlagLinks**](docs/Api/FlagLinksBetaApi.md#getflaglinks) | **GET** /api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey} | List flag links
+*FlagLinksBetaApi* | [**updateFlagLink**](docs/Api/FlagLinksBetaApi.md#updateflaglink) | **PATCH** /api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}/{id} | Update flag link
+*FlagTriggersApi* | [**createTriggerWorkflow**](docs/Api/FlagTriggersApi.md#createtriggerworkflow) | **POST** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey} | Create flag trigger
+*FlagTriggersApi* | [**deleteTriggerWorkflow**](docs/Api/FlagTriggersApi.md#deletetriggerworkflow) | **DELETE** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id} | Delete flag trigger
+*FlagTriggersApi* | [**getTriggerWorkflowById**](docs/Api/FlagTriggersApi.md#gettriggerworkflowbyid) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id} | Get flag trigger by ID
+*FlagTriggersApi* | [**getTriggerWorkflows**](docs/Api/FlagTriggersApi.md#gettriggerworkflows) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey} | List flag triggers
+*FlagTriggersApi* | [**patchTriggerWorkflow**](docs/Api/FlagTriggersApi.md#patchtriggerworkflow) | **PATCH** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id} | Update flag trigger
 *IntegrationAuditLogSubscriptionsApi* | [**createSubscription**](docs/Api/IntegrationAuditLogSubscriptionsApi.md#createsubscription) | **POST** /api/v2/integrations/{integrationKey} | Create audit log subscription
 *IntegrationAuditLogSubscriptionsApi* | [**deleteSubscription**](docs/Api/IntegrationAuditLogSubscriptionsApi.md#deletesubscription) | **DELETE** /api/v2/integrations/{integrationKey}/{id} | Delete audit log subscription
 *IntegrationAuditLogSubscriptionsApi* | [**getSubscriptionByID**](docs/Api/IntegrationAuditLogSubscriptionsApi.md#getsubscriptionbyid) | **GET** /api/v2/integrations/{integrationKey}/{id} | Get audit log subscription by ID
 *IntegrationAuditLogSubscriptionsApi* | [**getSubscriptions**](docs/Api/IntegrationAuditLogSubscriptionsApi.md#getsubscriptions) | **GET** /api/v2/integrations/{integrationKey} | Get audit log subscriptions by integration
 *IntegrationAuditLogSubscriptionsApi* | [**updateSubscription**](docs/Api/IntegrationAuditLogSubscriptionsApi.md#updatesubscription) | **PATCH** /api/v2/integrations/{integrationKey}/{id} | Update audit log subscription
-*MetricsApi* | [**deleteMetric**](docs/Api/MetricsApi.md#deletemetric) | **DELETE** /api/v2/metrics/{projectKey}/{key} | Delete metric
-*MetricsApi* | [**getMetric**](docs/Api/MetricsApi.md#getmetric) | **GET** /api/v2/metrics/{projectKey}/{key} | Get metric
+*IntegrationDeliveryConfigurationsBetaApi* | [**createIntegrationDeliveryConfiguration**](docs/Api/IntegrationDeliveryConfigurationsBetaApi.md#createintegrationdeliveryconfiguration) | **POST** /api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey} | Create delivery configuration
+*IntegrationDeliveryConfigurationsBetaApi* | [**deleteIntegrationDeliveryConfiguration**](docs/Api/IntegrationDeliveryConfigurationsBetaApi.md#deleteintegrationdeliveryconfiguration) | **DELETE** /api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}/{id} | Delete delivery configuration
+*IntegrationDeliveryConfigurationsBetaApi* | [**getIntegrationDeliveryConfigurationByEnvironment**](docs/Api/IntegrationDeliveryConfigurationsBetaApi.md#getintegrationdeliveryconfigurationbyenvironment) | **GET** /api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey} | Get delivery configurations by environment
+*IntegrationDeliveryConfigurationsBetaApi* | [**getIntegrationDeliveryConfigurationById**](docs/Api/IntegrationDeliveryConfigurationsBetaApi.md#getintegrationdeliveryconfigurationbyid) | **GET** /api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}/{id} | Get delivery configuration by ID
+*IntegrationDeliveryConfigurationsBetaApi* | [**getIntegrationDeliveryConfigurations**](docs/Api/IntegrationDeliveryConfigurationsBetaApi.md#getintegrationdeliveryconfigurations) | **GET** /api/v2/integration-capabilities/featureStore | List all delivery configurations
+*IntegrationDeliveryConfigurationsBetaApi* | [**patchIntegrationDeliveryConfiguration**](docs/Api/IntegrationDeliveryConfigurationsBetaApi.md#patchintegrationdeliveryconfiguration) | **PATCH** /api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}/{id} | Update delivery configuration
+*IntegrationDeliveryConfigurationsBetaApi* | [**validateIntegrationDeliveryConfiguration**](docs/Api/IntegrationDeliveryConfigurationsBetaApi.md#validateintegrationdeliveryconfiguration) | **POST** /api/v2/integration-capabilities/featureStore/{projectKey}/{environmentKey}/{integrationKey}/{id}/validate | Validate delivery configuration
+*MetricsApi* | [**deleteMetric**](docs/Api/MetricsApi.md#deletemetric) | **DELETE** /api/v2/metrics/{projectKey}/{metricKey} | Delete metric
+*MetricsApi* | [**getMetric**](docs/Api/MetricsApi.md#getmetric) | **GET** /api/v2/metrics/{projectKey}/{metricKey} | Get metric
 *MetricsApi* | [**getMetrics**](docs/Api/MetricsApi.md#getmetrics) | **GET** /api/v2/metrics/{projectKey} | List metrics
-*MetricsApi* | [**patchMetric**](docs/Api/MetricsApi.md#patchmetric) | **PATCH** /api/v2/metrics/{projectKey}/{key} | Update metric
+*MetricsApi* | [**patchMetric**](docs/Api/MetricsApi.md#patchmetric) | **PATCH** /api/v2/metrics/{projectKey}/{metricKey} | Update metric
 *MetricsApi* | [**postMetric**](docs/Api/MetricsApi.md#postmetric) | **POST** /api/v2/metrics/{projectKey} | Create metric
 *OtherApi* | [**getIps**](docs/Api/OtherApi.md#getips) | **GET** /api/v2/public-ip-list | Gets the public IP list
 *OtherApi* | [**getOpenapiSpec**](docs/Api/OtherApi.md#getopenapispec) | **GET** /api/v2/openapi.json | Gets the OpenAPI spec in json
@@ -621,30 +640,37 @@ Class | Method | HTTP request | Description
 *ScheduledChangesApi* | [**getFlagConfigScheduledChanges**](docs/Api/ScheduledChangesApi.md#getflagconfigscheduledchanges) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes | List scheduled changes
 *ScheduledChangesApi* | [**patchFlagConfigScheduledChange**](docs/Api/ScheduledChangesApi.md#patchflagconfigscheduledchange) | **PATCH** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{id} | Update scheduled changes workflow
 *ScheduledChangesApi* | [**postFlagConfigScheduledChanges**](docs/Api/ScheduledChangesApi.md#postflagconfigscheduledchanges) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes | Create scheduled changes workflow
-*SegmentsApi* | [**deleteSegment**](docs/Api/SegmentsApi.md#deletesegment) | **DELETE** /api/v2/segments/{projKey}/{envKey}/{key} | Delete segment
-*SegmentsApi* | [**getExpiringUserTargetsForSegment**](docs/Api/SegmentsApi.md#getexpiringusertargetsforsegment) | **GET** /api/v2/segments/{projKey}/{segmentKey}/expiring-user-targets/{envKey} | Get expiring user targets for segment
-*SegmentsApi* | [**getSegment**](docs/Api/SegmentsApi.md#getsegment) | **GET** /api/v2/segments/{projKey}/{envKey}/{key} | Get segment
-*SegmentsApi* | [**getSegmentMembershipForUser**](docs/Api/SegmentsApi.md#getsegmentmembershipforuser) | **GET** /api/v2/segments/{projKey}/{envKey}/{key}/users/{userKey} | Get Big Segment membership for user
-*SegmentsApi* | [**getSegments**](docs/Api/SegmentsApi.md#getsegments) | **GET** /api/v2/segments/{projKey}/{envKey} | List segments
-*SegmentsApi* | [**patchExpiringUserTargetsForSegment**](docs/Api/SegmentsApi.md#patchexpiringusertargetsforsegment) | **PATCH** /api/v2/segments/{projKey}/{segmentKey}/expiring-user-targets/{envKey} | Update expiring user targets for segment
-*SegmentsApi* | [**patchSegment**](docs/Api/SegmentsApi.md#patchsegment) | **PATCH** /api/v2/segments/{projKey}/{envKey}/{key} | Patch segment
-*SegmentsApi* | [**postSegment**](docs/Api/SegmentsApi.md#postsegment) | **POST** /api/v2/segments/{projKey}/{envKey} | Create segment
-*SegmentsApi* | [**updateBigSegmentTargets**](docs/Api/SegmentsApi.md#updatebigsegmenttargets) | **POST** /api/v2/segments/{projKey}/{envKey}/{key}/users | Update targets on a Big Segment
-*TeamsBetaApi* | [**deleteTeam**](docs/Api/TeamsBetaApi.md#deleteteam) | **DELETE** /api/v2/teams/{key} | Delete team
-*TeamsBetaApi* | [**getTeam**](docs/Api/TeamsBetaApi.md#getteam) | **GET** /api/v2/teams/{key} | Get team
+*SegmentsApi* | [**deleteSegment**](docs/Api/SegmentsApi.md#deletesegment) | **DELETE** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey} | Delete segment
+*SegmentsApi* | [**getExpiringUserTargetsForSegment**](docs/Api/SegmentsApi.md#getexpiringusertargetsforsegment) | **GET** /api/v2/segments/{projectKey}/{segmentKey}/expiring-user-targets/{environmentKey} | Get expiring user targets for segment
+*SegmentsApi* | [**getSegment**](docs/Api/SegmentsApi.md#getsegment) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey} | Get segment
+*SegmentsApi* | [**getSegmentMembershipForUser**](docs/Api/SegmentsApi.md#getsegmentmembershipforuser) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/users/{userKey} | Get Big Segment membership for user
+*SegmentsApi* | [**getSegments**](docs/Api/SegmentsApi.md#getsegments) | **GET** /api/v2/segments/{projectKey}/{environmentKey} | List segments
+*SegmentsApi* | [**patchExpiringUserTargetsForSegment**](docs/Api/SegmentsApi.md#patchexpiringusertargetsforsegment) | **PATCH** /api/v2/segments/{projectKey}/{segmentKey}/expiring-user-targets/{environmentKey} | Update expiring user targets for segment
+*SegmentsApi* | [**patchSegment**](docs/Api/SegmentsApi.md#patchsegment) | **PATCH** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey} | Patch segment
+*SegmentsApi* | [**postSegment**](docs/Api/SegmentsApi.md#postsegment) | **POST** /api/v2/segments/{projectKey}/{environmentKey} | Create segment
+*SegmentsApi* | [**updateBigSegmentTargets**](docs/Api/SegmentsApi.md#updatebigsegmenttargets) | **POST** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/users | Update targets on a Big Segment
+*SegmentsBetaApi* | [**createBigSegmentExport**](docs/Api/SegmentsBetaApi.md#createbigsegmentexport) | **POST** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports | Create Big Segment export
+*SegmentsBetaApi* | [**createBigSegmentImport**](docs/Api/SegmentsBetaApi.md#createbigsegmentimport) | **POST** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports | Create Big Segment import
+*SegmentsBetaApi* | [**getBigSegmentExport**](docs/Api/SegmentsBetaApi.md#getbigsegmentexport) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports/{exportID} | Get Big Segment export
+*SegmentsBetaApi* | [**getBigSegmentImport**](docs/Api/SegmentsBetaApi.md#getbigsegmentimport) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports/{importID} | Get Big Segment import
+*TagsApi* | [**getTags**](docs/Api/TagsApi.md#gettags) | **GET** /api/v2/tags | List tags
+*TeamsBetaApi* | [**deleteTeam**](docs/Api/TeamsBetaApi.md#deleteteam) | **DELETE** /api/v2/teams/{teamKey} | Delete team
+*TeamsBetaApi* | [**getTeam**](docs/Api/TeamsBetaApi.md#getteam) | **GET** /api/v2/teams/{teamKey} | Get team
+*TeamsBetaApi* | [**getTeamMaintainers**](docs/Api/TeamsBetaApi.md#getteammaintainers) | **GET** /api/v2/teams/{teamKey}/maintainers | Get team maintainers
+*TeamsBetaApi* | [**getTeamRoles**](docs/Api/TeamsBetaApi.md#getteamroles) | **GET** /api/v2/teams/{teamKey}/roles | Get team custom roles
 *TeamsBetaApi* | [**getTeams**](docs/Api/TeamsBetaApi.md#getteams) | **GET** /api/v2/teams | List teams
-*TeamsBetaApi* | [**patchTeam**](docs/Api/TeamsBetaApi.md#patchteam) | **PATCH** /api/v2/teams/{key} | Update team
+*TeamsBetaApi* | [**patchTeam**](docs/Api/TeamsBetaApi.md#patchteam) | **PATCH** /api/v2/teams/{teamKey} | Update team
 *TeamsBetaApi* | [**postTeam**](docs/Api/TeamsBetaApi.md#postteam) | **POST** /api/v2/teams | Create team
-*TeamsBetaApi* | [**postTeamMembers**](docs/Api/TeamsBetaApi.md#postteammembers) | **POST** /api/v2/teams/{key}/members | Add members to team
-*UserSettingsApi* | [**getExpiringFlagsForUser**](docs/Api/UserSettingsApi.md#getexpiringflagsforuser) | **GET** /api/v2/users/{projKey}/{userKey}/expiring-user-targets/{envKey} | Get expiring dates on flags for user
-*UserSettingsApi* | [**getUserFlagSetting**](docs/Api/UserSettingsApi.md#getuserflagsetting) | **GET** /api/v2/users/{projKey}/{envKey}/{key}/flags/{featureKey} | Get flag setting for user
-*UserSettingsApi* | [**getUserFlagSettings**](docs/Api/UserSettingsApi.md#getuserflagsettings) | **GET** /api/v2/users/{projKey}/{envKey}/{key}/flags | List flag settings for user
-*UserSettingsApi* | [**patchExpiringFlagsForUser**](docs/Api/UserSettingsApi.md#patchexpiringflagsforuser) | **PATCH** /api/v2/users/{projKey}/{userKey}/expiring-user-targets/{envKey} | Update expiring user target for flags
-*UserSettingsApi* | [**putFlagSetting**](docs/Api/UserSettingsApi.md#putflagsetting) | **PUT** /api/v2/users/{projKey}/{envKey}/{key}/flags/{featureKey} | Update flag settings for user
-*UsersApi* | [**deleteUser**](docs/Api/UsersApi.md#deleteuser) | **DELETE** /api/v2/users/{projKey}/{envKey}/{key} | Delete user
-*UsersApi* | [**getSearchUsers**](docs/Api/UsersApi.md#getsearchusers) | **GET** /api/v2/user-search/{projKey}/{envKey} | Find users
-*UsersApi* | [**getUser**](docs/Api/UsersApi.md#getuser) | **GET** /api/v2/users/{projKey}/{envKey}/{key} | Get user
-*UsersApi* | [**getUsers**](docs/Api/UsersApi.md#getusers) | **GET** /api/v2/users/{projKey}/{envKey} | List users
+*TeamsBetaApi* | [**postTeamMembers**](docs/Api/TeamsBetaApi.md#postteammembers) | **POST** /api/v2/teams/{teamKey}/members | Add members to team
+*UserSettingsApi* | [**getExpiringFlagsForUser**](docs/Api/UserSettingsApi.md#getexpiringflagsforuser) | **GET** /api/v2/users/{projectKey}/{userKey}/expiring-user-targets/{environmentKey} | Get expiring dates on flags for user
+*UserSettingsApi* | [**getUserFlagSetting**](docs/Api/UserSettingsApi.md#getuserflagsetting) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Get flag setting for user
+*UserSettingsApi* | [**getUserFlagSettings**](docs/Api/UserSettingsApi.md#getuserflagsettings) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags | List flag settings for user
+*UserSettingsApi* | [**patchExpiringFlagsForUser**](docs/Api/UserSettingsApi.md#patchexpiringflagsforuser) | **PATCH** /api/v2/users/{projectKey}/{userKey}/expiring-user-targets/{environmentKey} | Update expiring user target for flags
+*UserSettingsApi* | [**putFlagSetting**](docs/Api/UserSettingsApi.md#putflagsetting) | **PUT** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Update flag settings for user
+*UsersApi* | [**deleteUser**](docs/Api/UsersApi.md#deleteuser) | **DELETE** /api/v2/users/{projectKey}/{environmentKey}/{userKey} | Delete user
+*UsersApi* | [**getSearchUsers**](docs/Api/UsersApi.md#getsearchusers) | **GET** /api/v2/user-search/{projectKey}/{environmentKey} | Find users
+*UsersApi* | [**getUser**](docs/Api/UsersApi.md#getuser) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey} | Get user
+*UsersApi* | [**getUsers**](docs/Api/UsersApi.md#getusers) | **GET** /api/v2/users/{projectKey}/{environmentKey} | List users
 *UsersBetaApi* | [**getUserAttributeNames**](docs/Api/UsersBetaApi.md#getuserattributenames) | **GET** /api/v2/user-attributes/{projectKey}/{environmentKey} | Get user attribute names
 *WebhooksApi* | [**deleteWebhook**](docs/Api/WebhooksApi.md#deletewebhook) | **DELETE** /api/v2/webhooks/{id} | Delete webhook
 *WebhooksApi* | [**getAllWebhooks**](docs/Api/WebhooksApi.md#getallwebhooks) | **GET** /api/v2/webhooks | List webhooks
@@ -658,9 +684,11 @@ Class | Method | HTTP request | Description
 
 ## Models
 
-- [AccessDeniedReasonRep](docs/Model/AccessDeniedReasonRep.md)
-- [AccessDeniedRep](docs/Model/AccessDeniedRep.md)
-- [AccessRep](docs/Model/AccessRep.md)
+- [Access](docs/Model/Access.md)
+- [AccessAllowedReason](docs/Model/AccessAllowedReason.md)
+- [AccessAllowedRep](docs/Model/AccessAllowedRep.md)
+- [AccessDenied](docs/Model/AccessDenied.md)
+- [AccessDeniedReason](docs/Model/AccessDeniedReason.md)
 - [AccessTokenPost](docs/Model/AccessTokenPost.md)
 - [ActionInputRep](docs/Model/ActionInputRep.md)
 - [ActionOutputRep](docs/Model/ActionOutputRep.md)
@@ -691,7 +719,6 @@ Class | Method | HTTP request | Description
 - [CustomRolePost](docs/Model/CustomRolePost.md)
 - [CustomRolePostData](docs/Model/CustomRolePostData.md)
 - [CustomRoles](docs/Model/CustomRoles.md)
-- [CustomRolesRep](docs/Model/CustomRolesRep.md)
 - [CustomWorkflowInputRep](docs/Model/CustomWorkflowInputRep.md)
 - [CustomWorkflowMeta](docs/Model/CustomWorkflowMeta.md)
 - [CustomWorkflowOutputRep](docs/Model/CustomWorkflowOutputRep.md)
@@ -702,14 +729,12 @@ Class | Method | HTTP request | Description
 - [DependentFlag](docs/Model/DependentFlag.md)
 - [DependentFlagEnvironment](docs/Model/DependentFlagEnvironment.md)
 - [DependentFlagsByEnvironment](docs/Model/DependentFlagsByEnvironment.md)
-- [DerivedAttribute](docs/Model/DerivedAttribute.md)
 - [Destination](docs/Model/Destination.md)
 - [DestinationPost](docs/Model/DestinationPost.md)
 - [Destinations](docs/Model/Destinations.md)
 - [Environment](docs/Model/Environment.md)
 - [EnvironmentPost](docs/Model/EnvironmentPost.md)
 - [ExecutionOutputRep](docs/Model/ExecutionOutputRep.md)
-- [ExpandedTeamRep](docs/Model/ExpandedTeamRep.md)
 - [ExperimentAllocationRep](docs/Model/ExperimentAllocationRep.md)
 - [ExperimentEnabledPeriodRep](docs/Model/ExperimentEnabledPeriodRep.md)
 - [ExperimentEnvironmentSettingRep](docs/Model/ExperimentEnvironmentSettingRep.md)
@@ -725,6 +750,7 @@ Class | Method | HTTP request | Description
 - [ExpiringUserTargetGetResponse](docs/Model/ExpiringUserTargetGetResponse.md)
 - [ExpiringUserTargetItem](docs/Model/ExpiringUserTargetItem.md)
 - [ExpiringUserTargetPatchResponse](docs/Model/ExpiringUserTargetPatchResponse.md)
+- [Export](docs/Model/Export.md)
 - [Extinction](docs/Model/Extinction.md)
 - [ExtinctionCollectionRep](docs/Model/ExtinctionCollectionRep.md)
 - [FeatureFlag](docs/Model/FeatureFlag.md)
@@ -736,11 +762,16 @@ Class | Method | HTTP request | Description
 - [FeatureFlagStatusAcrossEnvironments](docs/Model/FeatureFlagStatusAcrossEnvironments.md)
 - [FeatureFlagStatuses](docs/Model/FeatureFlagStatuses.md)
 - [FeatureFlags](docs/Model/FeatureFlags.md)
+- [FileRep](docs/Model/FileRep.md)
 - [FlagConfigApprovalRequestResponse](docs/Model/FlagConfigApprovalRequestResponse.md)
 - [FlagConfigApprovalRequestsResponse](docs/Model/FlagConfigApprovalRequestsResponse.md)
 - [FlagCopyConfigEnvironment](docs/Model/FlagCopyConfigEnvironment.md)
 - [FlagCopyConfigPost](docs/Model/FlagCopyConfigPost.md)
 - [FlagGlobalAttributesRep](docs/Model/FlagGlobalAttributesRep.md)
+- [FlagLinkCollectionRep](docs/Model/FlagLinkCollectionRep.md)
+- [FlagLinkMember](docs/Model/FlagLinkMember.md)
+- [FlagLinkPost](docs/Model/FlagLinkPost.md)
+- [FlagLinkRep](docs/Model/FlagLinkRep.md)
 - [FlagListingRep](docs/Model/FlagListingRep.md)
 - [FlagScheduledChangesInput](docs/Model/FlagScheduledChangesInput.md)
 - [FlagStatusRep](docs/Model/FlagStatusRep.md)
@@ -748,7 +779,15 @@ Class | Method | HTTP request | Description
 - [FlagTriggerInput](docs/Model/FlagTriggerInput.md)
 - [ForbiddenErrorRep](docs/Model/ForbiddenErrorRep.md)
 - [HunkRep](docs/Model/HunkRep.md)
+- [Import](docs/Model/Import.md)
+- [InitiatorRep](docs/Model/InitiatorRep.md)
 - [Integration](docs/Model/Integration.md)
+- [IntegrationDeliveryConfiguration](docs/Model/IntegrationDeliveryConfiguration.md)
+- [IntegrationDeliveryConfigurationCollection](docs/Model/IntegrationDeliveryConfigurationCollection.md)
+- [IntegrationDeliveryConfigurationCollectionLinks](docs/Model/IntegrationDeliveryConfigurationCollectionLinks.md)
+- [IntegrationDeliveryConfigurationLinks](docs/Model/IntegrationDeliveryConfigurationLinks.md)
+- [IntegrationDeliveryConfigurationPost](docs/Model/IntegrationDeliveryConfigurationPost.md)
+- [IntegrationDeliveryConfigurationResponse](docs/Model/IntegrationDeliveryConfigurationResponse.md)
 - [IntegrationMetadata](docs/Model/IntegrationMetadata.md)
 - [IntegrationStatus](docs/Model/IntegrationStatus.md)
 - [IntegrationStatusRep](docs/Model/IntegrationStatusRep.md)
@@ -760,9 +799,9 @@ Class | Method | HTTP request | Description
 - [Link](docs/Model/Link.md)
 - [Member](docs/Model/Member.md)
 - [MemberDataRep](docs/Model/MemberDataRep.md)
-- [MemberImportItemRep](docs/Model/MemberImportItemRep.md)
+- [MemberImportItem](docs/Model/MemberImportItem.md)
 - [MemberPermissionGrantSummaryRep](docs/Model/MemberPermissionGrantSummaryRep.md)
-- [MemberSummaryRep](docs/Model/MemberSummaryRep.md)
+- [MemberSummary](docs/Model/MemberSummary.md)
 - [MemberTeamSummaryRep](docs/Model/MemberTeamSummaryRep.md)
 - [MemberTeamsPostInput](docs/Model/MemberTeamsPostInput.md)
 - [Members](docs/Model/Members.md)
@@ -784,7 +823,6 @@ Class | Method | HTTP request | Description
 - [PatchSegmentRequest](docs/Model/PatchSegmentRequest.md)
 - [PatchWithComment](docs/Model/PatchWithComment.md)
 - [PermissionGrantInput](docs/Model/PermissionGrantInput.md)
-- [PermissionGrantRep](docs/Model/PermissionGrantRep.md)
 - [PostApprovalRequestApplyRequest](docs/Model/PostApprovalRequestApplyRequest.md)
 - [PostApprovalRequestReviewRequest](docs/Model/PostApprovalRequestReviewRequest.md)
 - [PostFlagScheduledChangesInput](docs/Model/PostFlagScheduledChangesInput.md)
@@ -792,6 +830,7 @@ Class | Method | HTTP request | Description
 - [Project](docs/Model/Project.md)
 - [ProjectListingRep](docs/Model/ProjectListingRep.md)
 - [ProjectPost](docs/Model/ProjectPost.md)
+- [ProjectSummary](docs/Model/ProjectSummary.md)
 - [Projects](docs/Model/Projects.md)
 - [PubNubDetailRep](docs/Model/PubNubDetailRep.md)
 - [PutBranch](docs/Model/PutBranch.md)
@@ -804,6 +843,11 @@ Class | Method | HTTP request | Description
 - [RepositoryCollectionRep](docs/Model/RepositoryCollectionRep.md)
 - [RepositoryPost](docs/Model/RepositoryPost.md)
 - [RepositoryRep](docs/Model/RepositoryRep.md)
+- [ResolvedContext](docs/Model/ResolvedContext.md)
+- [ResolvedImage](docs/Model/ResolvedImage.md)
+- [ResolvedTitle](docs/Model/ResolvedTitle.md)
+- [ResolvedUIBlockElement](docs/Model/ResolvedUIBlockElement.md)
+- [ResolvedUIBlocks](docs/Model/ResolvedUIBlocks.md)
 - [ResourceAccess](docs/Model/ResourceAccess.md)
 - [ResourceIDResponse](docs/Model/ResourceIDResponse.md)
 - [ReviewOutputRep](docs/Model/ReviewOutputRep.md)
@@ -820,6 +864,7 @@ Class | Method | HTTP request | Description
 - [SegmentUserList](docs/Model/SegmentUserList.md)
 - [SegmentUserState](docs/Model/SegmentUserState.md)
 - [SeriesListRep](docs/Model/SeriesListRep.md)
+- [SourceEnv](docs/Model/SourceEnv.md)
 - [SourceFlag](docs/Model/SourceFlag.md)
 - [StageInputRep](docs/Model/StageInputRep.md)
 - [StageOutputRep](docs/Model/StageOutputRep.md)
@@ -833,13 +878,19 @@ Class | Method | HTTP request | Description
 - [StatusConflictErrorRep](docs/Model/StatusConflictErrorRep.md)
 - [SubjectDataRep](docs/Model/SubjectDataRep.md)
 - [SubscriptionPost](docs/Model/SubscriptionPost.md)
+- [TagCollection](docs/Model/TagCollection.md)
 - [Target](docs/Model/Target.md)
 - [TargetResourceRep](docs/Model/TargetResourceRep.md)
-- [TeamCollectionRep](docs/Model/TeamCollectionRep.md)
+- [Team](docs/Model/Team.md)
+- [TeamCustomRole](docs/Model/TeamCustomRole.md)
+- [TeamCustomRoles](docs/Model/TeamCustomRoles.md)
 - [TeamImportsRep](docs/Model/TeamImportsRep.md)
+- [TeamMaintainers](docs/Model/TeamMaintainers.md)
 - [TeamPatchInput](docs/Model/TeamPatchInput.md)
 - [TeamPostInput](docs/Model/TeamPostInput.md)
-- [TeamRep](docs/Model/TeamRep.md)
+- [TeamProjects](docs/Model/TeamProjects.md)
+- [Teams](docs/Model/Teams.md)
+- [TimestampRep](docs/Model/TimestampRep.md)
 - [TitleRep](docs/Model/TitleRep.md)
 - [Token](docs/Model/Token.md)
 - [TokenDataRep](docs/Model/TokenDataRep.md)
@@ -896,5 +947,5 @@ support@launchdarkly.com
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `2.0`
-    - Package version: `7.1.1`
+    - Package version: `8.0.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

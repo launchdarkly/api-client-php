@@ -4,7 +4,7 @@ All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getEvaluationsUsage()**](AccountUsageBetaApi.md#getEvaluationsUsage) | **GET** /api/v2/usage/evaluations/{projKey}/{envKey}/{flagKey} | Get evaluations usage
+[**getEvaluationsUsage()**](AccountUsageBetaApi.md#getEvaluationsUsage) | **GET** /api/v2/usage/evaluations/{projectKey}/{environmentKey}/{featureFlagKey} | Get evaluations usage
 [**getEventsUsage()**](AccountUsageBetaApi.md#getEventsUsage) | **GET** /api/v2/usage/events/{type} | Get events usage
 [**getMauSdksByType()**](AccountUsageBetaApi.md#getMauSdksByType) | **GET** /api/v2/usage/mau/sdks | Get MAU SDKs by type
 [**getMauUsage()**](AccountUsageBetaApi.md#getMauUsage) | **GET** /api/v2/usage/mau | Get MAU usage
@@ -17,7 +17,7 @@ Method | HTTP request | Description
 ## `getEvaluationsUsage()`
 
 ```php
-getEvaluationsUsage($proj_key, $env_key, $flag_key, $from, $to, $tz): \LaunchDarklyApi\Model\SeriesListRep
+getEvaluationsUsage($project_key, $environment_key, $feature_flag_key, $from, $to, $tz): \LaunchDarklyApi\Model\SeriesListRep
 ```
 
 Get evaluations usage
@@ -43,15 +43,15 @@ $apiInstance = new LaunchDarklyApi\Api\AccountUsageBetaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key.
-$env_key = 'env_key_example'; // string | The environment key.
-$flag_key = 'flag_key_example'; // string | The feature flag's key.
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $from = 'from_example'; // string | The series of data returned starts from this timestamp. Defaults to 30 days ago.
 $to = 'to_example'; // string | The series of data returned ends at this timestamp. Defaults to the current time.
 $tz = 'tz_example'; // string | The timezone to use for breaks between days when returning daily data.
 
 try {
-    $result = $apiInstance->getEvaluationsUsage($proj_key, $env_key, $flag_key, $from, $to, $tz);
+    $result = $apiInstance->getEvaluationsUsage($project_key, $environment_key, $feature_flag_key, $from, $to, $tz);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountUsageBetaApi->getEvaluationsUsage: ', $e->getMessage(), PHP_EOL;
@@ -62,9 +62,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key. |
- **env_key** | **string**| The environment key. |
- **flag_key** | **string**| The feature flag&#39;s key. |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **feature_flag_key** | **string**| The feature flag key |
  **from** | **string**| The series of data returned starts from this timestamp. Defaults to 30 days ago. | [optional]
  **to** | **string**| The series of data returned ends at this timestamp. Defaults to the current time. | [optional]
  **tz** | **string**| The timezone to use for breaks between days when returning daily data. | [optional]

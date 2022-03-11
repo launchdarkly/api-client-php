@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **rules** | [**\LaunchDarklyApi\Model\UserSegmentRule[]**](UserSegmentRule.md) |  |
 **version** | **int** |  |
 **deleted** | **bool** |  |
-**_access** | [**\LaunchDarklyApi\Model\AccessRep**](AccessRep.md) |  | [optional]
+**_access** | [**\LaunchDarklyApi\Model\Access**](Access.md) |  | [optional]
 **_flags** | [**\LaunchDarklyApi\Model\FlagListingRep[]**](FlagListingRep.md) |  | [optional]
 **unbounded** | **bool** |  | [optional]
 **generation** | **int** |  |

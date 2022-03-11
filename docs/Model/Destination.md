@@ -11,6 +11,6 @@ Name | Type | Description | Notes
 **version** | **float** |  | [optional]
 **config** | **mixed** |  | [optional]
 **on** | **bool** |  | [optional]
-**_access** | [**\LaunchDarklyApi\Model\AccessRep**](AccessRep.md) |  | [optional]
+**_access** | [**\LaunchDarklyApi\Model\Access**](Access.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **tags** | **string[]** | Tags for the feature flag |
 **_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) |  |
 **maintainer_id** | **string** | Associated maintainerId for the feature flag | [optional]
-**_maintainer** | [**\LaunchDarklyApi\Model\MemberSummaryRep**](MemberSummaryRep.md) |  | [optional]
+**_maintainer** | [**\LaunchDarklyApi\Model\MemberSummary**](MemberSummary.md) |  | [optional]
 **goal_ids** | **string[]** |  | [optional]
 **experiments** | [**\LaunchDarklyApi\Model\ExperimentInfoRep**](ExperimentInfoRep.md) |  |
 **custom_properties** | [**array<string,\LaunchDarklyApi\Model\CustomProperty>**](CustomProperty.md) |  |

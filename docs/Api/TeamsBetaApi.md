@@ -4,18 +4,20 @@ All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteTeam()**](TeamsBetaApi.md#deleteTeam) | **DELETE** /api/v2/teams/{key} | Delete team
-[**getTeam()**](TeamsBetaApi.md#getTeam) | **GET** /api/v2/teams/{key} | Get team
+[**deleteTeam()**](TeamsBetaApi.md#deleteTeam) | **DELETE** /api/v2/teams/{teamKey} | Delete team
+[**getTeam()**](TeamsBetaApi.md#getTeam) | **GET** /api/v2/teams/{teamKey} | Get team
+[**getTeamMaintainers()**](TeamsBetaApi.md#getTeamMaintainers) | **GET** /api/v2/teams/{teamKey}/maintainers | Get team maintainers
+[**getTeamRoles()**](TeamsBetaApi.md#getTeamRoles) | **GET** /api/v2/teams/{teamKey}/roles | Get team custom roles
 [**getTeams()**](TeamsBetaApi.md#getTeams) | **GET** /api/v2/teams | List teams
-[**patchTeam()**](TeamsBetaApi.md#patchTeam) | **PATCH** /api/v2/teams/{key} | Update team
+[**patchTeam()**](TeamsBetaApi.md#patchTeam) | **PATCH** /api/v2/teams/{teamKey} | Update team
 [**postTeam()**](TeamsBetaApi.md#postTeam) | **POST** /api/v2/teams | Create team
-[**postTeamMembers()**](TeamsBetaApi.md#postTeamMembers) | **POST** /api/v2/teams/{key}/members | Add members to team
+[**postTeamMembers()**](TeamsBetaApi.md#postTeamMembers) | **POST** /api/v2/teams/{teamKey}/members | Add members to team
 
 
 ## `deleteTeam()`
 
 ```php
-deleteTeam($key)
+deleteTeam($team_key)
 ```
 
 Delete team
@@ -41,10 +43,10 @@ $apiInstance = new LaunchDarklyApi\Api\TeamsBetaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$key = 'key_example'; // string | The team key
+$team_key = 'team_key_example'; // string | The team key
 
 try {
-    $apiInstance->deleteTeam($key);
+    $apiInstance->deleteTeam($team_key);
 } catch (Exception $e) {
     echo 'Exception when calling TeamsBetaApi->deleteTeam: ', $e->getMessage(), PHP_EOL;
 }
@@ -54,7 +56,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **string**| The team key |
+ **team_key** | **string**| The team key |
 
 ### Return type
 
@@ -76,7 +78,7 @@ void (empty response body)
 ## `getTeam()`
 
 ```php
-getTeam($key): \LaunchDarklyApi\Model\ExpandedTeamRep
+getTeam($team_key): \LaunchDarklyApi\Model\Team
 ```
 
 Get team
@@ -102,10 +104,10 @@ $apiInstance = new LaunchDarklyApi\Api\TeamsBetaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$key = 'key_example'; // string | The team key
+$team_key = 'team_key_example'; // string | The team key
 
 try {
-    $result = $apiInstance->getTeam($key);
+    $result = $apiInstance->getTeam($team_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TeamsBetaApi->getTeam: ', $e->getMessage(), PHP_EOL;
@@ -116,11 +118,143 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **string**| The team key |
+ **team_key** | **string**| The team key |
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\ExpandedTeamRep**](../Model/ExpandedTeamRep.md)
+[**\LaunchDarklyApi\Model\Team**](../Model/Team.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getTeamMaintainers()`
+
+```php
+getTeamMaintainers($team_key, $limit, $offset): \LaunchDarklyApi\Model\TeamMaintainers
+```
+
+Get team maintainers
+
+Fetch the maintainers that have been assigned to the team.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\TeamsBetaApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$team_key = 'team_key_example'; // string | The team key
+$limit = 56; // int | The number of maintainers to return in the response. Defaults to 20.
+$offset = 56; // int | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first ten items and then return the next `limit` items.
+
+try {
+    $result = $apiInstance->getTeamMaintainers($team_key, $limit, $offset);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TeamsBetaApi->getTeamMaintainers: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **team_key** | **string**| The team key |
+ **limit** | **int**| The number of maintainers to return in the response. Defaults to 20. | [optional]
+ **offset** | **int**| Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first ten items and then return the next &#x60;limit&#x60; items. | [optional]
+
+### Return type
+
+[**\LaunchDarklyApi\Model\TeamMaintainers**](../Model/TeamMaintainers.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getTeamRoles()`
+
+```php
+getTeamRoles($team_key, $limit, $offset): \LaunchDarklyApi\Model\TeamCustomRoles
+```
+
+Get team custom roles
+
+Fetch the custom roles that have been assigned to the team.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\TeamsBetaApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$team_key = 'team_key_example'; // string | The team key
+$limit = 56; // int | The number of roles to return in the response. Defaults to 20.
+$offset = 56; // int | Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first ten items and then return the next `limit` items.
+
+try {
+    $result = $apiInstance->getTeamRoles($team_key, $limit, $offset);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling TeamsBetaApi->getTeamRoles: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **team_key** | **string**| The team key |
+ **limit** | **int**| The number of roles to return in the response. Defaults to 20. | [optional]
+ **offset** | **int**| Where to start in the list. This is for use with pagination. For example, an offset of 10 would skip the first ten items and then return the next &#x60;limit&#x60; items. | [optional]
+
+### Return type
+
+[**\LaunchDarklyApi\Model\TeamCustomRoles**](../Model/TeamCustomRoles.md)
 
 ### Authorization
 
@@ -138,7 +272,7 @@ Name | Type | Description  | Notes
 ## `getTeams()`
 
 ```php
-getTeams($limit, $offset, $filter): \LaunchDarklyApi\Model\TeamCollectionRep
+getTeams($limit, $offset, $filter): \LaunchDarklyApi\Model\Teams
 ```
 
 List teams
@@ -186,7 +320,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\TeamCollectionRep**](../Model/TeamCollectionRep.md)
+[**\LaunchDarklyApi\Model\Teams**](../Model/Teams.md)
 
 ### Authorization
 
@@ -204,7 +338,7 @@ Name | Type | Description  | Notes
 ## `patchTeam()`
 
 ```php
-patchTeam($key, $team_patch_input): \LaunchDarklyApi\Model\ExpandedTeamRep
+patchTeam($team_key, $team_patch_input): \LaunchDarklyApi\Model\Team
 ```
 
 Update team
@@ -230,11 +364,11 @@ $apiInstance = new LaunchDarklyApi\Api\TeamsBetaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$key = 'key_example'; // string | The team key
+$team_key = 'team_key_example'; // string | The team key
 $team_patch_input = new \LaunchDarklyApi\Model\TeamPatchInput(); // \LaunchDarklyApi\Model\TeamPatchInput
 
 try {
-    $result = $apiInstance->patchTeam($key, $team_patch_input);
+    $result = $apiInstance->patchTeam($team_key, $team_patch_input);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TeamsBetaApi->patchTeam: ', $e->getMessage(), PHP_EOL;
@@ -245,12 +379,12 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **string**| The team key |
+ **team_key** | **string**| The team key |
  **team_patch_input** | [**\LaunchDarklyApi\Model\TeamPatchInput**](../Model/TeamPatchInput.md)|  |
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\ExpandedTeamRep**](../Model/ExpandedTeamRep.md)
+[**\LaunchDarklyApi\Model\Team**](../Model/Team.md)
 
 ### Authorization
 
@@ -268,7 +402,7 @@ Name | Type | Description  | Notes
 ## `postTeam()`
 
 ```php
-postTeam($team_post_input): \LaunchDarklyApi\Model\TeamRep
+postTeam($team_post_input): \LaunchDarklyApi\Model\Team
 ```
 
 Create team
@@ -294,7 +428,7 @@ $apiInstance = new LaunchDarklyApi\Api\TeamsBetaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$team_post_input = new \LaunchDarklyApi\Model\TeamPostInput(); // \LaunchDarklyApi\Model\TeamPostInput
+$team_post_input = {"customRoleKeys":["example-role1","example-role2"],"description":"An example team","key":"example-team","memberIDs":[],"name":"Example team","permissionGrants":[]}; // \LaunchDarklyApi\Model\TeamPostInput
 
 try {
     $result = $apiInstance->postTeam($team_post_input);
@@ -312,7 +446,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\TeamRep**](../Model/TeamRep.md)
+[**\LaunchDarklyApi\Model\Team**](../Model/Team.md)
 
 ### Authorization
 
@@ -330,7 +464,7 @@ Name | Type | Description  | Notes
 ## `postTeamMembers()`
 
 ```php
-postTeamMembers($key, $file): \LaunchDarklyApi\Model\TeamImportsRep
+postTeamMembers($team_key, $file): \LaunchDarklyApi\Model\TeamImportsRep
 ```
 
 Add members to team
@@ -356,11 +490,11 @@ $apiInstance = new LaunchDarklyApi\Api\TeamsBetaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$key = 'key_example'; // string | The team key
+$team_key = 'team_key_example'; // string | The team key
 $file = "/path/to/file.txt"; // \SplFileObject | CSV file containing email addresses
 
 try {
-    $result = $apiInstance->postTeamMembers($key, $file);
+    $result = $apiInstance->postTeamMembers($team_key, $file);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TeamsBetaApi->postTeamMembers: ', $e->getMessage(), PHP_EOL;
@@ -371,7 +505,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **key** | **string**| The team key |
+ **team_key** | **string**| The team key |
  **file** | **\SplFileObject****\SplFileObject**| CSV file containing email addresses | [optional]
 
 ### Return type

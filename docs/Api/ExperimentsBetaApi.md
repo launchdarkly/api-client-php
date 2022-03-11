@@ -4,14 +4,14 @@ All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getExperiment()**](ExperimentsBetaApi.md#getExperiment) | **GET** /api/v2/flags/{projKey}/{flagKey}/experiments/{envKey}/{metricKey} | Get experiment results
-[**resetExperiment()**](ExperimentsBetaApi.md#resetExperiment) | **DELETE** /api/v2/flags/{projKey}/{flagKey}/experiments/{envKey}/{metricKey}/results | Reset experiment results
+[**getExperiment()**](ExperimentsBetaApi.md#getExperiment) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey} | Get experiment results
+[**resetExperiment()**](ExperimentsBetaApi.md#resetExperiment) | **DELETE** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey}/results | Reset experiment results
 
 
 ## `getExperiment()`
 
 ```php
-getExperiment($proj_key, $flag_key, $env_key, $metric_key, $from, $to): \LaunchDarklyApi\Model\ExperimentResultsRep
+getExperiment($project_key, $feature_flag_key, $environment_key, $metric_key, $from, $to): \LaunchDarklyApi\Model\ExperimentResultsRep
 ```
 
 Get experiment results
@@ -37,15 +37,15 @@ $apiInstance = new LaunchDarklyApi\Api\ExperimentsBetaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$flag_key = 'flag_key_example'; // string | The flag key
-$env_key = 'env_key_example'; // string | The environment key
+$project_key = 'project_key_example'; // string | The project key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
+$environment_key = 'environment_key_example'; // string | The environment key
 $metric_key = 'metric_key_example'; // string | The metric key
 $from = 56; // int | A timestamp denoting the start of the data collection period, expressed as a Unix epoch time in milliseconds.
 $to = 56; // int | A timestamp denoting the end of the data collection period, expressed as a Unix epoch time in milliseconds.
 
 try {
-    $result = $apiInstance->getExperiment($proj_key, $flag_key, $env_key, $metric_key, $from, $to);
+    $result = $apiInstance->getExperiment($project_key, $feature_flag_key, $environment_key, $metric_key, $from, $to);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ExperimentsBetaApi->getExperiment: ', $e->getMessage(), PHP_EOL;
@@ -56,9 +56,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **flag_key** | **string**| The flag key |
- **env_key** | **string**| The environment key |
+ **project_key** | **string**| The project key |
+ **feature_flag_key** | **string**| The feature flag key |
+ **environment_key** | **string**| The environment key |
  **metric_key** | **string**| The metric key |
  **from** | **int**| A timestamp denoting the start of the data collection period, expressed as a Unix epoch time in milliseconds. | [optional]
  **to** | **int**| A timestamp denoting the end of the data collection period, expressed as a Unix epoch time in milliseconds. | [optional]
@@ -83,7 +83,7 @@ Name | Type | Description  | Notes
 ## `resetExperiment()`
 
 ```php
-resetExperiment($proj_key, $flag_key, $env_key, $metric_key)
+resetExperiment($project_key, $feature_flag_key, $environment_key, $metric_key)
 ```
 
 Reset experiment results
@@ -109,13 +109,13 @@ $apiInstance = new LaunchDarklyApi\Api\ExperimentsBetaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$flag_key = 'flag_key_example'; // string | The feature flag's key
-$env_key = 'env_key_example'; // string | The environment key
+$project_key = 'project_key_example'; // string | The project key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
+$environment_key = 'environment_key_example'; // string | The environment key
 $metric_key = 'metric_key_example'; // string | The metric's key
 
 try {
-    $apiInstance->resetExperiment($proj_key, $flag_key, $env_key, $metric_key);
+    $apiInstance->resetExperiment($project_key, $feature_flag_key, $environment_key, $metric_key);
 } catch (Exception $e) {
     echo 'Exception when calling ExperimentsBetaApi->resetExperiment: ', $e->getMessage(), PHP_EOL;
 }
@@ -125,9 +125,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **flag_key** | **string**| The feature flag&#39;s key |
- **env_key** | **string**| The environment key |
+ **project_key** | **string**| The project key |
+ **feature_flag_key** | **string**| The feature flag key |
+ **environment_key** | **string**| The environment key |
  **metric_key** | **string**| The metric&#39;s key |
 
 ### Return type

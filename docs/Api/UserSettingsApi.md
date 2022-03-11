@@ -4,17 +4,17 @@ All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getExpiringFlagsForUser()**](UserSettingsApi.md#getExpiringFlagsForUser) | **GET** /api/v2/users/{projKey}/{userKey}/expiring-user-targets/{envKey} | Get expiring dates on flags for user
-[**getUserFlagSetting()**](UserSettingsApi.md#getUserFlagSetting) | **GET** /api/v2/users/{projKey}/{envKey}/{key}/flags/{featureKey} | Get flag setting for user
-[**getUserFlagSettings()**](UserSettingsApi.md#getUserFlagSettings) | **GET** /api/v2/users/{projKey}/{envKey}/{key}/flags | List flag settings for user
-[**patchExpiringFlagsForUser()**](UserSettingsApi.md#patchExpiringFlagsForUser) | **PATCH** /api/v2/users/{projKey}/{userKey}/expiring-user-targets/{envKey} | Update expiring user target for flags
-[**putFlagSetting()**](UserSettingsApi.md#putFlagSetting) | **PUT** /api/v2/users/{projKey}/{envKey}/{key}/flags/{featureKey} | Update flag settings for user
+[**getExpiringFlagsForUser()**](UserSettingsApi.md#getExpiringFlagsForUser) | **GET** /api/v2/users/{projectKey}/{userKey}/expiring-user-targets/{environmentKey} | Get expiring dates on flags for user
+[**getUserFlagSetting()**](UserSettingsApi.md#getUserFlagSetting) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Get flag setting for user
+[**getUserFlagSettings()**](UserSettingsApi.md#getUserFlagSettings) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags | List flag settings for user
+[**patchExpiringFlagsForUser()**](UserSettingsApi.md#patchExpiringFlagsForUser) | **PATCH** /api/v2/users/{projectKey}/{userKey}/expiring-user-targets/{environmentKey} | Update expiring user target for flags
+[**putFlagSetting()**](UserSettingsApi.md#putFlagSetting) | **PUT** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Update flag settings for user
 
 
 ## `getExpiringFlagsForUser()`
 
 ```php
-getExpiringFlagsForUser($proj_key, $user_key, $env_key): \LaunchDarklyApi\Model\ExpiringUserTargetGetResponse
+getExpiringFlagsForUser($project_key, $user_key, $environment_key): \LaunchDarklyApi\Model\ExpiringUserTargetGetResponse
 ```
 
 Get expiring dates on flags for user
@@ -40,12 +40,12 @@ $apiInstance = new LaunchDarklyApi\Api\UserSettingsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key.
-$user_key = 'user_key_example'; // string | The user key.
-$env_key = 'env_key_example'; // string | The environment key.
+$project_key = 'project_key_example'; // string | The project key
+$user_key = 'user_key_example'; // string | The user key
+$environment_key = 'environment_key_example'; // string | The environment key
 
 try {
-    $result = $apiInstance->getExpiringFlagsForUser($proj_key, $user_key, $env_key);
+    $result = $apiInstance->getExpiringFlagsForUser($project_key, $user_key, $environment_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserSettingsApi->getExpiringFlagsForUser: ', $e->getMessage(), PHP_EOL;
@@ -56,9 +56,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key. |
- **user_key** | **string**| The user key. |
- **env_key** | **string**| The environment key. |
+ **project_key** | **string**| The project key |
+ **user_key** | **string**| The user key |
+ **environment_key** | **string**| The environment key |
 
 ### Return type
 
@@ -80,7 +80,7 @@ Name | Type | Description  | Notes
 ## `getUserFlagSetting()`
 
 ```php
-getUserFlagSetting($proj_key, $env_key, $key, $feature_key): \LaunchDarklyApi\Model\UserFlagSetting
+getUserFlagSetting($project_key, $environment_key, $user_key, $feature_flag_key): \LaunchDarklyApi\Model\UserFlagSetting
 ```
 
 Get flag setting for user
@@ -106,13 +106,13 @@ $apiInstance = new LaunchDarklyApi\Api\UserSettingsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$env_key = 'env_key_example'; // string | The environment key
-$key = 'key_example'; // string | The user key
-$feature_key = 'feature_key_example'; // string | The feature flag key
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$user_key = 'user_key_example'; // string | The user key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 
 try {
-    $result = $apiInstance->getUserFlagSetting($proj_key, $env_key, $key, $feature_key);
+    $result = $apiInstance->getUserFlagSetting($project_key, $environment_key, $user_key, $feature_flag_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserSettingsApi->getUserFlagSetting: ', $e->getMessage(), PHP_EOL;
@@ -123,10 +123,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **env_key** | **string**| The environment key |
- **key** | **string**| The user key |
- **feature_key** | **string**| The feature flag key |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **user_key** | **string**| The user key |
+ **feature_flag_key** | **string**| The feature flag key |
 
 ### Return type
 
@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 ## `getUserFlagSettings()`
 
 ```php
-getUserFlagSettings($proj_key, $env_key, $key): \LaunchDarklyApi\Model\UserFlagSettings
+getUserFlagSettings($project_key, $environment_key, $user_key): \LaunchDarklyApi\Model\UserFlagSettings
 ```
 
 List flag settings for user
@@ -174,12 +174,12 @@ $apiInstance = new LaunchDarklyApi\Api\UserSettingsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$env_key = 'env_key_example'; // string | The environment key
-$key = 'key_example'; // string | The user key
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$user_key = 'user_key_example'; // string | The user key
 
 try {
-    $result = $apiInstance->getUserFlagSettings($proj_key, $env_key, $key);
+    $result = $apiInstance->getUserFlagSettings($project_key, $environment_key, $user_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserSettingsApi->getUserFlagSettings: ', $e->getMessage(), PHP_EOL;
@@ -190,9 +190,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **env_key** | **string**| The environment key |
- **key** | **string**| The user key |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **user_key** | **string**| The user key |
 
 ### Return type
 
@@ -214,7 +214,7 @@ Name | Type | Description  | Notes
 ## `patchExpiringFlagsForUser()`
 
 ```php
-patchExpiringFlagsForUser($proj_key, $user_key, $env_key, $patch_with_comment): \LaunchDarklyApi\Model\ExpiringUserTargetPatchResponse
+patchExpiringFlagsForUser($project_key, $user_key, $environment_key, $patch_with_comment): \LaunchDarklyApi\Model\ExpiringUserTargetPatchResponse
 ```
 
 Update expiring user target for flags
@@ -240,13 +240,13 @@ $apiInstance = new LaunchDarklyApi\Api\UserSettingsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key.
-$user_key = 'user_key_example'; // string | The user key.
-$env_key = 'env_key_example'; // string | The environment key.
+$project_key = 'project_key_example'; // string | The project key
+$user_key = 'user_key_example'; // string | The user key
+$environment_key = 'environment_key_example'; // string | The environment key
 $patch_with_comment = new \LaunchDarklyApi\Model\PatchWithComment(); // \LaunchDarklyApi\Model\PatchWithComment
 
 try {
-    $result = $apiInstance->patchExpiringFlagsForUser($proj_key, $user_key, $env_key, $patch_with_comment);
+    $result = $apiInstance->patchExpiringFlagsForUser($project_key, $user_key, $environment_key, $patch_with_comment);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserSettingsApi->patchExpiringFlagsForUser: ', $e->getMessage(), PHP_EOL;
@@ -257,9 +257,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key. |
- **user_key** | **string**| The user key. |
- **env_key** | **string**| The environment key. |
+ **project_key** | **string**| The project key |
+ **user_key** | **string**| The user key |
+ **environment_key** | **string**| The environment key |
  **patch_with_comment** | [**\LaunchDarklyApi\Model\PatchWithComment**](../Model/PatchWithComment.md)|  |
 
 ### Return type
@@ -282,7 +282,7 @@ Name | Type | Description  | Notes
 ## `putFlagSetting()`
 
 ```php
-putFlagSetting($proj_key, $env_key, $key, $feature_key, $value_put)
+putFlagSetting($project_key, $environment_key, $user_key, $feature_flag_key, $value_put)
 ```
 
 Update flag settings for user
@@ -308,14 +308,14 @@ $apiInstance = new LaunchDarklyApi\Api\UserSettingsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$env_key = 'env_key_example'; // string | The environment key
-$key = 'key_example'; // string | The user key
-$feature_key = 'feature_key_example'; // string | The feature flag key
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$user_key = 'user_key_example'; // string | The user key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $value_put = new \LaunchDarklyApi\Model\ValuePut(); // \LaunchDarklyApi\Model\ValuePut
 
 try {
-    $apiInstance->putFlagSetting($proj_key, $env_key, $key, $feature_key, $value_put);
+    $apiInstance->putFlagSetting($project_key, $environment_key, $user_key, $feature_flag_key, $value_put);
 } catch (Exception $e) {
     echo 'Exception when calling UserSettingsApi->putFlagSetting: ', $e->getMessage(), PHP_EOL;
 }
@@ -325,10 +325,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **env_key** | **string**| The environment key |
- **key** | **string**| The user key |
- **feature_key** | **string**| The feature flag key |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **user_key** | **string**| The user key |
+ **feature_flag_key** | **string**| The feature flag key |
  **value_put** | [**\LaunchDarklyApi\Model\ValuePut**](../Model/ValuePut.md)|  |
 
 ### Return type

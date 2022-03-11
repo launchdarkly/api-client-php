@@ -7,7 +7,10 @@ Name | Type | Description | Notes
 **_id** | **string** |  |
 **kind** | **string** |  | [optional]
 **_execution** | [**\LaunchDarklyApi\Model\ExecutionOutputRep**](ExecutionOutputRep.md) |  |
+**schedule_kind** | **string** |  | [optional]
 **execution_date** | **int** |  | [optional]
+**wait_duration** | **int** |  | [optional]
+**wait_duration_unit** | **string** |  | [optional]
 **description** | **string** |  |
 **notify_member_ids** | **string[]** |  |
 **all_reviews** | [**\LaunchDarklyApi\Model\ReviewOutputRep[]**](ReviewOutputRep.md) |  |

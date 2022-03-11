@@ -286,7 +286,7 @@ $apiInstance = new LaunchDarklyApi\Api\WebhooksApi(
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_post = new \LaunchDarklyApi\Model\WebhookPost(); // \LaunchDarklyApi\Model\WebhookPost
+$webhook_post = {"name":"apidocs test webhook","on":true,"sign":false,"statements":[{"actions":["*"],"effect":"allow","resources":["proj/test"]}],"tags":[],"url":"https://example.com"}; // \LaunchDarklyApi\Model\WebhookPost
 
 try {
     $result = $apiInstance->postWebhook($webhook_post);

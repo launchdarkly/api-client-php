@@ -4,17 +4,17 @@ All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createTriggerWorkflow()**](FlagTriggersApi.md#createTriggerWorkflow) | **POST** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey} | Create flag trigger
-[**deleteTriggerWorkflow()**](FlagTriggersApi.md#deleteTriggerWorkflow) | **DELETE** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey}/{id} | Delete flag trigger
-[**getTriggerWorkflowById()**](FlagTriggersApi.md#getTriggerWorkflowById) | **GET** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey}/{id} | Get flag trigger by ID
-[**getTriggerWorkflows()**](FlagTriggersApi.md#getTriggerWorkflows) | **GET** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey} | List flag triggers
-[**patchTriggerWorkflow()**](FlagTriggersApi.md#patchTriggerWorkflow) | **PATCH** /api/v2/flags/{projKey}/{flagKey}/triggers/{envKey}/{id} | Update flag trigger
+[**createTriggerWorkflow()**](FlagTriggersApi.md#createTriggerWorkflow) | **POST** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey} | Create flag trigger
+[**deleteTriggerWorkflow()**](FlagTriggersApi.md#deleteTriggerWorkflow) | **DELETE** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id} | Delete flag trigger
+[**getTriggerWorkflowById()**](FlagTriggersApi.md#getTriggerWorkflowById) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id} | Get flag trigger by ID
+[**getTriggerWorkflows()**](FlagTriggersApi.md#getTriggerWorkflows) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey} | List flag triggers
+[**patchTriggerWorkflow()**](FlagTriggersApi.md#patchTriggerWorkflow) | **PATCH** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id} | Update flag trigger
 
 
 ## `createTriggerWorkflow()`
 
 ```php
-createTriggerWorkflow($proj_key, $env_key, $flag_key, $trigger_post): \LaunchDarklyApi\Model\TriggerWorkflowRep
+createTriggerWorkflow($project_key, $environment_key, $feature_flag_key, $trigger_post): \LaunchDarklyApi\Model\TriggerWorkflowRep
 ```
 
 Create flag trigger
@@ -40,13 +40,13 @@ $apiInstance = new LaunchDarklyApi\Api\FlagTriggersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$env_key = 'env_key_example'; // string | The environment key
-$flag_key = 'flag_key_example'; // string | The flag key
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $trigger_post = new \LaunchDarklyApi\Model\TriggerPost(); // \LaunchDarklyApi\Model\TriggerPost
 
 try {
-    $result = $apiInstance->createTriggerWorkflow($proj_key, $env_key, $flag_key, $trigger_post);
+    $result = $apiInstance->createTriggerWorkflow($project_key, $environment_key, $feature_flag_key, $trigger_post);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlagTriggersApi->createTriggerWorkflow: ', $e->getMessage(), PHP_EOL;
@@ -57,9 +57,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **env_key** | **string**| The environment key |
- **flag_key** | **string**| The flag key |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **feature_flag_key** | **string**| The feature flag key |
  **trigger_post** | [**\LaunchDarklyApi\Model\TriggerPost**](../Model/TriggerPost.md)|  |
 
 ### Return type
@@ -82,7 +82,7 @@ Name | Type | Description  | Notes
 ## `deleteTriggerWorkflow()`
 
 ```php
-deleteTriggerWorkflow($proj_key, $env_key, $flag_key, $id)
+deleteTriggerWorkflow($project_key, $environment_key, $feature_flag_key, $id)
 ```
 
 Delete flag trigger
@@ -108,13 +108,13 @@ $apiInstance = new LaunchDarklyApi\Api\FlagTriggersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$env_key = 'env_key_example'; // string | The environment key
-$flag_key = 'flag_key_example'; // string | The flag key
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $id = 'id_example'; // string | The flag trigger ID
 
 try {
-    $apiInstance->deleteTriggerWorkflow($proj_key, $env_key, $flag_key, $id);
+    $apiInstance->deleteTriggerWorkflow($project_key, $environment_key, $feature_flag_key, $id);
 } catch (Exception $e) {
     echo 'Exception when calling FlagTriggersApi->deleteTriggerWorkflow: ', $e->getMessage(), PHP_EOL;
 }
@@ -124,9 +124,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **env_key** | **string**| The environment key |
- **flag_key** | **string**| The flag key |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **feature_flag_key** | **string**| The feature flag key |
  **id** | **string**| The flag trigger ID |
 
 ### Return type
@@ -149,7 +149,7 @@ void (empty response body)
 ## `getTriggerWorkflowById()`
 
 ```php
-getTriggerWorkflowById($proj_key, $flag_key, $env_key, $id): \LaunchDarklyApi\Model\TriggerWorkflowRep
+getTriggerWorkflowById($project_key, $feature_flag_key, $environment_key, $id): \LaunchDarklyApi\Model\TriggerWorkflowRep
 ```
 
 Get flag trigger by ID
@@ -175,13 +175,13 @@ $apiInstance = new LaunchDarklyApi\Api\FlagTriggersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$flag_key = 'flag_key_example'; // string | The flag key
-$env_key = 'env_key_example'; // string | The environment key
+$project_key = 'project_key_example'; // string | The project key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
+$environment_key = 'environment_key_example'; // string | The environment key
 $id = 'id_example'; // string | The flag trigger ID
 
 try {
-    $result = $apiInstance->getTriggerWorkflowById($proj_key, $flag_key, $env_key, $id);
+    $result = $apiInstance->getTriggerWorkflowById($project_key, $feature_flag_key, $environment_key, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlagTriggersApi->getTriggerWorkflowById: ', $e->getMessage(), PHP_EOL;
@@ -192,9 +192,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **flag_key** | **string**| The flag key |
- **env_key** | **string**| The environment key |
+ **project_key** | **string**| The project key |
+ **feature_flag_key** | **string**| The feature flag key |
+ **environment_key** | **string**| The environment key |
  **id** | **string**| The flag trigger ID |
 
 ### Return type
@@ -217,7 +217,7 @@ Name | Type | Description  | Notes
 ## `getTriggerWorkflows()`
 
 ```php
-getTriggerWorkflows($proj_key, $env_key, $flag_key): \LaunchDarklyApi\Model\TriggerWorkflowCollectionRep
+getTriggerWorkflows($project_key, $environment_key, $feature_flag_key): \LaunchDarklyApi\Model\TriggerWorkflowCollectionRep
 ```
 
 List flag triggers
@@ -243,12 +243,12 @@ $apiInstance = new LaunchDarklyApi\Api\FlagTriggersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$env_key = 'env_key_example'; // string | The environment key
-$flag_key = 'flag_key_example'; // string | The flag key
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 
 try {
-    $result = $apiInstance->getTriggerWorkflows($proj_key, $env_key, $flag_key);
+    $result = $apiInstance->getTriggerWorkflows($project_key, $environment_key, $feature_flag_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlagTriggersApi->getTriggerWorkflows: ', $e->getMessage(), PHP_EOL;
@@ -259,9 +259,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **env_key** | **string**| The environment key |
- **flag_key** | **string**| The flag key |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **feature_flag_key** | **string**| The feature flag key |
 
 ### Return type
 
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 ## `patchTriggerWorkflow()`
 
 ```php
-patchTriggerWorkflow($proj_key, $env_key, $flag_key, $id, $flag_trigger_input): \LaunchDarklyApi\Model\TriggerWorkflowRep
+patchTriggerWorkflow($project_key, $environment_key, $feature_flag_key, $id, $flag_trigger_input): \LaunchDarklyApi\Model\TriggerWorkflowRep
 ```
 
 Update flag trigger
@@ -309,14 +309,14 @@ $apiInstance = new LaunchDarklyApi\Api\FlagTriggersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$env_key = 'env_key_example'; // string | The environment key
-$flag_key = 'flag_key_example'; // string | The flag key
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $id = 'id_example'; // string | The flag trigger ID
 $flag_trigger_input = new \LaunchDarklyApi\Model\FlagTriggerInput(); // \LaunchDarklyApi\Model\FlagTriggerInput
 
 try {
-    $result = $apiInstance->patchTriggerWorkflow($proj_key, $env_key, $flag_key, $id, $flag_trigger_input);
+    $result = $apiInstance->patchTriggerWorkflow($project_key, $environment_key, $feature_flag_key, $id, $flag_trigger_input);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FlagTriggersApi->patchTriggerWorkflow: ', $e->getMessage(), PHP_EOL;
@@ -327,9 +327,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **env_key** | **string**| The environment key |
- **flag_key** | **string**| The flag key |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **feature_flag_key** | **string**| The feature flag key |
  **id** | **string**| The flag trigger ID |
  **flag_trigger_input** | [**\LaunchDarklyApi\Model\FlagTriggerInput**](../Model/FlagTriggerInput.md)|  |
 

@@ -4,17 +4,17 @@ All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteDestination()**](DataExportDestinationsApi.md#deleteDestination) | **DELETE** /api/v2/destinations/{projKey}/{envKey}/{id} | Delete Data Export destination
-[**getDestination()**](DataExportDestinationsApi.md#getDestination) | **GET** /api/v2/destinations/{projKey}/{envKey}/{id} | Get destination
+[**deleteDestination()**](DataExportDestinationsApi.md#deleteDestination) | **DELETE** /api/v2/destinations/{projectKey}/{environmentKey}/{id} | Delete Data Export destination
+[**getDestination()**](DataExportDestinationsApi.md#getDestination) | **GET** /api/v2/destinations/{projectKey}/{environmentKey}/{id} | Get destination
 [**getDestinations()**](DataExportDestinationsApi.md#getDestinations) | **GET** /api/v2/destinations | List destinations
-[**patchDestination()**](DataExportDestinationsApi.md#patchDestination) | **PATCH** /api/v2/destinations/{projKey}/{envKey}/{id} | Update Data Export destination
-[**postDestination()**](DataExportDestinationsApi.md#postDestination) | **POST** /api/v2/destinations/{projKey}/{envKey} | Create data export destination
+[**patchDestination()**](DataExportDestinationsApi.md#patchDestination) | **PATCH** /api/v2/destinations/{projectKey}/{environmentKey}/{id} | Update Data Export destination
+[**postDestination()**](DataExportDestinationsApi.md#postDestination) | **POST** /api/v2/destinations/{projectKey}/{environmentKey} | Create data export destination
 
 
 ## `deleteDestination()`
 
 ```php
-deleteDestination($proj_key, $env_key, $id)
+deleteDestination($project_key, $environment_key, $id)
 ```
 
 Delete Data Export destination
@@ -40,12 +40,12 @@ $apiInstance = new LaunchDarklyApi\Api\DataExportDestinationsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$env_key = 'env_key_example'; // string | The environment key
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
 $id = 'id_example'; // string | The Data Export destination ID
 
 try {
-    $apiInstance->deleteDestination($proj_key, $env_key, $id);
+    $apiInstance->deleteDestination($project_key, $environment_key, $id);
 } catch (Exception $e) {
     echo 'Exception when calling DataExportDestinationsApi->deleteDestination: ', $e->getMessage(), PHP_EOL;
 }
@@ -55,8 +55,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **env_key** | **string**| The environment key |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
  **id** | **string**| The Data Export destination ID |
 
 ### Return type
@@ -79,7 +79,7 @@ void (empty response body)
 ## `getDestination()`
 
 ```php
-getDestination($proj_key, $env_key, $id): \LaunchDarklyApi\Model\Destination
+getDestination($project_key, $environment_key, $id): \LaunchDarklyApi\Model\Destination
 ```
 
 Get destination
@@ -105,12 +105,12 @@ $apiInstance = new LaunchDarklyApi\Api\DataExportDestinationsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$env_key = 'env_key_example'; // string | The environment key
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
 $id = 'id_example'; // string | The Data Export destination ID
 
 try {
-    $result = $apiInstance->getDestination($proj_key, $env_key, $id);
+    $result = $apiInstance->getDestination($project_key, $environment_key, $id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DataExportDestinationsApi->getDestination: ', $e->getMessage(), PHP_EOL;
@@ -121,8 +121,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **env_key** | **string**| The environment key |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
  **id** | **string**| The Data Export destination ID |
 
 ### Return type
@@ -204,7 +204,7 @@ This endpoint does not need any parameter.
 ## `patchDestination()`
 
 ```php
-patchDestination($proj_key, $env_key, $id, $patch_operation): \LaunchDarklyApi\Model\Destination
+patchDestination($project_key, $environment_key, $id, $patch_operation): \LaunchDarklyApi\Model\Destination
 ```
 
 Update Data Export destination
@@ -230,13 +230,13 @@ $apiInstance = new LaunchDarklyApi\Api\DataExportDestinationsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$env_key = 'env_key_example'; // string | The environment key
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
 $id = 'id_example'; // string | The Data Export destination ID
 $patch_operation = [{"op":"replace","path":"/config/topic","value":"ld-pubsub-test-192302"}]; // \LaunchDarklyApi\Model\PatchOperation[]
 
 try {
-    $result = $apiInstance->patchDestination($proj_key, $env_key, $id, $patch_operation);
+    $result = $apiInstance->patchDestination($project_key, $environment_key, $id, $patch_operation);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DataExportDestinationsApi->patchDestination: ', $e->getMessage(), PHP_EOL;
@@ -247,8 +247,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **env_key** | **string**| The environment key |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
  **id** | **string**| The Data Export destination ID |
  **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
 
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 ## `postDestination()`
 
 ```php
-postDestination($proj_key, $env_key, $destination_post): \LaunchDarklyApi\Model\Destination
+postDestination($project_key, $environment_key, $destination_post): \LaunchDarklyApi\Model\Destination
 ```
 
 Create data export destination
@@ -298,12 +298,12 @@ $apiInstance = new LaunchDarklyApi\Api\DataExportDestinationsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$env_key = 'env_key_example'; // string | The environment key
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
 $destination_post = {"config":{"project":"test-prod","topic":"ld-pubsub-test-192301"},"kind":"google-pubsub"}; // \LaunchDarklyApi\Model\DestinationPost
 
 try {
-    $result = $apiInstance->postDestination($proj_key, $env_key, $destination_post);
+    $result = $apiInstance->postDestination($project_key, $environment_key, $destination_post);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling DataExportDestinationsApi->postDestination: ', $e->getMessage(), PHP_EOL;
@@ -314,8 +314,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **env_key** | **string**| The environment key |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
  **destination_post** | [**\LaunchDarklyApi\Model\DestinationPost**](../Model/DestinationPost.md)|  |
 
 ### Return type

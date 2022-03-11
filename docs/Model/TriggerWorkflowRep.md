@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **_version** | **int** |  | [optional]
 **_creation_date** | **int** |  | [optional]
 **_maintainer_id** | **string** |  | [optional]
-**_maintainer** | [**\LaunchDarklyApi\Model\MemberSummaryRep**](MemberSummaryRep.md) |  | [optional]
+**_maintainer** | [**\LaunchDarklyApi\Model\MemberSummary**](MemberSummary.md) |  | [optional]
 **enabled** | **bool** |  | [optional]
 **_integration_key** | **string** |  | [optional]
 **instructions** | **array[]** |  | [optional]

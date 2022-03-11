@@ -4,21 +4,21 @@ All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteSegment()**](SegmentsApi.md#deleteSegment) | **DELETE** /api/v2/segments/{projKey}/{envKey}/{key} | Delete segment
-[**getExpiringUserTargetsForSegment()**](SegmentsApi.md#getExpiringUserTargetsForSegment) | **GET** /api/v2/segments/{projKey}/{segmentKey}/expiring-user-targets/{envKey} | Get expiring user targets for segment
-[**getSegment()**](SegmentsApi.md#getSegment) | **GET** /api/v2/segments/{projKey}/{envKey}/{key} | Get segment
-[**getSegmentMembershipForUser()**](SegmentsApi.md#getSegmentMembershipForUser) | **GET** /api/v2/segments/{projKey}/{envKey}/{key}/users/{userKey} | Get Big Segment membership for user
-[**getSegments()**](SegmentsApi.md#getSegments) | **GET** /api/v2/segments/{projKey}/{envKey} | List segments
-[**patchExpiringUserTargetsForSegment()**](SegmentsApi.md#patchExpiringUserTargetsForSegment) | **PATCH** /api/v2/segments/{projKey}/{segmentKey}/expiring-user-targets/{envKey} | Update expiring user targets for segment
-[**patchSegment()**](SegmentsApi.md#patchSegment) | **PATCH** /api/v2/segments/{projKey}/{envKey}/{key} | Patch segment
-[**postSegment()**](SegmentsApi.md#postSegment) | **POST** /api/v2/segments/{projKey}/{envKey} | Create segment
-[**updateBigSegmentTargets()**](SegmentsApi.md#updateBigSegmentTargets) | **POST** /api/v2/segments/{projKey}/{envKey}/{key}/users | Update targets on a Big Segment
+[**deleteSegment()**](SegmentsApi.md#deleteSegment) | **DELETE** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey} | Delete segment
+[**getExpiringUserTargetsForSegment()**](SegmentsApi.md#getExpiringUserTargetsForSegment) | **GET** /api/v2/segments/{projectKey}/{segmentKey}/expiring-user-targets/{environmentKey} | Get expiring user targets for segment
+[**getSegment()**](SegmentsApi.md#getSegment) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey} | Get segment
+[**getSegmentMembershipForUser()**](SegmentsApi.md#getSegmentMembershipForUser) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/users/{userKey} | Get Big Segment membership for user
+[**getSegments()**](SegmentsApi.md#getSegments) | **GET** /api/v2/segments/{projectKey}/{environmentKey} | List segments
+[**patchExpiringUserTargetsForSegment()**](SegmentsApi.md#patchExpiringUserTargetsForSegment) | **PATCH** /api/v2/segments/{projectKey}/{segmentKey}/expiring-user-targets/{environmentKey} | Update expiring user targets for segment
+[**patchSegment()**](SegmentsApi.md#patchSegment) | **PATCH** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey} | Patch segment
+[**postSegment()**](SegmentsApi.md#postSegment) | **POST** /api/v2/segments/{projectKey}/{environmentKey} | Create segment
+[**updateBigSegmentTargets()**](SegmentsApi.md#updateBigSegmentTargets) | **POST** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/users | Update targets on a Big Segment
 
 
 ## `deleteSegment()`
 
 ```php
-deleteSegment($proj_key, $env_key, $key)
+deleteSegment($project_key, $environment_key, $segment_key)
 ```
 
 Delete segment
@@ -44,12 +44,12 @@ $apiInstance = new LaunchDarklyApi\Api\SegmentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key.
-$env_key = 'env_key_example'; // string | The environment key.
-$key = 'key_example'; // string | The user segment key.
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$segment_key = 'segment_key_example'; // string | The segment key
 
 try {
-    $apiInstance->deleteSegment($proj_key, $env_key, $key);
+    $apiInstance->deleteSegment($project_key, $environment_key, $segment_key);
 } catch (Exception $e) {
     echo 'Exception when calling SegmentsApi->deleteSegment: ', $e->getMessage(), PHP_EOL;
 }
@@ -59,9 +59,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key. |
- **env_key** | **string**| The environment key. |
- **key** | **string**| The user segment key. |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **segment_key** | **string**| The segment key |
 
 ### Return type
 
@@ -83,7 +83,7 @@ void (empty response body)
 ## `getExpiringUserTargetsForSegment()`
 
 ```php
-getExpiringUserTargetsForSegment($proj_key, $env_key, $segment_key): \LaunchDarklyApi\Model\ExpiringUserTargetGetResponse
+getExpiringUserTargetsForSegment($project_key, $environment_key, $segment_key): \LaunchDarklyApi\Model\ExpiringUserTargetGetResponse
 ```
 
 Get expiring user targets for segment
@@ -109,12 +109,12 @@ $apiInstance = new LaunchDarklyApi\Api\SegmentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key.
-$env_key = 'env_key_example'; // string | The environment key.
-$segment_key = 'segment_key_example'; // string | The segment key.
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$segment_key = 'segment_key_example'; // string | The segment key
 
 try {
-    $result = $apiInstance->getExpiringUserTargetsForSegment($proj_key, $env_key, $segment_key);
+    $result = $apiInstance->getExpiringUserTargetsForSegment($project_key, $environment_key, $segment_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SegmentsApi->getExpiringUserTargetsForSegment: ', $e->getMessage(), PHP_EOL;
@@ -125,9 +125,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key. |
- **env_key** | **string**| The environment key. |
- **segment_key** | **string**| The segment key. |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **segment_key** | **string**| The segment key |
 
 ### Return type
 
@@ -149,7 +149,7 @@ Name | Type | Description  | Notes
 ## `getSegment()`
 
 ```php
-getSegment($proj_key, $env_key, $key): \LaunchDarklyApi\Model\UserSegment
+getSegment($project_key, $environment_key, $segment_key): \LaunchDarklyApi\Model\UserSegment
 ```
 
 Get segment
@@ -175,12 +175,12 @@ $apiInstance = new LaunchDarklyApi\Api\SegmentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key.
-$env_key = 'env_key_example'; // string | The environment key.
-$key = 'key_example'; // string | The segment key
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$segment_key = 'segment_key_example'; // string | The segment key
 
 try {
-    $result = $apiInstance->getSegment($proj_key, $env_key, $key);
+    $result = $apiInstance->getSegment($project_key, $environment_key, $segment_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SegmentsApi->getSegment: ', $e->getMessage(), PHP_EOL;
@@ -191,9 +191,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key. |
- **env_key** | **string**| The environment key. |
- **key** | **string**| The segment key |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **segment_key** | **string**| The segment key |
 
 ### Return type
 
@@ -215,7 +215,7 @@ Name | Type | Description  | Notes
 ## `getSegmentMembershipForUser()`
 
 ```php
-getSegmentMembershipForUser($proj_key, $env_key, $key, $user_key): \LaunchDarklyApi\Model\BigSegmentTarget
+getSegmentMembershipForUser($project_key, $environment_key, $segment_key, $user_key): \LaunchDarklyApi\Model\BigSegmentTarget
 ```
 
 Get Big Segment membership for user
@@ -241,13 +241,13 @@ $apiInstance = new LaunchDarklyApi\Api\SegmentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key.
-$env_key = 'env_key_example'; // string | The environment key.
-$key = 'key_example'; // string | The segment key.
-$user_key = 'user_key_example'; // string | The user key.
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$segment_key = 'segment_key_example'; // string | The segment key
+$user_key = 'user_key_example'; // string | The user key
 
 try {
-    $result = $apiInstance->getSegmentMembershipForUser($proj_key, $env_key, $key, $user_key);
+    $result = $apiInstance->getSegmentMembershipForUser($project_key, $environment_key, $segment_key, $user_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SegmentsApi->getSegmentMembershipForUser: ', $e->getMessage(), PHP_EOL;
@@ -258,10 +258,10 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key. |
- **env_key** | **string**| The environment key. |
- **key** | **string**| The segment key. |
- **user_key** | **string**| The user key. |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **segment_key** | **string**| The segment key |
+ **user_key** | **string**| The user key |
 
 ### Return type
 
@@ -283,7 +283,7 @@ Name | Type | Description  | Notes
 ## `getSegments()`
 
 ```php
-getSegments($proj_key, $env_key): \LaunchDarklyApi\Model\UserSegments
+getSegments($project_key, $environment_key): \LaunchDarklyApi\Model\UserSegments
 ```
 
 List segments
@@ -309,11 +309,11 @@ $apiInstance = new LaunchDarklyApi\Api\SegmentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key.
-$env_key = 'env_key_example'; // string | The environment key.
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
 
 try {
-    $result = $apiInstance->getSegments($proj_key, $env_key);
+    $result = $apiInstance->getSegments($project_key, $environment_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SegmentsApi->getSegments: ', $e->getMessage(), PHP_EOL;
@@ -324,8 +324,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key. |
- **env_key** | **string**| The environment key. |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
 
 ### Return type
 
@@ -347,7 +347,7 @@ Name | Type | Description  | Notes
 ## `patchExpiringUserTargetsForSegment()`
 
 ```php
-patchExpiringUserTargetsForSegment($proj_key, $env_key, $segment_key, $patch_segment_request): \LaunchDarklyApi\Model\ExpiringUserTargetPatchResponse
+patchExpiringUserTargetsForSegment($project_key, $environment_key, $segment_key, $patch_segment_request): \LaunchDarklyApi\Model\ExpiringUserTargetPatchResponse
 ```
 
 Update expiring user targets for segment
@@ -373,13 +373,13 @@ $apiInstance = new LaunchDarklyApi\Api\SegmentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key.
-$env_key = 'env_key_example'; // string | The environment key.
-$segment_key = 'segment_key_example'; // string | The user segment key.
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$segment_key = 'segment_key_example'; // string | The segment key
 $patch_segment_request = new \LaunchDarklyApi\Model\PatchSegmentRequest(); // \LaunchDarklyApi\Model\PatchSegmentRequest
 
 try {
-    $result = $apiInstance->patchExpiringUserTargetsForSegment($proj_key, $env_key, $segment_key, $patch_segment_request);
+    $result = $apiInstance->patchExpiringUserTargetsForSegment($project_key, $environment_key, $segment_key, $patch_segment_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SegmentsApi->patchExpiringUserTargetsForSegment: ', $e->getMessage(), PHP_EOL;
@@ -390,9 +390,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key. |
- **env_key** | **string**| The environment key. |
- **segment_key** | **string**| The user segment key. |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **segment_key** | **string**| The segment key |
  **patch_segment_request** | [**\LaunchDarklyApi\Model\PatchSegmentRequest**](../Model/PatchSegmentRequest.md)|  |
 
 ### Return type
@@ -415,12 +415,12 @@ Name | Type | Description  | Notes
 ## `patchSegment()`
 
 ```php
-patchSegment($proj_key, $env_key, $key, $patch_with_comment): \LaunchDarklyApi\Model\UserSegment
+patchSegment($project_key, $environment_key, $segment_key, $patch_with_comment): \LaunchDarklyApi\Model\UserSegment
 ```
 
 Patch segment
 
-Update a user segment. The request body must be a valid JSON patch or JSON merge patch document. To learn more about semantic patches, read [Updates](/#section/Overview/Updates).
+Update a user segment. The request body must be a valid JSON patch, JSON merge patch, or semantic patch.  ## Using semantic patches on a segment  To use a [semantic patch](/reference#updates-via-semantic-patches) on a segment resource, you must include a header in the request. If you call a semantic patch resource without this header, you will receive a `400` response because your semantic patch will be interpreted as a JSON patch.  Use this header:  ``` Content-Type: application/json; domain-model=launchdarkly.semanticpatch ```  The body of a semantic patch request takes the following three properties:  1. `comment` (string): (Optional) A description of the update. 1. `environmentKey` (string): (Required) The key of the LaunchDarkly environment. 1. `instructions` (array): (Required) The list of actions to be performed by the update. Each action in the list must be an object/hash table with a `kind` property that indicates the instruction. Depending on the `kind`, the API may require other parameters. When this is the case, add the parameters as additional fields to the instruction object. Read below for more information on the specific supported semantic patch instructions.  If any instruction in the patch encounters an error, the error will be returned and the segment will not be changed. In general, instructions will silently do nothing if the segment is already in the state requested by the patch instruction. For example, `addIncludedUsers` does nothing when the targets have already been included. Specific error conditions are noted in the instruction descriptions.  ### Instructions  #### `addIncludedUsers`  Adds the user keys in `values` to the individual user targets included in the segment. Returns an error if this causes the same user key to be both included and excluded.  ##### Parameters  - `values`: list of user keys  #### `addExcludedUsers`  Adds the user keys in `values` to the individual user targets excluded from the segment. Returns an error if this causes the same user key to be both included and excluded.  ##### Parameters  - `values`: list of user keys  #### `removeIncludedUsers`  Removes the user keys in `values` from the individual user targets included in the segment.  ##### Parameters  - `values`: list of user keys  #### `removeExcludedUsers`  Removes the user keys in `values` from the individual user targets excluded from the segment.  ##### Parameters  - `values`: list of user keys  #### `updateName`  Updates the name of the segment to the string provided in `value`.  ##### Parameters  - `value`: string  ## Using JSON patches on a segment  If you do not include the header described above, you can use [JSON patch](/reference#updates-via-json-patch).  For example, to update the description for a segment, use the following request body:  ```json {   \"patch\": [     {       \"op\": \"replace\",       \"path\": \"/description\",       \"value\": \"new description\"     }   ] } ```  To update fields in the segment that are arrays, set the `path` to the name of the field and then append `/<array index>`. Using `/0` adds the new entry to the beginning of the array.  For example, to add a rule to a segment, use the following request body:  ```json {   \"patch\":[     {       \"op\": \"add\",       \"path\": \"/rules/0\",       \"value\": {         \"clauses\": [{ \"attribute\": \"email\", \"op\": \"endsWith\", \"values\": [\".edu\"], \"negate\": false }]       }     }   ] } ```  To add or remove users from segments, we recommend using semantic patch. Semantic patch for segments includes specific `instructions` for adding and removing both included and excluded users.
 
 ### Example
 
@@ -441,13 +441,13 @@ $apiInstance = new LaunchDarklyApi\Api\SegmentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key.
-$env_key = 'env_key_example'; // string | The environment key.
-$key = 'key_example'; // string | The user segment key.
-$patch_with_comment = new \LaunchDarklyApi\Model\PatchWithComment(); // \LaunchDarklyApi\Model\PatchWithComment
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$segment_key = 'segment_key_example'; // string | The segment key
+$patch_with_comment = {"patch":[{"op":"replace","path":"/description","value":"New description for this segment"},{"op":"add","path":"/tags/0","value":"example"}]}; // \LaunchDarklyApi\Model\PatchWithComment
 
 try {
-    $result = $apiInstance->patchSegment($proj_key, $env_key, $key, $patch_with_comment);
+    $result = $apiInstance->patchSegment($project_key, $environment_key, $segment_key, $patch_with_comment);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SegmentsApi->patchSegment: ', $e->getMessage(), PHP_EOL;
@@ -458,9 +458,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key. |
- **env_key** | **string**| The environment key. |
- **key** | **string**| The user segment key. |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **segment_key** | **string**| The segment key |
  **patch_with_comment** | [**\LaunchDarklyApi\Model\PatchWithComment**](../Model/PatchWithComment.md)|  |
 
 ### Return type
@@ -483,7 +483,7 @@ Name | Type | Description  | Notes
 ## `postSegment()`
 
 ```php
-postSegment($proj_key, $env_key, $segment_body): \LaunchDarklyApi\Model\UserSegment
+postSegment($project_key, $environment_key, $segment_body): \LaunchDarklyApi\Model\UserSegment
 ```
 
 Create segment
@@ -509,12 +509,12 @@ $apiInstance = new LaunchDarklyApi\Api\SegmentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key.
-$env_key = 'env_key_example'; // string | The environment key.
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
 $segment_body = new \LaunchDarklyApi\Model\SegmentBody(); // \LaunchDarklyApi\Model\SegmentBody
 
 try {
-    $result = $apiInstance->postSegment($proj_key, $env_key, $segment_body);
+    $result = $apiInstance->postSegment($project_key, $environment_key, $segment_body);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SegmentsApi->postSegment: ', $e->getMessage(), PHP_EOL;
@@ -525,8 +525,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key. |
- **env_key** | **string**| The environment key. |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
  **segment_body** | [**\LaunchDarklyApi\Model\SegmentBody**](../Model/SegmentBody.md)|  |
 
 ### Return type
@@ -549,7 +549,7 @@ Name | Type | Description  | Notes
 ## `updateBigSegmentTargets()`
 
 ```php
-updateBigSegmentTargets($proj_key, $env_key, $key, $segment_user_state)
+updateBigSegmentTargets($project_key, $environment_key, $segment_key, $segment_user_state)
 ```
 
 Update targets on a Big Segment
@@ -575,13 +575,13 @@ $apiInstance = new LaunchDarklyApi\Api\SegmentsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key.
-$env_key = 'env_key_example'; // string | The environment key.
-$key = 'key_example'; // string | The segment key.
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$segment_key = 'segment_key_example'; // string | The segment key
 $segment_user_state = new \LaunchDarklyApi\Model\SegmentUserState(); // \LaunchDarklyApi\Model\SegmentUserState
 
 try {
-    $apiInstance->updateBigSegmentTargets($proj_key, $env_key, $key, $segment_user_state);
+    $apiInstance->updateBigSegmentTargets($project_key, $environment_key, $segment_key, $segment_user_state);
 } catch (Exception $e) {
     echo 'Exception when calling SegmentsApi->updateBigSegmentTargets: ', $e->getMessage(), PHP_EOL;
 }
@@ -591,9 +591,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key. |
- **env_key** | **string**| The environment key. |
- **key** | **string**| The segment key. |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **segment_key** | **string**| The segment key |
  **segment_user_state** | [**\LaunchDarklyApi\Model\SegmentUserState**](../Model/SegmentUserState.md)|  |
 
 ### Return type

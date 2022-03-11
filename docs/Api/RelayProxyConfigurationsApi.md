@@ -224,7 +224,7 @@ $apiInstance = new LaunchDarklyApi\Api\RelayProxyConfigurationsApi(
     $config
 );
 $id = 'id_example'; // string | The relay auto config id
-$patch_with_comment = new \LaunchDarklyApi\Model\PatchWithComment(); // \LaunchDarklyApi\Model\PatchWithComment
+$patch_with_comment = {"patch":[{"op":"replace","path":"/policy/0","value":{"actions":["*"],"effect":"allow","resources":["proj/*:env/qa"]}}]}; // \LaunchDarklyApi\Model\PatchWithComment
 
 try {
     $result = $apiInstance->patchRelayAutoConfig($id, $patch_with_comment);
@@ -287,7 +287,7 @@ $apiInstance = new LaunchDarklyApi\Api\RelayProxyConfigurationsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$relay_auto_config_post = new \LaunchDarklyApi\Model\RelayAutoConfigPost(); // \LaunchDarklyApi\Model\RelayAutoConfigPost
+$relay_auto_config_post = {"name":"Sample Relay Proxy config for all proj and env","policy":[{"actions":["*"],"effect":"allow","resources":["proj/*:env/*"]}]}; // \LaunchDarklyApi\Model\RelayAutoConfigPost
 
 try {
     $result = $apiInstance->postRelayAutoConfig($relay_auto_config_post);

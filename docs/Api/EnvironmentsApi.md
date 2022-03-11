@@ -8,8 +8,8 @@ Method | HTTP request | Description
 [**getEnvironment()**](EnvironmentsApi.md#getEnvironment) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey} | Get environment
 [**patchEnvironment()**](EnvironmentsApi.md#patchEnvironment) | **PATCH** /api/v2/projects/{projectKey}/environments/{environmentKey} | Update environment
 [**postEnvironment()**](EnvironmentsApi.md#postEnvironment) | **POST** /api/v2/projects/{projectKey}/environments | Create environment
-[**resetEnvironmentMobileKey()**](EnvironmentsApi.md#resetEnvironmentMobileKey) | **POST** /api/v2/projects/{projectKey}/environments/{envKey}/mobileKey | Reset environment mobile SDK key
-[**resetEnvironmentSDKKey()**](EnvironmentsApi.md#resetEnvironmentSDKKey) | **POST** /api/v2/projects/{projectKey}/environments/{envKey}/apiKey | Reset environment SDK key
+[**resetEnvironmentMobileKey()**](EnvironmentsApi.md#resetEnvironmentMobileKey) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/mobileKey | Reset environment mobile SDK key
+[**resetEnvironmentSDKKey()**](EnvironmentsApi.md#resetEnvironmentSDKKey) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/apiKey | Reset environment SDK key
 
 
 ## `deleteEnvironment()`
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 ## `resetEnvironmentMobileKey()`
 
 ```php
-resetEnvironmentMobileKey($project_key, $env_key): \LaunchDarklyApi\Model\Environment
+resetEnvironmentMobileKey($project_key, $environment_key): \LaunchDarklyApi\Model\Environment
 ```
 
 Reset environment mobile SDK key
@@ -299,10 +299,10 @@ $apiInstance = new LaunchDarklyApi\Api\EnvironmentsApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$env_key = 'env_key_example'; // string | The environment key
+$environment_key = 'environment_key_example'; // string | The environment key
 
 try {
-    $result = $apiInstance->resetEnvironmentMobileKey($project_key, $env_key);
+    $result = $apiInstance->resetEnvironmentMobileKey($project_key, $environment_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EnvironmentsApi->resetEnvironmentMobileKey: ', $e->getMessage(), PHP_EOL;
@@ -314,7 +314,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **env_key** | **string**| The environment key |
+ **environment_key** | **string**| The environment key |
 
 ### Return type
 
@@ -336,7 +336,7 @@ Name | Type | Description  | Notes
 ## `resetEnvironmentSDKKey()`
 
 ```php
-resetEnvironmentSDKKey($project_key, $env_key, $expiry): \LaunchDarklyApi\Model\Environment
+resetEnvironmentSDKKey($project_key, $environment_key, $expiry): \LaunchDarklyApi\Model\Environment
 ```
 
 Reset environment SDK key
@@ -363,11 +363,11 @@ $apiInstance = new LaunchDarklyApi\Api\EnvironmentsApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$env_key = 'env_key_example'; // string | The environment key
+$environment_key = 'environment_key_example'; // string | The environment key
 $expiry = 56; // int | The time at which you want the old SDK key to expire, in UNIX milliseconds. By default, the key expires immediately.
 
 try {
-    $result = $apiInstance->resetEnvironmentSDKKey($project_key, $env_key, $expiry);
+    $result = $apiInstance->resetEnvironmentSDKKey($project_key, $environment_key, $expiry);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling EnvironmentsApi->resetEnvironmentSDKKey: ', $e->getMessage(), PHP_EOL;
@@ -379,7 +379,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **env_key** | **string**| The environment key |
+ **environment_key** | **string**| The environment key |
  **expiry** | **int**| The time at which you want the old SDK key to expire, in UNIX milliseconds. By default, the key expires immediately. | [optional]
 
 ### Return type

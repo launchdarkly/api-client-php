@@ -4,17 +4,17 @@ All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteMetric()**](MetricsApi.md#deleteMetric) | **DELETE** /api/v2/metrics/{projectKey}/{key} | Delete metric
-[**getMetric()**](MetricsApi.md#getMetric) | **GET** /api/v2/metrics/{projectKey}/{key} | Get metric
+[**deleteMetric()**](MetricsApi.md#deleteMetric) | **DELETE** /api/v2/metrics/{projectKey}/{metricKey} | Delete metric
+[**getMetric()**](MetricsApi.md#getMetric) | **GET** /api/v2/metrics/{projectKey}/{metricKey} | Get metric
 [**getMetrics()**](MetricsApi.md#getMetrics) | **GET** /api/v2/metrics/{projectKey} | List metrics
-[**patchMetric()**](MetricsApi.md#patchMetric) | **PATCH** /api/v2/metrics/{projectKey}/{key} | Update metric
+[**patchMetric()**](MetricsApi.md#patchMetric) | **PATCH** /api/v2/metrics/{projectKey}/{metricKey} | Update metric
 [**postMetric()**](MetricsApi.md#postMetric) | **POST** /api/v2/metrics/{projectKey} | Create metric
 
 
 ## `deleteMetric()`
 
 ```php
-deleteMetric($project_key, $key)
+deleteMetric($project_key, $metric_key)
 ```
 
 Delete metric
@@ -41,10 +41,10 @@ $apiInstance = new LaunchDarklyApi\Api\MetricsApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$key = 'key_example'; // string | The metric key
+$metric_key = 'metric_key_example'; // string | The metric key
 
 try {
-    $apiInstance->deleteMetric($project_key, $key);
+    $apiInstance->deleteMetric($project_key, $metric_key);
 } catch (Exception $e) {
     echo 'Exception when calling MetricsApi->deleteMetric: ', $e->getMessage(), PHP_EOL;
 }
@@ -55,7 +55,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **key** | **string**| The metric key |
+ **metric_key** | **string**| The metric key |
 
 ### Return type
 
@@ -77,7 +77,7 @@ void (empty response body)
 ## `getMetric()`
 
 ```php
-getMetric($project_key, $key): \LaunchDarklyApi\Model\MetricRep
+getMetric($project_key, $metric_key): \LaunchDarklyApi\Model\MetricRep
 ```
 
 Get metric
@@ -104,10 +104,10 @@ $apiInstance = new LaunchDarklyApi\Api\MetricsApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$key = 'key_example'; // string | The metric key
+$metric_key = 'metric_key_example'; // string | The metric key
 
 try {
-    $result = $apiInstance->getMetric($project_key, $key);
+    $result = $apiInstance->getMetric($project_key, $metric_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MetricsApi->getMetric: ', $e->getMessage(), PHP_EOL;
@@ -119,7 +119,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **key** | **string**| The metric key |
+ **metric_key** | **string**| The metric key |
 
 ### Return type
 
@@ -203,7 +203,7 @@ Name | Type | Description  | Notes
 ## `patchMetric()`
 
 ```php
-patchMetric($project_key, $key, $patch_operation): \LaunchDarklyApi\Model\MetricRep
+patchMetric($project_key, $metric_key, $patch_operation): \LaunchDarklyApi\Model\MetricRep
 ```
 
 Update metric
@@ -230,11 +230,11 @@ $apiInstance = new LaunchDarklyApi\Api\MetricsApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$key = 'key_example'; // string | The metric key
+$metric_key = 'metric_key_example'; // string | The metric key
 $patch_operation = [{"op":"replace","path":"/name","value":"my-updated-metric"}]; // \LaunchDarklyApi\Model\PatchOperation[]
 
 try {
-    $result = $apiInstance->patchMetric($project_key, $key, $patch_operation);
+    $result = $apiInstance->patchMetric($project_key, $metric_key, $patch_operation);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MetricsApi->patchMetric: ', $e->getMessage(), PHP_EOL;
@@ -246,7 +246,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **key** | **string**| The metric key |
+ **metric_key** | **string**| The metric key |
  **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
 
 ### Return type

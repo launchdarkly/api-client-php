@@ -43,7 +43,7 @@ $apiInstance = new LaunchDarklyApi\Api\ApprovalsApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag's key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 $id = 'id_example'; // string | The feature flag approval request ID
 
@@ -59,7 +59,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag&#39;s key |
+ **feature_flag_key** | **string**| The feature flag key |
  **environment_key** | **string**| The environment key |
  **id** | **string**| The feature flag approval request ID |
 
@@ -110,7 +110,7 @@ $apiInstance = new LaunchDarklyApi\Api\ApprovalsApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag's key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 $id = 'id_example'; // string | The feature flag approval request ID
 
@@ -127,7 +127,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag&#39;s key |
+ **feature_flag_key** | **string**| The feature flag key |
  **environment_key** | **string**| The environment key |
  **id** | **string**| The feature flag approval request ID |
 
@@ -178,7 +178,7 @@ $apiInstance = new LaunchDarklyApi\Api\ApprovalsApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag's key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 
 try {
@@ -194,7 +194,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag&#39;s key |
+ **feature_flag_key** | **string**| The feature flag key |
  **environment_key** | **string**| The environment key |
 
 ### Return type
@@ -244,7 +244,7 @@ $apiInstance = new LaunchDarklyApi\Api\ApprovalsApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag's key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 $create_flag_config_approval_request_request = new \LaunchDarklyApi\Model\CreateFlagConfigApprovalRequestRequest(); // \LaunchDarklyApi\Model\CreateFlagConfigApprovalRequestRequest
 
@@ -261,7 +261,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag&#39;s key |
+ **feature_flag_key** | **string**| The feature flag key |
  **environment_key** | **string**| The environment key |
  **create_flag_config_approval_request_request** | [**\LaunchDarklyApi\Model\CreateFlagConfigApprovalRequestRequest**](../Model/CreateFlagConfigApprovalRequestRequest.md)|  |
 
@@ -312,7 +312,7 @@ $apiInstance = new LaunchDarklyApi\Api\ApprovalsApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag's key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 $id = 'id_example'; // string | The feature flag approval request ID
 $post_approval_request_apply_request = new \LaunchDarklyApi\Model\PostApprovalRequestApplyRequest(); // \LaunchDarklyApi\Model\PostApprovalRequestApplyRequest
@@ -330,7 +330,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag&#39;s key |
+ **feature_flag_key** | **string**| The feature flag key |
  **environment_key** | **string**| The environment key |
  **id** | **string**| The feature flag approval request ID |
  **post_approval_request_apply_request** | [**\LaunchDarklyApi\Model\PostApprovalRequestApplyRequest**](../Model/PostApprovalRequestApplyRequest.md)|  |
@@ -382,7 +382,7 @@ $apiInstance = new LaunchDarklyApi\Api\ApprovalsApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag's key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 $id = 'id_example'; // string | The feature flag approval request ID
 $post_approval_request_review_request = new \LaunchDarklyApi\Model\PostApprovalRequestReviewRequest(); // \LaunchDarklyApi\Model\PostApprovalRequestReviewRequest
@@ -400,7 +400,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag&#39;s key |
+ **feature_flag_key** | **string**| The feature flag key |
  **environment_key** | **string**| The environment key |
  **id** | **string**| The feature flag approval request ID |
  **post_approval_request_review_request** | [**\LaunchDarklyApi\Model\PostApprovalRequestReviewRequest**](../Model/PostApprovalRequestReviewRequest.md)|  |
@@ -452,7 +452,7 @@ $apiInstance = new LaunchDarklyApi\Api\ApprovalsApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag's key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 $create_copy_flag_config_approval_request_request = new \LaunchDarklyApi\Model\CreateCopyFlagConfigApprovalRequestRequest(); // \LaunchDarklyApi\Model\CreateCopyFlagConfigApprovalRequestRequest
 
@@ -469,7 +469,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag&#39;s key |
+ **feature_flag_key** | **string**| The feature flag key |
  **environment_key** | **string**| The environment key |
  **create_copy_flag_config_approval_request_request** | [**\LaunchDarklyApi\Model\CreateCopyFlagConfigApprovalRequestRequest**](../Model/CreateCopyFlagConfigApprovalRequestRequest.md)|  |
 

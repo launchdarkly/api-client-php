@@ -5,8 +5,8 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_id** | **string** |  |
-**_creator** | [**\LaunchDarklyApi\Model\MemberSummaryRep**](MemberSummaryRep.md) |  | [optional]
-**_access** | [**\LaunchDarklyApi\Model\AccessRep**](AccessRep.md) |  | [optional]
+**_creator** | [**\LaunchDarklyApi\Model\MemberSummary**](MemberSummary.md) |  | [optional]
+**_access** | [**\LaunchDarklyApi\Model\Access**](Access.md) |  | [optional]
 **name** | **string** |  |
 **policy** | [**\LaunchDarklyApi\Model\StatementRep[]**](StatementRep.md) |  |
 **full_key** | **string** |  |

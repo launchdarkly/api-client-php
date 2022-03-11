@@ -4,16 +4,16 @@ All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteUser()**](UsersApi.md#deleteUser) | **DELETE** /api/v2/users/{projKey}/{envKey}/{key} | Delete user
-[**getSearchUsers()**](UsersApi.md#getSearchUsers) | **GET** /api/v2/user-search/{projKey}/{envKey} | Find users
-[**getUser()**](UsersApi.md#getUser) | **GET** /api/v2/users/{projKey}/{envKey}/{key} | Get user
-[**getUsers()**](UsersApi.md#getUsers) | **GET** /api/v2/users/{projKey}/{envKey} | List users
+[**deleteUser()**](UsersApi.md#deleteUser) | **DELETE** /api/v2/users/{projectKey}/{environmentKey}/{userKey} | Delete user
+[**getSearchUsers()**](UsersApi.md#getSearchUsers) | **GET** /api/v2/user-search/{projectKey}/{environmentKey} | Find users
+[**getUser()**](UsersApi.md#getUser) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey} | Get user
+[**getUsers()**](UsersApi.md#getUsers) | **GET** /api/v2/users/{projectKey}/{environmentKey} | List users
 
 
 ## `deleteUser()`
 
 ```php
-deleteUser($proj_key, $env_key, $key)
+deleteUser($project_key, $environment_key, $user_key)
 ```
 
 Delete user
@@ -39,12 +39,12 @@ $apiInstance = new LaunchDarklyApi\Api\UsersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$env_key = 'env_key_example'; // string | The environment key
-$key = 'key_example'; // string | The user key
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$user_key = 'user_key_example'; // string | The user key
 
 try {
-    $apiInstance->deleteUser($proj_key, $env_key, $key);
+    $apiInstance->deleteUser($project_key, $environment_key, $user_key);
 } catch (Exception $e) {
     echo 'Exception when calling UsersApi->deleteUser: ', $e->getMessage(), PHP_EOL;
 }
@@ -54,9 +54,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **env_key** | **string**| The environment key |
- **key** | **string**| The user key |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **user_key** | **string**| The user key |
 
 ### Return type
 
@@ -78,12 +78,12 @@ void (empty response body)
 ## `getSearchUsers()`
 
 ```php
-getSearchUsers($proj_key, $env_key, $q, $limit, $offset, $after, $sort, $search_after, $filter): \LaunchDarklyApi\Model\Users
+getSearchUsers($project_key, $environment_key, $q, $limit, $offset, $after, $sort, $search_after, $filter): \LaunchDarklyApi\Model\Users
 ```
 
 Find users
 
-Search users in LaunchDarkly based on their last active date, a user attribute filter set, or a search query. Do not use to list all users in LaunchDarkly. Instead, use the [List users](getUsers) API resource.  An example user attribute filter set is `filter=firstName:Anna,activeTrial:false`. This matches users that have the user attribute `firstName` set to `Anna`, that also have the attribute `activeTrial` set to `false`.  > ### `offset` is deprecated > > `offset` is deprecated and will be removed in a future API version. You can still use `offset` and `limit` for pagination, but we recommend you use `sort` and `searchAfter` instead. `searchAfter` allows you to page through more than 10,000 users, but `offset` and `limit` do not.
+Search users in LaunchDarkly based on their last active date, a user attribute filter set, or a search query.  An example user attribute filter set is `filter=firstName:Anna,activeTrial:false`. This matches users that have the user attribute `firstName` set to `Anna`, that also have the attribute `activeTrial` set to `false`.  To paginate through results, follow the `next` link in the `_links` object. To learn more, read [Representations](/#section/Representations).  > ### `offset` is deprecated > > `offset` is deprecated and will be removed in a future API version. You can still use `offset` and `limit` for pagination, but we recommend you use `sort` and `searchAfter` instead. `searchAfter` allows you to page through more than 10,000 users, but `offset` and `limit` do not.
 
 ### Example
 
@@ -104,8 +104,8 @@ $apiInstance = new LaunchDarklyApi\Api\UsersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$env_key = 'env_key_example'; // string | The environment key
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
 $q = 'q_example'; // string | Full-text search for users based on name, first name, last name, e-mail address, or key
 $limit = 56; // int | Specifies the maximum number of items in the collection to return (max: 50, default: 20)
 $offset = 56; // int | Specifies the first item to return in the collection
@@ -115,7 +115,7 @@ $search_after = 'search_after_example'; // string | Limits results to users with
 $filter = 'filter_example'; // string | A comma-separated list of user attribute filters. Each filter is in the form of attributeKey:attributeValue
 
 try {
-    $result = $apiInstance->getSearchUsers($proj_key, $env_key, $q, $limit, $offset, $after, $sort, $search_after, $filter);
+    $result = $apiInstance->getSearchUsers($project_key, $environment_key, $q, $limit, $offset, $after, $sort, $search_after, $filter);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UsersApi->getSearchUsers: ', $e->getMessage(), PHP_EOL;
@@ -126,8 +126,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **env_key** | **string**| The environment key |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
  **q** | **string**| Full-text search for users based on name, first name, last name, e-mail address, or key | [optional]
  **limit** | **int**| Specifies the maximum number of items in the collection to return (max: 50, default: 20) | [optional]
  **offset** | **int**| Specifies the first item to return in the collection | [optional]
@@ -156,7 +156,7 @@ Name | Type | Description  | Notes
 ## `getUser()`
 
 ```php
-getUser($proj_key, $env_key, $key): \LaunchDarklyApi\Model\UserRecord
+getUser($project_key, $environment_key, $user_key): \LaunchDarklyApi\Model\UserRecord
 ```
 
 Get user
@@ -182,12 +182,12 @@ $apiInstance = new LaunchDarklyApi\Api\UsersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$env_key = 'env_key_example'; // string | The environment key
-$key = 'key_example'; // string | The user key
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$user_key = 'user_key_example'; // string | The user key
 
 try {
-    $result = $apiInstance->getUser($proj_key, $env_key, $key);
+    $result = $apiInstance->getUser($project_key, $environment_key, $user_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UsersApi->getUser: ', $e->getMessage(), PHP_EOL;
@@ -198,9 +198,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **env_key** | **string**| The environment key |
- **key** | **string**| The user key |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **user_key** | **string**| The user key |
 
 ### Return type
 
@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 ## `getUsers()`
 
 ```php
-getUsers($proj_key, $env_key, $limit, $search_after): \LaunchDarklyApi\Model\Users
+getUsers($project_key, $environment_key, $limit, $search_after): \LaunchDarklyApi\Model\Users
 ```
 
 List users
@@ -248,13 +248,13 @@ $apiInstance = new LaunchDarklyApi\Api\UsersApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$env_key = 'env_key_example'; // string | The environment key
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
 $limit = 56; // int | The number of elements to return per page
 $search_after = 'search_after_example'; // string | Limits results to users with sort values after the value you specify. You can use this for pagination, but we recommend using the `next` link we provide instead.
 
 try {
-    $result = $apiInstance->getUsers($proj_key, $env_key, $limit, $search_after);
+    $result = $apiInstance->getUsers($project_key, $environment_key, $limit, $search_after);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UsersApi->getUsers: ', $e->getMessage(), PHP_EOL;
@@ -265,8 +265,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **env_key** | **string**| The environment key |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
  **limit** | **int**| The number of elements to return per page | [optional]
  **search_after** | **string**| Limits results to users with sort values after the value you specify. You can use this for pagination, but we recommend using the &#x60;next&#x60; link we provide instead. | [optional]
 

@@ -12,7 +12,7 @@ Name | Type | Description | Notes
 **statements** | [**\LaunchDarklyApi\Model\StatementRep[]**](StatementRep.md) |  | [optional]
 **on** | **bool** |  | [optional]
 **tags** | **string[]** |  | [optional]
-**_access** | [**\LaunchDarklyApi\Model\AccessRep**](AccessRep.md) |  | [optional]
+**_access** | [**\LaunchDarklyApi\Model\Access**](Access.md) |  | [optional]
 **_status** | [**\LaunchDarklyApi\Model\IntegrationSubscriptionStatusRep**](IntegrationSubscriptionStatusRep.md) |  | [optional]
 **url** | **string** |  | [optional]
 **api_key** | **string** |  | [optional]

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**getRepositories()**](CodeReferencesApi.md#getRepositories) | **GET** /api/v2/code-refs/repositories | List repositories
 [**getRepository()**](CodeReferencesApi.md#getRepository) | **GET** /api/v2/code-refs/repositories/{repo} | Get repository
 [**getRootStatistic()**](CodeReferencesApi.md#getRootStatistic) | **GET** /api/v2/code-refs/statistics | Get links to code reference repositories for each project
-[**getStatistics()**](CodeReferencesApi.md#getStatistics) | **GET** /api/v2/code-refs/statistics/{projKey} | Get number of code references for flags
+[**getStatistics()**](CodeReferencesApi.md#getStatistics) | **GET** /api/v2/code-refs/statistics/{projectKey} | Get number of code references for flags
 [**patchRepository()**](CodeReferencesApi.md#patchRepository) | **PATCH** /api/v2/code-refs/repositories/{repo} | Update repository
 [**postExtinction()**](CodeReferencesApi.md#postExtinction) | **POST** /api/v2/code-refs/repositories/{repo}/branches/{branch}/extinction-events | Create extinction
 [**postRepository()**](CodeReferencesApi.md#postRepository) | **POST** /api/v2/code-refs/repositories | Create repository
@@ -537,7 +537,7 @@ This endpoint does not need any parameter.
 ## `getStatistics()`
 
 ```php
-getStatistics($proj_key, $flag_key): \LaunchDarklyApi\Model\StatisticCollectionRep
+getStatistics($project_key, $flag_key): \LaunchDarklyApi\Model\StatisticCollectionRep
 ```
 
 Get number of code references for flags
@@ -563,11 +563,11 @@ $apiInstance = new LaunchDarklyApi\Api\CodeReferencesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
+$project_key = 'project_key_example'; // string | The project key
 $flag_key = 'flag_key_example'; // string | Filter results to a specific flag key
 
 try {
-    $result = $apiInstance->getStatistics($proj_key, $flag_key);
+    $result = $apiInstance->getStatistics($project_key, $flag_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CodeReferencesApi->getStatistics: ', $e->getMessage(), PHP_EOL;
@@ -578,7 +578,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
+ **project_key** | **string**| The project key |
  **flag_key** | **string**| Filter results to a specific flag key | [optional]
 
 ### Return type

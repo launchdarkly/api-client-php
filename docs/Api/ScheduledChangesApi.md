@@ -41,7 +41,7 @@ $apiInstance = new LaunchDarklyApi\Api\ScheduledChangesApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag's key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 $id = 'id_example'; // string | The scheduled change id
 
@@ -57,7 +57,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag&#39;s key |
+ **feature_flag_key** | **string**| The feature flag key |
  **environment_key** | **string**| The environment key |
  **id** | **string**| The scheduled change id |
 
@@ -108,7 +108,7 @@ $apiInstance = new LaunchDarklyApi\Api\ScheduledChangesApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag's key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 $id = 'id_example'; // string | The scheduled change id
 
@@ -125,7 +125,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag&#39;s key |
+ **feature_flag_key** | **string**| The feature flag key |
  **environment_key** | **string**| The environment key |
  **id** | **string**| The scheduled change id |
 
@@ -176,7 +176,7 @@ $apiInstance = new LaunchDarklyApi\Api\ScheduledChangesApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag's key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 
 try {
@@ -192,7 +192,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag&#39;s key |
+ **feature_flag_key** | **string**| The feature flag key |
  **environment_key** | **string**| The environment key |
 
 ### Return type
@@ -242,7 +242,7 @@ $apiInstance = new LaunchDarklyApi\Api\ScheduledChangesApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag's key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 $id = 'id_example'; // string | The scheduled change ID
 $flag_scheduled_changes_input = new \LaunchDarklyApi\Model\FlagScheduledChangesInput(); // \LaunchDarklyApi\Model\FlagScheduledChangesInput
@@ -261,7 +261,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag&#39;s key |
+ **feature_flag_key** | **string**| The feature flag key |
  **environment_key** | **string**| The environment key |
  **id** | **string**| The scheduled change ID |
  **flag_scheduled_changes_input** | [**\LaunchDarklyApi\Model\FlagScheduledChangesInput**](../Model/FlagScheduledChangesInput.md)|  |
@@ -314,7 +314,7 @@ $apiInstance = new LaunchDarklyApi\Api\ScheduledChangesApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag's key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 $post_flag_scheduled_changes_input = new \LaunchDarklyApi\Model\PostFlagScheduledChangesInput(); // \LaunchDarklyApi\Model\PostFlagScheduledChangesInput
 $ignore_conflicts = True; // bool | Whether or not to succeed or fail when the new instructions conflict with existing scheduled changes
@@ -332,7 +332,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag&#39;s key |
+ **feature_flag_key** | **string**| The feature flag key |
  **environment_key** | **string**| The environment key |
  **post_flag_scheduled_changes_input** | [**\LaunchDarklyApi\Model\PostFlagScheduledChangesInput**](../Model/PostFlagScheduledChangesInput.md)|  |
  **ignore_conflicts** | **bool**| Whether or not to succeed or fail when the new instructions conflict with existing scheduled changes | [optional]

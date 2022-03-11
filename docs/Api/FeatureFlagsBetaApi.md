@@ -4,14 +4,14 @@ All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**getDependentFlags()**](FeatureFlagsBetaApi.md#getDependentFlags) | **GET** /api/v2/flags/{projKey}/{flagKey}/dependent-flags | List dependent feature flags
-[**getDependentFlagsByEnv()**](FeatureFlagsBetaApi.md#getDependentFlagsByEnv) | **GET** /api/v2/flags/{projKey}/{envKey}/{flagKey}/dependent-flags | List dependent feature flags by environment
+[**getDependentFlags()**](FeatureFlagsBetaApi.md#getDependentFlags) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/dependent-flags | List dependent feature flags
+[**getDependentFlagsByEnv()**](FeatureFlagsBetaApi.md#getDependentFlagsByEnv) | **GET** /api/v2/flags/{projectKey}/{environmentKey}/{featureFlagKey}/dependent-flags | List dependent feature flags by environment
 
 
 ## `getDependentFlags()`
 
 ```php
-getDependentFlags($proj_key, $flag_key): \LaunchDarklyApi\Model\MultiEnvironmentDependentFlags
+getDependentFlags($project_key, $feature_flag_key): \LaunchDarklyApi\Model\MultiEnvironmentDependentFlags
 ```
 
 List dependent feature flags
@@ -37,11 +37,11 @@ $apiInstance = new LaunchDarklyApi\Api\FeatureFlagsBetaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$flag_key = 'flag_key_example'; // string | The flag key
+$project_key = 'project_key_example'; // string | The project key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 
 try {
-    $result = $apiInstance->getDependentFlags($proj_key, $flag_key);
+    $result = $apiInstance->getDependentFlags($project_key, $feature_flag_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FeatureFlagsBetaApi->getDependentFlags: ', $e->getMessage(), PHP_EOL;
@@ -52,8 +52,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **flag_key** | **string**| The flag key |
+ **project_key** | **string**| The project key |
+ **feature_flag_key** | **string**| The feature flag key |
 
 ### Return type
 
@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 ## `getDependentFlagsByEnv()`
 
 ```php
-getDependentFlagsByEnv($proj_key, $env_key, $flag_key): \LaunchDarklyApi\Model\DependentFlagsByEnvironment
+getDependentFlagsByEnv($project_key, $environment_key, $feature_flag_key): \LaunchDarklyApi\Model\DependentFlagsByEnvironment
 ```
 
 List dependent feature flags by environment
@@ -101,12 +101,12 @@ $apiInstance = new LaunchDarklyApi\Api\FeatureFlagsBetaApi(
     new GuzzleHttp\Client(),
     $config
 );
-$proj_key = 'proj_key_example'; // string | The project key
-$env_key = 'env_key_example'; // string | The environment key
-$flag_key = 'flag_key_example'; // string | The flag key
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 
 try {
-    $result = $apiInstance->getDependentFlagsByEnv($proj_key, $env_key, $flag_key);
+    $result = $apiInstance->getDependentFlagsByEnv($project_key, $environment_key, $feature_flag_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FeatureFlagsBetaApi->getDependentFlagsByEnv: ', $e->getMessage(), PHP_EOL;
@@ -117,9 +117,9 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **proj_key** | **string**| The project key |
- **env_key** | **string**| The environment key |
- **flag_key** | **string**| The flag key |
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **feature_flag_key** | **string**| The feature flag key |
 
 ### Return type
 

@@ -7,7 +7,7 @@ Name | Type | Description | Notes
 **_id** | **string** |  |
 **owner_id** | **string** |  |
 **member_id** | **string** |  |
-**_member** | [**\LaunchDarklyApi\Model\MemberSummaryRep**](MemberSummaryRep.md) |  | [optional]
+**_member** | [**\LaunchDarklyApi\Model\MemberSummary**](MemberSummary.md) |  | [optional]
 **name** | **string** |  | [optional]
 **description** | **string** |  | [optional]
 **creation_date** | **int** |  |

@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_id** | **string** |  |
 **_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) |  |
-**_access** | [**\LaunchDarklyApi\Model\AccessRep**](AccessRep.md) |  | [optional]
+**_access** | [**\LaunchDarklyApi\Model\Access**](Access.md) |  | [optional]
 **description** | **string** |  | [optional]
 **key** | **string** |  |
 **name** | **string** |  |

@@ -40,7 +40,7 @@ $apiInstance = new LaunchDarklyApi\Api\WorkflowsBetaApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag's key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 $workflow_id = 'workflow_id_example'; // string | The workflow id
 
@@ -56,7 +56,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag&#39;s key |
+ **feature_flag_key** | **string**| The feature flag key |
  **environment_key** | **string**| The environment key |
  **workflow_id** | **string**| The workflow id |
 
@@ -107,7 +107,7 @@ $apiInstance = new LaunchDarklyApi\Api\WorkflowsBetaApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag's key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 $workflow_id = 'workflow_id_example'; // string | The workflow ID
 
@@ -124,7 +124,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag&#39;s key |
+ **feature_flag_key** | **string**| The feature flag key |
  **environment_key** | **string**| The environment key |
  **workflow_id** | **string**| The workflow ID |
 
@@ -175,7 +175,7 @@ $apiInstance = new LaunchDarklyApi\Api\WorkflowsBetaApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag's key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 
 try {
@@ -191,7 +191,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag&#39;s key |
+ **feature_flag_key** | **string**| The feature flag key |
  **environment_key** | **string**| The environment key |
 
 ### Return type
@@ -241,7 +241,7 @@ $apiInstance = new LaunchDarklyApi\Api\WorkflowsBetaApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag's key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 $custom_workflow_input_rep = new \LaunchDarklyApi\Model\CustomWorkflowInputRep(); // \LaunchDarklyApi\Model\CustomWorkflowInputRep
 
@@ -258,7 +258,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag&#39;s key |
+ **feature_flag_key** | **string**| The feature flag key |
  **environment_key** | **string**| The environment key |
  **custom_workflow_input_rep** | [**\LaunchDarklyApi\Model\CustomWorkflowInputRep**](../Model/CustomWorkflowInputRep.md)|  |
 
