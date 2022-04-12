@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **enabled** | **bool** |  |
 **version** | **int** |  |
 **hunk_count** | **int** |  |
+**file_count** | **int** |  |
 **_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

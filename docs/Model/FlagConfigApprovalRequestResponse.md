@@ -16,7 +16,7 @@ Name | Type | Description | Notes
 **applied_date** | **int** |  | [optional]
 **applied_by_member_id** | **string** |  | [optional]
 **status** | **string** |  |
-**instructions** | **array[]** |  |
+**instructions** | **mixed[]** |  |
 **conflicts** | [**\LaunchDarklyApi\Model\Conflict[]**](Conflict.md) |  |
 **_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) |  |
 **execution_date** | **int** |  | [optional]

@@ -59,9 +59,11 @@ In addition, request bodies for `PUT`, `POST`, `REPORT` and `PATCH` requests mus
 
 ### Summary and detailed representations
 
-When you fetch a list of resources, the response includes only the most important attributes of each resource. This is a _summary representation_ of the resource. When you fetch an individual resource (for example, a single feature flag), you receive a _detailed representation_ containing all of the attributes of the resource.
+When you fetch a list of resources, the response includes only the most important attributes of each resource. This is a _summary representation_ of the resource. When you fetch an individual resource, such as a single feature flag, you receive a _detailed representation_ of the resource.
 
 The best way to find a detailed representation is to follow links. Every summary representation includes a link to its detailed representation.
+
+In most cases, the detailed representation contains all of the attributes of the resource. In a few cases, the detailed representation contains many, but not all, of the attributes of the resource. Typically this happens when an attribute of the requested resource is itself paginated. You can request that the response include a particular attribute by using the `expand` request parameter.
 
 ### Links and addressability
 
@@ -96,6 +98,12 @@ From this, you can navigate to the parent collection of features by following th
 Collections are always represented as a JSON object with an `items` attribute containing an array of representations. Like all other representations, collections have `_links` defined at the top level.
 
 Paginated collections include `first`, `last`, `next`, and `prev` links containing a URL with the respective set of elements in the collection.
+
+### Expanding responses
+
+Sometimes the detailed representation of a resource does not include all of the attributes of the resource by default. If this is the case, the request method will clearly document this and describe which attributes you can include in an expanded response.
+
+To include the additional attributes, append the `expand` request parameter to your request and add a comma-separated list of the attributes to include. For example, when you append `?expand=members,roles` to the [Get team](/tag/Teams-(beta)#operation/getTeam) endpoint, the expanded response includes both of these attributes.
 
 ## Updates
 
@@ -394,7 +402,7 @@ We mark beta resources with a \"Beta\" callout in our documentation, pictured be
 
 > ### This feature is in beta
 >
-> To use this feature, pass in a header including the `LD-API-Version` key with value set to `beta`. Use this header with each call. To learn more, read [Beta resources](/#section/Beta-resources).
+> To use this feature, pass in a header including the `LD-API-Version` key with value set to `beta`. Use this header with each call. To learn more, read [Beta resources](/#section/Overview/Beta-resources).
 
 ### Using beta resources
 
@@ -579,7 +587,13 @@ Class | Method | HTTP request | Description
 *EnvironmentsApi* | [**postEnvironment**](docs/Api/EnvironmentsApi.md#postenvironment) | **POST** /api/v2/projects/{projectKey}/environments | Create environment
 *EnvironmentsApi* | [**resetEnvironmentMobileKey**](docs/Api/EnvironmentsApi.md#resetenvironmentmobilekey) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/mobileKey | Reset environment mobile SDK key
 *EnvironmentsApi* | [**resetEnvironmentSDKKey**](docs/Api/EnvironmentsApi.md#resetenvironmentsdkkey) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/apiKey | Reset environment SDK key
-*ExperimentsBetaApi* | [**getExperiment**](docs/Api/ExperimentsBetaApi.md#getexperiment) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey} | Get experiment results
+*ExperimentsBetaApi* | [**createExperiment**](docs/Api/ExperimentsBetaApi.md#createexperiment) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments | Create experiment
+*ExperimentsBetaApi* | [**createIteration**](docs/Api/ExperimentsBetaApi.md#createiteration) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/iterations | Create iteration
+*ExperimentsBetaApi* | [**getExperiment**](docs/Api/ExperimentsBetaApi.md#getexperiment) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Get experiment
+*ExperimentsBetaApi* | [**getExperimentResults**](docs/Api/ExperimentsBetaApi.md#getexperimentresults) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metrics/{metricKey}/results | Get experiment results
+*ExperimentsBetaApi* | [**getExperiments**](docs/Api/ExperimentsBetaApi.md#getexperiments) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments | Get experiments
+*ExperimentsBetaApi* | [**getLegacyExperimentResults**](docs/Api/ExperimentsBetaApi.md#getlegacyexperimentresults) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey} | Get legacy experiment results (deprecated)
+*ExperimentsBetaApi* | [**patchExperiment**](docs/Api/ExperimentsBetaApi.md#patchexperiment) | **PATCH** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Patch experiment
 *ExperimentsBetaApi* | [**resetExperiment**](docs/Api/ExperimentsBetaApi.md#resetexperiment) | **DELETE** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey}/results | Reset experiment results
 *FeatureFlagsApi* | [**copyFeatureFlag**](docs/Api/FeatureFlagsApi.md#copyfeatureflag) | **POST** /api/v2/flags/{projectKey}/{featureFlagKey}/copy | Copy feature flag
 *FeatureFlagsApi* | [**deleteFeatureFlag**](docs/Api/FeatureFlagsApi.md#deletefeatureflag) | **DELETE** /api/v2/flags/{projectKey}/{featureFlagKey} | Delete feature flag
@@ -724,6 +738,7 @@ Class | Method | HTTP request | Description
 - [CustomWorkflowOutputRep](docs/Model/CustomWorkflowOutputRep.md)
 - [CustomWorkflowStageMeta](docs/Model/CustomWorkflowStageMeta.md)
 - [CustomWorkflowsListingOutputRep](docs/Model/CustomWorkflowsListingOutputRep.md)
+- [Decimal](docs/Model/Decimal.md)
 - [DefaultClientSideAvailabilityPost](docs/Model/DefaultClientSideAvailabilityPost.md)
 - [Defaults](docs/Model/Defaults.md)
 - [DependentFlag](docs/Model/DependentFlag.md)
@@ -734,14 +749,18 @@ Class | Method | HTTP request | Description
 - [Destinations](docs/Model/Destinations.md)
 - [Environment](docs/Model/Environment.md)
 - [EnvironmentPost](docs/Model/EnvironmentPost.md)
+- [EvaluationReason](docs/Model/EvaluationReason.md)
 - [ExecutionOutputRep](docs/Model/ExecutionOutputRep.md)
 - [ExperimentAllocationRep](docs/Model/ExperimentAllocationRep.md)
+- [ExperimentCollectionRep](docs/Model/ExperimentCollectionRep.md)
 - [ExperimentEnabledPeriodRep](docs/Model/ExperimentEnabledPeriodRep.md)
 - [ExperimentEnvironmentSettingRep](docs/Model/ExperimentEnvironmentSettingRep.md)
 - [ExperimentInfoRep](docs/Model/ExperimentInfoRep.md)
 - [ExperimentMetadataRep](docs/Model/ExperimentMetadataRep.md)
+- [ExperimentPatchInput](docs/Model/ExperimentPatchInput.md)
+- [ExperimentPost](docs/Model/ExperimentPost.md)
 - [ExperimentRep](docs/Model/ExperimentRep.md)
-- [ExperimentResultsRep](docs/Model/ExperimentResultsRep.md)
+- [ExperimentResults](docs/Model/ExperimentResults.md)
 - [ExperimentStatsRep](docs/Model/ExperimentStatsRep.md)
 - [ExperimentTimeSeriesSlice](docs/Model/ExperimentTimeSeriesSlice.md)
 - [ExperimentTimeSeriesVariationSlice](docs/Model/ExperimentTimeSeriesVariationSlice.md)
@@ -768,11 +787,13 @@ Class | Method | HTTP request | Description
 - [FlagCopyConfigEnvironment](docs/Model/FlagCopyConfigEnvironment.md)
 - [FlagCopyConfigPost](docs/Model/FlagCopyConfigPost.md)
 - [FlagGlobalAttributesRep](docs/Model/FlagGlobalAttributesRep.md)
+- [FlagInput](docs/Model/FlagInput.md)
 - [FlagLinkCollectionRep](docs/Model/FlagLinkCollectionRep.md)
 - [FlagLinkMember](docs/Model/FlagLinkMember.md)
 - [FlagLinkPost](docs/Model/FlagLinkPost.md)
 - [FlagLinkRep](docs/Model/FlagLinkRep.md)
 - [FlagListingRep](docs/Model/FlagListingRep.md)
+- [FlagRep](docs/Model/FlagRep.md)
 - [FlagScheduledChangesInput](docs/Model/FlagScheduledChangesInput.md)
 - [FlagStatusRep](docs/Model/FlagStatusRep.md)
 - [FlagSummary](docs/Model/FlagSummary.md)
@@ -795,6 +816,9 @@ Class | Method | HTTP request | Description
 - [Integrations](docs/Model/Integrations.md)
 - [InvalidRequestErrorRep](docs/Model/InvalidRequestErrorRep.md)
 - [IpList](docs/Model/IpList.md)
+- [IterationExpandableProperties](docs/Model/IterationExpandableProperties.md)
+- [IterationInput](docs/Model/IterationInput.md)
+- [IterationRep](docs/Model/IterationRep.md)
 - [LastSeenMetadata](docs/Model/LastSeenMetadata.md)
 - [Link](docs/Model/Link.md)
 - [Member](docs/Model/Member.md)
@@ -807,6 +831,7 @@ Class | Method | HTTP request | Description
 - [Members](docs/Model/Members.md)
 - [MethodNotAllowedErrorRep](docs/Model/MethodNotAllowedErrorRep.md)
 - [MetricCollectionRep](docs/Model/MetricCollectionRep.md)
+- [MetricInput](docs/Model/MetricInput.md)
 - [MetricListingRep](docs/Model/MetricListingRep.md)
 - [MetricPost](docs/Model/MetricPost.md)
 - [MetricRep](docs/Model/MetricRep.md)
@@ -816,6 +841,8 @@ Class | Method | HTTP request | Description
 - [MultiEnvironmentDependentFlags](docs/Model/MultiEnvironmentDependentFlags.md)
 - [NewMemberForm](docs/Model/NewMemberForm.md)
 - [NotFoundErrorRep](docs/Model/NotFoundErrorRep.md)
+- [NullDecimal](docs/Model/NullDecimal.md)
+- [ParameterRep](docs/Model/ParameterRep.md)
 - [ParentResourceRep](docs/Model/ParentResourceRep.md)
 - [PatchFailedErrorRep](docs/Model/PatchFailedErrorRep.md)
 - [PatchOperation](docs/Model/PatchOperation.md)
@@ -895,6 +922,9 @@ Class | Method | HTTP request | Description
 - [Token](docs/Model/Token.md)
 - [TokenDataRep](docs/Model/TokenDataRep.md)
 - [Tokens](docs/Model/Tokens.md)
+- [TreatmentInput](docs/Model/TreatmentInput.md)
+- [TreatmentParameterInput](docs/Model/TreatmentParameterInput.md)
+- [TreatmentRep](docs/Model/TreatmentRep.md)
 - [TriggerPost](docs/Model/TriggerPost.md)
 - [TriggerWorkflowCollectionRep](docs/Model/TriggerWorkflowCollectionRep.md)
 - [TriggerWorkflowRep](docs/Model/TriggerWorkflowRep.md)
@@ -947,5 +977,5 @@ support@launchdarkly.com
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `2.0`
-    - Package version: `8.0.0`
+    - Package version: `9.0.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

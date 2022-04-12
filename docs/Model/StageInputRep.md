@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  | [optional]
+**execute_conditions_in_sequence** | **bool** |  | [optional]
 **conditions** | [**\LaunchDarklyApi\Model\ConditionInputRep[]**](ConditionInputRep.md) |  | [optional]
 **action** | [**\LaunchDarklyApi\Model\ActionInputRep**](ActionInputRep.md) |  | [optional]
 

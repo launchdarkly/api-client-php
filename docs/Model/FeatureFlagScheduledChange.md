@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **_maintainer_id** | **string** |  |
 **_version** | **int** |  |
 **execution_date** | **int** |  |
-**instructions** | **array[]** |  |
+**instructions** | **mixed[]** |  |
 **conflicts** | **mixed** |  | [optional]
 **_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) |  | [optional]
 

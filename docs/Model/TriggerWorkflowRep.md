@@ -11,7 +11,7 @@ Name | Type | Description | Notes
 **_maintainer** | [**\LaunchDarklyApi\Model\MemberSummary**](MemberSummary.md) |  | [optional]
 **enabled** | **bool** |  | [optional]
 **_integration_key** | **string** |  | [optional]
-**instructions** | **array[]** |  | [optional]
+**instructions** | **mixed[]** |  | [optional]
 **_last_triggered_at** | **int** |  | [optional]
 **_recent_trigger_bodies** | [**\LaunchDarklyApi\Model\RecentTriggerBody[]**](RecentTriggerBody.md) |  | [optional]
 **_trigger_count** | **int** |  | [optional]
