@@ -1,6 +1,6 @@
 <?php
 /**
- * ExperimentInfoRep
+ * Experiment
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \LaunchDarklyApi\ObjectSerializer;
 
 /**
- * ExperimentInfoRep Class Doc Comment
+ * Experiment Class Doc Comment
  *
  * @category Class
  * @package  LaunchDarklyApi
@@ -43,7 +43,7 @@ use \LaunchDarklyApi\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializable
+class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExperimentInfoRep';
+    protected static $openAPIModelName = 'Experiment';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,16 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'baseline_idx' => 'int',
-        'items' => '\LaunchDarklyApi\Model\LegacyExperimentRep[]'
+        '_id' => 'string',
+        'key' => 'string',
+        'name' => 'string',
+        'description' => 'string',
+        '_maintainer_id' => 'string',
+        '_creation_date' => 'int',
+        '_links' => 'array<string,\LaunchDarklyApi\Model\Link>',
+        'current_iteration' => '\LaunchDarklyApi\Model\IterationRep',
+        'draft_iteration' => '\LaunchDarklyApi\Model\IterationRep',
+        'previous_iterations' => '\LaunchDarklyApi\Model\IterationRep[]'
     ];
 
     /**
@@ -72,8 +80,16 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'baseline_idx' => null,
-        'items' => null
+        '_id' => null,
+        'key' => null,
+        'name' => null,
+        'description' => null,
+        '_maintainer_id' => null,
+        '_creation_date' => 'int64',
+        '_links' => null,
+        'current_iteration' => null,
+        'draft_iteration' => null,
+        'previous_iterations' => null
     ];
 
     /**
@@ -103,8 +119,16 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'baseline_idx' => 'baselineIdx',
-        'items' => 'items'
+        '_id' => '_id',
+        'key' => 'key',
+        'name' => 'name',
+        'description' => 'description',
+        '_maintainer_id' => '_maintainerId',
+        '_creation_date' => '_creationDate',
+        '_links' => '_links',
+        'current_iteration' => 'currentIteration',
+        'draft_iteration' => 'draftIteration',
+        'previous_iterations' => 'previousIterations'
     ];
 
     /**
@@ -113,8 +137,16 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'baseline_idx' => 'setBaselineIdx',
-        'items' => 'setItems'
+        '_id' => 'setId',
+        'key' => 'setKey',
+        'name' => 'setName',
+        'description' => 'setDescription',
+        '_maintainer_id' => 'setMaintainerId',
+        '_creation_date' => 'setCreationDate',
+        '_links' => 'setLinks',
+        'current_iteration' => 'setCurrentIteration',
+        'draft_iteration' => 'setDraftIteration',
+        'previous_iterations' => 'setPreviousIterations'
     ];
 
     /**
@@ -123,8 +155,16 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'baseline_idx' => 'getBaselineIdx',
-        'items' => 'getItems'
+        '_id' => 'getId',
+        'key' => 'getKey',
+        'name' => 'getName',
+        'description' => 'getDescription',
+        '_maintainer_id' => 'getMaintainerId',
+        '_creation_date' => 'getCreationDate',
+        '_links' => 'getLinks',
+        'current_iteration' => 'getCurrentIteration',
+        'draft_iteration' => 'getDraftIteration',
+        'previous_iterations' => 'getPreviousIterations'
     ];
 
     /**
@@ -184,8 +224,16 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['baseline_idx'] = $data['baseline_idx'] ?? null;
-        $this->container['items'] = $data['items'] ?? null;
+        $this->container['_id'] = $data['_id'] ?? null;
+        $this->container['key'] = $data['key'] ?? null;
+        $this->container['name'] = $data['name'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['_maintainer_id'] = $data['_maintainer_id'] ?? null;
+        $this->container['_creation_date'] = $data['_creation_date'] ?? null;
+        $this->container['_links'] = $data['_links'] ?? null;
+        $this->container['current_iteration'] = $data['current_iteration'] ?? null;
+        $this->container['draft_iteration'] = $data['draft_iteration'] ?? null;
+        $this->container['previous_iterations'] = $data['previous_iterations'] ?? null;
     }
 
     /**
@@ -197,11 +245,20 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['baseline_idx'] === null) {
-            $invalidProperties[] = "'baseline_idx' can't be null";
+        if ($this->container['key'] === null) {
+            $invalidProperties[] = "'key' can't be null";
         }
-        if ($this->container['items'] === null) {
-            $invalidProperties[] = "'items' can't be null";
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
+        if ($this->container['_maintainer_id'] === null) {
+            $invalidProperties[] = "'_maintainer_id' can't be null";
+        }
+        if ($this->container['_creation_date'] === null) {
+            $invalidProperties[] = "'_creation_date' can't be null";
+        }
+        if ($this->container['_links'] === null) {
+            $invalidProperties[] = "'_links' can't be null";
         }
         return $invalidProperties;
     }
@@ -219,49 +276,241 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets baseline_idx
+     * Gets _id
      *
-     * @return int
+     * @return string|null
      */
-    public function getBaselineIdx()
+    public function getId()
     {
-        return $this->container['baseline_idx'];
+        return $this->container['_id'];
     }
 
     /**
-     * Sets baseline_idx
+     * Sets _id
      *
-     * @param int $baseline_idx baseline_idx
+     * @param string|null $_id _id
      *
      * @return self
      */
-    public function setBaselineIdx($baseline_idx)
+    public function setId($_id)
     {
-        $this->container['baseline_idx'] = $baseline_idx;
+        $this->container['_id'] = $_id;
 
         return $this;
     }
 
     /**
-     * Gets items
+     * Gets key
      *
-     * @return \LaunchDarklyApi\Model\LegacyExperimentRep[]
+     * @return string
      */
-    public function getItems()
+    public function getKey()
     {
-        return $this->container['items'];
+        return $this->container['key'];
     }
 
     /**
-     * Sets items
+     * Sets key
      *
-     * @param \LaunchDarklyApi\Model\LegacyExperimentRep[] $items items
+     * @param string $key key
      *
      * @return self
      */
-    public function setItems($items)
+    public function setKey($key)
     {
-        $this->container['items'] = $items;
+        $this->container['key'] = $key;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name name
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets _maintainer_id
+     *
+     * @return string
+     */
+    public function getMaintainerId()
+    {
+        return $this->container['_maintainer_id'];
+    }
+
+    /**
+     * Sets _maintainer_id
+     *
+     * @param string $_maintainer_id _maintainer_id
+     *
+     * @return self
+     */
+    public function setMaintainerId($_maintainer_id)
+    {
+        $this->container['_maintainer_id'] = $_maintainer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets _creation_date
+     *
+     * @return int
+     */
+    public function getCreationDate()
+    {
+        return $this->container['_creation_date'];
+    }
+
+    /**
+     * Sets _creation_date
+     *
+     * @param int $_creation_date _creation_date
+     *
+     * @return self
+     */
+    public function setCreationDate($_creation_date)
+    {
+        $this->container['_creation_date'] = $_creation_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets _links
+     *
+     * @return array<string,\LaunchDarklyApi\Model\Link>
+     */
+    public function getLinks()
+    {
+        return $this->container['_links'];
+    }
+
+    /**
+     * Sets _links
+     *
+     * @param array<string,\LaunchDarklyApi\Model\Link> $_links _links
+     *
+     * @return self
+     */
+    public function setLinks($_links)
+    {
+        $this->container['_links'] = $_links;
+
+        return $this;
+    }
+
+    /**
+     * Gets current_iteration
+     *
+     * @return \LaunchDarklyApi\Model\IterationRep|null
+     */
+    public function getCurrentIteration()
+    {
+        return $this->container['current_iteration'];
+    }
+
+    /**
+     * Sets current_iteration
+     *
+     * @param \LaunchDarklyApi\Model\IterationRep|null $current_iteration current_iteration
+     *
+     * @return self
+     */
+    public function setCurrentIteration($current_iteration)
+    {
+        $this->container['current_iteration'] = $current_iteration;
+
+        return $this;
+    }
+
+    /**
+     * Gets draft_iteration
+     *
+     * @return \LaunchDarklyApi\Model\IterationRep|null
+     */
+    public function getDraftIteration()
+    {
+        return $this->container['draft_iteration'];
+    }
+
+    /**
+     * Sets draft_iteration
+     *
+     * @param \LaunchDarklyApi\Model\IterationRep|null $draft_iteration draft_iteration
+     *
+     * @return self
+     */
+    public function setDraftIteration($draft_iteration)
+    {
+        $this->container['draft_iteration'] = $draft_iteration;
+
+        return $this;
+    }
+
+    /**
+     * Gets previous_iterations
+     *
+     * @return \LaunchDarklyApi\Model\IterationRep[]|null
+     */
+    public function getPreviousIterations()
+    {
+        return $this->container['previous_iterations'];
+    }
+
+    /**
+     * Sets previous_iterations
+     *
+     * @param \LaunchDarklyApi\Model\IterationRep[]|null $previous_iterations previous_iterations
+     *
+     * @return self
+     */
+    public function setPreviousIterations($previous_iterations)
+    {
+        $this->container['previous_iterations'] = $previous_iterations;
 
         return $this;
     }

@@ -1,11 +1,10 @@
-# # ExperimentCollectionRep
+# # ExperimentExpandableProperties
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**\LaunchDarklyApi\Model\Experiment[]**](Experiment.md) |  | [optional]
-**total_count** | **int** |  | [optional]
-**_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) |  | [optional]
+**draft_iteration** | [**\LaunchDarklyApi\Model\IterationRep**](IterationRep.md) |  | [optional]
+**previous_iterations** | [**\LaunchDarklyApi\Model\IterationRep[]**](IterationRep.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

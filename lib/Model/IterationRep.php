@@ -66,11 +66,12 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
         'started_at' => 'int',
         'ended_at' => 'int',
         'winning_treatment_id' => 'string',
+        'winning_reason' => 'string',
         'can_reshuffle_traffic' => 'bool',
         'flags' => 'array<string,\LaunchDarklyApi\Model\FlagRep>',
-        'primary_metric' => '\LaunchDarklyApi\Model\MetricRep',
+        'primary_metric' => '\LaunchDarklyApi\Model\MetricV2Rep',
         'treatments' => '\LaunchDarklyApi\Model\TreatmentRep[]',
-        'secondary_metrics' => '\LaunchDarklyApi\Model\MetricRep[]'
+        'secondary_metrics' => '\LaunchDarklyApi\Model\MetricV2Rep[]'
     ];
 
     /**
@@ -87,6 +88,7 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
         'started_at' => 'int64',
         'ended_at' => 'int64',
         'winning_treatment_id' => null,
+        'winning_reason' => null,
         'can_reshuffle_traffic' => null,
         'flags' => null,
         'primary_metric' => null,
@@ -127,6 +129,7 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
         'started_at' => 'startedAt',
         'ended_at' => 'endedAt',
         'winning_treatment_id' => 'winningTreatmentId',
+        'winning_reason' => 'winningReason',
         'can_reshuffle_traffic' => 'canReshuffleTraffic',
         'flags' => 'flags',
         'primary_metric' => 'primaryMetric',
@@ -146,6 +149,7 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
         'started_at' => 'setStartedAt',
         'ended_at' => 'setEndedAt',
         'winning_treatment_id' => 'setWinningTreatmentId',
+        'winning_reason' => 'setWinningReason',
         'can_reshuffle_traffic' => 'setCanReshuffleTraffic',
         'flags' => 'setFlags',
         'primary_metric' => 'setPrimaryMetric',
@@ -165,6 +169,7 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
         'started_at' => 'getStartedAt',
         'ended_at' => 'getEndedAt',
         'winning_treatment_id' => 'getWinningTreatmentId',
+        'winning_reason' => 'getWinningReason',
         'can_reshuffle_traffic' => 'getCanReshuffleTraffic',
         'flags' => 'getFlags',
         'primary_metric' => 'getPrimaryMetric',
@@ -235,6 +240,7 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['started_at'] = $data['started_at'] ?? null;
         $this->container['ended_at'] = $data['ended_at'] ?? null;
         $this->container['winning_treatment_id'] = $data['winning_treatment_id'] ?? null;
+        $this->container['winning_reason'] = $data['winning_reason'] ?? null;
         $this->container['can_reshuffle_traffic'] = $data['can_reshuffle_traffic'] ?? null;
         $this->container['flags'] = $data['flags'] ?? null;
         $this->container['primary_metric'] = $data['primary_metric'] ?? null;
@@ -417,6 +423,30 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets winning_reason
+     *
+     * @return string|null
+     */
+    public function getWinningReason()
+    {
+        return $this->container['winning_reason'];
+    }
+
+    /**
+     * Sets winning_reason
+     *
+     * @param string|null $winning_reason winning_reason
+     *
+     * @return self
+     */
+    public function setWinningReason($winning_reason)
+    {
+        $this->container['winning_reason'] = $winning_reason;
+
+        return $this;
+    }
+
+    /**
      * Gets can_reshuffle_traffic
      *
      * @return bool|null
@@ -467,7 +497,7 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets primary_metric
      *
-     * @return \LaunchDarklyApi\Model\MetricRep|null
+     * @return \LaunchDarklyApi\Model\MetricV2Rep|null
      */
     public function getPrimaryMetric()
     {
@@ -477,7 +507,7 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets primary_metric
      *
-     * @param \LaunchDarklyApi\Model\MetricRep|null $primary_metric primary_metric
+     * @param \LaunchDarklyApi\Model\MetricV2Rep|null $primary_metric primary_metric
      *
      * @return self
      */
@@ -515,7 +545,7 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets secondary_metrics
      *
-     * @return \LaunchDarklyApi\Model\MetricRep[]|null
+     * @return \LaunchDarklyApi\Model\MetricV2Rep[]|null
      */
     public function getSecondaryMetrics()
     {
@@ -525,7 +555,7 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets secondary_metrics
      *
-     * @param \LaunchDarklyApi\Model\MetricRep[]|null $secondary_metrics secondary_metrics
+     * @param \LaunchDarklyApi\Model\MetricV2Rep[]|null $secondary_metrics secondary_metrics
      *
      * @return self
      */

@@ -1,6 +1,6 @@
 <?php
 /**
- * ExperimentInfoRep
+ * UsersRep
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \LaunchDarklyApi\ObjectSerializer;
 
 /**
- * ExperimentInfoRep Class Doc Comment
+ * UsersRep Class Doc Comment
  *
  * @category Class
  * @package  LaunchDarklyApi
@@ -43,7 +43,7 @@ use \LaunchDarklyApi\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializable
+class UsersRep implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExperimentInfoRep';
+    protected static $openAPIModelName = 'UsersRep';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,9 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'baseline_idx' => 'int',
-        'items' => '\LaunchDarklyApi\Model\LegacyExperimentRep[]'
+        '_links' => 'array<string,\LaunchDarklyApi\Model\Link>',
+        'total_count' => 'int',
+        'items' => '\LaunchDarklyApi\Model\UserRecord[]'
     ];
 
     /**
@@ -72,7 +73,8 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'baseline_idx' => null,
+        '_links' => null,
+        'total_count' => null,
         'items' => null
     ];
 
@@ -103,7 +105,8 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'baseline_idx' => 'baselineIdx',
+        '_links' => '_links',
+        'total_count' => 'totalCount',
         'items' => 'items'
     ];
 
@@ -113,7 +116,8 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'baseline_idx' => 'setBaselineIdx',
+        '_links' => 'setLinks',
+        'total_count' => 'setTotalCount',
         'items' => 'setItems'
     ];
 
@@ -123,7 +127,8 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'baseline_idx' => 'getBaselineIdx',
+        '_links' => 'getLinks',
+        'total_count' => 'getTotalCount',
         'items' => 'getItems'
     ];
 
@@ -184,7 +189,8 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['baseline_idx'] = $data['baseline_idx'] ?? null;
+        $this->container['_links'] = $data['_links'] ?? null;
+        $this->container['total_count'] = $data['total_count'] ?? null;
         $this->container['items'] = $data['items'] ?? null;
     }
 
@@ -197,8 +203,8 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['baseline_idx'] === null) {
-            $invalidProperties[] = "'baseline_idx' can't be null";
+        if ($this->container['total_count'] === null) {
+            $invalidProperties[] = "'total_count' can't be null";
         }
         if ($this->container['items'] === null) {
             $invalidProperties[] = "'items' can't be null";
@@ -219,25 +225,49 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets baseline_idx
+     * Gets _links
      *
-     * @return int
+     * @return array<string,\LaunchDarklyApi\Model\Link>|null
      */
-    public function getBaselineIdx()
+    public function getLinks()
     {
-        return $this->container['baseline_idx'];
+        return $this->container['_links'];
     }
 
     /**
-     * Sets baseline_idx
+     * Sets _links
      *
-     * @param int $baseline_idx baseline_idx
+     * @param array<string,\LaunchDarklyApi\Model\Link>|null $_links _links
      *
      * @return self
      */
-    public function setBaselineIdx($baseline_idx)
+    public function setLinks($_links)
     {
-        $this->container['baseline_idx'] = $baseline_idx;
+        $this->container['_links'] = $_links;
+
+        return $this;
+    }
+
+    /**
+     * Gets total_count
+     *
+     * @return int
+     */
+    public function getTotalCount()
+    {
+        return $this->container['total_count'];
+    }
+
+    /**
+     * Sets total_count
+     *
+     * @param int $total_count total_count
+     *
+     * @return self
+     */
+    public function setTotalCount($total_count)
+    {
+        $this->container['total_count'] = $total_count;
 
         return $this;
     }
@@ -245,7 +275,7 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Gets items
      *
-     * @return \LaunchDarklyApi\Model\LegacyExperimentRep[]
+     * @return \LaunchDarklyApi\Model\UserRecord[]
      */
     public function getItems()
     {
@@ -255,7 +285,7 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
     /**
      * Sets items
      *
-     * @param \LaunchDarklyApi\Model\LegacyExperimentRep[] $items items
+     * @param \LaunchDarklyApi\Model\UserRecord[] $items items
      *
      * @return self
      */

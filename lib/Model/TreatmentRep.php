@@ -62,7 +62,7 @@ class TreatmentRep implements ModelInterface, ArrayAccess, \JsonSerializable
     protected static $openAPITypes = [
         '_id' => 'string',
         'name' => 'string',
-        'allocation_percent' => '\LaunchDarklyApi\Model\NullDecimal',
+        'allocation_percent' => 'string',
         'baseline' => 'bool',
         'parameters' => '\LaunchDarklyApi\Model\ParameterRep[]'
     ];
@@ -287,7 +287,7 @@ class TreatmentRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets allocation_percent
      *
-     * @return \LaunchDarklyApi\Model\NullDecimal
+     * @return string
      */
     public function getAllocationPercent()
     {
@@ -297,7 +297,7 @@ class TreatmentRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets allocation_percent
      *
-     * @param \LaunchDarklyApi\Model\NullDecimal $allocation_percent allocation_percent
+     * @param string $allocation_percent allocation_percent
      *
      * @return self
      */

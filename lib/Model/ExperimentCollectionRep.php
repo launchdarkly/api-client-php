@@ -60,7 +60,7 @@ class ExperimentCollectionRep implements ModelInterface, ArrayAccess, \JsonSeria
       * @var string[]
       */
     protected static $openAPITypes = [
-        'items' => '\LaunchDarklyApi\Model\ExperimentRep[]',
+        'items' => '\LaunchDarklyApi\Model\Experiment[]',
         'total_count' => 'int',
         '_links' => 'array<string,\LaunchDarklyApi\Model\Link>'
     ];
@@ -221,7 +221,7 @@ class ExperimentCollectionRep implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Gets items
      *
-     * @return \LaunchDarklyApi\Model\ExperimentRep[]|null
+     * @return \LaunchDarklyApi\Model\Experiment[]|null
      */
     public function getItems()
     {
@@ -231,7 +231,7 @@ class ExperimentCollectionRep implements ModelInterface, ArrayAccess, \JsonSeria
     /**
      * Sets items
      *
-     * @param \LaunchDarklyApi\Model\ExperimentRep[]|null $items items
+     * @param \LaunchDarklyApi\Model\Experiment[]|null $items items
      *
      * @return self
      */

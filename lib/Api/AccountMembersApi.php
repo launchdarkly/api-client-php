@@ -1560,7 +1560,7 @@ class AccountMembersApi
     /**
      * Operation postMemberTeams
      *
-     * Add member to teams
+     * Add a member to teams
      *
      * @param  string $id The member ID (required)
      * @param  \LaunchDarklyApi\Model\MemberTeamsPostInput $member_teams_post_input member_teams_post_input (required)
@@ -1578,7 +1578,7 @@ class AccountMembersApi
     /**
      * Operation postMemberTeamsWithHttpInfo
      *
-     * Add member to teams
+     * Add a member to teams
      *
      * @param  string $id The member ID (required)
      * @param  \LaunchDarklyApi\Model\MemberTeamsPostInput $member_teams_post_input (required)
@@ -1772,7 +1772,7 @@ class AccountMembersApi
     /**
      * Operation postMemberTeamsAsync
      *
-     * Add member to teams
+     * Add a member to teams
      *
      * @param  string $id The member ID (required)
      * @param  \LaunchDarklyApi\Model\MemberTeamsPostInput $member_teams_post_input (required)
@@ -1793,7 +1793,7 @@ class AccountMembersApi
     /**
      * Operation postMemberTeamsAsyncWithHttpInfo
      *
-     * Add member to teams
+     * Add a member to teams
      *
      * @param  string $id The member ID (required)
      * @param  \LaunchDarklyApi\Model\MemberTeamsPostInput $member_teams_post_input (required)

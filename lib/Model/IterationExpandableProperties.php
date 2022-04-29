@@ -61,7 +61,7 @@ class IterationExpandableProperties implements ModelInterface, ArrayAccess, \Jso
       */
     protected static $openAPITypes = [
         'treatments' => '\LaunchDarklyApi\Model\TreatmentRep[]',
-        'secondary_metrics' => '\LaunchDarklyApi\Model\MetricRep[]'
+        'secondary_metrics' => '\LaunchDarklyApi\Model\MetricV2Rep[]'
     ];
 
     /**
@@ -239,7 +239,7 @@ class IterationExpandableProperties implements ModelInterface, ArrayAccess, \Jso
     /**
      * Gets secondary_metrics
      *
-     * @return \LaunchDarklyApi\Model\MetricRep[]|null
+     * @return \LaunchDarklyApi\Model\MetricV2Rep[]|null
      */
     public function getSecondaryMetrics()
     {
@@ -249,7 +249,7 @@ class IterationExpandableProperties implements ModelInterface, ArrayAccess, \Jso
     /**
      * Sets secondary_metrics
      *
-     * @param \LaunchDarklyApi\Model\MetricRep[]|null $secondary_metrics secondary_metrics
+     * @param \LaunchDarklyApi\Model\MetricV2Rep[]|null $secondary_metrics secondary_metrics
      *
      * @return self
      */

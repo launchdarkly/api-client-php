@@ -60,9 +60,29 @@ class MetricRep implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        '_id' => 'string',
         'key' => 'string',
         'name' => 'string',
-        '_links' => 'array<string,\LaunchDarklyApi\Model\Link>'
+        'kind' => 'string',
+        '_attached_flag_count' => 'int',
+        '_links' => 'array<string,\LaunchDarklyApi\Model\Link>',
+        '_site' => '\LaunchDarklyApi\Model\Link',
+        '_access' => '\LaunchDarklyApi\Model\Access',
+        'tags' => 'string[]',
+        '_creation_date' => 'int',
+        'last_modified' => '\LaunchDarklyApi\Model\Modification',
+        'maintainer_id' => 'string',
+        '_maintainer' => '\LaunchDarklyApi\Model\MemberSummary',
+        'description' => 'string',
+        'is_numeric' => 'bool',
+        'success_criteria' => 'string',
+        'unit' => 'string',
+        'event_key' => 'string',
+        'is_active' => 'bool',
+        '_attached_features' => '\LaunchDarklyApi\Model\FlagListingRep[]',
+        '_version' => 'int',
+        'selector' => 'string',
+        'urls' => 'mixed[]'
     ];
 
     /**
@@ -73,9 +93,29 @@ class MetricRep implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        '_id' => null,
         'key' => null,
         'name' => null,
-        '_links' => null
+        'kind' => null,
+        '_attached_flag_count' => null,
+        '_links' => null,
+        '_site' => null,
+        '_access' => null,
+        'tags' => null,
+        '_creation_date' => 'int64',
+        'last_modified' => null,
+        'maintainer_id' => null,
+        '_maintainer' => null,
+        'description' => null,
+        'is_numeric' => null,
+        'success_criteria' => null,
+        'unit' => null,
+        'event_key' => null,
+        'is_active' => null,
+        '_attached_features' => null,
+        '_version' => null,
+        'selector' => null,
+        'urls' => null
     ];
 
     /**
@@ -105,9 +145,29 @@ class MetricRep implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        '_id' => '_id',
         'key' => 'key',
         'name' => 'name',
-        '_links' => '_links'
+        'kind' => 'kind',
+        '_attached_flag_count' => '_attachedFlagCount',
+        '_links' => '_links',
+        '_site' => '_site',
+        '_access' => '_access',
+        'tags' => 'tags',
+        '_creation_date' => '_creationDate',
+        'last_modified' => 'lastModified',
+        'maintainer_id' => 'maintainerId',
+        '_maintainer' => '_maintainer',
+        'description' => 'description',
+        'is_numeric' => 'isNumeric',
+        'success_criteria' => 'successCriteria',
+        'unit' => 'unit',
+        'event_key' => 'eventKey',
+        'is_active' => 'isActive',
+        '_attached_features' => '_attachedFeatures',
+        '_version' => '_version',
+        'selector' => 'selector',
+        'urls' => 'urls'
     ];
 
     /**
@@ -116,9 +176,29 @@ class MetricRep implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        '_id' => 'setId',
         'key' => 'setKey',
         'name' => 'setName',
-        '_links' => 'setLinks'
+        'kind' => 'setKind',
+        '_attached_flag_count' => 'setAttachedFlagCount',
+        '_links' => 'setLinks',
+        '_site' => 'setSite',
+        '_access' => 'setAccess',
+        'tags' => 'setTags',
+        '_creation_date' => 'setCreationDate',
+        'last_modified' => 'setLastModified',
+        'maintainer_id' => 'setMaintainerId',
+        '_maintainer' => 'setMaintainer',
+        'description' => 'setDescription',
+        'is_numeric' => 'setIsNumeric',
+        'success_criteria' => 'setSuccessCriteria',
+        'unit' => 'setUnit',
+        'event_key' => 'setEventKey',
+        'is_active' => 'setIsActive',
+        '_attached_features' => 'setAttachedFeatures',
+        '_version' => 'setVersion',
+        'selector' => 'setSelector',
+        'urls' => 'setUrls'
     ];
 
     /**
@@ -127,9 +207,29 @@ class MetricRep implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        '_id' => 'getId',
         'key' => 'getKey',
         'name' => 'getName',
-        '_links' => 'getLinks'
+        'kind' => 'getKind',
+        '_attached_flag_count' => 'getAttachedFlagCount',
+        '_links' => 'getLinks',
+        '_site' => 'getSite',
+        '_access' => 'getAccess',
+        'tags' => 'getTags',
+        '_creation_date' => 'getCreationDate',
+        'last_modified' => 'getLastModified',
+        'maintainer_id' => 'getMaintainerId',
+        '_maintainer' => 'getMaintainer',
+        'description' => 'getDescription',
+        'is_numeric' => 'getIsNumeric',
+        'success_criteria' => 'getSuccessCriteria',
+        'unit' => 'getUnit',
+        'event_key' => 'getEventKey',
+        'is_active' => 'getIsActive',
+        '_attached_features' => 'getAttachedFeatures',
+        '_version' => 'getVersion',
+        'selector' => 'getSelector',
+        'urls' => 'getUrls'
     ];
 
     /**
@@ -173,6 +273,38 @@ class MetricRep implements ModelInterface, ArrayAccess, \JsonSerializable
         return self::$openAPIModelName;
     }
 
+    const KIND_PAGEVIEW = 'pageview';
+    const KIND_CLICK = 'click';
+    const KIND_CUSTOM = 'custom';
+    const SUCCESS_CRITERIA_HIGHER_THAN_BASELINE = 'HigherThanBaseline';
+    const SUCCESS_CRITERIA_LOWER_THAN_BASELINE = 'LowerThanBaseline';
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getKindAllowableValues()
+    {
+        return [
+            self::KIND_PAGEVIEW,
+            self::KIND_CLICK,
+            self::KIND_CUSTOM,
+        ];
+    }
+
+    /**
+     * Gets allowable values of the enum
+     *
+     * @return string[]
+     */
+    public function getSuccessCriteriaAllowableValues()
+    {
+        return [
+            self::SUCCESS_CRITERIA_HIGHER_THAN_BASELINE,
+            self::SUCCESS_CRITERIA_LOWER_THAN_BASELINE,
+        ];
+    }
 
     /**
      * Associative array for storing property values
@@ -189,9 +321,29 @@ class MetricRep implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(array $data = null)
     {
+        $this->container['_id'] = $data['_id'] ?? null;
         $this->container['key'] = $data['key'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['kind'] = $data['kind'] ?? null;
+        $this->container['_attached_flag_count'] = $data['_attached_flag_count'] ?? null;
         $this->container['_links'] = $data['_links'] ?? null;
+        $this->container['_site'] = $data['_site'] ?? null;
+        $this->container['_access'] = $data['_access'] ?? null;
+        $this->container['tags'] = $data['tags'] ?? null;
+        $this->container['_creation_date'] = $data['_creation_date'] ?? null;
+        $this->container['last_modified'] = $data['last_modified'] ?? null;
+        $this->container['maintainer_id'] = $data['maintainer_id'] ?? null;
+        $this->container['_maintainer'] = $data['_maintainer'] ?? null;
+        $this->container['description'] = $data['description'] ?? null;
+        $this->container['is_numeric'] = $data['is_numeric'] ?? null;
+        $this->container['success_criteria'] = $data['success_criteria'] ?? null;
+        $this->container['unit'] = $data['unit'] ?? null;
+        $this->container['event_key'] = $data['event_key'] ?? null;
+        $this->container['is_active'] = $data['is_active'] ?? null;
+        $this->container['_attached_features'] = $data['_attached_features'] ?? null;
+        $this->container['_version'] = $data['_version'] ?? null;
+        $this->container['selector'] = $data['selector'] ?? null;
+        $this->container['urls'] = $data['urls'] ?? null;
     }
 
     /**
@@ -203,15 +355,45 @@ class MetricRep implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['_id'] === null) {
+            $invalidProperties[] = "'_id' can't be null";
+        }
         if ($this->container['key'] === null) {
             $invalidProperties[] = "'key' can't be null";
         }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
+        if ($this->container['kind'] === null) {
+            $invalidProperties[] = "'kind' can't be null";
+        }
+        $allowedValues = $this->getKindAllowableValues();
+        if (!is_null($this->container['kind']) && !in_array($this->container['kind'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'kind', must be one of '%s'",
+                $this->container['kind'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         if ($this->container['_links'] === null) {
             $invalidProperties[] = "'_links' can't be null";
         }
+        if ($this->container['tags'] === null) {
+            $invalidProperties[] = "'tags' can't be null";
+        }
+        if ($this->container['_creation_date'] === null) {
+            $invalidProperties[] = "'_creation_date' can't be null";
+        }
+        $allowedValues = $this->getSuccessCriteriaAllowableValues();
+        if (!is_null($this->container['success_criteria']) && !in_array($this->container['success_criteria'], $allowedValues, true)) {
+            $invalidProperties[] = sprintf(
+                "invalid value '%s' for 'success_criteria', must be one of '%s'",
+                $this->container['success_criteria'],
+                implode("', '", $allowedValues)
+            );
+        }
+
         return $invalidProperties;
     }
 
@@ -226,6 +408,30 @@ class MetricRep implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets _id
+     *
+     * @return string
+     */
+    public function getId()
+    {
+        return $this->container['_id'];
+    }
+
+    /**
+     * Sets _id
+     *
+     * @param string $_id _id
+     *
+     * @return self
+     */
+    public function setId($_id)
+    {
+        $this->container['_id'] = $_id;
+
+        return $this;
+    }
 
     /**
      * Gets key
@@ -276,6 +482,64 @@ class MetricRep implements ModelInterface, ArrayAccess, \JsonSerializable
     }
 
     /**
+     * Gets kind
+     *
+     * @return string
+     */
+    public function getKind()
+    {
+        return $this->container['kind'];
+    }
+
+    /**
+     * Sets kind
+     *
+     * @param string $kind kind
+     *
+     * @return self
+     */
+    public function setKind($kind)
+    {
+        $allowedValues = $this->getKindAllowableValues();
+        if (!in_array($kind, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'kind', must be one of '%s'",
+                    $kind,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['kind'] = $kind;
+
+        return $this;
+    }
+
+    /**
+     * Gets _attached_flag_count
+     *
+     * @return int|null
+     */
+    public function getAttachedFlagCount()
+    {
+        return $this->container['_attached_flag_count'];
+    }
+
+    /**
+     * Sets _attached_flag_count
+     *
+     * @param int|null $_attached_flag_count _attached_flag_count
+     *
+     * @return self
+     */
+    public function setAttachedFlagCount($_attached_flag_count)
+    {
+        $this->container['_attached_flag_count'] = $_attached_flag_count;
+
+        return $this;
+    }
+
+    /**
      * Gets _links
      *
      * @return array<string,\LaunchDarklyApi\Model\Link>
@@ -295,6 +559,424 @@ class MetricRep implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setLinks($_links)
     {
         $this->container['_links'] = $_links;
+
+        return $this;
+    }
+
+    /**
+     * Gets _site
+     *
+     * @return \LaunchDarklyApi\Model\Link|null
+     */
+    public function getSite()
+    {
+        return $this->container['_site'];
+    }
+
+    /**
+     * Sets _site
+     *
+     * @param \LaunchDarklyApi\Model\Link|null $_site _site
+     *
+     * @return self
+     */
+    public function setSite($_site)
+    {
+        $this->container['_site'] = $_site;
+
+        return $this;
+    }
+
+    /**
+     * Gets _access
+     *
+     * @return \LaunchDarklyApi\Model\Access|null
+     */
+    public function getAccess()
+    {
+        return $this->container['_access'];
+    }
+
+    /**
+     * Sets _access
+     *
+     * @param \LaunchDarklyApi\Model\Access|null $_access _access
+     *
+     * @return self
+     */
+    public function setAccess($_access)
+    {
+        $this->container['_access'] = $_access;
+
+        return $this;
+    }
+
+    /**
+     * Gets tags
+     *
+     * @return string[]
+     */
+    public function getTags()
+    {
+        return $this->container['tags'];
+    }
+
+    /**
+     * Sets tags
+     *
+     * @param string[] $tags tags
+     *
+     * @return self
+     */
+    public function setTags($tags)
+    {
+        $this->container['tags'] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Gets _creation_date
+     *
+     * @return int
+     */
+    public function getCreationDate()
+    {
+        return $this->container['_creation_date'];
+    }
+
+    /**
+     * Sets _creation_date
+     *
+     * @param int $_creation_date _creation_date
+     *
+     * @return self
+     */
+    public function setCreationDate($_creation_date)
+    {
+        $this->container['_creation_date'] = $_creation_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets last_modified
+     *
+     * @return \LaunchDarklyApi\Model\Modification|null
+     */
+    public function getLastModified()
+    {
+        return $this->container['last_modified'];
+    }
+
+    /**
+     * Sets last_modified
+     *
+     * @param \LaunchDarklyApi\Model\Modification|null $last_modified last_modified
+     *
+     * @return self
+     */
+    public function setLastModified($last_modified)
+    {
+        $this->container['last_modified'] = $last_modified;
+
+        return $this;
+    }
+
+    /**
+     * Gets maintainer_id
+     *
+     * @return string|null
+     */
+    public function getMaintainerId()
+    {
+        return $this->container['maintainer_id'];
+    }
+
+    /**
+     * Sets maintainer_id
+     *
+     * @param string|null $maintainer_id maintainer_id
+     *
+     * @return self
+     */
+    public function setMaintainerId($maintainer_id)
+    {
+        $this->container['maintainer_id'] = $maintainer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets _maintainer
+     *
+     * @return \LaunchDarklyApi\Model\MemberSummary|null
+     */
+    public function getMaintainer()
+    {
+        return $this->container['_maintainer'];
+    }
+
+    /**
+     * Sets _maintainer
+     *
+     * @param \LaunchDarklyApi\Model\MemberSummary|null $_maintainer _maintainer
+     *
+     * @return self
+     */
+    public function setMaintainer($_maintainer)
+    {
+        $this->container['_maintainer'] = $_maintainer;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
+     *
+     * @return string|null
+     */
+    public function getDescription()
+    {
+        return $this->container['description'];
+    }
+
+    /**
+     * Sets description
+     *
+     * @param string|null $description description
+     *
+     * @return self
+     */
+    public function setDescription($description)
+    {
+        $this->container['description'] = $description;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_numeric
+     *
+     * @return bool|null
+     */
+    public function getIsNumeric()
+    {
+        return $this->container['is_numeric'];
+    }
+
+    /**
+     * Sets is_numeric
+     *
+     * @param bool|null $is_numeric is_numeric
+     *
+     * @return self
+     */
+    public function setIsNumeric($is_numeric)
+    {
+        $this->container['is_numeric'] = $is_numeric;
+
+        return $this;
+    }
+
+    /**
+     * Gets success_criteria
+     *
+     * @return string|null
+     */
+    public function getSuccessCriteria()
+    {
+        return $this->container['success_criteria'];
+    }
+
+    /**
+     * Sets success_criteria
+     *
+     * @param string|null $success_criteria success_criteria
+     *
+     * @return self
+     */
+    public function setSuccessCriteria($success_criteria)
+    {
+        $allowedValues = $this->getSuccessCriteriaAllowableValues();
+        if (!is_null($success_criteria) && !in_array($success_criteria, $allowedValues, true)) {
+            throw new \InvalidArgumentException(
+                sprintf(
+                    "Invalid value '%s' for 'success_criteria', must be one of '%s'",
+                    $success_criteria,
+                    implode("', '", $allowedValues)
+                )
+            );
+        }
+        $this->container['success_criteria'] = $success_criteria;
+
+        return $this;
+    }
+
+    /**
+     * Gets unit
+     *
+     * @return string|null
+     */
+    public function getUnit()
+    {
+        return $this->container['unit'];
+    }
+
+    /**
+     * Sets unit
+     *
+     * @param string|null $unit unit
+     *
+     * @return self
+     */
+    public function setUnit($unit)
+    {
+        $this->container['unit'] = $unit;
+
+        return $this;
+    }
+
+    /**
+     * Gets event_key
+     *
+     * @return string|null
+     */
+    public function getEventKey()
+    {
+        return $this->container['event_key'];
+    }
+
+    /**
+     * Sets event_key
+     *
+     * @param string|null $event_key event_key
+     *
+     * @return self
+     */
+    public function setEventKey($event_key)
+    {
+        $this->container['event_key'] = $event_key;
+
+        return $this;
+    }
+
+    /**
+     * Gets is_active
+     *
+     * @return bool|null
+     */
+    public function getIsActive()
+    {
+        return $this->container['is_active'];
+    }
+
+    /**
+     * Sets is_active
+     *
+     * @param bool|null $is_active is_active
+     *
+     * @return self
+     */
+    public function setIsActive($is_active)
+    {
+        $this->container['is_active'] = $is_active;
+
+        return $this;
+    }
+
+    /**
+     * Gets _attached_features
+     *
+     * @return \LaunchDarklyApi\Model\FlagListingRep[]|null
+     */
+    public function getAttachedFeatures()
+    {
+        return $this->container['_attached_features'];
+    }
+
+    /**
+     * Sets _attached_features
+     *
+     * @param \LaunchDarklyApi\Model\FlagListingRep[]|null $_attached_features _attached_features
+     *
+     * @return self
+     */
+    public function setAttachedFeatures($_attached_features)
+    {
+        $this->container['_attached_features'] = $_attached_features;
+
+        return $this;
+    }
+
+    /**
+     * Gets _version
+     *
+     * @return int|null
+     */
+    public function getVersion()
+    {
+        return $this->container['_version'];
+    }
+
+    /**
+     * Sets _version
+     *
+     * @param int|null $_version _version
+     *
+     * @return self
+     */
+    public function setVersion($_version)
+    {
+        $this->container['_version'] = $_version;
+
+        return $this;
+    }
+
+    /**
+     * Gets selector
+     *
+     * @return string|null
+     */
+    public function getSelector()
+    {
+        return $this->container['selector'];
+    }
+
+    /**
+     * Sets selector
+     *
+     * @param string|null $selector selector
+     *
+     * @return self
+     */
+    public function setSelector($selector)
+    {
+        $this->container['selector'] = $selector;
+
+        return $this;
+    }
+
+    /**
+     * Gets urls
+     *
+     * @return mixed[]|null
+     */
+    public function getUrls()
+    {
+        return $this->container['urls'];
+    }
+
+    /**
+     * Sets urls
+     *
+     * @param mixed[]|null $urls urls
+     *
+     * @return self
+     */
+    public function setUrls($urls)
+    {
+        $this->container['urls'] = $urls;
 
         return $this;
     }

@@ -81,6 +81,15 @@ class MetricRepTest extends TestCase
     }
 
     /**
+     * Test attribute "_id"
+     */
+    public function testPropertyId()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "key"
      */
     public function testPropertyKey()
@@ -99,9 +108,180 @@ class MetricRepTest extends TestCase
     }
 
     /**
+     * Test attribute "kind"
+     */
+    public function testPropertyKind()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "_attached_flag_count"
+     */
+    public function testPropertyAttachedFlagCount()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "_links"
      */
     public function testPropertyLinks()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "_site"
+     */
+    public function testPropertySite()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "_access"
+     */
+    public function testPropertyAccess()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "tags"
+     */
+    public function testPropertyTags()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "_creation_date"
+     */
+    public function testPropertyCreationDate()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "last_modified"
+     */
+    public function testPropertyLastModified()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "maintainer_id"
+     */
+    public function testPropertyMaintainerId()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "_maintainer"
+     */
+    public function testPropertyMaintainer()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "description"
+     */
+    public function testPropertyDescription()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "is_numeric"
+     */
+    public function testPropertyIsNumeric()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "success_criteria"
+     */
+    public function testPropertySuccessCriteria()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "unit"
+     */
+    public function testPropertyUnit()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "event_key"
+     */
+    public function testPropertyEventKey()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "is_active"
+     */
+    public function testPropertyIsActive()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "_attached_features"
+     */
+    public function testPropertyAttachedFeatures()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "_version"
+     */
+    public function testPropertyVersion()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "selector"
+     */
+    public function testPropertySelector()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "urls"
+     */
+    public function testPropertyUrls()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

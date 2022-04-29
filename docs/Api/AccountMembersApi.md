@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**getMember()**](AccountMembersApi.md#getMember) | **GET** /api/v2/members/{id} | Get account member
 [**getMembers()**](AccountMembersApi.md#getMembers) | **GET** /api/v2/members | List account members
 [**patchMember()**](AccountMembersApi.md#patchMember) | **PATCH** /api/v2/members/{id} | Modify an account member
-[**postMemberTeams()**](AccountMembersApi.md#postMemberTeams) | **POST** /api/v2/members/{id}/teams | Add member to teams
+[**postMemberTeams()**](AccountMembersApi.md#postMemberTeams) | **POST** /api/v2/members/{id}/teams | Add a member to teams
 [**postMembers()**](AccountMembersApi.md#postMembers) | **POST** /api/v2/members | Invite new members
 
 
@@ -81,7 +81,7 @@ getMember($id): \LaunchDarklyApi\Model\Member
 
 Get account member
 
-Get a single account member by ID
+Get a single account member by ID.  `me` is a reserved value for the `id` parameter and returns the caller's member information.
 
 ### Example
 
@@ -273,9 +273,9 @@ Name | Type | Description  | Notes
 postMemberTeams($id, $member_teams_post_input): \LaunchDarklyApi\Model\Member
 ```
 
-Add member to teams
+Add a member to teams
 
-Add member to team(s)
+Add one member to one or more teams.
 
 ### Example
 

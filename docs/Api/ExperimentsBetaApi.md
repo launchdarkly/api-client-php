@@ -17,7 +17,7 @@ Method | HTTP request | Description
 ## `createExperiment()`
 
 ```php
-createExperiment($project_key, $environment_key, $experiment_post): \LaunchDarklyApi\Model\ExperimentRep
+createExperiment($project_key, $environment_key, $experiment_post): \LaunchDarklyApi\Model\Experiment
 ```
 
 Create experiment
@@ -65,7 +65,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\ExperimentRep**](../Model/ExperimentRep.md)
+[**\LaunchDarklyApi\Model\Experiment**](../Model/Experiment.md)
 
 ### Authorization
 
@@ -151,7 +151,7 @@ Name | Type | Description  | Notes
 ## `getExperiment()`
 
 ```php
-getExperiment($project_key, $environment_key, $experiment_key): \LaunchDarklyApi\Model\ExperimentRep
+getExperiment($project_key, $environment_key, $experiment_key): \LaunchDarklyApi\Model\Experiment
 ```
 
 Get experiment
@@ -199,7 +199,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\ExperimentRep**](../Model/ExperimentRep.md)
+[**\LaunchDarklyApi\Model\Experiment**](../Model/Experiment.md)
 
 ### Authorization
 
@@ -421,7 +421,7 @@ Name | Type | Description  | Notes
 ## `patchExperiment()`
 
 ```php
-patchExperiment($project_key, $environment_key, $experiment_key, $experiment_patch_input): \LaunchDarklyApi\Model\ExperimentRep
+patchExperiment($project_key, $environment_key, $experiment_key, $experiment_patch_input): \LaunchDarklyApi\Model\Experiment
 ```
 
 Patch experiment
@@ -471,7 +471,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\ExperimentRep**](../Model/ExperimentRep.md)
+[**\LaunchDarklyApi\Model\Experiment**](../Model/Experiment.md)
 
 ### Authorization
 

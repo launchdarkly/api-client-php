@@ -2758,7 +2758,7 @@ class TeamsBetaApi
     /**
      * Operation postTeamMembers
      *
-     * Add members to team
+     * Add multiple members to team
      *
      * @param  string $team_key The team key (required)
      * @param  \SplFileObject $file CSV file containing email addresses (optional)
@@ -2776,7 +2776,7 @@ class TeamsBetaApi
     /**
      * Operation postTeamMembersWithHttpInfo
      *
-     * Add members to team
+     * Add multiple members to team
      *
      * @param  string $team_key The team key (required)
      * @param  \SplFileObject $file CSV file containing email addresses (optional)
@@ -2970,7 +2970,7 @@ class TeamsBetaApi
     /**
      * Operation postTeamMembersAsync
      *
-     * Add members to team
+     * Add multiple members to team
      *
      * @param  string $team_key The team key (required)
      * @param  \SplFileObject $file CSV file containing email addresses (optional)
@@ -2991,7 +2991,7 @@ class TeamsBetaApi
     /**
      * Operation postTeamMembersAsyncWithHttpInfo
      *
-     * Add members to team
+     * Add multiple members to team
      *
      * @param  string $team_key The team key (required)
      * @param  \SplFileObject $file CSV file containing email addresses (optional)

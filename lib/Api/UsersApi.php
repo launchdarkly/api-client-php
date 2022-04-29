@@ -1358,7 +1358,7 @@ class UsersApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\Users|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
+     * @return \LaunchDarklyApi\Model\UsersRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getUsers($project_key, $environment_key, $limit = null, $search_after = null)
     {
@@ -1378,7 +1378,7 @@ class UsersApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\Users|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\UsersRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getUsersWithHttpInfo($project_key, $environment_key, $limit = null, $search_after = null)
     {
@@ -1421,14 +1421,14 @@ class UsersApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\LaunchDarklyApi\Model\Users' === '\SplFileObject') {
+                    if ('\LaunchDarklyApi\Model\UsersRep' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\Users', []),
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UsersRep', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1494,7 +1494,7 @@ class UsersApi
                     ];
             }
 
-            $returnType = '\LaunchDarklyApi\Model\Users';
+            $returnType = '\LaunchDarklyApi\Model\UsersRep';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1512,7 +1512,7 @@ class UsersApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LaunchDarklyApi\Model\Users',
+                        '\LaunchDarklyApi\Model\UsersRep',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1600,7 +1600,7 @@ class UsersApi
      */
     public function getUsersAsyncWithHttpInfo($project_key, $environment_key, $limit = null, $search_after = null)
     {
-        $returnType = '\LaunchDarklyApi\Model\Users';
+        $returnType = '\LaunchDarklyApi\Model\UsersRep';
         $request = $this->getUsersRequest($project_key, $environment_key, $limit, $search_after);
 
         return $this->client

@@ -127,7 +127,7 @@ class ExperimentsBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\ExperimentRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
+     * @return \LaunchDarklyApi\Model\Experiment|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function createExperiment($project_key, $environment_key, $experiment_post)
     {
@@ -146,7 +146,7 @@ class ExperimentsBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\ExperimentRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\Experiment|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function createExperimentWithHttpInfo($project_key, $environment_key, $experiment_post)
     {
@@ -189,14 +189,14 @@ class ExperimentsBetaApi
 
             switch($statusCode) {
                 case 201:
-                    if ('\LaunchDarklyApi\Model\ExperimentRep' === '\SplFileObject') {
+                    if ('\LaunchDarklyApi\Model\Experiment' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ExperimentRep', []),
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\Experiment', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -262,7 +262,7 @@ class ExperimentsBetaApi
                     ];
             }
 
-            $returnType = '\LaunchDarklyApi\Model\ExperimentRep';
+            $returnType = '\LaunchDarklyApi\Model\Experiment';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -280,7 +280,7 @@ class ExperimentsBetaApi
                 case 201:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LaunchDarklyApi\Model\ExperimentRep',
+                        '\LaunchDarklyApi\Model\Experiment',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -366,7 +366,7 @@ class ExperimentsBetaApi
      */
     public function createExperimentAsyncWithHttpInfo($project_key, $environment_key, $experiment_post)
     {
-        $returnType = '\LaunchDarklyApi\Model\ExperimentRep';
+        $returnType = '\LaunchDarklyApi\Model\Experiment';
         $request = $this->createExperimentRequest($project_key, $environment_key, $experiment_post);
 
         return $this->client
@@ -970,7 +970,7 @@ class ExperimentsBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\ExperimentRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\MethodNotAllowedErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
+     * @return \LaunchDarklyApi\Model\Experiment|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\MethodNotAllowedErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function getExperiment($project_key, $environment_key, $experiment_key)
     {
@@ -989,7 +989,7 @@ class ExperimentsBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\ExperimentRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\MethodNotAllowedErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\Experiment|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\MethodNotAllowedErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function getExperimentWithHttpInfo($project_key, $environment_key, $experiment_key)
     {
@@ -1032,14 +1032,14 @@ class ExperimentsBetaApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\LaunchDarklyApi\Model\ExperimentRep' === '\SplFileObject') {
+                    if ('\LaunchDarklyApi\Model\Experiment' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ExperimentRep', []),
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\Experiment', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -1117,7 +1117,7 @@ class ExperimentsBetaApi
                     ];
             }
 
-            $returnType = '\LaunchDarklyApi\Model\ExperimentRep';
+            $returnType = '\LaunchDarklyApi\Model\Experiment';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -1135,7 +1135,7 @@ class ExperimentsBetaApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LaunchDarklyApi\Model\ExperimentRep',
+                        '\LaunchDarklyApi\Model\Experiment',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -1229,7 +1229,7 @@ class ExperimentsBetaApi
      */
     public function getExperimentAsyncWithHttpInfo($project_key, $environment_key, $experiment_key)
     {
-        $returnType = '\LaunchDarklyApi\Model\ExperimentRep';
+        $returnType = '\LaunchDarklyApi\Model\Experiment';
         $request = $this->getExperimentRequest($project_key, $environment_key, $experiment_key);
 
         return $this->client
@@ -2718,7 +2718,7 @@ class ExperimentsBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return \LaunchDarklyApi\Model\ExperimentRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
+     * @return \LaunchDarklyApi\Model\Experiment|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
     public function patchExperiment($project_key, $environment_key, $experiment_key, $experiment_patch_input)
     {
@@ -2738,7 +2738,7 @@ class ExperimentsBetaApi
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response
      * @throws \InvalidArgumentException
-     * @return array of \LaunchDarklyApi\Model\ExperimentRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
+     * @return array of \LaunchDarklyApi\Model\Experiment|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
     public function patchExperimentWithHttpInfo($project_key, $environment_key, $experiment_key, $experiment_patch_input)
     {
@@ -2781,14 +2781,14 @@ class ExperimentsBetaApi
 
             switch($statusCode) {
                 case 200:
-                    if ('\LaunchDarklyApi\Model\ExperimentRep' === '\SplFileObject') {
+                    if ('\LaunchDarklyApi\Model\Experiment' === '\SplFileObject') {
                         $content = $response->getBody(); //stream goes to serializer
                     } else {
                         $content = (string) $response->getBody();
                     }
 
                     return [
-                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ExperimentRep', []),
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\Experiment', []),
                         $response->getStatusCode(),
                         $response->getHeaders()
                     ];
@@ -2854,7 +2854,7 @@ class ExperimentsBetaApi
                     ];
             }
 
-            $returnType = '\LaunchDarklyApi\Model\ExperimentRep';
+            $returnType = '\LaunchDarklyApi\Model\Experiment';
             if ($returnType === '\SplFileObject') {
                 $content = $response->getBody(); //stream goes to serializer
             } else {
@@ -2872,7 +2872,7 @@ class ExperimentsBetaApi
                 case 200:
                     $data = ObjectSerializer::deserialize(
                         $e->getResponseBody(),
-                        '\LaunchDarklyApi\Model\ExperimentRep',
+                        '\LaunchDarklyApi\Model\Experiment',
                         $e->getResponseHeaders()
                     );
                     $e->setResponseObject($data);
@@ -2960,7 +2960,7 @@ class ExperimentsBetaApi
      */
     public function patchExperimentAsyncWithHttpInfo($project_key, $environment_key, $experiment_key, $experiment_patch_input)
     {
-        $returnType = '\LaunchDarklyApi\Model\ExperimentRep';
+        $returnType = '\LaunchDarklyApi\Model\Experiment';
         $request = $this->patchExperimentRequest($project_key, $environment_key, $experiment_key, $experiment_patch_input);
 
         return $this->client

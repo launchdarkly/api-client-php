@@ -135,6 +135,15 @@ class IterationRepTest extends TestCase
     }
 
     /**
+     * Test attribute "winning_reason"
+     */
+    public function testPropertyWinningReason()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "can_reshuffle_traffic"
      */
     public function testPropertyCanReshuffleTraffic()

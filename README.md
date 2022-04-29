@@ -539,7 +539,7 @@ Class | Method | HTTP request | Description
 *AccountMembersApi* | [**getMember**](docs/Api/AccountMembersApi.md#getmember) | **GET** /api/v2/members/{id} | Get account member
 *AccountMembersApi* | [**getMembers**](docs/Api/AccountMembersApi.md#getmembers) | **GET** /api/v2/members | List account members
 *AccountMembersApi* | [**patchMember**](docs/Api/AccountMembersApi.md#patchmember) | **PATCH** /api/v2/members/{id} | Modify an account member
-*AccountMembersApi* | [**postMemberTeams**](docs/Api/AccountMembersApi.md#postmemberteams) | **POST** /api/v2/members/{id}/teams | Add member to teams
+*AccountMembersApi* | [**postMemberTeams**](docs/Api/AccountMembersApi.md#postmemberteams) | **POST** /api/v2/members/{id}/teams | Add a member to teams
 *AccountMembersApi* | [**postMembers**](docs/Api/AccountMembersApi.md#postmembers) | **POST** /api/v2/members | Invite new members
 *AccountUsageBetaApi* | [**getEvaluationsUsage**](docs/Api/AccountUsageBetaApi.md#getevaluationsusage) | **GET** /api/v2/usage/evaluations/{projectKey}/{environmentKey}/{featureFlagKey} | Get evaluations usage
 *AccountUsageBetaApi* | [**getEventsUsage**](docs/Api/AccountUsageBetaApi.md#geteventsusage) | **GET** /api/v2/usage/events/{type} | Get events usage
@@ -675,7 +675,7 @@ Class | Method | HTTP request | Description
 *TeamsBetaApi* | [**getTeams**](docs/Api/TeamsBetaApi.md#getteams) | **GET** /api/v2/teams | List teams
 *TeamsBetaApi* | [**patchTeam**](docs/Api/TeamsBetaApi.md#patchteam) | **PATCH** /api/v2/teams/{teamKey} | Update team
 *TeamsBetaApi* | [**postTeam**](docs/Api/TeamsBetaApi.md#postteam) | **POST** /api/v2/teams | Create team
-*TeamsBetaApi* | [**postTeamMembers**](docs/Api/TeamsBetaApi.md#postteammembers) | **POST** /api/v2/teams/{teamKey}/members | Add members to team
+*TeamsBetaApi* | [**postTeamMembers**](docs/Api/TeamsBetaApi.md#postteammembers) | **POST** /api/v2/teams/{teamKey}/members | Add multiple members to team
 *UserSettingsApi* | [**getExpiringFlagsForUser**](docs/Api/UserSettingsApi.md#getexpiringflagsforuser) | **GET** /api/v2/users/{projectKey}/{userKey}/expiring-user-targets/{environmentKey} | Get expiring dates on flags for user
 *UserSettingsApi* | [**getUserFlagSetting**](docs/Api/UserSettingsApi.md#getuserflagsetting) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Get flag setting for user
 *UserSettingsApi* | [**getUserFlagSettings**](docs/Api/UserSettingsApi.md#getuserflagsettings) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags | List flag settings for user
@@ -738,7 +738,6 @@ Class | Method | HTTP request | Description
 - [CustomWorkflowOutputRep](docs/Model/CustomWorkflowOutputRep.md)
 - [CustomWorkflowStageMeta](docs/Model/CustomWorkflowStageMeta.md)
 - [CustomWorkflowsListingOutputRep](docs/Model/CustomWorkflowsListingOutputRep.md)
-- [Decimal](docs/Model/Decimal.md)
 - [DefaultClientSideAvailabilityPost](docs/Model/DefaultClientSideAvailabilityPost.md)
 - [Defaults](docs/Model/Defaults.md)
 - [DependentFlag](docs/Model/DependentFlag.md)
@@ -751,15 +750,16 @@ Class | Method | HTTP request | Description
 - [EnvironmentPost](docs/Model/EnvironmentPost.md)
 - [EvaluationReason](docs/Model/EvaluationReason.md)
 - [ExecutionOutputRep](docs/Model/ExecutionOutputRep.md)
+- [Experiment](docs/Model/Experiment.md)
 - [ExperimentAllocationRep](docs/Model/ExperimentAllocationRep.md)
 - [ExperimentCollectionRep](docs/Model/ExperimentCollectionRep.md)
 - [ExperimentEnabledPeriodRep](docs/Model/ExperimentEnabledPeriodRep.md)
 - [ExperimentEnvironmentSettingRep](docs/Model/ExperimentEnvironmentSettingRep.md)
+- [ExperimentExpandableProperties](docs/Model/ExperimentExpandableProperties.md)
 - [ExperimentInfoRep](docs/Model/ExperimentInfoRep.md)
 - [ExperimentMetadataRep](docs/Model/ExperimentMetadataRep.md)
 - [ExperimentPatchInput](docs/Model/ExperimentPatchInput.md)
 - [ExperimentPost](docs/Model/ExperimentPost.md)
-- [ExperimentRep](docs/Model/ExperimentRep.md)
 - [ExperimentResults](docs/Model/ExperimentResults.md)
 - [ExperimentStatsRep](docs/Model/ExperimentStatsRep.md)
 - [ExperimentTimeSeriesSlice](docs/Model/ExperimentTimeSeriesSlice.md)
@@ -820,6 +820,7 @@ Class | Method | HTTP request | Description
 - [IterationInput](docs/Model/IterationInput.md)
 - [IterationRep](docs/Model/IterationRep.md)
 - [LastSeenMetadata](docs/Model/LastSeenMetadata.md)
+- [LegacyExperimentRep](docs/Model/LegacyExperimentRep.md)
 - [Link](docs/Model/Link.md)
 - [Member](docs/Model/Member.md)
 - [MemberDataRep](docs/Model/MemberDataRep.md)
@@ -836,12 +837,12 @@ Class | Method | HTTP request | Description
 - [MetricPost](docs/Model/MetricPost.md)
 - [MetricRep](docs/Model/MetricRep.md)
 - [MetricSeen](docs/Model/MetricSeen.md)
+- [MetricV2Rep](docs/Model/MetricV2Rep.md)
 - [Modification](docs/Model/Modification.md)
 - [MultiEnvironmentDependentFlag](docs/Model/MultiEnvironmentDependentFlag.md)
 - [MultiEnvironmentDependentFlags](docs/Model/MultiEnvironmentDependentFlags.md)
 - [NewMemberForm](docs/Model/NewMemberForm.md)
 - [NotFoundErrorRep](docs/Model/NotFoundErrorRep.md)
-- [NullDecimal](docs/Model/NullDecimal.md)
 - [ParameterRep](docs/Model/ParameterRep.md)
 - [ParentResourceRep](docs/Model/ParentResourceRep.md)
 - [PatchFailedErrorRep](docs/Model/PatchFailedErrorRep.md)
@@ -901,6 +902,7 @@ Class | Method | HTTP request | Description
 - [StatementRep](docs/Model/StatementRep.md)
 - [StatisticCollectionRep](docs/Model/StatisticCollectionRep.md)
 - [StatisticRep](docs/Model/StatisticRep.md)
+- [StatisticsRep](docs/Model/StatisticsRep.md)
 - [StatisticsRoot](docs/Model/StatisticsRoot.md)
 - [StatusConflictErrorRep](docs/Model/StatusConflictErrorRep.md)
 - [SubjectDataRep](docs/Model/SubjectDataRep.md)
@@ -940,6 +942,7 @@ Class | Method | HTTP request | Description
 - [UserSegmentRule](docs/Model/UserSegmentRule.md)
 - [UserSegments](docs/Model/UserSegments.md)
 - [Users](docs/Model/Users.md)
+- [UsersRep](docs/Model/UsersRep.md)
 - [ValuePut](docs/Model/ValuePut.md)
 - [Variation](docs/Model/Variation.md)
 - [VariationOrRolloutRep](docs/Model/VariationOrRolloutRep.md)
@@ -977,5 +980,5 @@ support@launchdarkly.com
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `2.0`
-    - Package version: `9.0.0`
+    - Package version: `9.0.1`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

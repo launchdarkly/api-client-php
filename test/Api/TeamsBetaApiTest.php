@@ -159,7 +159,7 @@ class TeamsBetaApiTest extends TestCase
     /**
      * Test case for postTeamMembers
      *
-     * Add members to team.
+     * Add multiple members to team.
      *
      */
     public function testPostTeamMembers()

@@ -1,6 +1,6 @@
 <?php
 /**
- * ExperimentInfoRep
+ * ExperimentExpandableProperties
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \LaunchDarklyApi\ObjectSerializer;
 
 /**
- * ExperimentInfoRep Class Doc Comment
+ * ExperimentExpandableProperties Class Doc Comment
  *
  * @category Class
  * @package  LaunchDarklyApi
@@ -43,7 +43,7 @@ use \LaunchDarklyApi\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializable
+class ExperimentExpandableProperties implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExperimentInfoRep';
+    protected static $openAPIModelName = 'ExperimentExpandableProperties';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,8 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'baseline_idx' => 'int',
-        'items' => '\LaunchDarklyApi\Model\LegacyExperimentRep[]'
+        'draft_iteration' => '\LaunchDarklyApi\Model\IterationRep',
+        'previous_iterations' => '\LaunchDarklyApi\Model\IterationRep[]'
     ];
 
     /**
@@ -72,8 +72,8 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'baseline_idx' => null,
-        'items' => null
+        'draft_iteration' => null,
+        'previous_iterations' => null
     ];
 
     /**
@@ -103,8 +103,8 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'baseline_idx' => 'baselineIdx',
-        'items' => 'items'
+        'draft_iteration' => 'draftIteration',
+        'previous_iterations' => 'previousIterations'
     ];
 
     /**
@@ -113,8 +113,8 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'baseline_idx' => 'setBaselineIdx',
-        'items' => 'setItems'
+        'draft_iteration' => 'setDraftIteration',
+        'previous_iterations' => 'setPreviousIterations'
     ];
 
     /**
@@ -123,8 +123,8 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'baseline_idx' => 'getBaselineIdx',
-        'items' => 'getItems'
+        'draft_iteration' => 'getDraftIteration',
+        'previous_iterations' => 'getPreviousIterations'
     ];
 
     /**
@@ -184,8 +184,8 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['baseline_idx'] = $data['baseline_idx'] ?? null;
-        $this->container['items'] = $data['items'] ?? null;
+        $this->container['draft_iteration'] = $data['draft_iteration'] ?? null;
+        $this->container['previous_iterations'] = $data['previous_iterations'] ?? null;
     }
 
     /**
@@ -197,12 +197,6 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['baseline_idx'] === null) {
-            $invalidProperties[] = "'baseline_idx' can't be null";
-        }
-        if ($this->container['items'] === null) {
-            $invalidProperties[] = "'items' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -219,49 +213,49 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets baseline_idx
+     * Gets draft_iteration
      *
-     * @return int
+     * @return \LaunchDarklyApi\Model\IterationRep|null
      */
-    public function getBaselineIdx()
+    public function getDraftIteration()
     {
-        return $this->container['baseline_idx'];
+        return $this->container['draft_iteration'];
     }
 
     /**
-     * Sets baseline_idx
+     * Sets draft_iteration
      *
-     * @param int $baseline_idx baseline_idx
+     * @param \LaunchDarklyApi\Model\IterationRep|null $draft_iteration draft_iteration
      *
      * @return self
      */
-    public function setBaselineIdx($baseline_idx)
+    public function setDraftIteration($draft_iteration)
     {
-        $this->container['baseline_idx'] = $baseline_idx;
+        $this->container['draft_iteration'] = $draft_iteration;
 
         return $this;
     }
 
     /**
-     * Gets items
+     * Gets previous_iterations
      *
-     * @return \LaunchDarklyApi\Model\LegacyExperimentRep[]
+     * @return \LaunchDarklyApi\Model\IterationRep[]|null
      */
-    public function getItems()
+    public function getPreviousIterations()
     {
-        return $this->container['items'];
+        return $this->container['previous_iterations'];
     }
 
     /**
-     * Sets items
+     * Sets previous_iterations
      *
-     * @param \LaunchDarklyApi\Model\LegacyExperimentRep[] $items items
+     * @param \LaunchDarklyApi\Model\IterationRep[]|null $previous_iterations previous_iterations
      *
      * @return self
      */
-    public function setItems($items)
+    public function setPreviousIterations($previous_iterations)
     {
-        $this->container['items'] = $items;
+        $this->container['previous_iterations'] = $previous_iterations;
 
         return $this;
     }

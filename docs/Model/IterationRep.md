@@ -10,10 +10,11 @@ Name | Type | Description | Notes
 **started_at** | **int** |  | [optional]
 **ended_at** | **int** |  | [optional]
 **winning_treatment_id** | **string** |  | [optional]
+**winning_reason** | **string** |  | [optional]
 **can_reshuffle_traffic** | **bool** |  | [optional]
 **flags** | [**array<string,\LaunchDarklyApi\Model\FlagRep>**](FlagRep.md) |  | [optional]
-**primary_metric** | [**\LaunchDarklyApi\Model\MetricRep**](MetricRep.md) |  | [optional]
+**primary_metric** | [**\LaunchDarklyApi\Model\MetricV2Rep**](MetricV2Rep.md) |  | [optional]
 **treatments** | [**\LaunchDarklyApi\Model\TreatmentRep[]**](TreatmentRep.md) |  | [optional]
-**secondary_metrics** | [**\LaunchDarklyApi\Model\MetricRep[]**](MetricRep.md) |  | [optional]
+**secondary_metrics** | [**\LaunchDarklyApi\Model\MetricV2Rep[]**](MetricV2Rep.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

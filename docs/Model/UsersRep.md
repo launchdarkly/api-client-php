@@ -1,11 +1,11 @@
-# # ExperimentCollectionRep
+# # UsersRep
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**items** | [**\LaunchDarklyApi\Model\Experiment[]**](Experiment.md) |  | [optional]
-**total_count** | **int** |  | [optional]
 **_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) |  | [optional]
+**total_count** | **int** |  |
+**items** | [**\LaunchDarklyApi\Model\UserRecord[]**](UserRecord.md) |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

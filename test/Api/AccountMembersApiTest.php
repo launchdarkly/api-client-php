@@ -123,7 +123,7 @@ class AccountMembersApiTest extends TestCase
     /**
      * Test case for postMemberTeams
      *
-     * Add member to teams.
+     * Add a member to teams.
      *
      */
     public function testPostMemberTeams()

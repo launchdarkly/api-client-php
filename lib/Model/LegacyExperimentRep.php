@@ -1,6 +1,6 @@
 <?php
 /**
- * ExperimentInfoRep
+ * LegacyExperimentRep
  *
  * PHP version 7.3
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \LaunchDarklyApi\ObjectSerializer;
 
 /**
- * ExperimentInfoRep Class Doc Comment
+ * LegacyExperimentRep Class Doc Comment
  *
  * @category Class
  * @package  LaunchDarklyApi
@@ -43,7 +43,7 @@ use \LaunchDarklyApi\ObjectSerializer;
  * @template TKey int|null
  * @template TValue mixed|null
  */
-class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializable
+class LegacyExperimentRep implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -52,7 +52,7 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'ExperimentInfoRep';
+    protected static $openAPIModelName = 'LegacyExperimentRep';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,8 +60,10 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'baseline_idx' => 'int',
-        'items' => '\LaunchDarklyApi\Model\LegacyExperimentRep[]'
+        'metric_key' => 'string',
+        '_metric' => '\LaunchDarklyApi\Model\MetricListingRep',
+        'environments' => 'string[]',
+        '_environment_settings' => 'array<string,\LaunchDarklyApi\Model\ExperimentEnvironmentSettingRep>'
     ];
 
     /**
@@ -72,8 +74,10 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'baseline_idx' => null,
-        'items' => null
+        'metric_key' => null,
+        '_metric' => null,
+        'environments' => null,
+        '_environment_settings' => null
     ];
 
     /**
@@ -103,8 +107,10 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'baseline_idx' => 'baselineIdx',
-        'items' => 'items'
+        'metric_key' => 'metricKey',
+        '_metric' => '_metric',
+        'environments' => 'environments',
+        '_environment_settings' => '_environmentSettings'
     ];
 
     /**
@@ -113,8 +119,10 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'baseline_idx' => 'setBaselineIdx',
-        'items' => 'setItems'
+        'metric_key' => 'setMetricKey',
+        '_metric' => 'setMetric',
+        'environments' => 'setEnvironments',
+        '_environment_settings' => 'setEnvironmentSettings'
     ];
 
     /**
@@ -123,8 +131,10 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'baseline_idx' => 'getBaselineIdx',
-        'items' => 'getItems'
+        'metric_key' => 'getMetricKey',
+        '_metric' => 'getMetric',
+        'environments' => 'getEnvironments',
+        '_environment_settings' => 'getEnvironmentSettings'
     ];
 
     /**
@@ -184,8 +194,10 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(array $data = null)
     {
-        $this->container['baseline_idx'] = $data['baseline_idx'] ?? null;
-        $this->container['items'] = $data['items'] ?? null;
+        $this->container['metric_key'] = $data['metric_key'] ?? null;
+        $this->container['_metric'] = $data['_metric'] ?? null;
+        $this->container['environments'] = $data['environments'] ?? null;
+        $this->container['_environment_settings'] = $data['_environment_settings'] ?? null;
     }
 
     /**
@@ -197,12 +209,6 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['baseline_idx'] === null) {
-            $invalidProperties[] = "'baseline_idx' can't be null";
-        }
-        if ($this->container['items'] === null) {
-            $invalidProperties[] = "'items' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -219,49 +225,97 @@ class ExperimentInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets baseline_idx
+     * Gets metric_key
      *
-     * @return int
+     * @return string|null
      */
-    public function getBaselineIdx()
+    public function getMetricKey()
     {
-        return $this->container['baseline_idx'];
+        return $this->container['metric_key'];
     }
 
     /**
-     * Sets baseline_idx
+     * Sets metric_key
      *
-     * @param int $baseline_idx baseline_idx
+     * @param string|null $metric_key metric_key
      *
      * @return self
      */
-    public function setBaselineIdx($baseline_idx)
+    public function setMetricKey($metric_key)
     {
-        $this->container['baseline_idx'] = $baseline_idx;
+        $this->container['metric_key'] = $metric_key;
 
         return $this;
     }
 
     /**
-     * Gets items
+     * Gets _metric
      *
-     * @return \LaunchDarklyApi\Model\LegacyExperimentRep[]
+     * @return \LaunchDarklyApi\Model\MetricListingRep|null
      */
-    public function getItems()
+    public function getMetric()
     {
-        return $this->container['items'];
+        return $this->container['_metric'];
     }
 
     /**
-     * Sets items
+     * Sets _metric
      *
-     * @param \LaunchDarklyApi\Model\LegacyExperimentRep[] $items items
+     * @param \LaunchDarklyApi\Model\MetricListingRep|null $_metric _metric
      *
      * @return self
      */
-    public function setItems($items)
+    public function setMetric($_metric)
     {
-        $this->container['items'] = $items;
+        $this->container['_metric'] = $_metric;
+
+        return $this;
+    }
+
+    /**
+     * Gets environments
+     *
+     * @return string[]|null
+     */
+    public function getEnvironments()
+    {
+        return $this->container['environments'];
+    }
+
+    /**
+     * Sets environments
+     *
+     * @param string[]|null $environments environments
+     *
+     * @return self
+     */
+    public function setEnvironments($environments)
+    {
+        $this->container['environments'] = $environments;
+
+        return $this;
+    }
+
+    /**
+     * Gets _environment_settings
+     *
+     * @return array<string,\LaunchDarklyApi\Model\ExperimentEnvironmentSettingRep>|null
+     */
+    public function getEnvironmentSettings()
+    {
+        return $this->container['_environment_settings'];
+    }
+
+    /**
+     * Sets _environment_settings
+     *
+     * @param array<string,\LaunchDarklyApi\Model\ExperimentEnvironmentSettingRep>|null $_environment_settings _environment_settings
+     *
+     * @return self
+     */
+    public function setEnvironmentSettings($_environment_settings)
+    {
+        $this->container['_environment_settings'] = $_environment_settings;
 
         return $this;
     }

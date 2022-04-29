@@ -222,7 +222,7 @@ Name | Type | Description  | Notes
 ## `getUsers()`
 
 ```php
-getUsers($project_key, $environment_key, $limit, $search_after): \LaunchDarklyApi\Model\Users
+getUsers($project_key, $environment_key, $limit, $search_after): \LaunchDarklyApi\Model\UsersRep
 ```
 
 List users
@@ -272,7 +272,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\Users**](../Model/Users.md)
+[**\LaunchDarklyApi\Model\UsersRep**](../Model/UsersRep.md)
 
 ### Authorization
 
