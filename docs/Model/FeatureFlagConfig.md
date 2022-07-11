@@ -10,11 +10,11 @@ Name | Type | Description | Notes
 **sel** | **string** |  |
 **last_modified** | **int** |  |
 **version** | **int** |  |
-**targets** | [**\LaunchDarklyApi\Model\Target[]**](Target.md) |  |
-**rules** | [**\LaunchDarklyApi\Model\Rule[]**](Rule.md) |  |
-**fallthrough** | [**\LaunchDarklyApi\Model\VariationOrRolloutRep**](VariationOrRolloutRep.md) |  |
+**targets** | [**\LaunchDarklyApi\Model\Target[]**](Target.md) |  | [optional]
+**rules** | [**\LaunchDarklyApi\Model\Rule[]**](Rule.md) |  | [optional]
+**fallthrough** | [**\LaunchDarklyApi\Model\VariationOrRolloutRep**](VariationOrRolloutRep.md) |  | [optional]
 **off_variation** | **int** |  | [optional]
-**prerequisites** | [**\LaunchDarklyApi\Model\Prerequisite[]**](Prerequisite.md) |  |
+**prerequisites** | [**\LaunchDarklyApi\Model\Prerequisite[]**](Prerequisite.md) |  | [optional]
 **_site** | [**\LaunchDarklyApi\Model\Link**](Link.md) |  |
 **_access** | [**\LaunchDarklyApi\Model\Access**](Access.md) |  | [optional]
 **_environment_name** | **string** |  |

@@ -12,7 +12,7 @@ Method | HTTP request | Description
 [**getRepositories()**](CodeReferencesApi.md#getRepositories) | **GET** /api/v2/code-refs/repositories | List repositories
 [**getRepository()**](CodeReferencesApi.md#getRepository) | **GET** /api/v2/code-refs/repositories/{repo} | Get repository
 [**getRootStatistic()**](CodeReferencesApi.md#getRootStatistic) | **GET** /api/v2/code-refs/statistics | Get links to code reference repositories for each project
-[**getStatistics()**](CodeReferencesApi.md#getStatistics) | **GET** /api/v2/code-refs/statistics/{projectKey} | Get number of code references for flags
+[**getStatistics()**](CodeReferencesApi.md#getStatistics) | **GET** /api/v2/code-refs/statistics/{projectKey} | Get code references statistics for flags
 [**patchRepository()**](CodeReferencesApi.md#patchRepository) | **PATCH** /api/v2/code-refs/repositories/{repo} | Update repository
 [**postExtinction()**](CodeReferencesApi.md#postExtinction) | **POST** /api/v2/code-refs/repositories/{repo}/branches/{branch}/extinction-events | Create extinction
 [**postRepository()**](CodeReferencesApi.md#postRepository) | **POST** /api/v2/code-refs/repositories | Create repository
@@ -49,7 +49,7 @@ $apiInstance = new LaunchDarklyApi\Api\CodeReferencesApi(
     $config
 );
 $repo = 'repo_example'; // string | The repository name to delete branches for.
-$request_body = array('request_body_example'); // string[]
+$request_body = ["branch-to-be-deleted","another-branch-to-be-deleted"]; // string[]
 
 try {
     $apiInstance->deleteBranches($repo, $request_body);
@@ -90,7 +90,7 @@ deleteRepository($repo)
 
 Delete repository
 
-Delete a repository with the specified name
+Delete a repository with the specified name.
 
 ### Example
 
@@ -151,7 +151,7 @@ getBranch($repo, $branch, $proj_key, $flag_key): \LaunchDarklyApi\Model\BranchRe
 
 Get branch
 
-Get a specific branch in a repository
+Get a specific branch in a repository.
 
 ### Example
 
@@ -281,7 +281,7 @@ getExtinctions($repo_name, $branch_name, $proj_key, $flag_key, $from, $to): \Lau
 
 List extinctions
 
-Get a list of all extinctions.
+Get a list of all extinctions. LaunchDarkly creates an extinction event after you remove all code references to a flag. To learn more, read [Understanding extinction events](https://docs.launchdarkly.com/home/code/code-references#understanding-extinction-events).
 
 ### Example
 
@@ -483,7 +483,7 @@ getRootStatistic(): \LaunchDarklyApi\Model\StatisticsRoot
 
 Get links to code reference repositories for each project
 
-Get links for all projects that have Code References.
+Get links for all projects that have code references.
 
 ### Example
 
@@ -540,9 +540,9 @@ This endpoint does not need any parameter.
 getStatistics($project_key, $flag_key): \LaunchDarklyApi\Model\StatisticCollectionRep
 ```
 
-Get number of code references for flags
+Get code references statistics for flags
 
-Get the number of code references across repositories for all flags in your project that have code references in the default branch (for example: master). You can optionally include the `flagKey` query parameter to get the number of code references across repositories for a single flag. This endpoint returns the number of times your flag keys are referenced in your repositories. You can filter to a single flag with by passing in a flag key.
+Get statistics about all the code references across repositories for all flags in your project that have code references in the default branch, for example, `main`. Optionally, you can include the `flagKey` query parameter to limit your request to statistics about code references for a single flag. This endpoint returns the number of references to your flag keys in your repositories, as well as a link to each repository.
 
 ### Example
 
@@ -670,7 +670,7 @@ postExtinction($repo, $branch, $extinction)
 
 Create extinction
 
-Create a new extinction
+Create a new extinction.
 
 ### Example
 
@@ -692,7 +692,7 @@ $apiInstance = new LaunchDarklyApi\Api\CodeReferencesApi(
     $config
 );
 $repo = 'repo_example'; // string | The repository name
-$branch = 'branch_example'; // string | The url-encoded branch name
+$branch = 'branch_example'; // string | The URL-encoded branch name
 $extinction = array(new \LaunchDarklyApi\Model\Extinction()); // \LaunchDarklyApi\Model\Extinction[]
 
 try {
@@ -707,7 +707,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **repo** | **string**| The repository name |
- **branch** | **string**| The url-encoded branch name |
+ **branch** | **string**| The URL-encoded branch name |
  **extinction** | [**\LaunchDarklyApi\Model\Extinction[]**](../Model/Extinction.md)|  |
 
 ### Return type
@@ -797,7 +797,7 @@ putBranch($repo, $branch, $put_branch)
 
 Upsert branch
 
-Create a new branch if it doesn't exist, or updates the branch if it already exists.
+Create a new branch if it doesn't exist, or update the branch if it already exists.
 
 ### Example
 
@@ -819,7 +819,7 @@ $apiInstance = new LaunchDarklyApi\Api\CodeReferencesApi(
     $config
 );
 $repo = 'repo_example'; // string | The repository name
-$branch = 'branch_example'; // string | The url-encoded branch name
+$branch = 'branch_example'; // string | The URL-encoded branch name
 $put_branch = new \LaunchDarklyApi\Model\PutBranch(); // \LaunchDarklyApi\Model\PutBranch
 
 try {
@@ -834,7 +834,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **repo** | **string**| The repository name |
- **branch** | **string**| The url-encoded branch name |
+ **branch** | **string**| The URL-encoded branch name |
  **put_branch** | [**\LaunchDarklyApi\Model\PutBranch**](../Model/PutBranch.md)|  |
 
 ### Return type

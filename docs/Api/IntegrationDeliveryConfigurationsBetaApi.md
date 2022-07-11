@@ -45,7 +45,7 @@ $apiInstance = new LaunchDarklyApi\Api\IntegrationDeliveryConfigurationsBetaApi(
 $project_key = 'project_key_example'; // string | The project key
 $environment_key = 'environment_key_example'; // string | The environment key
 $integration_key = 'integration_key_example'; // string | The integration key
-$integration_delivery_configuration_post = new \LaunchDarklyApi\Model\IntegrationDeliveryConfigurationPost(); // \LaunchDarklyApi\Model\IntegrationDeliveryConfigurationPost
+$integration_delivery_configuration_post = {"config":{"optional":"example value for optional formVariables property for sample-integration","required":"example value for required formVariables property for sample-integration"},"name":"Sample integration","on":false,"tags":["example-tag"]}; // \LaunchDarklyApi\Model\IntegrationDeliveryConfigurationPost
 
 try {
     $result = $apiInstance->createIntegrationDeliveryConfiguration($project_key, $environment_key, $integration_key, $integration_delivery_configuration_post);
@@ -89,7 +89,7 @@ deleteIntegrationDeliveryConfiguration($project_key, $environment_key, $integrat
 
 Delete delivery configuration
 
-Delete a delivery configuration
+Delete a delivery configuration.
 
 ### Example
 

@@ -26,6 +26,6 @@ Name | Type | Description | Notes
 **_attached_features** | [**\LaunchDarklyApi\Model\FlagListingRep[]**](FlagListingRep.md) |  | [optional]
 **_version** | **int** |  | [optional]
 **selector** | **string** |  | [optional]
-**urls** | **mixed[]** |  | [optional]
+**urls** | **array[]** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

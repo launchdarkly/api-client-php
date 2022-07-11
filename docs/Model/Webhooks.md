@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) |  |
-**items** | [**\LaunchDarklyApi\Model\Webhook[]**](Webhook.md) |  |
+**_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) | Links to other resources within the API. Includes the URL and content type of those resources. |
+**items** | [**\LaunchDarklyApi\Model\Webhook[]**](Webhook.md) | An array of webhooks |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

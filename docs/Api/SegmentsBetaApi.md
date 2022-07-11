@@ -83,7 +83,7 @@ createBigSegmentImport($project_key, $environment_key, $segment_key, $file, $mod
 
 Create Big Segment import
 
-Starts a new import process for a Big Segment
+Start a new import process for a Big Segment.
 
 ### Example
 

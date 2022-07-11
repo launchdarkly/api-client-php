@@ -19,7 +19,7 @@ deleteFlagConfigScheduledChanges($project_key, $feature_flag_key, $environment_k
 
 Delete scheduled changes workflow
 
-Delete a scheduled changes workflow
+Delete a scheduled changes workflow.
 
 ### Example
 
@@ -86,7 +86,7 @@ getFeatureFlagScheduledChange($project_key, $feature_flag_key, $environment_key,
 
 Get a scheduled change
 
-Get a scheduled change that will be applied to the feature flag by ID
+Get a scheduled change that will be applied to the feature flag by ID.
 
 ### Example
 
@@ -220,7 +220,7 @@ patchFlagConfigScheduledChange($project_key, $feature_flag_key, $environment_key
 
 Update scheduled changes workflow
 
-Update a scheduled change, overriding existing instructions with the new ones.<br /><br />Requires a semantic patch representation of the desired changes to the resource. To learn more about semantic patches, read [Updates](/reference#updates-via-semantic-patches).
+Update a scheduled change, overriding existing instructions with the new ones. Updating a scheduled change uses the semantic patch format.  To make a semantic patch request, you must append `domain-model=launchdarkly.semanticpatch` to your `Content-Type` header. To learn more, read [Updates using semantic patch](/reference#updates-using-semantic-patch).  ### Instructions  Semantic patch requests support the following `kind` instructions for updating scheduled changes.  #### deleteScheduledChange  Removes the scheduled change.  #### replaceScheduledChangesInstructions  Removes the existing scheduled changes and replaces them with the new instructions.  ##### Parameters  - `value`: An array of the new actions to perform when the execution date for these scheduled changes arrives. Supported scheduled actions are `turnFlagOn` and `turnFlagOff`.  For example, to replace the scheduled changes, use this request body:  ```json {   \"comment\": \"optional comment\",   \"instructions\": [     {       \"kind\": \"replaceScheduledChangesInstructions\",       \"value\": [ {\"kind\": \"turnFlagOff\"} ]     }   ] } ```  #### updateScheduledChangesExecutionDate  Updates the execution date for the scheduled changes.  ##### Parameters  - `value`: the new execution date, in Unix milliseconds.
 
 ### Example
 
@@ -245,8 +245,8 @@ $project_key = 'project_key_example'; // string | The project key
 $feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 $id = 'id_example'; // string | The scheduled change ID
-$flag_scheduled_changes_input = new \LaunchDarklyApi\Model\FlagScheduledChangesInput(); // \LaunchDarklyApi\Model\FlagScheduledChangesInput
-$ignore_conflicts = True; // bool | Whether or not to succeed or fail when the new instructions conflict with existing scheduled changes
+$flag_scheduled_changes_input = {"comment":"Optional comment describing the update to the scheduled changes","instructions":[{"kind":"replaceScheduledChangesInstructions","value":[{"kind":"turnFlagOff"}]}]}; // \LaunchDarklyApi\Model\FlagScheduledChangesInput
+$ignore_conflicts = True; // bool | Whether to succeed (`true`) or fail (`false`) when these new instructions conflict with existing scheduled changes
 
 try {
     $result = $apiInstance->patchFlagConfigScheduledChange($project_key, $feature_flag_key, $environment_key, $id, $flag_scheduled_changes_input, $ignore_conflicts);
@@ -265,7 +265,7 @@ Name | Type | Description  | Notes
  **environment_key** | **string**| The environment key |
  **id** | **string**| The scheduled change ID |
  **flag_scheduled_changes_input** | [**\LaunchDarklyApi\Model\FlagScheduledChangesInput**](../Model/FlagScheduledChangesInput.md)|  |
- **ignore_conflicts** | **bool**| Whether or not to succeed or fail when the new instructions conflict with existing scheduled changes | [optional]
+ **ignore_conflicts** | **bool**| Whether to succeed (&#x60;true&#x60;) or fail (&#x60;false&#x60;) when these new instructions conflict with existing scheduled changes | [optional]
 
 ### Return type
 
@@ -292,7 +292,7 @@ postFlagConfigScheduledChanges($project_key, $feature_flag_key, $environment_key
 
 Create scheduled changes workflow
 
-Create scheduled changes for a feature flag. If the ignoreConficts query parameter is false and the new instructions would conflict with the current state of the feature flag or any existing scheduled changes, the request will fail. If the parameter is true and there are conflicts, the request will succeed as normal.
+Create scheduled changes for a feature flag. If the `ignoreConficts` query parameter is false and there are conflicts between these instructions and existing scheduled changes, the request will fail. If the parameter is true and there are conflicts, the request will succeed.
 
 ### Example
 
@@ -316,8 +316,8 @@ $apiInstance = new LaunchDarklyApi\Api\ScheduledChangesApi(
 $project_key = 'project_key_example'; // string | The project key
 $feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
-$post_flag_scheduled_changes_input = new \LaunchDarklyApi\Model\PostFlagScheduledChangesInput(); // \LaunchDarklyApi\Model\PostFlagScheduledChangesInput
-$ignore_conflicts = True; // bool | Whether or not to succeed or fail when the new instructions conflict with existing scheduled changes
+$post_flag_scheduled_changes_input = {"comment":"Optional comment describing the scheduled changes","executionDate":1718467200000,"instructions":[{"kind":"turnFlagOn"}]}; // \LaunchDarklyApi\Model\PostFlagScheduledChangesInput
+$ignore_conflicts = True; // bool | Whether to succeed (`true`) or fail (`false`) when these instructions conflict with existing scheduled changes
 
 try {
     $result = $apiInstance->postFlagConfigScheduledChanges($project_key, $feature_flag_key, $environment_key, $post_flag_scheduled_changes_input, $ignore_conflicts);
@@ -335,7 +335,7 @@ Name | Type | Description  | Notes
  **feature_flag_key** | **string**| The feature flag key |
  **environment_key** | **string**| The environment key |
  **post_flag_scheduled_changes_input** | [**\LaunchDarklyApi\Model\PostFlagScheduledChangesInput**](../Model/PostFlagScheduledChangesInput.md)|  |
- **ignore_conflicts** | **bool**| Whether or not to succeed or fail when the new instructions conflict with existing scheduled changes | [optional]
+ **ignore_conflicts** | **bool**| Whether to succeed (&#x60;true&#x60;) or fail (&#x60;false&#x60;) when these instructions conflict with existing scheduled changes | [optional]
 
 ### Return type
 

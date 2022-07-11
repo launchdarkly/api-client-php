@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteEnvironment()**](EnvironmentsApi.md#deleteEnvironment) | **DELETE** /api/v2/projects/{projectKey}/environments/{environmentKey} | Delete environment
 [**getEnvironment()**](EnvironmentsApi.md#getEnvironment) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey} | Get environment
+[**getEnvironmentsByProject()**](EnvironmentsApi.md#getEnvironmentsByProject) | **GET** /api/v2/projects/{projectKey}/environments | List environments
 [**patchEnvironment()**](EnvironmentsApi.md#patchEnvironment) | **PATCH** /api/v2/projects/{projectKey}/environments/{environmentKey} | Update environment
 [**postEnvironment()**](EnvironmentsApi.md#postEnvironment) | **POST** /api/v2/projects/{projectKey}/environments | Create environment
 [**resetEnvironmentMobileKey()**](EnvironmentsApi.md#resetEnvironmentMobileKey) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/mobileKey | Reset environment mobile SDK key
@@ -125,6 +126,76 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\LaunchDarklyApi\Model\Environment**](../Model/Environment.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getEnvironmentsByProject()`
+
+```php
+getEnvironmentsByProject($project_key, $limit, $offset, $filter, $sort): \LaunchDarklyApi\Model\Environments
+```
+
+List environments
+
+Return a list of environments for the specified project.  By default, this returns the first 20 environments. Page through this list with the `limit` parameter and by following the `first`, `prev`, `next`, and `last` links in the `_links` field that returns. If those links do not appear, the pages they refer to don't exist. For example, the `first` and `prev` links will be missing from the response on the first page, because there is no previous page and you cannot return to the first page when you are already on the first page.  ### Filtering environments  LaunchDarkly supports two fields for filters: - `query` is a string that matches against the environments' names and keys. It is not case sensitive. - `tags` is a `+` separate list of environment tags. It filters the list of environments that have all of the tags in the list.  For example, the filter `query:abc,tags:tag-1+tag-2` matches environments with the string `abc` in their name or key and also are tagged with `tag-1` and `tag-2`. The filter is not case-sensitive.  ### Sorting environments  LaunchDarkly supports two fields for sorting: - `name` sorts by environment name. - `createdOn` sorts by the creation date of the environment.  For example, `sort=name` sorts the response by environment name in ascending order.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\EnvironmentsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = 'project_key_example'; // string | The project key
+$limit = 56; // int | The number of environments to return in the response. Defaults to 20.
+$offset = 56; // int | Where to start in the list. This is for use with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
+$filter = 'filter_example'; // string | A comma-separated list of filters. Each filter is of the form `field:value`.
+$sort = 'sort_example'; // string | A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order.
+
+try {
+    $result = $apiInstance->getEnvironmentsByProject($project_key, $limit, $offset, $filter, $sort);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling EnvironmentsApi->getEnvironmentsByProject: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key |
+ **limit** | **int**| The number of environments to return in the response. Defaults to 20. | [optional]
+ **offset** | **int**| Where to start in the list. This is for use with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional]
+ **filter** | **string**| A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. | [optional]
+ **sort** | **string**| A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. | [optional]
+
+### Return type
+
+[**\LaunchDarklyApi\Model\Environments**](../Model/Environments.md)
 
 ### Authorization
 

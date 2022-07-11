@@ -19,7 +19,7 @@ deleteProject($project_key)
 
 Delete project
 
-Delete a project by key. Caution: deleting a project will delete all associated environments and feature flags. You cannot delete the last project in an account.
+Delete a project by key. Use this endpoint with caution. Deleting a project will delete all associated environments and feature flags. You cannot delete the last project in an account.
 
 ### Example
 
@@ -75,12 +75,12 @@ void (empty response body)
 ## `getProject()`
 
 ```php
-getProject($project_key): \LaunchDarklyApi\Model\Project
+getProject($project_key, $expand): \LaunchDarklyApi\Model\Project
 ```
 
 Get project
 
-Get a single project by key.
+Get a single project by key.  ### Expanding the project response  LaunchDarkly supports one field for expanding the \"Get project\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with any of the following fields: * `environments` includes a paginated list of the project environments.  For example, `expand=environments` includes the `environments` field for the project in the response.
 
 ### Example
 
@@ -101,10 +101,11 @@ $apiInstance = new LaunchDarklyApi\Api\ProjectsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$project_key = 'project_key_example'; // string | The project key
+$project_key = 'project_key_example'; // string | The project key.
+$expand = 'expand_example'; // string | A comma-separated list of properties that can reveal additional information in the response.
 
 try {
-    $result = $apiInstance->getProject($project_key);
+    $result = $apiInstance->getProject($project_key, $expand);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectsApi->getProject: ', $e->getMessage(), PHP_EOL;
@@ -115,7 +116,8 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
+ **project_key** | **string**| The project key. |
+ **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional]
 
 ### Return type
 
@@ -137,12 +139,12 @@ Name | Type | Description  | Notes
 ## `getProjects()`
 
 ```php
-getProjects(): \LaunchDarklyApi\Model\Projects
+getProjects($limit, $offset, $filter, $expand): \LaunchDarklyApi\Model\Projects
 ```
 
 List projects
 
-Get a list of all projects in the account.
+Return a list of projects.  By default, this returns the first 20 projects. Page through this list with the `limit` parameter and by following the `first`, `prev`, `next`, and `last` links in the `_links` field that returns. If those links do not appear, the pages they refer to don't exist. For example, the `first` and `prev` links will be missing from the response on the first page, because there is no previous page and you cannot return to the first page when you are already on the first page.  ### Filtering projects  LaunchDarkly supports two fields for filters: - `query` is a string that matches against the projects' names and keys. It is not case sensitive. - `tags` is a `+` separate list of project tags. It filters the list of projects that have all of the tags in the list.  For example, the filter `query:abc,tags:tag-1+tag-2` matches projects with the string `abc` in their name or key and also are tagged with `tag-1` and `tag-2`. The filter is not case-sensitive.  ### Sorting projects  LaunchDarkly supports two fields for sorting: - `name` sorts by project name. - `createdOn` sorts by the creation date of the project.  For example, `sort=name` sorts the response by project name in ascending order.  ### Expanding the projects response  LaunchDarkly supports one field for expanding the \"List projects\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with the `environments` field.  `Environments` includes a paginated list of the project environments. * `environments` includes a paginated list of the project environments.  For example, `expand=environments` includes the `environments` field for each project in the response.
 
 ### Example
 
@@ -163,9 +165,13 @@ $apiInstance = new LaunchDarklyApi\Api\ProjectsApi(
     new GuzzleHttp\Client(),
     $config
 );
+$limit = 56; // int | The number of projects to return in the response. Defaults to 20.
+$offset = 56; // int | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next `limit` items.
+$filter = 'filter_example'; // string | A comma-separated list of filters. Each filter is constructed as `field:value`.
+$expand = 'expand_example'; // string | A comma-separated list of properties that can reveal additional information in the response.
 
 try {
-    $result = $apiInstance->getProjects();
+    $result = $apiInstance->getProjects($limit, $offset, $filter, $expand);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectsApi->getProjects: ', $e->getMessage(), PHP_EOL;
@@ -174,7 +180,12 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int**| The number of projects to return in the response. Defaults to 20. | [optional]
+ **offset** | **int**| Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next &#x60;limit&#x60; items. | [optional]
+ **filter** | **string**| A comma-separated list of filters. Each filter is constructed as &#x60;field:value&#x60;. | [optional]
+ **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional]
 
 ### Return type
 
@@ -196,7 +207,7 @@ This endpoint does not need any parameter.
 ## `patchProject()`
 
 ```php
-patchProject($project_key, $patch_operation): \LaunchDarklyApi\Model\Project
+patchProject($project_key, $patch_operation): \LaunchDarklyApi\Model\ProjectRep
 ```
 
 Update project
@@ -242,7 +253,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\Project**](../Model/Project.md)
+[**\LaunchDarklyApi\Model\ProjectRep**](../Model/ProjectRep.md)
 
 ### Authorization
 
@@ -260,7 +271,7 @@ Name | Type | Description  | Notes
 ## `postProject()`
 
 ```php
-postProject($project_post): \LaunchDarklyApi\Model\Project
+postProject($project_post): \LaunchDarklyApi\Model\ProjectRep
 ```
 
 Create project
@@ -304,7 +315,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\Project**](../Model/Project.md)
+[**\LaunchDarklyApi\Model\ProjectRep**](../Model/ProjectRep.md)
 
 ### Authorization
 

@@ -13,7 +13,7 @@ Name | Type | Description | Notes
 **creation_date** | **int** |  |
 **last_modified** | **int** |  |
 **custom_role_ids** | **string[]** |  | [optional]
-**inline_role** | [**\LaunchDarklyApi\Model\StatementRep[]**](StatementRep.md) |  | [optional]
+**inline_role** | [**\LaunchDarklyApi\Model\Statement[]**](Statement.md) |  | [optional]
 **role** | **string** |  | [optional]
 **token** | **string** |  | [optional]
 **service_token** | **bool** |  | [optional]

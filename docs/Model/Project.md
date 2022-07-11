@@ -11,6 +11,6 @@ Name | Type | Description | Notes
 **default_client_side_availability** | [**\LaunchDarklyApi\Model\ClientSideAvailability**](ClientSideAvailability.md) |  | [optional]
 **name** | **string** |  |
 **tags** | **string[]** |  |
-**environments** | [**\LaunchDarklyApi\Model\Environment[]**](Environment.md) |  |
+**environments** | [**\LaunchDarklyApi\Model\Environments**](Environments.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

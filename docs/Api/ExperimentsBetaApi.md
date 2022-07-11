@@ -22,7 +22,7 @@ createExperiment($project_key, $environment_key, $experiment_post): \LaunchDarkl
 
 Create experiment
 
-Create an experiment
+Create an experiment. To learn more, read [Creating experiments](https://docs.launchdarkly.com/home/creating-experiments).
 
 ### Example
 
@@ -88,7 +88,7 @@ createIteration($project_key, $environment_key, $experiment_key, $iteration_inpu
 
 Create iteration
 
-Create an experiment iteration
+Create an experiment iteration. Experiment iterations let you record experiments in discrete blocks of time. To learn more, read [Starting experiment iterations](https://docs.launchdarkly.com/home/creating-experiments#starting-experiment-iterations).
 
 ### Example
 
@@ -156,7 +156,7 @@ getExperiment($project_key, $environment_key, $experiment_key): \LaunchDarklyApi
 
 Get experiment
 
-Get details about an experiment
+Get details about an experiment.
 
 ### Example
 
@@ -217,12 +217,12 @@ Name | Type | Description  | Notes
 ## `getExperimentResults()`
 
 ```php
-getExperimentResults($project_key, $environment_key, $experiment_key, $metric_key): \LaunchDarklyApi\Model\ExperimentResults
+getExperimentResults($project_key, $environment_key, $experiment_key, $metric_key): \LaunchDarklyApi\Model\ExperimentBayesianResultsRep
 ```
 
 Get experiment results
 
-Get results from an experiment for a particular metric
+Get results from an experiment for a particular metric.
 
 ### Example
 
@@ -267,7 +267,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\ExperimentResults**](../Model/ExperimentResults.md)
+[**\LaunchDarklyApi\Model\ExperimentBayesianResultsRep**](../Model/ExperimentBayesianResultsRep.md)
 
 ### Authorization
 
@@ -285,12 +285,12 @@ Name | Type | Description  | Notes
 ## `getExperiments()`
 
 ```php
-getExperiments($project_key, $environment_key): \LaunchDarklyApi\Model\ExperimentCollectionRep
+getExperiments($project_key, $environment_key, $limit, $offset, $filter, $expand): \LaunchDarklyApi\Model\ExperimentCollectionRep
 ```
 
 Get experiments
 
-Get details about all experiments in an environment
+Get details about all experiments in an environment.  ### Filtering experiments  LaunchDarkly supports the `filter` query param for filtering, with the following fields:  - `flagKey` filters for only experiments that use the flag with the given key. - `metricKey` filters for only experiments that use the metric with the given key. - `status` filters for only experiments with an iteration with the given status. An iteration can have the status `not_started`, `running` or `stopped`.  For example, `filter=flagKey:my-flag,status:running,metricKey:page-load-ms` filters for experiments for the given flag key and the given metric key which have a currently running iteration.  ### Expanding the experiments response LaunchDarkly supports four fields for expanding the \"List experiments\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with any of the following fields:  - `previousIterations` includes all iterations prior to the current iteration.  By default only the current iteration will be included in the response. - `draftIteration` includes a draft of an iteration which has not been started yet, if any. - `secondaryMetrics` includes secondary metrics.  By default only the primary metric is included in the response. - `treatments` includes all treatment and parameter details.  By default treatment data will not be included in the response.  For example, `expand=draftIteration,treatments` includes the `draftIteration` and `treatments` fields in the response.
 
 ### Example
 
@@ -313,9 +313,13 @@ $apiInstance = new LaunchDarklyApi\Api\ExperimentsBetaApi(
 );
 $project_key = 'project_key_example'; // string | The project key
 $environment_key = 'environment_key_example'; // string | The environment key
+$limit = 56; // int | The maximum number of experiments to return. Defaults to 20
+$offset = 56; // int | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
+$filter = 'filter_example'; // string | A comma-separated list of filters. Each filter is of the form `field:value`. Supported fields are explained above.
+$expand = 'expand_example'; // string | A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above.
 
 try {
-    $result = $apiInstance->getExperiments($project_key, $environment_key);
+    $result = $apiInstance->getExperiments($project_key, $environment_key, $limit, $offset, $filter, $expand);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ExperimentsBetaApi->getExperiments: ', $e->getMessage(), PHP_EOL;
@@ -328,6 +332,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
  **environment_key** | **string**| The environment key |
+ **limit** | **int**| The maximum number of experiments to return. Defaults to 20 | [optional]
+ **offset** | **int**| Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional]
+ **filter** | **string**| A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained above. | [optional]
+ **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above. | [optional]
 
 ### Return type
 
@@ -354,7 +362,7 @@ getLegacyExperimentResults($project_key, $feature_flag_key, $environment_key, $m
 
 Get legacy experiment results (deprecated)
 
-Get detailed experiment result data for legacy experiments
+Get detailed experiment result data for legacy experiments.
 
 ### Example
 
@@ -426,7 +434,7 @@ patchExperiment($project_key, $environment_key, $experiment_key, $experiment_pat
 
 Patch experiment
 
-Patch an Experiment
+Update an experiment. Updating an experiment uses the semantic patch format.  To make a semantic patch request, you must append `domain-model=launchdarkly.semanticpatch` to your `Content-Type` header. To learn more, read [Updates using semantic patch](/reference#updates-using-semantic-patch).  ### Instructions  Semantic patch requests support the following `kind` instructions for updating experiments.  #### updateName  Updates the experiment name.  ##### Parameters  - `value`: The new name.  #### updateDescription  Updates the experiment description.  ##### Parameters  - `value`: The new description.  #### startIteration  Starts a new iteration for this experiment.  #### stopIteration  Stops the current iteration for this experiment.
 
 ### Example
 
@@ -450,7 +458,7 @@ $apiInstance = new LaunchDarklyApi\Api\ExperimentsBetaApi(
 $project_key = 'project_key_example'; // string | The project key
 $environment_key = 'environment_key_example'; // string | The environment key
 $experiment_key = 'experiment_key_example'; // string | The experiment key
-$experiment_patch_input = new \LaunchDarklyApi\Model\ExperimentPatchInput(); // \LaunchDarklyApi\Model\ExperimentPatchInput
+$experiment_patch_input = {"comment":"Example comment describing the update","instructions":[{"kind":"updateName","value":"Updated experiment name"}]}; // \LaunchDarklyApi\Model\ExperimentPatchInput
 
 try {
     $result = $apiInstance->patchExperiment($project_key, $environment_key, $experiment_key, $experiment_patch_input);
@@ -494,7 +502,7 @@ resetExperiment($project_key, $feature_flag_key, $environment_key, $metric_key)
 
 Reset experiment results
 
-Reset all experiment results by deleting all existing data for an experiment
+Reset all experiment results by deleting all existing data for an experiment.
 
 ### Example
 

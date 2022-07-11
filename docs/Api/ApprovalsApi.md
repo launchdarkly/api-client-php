@@ -21,7 +21,7 @@ deleteApprovalRequest($project_key, $feature_flag_key, $environment_key, $id)
 
 Delete approval request
 
-Delete an approval request for a feature flag
+Delete an approval request for a feature flag.
 
 ### Example
 
@@ -88,7 +88,7 @@ getApproval($project_key, $feature_flag_key, $environment_key, $id): \LaunchDark
 
 Get approval request
 
-Get a single approval request for a feature flag
+Get a single approval request for a feature flag.
 
 ### Example
 
@@ -156,7 +156,7 @@ getApprovals($project_key, $feature_flag_key, $environment_key): \LaunchDarklyAp
 
 List all approval requests
 
-Get all approval requests for a feature flag
+Get all approval requests for a feature flag.
 
 ### Example
 
@@ -222,7 +222,7 @@ postApprovalRequest($project_key, $feature_flag_key, $environment_key, $create_f
 
 Create approval request
 
-Create an approval request for a feature flag
+Create an approval request for a feature flag.
 
 ### Example
 
@@ -290,7 +290,7 @@ postApprovalRequestApplyRequest($project_key, $feature_flag_key, $environment_ke
 
 Apply approval request
 
-Apply approval request by either approving or declining changes.
+Apply an approval request that has been approved.
 
 ### Example
 
@@ -360,7 +360,7 @@ postApprovalRequestReview($project_key, $feature_flag_key, $environment_key, $id
 
 Review approval request
 
-Review approval request by either approving or declining changes.
+Review an approval request by approving or denying changes.
 
 ### Example
 
@@ -453,7 +453,7 @@ $apiInstance = new LaunchDarklyApi\Api\ApprovalsApi(
 );
 $project_key = 'project_key_example'; // string | The project key
 $feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
-$environment_key = 'environment_key_example'; // string | The environment key
+$environment_key = 'environment_key_example'; // string | The environment key for the target environment
 $create_copy_flag_config_approval_request_request = new \LaunchDarklyApi\Model\CreateCopyFlagConfigApprovalRequestRequest(); // \LaunchDarklyApi\Model\CreateCopyFlagConfigApprovalRequestRequest
 
 try {
@@ -470,7 +470,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
  **feature_flag_key** | **string**| The feature flag key |
- **environment_key** | **string**| The environment key |
+ **environment_key** | **string**| The environment key for the target environment |
  **create_copy_flag_config_approval_request_request** | [**\LaunchDarklyApi\Model\CreateCopyFlagConfigApprovalRequestRequest**](../Model/CreateCopyFlagConfigApprovalRequestRequest.md)|  |
 
 ### Return type

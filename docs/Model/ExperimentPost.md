@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **name** | **string** |  |
-**description** | **string** |  |
+**description** | **string** |  | [optional]
 **maintainer_id** | **string** |  |
 **key** | **string** |  |
 **iteration** | [**\LaunchDarklyApi\Model\IterationInput**](IterationInput.md) |  |

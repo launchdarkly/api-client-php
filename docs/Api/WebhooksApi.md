@@ -265,7 +265,7 @@ postWebhook($webhook_post): \LaunchDarklyApi\Model\Webhook
 
 Creates a webhook
 
-Create a new webhook
+Create a new webhook.
 
 ### Example
 
@@ -286,7 +286,7 @@ $apiInstance = new LaunchDarklyApi\Api\WebhooksApi(
     new GuzzleHttp\Client(),
     $config
 );
-$webhook_post = {"name":"apidocs test webhook","on":true,"sign":false,"statements":[{"actions":["*"],"effect":"allow","resources":["proj/test"]}],"tags":[],"url":"https://example.com"}; // \LaunchDarklyApi\Model\WebhookPost
+$webhook_post = {"name":"apidocs test webhook","on":true,"sign":false,"statements":[{"actions":["*"],"effect":"allow","resources":["proj/test"]}],"tags":["example-tag"],"url":"https://example.com"}; // \LaunchDarklyApi\Model\WebhookPost
 
 try {
     $result = $apiInstance->postWebhook($webhook_post);

@@ -20,7 +20,7 @@ deleteRelayAutoConfig($id)
 
 Delete Relay Proxy config by ID
 
-Delete a Relay Proxy config
+Delete a Relay Proxy config.
 
 ### Example
 
@@ -81,7 +81,7 @@ getRelayProxyConfig($id): \LaunchDarklyApi\Model\RelayAutoConfigRep
 
 Get Relay Proxy config
 
-Get a single Relay Proxy Auto Config by ID
+Get a single Relay Proxy auto config by ID.
 
 ### Example
 
@@ -202,7 +202,7 @@ patchRelayAutoConfig($id, $patch_with_comment): \LaunchDarklyApi\Model\RelayAuto
 
 Update a Relay Proxy config
 
-Update a Relay Proxy config.
+Update a Relay Proxy config using the JSON patch format.
 
 ### Example
 
@@ -266,7 +266,7 @@ postRelayAutoConfig($relay_auto_config_post): \LaunchDarklyApi\Model\RelayAutoCo
 
 Create a new Relay Proxy config
 
-Create a Relay Proxy config
+Create a Relay Proxy config.
 
 ### Example
 

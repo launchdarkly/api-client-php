@@ -15,12 +15,13 @@ Name | Type | Description | Notes
 **_pending_email** | **string** |  | [optional]
 **custom_roles** | **string[]** | The set of custom roles (as keys) assigned to the member |
 **mfa** | **string** | Whether or not multi-factor authentication is enabled for this member |
-**excluded_dashboards** | **string[]** | Default dashboards that the member has chosen to ignore |
+**excluded_dashboards** | **string[]** | Default dashboards that the member has chosen to ignore | [optional]
 **_last_seen** | **int** |  |
 **_last_seen_metadata** | [**\LaunchDarklyApi\Model\LastSeenMetadata**](LastSeenMetadata.md) |  | [optional]
 **_integration_metadata** | [**\LaunchDarklyApi\Model\IntegrationMetadata**](IntegrationMetadata.md) |  | [optional]
 **teams** | [**\LaunchDarklyApi\Model\MemberTeamSummaryRep[]**](MemberTeamSummaryRep.md) |  | [optional]
 **permission_grants** | [**\LaunchDarklyApi\Model\MemberPermissionGrantSummaryRep[]**](MemberPermissionGrantSummaryRep.md) |  | [optional]
 **creation_date** | **int** |  |
+**oauth_providers** | **string[]** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

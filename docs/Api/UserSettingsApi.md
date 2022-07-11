@@ -85,7 +85,7 @@ getUserFlagSetting($project_key, $environment_key, $user_key, $feature_flag_key)
 
 Get flag setting for user
 
-Get a single flag setting for a user by key. The most important attribute in the response is the `_value`. The `_value` is the current setting that the user sees. For a boolean feature toggle, this is `true`, `false`, or `null`. `null` returns if there is no defined fallback value. The example response indicates that the user `Abbie_Braun` has the `sort.order` flag enabled.<br /><br />The setting attribute indicates whether you've explicitly targeted a user to receive a particular variation. For example, if you have turned off a feature flag for a user, this setting will be `false`. A setting of `null` means that you haven't assigned that user to a specific variation.
+Get a single flag setting for a user by flag key. <br /><br />The `_value` is the flag variation that the user receives. The `setting` indicates whether you've explicitly targeted a user to receive a particular variation. For example, if you have turned off a feature flag for a user, this setting will be `false`. The example response indicates that the user `Abbie_Braun` has the `sort.order` flag enabled.
 
 ### Example
 
@@ -153,7 +153,7 @@ getUserFlagSettings($project_key, $environment_key, $user_key): \LaunchDarklyApi
 
 List flag settings for user
 
-Get the current flag settings for a given user. The most important attribute in the response is the `_value`. The `_value` is the setting that the user sees. For a boolean feature toggle, this is `true`, `false`, or `null`. `null` returns if there is no defined fallthrough value. The example response indicates that the user `Abbie_Braun` has the `sort.order` flag enabled and the `alternate.page` flag disabled.<br /><br />The setting attribute indicates whether you've explicitly targeted a user to receive a particular variation. For example, if you have turned off a feature flag for a user, this setting will be `false`. A setting of `null` means that you haven't assigned that user to a specific variation.
+Get the current flag settings for a given user. <br /><br />The `_value` is the flag variation that the user receives. The `setting` indicates whether you've explicitly targeted a user to receive a particular variation. For example, if you have turned off a feature flag for a user, this setting will be `false`. The example response indicates that the user `Abbie_Braun` has the `sort.order` flag enabled and the `alternate.page` flag disabled, and that the user has not been explicitly targeted to receive a particular variation.
 
 ### Example
 
@@ -214,12 +214,12 @@ Name | Type | Description  | Notes
 ## `patchExpiringFlagsForUser()`
 
 ```php
-patchExpiringFlagsForUser($project_key, $user_key, $environment_key, $patch_with_comment): \LaunchDarklyApi\Model\ExpiringUserTargetPatchResponse
+patchExpiringFlagsForUser($project_key, $user_key, $environment_key, $patch_users_request): \LaunchDarklyApi\Model\ExpiringUserTargetPatchResponse
 ```
 
 Update expiring user target for flags
 
-Schedule the specified user for removal from individual user targeting on one or more flags. You can only schedule a user for removal on a single variation per flag.  To learn more about semantic patches, read [Updates](/#section/Updates).  If you previously patched the flag, and the patch included the user's data, LaunchDarkly continues to use that data. If LaunchDarkly has never encountered the user's key before, it calculates the flag values based on the user key alone.
+Schedule the specified user for removal from individual targeting on one or more flags. The user must already be individually targeted for each flag.  You can add, update, or remove a scheduled removal date. You can only schedule a user for removal on a single variation per flag.  This request only supports semantic patches. To make a semantic patch request, you must append `domain-model=launchdarkly.semanticpatch` to your `Content-Type` header. To learn more, read [Updates using semantic patch](/reference#updates-using-semantic-patch).  ### Instructions  #### addExpireUserTargetDate  Adds a date and time that LaunchDarkly will remove the user from the flag's individual targeting.  ##### Parameters  * `value`: The time, in Unix milliseconds, when LaunchDarkly should remove the user from individual targeting for this flag.  #### updateExpireUserTargetDate  Updates the date and time that LaunchDarkly will remove the user from the flag's individual targeting.  ##### Parameters  * `value`: The time, in Unix milliseconds, when LaunchDarkly should remove the user from individual targeting for this flag. * `version`: The version of the flag variation to update. You can retrieve this by making a GET request for the flag.  #### removeExpireUserTargetDate  Removes the scheduled removal of the user from the flag's individual targeting. The user will remain part of the flag's individual targeting until explicitly removed, or until another removal is scheduled.
 
 ### Example
 
@@ -243,10 +243,10 @@ $apiInstance = new LaunchDarklyApi\Api\UserSettingsApi(
 $project_key = 'project_key_example'; // string | The project key
 $user_key = 'user_key_example'; // string | The user key
 $environment_key = 'environment_key_example'; // string | The environment key
-$patch_with_comment = new \LaunchDarklyApi\Model\PatchWithComment(); // \LaunchDarklyApi\Model\PatchWithComment
+$patch_users_request = new \LaunchDarklyApi\Model\PatchUsersRequest(); // \LaunchDarklyApi\Model\PatchUsersRequest
 
 try {
-    $result = $apiInstance->patchExpiringFlagsForUser($project_key, $user_key, $environment_key, $patch_with_comment);
+    $result = $apiInstance->patchExpiringFlagsForUser($project_key, $user_key, $environment_key, $patch_users_request);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling UserSettingsApi->patchExpiringFlagsForUser: ', $e->getMessage(), PHP_EOL;
@@ -260,7 +260,7 @@ Name | Type | Description  | Notes
  **project_key** | **string**| The project key |
  **user_key** | **string**| The user key |
  **environment_key** | **string**| The environment key |
- **patch_with_comment** | [**\LaunchDarklyApi\Model\PatchWithComment**](../Model/PatchWithComment.md)|  |
+ **patch_users_request** | [**\LaunchDarklyApi\Model\PatchUsersRequest**](../Model/PatchUsersRequest.md)|  |
 
 ### Return type
 
@@ -287,7 +287,7 @@ putFlagSetting($project_key, $environment_key, $user_key, $feature_flag_key, $va
 
 Update flag settings for user
 
-Enable or disable a feature flag for a user based on their key.  To change the setting, send a `PUT` request to this URL with a request body containing the flag value. For example, to disable the sort.order flag for the user `test@test.com`, send a `PUT` to `https://app.launchdarkly.com/api/v2/users/default/production/test@test.com/flags/sort.order` with the following body:  ```json {   \"setting\": false } ```  Omitting the setting attribute, or a setting of null, in your `PUT` \"clears\" the current setting for a user.  If you previously patched the flag, and the patch included the user's data, LaunchDarkly continues to use that data. If LaunchDarkly has never encountered the user's key before, it calculates the flag values based on the user key alone.
+Enable or disable a feature flag for a user based on their key.  Omitting the `setting` attribute from the request body, or including a `setting` of `null`, erases the current setting for a user.  If you previously patched the flag, and the patch included the user's data, LaunchDarkly continues to use that data. If LaunchDarkly has never encountered the user's key before, it calculates the flag values based on the user key alone.
 
 ### Example
 

@@ -8,7 +8,7 @@ Method | HTTP request | Description
 [**getDestination()**](DataExportDestinationsApi.md#getDestination) | **GET** /api/v2/destinations/{projectKey}/{environmentKey}/{id} | Get destination
 [**getDestinations()**](DataExportDestinationsApi.md#getDestinations) | **GET** /api/v2/destinations | List destinations
 [**patchDestination()**](DataExportDestinationsApi.md#patchDestination) | **PATCH** /api/v2/destinations/{projectKey}/{environmentKey}/{id} | Update Data Export destination
-[**postDestination()**](DataExportDestinationsApi.md#postDestination) | **POST** /api/v2/destinations/{projectKey}/{environmentKey} | Create data export destination
+[**postDestination()**](DataExportDestinationsApi.md#postDestination) | **POST** /api/v2/destinations/{projectKey}/{environmentKey} | Create Data Export destination
 
 
 ## `deleteDestination()`
@@ -19,7 +19,7 @@ deleteDestination($project_key, $environment_key, $id)
 
 Delete Data Export destination
 
-Delete Data Export destination by ID
+Delete a Data Export destination by ID.
 
 ### Example
 
@@ -84,7 +84,7 @@ getDestination($project_key, $environment_key, $id): \LaunchDarklyApi\Model\Dest
 
 Get destination
 
-Get a single Data Export destination by ID
+Get a single Data Export destination by ID.
 
 ### Example
 
@@ -275,9 +275,9 @@ Name | Type | Description  | Notes
 postDestination($project_key, $environment_key, $destination_post): \LaunchDarklyApi\Model\Destination
 ```
 
-Create data export destination
+Create Data Export destination
 
-Create a new destination. The `config` body parameter represents the configuration parameters required for a destination type.
+Create a new Data Export destination.  In the `config` request body parameter, the fields required depend on the type of Data Export destination.  <details> <summary>Click to expand <code>config</code> parameter details</summary>  #### Azure Event Hubs  To create a Data Export destination with a `kind` of `azure-event-hubs`, the `config` object requires the following fields:  * `namespace`: The Event Hub Namespace name * `name`: The Event Hub name * `policyName`: The shared access signature policy name. You can find your policy name in the settings of your Azure Event Hubs Namespace. * `policyKey`: The shared access signature key. You can find your policy key in the settings of your Azure Event Hubs Namespace.  #### Google Cloud Pub/Sub  To create a Data Export destination with a `kind` of `google-pubsub`, the `config` object requires the following fields:  * `project`: The Google PubSub project ID for the project to publish to * `topic`: The Google PubSub topic ID for the topic to publish to  #### Amazon Kinesis  To create a Data Export destination with a `kind` of `kinesis`, the `config` object requires the following fields:  * `region`: The Kinesis stream's AWS region key * `roleArn`: The Amazon Resource Name (ARN) of the AWS role that will be writing to Kinesis * `streamName`: The name of the Kinesis stream that LaunchDarkly is sending events to. This is not the ARN of the stream.  #### mParticle  To create a Data Export destination with a `kind` of `mparticle`, the `config` object requires the following fields:  * `apiKey`: The mParticle API key * `secret`: The mParticle API secret * `userIdentity`: The type of identifier you use to identify your users in mParticle * `anonymousUserIdentity`: The type of identifier you use to identify your anonymous users in mParticle  #### Segment  To create a Data Export destination with a `kind` of `segment`, the `config` object requires the following fields:  * `writeKey`: The Segment write key. This is used to authenticate LaunchDarkly's calls to Segment.  </details>
 
 ### Example
 

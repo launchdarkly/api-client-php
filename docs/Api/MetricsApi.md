@@ -274,7 +274,7 @@ postMetric($project_key, $metric_post): \LaunchDarklyApi\Model\MetricRep
 
 Create metric
 
-Create a new metric in the specified project. Note that the expected POST body differs depending on the specified kind property.
+Create a new metric in the specified project. The expected `POST` body differs depending on the specified `kind` property.
 
 ### Example
 
@@ -296,7 +296,7 @@ $apiInstance = new LaunchDarklyApi\Api\MetricsApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$metric_post = {"key":"my-metric","kind":"pageview","urls":[{"kind":"substring","substring":"foo"}]}; // \LaunchDarklyApi\Model\MetricPost
+$metric_post = {"eventKey":"trackedClick","isActive":true,"isNumeric":false,"key":"my-metric","kind":"custom"}; // \LaunchDarklyApi\Model\MetricPost
 
 try {
     $result = $apiInstance->postMetric($project_key, $metric_post);

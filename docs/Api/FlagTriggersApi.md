@@ -19,7 +19,7 @@ createTriggerWorkflow($project_key, $environment_key, $feature_flag_key, $trigge
 
 Create flag trigger
 
-Create a new flag trigger. Triggers let you initiate changes to flag targeting remotely using a unique webhook URL.
+Create a new flag trigger.
 
 ### Example
 
@@ -288,7 +288,7 @@ patchTriggerWorkflow($project_key, $environment_key, $feature_flag_key, $id, $fl
 
 Update flag trigger
 
-Update a flag trigger. The request body must be a valid JSON patch or JSON merge patch document. To learn more, read [Updates](/#section/Overview/Updates).
+Update a flag trigger. Updating a flag trigger uses the semantic patch format.  To make a semantic patch request, you must append `domain-model=launchdarkly.semanticpatch` to your `Content-Type` header. To learn more, read [Updates using semantic patch](/reference#updates-using-semantic-patch).  ### Instructions  Semantic patch requests support the following `kind` instructions for updating flag triggers.  #### replaceTriggerActionInstructions  Removes the existing trigger action and replaces it with the new instructions.  ##### Parameters  - `value`: An array of the new `kind`s of actions to perform when triggering. Supported flag actions are `turnFlagOn` and `turnFlagOff`.  For example, to replace the trigger action instructions, use this request body:  ```json {   \"comment\": \"optional comment\",   \"instructions\": [     {       \"kind\": \"replaceTriggerActionInstructions\",       \"value\": [ {\"kind\": \"turnFlagOff\"} ]     }   ] } ```  #### cycleTriggerUrl  Generates a new URL for this trigger. You must update any clients using the trigger to use this new URL.  #### disableTrigger  Disables the trigger. This saves the trigger configuration, but the trigger stops running. To re-enable, use `enableTrigger`.  #### enableTrigger  Enables the trigger. If you previously disabled the trigger, it begins running again.
 
 ### Example
 

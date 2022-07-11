@@ -286,7 +286,7 @@ $apiInstance = new LaunchDarklyApi\Api\CustomRolesApi(
     new GuzzleHttp\Client(),
     $config
 );
-$custom_role_post = {"basePermissions":"reader","description":"A role for members of the ops team","key":"ops-team","name":"Ops team","policy":[{"actions":["updateOn"],"effect":"allow","resources":["proj/*:env/production:flag/*"]}]}; // \LaunchDarklyApi\Model\CustomRolePost
+$custom_role_post = {"basePermissions":"reader","description":"An example role for members of the ops team","key":"ops-team","name":"Ops team","policy":[{"actions":["updateOn"],"effect":"allow","resources":["proj/*:env/production:flag/*"]}]}; // \LaunchDarklyApi\Model\CustomRolePost
 
 try {
     $result = $apiInstance->postCustomRole($custom_role_post);

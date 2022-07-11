@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**comment** | **string** |  | [optional]
-**instructions** | **mixed[]** | The action to perform when triggering. It should pass an array with a single {\&quot;kind\&quot;: &lt;flag_action&gt;} object. Currently supported flag actions are \&quot;turnFlagOn\&quot; and \&quot;turnFlagOff\&quot;. | [optional]
+**comment** | **string** | Optional comment describing the update | [optional]
+**instructions** | **array[]** | The instructions to perform when updating. This should be an array with objects that look like &lt;code&gt;{\&quot;kind\&quot;: \&quot;trigger_action\&quot;}&lt;/code&gt;. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

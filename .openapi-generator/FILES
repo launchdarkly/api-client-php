@@ -1,6 +1,6 @@
 .gitignore
 .openapi-generator-ignore
-.php_cs
+.php-cs-fixer.dist.php
 .travis.yml
 README.md
 composer.json
@@ -18,9 +18,11 @@ docs/Api/FeatureFlagsApi.md
 docs/Api/FeatureFlagsBetaApi.md
 docs/Api/FlagLinksBetaApi.md
 docs/Api/FlagTriggersApi.md
+docs/Api/FollowFlagsApi.md
 docs/Api/IntegrationAuditLogSubscriptionsApi.md
 docs/Api/IntegrationDeliveryConfigurationsBetaApi.md
 docs/Api/MetricsApi.md
+docs/Api/OAuth2ClientsBetaApi.md
 docs/Api/OtherApi.md
 docs/Api/ProjectsApi.md
 docs/Api/RelayProxyConfigurationsApi.md
@@ -28,7 +30,7 @@ docs/Api/ScheduledChangesApi.md
 docs/Api/SegmentsApi.md
 docs/Api/SegmentsBetaApi.md
 docs/Api/TagsApi.md
-docs/Api/TeamsBetaApi.md
+docs/Api/TeamsApi.md
 docs/Api/UserSettingsApi.md
 docs/Api/UsersApi.md
 docs/Api/UsersBetaApi.md
@@ -53,6 +55,8 @@ docs/Model/BigSegmentTarget.md
 docs/Model/BranchCollectionRep.md
 docs/Model/BranchRep.md
 docs/Model/Clause.md
+docs/Model/Client.md
+docs/Model/ClientCollection.md
 docs/Model/ClientSideAvailability.md
 docs/Model/ClientSideAvailabilityPost.md
 docs/Model/ConditionBaseOutputRep.md
@@ -64,6 +68,7 @@ docs/Model/ConflictOutputRep.md
 docs/Model/CopiedFromEnv.md
 docs/Model/CreateCopyFlagConfigApprovalRequestRequest.md
 docs/Model/CreateFlagConfigApprovalRequestRequest.md
+docs/Model/CredibleIntervalRep.md
 docs/Model/CustomProperty.md
 docs/Model/CustomRole.md
 docs/Model/CustomRolePost.md
@@ -84,10 +89,12 @@ docs/Model/DestinationPost.md
 docs/Model/Destinations.md
 docs/Model/Environment.md
 docs/Model/EnvironmentPost.md
+docs/Model/Environments.md
 docs/Model/EvaluationReason.md
 docs/Model/ExecutionOutputRep.md
 docs/Model/Experiment.md
 docs/Model/ExperimentAllocationRep.md
+docs/Model/ExperimentBayesianResultsRep.md
 docs/Model/ExperimentCollectionRep.md
 docs/Model/ExperimentEnabledPeriodRep.md
 docs/Model/ExperimentEnvironmentSettingRep.md
@@ -122,6 +129,8 @@ docs/Model/FlagConfigApprovalRequestResponse.md
 docs/Model/FlagConfigApprovalRequestsResponse.md
 docs/Model/FlagCopyConfigEnvironment.md
 docs/Model/FlagCopyConfigPost.md
+docs/Model/FlagFollowersByProjEnvGetRep.md
+docs/Model/FlagFollowersGetRep.md
 docs/Model/FlagGlobalAttributesRep.md
 docs/Model/FlagInput.md
 docs/Model/FlagLinkCollectionRep.md
@@ -134,10 +143,13 @@ docs/Model/FlagScheduledChangesInput.md
 docs/Model/FlagStatusRep.md
 docs/Model/FlagSummary.md
 docs/Model/FlagTriggerInput.md
+docs/Model/FollowFlagMember.md
+docs/Model/FollowersPerFlag.md
 docs/Model/ForbiddenErrorRep.md
 docs/Model/HunkRep.md
 docs/Model/Import.md
 docs/Model/InitiatorRep.md
+docs/Model/InstructionUserRequest.md
 docs/Model/Integration.md
 docs/Model/IntegrationDeliveryConfiguration.md
 docs/Model/IntegrationDeliveryConfigurationCollection.md
@@ -179,12 +191,16 @@ docs/Model/MultiEnvironmentDependentFlag.md
 docs/Model/MultiEnvironmentDependentFlags.md
 docs/Model/NewMemberForm.md
 docs/Model/NotFoundErrorRep.md
+docs/Model/OauthClientPost.md
+docs/Model/ParameterDefault.md
 docs/Model/ParameterRep.md
 docs/Model/ParentResourceRep.md
 docs/Model/PatchFailedErrorRep.md
+docs/Model/PatchFlagsRequest.md
 docs/Model/PatchOperation.md
 docs/Model/PatchSegmentInstruction.md
 docs/Model/PatchSegmentRequest.md
+docs/Model/PatchUsersRequest.md
 docs/Model/PatchWithComment.md
 docs/Model/PermissionGrantInput.md
 docs/Model/PostApprovalRequestApplyRequest.md
@@ -194,6 +210,7 @@ docs/Model/Prerequisite.md
 docs/Model/Project.md
 docs/Model/ProjectListingRep.md
 docs/Model/ProjectPost.md
+docs/Model/ProjectRep.md
 docs/Model/ProjectSummary.md
 docs/Model/Projects.md
 docs/Model/PubNubDetailRep.md
@@ -201,6 +218,7 @@ docs/Model/PutBranch.md
 docs/Model/RateLimitedErrorRep.md
 docs/Model/RecentTriggerBody.md
 docs/Model/ReferenceRep.md
+docs/Model/RelativeDifferenceRep.md
 docs/Model/RelayAutoConfigCollectionRep.md
 docs/Model/RelayAutoConfigPost.md
 docs/Model/RelayAutoConfigRep.md
@@ -218,6 +236,7 @@ docs/Model/ReviewOutputRep.md
 docs/Model/ReviewResponse.md
 docs/Model/Rollout.md
 docs/Model/Rule.md
+docs/Model/RuleClause.md
 docs/Model/ScheduleConditionInputRep.md
 docs/Model/ScheduleConditionOutputRep.md
 docs/Model/SdkListRep.md
@@ -235,7 +254,6 @@ docs/Model/StageOutputRep.md
 docs/Model/Statement.md
 docs/Model/StatementPost.md
 docs/Model/StatementPostData.md
-docs/Model/StatementRep.md
 docs/Model/StatisticCollectionRep.md
 docs/Model/StatisticRep.md
 docs/Model/StatisticsRep.md
@@ -251,9 +269,11 @@ docs/Model/TeamCustomRole.md
 docs/Model/TeamCustomRoles.md
 docs/Model/TeamImportsRep.md
 docs/Model/TeamMaintainers.md
+docs/Model/TeamMembers.md
 docs/Model/TeamPatchInput.md
 docs/Model/TeamPostInput.md
 docs/Model/TeamProjects.md
+docs/Model/TeamRepExpandableProperties.md
 docs/Model/Teams.md
 docs/Model/TimestampRep.md
 docs/Model/TitleRep.md
@@ -263,6 +283,7 @@ docs/Model/Tokens.md
 docs/Model/TreatmentInput.md
 docs/Model/TreatmentParameterInput.md
 docs/Model/TreatmentRep.md
+docs/Model/TreatmentResultRep.md
 docs/Model/TriggerPost.md
 docs/Model/TriggerWorkflowCollectionRep.md
 docs/Model/TriggerWorkflowRep.md
@@ -288,6 +309,8 @@ docs/Model/Webhook.md
 docs/Model/WebhookPost.md
 docs/Model/Webhooks.md
 docs/Model/WeightedVariation.md
+docs/Model/WorkflowTemplateMetadata.md
+docs/Model/WorkflowTemplateParameter.md
 git_push.sh
 lib/Api/AccessTokensApi.php
 lib/Api/AccountMembersApi.php
@@ -303,9 +326,11 @@ lib/Api/FeatureFlagsApi.php
 lib/Api/FeatureFlagsBetaApi.php
 lib/Api/FlagLinksBetaApi.php
 lib/Api/FlagTriggersApi.php
+lib/Api/FollowFlagsApi.php
 lib/Api/IntegrationAuditLogSubscriptionsApi.php
 lib/Api/IntegrationDeliveryConfigurationsBetaApi.php
 lib/Api/MetricsApi.php
+lib/Api/OAuth2ClientsBetaApi.php
 lib/Api/OtherApi.php
 lib/Api/ProjectsApi.php
 lib/Api/RelayProxyConfigurationsApi.php
@@ -313,7 +338,7 @@ lib/Api/ScheduledChangesApi.php
 lib/Api/SegmentsApi.php
 lib/Api/SegmentsBetaApi.php
 lib/Api/TagsApi.php
-lib/Api/TeamsBetaApi.php
+lib/Api/TeamsApi.php
 lib/Api/UserSettingsApi.php
 lib/Api/UsersApi.php
 lib/Api/UsersBetaApi.php
@@ -341,6 +366,8 @@ lib/Model/BigSegmentTarget.php
 lib/Model/BranchCollectionRep.php
 lib/Model/BranchRep.php
 lib/Model/Clause.php
+lib/Model/Client.php
+lib/Model/ClientCollection.php
 lib/Model/ClientSideAvailability.php
 lib/Model/ClientSideAvailabilityPost.php
 lib/Model/ConditionBaseOutputRep.php
@@ -352,6 +379,7 @@ lib/Model/ConflictOutputRep.php
 lib/Model/CopiedFromEnv.php
 lib/Model/CreateCopyFlagConfigApprovalRequestRequest.php
 lib/Model/CreateFlagConfigApprovalRequestRequest.php
+lib/Model/CredibleIntervalRep.php
 lib/Model/CustomProperty.php
 lib/Model/CustomRole.php
 lib/Model/CustomRolePost.php
@@ -372,10 +400,12 @@ lib/Model/DestinationPost.php
 lib/Model/Destinations.php
 lib/Model/Environment.php
 lib/Model/EnvironmentPost.php
+lib/Model/Environments.php
 lib/Model/EvaluationReason.php
 lib/Model/ExecutionOutputRep.php
 lib/Model/Experiment.php
 lib/Model/ExperimentAllocationRep.php
+lib/Model/ExperimentBayesianResultsRep.php
 lib/Model/ExperimentCollectionRep.php
 lib/Model/ExperimentEnabledPeriodRep.php
 lib/Model/ExperimentEnvironmentSettingRep.php
@@ -410,6 +440,8 @@ lib/Model/FlagConfigApprovalRequestResponse.php
 lib/Model/FlagConfigApprovalRequestsResponse.php
 lib/Model/FlagCopyConfigEnvironment.php
 lib/Model/FlagCopyConfigPost.php
+lib/Model/FlagFollowersByProjEnvGetRep.php
+lib/Model/FlagFollowersGetRep.php
 lib/Model/FlagGlobalAttributesRep.php
 lib/Model/FlagInput.php
 lib/Model/FlagLinkCollectionRep.php
@@ -422,10 +454,13 @@ lib/Model/FlagScheduledChangesInput.php
 lib/Model/FlagStatusRep.php
 lib/Model/FlagSummary.php
 lib/Model/FlagTriggerInput.php
+lib/Model/FollowFlagMember.php
+lib/Model/FollowersPerFlag.php
 lib/Model/ForbiddenErrorRep.php
 lib/Model/HunkRep.php
 lib/Model/Import.php
 lib/Model/InitiatorRep.php
+lib/Model/InstructionUserRequest.php
 lib/Model/Integration.php
 lib/Model/IntegrationDeliveryConfiguration.php
 lib/Model/IntegrationDeliveryConfigurationCollection.php
@@ -468,12 +503,16 @@ lib/Model/MultiEnvironmentDependentFlag.php
 lib/Model/MultiEnvironmentDependentFlags.php
 lib/Model/NewMemberForm.php
 lib/Model/NotFoundErrorRep.php
+lib/Model/OauthClientPost.php
+lib/Model/ParameterDefault.php
 lib/Model/ParameterRep.php
 lib/Model/ParentResourceRep.php
 lib/Model/PatchFailedErrorRep.php
+lib/Model/PatchFlagsRequest.php
 lib/Model/PatchOperation.php
 lib/Model/PatchSegmentInstruction.php
 lib/Model/PatchSegmentRequest.php
+lib/Model/PatchUsersRequest.php
 lib/Model/PatchWithComment.php
 lib/Model/PermissionGrantInput.php
 lib/Model/PostApprovalRequestApplyRequest.php
@@ -483,6 +522,7 @@ lib/Model/Prerequisite.php
 lib/Model/Project.php
 lib/Model/ProjectListingRep.php
 lib/Model/ProjectPost.php
+lib/Model/ProjectRep.php
 lib/Model/ProjectSummary.php
 lib/Model/Projects.php
 lib/Model/PubNubDetailRep.php
@@ -490,6 +530,7 @@ lib/Model/PutBranch.php
 lib/Model/RateLimitedErrorRep.php
 lib/Model/RecentTriggerBody.php
 lib/Model/ReferenceRep.php
+lib/Model/RelativeDifferenceRep.php
 lib/Model/RelayAutoConfigCollectionRep.php
 lib/Model/RelayAutoConfigPost.php
 lib/Model/RelayAutoConfigRep.php
@@ -507,6 +548,7 @@ lib/Model/ReviewOutputRep.php
 lib/Model/ReviewResponse.php
 lib/Model/Rollout.php
 lib/Model/Rule.php
+lib/Model/RuleClause.php
 lib/Model/ScheduleConditionInputRep.php
 lib/Model/ScheduleConditionOutputRep.php
 lib/Model/SdkListRep.php
@@ -524,7 +566,6 @@ lib/Model/StageOutputRep.php
 lib/Model/Statement.php
 lib/Model/StatementPost.php
 lib/Model/StatementPostData.php
-lib/Model/StatementRep.php
 lib/Model/StatisticCollectionRep.php
 lib/Model/StatisticRep.php
 lib/Model/StatisticsRep.php
@@ -540,9 +581,11 @@ lib/Model/TeamCustomRole.php
 lib/Model/TeamCustomRoles.php
 lib/Model/TeamImportsRep.php
 lib/Model/TeamMaintainers.php
+lib/Model/TeamMembers.php
 lib/Model/TeamPatchInput.php
 lib/Model/TeamPostInput.php
 lib/Model/TeamProjects.php
+lib/Model/TeamRepExpandableProperties.php
 lib/Model/Teams.php
 lib/Model/TimestampRep.php
 lib/Model/TitleRep.php
@@ -552,6 +595,7 @@ lib/Model/Tokens.php
 lib/Model/TreatmentInput.php
 lib/Model/TreatmentParameterInput.php
 lib/Model/TreatmentRep.php
+lib/Model/TreatmentResultRep.php
 lib/Model/TriggerPost.php
 lib/Model/TriggerWorkflowCollectionRep.php
 lib/Model/TriggerWorkflowRep.php
@@ -577,6 +621,8 @@ lib/Model/Webhook.php
 lib/Model/WebhookPost.php
 lib/Model/Webhooks.php
 lib/Model/WeightedVariation.php
+lib/Model/WorkflowTemplateMetadata.php
+lib/Model/WorkflowTemplateParameter.php
 lib/ObjectSerializer.php
 phpunit.xml.dist
 test/Api/AccessTokensApiTest.php
@@ -593,9 +639,11 @@ test/Api/FeatureFlagsApiTest.php
 test/Api/FeatureFlagsBetaApiTest.php
 test/Api/FlagLinksBetaApiTest.php
 test/Api/FlagTriggersApiTest.php
+test/Api/FollowFlagsApiTest.php
 test/Api/IntegrationAuditLogSubscriptionsApiTest.php
 test/Api/IntegrationDeliveryConfigurationsBetaApiTest.php
 test/Api/MetricsApiTest.php
+test/Api/OAuth2ClientsBetaApiTest.php
 test/Api/OtherApiTest.php
 test/Api/ProjectsApiTest.php
 test/Api/RelayProxyConfigurationsApiTest.php
@@ -603,7 +651,7 @@ test/Api/ScheduledChangesApiTest.php
 test/Api/SegmentsApiTest.php
 test/Api/SegmentsBetaApiTest.php
 test/Api/TagsApiTest.php
-test/Api/TeamsBetaApiTest.php
+test/Api/TeamsApiTest.php
 test/Api/UserSettingsApiTest.php
 test/Api/UsersApiTest.php
 test/Api/UsersBetaApiTest.php
@@ -628,8 +676,10 @@ test/Model/BigSegmentTargetTest.php
 test/Model/BranchCollectionRepTest.php
 test/Model/BranchRepTest.php
 test/Model/ClauseTest.php
+test/Model/ClientCollectionTest.php
 test/Model/ClientSideAvailabilityPostTest.php
 test/Model/ClientSideAvailabilityTest.php
+test/Model/ClientTest.php
 test/Model/ConditionBaseOutputRepTest.php
 test/Model/ConditionInputRepTest.php
 test/Model/ConditionOutputRepTest.php
@@ -639,6 +689,7 @@ test/Model/ConflictTest.php
 test/Model/CopiedFromEnvTest.php
 test/Model/CreateCopyFlagConfigApprovalRequestRequestTest.php
 test/Model/CreateFlagConfigApprovalRequestRequestTest.php
+test/Model/CredibleIntervalRepTest.php
 test/Model/CustomPropertyTest.php
 test/Model/CustomRolePostDataTest.php
 test/Model/CustomRolePostTest.php
@@ -659,9 +710,11 @@ test/Model/DestinationTest.php
 test/Model/DestinationsTest.php
 test/Model/EnvironmentPostTest.php
 test/Model/EnvironmentTest.php
+test/Model/EnvironmentsTest.php
 test/Model/EvaluationReasonTest.php
 test/Model/ExecutionOutputRepTest.php
 test/Model/ExperimentAllocationRepTest.php
+test/Model/ExperimentBayesianResultsRepTest.php
 test/Model/ExperimentCollectionRepTest.php
 test/Model/ExperimentEnabledPeriodRepTest.php
 test/Model/ExperimentEnvironmentSettingRepTest.php
@@ -697,6 +750,8 @@ test/Model/FlagConfigApprovalRequestResponseTest.php
 test/Model/FlagConfigApprovalRequestsResponseTest.php
 test/Model/FlagCopyConfigEnvironmentTest.php
 test/Model/FlagCopyConfigPostTest.php
+test/Model/FlagFollowersByProjEnvGetRepTest.php
+test/Model/FlagFollowersGetRepTest.php
 test/Model/FlagGlobalAttributesRepTest.php
 test/Model/FlagInputTest.php
 test/Model/FlagLinkCollectionRepTest.php
@@ -709,10 +764,13 @@ test/Model/FlagScheduledChangesInputTest.php
 test/Model/FlagStatusRepTest.php
 test/Model/FlagSummaryTest.php
 test/Model/FlagTriggerInputTest.php
+test/Model/FollowFlagMemberTest.php
+test/Model/FollowersPerFlagTest.php
 test/Model/ForbiddenErrorRepTest.php
 test/Model/HunkRepTest.php
 test/Model/ImportTest.php
 test/Model/InitiatorRepTest.php
+test/Model/InstructionUserRequestTest.php
 test/Model/IntegrationDeliveryConfigurationCollectionLinksTest.php
 test/Model/IntegrationDeliveryConfigurationCollectionTest.php
 test/Model/IntegrationDeliveryConfigurationLinksTest.php
@@ -754,12 +812,16 @@ test/Model/MultiEnvironmentDependentFlagTest.php
 test/Model/MultiEnvironmentDependentFlagsTest.php
 test/Model/NewMemberFormTest.php
 test/Model/NotFoundErrorRepTest.php
+test/Model/OauthClientPostTest.php
+test/Model/ParameterDefaultTest.php
 test/Model/ParameterRepTest.php
 test/Model/ParentResourceRepTest.php
 test/Model/PatchFailedErrorRepTest.php
+test/Model/PatchFlagsRequestTest.php
 test/Model/PatchOperationTest.php
 test/Model/PatchSegmentInstructionTest.php
 test/Model/PatchSegmentRequestTest.php
+test/Model/PatchUsersRequestTest.php
 test/Model/PatchWithCommentTest.php
 test/Model/PermissionGrantInputTest.php
 test/Model/PostApprovalRequestApplyRequestTest.php
@@ -768,6 +830,7 @@ test/Model/PostFlagScheduledChangesInputTest.php
 test/Model/PrerequisiteTest.php
 test/Model/ProjectListingRepTest.php
 test/Model/ProjectPostTest.php
+test/Model/ProjectRepTest.php
 test/Model/ProjectSummaryTest.php
 test/Model/ProjectTest.php
 test/Model/ProjectsTest.php
@@ -776,6 +839,7 @@ test/Model/PutBranchTest.php
 test/Model/RateLimitedErrorRepTest.php
 test/Model/RecentTriggerBodyTest.php
 test/Model/ReferenceRepTest.php
+test/Model/RelativeDifferenceRepTest.php
 test/Model/RelayAutoConfigCollectionRepTest.php
 test/Model/RelayAutoConfigPostTest.php
 test/Model/RelayAutoConfigRepTest.php
@@ -792,6 +856,7 @@ test/Model/ResourceIDResponseTest.php
 test/Model/ReviewOutputRepTest.php
 test/Model/ReviewResponseTest.php
 test/Model/RolloutTest.php
+test/Model/RuleClauseTest.php
 test/Model/RuleTest.php
 test/Model/ScheduleConditionInputRepTest.php
 test/Model/ScheduleConditionOutputRepTest.php
@@ -809,7 +874,6 @@ test/Model/StageInputRepTest.php
 test/Model/StageOutputRepTest.php
 test/Model/StatementPostDataTest.php
 test/Model/StatementPostTest.php
-test/Model/StatementRepTest.php
 test/Model/StatementTest.php
 test/Model/StatisticCollectionRepTest.php
 test/Model/StatisticRepTest.php
@@ -825,9 +889,11 @@ test/Model/TeamCustomRoleTest.php
 test/Model/TeamCustomRolesTest.php
 test/Model/TeamImportsRepTest.php
 test/Model/TeamMaintainersTest.php
+test/Model/TeamMembersTest.php
 test/Model/TeamPatchInputTest.php
 test/Model/TeamPostInputTest.php
 test/Model/TeamProjectsTest.php
+test/Model/TeamRepExpandablePropertiesTest.php
 test/Model/TeamTest.php
 test/Model/TeamsTest.php
 test/Model/TimestampRepTest.php
@@ -838,6 +904,7 @@ test/Model/TokensTest.php
 test/Model/TreatmentInputTest.php
 test/Model/TreatmentParameterInputTest.php
 test/Model/TreatmentRepTest.php
+test/Model/TreatmentResultRepTest.php
 test/Model/TriggerPostTest.php
 test/Model/TriggerWorkflowCollectionRepTest.php
 test/Model/TriggerWorkflowRepTest.php
@@ -863,3 +930,5 @@ test/Model/WebhookPostTest.php
 test/Model/WebhookTest.php
 test/Model/WebhooksTest.php
 test/Model/WeightedVariationTest.php
+test/Model/WorkflowTemplateMetadataTest.php
+test/Model/WorkflowTemplateParameterTest.php

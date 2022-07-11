@@ -18,7 +18,7 @@ getIps(): \LaunchDarklyApi\Model\IpList
 
 Gets the public IP list
 
-Get a list of IP ranges the LaunchDarkly service uses. You can use this list to allow LaunchDarkly through your firewall.<br /><br />This endpoint returns a JSON object with two attributes: `addresses` and `outboundAddresses`. The `addresses` element contains the IP addresses LaunchDarkly's service uses. The `outboundAddresses` element contains the IP addresses outgoing webhook notifications use. To learn more, read [Public IP list](https://docs.launchdarkly.com/home/advanced/public-ip-list).<br /><br />We post upcoming changes to this list in advance on our [status page](https://status.launchdarkly.com/).
+Get a list of IP ranges the LaunchDarkly service uses. You can use this list to allow LaunchDarkly through your firewall. <br /><br />This endpoint returns a JSON object with two attributes: `addresses` and `outboundAddresses`. The `addresses` element contains the IP addresses LaunchDarkly's service uses. The `outboundAddresses` element contains the IP addresses outgoing webhook notifications use.<br /><br />We post upcoming changes to this list in advance on our [status page](https://status.launchdarkly.com/). <br /><br />In the sandbox, click 'Try it' and enter any string in the 'Authorization' field to test this endpoint.
 
 ### Example
 
@@ -77,7 +77,7 @@ getOpenapiSpec()
 
 Gets the OpenAPI spec in json
 
-The OpenAPI spec endpoint serves the latest version of the OpenAPI specification for LaunchDarkly's API in json format.
+Get the latest version of the OpenAPI specification for LaunchDarkly's API in JSON format. In the sandbox, click 'Try it' and enter any string in the 'Authorization' field to test this endpoint.
 
 ### Example
 
@@ -135,7 +135,7 @@ getRoot(): array<string,\LaunchDarklyApi\Model\Link>
 
 Root resource
 
-Issue a `GET` request to the root resource to find all of the resource categories supported by the API
+Get all of the resource categories the API supports. In the sandbox, click 'Try it' and enter any string in the 'Authorization' field to test this endpoint.
 
 ### Example
 

@@ -10,11 +10,10 @@ Name | Type | Description | Notes
 **key** | **string** | A unique key used to reference the flag in your code |
 **_version** | **int** | Version of the feature flag |
 **creation_date** | **int** |  |
-**include_in_snippet** | **bool** | Deprecated, use clientSideAvailability. Whether or not this flag should be made available to the client-side JavaScript SDK | [optional]
+**include_in_snippet** | **bool** | Deprecated, use &lt;code&gt;clientSideAvailability&lt;/code&gt;. Whether this flag should be made available to the client-side JavaScript SDK | [optional]
 **client_side_availability** | [**\LaunchDarklyApi\Model\ClientSideAvailability**](ClientSideAvailability.md) |  | [optional]
 **variations** | [**\LaunchDarklyApi\Model\Variation[]**](Variation.md) | An array of possible variations for the flag |
-**variation_json_schema** | **mixed** |  | [optional]
-**temporary** | **bool** | Whether or not the flag is a temporary flag |
+**temporary** | **bool** | Whether the flag is a temporary flag |
 **tags** | **string[]** | Tags for the feature flag |
 **_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) |  |
 **maintainer_id** | **string** | Associated maintainerId for the feature flag | [optional]

@@ -18,7 +18,7 @@ deleteWorkflow($project_key, $feature_flag_key, $environment_key, $workflow_id)
 
 Delete workflow
 
-Delete a workflow from a feature flag
+Delete a workflow from a feature flag.
 
 ### Example
 
@@ -85,7 +85,7 @@ getCustomWorkflow($project_key, $feature_flag_key, $environment_key, $workflow_i
 
 Get custom workflow
 
-Get a specific workflow by ID
+Get a specific workflow by ID.
 
 ### Example
 
@@ -153,7 +153,7 @@ getWorkflows($project_key, $feature_flag_key, $environment_key): \LaunchDarklyAp
 
 Get workflows
 
-Get workflows from a feature flag
+Display workflows associated with a feature flag.
 
 ### Example
 
@@ -219,7 +219,7 @@ postWorkflow($project_key, $feature_flag_key, $environment_key, $custom_workflow
 
 Create workflow
 
-Create a workflow for a feature flag
+Create a workflow for a feature flag.
 
 ### Example
 
@@ -243,7 +243,7 @@ $apiInstance = new LaunchDarklyApi\Api\WorkflowsBetaApi(
 $project_key = 'project_key_example'; // string | The project key
 $feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
-$custom_workflow_input_rep = new \LaunchDarklyApi\Model\CustomWorkflowInputRep(); // \LaunchDarklyApi\Model\CustomWorkflowInputRep
+$custom_workflow_input_rep = {"description":"Turn flag on for 10% of users each day","name":"Progressive rollout starting in two days","stages":[{"action":{"instructions":[{"kind":"turnFlagOn"},{"kind":"updateFallthroughVariationOrRollout","rolloutWeights":{"452f5fb5-7320-4ba3-81a1-8f4324f79d49":90000,"fc15f6a4-05d3-4aa4-a997-446be461345d":10000}}]},"conditions":[{"kind":"schedule","scheduleKind":"relative","waitDuration":2,"waitDurationUnit":"calendarDay"}],"name":"10% rollout on day 1"}]}; // \LaunchDarklyApi\Model\CustomWorkflowInputRep
 
 try {
     $result = $apiInstance->postWorkflow($project_key, $feature_flag_key, $environment_key, $custom_workflow_input_rep);

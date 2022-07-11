@@ -7,6 +7,7 @@ Name | Type | Description | Notes
 **_id** | **string** |  | [optional]
 **hypothesis** | **string** |  |
 **status** | **string** |  |
+**created_at** | **int** |  |
 **started_at** | **int** |  | [optional]
 **ended_at** | **int** |  | [optional]
 **winning_treatment_id** | **string** |  | [optional]
