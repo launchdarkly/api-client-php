@@ -10,32 +10,32 @@ This client library is only compatible with the latest version of our REST API, 
 
 ## Authentication
 
-All REST API resources are authenticated with either [personal or service access tokens](https://docs.launchdarkly.com/home/account-security/api-access-tokens), or session cookies. Other authentication mechanisms are not supported. You can manage personal access tokens on your [Account settings](https://app.launchdarkly.com/settings/tokens) page.
+All REST API resources are authenticated with either [personal or service access tokens](https://docs.launchdarkly.com/home/account-security/api-access-tokens), or session cookies. Other authentication mechanisms are not supported. You can manage personal access tokens on your [**Account settings**](https://app.launchdarkly.com/settings/tokens) page.
 
-LaunchDarkly also has SDK keys, mobile keys, and client-side IDs that are used by our server-side SDKs, mobile SDKs, and client-side SDKs, respectively. **These keys cannot be used to access our REST API**. These keys are environment-specific, and can only perform read-only operations (fetching feature flag settings).
+LaunchDarkly also has SDK keys, mobile keys, and client-side IDs that are used by our server-side SDKs, mobile SDKs, and JavaScript-based SDKs, respectively. **These keys cannot be used to access our REST API**. These keys are environment-specific, and can only perform read-only operations such as fetching feature flag settings.
 
 | Auth mechanism                                                                                  | Allowed resources                                                                                     | Use cases                                          |
 | ----------------------------------------------------------------------------------------------- | ----------------------------------------------------------------------------------------------------- | -------------------------------------------------- |
-| [Personal access tokens](https://docs.launchdarkly.com/home/account-security/api-access-tokens) | Can be customized on a per-token basis                                                                | Building scripts, custom integrations, data export |
-| SDK keys                                                                                        | Can only access read-only SDK-specific resources and the firehose, restricted to a single environment | Server-side SDKs, Firehose API                     |
-| Mobile keys                                                                                     | Can only access read-only mobile SDK-specific resources, restricted to a single environment           | Mobile SDKs                                        |
-| Client-side ID                                                                                  | Single environment, only flags marked available to client-side                                        | Client-side JavaScript                             |
+| [Personal or service access tokens](https://docs.launchdarkly.com/home/account-security/api-access-tokens) | Can be customized on a per-token basis                                                                | Building scripts, custom integrations, data export. |
+| SDK keys                                                                                        | Can only access read-only resources specific to server-side SDKs. Restricted to a single environment. | Server-side SDKs                     |
+| Mobile keys                                                                                     | Can only access read-only resources specific to mobile SDKs, and only for flags marked available to mobile keys. Restricted to a single environment.           | Mobile SDKs                                        |
+| Client-side ID                                                                                  | Can only access read-only resources specific to JavaScript-based client-side SDKs, and only for flags marked available to client-side. Restricted to a single environment.           | Client-side JavaScript                             |
 
 > #### Keep your access tokens and SDK keys private
 >
-> Access tokens should _never_ be exposed in untrusted contexts. Never put an access token in client-side JavaScript, or embed it in a mobile application. LaunchDarkly has special mobile keys that you can embed in mobile apps. If you accidentally expose an access token or SDK key, you can reset it from your [Account Settings](https://app.launchdarkly.com/settings#/tokens) page.
+> Access tokens should _never_ be exposed in untrusted contexts. Never put an access token in client-side JavaScript, or embed it in a mobile application. LaunchDarkly has special mobile keys that you can embed in mobile apps. If you accidentally expose an access token or SDK key, you can reset it from your [**Account settings**](https://app.launchdarkly.com/settings/tokens) page.
 >
 > The client-side ID is safe to embed in untrusted contexts. It's designed for use in client-side JavaScript.
 
-### Via request header
+### Authentication using request header
 
 The preferred way to authenticate with the API is by adding an `Authorization` header containing your access token to your requests. The value of the `Authorization` header must be your access token.
 
-Manage personal access tokens from the [Account Settings](https://app.launchdarkly.com/settings/tokens) page.
+Manage personal access tokens from the [**Account settings**](https://app.launchdarkly.com/settings/tokens) page.
 
-### Via session cookie
+### Authentication using session cookie
 
-For testing purposes, you can make API calls directly from your web browser. If you're logged in to the application, the API will use your existing session to authenticate calls.
+For testing purposes, you can make API calls directly from your web browser. If you are logged in to the LaunchDarkly application, the API will use your existing session to authenticate calls.
 
 If you have a [role](https://docs.launchdarkly.com/home/team/built-in-roles) other than Admin, or have a [custom role](https://docs.launchdarkly.com/home/team/custom-roles) defined, you may not have permission to perform some API calls. You will receive a `401` response code in that case.
 
@@ -53,11 +53,11 @@ If you have a [role](https://docs.launchdarkly.com/home/team/built-in-roles) oth
 
 ## Representations
 
-All resources expect and return JSON response bodies. Error responses will also send a JSON body. Read [Errors](#section/Errors) for a more detailed description of the error format used by the API.
+All resources expect and return JSON response bodies. Error responses also send a JSON body. To learn more about the error format of the API, read [Errors](/#section/Overview/Errors).
 
 In practice this means that you always get a response with a `Content-Type` header set to `application/json`.
 
-In addition, request bodies for `PUT`, `POST`, `REPORT` and `PATCH` requests must be encoded as JSON with a `Content-Type` header set to `application/json`.
+In addition, request bodies for `PATCH`, `POST`, `PUT`, and `REPORT` requests must be encoded as JSON with a `Content-Type` header set to `application/json`.
 
 ### Summary and detailed representations
 
@@ -65,16 +65,25 @@ When you fetch a list of resources, the response includes only the most importan
 
 The best way to find a detailed representation is to follow links. Every summary representation includes a link to its detailed representation.
 
-In most cases, the detailed representation contains all of the attributes of the resource. In a few cases, the detailed representation contains many, but not all, of the attributes of the resource. Typically this happens when an attribute of the requested resource is itself paginated. You can request that the response include a particular attribute by using the `expand` request parameter.
+### Expanding responses
+
+Sometimes the detailed representation of a resource does not include all of the attributes of the resource by default. If this is the case, the request method will clearly document this and describe which attributes you can include in an expanded response.
+
+To include the additional attributes, append the `expand` request parameter to your request and add a comma-separated list of the attributes to include. For example, when you append `?expand=members,roles` to the [Get team](/tag/Teams#operation/getTeam) endpoint, the expanded response includes both of these attributes.
 
 ### Links and addressability
 
 The best way to navigate the API is by following links. These are attributes in representations that link to other resources. The API always uses the same format for links:
 
-- Links to other resources within the API are encapsulated in a `_links` object.
-- If the resource has a corresponding link to HTML content on the site, it is stored in a special `_site` link.
+- Links to other resources within the API are encapsulated in a `_links` object
+- If the resource has a corresponding link to HTML content on the site, it is stored in a special `_site` link
 
-Each link has two attributes: an href (the URL) and a type (the content type). For example, a feature resource might return the following:
+Each link has two attributes:
+
+- An `href`, which contains the URL
+- A `type`, which describes the content type
+
+For example, a feature resource might return the following:
 
 ```json
 {
@@ -101,19 +110,15 @@ Collections are always represented as a JSON object with an `items` attribute co
 
 Paginated collections include `first`, `last`, `next`, and `prev` links containing a URL with the respective set of elements in the collection.
 
-### Expanding responses
-
-Sometimes the detailed representation of a resource does not include all of the attributes of the resource by default. If this is the case, the request method will clearly document this and describe which attributes you can include in an expanded response.
-
-To include the additional attributes, append the `expand` request parameter to your request and add a comma-separated list of the attributes to include. For example, when you append `?expand=members,roles` to the [Get team](/tag/Teams-(beta)#operation/getTeam) endpoint, the expanded response includes both of these attributes.
-
 ## Updates
 
-Resources that accept partial updates use the `PATCH` verb. Most resources support the [JSON Patch](https://datatracker.ietf.org/doc/html/rfc6902) format. Some resources also support the [JSON Merge Patch](https://datatracker.ietf.org/doc/html/rfc7386) format, and some resources support the [semantic patch](/reference#updates-using-semantic-patch) format, which is a way to specify the modifications to perform as a set of executable instructions. Each resource supports optional [comments](/reference#updates-with-comments) that you can submit with updates. Comments appear in outgoing webhooks, the audit log, and other integrations.
+Resources that accept partial updates use the `PATCH` verb. Most resources support the [JSON patch](https://datatracker.ietf.org/doc/html/rfc6902) format. Some resources also support the [JSON merge patch](https://datatracker.ietf.org/doc/html/rfc7386) format, and some resources support the [semantic patch](/reference#updates-using-semantic-patch) format, which is a way to specify the modifications to perform as a set of executable instructions. Each resource supports optional [comments](/reference#updates-with-comments) that you can submit with updates. Comments appear in outgoing webhooks, the audit log, and other integrations.
+
+When a resource supports both JSON patch and semantic patch, we document both in the request method. However, the specific request body fields and descriptions included in our documentation only match one type of patch or the other.
 
 ### Updates using JSON patch
 
-[JSON Patch](https://datatracker.ietf.org/doc/html/rfc6902) is a way to specify the modifications to perform on a resource. JSON patch uses paths and a limited set of operations to describe how to transform the current state of the resource into a new state. JSON patch documents are always arrays, where each element contains an operation, a path to the field to update, and the new value.
+[JSON patch](https://datatracker.ietf.org/doc/html/rfc6902) is a way to specify the modifications to perform on a resource. JSON patch uses paths and a limited set of operations to describe how to transform the current state of the resource into a new state. JSON patch documents are always arrays, where each element contains an operation, a path to the field to update, and the new value.
 
 For example, in this feature flag representation:
 
@@ -142,11 +147,11 @@ You can specify multiple modifications to perform in a single request. You can a
 
 The above patch request tests whether the feature flag's `version` is `10`, and if so, changes the feature flag's description.
 
-Attributes that aren't editable, like a resource's `_links`, have names that start with an underscore.
+Attributes that are not editable, such as a resource's `_links`, have names that start with an underscore.
 
 ### Updates using JSON merge patch
 
-[JSON merge patch](https://datatracker.ietf.org/doc/html/rfc7386) is another format for specifying the modifications to perform on a resource. JSON merge patch is less expressive than JSON patch but in many cases, it is simpler to construct a merge patch document. For example, you can change a feature flag's description with the following merge patch document:
+[JSON merge patch](https://datatracker.ietf.org/doc/html/rfc7386) is another format for specifying the modifications to perform on a resource. JSON merge patch is less expressive than JSON patch. However, in many cases it is simpler to construct a merge patch document. For example, you can change a feature flag's description with the following merge patch document:
 
 ```json
 {
@@ -156,7 +161,7 @@ Attributes that aren't editable, like a resource's `_links`, have names that sta
 
 ### Updates using semantic patch
 
-The API also supports the semantic patch format. A semantic `PATCH` is a way to specify the modifications to perform on a resource as a set of executable instructions.
+The API also supports the semantic patch format. A semantic patch is a way to specify the modifications to perform on a resource as a set of executable instructions.
 
 Semantic patch allows you to be explicit about intent using precise, custom instructions. In many cases, you can define semantic patch instructions independently of the current state of the resource. This can be useful when defining a change that may be applied at a future date.
 
@@ -174,7 +179,7 @@ The body of a semantic patch request takes the following properties:
 
 * `comment` (string): (Optional) A description of the update.
 * `environmentKey` (string): (Required for some resources only) The environment key.
-* `instructions` (array): (Required) A list of actions the update should perform. Each action in the list must be an object with a `kind` property that indicates the instruction. If the action requires parameters, you must include those parameters as additional fields in the object. The documentation for each resource that supports semantic patch includes the available instructions and any additional parameters.
+* `instructions` (array): (Required) A list of actions the update should perform. Each action in the list must be an object with a `kind` property that indicates the instruction. If the instruction requires parameters, you must include those parameters as additional fields in the object. The documentation for each resource that supports semantic patch includes the available instructions and any additional parameters.
 
 For example:
 
@@ -187,23 +192,11 @@ For example:
 
 If any instruction in the patch encounters an error, the endpoint returns an error and will not change the resource. In general, each instruction silently does nothing if the resource is already in the state you request.
 
-> ### Supported semantic patch API endpoints
->
-> - [Patch experiment](/tag/Experiments-(beta)#operation/patchExperiment)
-> - [Patch segment](/tag/Segments#operation/patchSegment)
-> - [Update feature flag](/tag/Feature-flags#operation/patchFeatureFlag)
-> - [Update flag trigger](/tag/Flag-triggers#operation/patchTriggerWorkflow)
-> - [Update expiring user targets on feature flag](/tag/Feature-flags#operation/patchExpiringUserTargets)
-> - [Update expiring user target for flags](/tag/User-settings#operation/patchExpiringFlagsForUser)
-> - [Update expiring user targets for segment](/tag/Segments#operation/patchExpiringUserTargetsForSegment)
-> - [Update scheduled changes workflow](/tag/Scheduled-changes#operation/patchFlagConfigScheduledChange)
-> - [Update team](/tag/Teams-(beta)#operation/patchTeam)
-
 ### Updates with comments
 
 You can submit optional comments with `PATCH` changes.
 
-To submit a comment along with a JSON Patch document, use the following format:
+To submit a comment along with a JSON patch document, use the following format:
 
 ```json
 {
@@ -242,24 +235,24 @@ The API always returns errors in a common format. Here's an example:
 }
 ```
 
-The general class of error is indicated by the `code`. The `message` is a human-readable explanation of what went wrong. The `id` is a unique identifier. Use it when you're working with LaunchDarkly support to debug a problem with a specific API call.
+The `code` indicates the general class of error. The `message` is a human-readable explanation of what went wrong. The `id` is a unique identifier. Use it when you're working with LaunchDarkly Support to debug a problem with a specific API call.
 
-### HTTP Status - Error Response Codes
+### HTTP status error response codes
 
 | Code | Definition        | Description                                                                                       | Possible Solution                                                |
 | ---- | ----------------- | ------------------------------------------------------------------------------------------- | ---------------------------------------------------------------- |
 | 400  | Invalid request       | The request cannot be understood.                                    | Ensure JSON syntax in request body is correct.                   |
-| 401  | Invalid access token      | User is unauthorized or does not have permission for this API call.                                                | Ensure your API access token is valid and has the appropriate permissions.                                     |
-| 403  | Forbidden         | User does not have access to this resource.                                                | Ensure that the user or access token has proper permissions set. |
+| 401  | Invalid access token      | Requestor is unauthorized or does not have permission for this API call.                                                | Ensure your API access token is valid and has the appropriate permissions.                                     |
+| 403  | Forbidden         | Requestor does not have access to this resource.                                                | Ensure that the account member or access token has proper permissions set. |
 | 404  | Invalid resource identifier | The requested resource is not valid. | Ensure that the resource is correctly identified by id or key. |
 | 405  | Method not allowed | The request method is not allowed on this resource. | Ensure that the HTTP verb is correct. |
-| 409  | Conflict          | The API request can not be completed because it conflicted with a concurrent API request. | Retry your request.                                              |
-| 422  | Unprocessable entity | The API request can not be completed because the update description can not be understood. | Ensure that the request body is correct for the type of patch you are using (JSON patch or semantic patch).
-| 429  | Too many requests | Read [Rate limiting](/#section/Rate-limiting).                                               | Wait and try again later.                                        |
+| 409  | Conflict          | The API request can not be completed because it conflicts with a concurrent API request. | Retry your request.                                              |
+| 422  | Unprocessable entity | The API request can not be completed because the update description can not be understood. | Ensure that the request body is correct for the type of patch you are using, either JSON patch or semantic patch.
+| 429  | Too many requests | Read [Rate limiting](/#section/Overview/Rate-limiting).                                               | Wait and try again later.                                        |
 
 ## CORS
 
-The LaunchDarkly API supports Cross Origin Resource Sharing (CORS) for AJAX requests from any origin. If an `Origin` header is given in a request, it will be echoed as an explicitly allowed origin. Otherwise, a wildcard is returned: `Access-Control-Allow-Origin: *`. For more information on CORS, see the [CORS W3C Recommendation](http://www.w3.org/TR/cors). Example CORS headers might look like:
+The LaunchDarkly API supports Cross Origin Resource Sharing (CORS) for AJAX requests from any origin. If an `Origin` header is given in a request, it will be echoed as an explicitly allowed origin. Otherwise the request returns a wildcard, `Access-Control-Allow-Origin: *`. For more information on CORS, read the [CORS W3C Recommendation](http://www.w3.org/TR/cors). Example CORS headers might look like:
 
 ```http
 Access-Control-Allow-Headers: Accept, Content-Type, Content-Length, Accept-Encoding, Authorization
@@ -268,11 +261,11 @@ Access-Control-Allow-Origin: *
 Access-Control-Max-Age: 300
 ```
 
-You can make authenticated CORS calls just as you would make same-origin calls, using either [token or session-based authentication](#section/Authentication). If you’re using session auth, you should set the `withCredentials` property for your `xhr` request to `true`. You should never expose your access tokens to untrusted users.
+You can make authenticated CORS calls just as you would make same-origin calls, using either [token or session-based authentication](/#section/Overview/Authentication). If you are using session authentication, you should set the `withCredentials` property for your `xhr` request to `true`. You should never expose your access tokens to untrusted users.
 
 ## Rate limiting
 
-We use several rate limiting strategies to ensure the availability of our APIs. Rate-limited calls to our APIs will return a `429` status code. Calls to our APIs will include headers indicating the current rate limit status. The specific headers returned depend on the API route being called. The limits differ based on the route, authentication mechanism, and other factors. Routes that are not rate limited may not contain any of the headers described below.
+We use several rate limiting strategies to ensure the availability of our APIs. Rate-limited calls to our APIs return a `429` status code. Calls to our APIs include headers indicating the current rate limit status. The specific headers returned depend on the API route being called. The limits differ based on the route, authentication mechanism, and other factors. Routes that are not rate limited may not contain any of the headers described below.
 
 > ### Rate limiting and SDKs
 >
@@ -280,7 +273,7 @@ We use several rate limiting strategies to ensure the availability of our APIs. 
 
 ### Global rate limits
 
-Authenticated requests are subject to a global limit. This is the maximum number of calls that can be made to the API per ten seconds. All personal access tokens on the account share this limit, so exceeding the limit with one access token will impact other tokens. Calls that are subject to global rate limits will return the headers below:
+Authenticated requests are subject to a global limit. This is the maximum number of calls that your account can make to the API per ten seconds. All personal access tokens on the account share this limit, so exceeding the limit with one access token will impact other tokens. Calls that are subject to global rate limits return the headers below:
 
 | Header name                    | Description                                                                      |
 | ------------------------------ | -------------------------------------------------------------------------------- |
@@ -291,7 +284,7 @@ We do not publicly document the specific number of calls that can be made global
 
 ### Route-level rate limits
 
-Some authenticated routes have custom rate limits. These also reset every ten seconds. Any access tokens hitting the same route share this limit, so exceeding the limit with one access token may impact other tokens. Calls that are subject to route-level rate limits will return the headers below:
+Some authenticated routes have custom rate limits. These also reset every ten seconds. Any access tokens hitting the same route share this limit, so exceeding the limit with one access token may impact other tokens. Calls that are subject to route-level rate limits return the headers below:
 
 | Header name                   | Description                                                                                           |
 | ----------------------------- | ----------------------------------------------------------------------------------------------------- |
@@ -300,31 +293,27 @@ Some authenticated routes have custom rate limits. These also reset every ten se
 
 A _route_ represents a specific URL pattern and verb. For example, the [Delete environment](/tag/Environments#operation/deleteEnvironment) endpoint is considered a single route, and each call to delete an environment counts against your route-level rate limit for that route.
 
-We do not publicly document the specific number of calls that can be made to each endpoint per ten seconds. These limits may change, and we encourage clients to program against the specification, relying on the two headers defined above, rather than hardcoding to the current limits.
+We do not publicly document the specific number of calls that an account can make to each endpoint per ten seconds. These limits may change, and we encourage clients to program against the specification, relying on the two headers defined above, rather than hardcoding to the current limits.
 
 ### IP-based rate limiting
 
 We also employ IP-based rate limiting on some API routes. If you hit an IP-based rate limit, your API response will include a `Retry-After` header indicating how long to wait before re-trying the call. Clients must wait at least `Retry-After` seconds before making additional calls to our API, and should employ jitter and backoff strategies to avoid triggering rate limits again.
 
-## OpenAPI (Swagger)
+## OpenAPI (Swagger) and client libraries
 
 We have a [complete OpenAPI (Swagger) specification](https://app.launchdarkly.com/api/v2/openapi.json) for our API.
 
-You can use this specification to generate client libraries to interact with our REST API in your language of choice.
+We auto-generate multiple client libraries based on our OpenAPI specification. To learn more, visit the [collection of client libraries on GitHub](https://github.com/search?q=topic%3Alaunchdarkly-api+org%3Alaunchdarkly&type=Repositories). You can also use this specification to generate client libraries to interact with our REST API in your language of choice.
 
-This specification is supported by several API-based tools such as Postman and Insomnia. In many cases, you can directly import our specification to ease use in navigating the APIs in the tooling.
+Our OpenAPI specification is supported by several API-based tools such as Postman and Insomnia. In many cases, you can directly import our specification to explore our APIs.
 
-## Client libraries
+## Method overriding
 
-We auto-generate multiple client libraries based on our OpenAPI specification. To learn more, visit [GitHub](https://github.com/search?q=topic%3Alaunchdarkly-api+org%3Alaunchdarkly&type=Repositories).
+Some firewalls and HTTP clients restrict the use of verbs other than `GET` and `POST`. In those environments, our API endpoints that use `DELETE`, `PATCH`, and `PUT` verbs are inaccessible.
 
-## Method Overriding
+To avoid this issue, our API supports the `X-HTTP-Method-Override` header, allowing clients to \"tunnel\" `DELETE`, `PATCH`, and `PUT` requests using a `POST` request.
 
-Some firewalls and HTTP clients restrict the use of verbs other than `GET` and `POST`. In those environments, our API endpoints that use `PUT`, `PATCH`, and `DELETE` verbs will be inaccessible.
-
-To avoid this issue, our API supports the `X-HTTP-Method-Override` header, allowing clients to \"tunnel\" `PUT`, `PATCH`, and `DELETE` requests via a `POST` request.
-
-For example, if you wish to call one of our `PATCH` resources via a `POST` request, you can include `X-HTTP-Method-Override:PATCH` as a header.
+For example, to call a `PATCH` endpoint using a `POST` request, you can include `X-HTTP-Method-Override:PATCH` as a header.
 
 ## Beta resources
 
@@ -339,10 +328,12 @@ We mark beta resources with a \"Beta\" callout in our documentation, pictured be
 > ### This feature is in beta
 >
 > To use this feature, pass in a header including the `LD-API-Version` key with value set to `beta`. Use this header with each call. To learn more, read [Beta resources](/#section/Overview/Beta-resources).
+>
+> Resources that are in beta are still undergoing testing and development. They may change without notice, including becoming backwards incompatible.
 
 ### Using beta resources
 
-To use a beta resource, you must include a header in the request. If you call a beta resource without this header, you'll receive a `403` response.
+To use a beta resource, you must include a header in the request. If you call a beta resource without this header, you receive a `403` response.
 
 Use this header:
 
@@ -364,13 +355,13 @@ You can set the API version on a specific request by sending an `LD-API-Version`
 LD-API-Version: 20220603
 ```
 
-The header value is the version number of the API version you'd like to request. The number for each version corresponds to the date the version was released in yyyymmdd format. In the example above the version `20220603` corresponds to June 03, 2022.
+The header value is the version number of the API version you would like to request. The number for each version corresponds to the date the version was released in `yyyymmdd` format. In the example above the version `20220603` corresponds to June 03, 2022.
 
 ### Setting the API version per access token
 
-When creating an access token, you must specify a specific version of the API to use. This ensures that integrations using this token cannot be broken by version changes.
+When you create an access token, you must specify a specific version of the API to use. This ensures that integrations using this token cannot be broken by version changes.
 
-Tokens created before versioning was released have their version set to `20160426` (the version of the API that existed before versioning) so that they continue working the same way they did before versioning.
+Tokens created before versioning was released have their version set to `20160426`, which is the version of the API that existed before the current versioning scheme, so that they continue working the same way they did before versioning.
 
 If you would like to upgrade your integration to use a new API version, you can explicitly set the header described above.
 
@@ -382,12 +373,12 @@ If you would like to upgrade your integration to use a new API version, you can 
 
 ### API version changelog
 
-|<div style=\"width:75px\">Version</div> | Changes |
-|---|---|
-| `20220603` | <ul><li>Changed the [list projects](tag/Projects#operation/getProjects) return value:<ul><li>Response is now paginated with a default limit of `20`.</li><li>Added support for filter and sort.</li><li>The project `environments` field is now expandable. This field is omitted by default.</li></ul></li><li>Changed the [get project](tag/Projects#operation/getProject) return value:<ul><li>The `environments` field is now expandable. This field is omitted by default.</li></ul></li></ul> |
-| `20210729` | <ul><li>Changed the [create approval request](/tag/Approvals#operation/postApprovalRequest) return value. It now returns HTTP Status Code `201` instead of `200`.</li><li> Changed the [get users](/tag/Users#operation/getUser) return value. It now returns a user record, not a user. </li><li> Added additional optional fields to environment, segments, flags, members, and segments, including the ability to create Big Segments. </li><li> Added default values for flag variations when new environments are created. </li><li> Added filtering and pagination for getting flags and members, including `limit`, `number`, `filter`, and `sort` query parameters. </li><li> Added endpoints for expiring user targets for flags and segments, scheduled changes, access tokens, Relay Proxy configuration, integrations and subscriptions, and approvals. </li></ul> |
-| `20191212` | <ul><li>[List feature flags](/tag/Feature-flags#operation/getFeatureFlags) now defaults to sending summaries of feature flag configurations, equivalent to setting the query parameter `summary=true`. Summaries omit flag targeting rules and individual user targets from the payload. </li><li> Added endpoints for flags, flag status, projects, environments, users, audit logs, members, users, custom roles, segments, usage, streams, events, and data export. </li></ul> |
-| `20160426` | <ul><li>Initial versioning of API. Tokens created before versioning have their version set to this.</li></ul> |
+|<div style=\"width:75px\">Version</div> | Changes | End of life (EOL)
+|---|---|---|
+| `20220603` | <ul><li>Changed the [list projects](/tag/Projects#operation/getProjects) return value:<ul><li>Response is now paginated with a default limit of `20`.</li><li>Added support for filter and sort.</li><li>The project `environments` field is now expandable. This field is omitted by default.</li></ul></li><li>Changed the [get project](/tag/Projects#operation/getProject) return value:<ul><li>The `environments` field is now expandable. This field is omitted by default.</li></ul></li></ul> | Current |
+| `20210729` | <ul><li>Changed the [create approval request](/tag/Approvals#operation/postApprovalRequest) return value. It now returns HTTP Status Code `201` instead of `200`.</li><li> Changed the [get users](/tag/Users#operation/getUser) return value. It now returns a user record, not a user. </li><li>Added additional optional fields to environment, segments, flags, members, and segments, including the ability to create Big Segments. </li><li> Added default values for flag variations when new environments are created. </li><li>Added filtering and pagination for getting flags and members, including `limit`, `number`, `filter`, and `sort` query parameters. </li><li>Added endpoints for expiring user targets for flags and segments, scheduled changes, access tokens, Relay Proxy configuration, integrations and subscriptions, and approvals. </li></ul> | 2023-06-03 |
+| `20191212` | <ul><li>[List feature flags](/tag/Feature-flags#operation/getFeatureFlags) now defaults to sending summaries of feature flag configurations, equivalent to setting the query parameter `summary=true`. Summaries omit flag targeting rules and individual user targets from the payload. </li><li> Added endpoints for flags, flag status, projects, environments, users, audit logs, members, users, custom roles, segments, usage, streams, events, and data export. </li></ul> | 2022-07-29 |
+| `20160426` | <ul><li>Initial versioning of API. Tokens created before versioning have their version set to this.</li></ul> | 2020-12-12 |
 
 
 For more information, please visit [https://support.launchdarkly.com](https://support.launchdarkly.com).
@@ -478,6 +469,7 @@ Class | Method | HTTP request | Description
 *AccountMembersApi* | [**patchMember**](docs/Api/AccountMembersApi.md#patchmember) | **PATCH** /api/v2/members/{id} | Modify an account member
 *AccountMembersApi* | [**postMemberTeams**](docs/Api/AccountMembersApi.md#postmemberteams) | **POST** /api/v2/members/{id}/teams | Add a member to teams
 *AccountMembersApi* | [**postMembers**](docs/Api/AccountMembersApi.md#postmembers) | **POST** /api/v2/members | Invite new members
+*AccountMembersBetaApi* | [**patchMembers**](docs/Api/AccountMembersBetaApi.md#patchmembers) | **PATCH** /api/v2/members | Modify account members
 *AccountUsageBetaApi* | [**getEvaluationsUsage**](docs/Api/AccountUsageBetaApi.md#getevaluationsusage) | **GET** /api/v2/usage/evaluations/{projectKey}/{environmentKey}/{featureFlagKey} | Get evaluations usage
 *AccountUsageBetaApi* | [**getEventsUsage**](docs/Api/AccountUsageBetaApi.md#geteventsusage) | **GET** /api/v2/usage/events/{type} | Get events usage
 *AccountUsageBetaApi* | [**getMauSdksByType**](docs/Api/AccountUsageBetaApi.md#getmausdksbytype) | **GET** /api/v2/usage/mau/sdks | Get MAU SDKs by type
@@ -487,8 +479,8 @@ Class | Method | HTTP request | Description
 *AccountUsageBetaApi* | [**getStreamUsageBySdkVersion**](docs/Api/AccountUsageBetaApi.md#getstreamusagebysdkversion) | **GET** /api/v2/usage/streams/{source}/bysdkversion | Get stream usage by SDK version
 *AccountUsageBetaApi* | [**getStreamUsageSdkversion**](docs/Api/AccountUsageBetaApi.md#getstreamusagesdkversion) | **GET** /api/v2/usage/streams/{source}/sdkversions | Get stream usage SDK versions
 *ApprovalsApi* | [**deleteApprovalRequest**](docs/Api/ApprovalsApi.md#deleteapprovalrequest) | **DELETE** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id} | Delete approval request
-*ApprovalsApi* | [**getApproval**](docs/Api/ApprovalsApi.md#getapproval) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id} | Get approval request
-*ApprovalsApi* | [**getApprovals**](docs/Api/ApprovalsApi.md#getapprovals) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | List all approval requests
+*ApprovalsApi* | [**getApprovalForFlag**](docs/Api/ApprovalsApi.md#getapprovalforflag) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id} | Get approval request for a flag
+*ApprovalsApi* | [**getApprovalsForFlag**](docs/Api/ApprovalsApi.md#getapprovalsforflag) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | List approval requests for a flag
 *ApprovalsApi* | [**postApprovalRequest**](docs/Api/ApprovalsApi.md#postapprovalrequest) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | Create approval request
 *ApprovalsApi* | [**postApprovalRequestApplyRequest**](docs/Api/ApprovalsApi.md#postapprovalrequestapplyrequest) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}/apply | Apply approval request
 *ApprovalsApi* | [**postApprovalRequestReview**](docs/Api/ApprovalsApi.md#postapprovalrequestreview) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}/reviews | Review approval request
@@ -586,10 +578,13 @@ Class | Method | HTTP request | Description
 *OtherApi* | [**getRoot**](docs/Api/OtherApi.md#getroot) | **GET** /api/v2 | Root resource
 *OtherApi* | [**getVersions**](docs/Api/OtherApi.md#getversions) | **GET** /api/v2/versions | Get version information
 *ProjectsApi* | [**deleteProject**](docs/Api/ProjectsApi.md#deleteproject) | **DELETE** /api/v2/projects/{projectKey} | Delete project
+*ProjectsApi* | [**getFlagDefaultsByProject**](docs/Api/ProjectsApi.md#getflagdefaultsbyproject) | **GET** /api/v2/projects/{projectKey}/flag-defaults | Get flag defaults for project
 *ProjectsApi* | [**getProject**](docs/Api/ProjectsApi.md#getproject) | **GET** /api/v2/projects/{projectKey} | Get project
 *ProjectsApi* | [**getProjects**](docs/Api/ProjectsApi.md#getprojects) | **GET** /api/v2/projects | List projects
+*ProjectsApi* | [**patchFlagDefaultsByProject**](docs/Api/ProjectsApi.md#patchflagdefaultsbyproject) | **PATCH** /api/v2/projects/{projectKey}/flag-defaults | Update flag default for project
 *ProjectsApi* | [**patchProject**](docs/Api/ProjectsApi.md#patchproject) | **PATCH** /api/v2/projects/{projectKey} | Update project
 *ProjectsApi* | [**postProject**](docs/Api/ProjectsApi.md#postproject) | **POST** /api/v2/projects | Create project
+*ProjectsApi* | [**putFlagDefaultsByProject**](docs/Api/ProjectsApi.md#putflagdefaultsbyproject) | **PUT** /api/v2/projects/{projectKey}/flag-defaults | Create or update flag defaults for project
 *RelayProxyConfigurationsApi* | [**deleteRelayAutoConfig**](docs/Api/RelayProxyConfigurationsApi.md#deleterelayautoconfig) | **DELETE** /api/v2/account/relay-auto-configs/{id} | Delete Relay Proxy config by ID
 *RelayProxyConfigurationsApi* | [**getRelayProxyConfig**](docs/Api/RelayProxyConfigurationsApi.md#getrelayproxyconfig) | **GET** /api/v2/account/relay-auto-configs/{id} | Get Relay Proxy config
 *RelayProxyConfigurationsApi* | [**getRelayProxyConfigs**](docs/Api/RelayProxyConfigurationsApi.md#getrelayproxyconfigs) | **GET** /api/v2/account/relay-auto-configs | List Relay Proxy configs
@@ -623,6 +618,7 @@ Class | Method | HTTP request | Description
 *TeamsApi* | [**patchTeam**](docs/Api/TeamsApi.md#patchteam) | **PATCH** /api/v2/teams/{teamKey} | Update team
 *TeamsApi* | [**postTeam**](docs/Api/TeamsApi.md#postteam) | **POST** /api/v2/teams | Create team
 *TeamsApi* | [**postTeamMembers**](docs/Api/TeamsApi.md#postteammembers) | **POST** /api/v2/teams/{teamKey}/members | Add multiple members to team
+*TeamsBetaApi* | [**patchTeams**](docs/Api/TeamsBetaApi.md#patchteams) | **PATCH** /api/v2/teams | Update teams
 *UserSettingsApi* | [**getExpiringFlagsForUser**](docs/Api/UserSettingsApi.md#getexpiringflagsforuser) | **GET** /api/v2/users/{projectKey}/{userKey}/expiring-user-targets/{environmentKey} | Get expiring dates on flags for user
 *UserSettingsApi* | [**getUserFlagSetting**](docs/Api/UserSettingsApi.md#getuserflagsetting) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Get flag setting for user
 *UserSettingsApi* | [**getUserFlagSettings**](docs/Api/UserSettingsApi.md#getuserflagsettings) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags | List flag settings for user
@@ -638,6 +634,9 @@ Class | Method | HTTP request | Description
 *WebhooksApi* | [**getWebhook**](docs/Api/WebhooksApi.md#getwebhook) | **GET** /api/v2/webhooks/{id} | Get webhook
 *WebhooksApi* | [**patchWebhook**](docs/Api/WebhooksApi.md#patchwebhook) | **PATCH** /api/v2/webhooks/{id} | Update webhook
 *WebhooksApi* | [**postWebhook**](docs/Api/WebhooksApi.md#postwebhook) | **POST** /api/v2/webhooks | Creates a webhook
+*WorkflowTemplatesBetaApi* | [**createWorkflowTemplate**](docs/Api/WorkflowTemplatesBetaApi.md#createworkflowtemplate) | **POST** /api/v2/templates | Create workflow template
+*WorkflowTemplatesBetaApi* | [**deleteWorkflowTemplate**](docs/Api/WorkflowTemplatesBetaApi.md#deleteworkflowtemplate) | **DELETE** /api/v2/templates/{templateKey} | Delete workflow template
+*WorkflowTemplatesBetaApi* | [**getWorkflowTemplates**](docs/Api/WorkflowTemplatesBetaApi.md#getworkflowtemplates) | **GET** /api/v2/templates | Get workflow templates
 *WorkflowsBetaApi* | [**deleteWorkflow**](docs/Api/WorkflowsBetaApi.md#deleteworkflow) | **DELETE** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows/{workflowId} | Delete workflow
 *WorkflowsBetaApi* | [**getCustomWorkflow**](docs/Api/WorkflowsBetaApi.md#getcustomworkflow) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows/{workflowId} | Get custom workflow
 *WorkflowsBetaApi* | [**getWorkflows**](docs/Api/WorkflowsBetaApi.md#getworkflows) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/workflows | Get workflows
@@ -651,45 +650,53 @@ Class | Method | HTTP request | Description
 - [AccessDenied](docs/Model/AccessDenied.md)
 - [AccessDeniedReason](docs/Model/AccessDeniedReason.md)
 - [AccessTokenPost](docs/Model/AccessTokenPost.md)
-- [ActionInputRep](docs/Model/ActionInputRep.md)
-- [ActionOutputRep](docs/Model/ActionOutputRep.md)
-- [ApprovalConditionInputRep](docs/Model/ApprovalConditionInputRep.md)
-- [ApprovalConditionOutputRep](docs/Model/ApprovalConditionOutputRep.md)
+- [ActionInput](docs/Model/ActionInput.md)
+- [ActionOutput](docs/Model/ActionOutput.md)
+- [ApprovalConditionInput](docs/Model/ApprovalConditionInput.md)
+- [ApprovalConditionOutput](docs/Model/ApprovalConditionOutput.md)
 - [ApprovalSettings](docs/Model/ApprovalSettings.md)
 - [AuditLogEntryListingRep](docs/Model/AuditLogEntryListingRep.md)
 - [AuditLogEntryListingRepCollection](docs/Model/AuditLogEntryListingRepCollection.md)
 - [AuditLogEntryRep](docs/Model/AuditLogEntryRep.md)
 - [AuthorizedAppDataRep](docs/Model/AuthorizedAppDataRep.md)
 - [BigSegmentTarget](docs/Model/BigSegmentTarget.md)
+- [BooleanDefaults](docs/Model/BooleanDefaults.md)
+- [BooleanFlagDefaults](docs/Model/BooleanFlagDefaults.md)
 - [BranchCollectionRep](docs/Model/BranchCollectionRep.md)
 - [BranchRep](docs/Model/BranchRep.md)
+- [BulkEditMembersRep](docs/Model/BulkEditMembersRep.md)
+- [BulkEditTeamsRep](docs/Model/BulkEditTeamsRep.md)
 - [Clause](docs/Model/Clause.md)
 - [Client](docs/Model/Client.md)
 - [ClientCollection](docs/Model/ClientCollection.md)
 - [ClientSideAvailability](docs/Model/ClientSideAvailability.md)
 - [ClientSideAvailabilityPost](docs/Model/ClientSideAvailabilityPost.md)
-- [ConditionBaseOutputRep](docs/Model/ConditionBaseOutputRep.md)
-- [ConditionInputRep](docs/Model/ConditionInputRep.md)
-- [ConditionOutputRep](docs/Model/ConditionOutputRep.md)
+- [ConditionBaseOutput](docs/Model/ConditionBaseOutput.md)
+- [ConditionInput](docs/Model/ConditionInput.md)
+- [ConditionOutput](docs/Model/ConditionOutput.md)
 - [ConfidenceIntervalRep](docs/Model/ConfidenceIntervalRep.md)
 - [Conflict](docs/Model/Conflict.md)
-- [ConflictOutputRep](docs/Model/ConflictOutputRep.md)
+- [ConflictOutput](docs/Model/ConflictOutput.md)
 - [CopiedFromEnv](docs/Model/CopiedFromEnv.md)
 - [CreateCopyFlagConfigApprovalRequestRequest](docs/Model/CreateCopyFlagConfigApprovalRequestRequest.md)
 - [CreateFlagConfigApprovalRequestRequest](docs/Model/CreateFlagConfigApprovalRequestRequest.md)
+- [CreateWorkflowTemplateInput](docs/Model/CreateWorkflowTemplateInput.md)
 - [CredibleIntervalRep](docs/Model/CredibleIntervalRep.md)
 - [CustomProperty](docs/Model/CustomProperty.md)
 - [CustomRole](docs/Model/CustomRole.md)
 - [CustomRolePost](docs/Model/CustomRolePost.md)
 - [CustomRolePostData](docs/Model/CustomRolePostData.md)
 - [CustomRoles](docs/Model/CustomRoles.md)
-- [CustomWorkflowInputRep](docs/Model/CustomWorkflowInputRep.md)
+- [CustomWorkflowInput](docs/Model/CustomWorkflowInput.md)
 - [CustomWorkflowMeta](docs/Model/CustomWorkflowMeta.md)
-- [CustomWorkflowOutputRep](docs/Model/CustomWorkflowOutputRep.md)
+- [CustomWorkflowOutput](docs/Model/CustomWorkflowOutput.md)
 - [CustomWorkflowStageMeta](docs/Model/CustomWorkflowStageMeta.md)
-- [CustomWorkflowsListingOutputRep](docs/Model/CustomWorkflowsListingOutputRep.md)
+- [CustomWorkflowsListingOutput](docs/Model/CustomWorkflowsListingOutput.md)
+- [Database](docs/Model/Database.md)
+- [DefaultClientSideAvailability](docs/Model/DefaultClientSideAvailability.md)
 - [DefaultClientSideAvailabilityPost](docs/Model/DefaultClientSideAvailabilityPost.md)
 - [Defaults](docs/Model/Defaults.md)
+- [DependentExperimentRep](docs/Model/DependentExperimentRep.md)
 - [DependentFlag](docs/Model/DependentFlag.md)
 - [DependentFlagEnvironment](docs/Model/DependentFlagEnvironment.md)
 - [DependentFlagsByEnvironment](docs/Model/DependentFlagsByEnvironment.md)
@@ -700,7 +707,7 @@ Class | Method | HTTP request | Description
 - [EnvironmentPost](docs/Model/EnvironmentPost.md)
 - [Environments](docs/Model/Environments.md)
 - [EvaluationReason](docs/Model/EvaluationReason.md)
-- [ExecutionOutputRep](docs/Model/ExecutionOutputRep.md)
+- [ExecutionOutput](docs/Model/ExecutionOutput.md)
 - [Experiment](docs/Model/Experiment.md)
 - [ExperimentAllocationRep](docs/Model/ExperimentAllocationRep.md)
 - [ExperimentBayesianResultsRep](docs/Model/ExperimentBayesianResultsRep.md)
@@ -717,7 +724,7 @@ Class | Method | HTTP request | Description
 - [ExperimentTimeSeriesSlice](docs/Model/ExperimentTimeSeriesSlice.md)
 - [ExperimentTimeSeriesVariationSlice](docs/Model/ExperimentTimeSeriesVariationSlice.md)
 - [ExperimentTotalsRep](docs/Model/ExperimentTotalsRep.md)
-- [ExpiringUserTargetError](docs/Model/ExpiringUserTargetError.md)
+- [ExpiringTargetError](docs/Model/ExpiringTargetError.md)
 - [ExpiringUserTargetGetResponse](docs/Model/ExpiringUserTargetGetResponse.md)
 - [ExpiringUserTargetItem](docs/Model/ExpiringUserTargetItem.md)
 - [ExpiringUserTargetPatchResponse](docs/Model/ExpiringUserTargetPatchResponse.md)
@@ -738,6 +745,9 @@ Class | Method | HTTP request | Description
 - [FlagConfigApprovalRequestsResponse](docs/Model/FlagConfigApprovalRequestsResponse.md)
 - [FlagCopyConfigEnvironment](docs/Model/FlagCopyConfigEnvironment.md)
 - [FlagCopyConfigPost](docs/Model/FlagCopyConfigPost.md)
+- [FlagDefaults](docs/Model/FlagDefaults.md)
+- [FlagDefaultsApiBaseRep](docs/Model/FlagDefaultsApiBaseRep.md)
+- [FlagDefaultsRep](docs/Model/FlagDefaultsRep.md)
 - [FlagFollowersByProjEnvGetRep](docs/Model/FlagFollowersByProjEnvGetRep.md)
 - [FlagFollowersGetRep](docs/Model/FlagFollowersGetRep.md)
 - [FlagGlobalAttributesRep](docs/Model/FlagGlobalAttributesRep.md)
@@ -779,6 +789,7 @@ Class | Method | HTTP request | Description
 - [LastSeenMetadata](docs/Model/LastSeenMetadata.md)
 - [LegacyExperimentRep](docs/Model/LegacyExperimentRep.md)
 - [Link](docs/Model/Link.md)
+- [MaintainerTeam](docs/Model/MaintainerTeam.md)
 - [Member](docs/Model/Member.md)
 - [MemberDataRep](docs/Model/MemberDataRep.md)
 - [MemberImportItem](docs/Model/MemberImportItem.md)
@@ -787,12 +798,15 @@ Class | Method | HTTP request | Description
 - [MemberTeamSummaryRep](docs/Model/MemberTeamSummaryRep.md)
 - [MemberTeamsPostInput](docs/Model/MemberTeamsPostInput.md)
 - [Members](docs/Model/Members.md)
+- [MembersPatchInput](docs/Model/MembersPatchInput.md)
 - [MethodNotAllowedErrorRep](docs/Model/MethodNotAllowedErrorRep.md)
 - [MetricCollectionRep](docs/Model/MetricCollectionRep.md)
 - [MetricInput](docs/Model/MetricInput.md)
 - [MetricListingRep](docs/Model/MetricListingRep.md)
+- [MetricListingRepExpandableProperties](docs/Model/MetricListingRepExpandableProperties.md)
 - [MetricPost](docs/Model/MetricPost.md)
 - [MetricRep](docs/Model/MetricRep.md)
+- [MetricRepExpandableProperties](docs/Model/MetricRepExpandableProperties.md)
 - [MetricSeen](docs/Model/MetricSeen.md)
 - [MetricV2Rep](docs/Model/MetricV2Rep.md)
 - [Modification](docs/Model/Modification.md)
@@ -802,6 +816,7 @@ Class | Method | HTTP request | Description
 - [NotFoundErrorRep](docs/Model/NotFoundErrorRep.md)
 - [OauthClientPost](docs/Model/OauthClientPost.md)
 - [ParameterDefault](docs/Model/ParameterDefault.md)
+- [ParameterDefaultInput](docs/Model/ParameterDefaultInput.md)
 - [ParameterRep](docs/Model/ParameterRep.md)
 - [ParentResourceRep](docs/Model/ParentResourceRep.md)
 - [PatchFailedErrorRep](docs/Model/PatchFailedErrorRep.md)
@@ -841,13 +856,13 @@ Class | Method | HTTP request | Description
 - [ResolvedUIBlocks](docs/Model/ResolvedUIBlocks.md)
 - [ResourceAccess](docs/Model/ResourceAccess.md)
 - [ResourceIDResponse](docs/Model/ResourceIDResponse.md)
-- [ReviewOutputRep](docs/Model/ReviewOutputRep.md)
+- [ReviewOutput](docs/Model/ReviewOutput.md)
 - [ReviewResponse](docs/Model/ReviewResponse.md)
 - [Rollout](docs/Model/Rollout.md)
 - [Rule](docs/Model/Rule.md)
 - [RuleClause](docs/Model/RuleClause.md)
-- [ScheduleConditionInputRep](docs/Model/ScheduleConditionInputRep.md)
-- [ScheduleConditionOutputRep](docs/Model/ScheduleConditionOutputRep.md)
+- [ScheduleConditionInput](docs/Model/ScheduleConditionInput.md)
+- [ScheduleConditionOutput](docs/Model/ScheduleConditionOutput.md)
 - [SdkListRep](docs/Model/SdkListRep.md)
 - [SdkVersionListRep](docs/Model/SdkVersionListRep.md)
 - [SdkVersionRep](docs/Model/SdkVersionRep.md)
@@ -858,8 +873,8 @@ Class | Method | HTTP request | Description
 - [SeriesListRep](docs/Model/SeriesListRep.md)
 - [SourceEnv](docs/Model/SourceEnv.md)
 - [SourceFlag](docs/Model/SourceFlag.md)
-- [StageInputRep](docs/Model/StageInputRep.md)
-- [StageOutputRep](docs/Model/StageOutputRep.md)
+- [StageInput](docs/Model/StageInput.md)
+- [StageOutput](docs/Model/StageOutput.md)
 - [Statement](docs/Model/Statement.md)
 - [StatementPost](docs/Model/StatementPost.md)
 - [StatementPostData](docs/Model/StatementPostData.md)
@@ -884,6 +899,7 @@ Class | Method | HTTP request | Description
 - [TeamProjects](docs/Model/TeamProjects.md)
 - [TeamRepExpandableProperties](docs/Model/TeamRepExpandableProperties.md)
 - [Teams](docs/Model/Teams.md)
+- [TeamsPatchInput](docs/Model/TeamsPatchInput.md)
 - [TimestampRep](docs/Model/TimestampRep.md)
 - [TitleRep](docs/Model/TitleRep.md)
 - [Token](docs/Model/Token.md)
@@ -897,6 +913,8 @@ Class | Method | HTTP request | Description
 - [TriggerWorkflowCollectionRep](docs/Model/TriggerWorkflowCollectionRep.md)
 - [TriggerWorkflowRep](docs/Model/TriggerWorkflowRep.md)
 - [UnauthorizedErrorRep](docs/Model/UnauthorizedErrorRep.md)
+- [UpsertFlagDefaultsPayload](docs/Model/UpsertFlagDefaultsPayload.md)
+- [UpsertPayloadRep](docs/Model/UpsertPayloadRep.md)
 - [UrlPost](docs/Model/UrlPost.md)
 - [User](docs/Model/User.md)
 - [UserAttributeNamesRep](docs/Model/UserAttributeNamesRep.md)
@@ -910,6 +928,7 @@ Class | Method | HTTP request | Description
 - [Users](docs/Model/Users.md)
 - [UsersRep](docs/Model/UsersRep.md)
 - [ValuePut](docs/Model/ValuePut.md)
+- [Variate](docs/Model/Variate.md)
 - [Variation](docs/Model/Variation.md)
 - [VariationOrRolloutRep](docs/Model/VariationOrRolloutRep.md)
 - [VariationSummary](docs/Model/VariationSummary.md)
@@ -919,7 +938,10 @@ Class | Method | HTTP request | Description
 - [Webhooks](docs/Model/Webhooks.md)
 - [WeightedVariation](docs/Model/WeightedVariation.md)
 - [WorkflowTemplateMetadata](docs/Model/WorkflowTemplateMetadata.md)
+- [WorkflowTemplateOutput](docs/Model/WorkflowTemplateOutput.md)
 - [WorkflowTemplateParameter](docs/Model/WorkflowTemplateParameter.md)
+- [WorkflowTemplateParameterInput](docs/Model/WorkflowTemplateParameterInput.md)
+- [WorkflowTemplatesListingOutputRep](docs/Model/WorkflowTemplatesListingOutputRep.md)
 
 ## Authorization
 
@@ -948,5 +970,5 @@ support@launchdarkly.com
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `2.0`
-    - Package version: `10.0.0`
+    - Package version: `11.0.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

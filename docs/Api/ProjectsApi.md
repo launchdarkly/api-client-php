@@ -5,10 +5,13 @@ All URIs are relative to https://app.launchdarkly.com.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteProject()**](ProjectsApi.md#deleteProject) | **DELETE** /api/v2/projects/{projectKey} | Delete project
+[**getFlagDefaultsByProject()**](ProjectsApi.md#getFlagDefaultsByProject) | **GET** /api/v2/projects/{projectKey}/flag-defaults | Get flag defaults for project
 [**getProject()**](ProjectsApi.md#getProject) | **GET** /api/v2/projects/{projectKey} | Get project
 [**getProjects()**](ProjectsApi.md#getProjects) | **GET** /api/v2/projects | List projects
+[**patchFlagDefaultsByProject()**](ProjectsApi.md#patchFlagDefaultsByProject) | **PATCH** /api/v2/projects/{projectKey}/flag-defaults | Update flag default for project
 [**patchProject()**](ProjectsApi.md#patchProject) | **PATCH** /api/v2/projects/{projectKey} | Update project
 [**postProject()**](ProjectsApi.md#postProject) | **POST** /api/v2/projects | Create project
+[**putFlagDefaultsByProject()**](ProjectsApi.md#putFlagDefaultsByProject) | **PUT** /api/v2/projects/{projectKey}/flag-defaults | Create or update flag defaults for project
 
 
 ## `deleteProject()`
@@ -58,6 +61,68 @@ Name | Type | Description  | Notes
 ### Return type
 
 void (empty response body)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getFlagDefaultsByProject()`
+
+```php
+getFlagDefaultsByProject($project_key): \LaunchDarklyApi\Model\FlagDefaultsRep
+```
+
+Get flag defaults for project
+
+Get the flag defaults for a specific project.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\ProjectsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = 'project_key_example'; // string | The project key
+
+try {
+    $result = $apiInstance->getFlagDefaultsByProject($project_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ProjectsApi->getFlagDefaultsByProject: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\FlagDefaultsRep**](../Model/FlagDefaultsRep.md)
 
 ### Authorization
 
@@ -139,7 +204,7 @@ Name | Type | Description  | Notes
 ## `getProjects()`
 
 ```php
-getProjects($limit, $offset, $filter, $expand): \LaunchDarklyApi\Model\Projects
+getProjects($limit, $offset, $filter, $sort, $expand): \LaunchDarklyApi\Model\Projects
 ```
 
 List projects
@@ -168,10 +233,11 @@ $apiInstance = new LaunchDarklyApi\Api\ProjectsApi(
 $limit = 56; // int | The number of projects to return in the response. Defaults to 20.
 $offset = 56; // int | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next `limit` items.
 $filter = 'filter_example'; // string | A comma-separated list of filters. Each filter is constructed as `field:value`.
+$sort = 'sort_example'; // string | A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order.
 $expand = 'expand_example'; // string | A comma-separated list of properties that can reveal additional information in the response.
 
 try {
-    $result = $apiInstance->getProjects($limit, $offset, $filter, $expand);
+    $result = $apiInstance->getProjects($limit, $offset, $filter, $sort, $expand);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ProjectsApi->getProjects: ', $e->getMessage(), PHP_EOL;
@@ -185,6 +251,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| The number of projects to return in the response. Defaults to 20. | [optional]
  **offset** | **int**| Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next &#x60;limit&#x60; items. | [optional]
  **filter** | **string**| A comma-separated list of filters. Each filter is constructed as &#x60;field:value&#x60;. | [optional]
+ **sort** | **string**| A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. | [optional]
  **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional]
 
 ### Return type
@@ -198,6 +265,70 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `patchFlagDefaultsByProject()`
+
+```php
+patchFlagDefaultsByProject($project_key, $patch_operation): \LaunchDarklyApi\Model\UpsertPayloadRep
+```
+
+Update flag default for project
+
+Update a flag default. Requires a [JSON Patch](https://datatracker.ietf.org/doc/html/rfc6902) representation of the desired changes to the flag default.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\ProjectsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = 'project_key_example'; // string | The project key
+$patch_operation = array(new \LaunchDarklyApi\Model\PatchOperation()); // \LaunchDarklyApi\Model\PatchOperation[]
+
+try {
+    $result = $apiInstance->patchFlagDefaultsByProject($project_key, $patch_operation);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ProjectsApi->patchFlagDefaultsByProject: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key |
+ **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\UpsertPayloadRep**](../Model/UpsertPayloadRep.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
@@ -316,6 +447,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\LaunchDarklyApi\Model\ProjectRep**](../Model/ProjectRep.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `putFlagDefaultsByProject()`
+
+```php
+putFlagDefaultsByProject($project_key, $upsert_flag_defaults_payload): \LaunchDarklyApi\Model\UpsertPayloadRep
+```
+
+Create or update flag defaults for project
+
+Create or update flag defaults for a project.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\ProjectsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = 'project_key_example'; // string | The project key
+$upsert_flag_defaults_payload = new \LaunchDarklyApi\Model\UpsertFlagDefaultsPayload(); // \LaunchDarklyApi\Model\UpsertFlagDefaultsPayload
+
+try {
+    $result = $apiInstance->putFlagDefaultsByProject($project_key, $upsert_flag_defaults_payload);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ProjectsApi->putFlagDefaultsByProject: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key |
+ **upsert_flag_defaults_payload** | [**\LaunchDarklyApi\Model\UpsertFlagDefaultsPayload**](../Model/UpsertFlagDefaultsPayload.md)|  |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\UpsertPayloadRep**](../Model/UpsertPayloadRep.md)
 
 ### Authorization
 

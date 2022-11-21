@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) | Links to related resources. |
+**_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) | The location and content type of related resources |
 **name** | **string** | Client name |
 **description** | **string** | Client description | [optional]
 **_account_id** | **string** | The account ID the client is registered under |

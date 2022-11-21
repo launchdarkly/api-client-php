@@ -8,8 +8,8 @@ Name | Type | Description | Notes
 **member** | [**\LaunchDarklyApi\Model\MemberDataRep**](MemberDataRep.md) |  | [optional]
 **token** | [**\LaunchDarklyApi\Model\TokenDataRep**](TokenDataRep.md) |  | [optional]
 **app** | [**\LaunchDarklyApi\Model\AuthorizedAppDataRep**](AuthorizedAppDataRep.md) |  | [optional]
-**title_verb** | **string** |  | [optional]
-**title** | **string** |  | [optional]
+**title_verb** | **string** | The action and resource recorded in this audit log entry | [optional]
+**title** | **string** | A description of what occurred, in the format &lt;code&gt;member&lt;/code&gt; &lt;code&gt;titleVerb&lt;/code&gt; &lt;code&gt;target&lt;/code&gt; | [optional]
 **target** | [**\LaunchDarklyApi\Model\TargetResourceRep**](TargetResourceRep.md) |  | [optional]
 **parent** | [**\LaunchDarklyApi\Model\ParentResourceRep**](ParentResourceRep.md) |  | [optional]
 

@@ -15,15 +15,15 @@ Name | Type | Description | Notes
 **variations** | [**\LaunchDarklyApi\Model\Variation[]**](Variation.md) | An array of possible variations for the flag |
 **temporary** | **bool** | Whether the flag is a temporary flag |
 **tags** | **string[]** | Tags for the feature flag |
-**_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) |  |
+**_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) | The location and content type of related resources |
 **maintainer_id** | **string** | Associated maintainerId for the feature flag | [optional]
 **_maintainer** | [**\LaunchDarklyApi\Model\MemberSummary**](MemberSummary.md) |  | [optional]
-**goal_ids** | **string[]** |  | [optional]
+**goal_ids** | **string[]** | Deprecated | [optional]
 **experiments** | [**\LaunchDarklyApi\Model\ExperimentInfoRep**](ExperimentInfoRep.md) |  |
 **custom_properties** | [**array<string,\LaunchDarklyApi\Model\CustomProperty>**](CustomProperty.md) |  |
 **archived** | **bool** | Boolean indicating if the feature flag is archived |
 **archived_date** | **int** |  | [optional]
 **defaults** | [**\LaunchDarklyApi\Model\Defaults**](Defaults.md) |  | [optional]
-**environments** | [**array<string,\LaunchDarklyApi\Model\FeatureFlagConfig>**](FeatureFlagConfig.md) |  |
+**environments** | [**array<string,\LaunchDarklyApi\Model\FeatureFlagConfig>**](FeatureFlagConfig.md) | Details on the environments for this flag |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

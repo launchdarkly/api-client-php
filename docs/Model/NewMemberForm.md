@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **last_name** | **string** | The member&#39;s last name | [optional]
 **role** | **string** | The member&#39;s built-in role | [optional]
 **custom_roles** | **string[]** | An array of the member&#39;s custom roles | [optional]
+**team_keys** | **string[]** | An array of the member&#39;s teams | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

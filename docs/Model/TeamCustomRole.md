@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**key** | **string** |  | [optional]
-**name** | **string** |  | [optional]
+**key** | **string** | The key of the custom role | [optional]
+**name** | **string** | The name of the custom role | [optional]
 **projects** | [**\LaunchDarklyApi\Model\TeamProjects**](TeamProjects.md) |  | [optional]
 **applied_on** | **int** |  | [optional]
 

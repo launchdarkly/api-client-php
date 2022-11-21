@@ -15,10 +15,10 @@ Name | Type | Description | Notes
 **variations** | [**\LaunchDarklyApi\Model\Variation[]**](Variation.md) | An array of possible variations for the flag |
 **temporary** | **bool** | Whether the flag is a temporary flag |
 **tags** | **string[]** | Tags for the feature flag |
-**_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) |  |
+**_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) | The location and content type of related resources |
 **maintainer_id** | **string** | Associated maintainerId for the feature flag | [optional]
 **_maintainer** | [**\LaunchDarklyApi\Model\MemberSummary**](MemberSummary.md) |  | [optional]
-**goal_ids** | **string[]** |  | [optional]
+**goal_ids** | **string[]** | Deprecated | [optional]
 **experiments** | [**\LaunchDarklyApi\Model\ExperimentInfoRep**](ExperimentInfoRep.md) |  |
 **custom_properties** | [**array<string,\LaunchDarklyApi\Model\CustomProperty>**](CustomProperty.md) |  |
 **archived** | **bool** | Boolean indicating if the feature flag is archived |

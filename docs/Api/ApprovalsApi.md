@@ -5,8 +5,8 @@ All URIs are relative to https://app.launchdarkly.com.
 Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**deleteApprovalRequest()**](ApprovalsApi.md#deleteApprovalRequest) | **DELETE** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id} | Delete approval request
-[**getApproval()**](ApprovalsApi.md#getApproval) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id} | Get approval request
-[**getApprovals()**](ApprovalsApi.md#getApprovals) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | List all approval requests
+[**getApprovalForFlag()**](ApprovalsApi.md#getApprovalForFlag) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id} | Get approval request for a flag
+[**getApprovalsForFlag()**](ApprovalsApi.md#getApprovalsForFlag) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | List approval requests for a flag
 [**postApprovalRequest()**](ApprovalsApi.md#postApprovalRequest) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | Create approval request
 [**postApprovalRequestApplyRequest()**](ApprovalsApi.md#postApprovalRequestApplyRequest) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}/apply | Apply approval request
 [**postApprovalRequestReview()**](ApprovalsApi.md#postApprovalRequestReview) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}/reviews | Review approval request
@@ -80,13 +80,13 @@ void (empty response body)
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getApproval()`
+## `getApprovalForFlag()`
 
 ```php
-getApproval($project_key, $feature_flag_key, $environment_key, $id): \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse
+getApprovalForFlag($project_key, $feature_flag_key, $environment_key, $id): \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse
 ```
 
-Get approval request
+Get approval request for a flag
 
 Get a single approval request for a feature flag.
 
@@ -115,10 +115,10 @@ $environment_key = 'environment_key_example'; // string | The environment key
 $id = 'id_example'; // string | The feature flag approval request ID
 
 try {
-    $result = $apiInstance->getApproval($project_key, $feature_flag_key, $environment_key, $id);
+    $result = $apiInstance->getApprovalForFlag($project_key, $feature_flag_key, $environment_key, $id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ApprovalsApi->getApproval: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ApprovalsApi->getApprovalForFlag: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -148,13 +148,13 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `getApprovals()`
+## `getApprovalsForFlag()`
 
 ```php
-getApprovals($project_key, $feature_flag_key, $environment_key): \LaunchDarklyApi\Model\FlagConfigApprovalRequestsResponse
+getApprovalsForFlag($project_key, $feature_flag_key, $environment_key): \LaunchDarklyApi\Model\FlagConfigApprovalRequestsResponse
 ```
 
-List all approval requests
+List approval requests for a flag
 
 Get all approval requests for a feature flag.
 
@@ -182,10 +182,10 @@ $feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 
 try {
-    $result = $apiInstance->getApprovals($project_key, $feature_flag_key, $environment_key);
+    $result = $apiInstance->getApprovalsForFlag($project_key, $feature_flag_key, $environment_key);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ApprovalsApi->getApprovals: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ApprovalsApi->getApprovalsForFlag: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

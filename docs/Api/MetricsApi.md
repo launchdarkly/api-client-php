@@ -77,12 +77,12 @@ void (empty response body)
 ## `getMetric()`
 
 ```php
-getMetric($project_key, $metric_key): \LaunchDarklyApi\Model\MetricRep
+getMetric($project_key, $metric_key, $expand): \LaunchDarklyApi\Model\MetricRep
 ```
 
 Get metric
 
-Get information for a single metric from the specific project.
+Get information for a single metric from the specific project.  ### Expanding the metric response LaunchDarkly supports two fields for expanding the \"Get metric\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with any of the following fields:  - `experiments` includes all experiments from the specific project that use the metric - `experimentCount` includes the number of experiments from the specific project that use the metric  For example, `expand=experiments` includes the `experiments` field in the response.
 
 ### Example
 
@@ -105,9 +105,10 @@ $apiInstance = new LaunchDarklyApi\Api\MetricsApi(
 );
 $project_key = 'project_key_example'; // string | The project key
 $metric_key = 'metric_key_example'; // string | The metric key
+$expand = 'expand_example'; // string | A comma-separated list of properties that can reveal additional information in the response.
 
 try {
-    $result = $apiInstance->getMetric($project_key, $metric_key);
+    $result = $apiInstance->getMetric($project_key, $metric_key, $expand);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MetricsApi->getMetric: ', $e->getMessage(), PHP_EOL;
@@ -120,6 +121,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
  **metric_key** | **string**| The metric key |
+ **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional]
 
 ### Return type
 
@@ -141,12 +143,12 @@ Name | Type | Description  | Notes
 ## `getMetrics()`
 
 ```php
-getMetrics($project_key): \LaunchDarklyApi\Model\MetricCollectionRep
+getMetrics($project_key, $expand): \LaunchDarklyApi\Model\MetricCollectionRep
 ```
 
 List metrics
 
-Get a list of all metrics for the specified project.
+Get a list of all metrics for the specified project.  ### Expanding the metric list response LaunchDarkly supports expanding the \"List metrics\" response. By default, the expandable field is **not** included in the response.  To expand the response, append the `expand` query parameter and add the following supported field:  - `experimentCount` includes the number of experiments from the specific project that use the metric  For example, `expand=experimentCount` includes the `experimentCount` field for each metric in the response.
 
 ### Example
 
@@ -168,9 +170,10 @@ $apiInstance = new LaunchDarklyApi\Api\MetricsApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
+$expand = 'expand_example'; // string | A comma-separated list of properties that can reveal additional information in the response.
 
 try {
-    $result = $apiInstance->getMetrics($project_key);
+    $result = $apiInstance->getMetrics($project_key, $expand);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MetricsApi->getMetrics: ', $e->getMessage(), PHP_EOL;
@@ -182,6 +185,7 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
+ **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional]
 
 ### Return type
 

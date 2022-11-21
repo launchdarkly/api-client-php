@@ -4,7 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) | Links to other resources within the API. Includes the URL and content type of those resources. |
+**_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) | The location and content type of related resources |
 **_id** | **string** | The ID of this webhook |
 **name** | **string** | A human-readable name for this webhook | [optional]
 **url** | **string** | The URL to which LaunchDarkly sends an HTTP POST payload for this webhook |

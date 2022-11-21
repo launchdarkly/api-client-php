@@ -5,7 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_id** | **string** | The ID of this Data Export destination | [optional]
-**_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) | Links to other resources within the API. Includes the URL and content type of those resources. | [optional]
+**_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) | The location and content type of related resources | [optional]
 **name** | **string** | A human-readable name for your Data Export destination | [optional]
 **kind** | **string** | The type of Data Export destination | [optional]
 **version** | **float** |  | [optional]
