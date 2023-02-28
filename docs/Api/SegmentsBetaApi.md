@@ -8,6 +8,7 @@ Method | HTTP request | Description
 [**createBigSegmentImport()**](SegmentsBetaApi.md#createBigSegmentImport) | **POST** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports | Create Big Segment import
 [**getBigSegmentExport()**](SegmentsBetaApi.md#getBigSegmentExport) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports/{exportID} | Get Big Segment export
 [**getBigSegmentImport()**](SegmentsBetaApi.md#getBigSegmentImport) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports/{importID} | Get Big Segment import
+[**getContextInstanceSegmentsMembershipByEnv()**](SegmentsBetaApi.md#getContextInstanceSegmentsMembershipByEnv) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/segments/evaluate | List segment memberships for context instance
 
 
 ## `createBigSegmentExport()`
@@ -274,6 +275,72 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getContextInstanceSegmentsMembershipByEnv()`
+
+```php
+getContextInstanceSegmentsMembershipByEnv($project_key, $environment_key, $request_body): \LaunchDarklyApi\Model\ContextInstanceSegmentMemberships
+```
+
+List segment memberships for context instance
+
+For a given context instance with attributes, get membership details for all segments
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\SegmentsBetaApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = 'project_key_example'; // string | The project key
+$environment_key = 'environment_key_example'; // string | The environment key
+$request_body = {"key":"someuser","kind":"user","moreComplex":{"morethanone":[1,2,3],"yes":"please"},"name":"Some User","something":true}; // array<string,mixed>
+
+try {
+    $result = $apiInstance->getContextInstanceSegmentsMembershipByEnv($project_key, $environment_key, $request_body);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling SegmentsBetaApi->getContextInstanceSegmentsMembershipByEnv: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key |
+ **environment_key** | **string**| The environment key |
+ **request_body** | [**array<string,mixed>**](../Model/mixed.md)|  |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\ContextInstanceSegmentMemberships**](../Model/ContextInstanceSegmentMemberships.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

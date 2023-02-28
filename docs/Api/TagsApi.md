@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `getTags()`
 
 ```php
-getTags($kind, $pre): \LaunchDarklyApi\Model\TagCollection
+getTags($kind, $pre, $archived): \LaunchDarklyApi\Model\TagCollection
 ```
 
 List tags
@@ -38,9 +38,10 @@ $apiInstance = new LaunchDarklyApi\Api\TagsApi(
 );
 $kind = 'kind_example'; // string | Fetch tags associated with the specified resource type. Options are `flag`, `project`, `environment`, `segment`. Returns all types by default.
 $pre = 'pre_example'; // string | Return tags with the specified prefix
+$archived = True; // bool | Whether or not to return archived flags
 
 try {
-    $result = $apiInstance->getTags($kind, $pre);
+    $result = $apiInstance->getTags($kind, $pre, $archived);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TagsApi->getTags: ', $e->getMessage(), PHP_EOL;
@@ -53,6 +54,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **kind** | **string**| Fetch tags associated with the specified resource type. Options are &#x60;flag&#x60;, &#x60;project&#x60;, &#x60;environment&#x60;, &#x60;segment&#x60;. Returns all types by default. | [optional]
  **pre** | **string**| Return tags with the specified prefix | [optional]
+ **archived** | **bool**| Whether or not to return archived flags | [optional]
 
 ### Return type
 

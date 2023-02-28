@@ -4,22 +4,22 @@ All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteApprovalRequest()**](ApprovalsApi.md#deleteApprovalRequest) | **DELETE** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id} | Delete approval request
+[**deleteApprovalRequestForFlag()**](ApprovalsApi.md#deleteApprovalRequestForFlag) | **DELETE** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id} | Delete approval request for a flag
 [**getApprovalForFlag()**](ApprovalsApi.md#getApprovalForFlag) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id} | Get approval request for a flag
 [**getApprovalsForFlag()**](ApprovalsApi.md#getApprovalsForFlag) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | List approval requests for a flag
-[**postApprovalRequest()**](ApprovalsApi.md#postApprovalRequest) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | Create approval request
-[**postApprovalRequestApplyRequest()**](ApprovalsApi.md#postApprovalRequestApplyRequest) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}/apply | Apply approval request
-[**postApprovalRequestReview()**](ApprovalsApi.md#postApprovalRequestReview) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}/reviews | Review approval request
+[**postApprovalRequestApplyForFlag()**](ApprovalsApi.md#postApprovalRequestApplyForFlag) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}/apply | Apply approval request for a flag
+[**postApprovalRequestForFlag()**](ApprovalsApi.md#postApprovalRequestForFlag) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | Create approval request for a flag
+[**postApprovalRequestReviewForFlag()**](ApprovalsApi.md#postApprovalRequestReviewForFlag) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}/reviews | Review approval request for a flag
 [**postFlagCopyConfigApprovalRequest()**](ApprovalsApi.md#postFlagCopyConfigApprovalRequest) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests-flag-copy | Create approval request to copy flag configurations across environments
 
 
-## `deleteApprovalRequest()`
+## `deleteApprovalRequestForFlag()`
 
 ```php
-deleteApprovalRequest($project_key, $feature_flag_key, $environment_key, $id)
+deleteApprovalRequestForFlag($project_key, $feature_flag_key, $environment_key, $id)
 ```
 
-Delete approval request
+Delete approval request for a flag
 
 Delete an approval request for a feature flag.
 
@@ -48,9 +48,9 @@ $environment_key = 'environment_key_example'; // string | The environment key
 $id = 'id_example'; // string | The feature flag approval request ID
 
 try {
-    $apiInstance->deleteApprovalRequest($project_key, $feature_flag_key, $environment_key, $id);
+    $apiInstance->deleteApprovalRequestForFlag($project_key, $feature_flag_key, $environment_key, $id);
 } catch (Exception $e) {
-    echo 'Exception when calling ApprovalsApi->deleteApprovalRequest: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ApprovalsApi->deleteApprovalRequestForFlag: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -214,81 +214,13 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `postApprovalRequest()`
+## `postApprovalRequestApplyForFlag()`
 
 ```php
-postApprovalRequest($project_key, $feature_flag_key, $environment_key, $create_flag_config_approval_request_request): \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse
+postApprovalRequestApplyForFlag($project_key, $feature_flag_key, $environment_key, $id, $post_approval_request_apply_request): \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse
 ```
 
-Create approval request
-
-Create an approval request for a feature flag.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: ApiKey
-$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-
-$apiInstance = new LaunchDarklyApi\Api\ApprovalsApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$project_key = 'project_key_example'; // string | The project key
-$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
-$environment_key = 'environment_key_example'; // string | The environment key
-$create_flag_config_approval_request_request = new \LaunchDarklyApi\Model\CreateFlagConfigApprovalRequestRequest(); // \LaunchDarklyApi\Model\CreateFlagConfigApprovalRequestRequest
-
-try {
-    $result = $apiInstance->postApprovalRequest($project_key, $feature_flag_key, $environment_key, $create_flag_config_approval_request_request);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ApprovalsApi->postApprovalRequest: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag key |
- **environment_key** | **string**| The environment key |
- **create_flag_config_approval_request_request** | [**\LaunchDarklyApi\Model\CreateFlagConfigApprovalRequestRequest**](../Model/CreateFlagConfigApprovalRequestRequest.md)|  |
-
-### Return type
-
-[**\LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse**](../Model/FlagConfigApprovalRequestResponse.md)
-
-### Authorization
-
-[ApiKey](../../README.md#ApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApprovalRequestApplyRequest()`
-
-```php
-postApprovalRequestApplyRequest($project_key, $feature_flag_key, $environment_key, $id, $post_approval_request_apply_request): \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse
-```
-
-Apply approval request
+Apply approval request for a flag
 
 Apply an approval request that has been approved.
 
@@ -318,10 +250,10 @@ $id = 'id_example'; // string | The feature flag approval request ID
 $post_approval_request_apply_request = new \LaunchDarklyApi\Model\PostApprovalRequestApplyRequest(); // \LaunchDarklyApi\Model\PostApprovalRequestApplyRequest
 
 try {
-    $result = $apiInstance->postApprovalRequestApplyRequest($project_key, $feature_flag_key, $environment_key, $id, $post_approval_request_apply_request);
+    $result = $apiInstance->postApprovalRequestApplyForFlag($project_key, $feature_flag_key, $environment_key, $id, $post_approval_request_apply_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ApprovalsApi->postApprovalRequestApplyRequest: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ApprovalsApi->postApprovalRequestApplyForFlag: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -352,13 +284,81 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `postApprovalRequestReview()`
+## `postApprovalRequestForFlag()`
 
 ```php
-postApprovalRequestReview($project_key, $feature_flag_key, $environment_key, $id, $post_approval_request_review_request): \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse
+postApprovalRequestForFlag($project_key, $feature_flag_key, $environment_key, $create_flag_config_approval_request_request): \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse
 ```
 
-Review approval request
+Create approval request for a flag
+
+Create an approval request for a feature flag.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\ApprovalsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = 'project_key_example'; // string | The project key
+$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
+$environment_key = 'environment_key_example'; // string | The environment key
+$create_flag_config_approval_request_request = new \LaunchDarklyApi\Model\CreateFlagConfigApprovalRequestRequest(); // \LaunchDarklyApi\Model\CreateFlagConfigApprovalRequestRequest
+
+try {
+    $result = $apiInstance->postApprovalRequestForFlag($project_key, $feature_flag_key, $environment_key, $create_flag_config_approval_request_request);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ApprovalsApi->postApprovalRequestForFlag: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key |
+ **feature_flag_key** | **string**| The feature flag key |
+ **environment_key** | **string**| The environment key |
+ **create_flag_config_approval_request_request** | [**\LaunchDarklyApi\Model\CreateFlagConfigApprovalRequestRequest**](../Model/CreateFlagConfigApprovalRequestRequest.md)|  |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse**](../Model/FlagConfigApprovalRequestResponse.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `postApprovalRequestReviewForFlag()`
+
+```php
+postApprovalRequestReviewForFlag($project_key, $feature_flag_key, $environment_key, $id, $post_approval_request_review_request): \LaunchDarklyApi\Model\FlagConfigApprovalRequestResponse
+```
+
+Review approval request for a flag
 
 Review an approval request by approving or denying changes.
 
@@ -388,10 +388,10 @@ $id = 'id_example'; // string | The feature flag approval request ID
 $post_approval_request_review_request = new \LaunchDarklyApi\Model\PostApprovalRequestReviewRequest(); // \LaunchDarklyApi\Model\PostApprovalRequestReviewRequest
 
 try {
-    $result = $apiInstance->postApprovalRequestReview($project_key, $feature_flag_key, $environment_key, $id, $post_approval_request_review_request);
+    $result = $apiInstance->postApprovalRequestReviewForFlag($project_key, $feature_flag_key, $environment_key, $id, $post_approval_request_review_request);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ApprovalsApi->postApprovalRequestReview: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ApprovalsApi->postApprovalRequestReviewForFlag: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

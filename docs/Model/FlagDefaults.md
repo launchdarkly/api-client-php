@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**tags** | **string[]** |  | [optional]
-**temporary** | **bool** |  | [optional]
+**tags** | **string[]** | A list of default tags for each flag | [optional]
+**temporary** | **bool** | Whether the flag should be temporary by default | [optional]
 **default_client_side_availability** | [**\LaunchDarklyApi\Model\ClientSideAvailability**](ClientSideAvailability.md) |  | [optional]
 **boolean_defaults** | [**\LaunchDarklyApi\Model\BooleanDefaults**](BooleanDefaults.md) |  | [optional]
 

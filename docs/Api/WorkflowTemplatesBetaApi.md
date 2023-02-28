@@ -135,7 +135,7 @@ void (empty response body)
 ## `getWorkflowTemplates()`
 
 ```php
-getWorkflowTemplates($search): \LaunchDarklyApi\Model\WorkflowTemplatesListingOutputRep
+getWorkflowTemplates($summary, $search): \LaunchDarklyApi\Model\WorkflowTemplatesListingOutputRep
 ```
 
 Get workflow templates
@@ -161,10 +161,11 @@ $apiInstance = new LaunchDarklyApi\Api\WorkflowTemplatesBetaApi(
     new GuzzleHttp\Client(),
     $config
 );
+$summary = True; // bool | Whether the entire template object or just a summary should be returned
 $search = 'search_example'; // string | The substring in either the name or description of a template
 
 try {
-    $result = $apiInstance->getWorkflowTemplates($search);
+    $result = $apiInstance->getWorkflowTemplates($summary, $search);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WorkflowTemplatesBetaApi->getWorkflowTemplates: ', $e->getMessage(), PHP_EOL;
@@ -175,6 +176,7 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
+ **summary** | **bool**| Whether the entire template object or just a summary should be returned | [optional]
  **search** | **string**| The substring in either the name or description of a template | [optional]
 
 ### Return type

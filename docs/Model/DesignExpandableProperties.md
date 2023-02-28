@@ -1,4 +1,4 @@
-# # IterationExpandableProperties
+# # DesignExpandableProperties
 
 ## Properties
 

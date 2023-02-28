@@ -18,7 +18,7 @@ Name | Type | Description | Notes
 **status** | **string** | Current status of the approval request |
 **instructions** | **array[]** |  |
 **conflicts** | [**\LaunchDarklyApi\Model\Conflict[]**](Conflict.md) | Details on any conflicting approval requests |
-**_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) | The location and content type of related resources |
+**_links** | **array<string,mixed>** | The location and content type of related resources |
 **execution_date** | **int** |  | [optional]
 **operating_on_id** | **string** | ID of scheduled change to edit or delete | [optional]
 **integration_metadata** | [**\LaunchDarklyApi\Model\IntegrationMetadata**](IntegrationMetadata.md) |  | [optional]

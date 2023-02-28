@@ -18,6 +18,8 @@ Name | Type | Description | Notes
 **_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) | The location and content type of related resources |
 **maintainer_id** | **string** | Associated maintainerId for the feature flag | [optional]
 **_maintainer** | [**\LaunchDarklyApi\Model\MemberSummary**](MemberSummary.md) |  | [optional]
+**maintainer_team_key** | **string** | The key of the associated team that maintains this feature flag | [optional]
+**_maintainer_team** | [**\LaunchDarklyApi\Model\MaintainerTeam**](MaintainerTeam.md) |  | [optional]
 **goal_ids** | **string[]** | Deprecated | [optional]
 **experiments** | [**\LaunchDarklyApi\Model\ExperimentInfoRep**](ExperimentInfoRep.md) |  |
 **custom_properties** | [**array<string,\LaunchDarklyApi\Model\CustomProperty>**](CustomProperty.md) |  |

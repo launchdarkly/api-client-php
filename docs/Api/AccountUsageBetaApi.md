@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getEvaluationsUsage()**](AccountUsageBetaApi.md#getEvaluationsUsage) | **GET** /api/v2/usage/evaluations/{projectKey}/{environmentKey}/{featureFlagKey} | Get evaluations usage
 [**getEventsUsage()**](AccountUsageBetaApi.md#getEventsUsage) | **GET** /api/v2/usage/events/{type} | Get events usage
+[**getExperimentationKeysUsage()**](AccountUsageBetaApi.md#getExperimentationKeysUsage) | **GET** /api/v2/usage/experimentation-keys | Get experimentation keys usage
 [**getMauSdksByType()**](AccountUsageBetaApi.md#getMauSdksByType) | **GET** /api/v2/usage/mau/sdks | Get MAU SDKs by type
 [**getMauUsage()**](AccountUsageBetaApi.md#getMauUsage) | **GET** /api/v2/usage/mau | Get MAU usage
 [**getMauUsageByCategory()**](AccountUsageBetaApi.md#getMauUsageByCategory) | **GET** /api/v2/usage/mau/bycategory | Get MAU usage by category
@@ -152,6 +153,70 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getExperimentationKeysUsage()`
+
+```php
+getExperimentationKeysUsage($from, $to): \LaunchDarklyApi\Model\SeriesIntervalsRep
+```
+
+Get experimentation keys usage
+
+Get a time-series array of the number of monthly experimentation keys from your account. The granularity is always daily, with a max of 31 days.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\AccountUsageBetaApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$from = 'from_example'; // string | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
+$to = 'to_example'; // string | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+
+try {
+    $result = $apiInstance->getExperimentationKeysUsage($from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountUsageBetaApi->getExperimentationKeysUsage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **from** | **string**| The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month. | [optional]
+ **to** | **string**| The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time. | [optional]
+
+### Return type
+
+[**\LaunchDarklyApi\Model\SeriesIntervalsRep**](../Model/SeriesIntervalsRep.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getMauSdksByType()`
 
 ```php
@@ -160,7 +225,7 @@ getMauSdksByType($from, $to, $sdktype): \LaunchDarklyApi\Model\SdkListRep
 
 Get MAU SDKs by type
 
-Get a list of SDKs. These are all of the SDKs that have connected to LaunchDarkly by monthly active users (MAU) in the requested time period.
+Get a list of SDKs. These are all of the SDKs that have connected to LaunchDarkly by monthly active users (MAU) in the requested time period.<br/><br/>Endpoints for retrieving monthly active users (MAU) do not return information about active context instances. After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should not rely on this endpoint. Use [Get client-side monthly context instances uage](/tag/Account-usage-(beta)#operation/getCMCIUsage) instead. To learn more, read [Account usage metrics](https://docs.launchdarkly.com/home/billing/usage-metrics).
 
 ### Example
 
@@ -226,7 +291,7 @@ getMauUsage($from, $to, $project, $environment, $sdktype, $sdk, $anonymous, $gro
 
 Get MAU usage
 
-Get a time-series array of the number of monthly active users (MAU) seen by LaunchDarkly from your account. The granularity is always daily.
+Get a time-series array of the number of monthly active users (MAU) seen by LaunchDarkly from your account. The granularity is always daily.<br/><br/>Endpoints for retrieving monthly active users (MAU) do not return information about active context instances. After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should not rely on this endpoint. Use [Get client-side monthly context instances uage](/tag/Account-usage-(beta)#operation/getCMCIUsage) instead. To learn more, read [Account usage metrics](https://docs.launchdarkly.com/home/billing/usage-metrics).
 
 ### Example
 
@@ -302,7 +367,7 @@ getMauUsageByCategory($from, $to): \LaunchDarklyApi\Model\SeriesListRep
 
 Get MAU usage by category
 
-Get time-series arrays of the number of monthly active users (MAU) seen by LaunchDarkly from your account, broken down by the category of users. The category is either `browser`, `mobile`, or `backend`.
+Get time-series arrays of the number of monthly active users (MAU) seen by LaunchDarkly from your account, broken down by the category of users. The category is either `browser`, `mobile`, or `backend`.<br/><br/>Endpoints for retrieving monthly active users (MAU) do not return information about active context instances. After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should not rely on this endpoint. Use [Get client-side monthly context instances uage](/tag/Account-usage-(beta)#operation/getCMCIUsage) instead. To learn more, read [Account usage metrics](https://docs.launchdarkly.com/home/billing/usage-metrics).
 
 ### Example
 

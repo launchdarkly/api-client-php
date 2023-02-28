@@ -10,11 +10,12 @@ Name | Type | Description | Notes
 **created_at** | **int** |  |
 **started_at** | **int** |  | [optional]
 **ended_at** | **int** |  | [optional]
-**winning_treatment_id** | **string** | The ID of the treatment with the probability to be best | [optional]
+**winning_treatment_id** | **string** | The ID of the treatment chosen when the experiment stopped | [optional]
 **winning_reason** | **string** | The reason you stopped the experiment | [optional]
-**can_reshuffle_traffic** | **bool** | Whether the experiment is allowed to reassign users to different variations (true) or must keep users assigned to their initial variation (false). | [optional]
+**can_reshuffle_traffic** | **bool** | Whether the experiment may reassign traffic to different variations when the experiment audience changes (true) or must keep all traffic assigned to its initial variation (false). | [optional]
 **flags** | [**array<string,\LaunchDarklyApi\Model\FlagRep>**](FlagRep.md) | Details on the flag used in this experiment | [optional]
 **primary_metric** | [**\LaunchDarklyApi\Model\MetricV2Rep**](MetricV2Rep.md) |  | [optional]
+**randomization_unit** | **string** | The unit of randomization for this iteration | [optional]
 **treatments** | [**\LaunchDarklyApi\Model\TreatmentRep[]**](TreatmentRep.md) | Details on the variations you are testing in the experiment | [optional]
 **secondary_metrics** | [**\LaunchDarklyApi\Model\MetricV2Rep[]**](MetricV2Rep.md) | Details on the secondary metrics for this experiment | [optional]
 

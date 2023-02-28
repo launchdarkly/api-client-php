@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 ## `getWorkflows()`
 
 ```php
-getWorkflows($project_key, $feature_flag_key, $environment_key): \LaunchDarklyApi\Model\CustomWorkflowsListingOutput
+getWorkflows($project_key, $feature_flag_key, $environment_key, $status, $sort): \LaunchDarklyApi\Model\CustomWorkflowsListingOutput
 ```
 
 Get workflows
@@ -177,9 +177,11 @@ $apiInstance = new LaunchDarklyApi\Api\WorkflowsBetaApi(
 $project_key = 'project_key_example'; // string | The project key
 $feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
+$status = 'status_example'; // string | Filter results by workflow status. Valid status filters are `active`, `completed`, and `failed`.
+$sort = 'sort_example'; // string | A field to sort the items by. Prefix field by a dash ( - ) to sort in descending order. This endpoint supports sorting by `creationDate` or `stopDate`.
 
 try {
-    $result = $apiInstance->getWorkflows($project_key, $feature_flag_key, $environment_key);
+    $result = $apiInstance->getWorkflows($project_key, $feature_flag_key, $environment_key, $status, $sort);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WorkflowsBetaApi->getWorkflows: ', $e->getMessage(), PHP_EOL;
@@ -193,6 +195,8 @@ Name | Type | Description  | Notes
  **project_key** | **string**| The project key |
  **feature_flag_key** | **string**| The feature flag key |
  **environment_key** | **string**| The environment key |
+ **status** | **string**| Filter results by workflow status. Valid status filters are &#x60;active&#x60;, &#x60;completed&#x60;, and &#x60;failed&#x60;. | [optional]
+ **sort** | **string**| A field to sort the items by. Prefix field by a dash ( - ) to sort in descending order. This endpoint supports sorting by &#x60;creationDate&#x60; or &#x60;stopDate&#x60;. | [optional]
 
 ### Return type
 
@@ -214,12 +218,12 @@ Name | Type | Description  | Notes
 ## `postWorkflow()`
 
 ```php
-postWorkflow($project_key, $feature_flag_key, $environment_key, $custom_workflow_input, $template_key): \LaunchDarklyApi\Model\CustomWorkflowOutput
+postWorkflow($project_key, $feature_flag_key, $environment_key, $custom_workflow_input, $template_key, $dry_run): \LaunchDarklyApi\Model\CustomWorkflowOutput
 ```
 
 Create workflow
 
-Create a workflow for a feature flag. You can create a workflow directly, or you can apply a template to create a new workflow.  ### Creating a workflow  You can use the create workflow endpoint to create a workflow directly by adding a `stages` array to the request body.  _Example request body_ ```json {   \"name\": \"Progressive rollout starting in two days\",   \"description\": \"Turn flag on for 10% of users each day\",   \"stages\": [     {       \"name\": \"10% rollout on day 1\",       \"conditions\": [         {           \"kind\": \"schedule\",           \"scheduleKind\": \"relative\",           \"waitDuration\": 2,           \"waitDurationUnit\": \"calendarDay\"         }       ],       \"action\": {         \"instructions\": [           {             \"kind\": \"turnFlagOn\"           },           {             \"kind\": \"updateFallthroughVariationOrRollout\",             \"rolloutWeights\": {               \"452f5fb5-7320-4ba3-81a1-8f4324f79d49\": 90000,               \"fc15f6a4-05d3-4aa4-a997-446be461345d\": 10000             }           }         ]       }     }   ] } ```  ### Creating a workflow by applying a workflow template  You can also create a workflow by applying a workflow template. If you pass a valid workflow template key as the `templateKey` query parameter with the request, the API will attempt to create a new workflow with the stages defined in the workflow template with the corresponding key.  #### Applicability of stages Templates are created in the context of a particular flag in a particular environment in a particular project. However, because workflows created from a template can be applied to any project, environment, and flag, some steps of the workflow may need to be updated in order to be applicable for the target resource.  You can pass a `dry-run` query parameter to tell the API to return a report of which steps of the workflow template are applicable in the target project/environment/flag, and which will need to be updated. When the `dry-run` query parameter is present the response body includes a `meta` property that holds a list of parameters that could potentially be inapplicable for the target resource. Each of these parameters will include a `valid` field. You will need to update any invalid parameters in order to create the new workflow. You can do this using the `parameters` property, which overrides the workflow template parameters.  #### Overriding template parameters You can use the `parameters` property in the request body to tell the API to override the specified workflow template parameters with new values that are specific to your target project/environment/flag.  _Example request body_ ```json {  \"name\": \"workflow created from my-template\",  \"description\": \"description of my workflow\",  \"parameters\": [   {    \"_id\": \"62cf2bc4cadbeb7697943f3b\",    \"path\": \"/clauses/0/values\",    \"default\": {     \"value\": [\"updated-segment\"]    }   },   {    \"_id\": \"62cf2bc4cadbeb7697943f3d\",    \"path\": \"/variationId\",    \"default\": {     \"value\": \"abcd1234-abcd-1234-abcd-1234abcd12\"    }   }  ] } ```  If there are any steps in the template that are not applicable to the target resource, the workflow will not be created, and the `meta` property will be included in the response body detailing which parameters need to be updated.
+Create a workflow for a feature flag. You can create a workflow directly, or you can apply a template to create a new workflow.  ### Creating a workflow  You can use the create workflow endpoint to create a workflow directly by adding a `stages` array to the request body.  For each stage, define the `name`, `conditions` when the stage should be executed, and `action` that describes the stage.  <details> <summary>Click to expand example</summary>  _Example request body_ ```json {   \"name\": \"Progressive rollout starting in two days\",   \"description\": \"Turn flag on for 10% of customers each day\",   \"stages\": [     {       \"name\": \"10% rollout on day 1\",       \"conditions\": [         {           \"kind\": \"schedule\",           \"scheduleKind\": \"relative\", // or \"absolute\"               //  If \"scheduleKind\" is \"absolute\", set \"executionDate\";               // \"waitDuration\" and \"waitDurationUnit\" will be ignored           \"waitDuration\": 2,           \"waitDurationUnit\": \"calendarDay\"         },         {           \"kind\": \"ld-approval\",           \"notifyMemberIds\": [ \"507f1f77bcf86cd799439011\" ],           \"notifyTeamKeys\": [ \"example-team\" ]         }       ],       \"action\": {         \"instructions\": [           {             \"kind\": \"turnFlagOn\"           },           {             \"kind\": \"updateFallthroughVariationOrRollout\",             \"rolloutWeights\": {               \"452f5fb5-7320-4ba3-81a1-8f4324f79d49\": 90000,               \"fc15f6a4-05d3-4aa4-a997-446be461345d\": 10000             }           }         ]       }     }   ] } ``` </details>  ### Creating a workflow by applying a workflow template  You can also create a workflow by applying a workflow template. If you pass a valid workflow template key as the `templateKey` query parameter with the request, the API will attempt to create a new workflow with the stages defined in the workflow template with the corresponding key.  #### Applicability of stages Templates are created in the context of a particular flag in a particular environment in a particular project. However, because workflows created from a template can be applied to any project, environment, and flag, some steps of the workflow may need to be updated in order to be applicable for the target resource.  You can pass a `dryRun` query parameter to tell the API to return a report of which steps of the workflow template are applicable in the target project/environment/flag, and which will need to be updated. When the `dryRun` query parameter is present the response body includes a `meta` property that holds a list of parameters that could potentially be inapplicable for the target resource. Each of these parameters will include a `valid` field. You will need to update any invalid parameters in order to create the new workflow. You can do this using the `parameters` property, which overrides the workflow template parameters.  #### Overriding template parameters You can use the `parameters` property in the request body to tell the API to override the specified workflow template parameters with new values that are specific to your target project/environment/flag.  <details> <summary>Click to expand example</summary>  _Example request body_ ```json {  \"name\": \"workflow created from my-template\",  \"description\": \"description of my workflow\",  \"parameters\": [   {    \"_id\": \"62cf2bc4cadbeb7697943f3b\",    \"path\": \"/clauses/0/values\",    \"default\": {     \"value\": [\"updated-segment\"]    }   },   {    \"_id\": \"62cf2bc4cadbeb7697943f3d\",    \"path\": \"/variationId\",    \"default\": {     \"value\": \"abcd1234-abcd-1234-abcd-1234abcd12\"    }   }  ] } ``` </details>  If there are any steps in the template that are not applicable to the target resource, the workflow will not be created, and the `meta` property will be included in the response body detailing which parameters need to be updated.
 
 ### Example
 
@@ -243,11 +247,12 @@ $apiInstance = new LaunchDarklyApi\Api\WorkflowsBetaApi(
 $project_key = 'project_key_example'; // string | The project key
 $feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
-$custom_workflow_input = {"description":"Turn flag on for 10% of users each day","name":"Progressive rollout starting in two days","stages":[{"action":{"instructions":[{"kind":"turnFlagOn"},{"kind":"updateFallthroughVariationOrRollout","rolloutWeights":{"452f5fb5-7320-4ba3-81a1-8f4324f79d49":90000,"fc15f6a4-05d3-4aa4-a997-446be461345d":10000}}]},"conditions":[{"kind":"schedule","scheduleKind":"relative","waitDuration":2,"waitDurationUnit":"calendarDay"}],"name":"10% rollout on day 1"}]}; // \LaunchDarklyApi\Model\CustomWorkflowInput
+$custom_workflow_input = {"description":"Turn flag on for 10% of customers each day","name":"Progressive rollout starting in two days","stages":[{"action":{"instructions":[{"kind":"turnFlagOn"},{"kind":"updateFallthroughVariationOrRollout","rolloutWeights":{"452f5fb5-7320-4ba3-81a1-8f4324f79d49":90000,"fc15f6a4-05d3-4aa4-a997-446be461345d":10000}}]},"conditions":[{"kind":"schedule","scheduleKind":"relative","waitDuration":2,"waitDurationUnit":"calendarDay"}],"name":"10% rollout on day 1"}]}; // \LaunchDarklyApi\Model\CustomWorkflowInput
 $template_key = 'template_key_example'; // string | The template key to apply as a starting point for the new workflow
+$dry_run = True; // bool | Whether to call the endpoint in dry-run mode
 
 try {
-    $result = $apiInstance->postWorkflow($project_key, $feature_flag_key, $environment_key, $custom_workflow_input, $template_key);
+    $result = $apiInstance->postWorkflow($project_key, $feature_flag_key, $environment_key, $custom_workflow_input, $template_key, $dry_run);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WorkflowsBetaApi->postWorkflow: ', $e->getMessage(), PHP_EOL;
@@ -263,6 +268,7 @@ Name | Type | Description  | Notes
  **environment_key** | **string**| The environment key |
  **custom_workflow_input** | [**\LaunchDarklyApi\Model\CustomWorkflowInput**](../Model/CustomWorkflowInput.md)|  |
  **template_key** | **string**| The template key to apply as a starting point for the new workflow | [optional]
+ **dry_run** | **bool**| Whether to call the endpoint in dry-run mode | [optional]
 
 ### Return type
 

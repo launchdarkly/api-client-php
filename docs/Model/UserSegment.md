@@ -9,8 +9,10 @@ Name | Type | Description | Notes
 **tags** | **string[]** | Tags for the segment. Defaults to an empty array. |
 **creation_date** | **int** |  |
 **key** | **string** | A unique key used to reference the segment |
-**included** | **string[]** | An array of user keys for included users. Included users are always segment members, regardless of segment rules. For Big Segments this array is either empty or omitted. | [optional]
-**excluded** | **string[]** | An array of user keys for excluded users. Segment rules bypass excluded users, so they will never be included based on rules. Excluded users may still be included explicitly. This value is omitted for Big Segments. | [optional]
+**included** | **string[]** | An array of keys for included targets. Included individual targets are always segment members, regardless of segment rules. For Big Segments this array is either empty or omitted. | [optional]
+**excluded** | **string[]** | An array of keys for excluded targets. Segment rules bypass individual excluded targets, so they will never be included based on rules. Excluded targets may still be included explicitly. This value is omitted for Big Segments. | [optional]
+**included_contexts** | [**\LaunchDarklyApi\Model\SegmentTarget[]**](SegmentTarget.md) |  | [optional]
+**excluded_contexts** | [**\LaunchDarklyApi\Model\SegmentTarget[]**](SegmentTarget.md) |  | [optional]
 **_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) | The location and content type of related resources |
 **rules** | [**\LaunchDarklyApi\Model\UserSegmentRule[]**](UserSegmentRule.md) | An array of the targeting rules for this segment. |
 **version** | **int** | Version of the segment |
@@ -18,6 +20,7 @@ Name | Type | Description | Notes
 **_access** | [**\LaunchDarklyApi\Model\Access**](Access.md) |  | [optional]
 **_flags** | [**\LaunchDarklyApi\Model\FlagListingRep[]**](FlagListingRep.md) |  | [optional]
 **unbounded** | **bool** | Whether this is a standard segment (&lt;code&gt;false&lt;/code&gt;) or a Big Segment (&lt;code&gt;true&lt;/code&gt;). If omitted, the segment is a standard segment. | [optional]
+**unbounded_context_kind** | **string** |  | [optional]
 **generation** | **int** | For Big Segments, how many times this segment has been created |
 **_unbounded_metadata** | [**\LaunchDarklyApi\Model\SegmentMetadata**](SegmentMetadata.md) |  | [optional]
 **_external** | **string** | The external data store backing this segment. Only applies to Big Segments. | [optional]
