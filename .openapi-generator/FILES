@@ -97,6 +97,7 @@ docs/Model/ContextRecord.md
 docs/Model/ContextSearch.md
 docs/Model/Contexts.md
 docs/Model/CopiedFromEnv.md
+docs/Model/CreateApprovalRequestRequest.md
 docs/Model/CreateCopyFlagConfigApprovalRequestRequest.md
 docs/Model/CreateFlagConfigApprovalRequestRequest.md
 docs/Model/CreateWorkflowTemplateInput.md
@@ -105,6 +106,7 @@ docs/Model/CustomProperty.md
 docs/Model/CustomRole.md
 docs/Model/CustomRolePost.md
 docs/Model/CustomRolePostData.md
+docs/Model/CustomRoleSummary.md
 docs/Model/CustomRoles.md
 docs/Model/CustomWorkflowInput.md
 docs/Model/CustomWorkflowMeta.md
@@ -479,6 +481,7 @@ lib/Model/ContextRecord.php
 lib/Model/ContextSearch.php
 lib/Model/Contexts.php
 lib/Model/CopiedFromEnv.php
+lib/Model/CreateApprovalRequestRequest.php
 lib/Model/CreateCopyFlagConfigApprovalRequestRequest.php
 lib/Model/CreateFlagConfigApprovalRequestRequest.php
 lib/Model/CreateWorkflowTemplateInput.php
@@ -487,6 +490,7 @@ lib/Model/CustomProperty.php
 lib/Model/CustomRole.php
 lib/Model/CustomRolePost.php
 lib/Model/CustomRolePostData.php
+lib/Model/CustomRoleSummary.php
 lib/Model/CustomRoles.php
 lib/Model/CustomWorkflowInput.php
 lib/Model/CustomWorkflowMeta.php
@@ -860,6 +864,7 @@ test/Model/ContextRecordTest.php
 test/Model/ContextSearchTest.php
 test/Model/ContextsTest.php
 test/Model/CopiedFromEnvTest.php
+test/Model/CreateApprovalRequestRequestTest.php
 test/Model/CreateCopyFlagConfigApprovalRequestRequestTest.php
 test/Model/CreateFlagConfigApprovalRequestRequestTest.php
 test/Model/CreateWorkflowTemplateInputTest.php
@@ -867,6 +872,7 @@ test/Model/CredibleIntervalRepTest.php
 test/Model/CustomPropertyTest.php
 test/Model/CustomRolePostDataTest.php
 test/Model/CustomRolePostTest.php
+test/Model/CustomRoleSummaryTest.php
 test/Model/CustomRoleTest.php
 test/Model/CustomRolesTest.php
 test/Model/CustomWorkflowInputTest.php

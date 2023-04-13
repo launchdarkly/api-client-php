@@ -41,7 +41,7 @@ $apiInstance = new LaunchDarklyApi\Api\FlagLinksBetaApi(
 );
 $project_key = 'project_key_example'; // string | The project key
 $feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
-$flag_link_post = {"deepLink":"https://example.com/archives/123123123","description":"Example link description","key":"example-flag-link","title":"Example link title"}; // \LaunchDarklyApi\Model\FlagLinkPost
+$flag_link_post = {"deepLink":"https://example.com/archives/123123123","description":"Example link description","key":"flag-link-key-123abc","title":"Example link title"}; // \LaunchDarklyApi\Model\FlagLinkPost
 
 try {
     $result = $apiInstance->createFlagLink($project_key, $feature_flag_key, $flag_link_post);

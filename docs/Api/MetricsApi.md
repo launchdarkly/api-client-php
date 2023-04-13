@@ -300,7 +300,7 @@ $apiInstance = new LaunchDarklyApi\Api\MetricsApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$metric_post = {"eventKey":"trackedClick","isActive":true,"isNumeric":false,"key":"my-metric","kind":"custom"}; // \LaunchDarklyApi\Model\MetricPost
+$metric_post = {"eventKey":"trackedClick","isActive":true,"isNumeric":false,"key":"metric-key-123abc","kind":"custom"}; // \LaunchDarklyApi\Model\MetricPost
 
 try {
     $result = $apiInstance->postMetric($project_key, $metric_post);

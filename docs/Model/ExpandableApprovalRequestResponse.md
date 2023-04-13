@@ -27,7 +27,7 @@ Name | Type | Description | Notes
 **resource_id** | **string** | String representation of a resource | [optional]
 **approval_settings** | [**\LaunchDarklyApi\Model\ApprovalSettings**](ApprovalSettings.md) |  | [optional]
 **project** | [**\LaunchDarklyApi\Model\Project**](Project.md) |  | [optional]
-**environment** | [**\LaunchDarklyApi\Model\Environment**](Environment.md) |  | [optional]
+**environments** | [**\LaunchDarklyApi\Model\Environment[]**](Environment.md) | List of environments the approval impacts | [optional]
 **flag** | [**\LaunchDarklyApi\Model\ExpandedFlagRep**](ExpandedFlagRep.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

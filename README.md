@@ -273,7 +273,7 @@ We use several rate limiting strategies to ensure the availability of our APIs. 
 
 ### Global rate limits
 
-Authenticated requests are subject to a global limit. This is the maximum number of calls that your account can make to the API per ten seconds. All personal access tokens on the account share this limit, so exceeding the limit with one access token will impact other tokens. Calls that are subject to global rate limits return the headers below:
+Authenticated requests are subject to a global limit. This is the maximum number of calls that your account can make to the API per ten seconds. All personal access tokens on the account share this limit, so exceeding the limit with one access token will impact other tokens. Calls that are subject to global rate limits may return the headers below:
 
 | Header name                    | Description                                                                      |
 | ------------------------------ | -------------------------------------------------------------------------------- |
@@ -340,6 +340,14 @@ Use this header:
 ```
 LD-API-Version: beta
 ```
+
+## Federal environments
+
+The version of LaunchDarkly that is available on domains controlled by the United States government is different from the version of LaunchDarkly available to the general public. If you are an employee or contractor for a United States federal agency and use LaunchDarkly in your work, you likely use the federal instance of LaunchDarkly.
+
+If you are working in the federal instance of LaunchDarkly, the base URI for each request is `https://app.launchdarkly.us`. In the \"Try it\" sandbox for each request, click the request path to view the complete resource path for the federal environment.
+
+To learn more, read [LaunchDarkly in federal environments](https://docs.launchdarkly.com/home/advanced/federal).
 
 ## Versioning
 
@@ -486,8 +494,12 @@ Class | Method | HTTP request | Description
 *ApprovalsApi* | [**postApprovalRequestForFlag**](docs/Api/ApprovalsApi.md#postapprovalrequestforflag) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests | Create approval request for a flag
 *ApprovalsApi* | [**postApprovalRequestReviewForFlag**](docs/Api/ApprovalsApi.md#postapprovalrequestreviewforflag) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}/reviews | Review approval request for a flag
 *ApprovalsApi* | [**postFlagCopyConfigApprovalRequest**](docs/Api/ApprovalsApi.md#postflagcopyconfigapprovalrequest) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests-flag-copy | Create approval request to copy flag configurations across environments
+*ApprovalsBetaApi* | [**deleteApprovalRequest**](docs/Api/ApprovalsBetaApi.md#deleteapprovalrequest) | **DELETE** /api/v2/approval-requests/{id} | Delete approval request
 *ApprovalsBetaApi* | [**getApprovalRequest**](docs/Api/ApprovalsBetaApi.md#getapprovalrequest) | **GET** /api/v2/approval-requests/{id} | Get approval request
 *ApprovalsBetaApi* | [**getApprovalRequests**](docs/Api/ApprovalsBetaApi.md#getapprovalrequests) | **GET** /api/v2/approval-requests | List approval requests
+*ApprovalsBetaApi* | [**postApprovalRequest**](docs/Api/ApprovalsBetaApi.md#postapprovalrequest) | **POST** /api/v2/approval-requests | Create approval request
+*ApprovalsBetaApi* | [**postApprovalRequestApply**](docs/Api/ApprovalsBetaApi.md#postapprovalrequestapply) | **POST** /api/v2/approval-requests/{id}/apply | Apply approval request
+*ApprovalsBetaApi* | [**postApprovalRequestReview**](docs/Api/ApprovalsBetaApi.md#postapprovalrequestreview) | **POST** /api/v2/approval-requests/{id}/reviews | Review approval request
 *AuditLogApi* | [**getAuditLogEntries**](docs/Api/AuditLogApi.md#getauditlogentries) | **GET** /api/v2/auditlog | List audit log entries
 *AuditLogApi* | [**getAuditLogEntry**](docs/Api/AuditLogApi.md#getauditlogentry) | **GET** /api/v2/auditlog/{id} | Get audit log entry
 *CodeReferencesApi* | [**deleteBranches**](docs/Api/CodeReferencesApi.md#deletebranches) | **POST** /api/v2/code-refs/repositories/{repo}/branch-delete-tasks | Delete branches
@@ -722,6 +734,7 @@ Class | Method | HTTP request | Description
 - [ContextSearch](docs/Model/ContextSearch.md)
 - [Contexts](docs/Model/Contexts.md)
 - [CopiedFromEnv](docs/Model/CopiedFromEnv.md)
+- [CreateApprovalRequestRequest](docs/Model/CreateApprovalRequestRequest.md)
 - [CreateCopyFlagConfigApprovalRequestRequest](docs/Model/CreateCopyFlagConfigApprovalRequestRequest.md)
 - [CreateFlagConfigApprovalRequestRequest](docs/Model/CreateFlagConfigApprovalRequestRequest.md)
 - [CreateWorkflowTemplateInput](docs/Model/CreateWorkflowTemplateInput.md)
@@ -730,6 +743,7 @@ Class | Method | HTTP request | Description
 - [CustomRole](docs/Model/CustomRole.md)
 - [CustomRolePost](docs/Model/CustomRolePost.md)
 - [CustomRolePostData](docs/Model/CustomRolePostData.md)
+- [CustomRoleSummary](docs/Model/CustomRoleSummary.md)
 - [CustomRoles](docs/Model/CustomRoles.md)
 - [CustomWorkflowInput](docs/Model/CustomWorkflowInput.md)
 - [CustomWorkflowMeta](docs/Model/CustomWorkflowMeta.md)
@@ -1035,5 +1049,5 @@ support@launchdarkly.com
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `2.0`
-    - Package version: `12.0.0`
+    - Package version: `12.1.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

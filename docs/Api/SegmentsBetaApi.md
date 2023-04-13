@@ -312,7 +312,7 @@ $apiInstance = new LaunchDarklyApi\Api\SegmentsBetaApi(
 );
 $project_key = 'project_key_example'; // string | The project key
 $environment_key = 'environment_key_example'; // string | The environment key
-$request_body = {"key":"someuser","kind":"user","moreComplex":{"morethanone":[1,2,3],"yes":"please"},"name":"Some User","something":true}; // array<string,mixed>
+$request_body = {"key":"context-key-123abc","kind":"user","moreComplex":{"morethanone":[1,2,3],"yes":"please"},"name":"Some User","something":true}; // array<string,mixed>
 
 try {
     $result = $apiInstance->getContextInstanceSegmentsMembershipByEnv($project_key, $environment_key, $request_body);

@@ -20,7 +20,7 @@ Name | Type | Description | Notes
 **_maintainer** | [**\LaunchDarklyApi\Model\MemberSummary**](MemberSummary.md) |  | [optional]
 **description** | **string** | Description of the metric | [optional]
 **is_numeric** | **bool** | For custom metrics, whether to track numeric changes in value against a baseline (&lt;code&gt;true&lt;/code&gt;) or to track a conversion when an end user takes an action (&lt;code&gt;false&lt;/code&gt;). | [optional]
-**success_criteria** | **string** | For numeric custom metrics, the success criteria | [optional]
+**success_criteria** | **string** | For custom metrics, the success criteria | [optional]
 **unit** | **string** | For numeric custom metrics, the unit of measure | [optional]
 **event_key** | **string** | For custom metrics, the event name to use in your code | [optional]
 **randomization_units** | **string[]** | An array of randomization units allowed for this metric | [optional]

@@ -428,7 +428,7 @@ $apiInstance = new LaunchDarklyApi\Api\ProjectsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$project_post = {"key":"my-project","name":"My Project"}; // \LaunchDarklyApi\Model\ProjectPost
+$project_post = {"key":"project-key-123abc","name":"My Project"}; // \LaunchDarklyApi\Model\ProjectPost
 
 try {
     $result = $apiInstance->postProject($project_post);

@@ -306,7 +306,7 @@ $apiInstance = new LaunchDarklyApi\Api\EnvironmentsApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$environment_post = {"color":"DADBEE","key":"my-environment","name":"My Environment"}; // \LaunchDarklyApi\Model\EnvironmentPost
+$environment_post = {"color":"DADBEE","key":"environment-key-123abc","name":"My Environment"}; // \LaunchDarklyApi\Model\EnvironmentPost
 
 try {
     $result = $apiInstance->postEnvironment($project_key, $environment_post);
