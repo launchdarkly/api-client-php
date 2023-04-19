@@ -85,6 +85,18 @@ class SegmentsApiTest extends TestCase
     }
 
     /**
+     * Test case for getContextInstanceSegmentsMembershipByEnv
+     *
+     * List segment memberships for context instance.
+     *
+     */
+    public function testGetContextInstanceSegmentsMembershipByEnv()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for getExpiringTargetsForSegment
      *
      * Get expiring targets for segment.

@@ -1,10 +1,10 @@
-# LaunchDarklyApi\ContextSettingsBetaApi
+# LaunchDarklyApi\ContextSettingsApi
 
 All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**putContextFlagSetting()**](ContextSettingsBetaApi.md#putContextFlagSetting) | **PUT** /api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/{contextKind}/{contextKey}/flags/{featureFlagKey} | Update flag settings for context
+[**putContextFlagSetting()**](ContextSettingsApi.md#putContextFlagSetting) | **PUT** /api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/{contextKind}/{contextKey}/flags/{featureFlagKey} | Update flag settings for context
 
 
 ## `putContextFlagSetting()`
@@ -30,7 +30,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
-$apiInstance = new LaunchDarklyApi\Api\ContextSettingsBetaApi(
+$apiInstance = new LaunchDarklyApi\Api\ContextSettingsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -46,7 +46,7 @@ $value_put = new \LaunchDarklyApi\Model\ValuePut(); // \LaunchDarklyApi\Model\Va
 try {
     $apiInstance->putContextFlagSetting($project_key, $environment_key, $context_kind, $context_key, $feature_flag_key, $value_put);
 } catch (Exception $e) {
-    echo 'Exception when calling ContextSettingsBetaApi->putContextFlagSetting: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ContextSettingsApi->putContextFlagSetting: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

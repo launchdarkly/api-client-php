@@ -272,7 +272,7 @@ class RandomizationUnitInput implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets randomization_unit
      *
-     * @param string $randomization_unit The unit of randomization.
+     * @param string $randomization_unit The unit of randomization. Must match the key of an existing context kind in this project.
      *
      * @return self
      */

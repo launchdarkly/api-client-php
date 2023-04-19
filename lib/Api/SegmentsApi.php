@@ -426,6 +426,396 @@ class SegmentsApi
     }
 
     /**
+     * Operation getContextInstanceSegmentsMembershipByEnv
+     *
+     * List segment memberships for context instance
+     *
+     * @param  string $project_key The project key (required)
+     * @param  string $environment_key The environment key (required)
+     * @param  array<string,mixed> $request_body request_body (required)
+     *
+     * @throws \LaunchDarklyApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return \LaunchDarklyApi\Model\ContextInstanceSegmentMemberships|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep
+     */
+    public function getContextInstanceSegmentsMembershipByEnv($project_key, $environment_key, $request_body)
+    {
+        list($response) = $this->getContextInstanceSegmentsMembershipByEnvWithHttpInfo($project_key, $environment_key, $request_body);
+        return $response;
+    }
+
+    /**
+     * Operation getContextInstanceSegmentsMembershipByEnvWithHttpInfo
+     *
+     * List segment memberships for context instance
+     *
+     * @param  string $project_key The project key (required)
+     * @param  string $environment_key The environment key (required)
+     * @param  array<string,mixed> $request_body (required)
+     *
+     * @throws \LaunchDarklyApi\ApiException on non-2xx response
+     * @throws \InvalidArgumentException
+     * @return array of \LaunchDarklyApi\Model\ContextInstanceSegmentMemberships|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getContextInstanceSegmentsMembershipByEnvWithHttpInfo($project_key, $environment_key, $request_body)
+    {
+        $request = $this->getContextInstanceSegmentsMembershipByEnvRequest($project_key, $environment_key, $request_body);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            switch($statusCode) {
+                case 200:
+                    if ('\LaunchDarklyApi\Model\ContextInstanceSegmentMemberships' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\LaunchDarklyApi\Model\ContextInstanceSegmentMemberships' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\ContextInstanceSegmentMemberships', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 400:
+                    if ('\LaunchDarklyApi\Model\InvalidRequestErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\LaunchDarklyApi\Model\InvalidRequestErrorRep' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\InvalidRequestErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 401:
+                    if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\LaunchDarklyApi\Model\UnauthorizedErrorRep' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\UnauthorizedErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                case 404:
+                    if ('\LaunchDarklyApi\Model\NotFoundErrorRep' === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ('\LaunchDarklyApi\Model\NotFoundErrorRep' !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, '\LaunchDarklyApi\Model\NotFoundErrorRep', []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+            }
+
+            $returnType = '\LaunchDarklyApi\Model\ContextInstanceSegmentMemberships';
+            if ($returnType === '\SplFileObject') {
+                $content = $response->getBody(); //stream goes to serializer
+            } else {
+                $content = (string) $response->getBody();
+                if ($returnType !== 'string') {
+                    $content = json_decode($content);
+                }
+            }
+
+            return [
+                ObjectSerializer::deserialize($content, $returnType, []),
+                $response->getStatusCode(),
+                $response->getHeaders()
+            ];
+
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ContextInstanceSegmentMemberships',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+                case 404:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\NotFoundErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    break;
+            }
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getContextInstanceSegmentsMembershipByEnvAsync
+     *
+     * List segment memberships for context instance
+     *
+     * @param  string $project_key The project key (required)
+     * @param  string $environment_key The environment key (required)
+     * @param  array<string,mixed> $request_body (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getContextInstanceSegmentsMembershipByEnvAsync($project_key, $environment_key, $request_body)
+    {
+        return $this->getContextInstanceSegmentsMembershipByEnvAsyncWithHttpInfo($project_key, $environment_key, $request_body)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getContextInstanceSegmentsMembershipByEnvAsyncWithHttpInfo
+     *
+     * List segment memberships for context instance
+     *
+     * @param  string $project_key The project key (required)
+     * @param  string $environment_key The environment key (required)
+     * @param  array<string,mixed> $request_body (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getContextInstanceSegmentsMembershipByEnvAsyncWithHttpInfo($project_key, $environment_key, $request_body)
+    {
+        $returnType = '\LaunchDarklyApi\Model\ContextInstanceSegmentMemberships';
+        $request = $this->getContextInstanceSegmentsMembershipByEnvRequest($project_key, $environment_key, $request_body);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getContextInstanceSegmentsMembershipByEnv'
+     *
+     * @param  string $project_key The project key (required)
+     * @param  string $environment_key The environment key (required)
+     * @param  array<string,mixed> $request_body (required)
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getContextInstanceSegmentsMembershipByEnvRequest($project_key, $environment_key, $request_body)
+    {
+        // verify the required parameter 'project_key' is set
+        if ($project_key === null || (is_array($project_key) && count($project_key) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $project_key when calling getContextInstanceSegmentsMembershipByEnv'
+            );
+        }
+        // verify the required parameter 'environment_key' is set
+        if ($environment_key === null || (is_array($environment_key) && count($environment_key) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $environment_key when calling getContextInstanceSegmentsMembershipByEnv'
+            );
+        }
+        // verify the required parameter 'request_body' is set
+        if ($request_body === null || (is_array($request_body) && count($request_body) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $request_body when calling getContextInstanceSegmentsMembershipByEnv'
+            );
+        }
+
+        $resourcePath = '/api/v2/projects/{projectKey}/environments/{environmentKey}/segments/evaluate';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+
+        // path params
+        if ($project_key !== null) {
+            $resourcePath = str_replace(
+                '{' . 'projectKey' . '}',
+                ObjectSerializer::toPathValue($project_key),
+                $resourcePath
+            );
+        }
+        // path params
+        if ($environment_key !== null) {
+            $resourcePath = str_replace(
+                '{' . 'environmentKey' . '}',
+                ObjectSerializer::toPathValue($environment_key),
+                $resourcePath
+            );
+        }
+
+
+        if ($multipart) {
+            $headers = $this->headerSelector->selectHeadersForMultipart(
+                ['application/json']
+            );
+        } else {
+            $headers = $this->headerSelector->selectHeaders(
+                ['application/json'],
+                ['application/json']
+            );
+        }
+
+        // for model (json/xml)
+        if (isset($request_body)) {
+            if ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode(ObjectSerializer::sanitizeForSerialization($request_body));
+            } else {
+                $httpBody = $request_body;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif ($headers['Content-Type'] === 'application/json') {
+                $httpBody = \GuzzleHttp\json_encode($formParams);
+
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $this->config->getHost() . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getExpiringTargetsForSegment
      *
      * Get expiring targets for segment

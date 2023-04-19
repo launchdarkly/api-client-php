@@ -12,7 +12,8 @@ docs/Api/ApprovalsApi.md
 docs/Api/ApprovalsBetaApi.md
 docs/Api/AuditLogApi.md
 docs/Api/CodeReferencesApi.md
-docs/Api/ContextSettingsBetaApi.md
+docs/Api/ContextSettingsApi.md
+docs/Api/ContextsApi.md
 docs/Api/ContextsBetaApi.md
 docs/Api/CustomRolesApi.md
 docs/Api/DataExportDestinationsApi.md
@@ -393,7 +394,8 @@ lib/Api/ApprovalsApi.php
 lib/Api/ApprovalsBetaApi.php
 lib/Api/AuditLogApi.php
 lib/Api/CodeReferencesApi.php
-lib/Api/ContextSettingsBetaApi.php
+lib/Api/ContextSettingsApi.php
+lib/Api/ContextsApi.php
 lib/Api/ContextsBetaApi.php
 lib/Api/CustomRolesApi.php
 lib/Api/DataExportDestinationsApi.php
@@ -779,7 +781,8 @@ test/Api/ApprovalsApiTest.php
 test/Api/ApprovalsBetaApiTest.php
 test/Api/AuditLogApiTest.php
 test/Api/CodeReferencesApiTest.php
-test/Api/ContextSettingsBetaApiTest.php
+test/Api/ContextSettingsApiTest.php
+test/Api/ContextsApiTest.php
 test/Api/ContextsBetaApiTest.php
 test/Api/CustomRolesApiTest.php
 test/Api/DataExportDestinationsApiTest.php

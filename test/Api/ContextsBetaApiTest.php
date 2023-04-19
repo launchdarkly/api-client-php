@@ -73,66 +73,6 @@ class ContextsBetaApiTest extends TestCase
     }
 
     /**
-     * Test case for deleteContextInstances
-     *
-     * Delete context instances.
-     *
-     */
-    public function testDeleteContextInstances()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test case for evaluateContextInstance
-     *
-     * Evaluate flags for context instance.
-     *
-     */
-    public function testEvaluateContextInstance()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test case for getContextAttributeNames
-     *
-     * Get context attribute names.
-     *
-     */
-    public function testGetContextAttributeNames()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test case for getContextAttributeValues
-     *
-     * Get context attribute values.
-     *
-     */
-    public function testGetContextAttributeValues()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test case for getContextInstances
-     *
-     * Get context instances.
-     *
-     */
-    public function testGetContextInstances()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test case for getContextKindsByProjectKey
      *
      * Get context kinds.
@@ -145,48 +85,12 @@ class ContextsBetaApiTest extends TestCase
     }
 
     /**
-     * Test case for getContexts
-     *
-     * Get contexts.
-     *
-     */
-    public function testGetContexts()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
      * Test case for putContextKind
      *
      * Create or update context kind.
      *
      */
     public function testPutContextKind()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test case for searchContextInstances
-     *
-     * Search for context instances.
-     *
-     */
-    public function testSearchContextInstances()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test case for searchContexts
-     *
-     * Search for contexts.
-     *
-     */
-    public function testSearchContexts()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

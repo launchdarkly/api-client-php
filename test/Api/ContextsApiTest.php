@@ -1,6 +1,6 @@
 <?php
 /**
- * ContextSettingsBetaApiTest
+ * ContextsApiTest
  * PHP version 7.4
  *
  * @category Class
@@ -34,14 +34,14 @@ use \LaunchDarklyApi\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
- * ContextSettingsBetaApiTest Class Doc Comment
+ * ContextsApiTest Class Doc Comment
  *
  * @category Class
  * @package  LaunchDarklyApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ContextSettingsBetaApiTest extends TestCase
+class ContextsApiTest extends TestCase
 {
 
     /**
@@ -73,12 +73,96 @@ class ContextSettingsBetaApiTest extends TestCase
     }
 
     /**
-     * Test case for putContextFlagSetting
+     * Test case for deleteContextInstances
      *
-     * Update flag settings for context.
+     * Delete context instances.
      *
      */
-    public function testPutContextFlagSetting()
+    public function testDeleteContextInstances()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for evaluateContextInstance
+     *
+     * Evaluate flags for context instance.
+     *
+     */
+    public function testEvaluateContextInstance()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getContextAttributeNames
+     *
+     * Get context attribute names.
+     *
+     */
+    public function testGetContextAttributeNames()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getContextAttributeValues
+     *
+     * Get context attribute values.
+     *
+     */
+    public function testGetContextAttributeValues()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getContextInstances
+     *
+     * Get context instances.
+     *
+     */
+    public function testGetContextInstances()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getContexts
+     *
+     * Get contexts.
+     *
+     */
+    public function testGetContexts()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for searchContextInstances
+     *
+     * Search for context instances.
+     *
+     */
+    public function testSearchContextInstances()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for searchContexts
+     *
+     * Search for contexts.
+     *
+     */
+    public function testSearchContexts()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');

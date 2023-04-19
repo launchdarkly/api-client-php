@@ -515,17 +515,17 @@ Class | Method | HTTP request | Description
 *CodeReferencesApi* | [**postExtinction**](docs/Api/CodeReferencesApi.md#postextinction) | **POST** /api/v2/code-refs/repositories/{repo}/branches/{branch}/extinction-events | Create extinction
 *CodeReferencesApi* | [**postRepository**](docs/Api/CodeReferencesApi.md#postrepository) | **POST** /api/v2/code-refs/repositories | Create repository
 *CodeReferencesApi* | [**putBranch**](docs/Api/CodeReferencesApi.md#putbranch) | **PUT** /api/v2/code-refs/repositories/{repo}/branches/{branch} | Upsert branch
-*ContextSettingsBetaApi* | [**putContextFlagSetting**](docs/Api/ContextSettingsBetaApi.md#putcontextflagsetting) | **PUT** /api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/{contextKind}/{contextKey}/flags/{featureFlagKey} | Update flag settings for context
-*ContextsBetaApi* | [**deleteContextInstances**](docs/Api/ContextsBetaApi.md#deletecontextinstances) | **DELETE** /api/v2/projects/{projectKey}/environments/{environmentKey}/context-instances/{id} | Delete context instances
-*ContextsBetaApi* | [**evaluateContextInstance**](docs/Api/ContextsBetaApi.md#evaluatecontextinstance) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/flags/evaluate | Evaluate flags for context instance
-*ContextsBetaApi* | [**getContextAttributeNames**](docs/Api/ContextsBetaApi.md#getcontextattributenames) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/context-attributes | Get context attribute names
-*ContextsBetaApi* | [**getContextAttributeValues**](docs/Api/ContextsBetaApi.md#getcontextattributevalues) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/context-attributes/{attributeName} | Get context attribute values
-*ContextsBetaApi* | [**getContextInstances**](docs/Api/ContextsBetaApi.md#getcontextinstances) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/context-instances/{id} | Get context instances
+*ContextSettingsApi* | [**putContextFlagSetting**](docs/Api/ContextSettingsApi.md#putcontextflagsetting) | **PUT** /api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/{contextKind}/{contextKey}/flags/{featureFlagKey} | Update flag settings for context
+*ContextsApi* | [**deleteContextInstances**](docs/Api/ContextsApi.md#deletecontextinstances) | **DELETE** /api/v2/projects/{projectKey}/environments/{environmentKey}/context-instances/{id} | Delete context instances
+*ContextsApi* | [**evaluateContextInstance**](docs/Api/ContextsApi.md#evaluatecontextinstance) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/flags/evaluate | Evaluate flags for context instance
+*ContextsApi* | [**getContextAttributeNames**](docs/Api/ContextsApi.md#getcontextattributenames) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/context-attributes | Get context attribute names
+*ContextsApi* | [**getContextAttributeValues**](docs/Api/ContextsApi.md#getcontextattributevalues) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/context-attributes/{attributeName} | Get context attribute values
+*ContextsApi* | [**getContextInstances**](docs/Api/ContextsApi.md#getcontextinstances) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/context-instances/{id} | Get context instances
+*ContextsApi* | [**getContexts**](docs/Api/ContextsApi.md#getcontexts) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/{kind}/{key} | Get contexts
+*ContextsApi* | [**searchContextInstances**](docs/Api/ContextsApi.md#searchcontextinstances) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/context-instances/search | Search for context instances
+*ContextsApi* | [**searchContexts**](docs/Api/ContextsApi.md#searchcontexts) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/search | Search for contexts
 *ContextsBetaApi* | [**getContextKindsByProjectKey**](docs/Api/ContextsBetaApi.md#getcontextkindsbyprojectkey) | **GET** /api/v2/projects/{projectKey}/context-kinds | Get context kinds
-*ContextsBetaApi* | [**getContexts**](docs/Api/ContextsBetaApi.md#getcontexts) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/{kind}/{key} | Get contexts
 *ContextsBetaApi* | [**putContextKind**](docs/Api/ContextsBetaApi.md#putcontextkind) | **PUT** /api/v2/projects/{projectKey}/context-kinds/{key} | Create or update context kind
-*ContextsBetaApi* | [**searchContextInstances**](docs/Api/ContextsBetaApi.md#searchcontextinstances) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/context-instances/search | Search for context instances
-*ContextsBetaApi* | [**searchContexts**](docs/Api/ContextsBetaApi.md#searchcontexts) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/search | Search for contexts
 *CustomRolesApi* | [**deleteCustomRole**](docs/Api/CustomRolesApi.md#deletecustomrole) | **DELETE** /api/v2/roles/{customRoleKey} | Delete custom role
 *CustomRolesApi* | [**getCustomRole**](docs/Api/CustomRolesApi.md#getcustomrole) | **GET** /api/v2/roles/{customRoleKey} | Get custom role
 *CustomRolesApi* | [**getCustomRoles**](docs/Api/CustomRolesApi.md#getcustomroles) | **GET** /api/v2/roles | List custom roles
@@ -627,6 +627,7 @@ Class | Method | HTTP request | Description
 *ScheduledChangesApi* | [**patchFlagConfigScheduledChange**](docs/Api/ScheduledChangesApi.md#patchflagconfigscheduledchange) | **PATCH** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{id} | Update scheduled changes workflow
 *ScheduledChangesApi* | [**postFlagConfigScheduledChanges**](docs/Api/ScheduledChangesApi.md#postflagconfigscheduledchanges) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes | Create scheduled changes workflow
 *SegmentsApi* | [**deleteSegment**](docs/Api/SegmentsApi.md#deletesegment) | **DELETE** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey} | Delete segment
+*SegmentsApi* | [**getContextInstanceSegmentsMembershipByEnv**](docs/Api/SegmentsApi.md#getcontextinstancesegmentsmembershipbyenv) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/segments/evaluate | List segment memberships for context instance
 *SegmentsApi* | [**getExpiringTargetsForSegment**](docs/Api/SegmentsApi.md#getexpiringtargetsforsegment) | **GET** /api/v2/segments/{projectKey}/{segmentKey}/expiring-targets/{environmentKey} | Get expiring targets for segment
 *SegmentsApi* | [**getExpiringUserTargetsForSegment**](docs/Api/SegmentsApi.md#getexpiringusertargetsforsegment) | **GET** /api/v2/segments/{projectKey}/{segmentKey}/expiring-user-targets/{environmentKey} | Get expiring user targets for segment
 *SegmentsApi* | [**getSegment**](docs/Api/SegmentsApi.md#getsegment) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey} | Get segment
@@ -643,7 +644,6 @@ Class | Method | HTTP request | Description
 *SegmentsBetaApi* | [**createBigSegmentImport**](docs/Api/SegmentsBetaApi.md#createbigsegmentimport) | **POST** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports | Create Big Segment import
 *SegmentsBetaApi* | [**getBigSegmentExport**](docs/Api/SegmentsBetaApi.md#getbigsegmentexport) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports/{exportID} | Get Big Segment export
 *SegmentsBetaApi* | [**getBigSegmentImport**](docs/Api/SegmentsBetaApi.md#getbigsegmentimport) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports/{importID} | Get Big Segment import
-*SegmentsBetaApi* | [**getContextInstanceSegmentsMembershipByEnv**](docs/Api/SegmentsBetaApi.md#getcontextinstancesegmentsmembershipbyenv) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/segments/evaluate | List segment memberships for context instance
 *TagsApi* | [**getTags**](docs/Api/TagsApi.md#gettags) | **GET** /api/v2/tags | List tags
 *TeamsApi* | [**deleteTeam**](docs/Api/TeamsApi.md#deleteteam) | **DELETE** /api/v2/teams/{teamKey} | Delete team
 *TeamsApi* | [**getTeam**](docs/Api/TeamsApi.md#getteam) | **GET** /api/v2/teams/{teamKey} | Get team
@@ -1049,5 +1049,5 @@ support@launchdarkly.com
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `2.0`
-    - Package version: `12.1.0`
+    - Package version: `13.0.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

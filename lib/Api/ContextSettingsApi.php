@@ -1,6 +1,6 @@
 <?php
 /**
- * ContextSettingsBetaApi
+ * ContextSettingsApi
  * PHP version 7.4
  *
  * @category Class
@@ -41,14 +41,14 @@ use LaunchDarklyApi\HeaderSelector;
 use LaunchDarklyApi\ObjectSerializer;
 
 /**
- * ContextSettingsBetaApi Class Doc Comment
+ * ContextSettingsApi Class Doc Comment
  *
  * @category Class
  * @package  LaunchDarklyApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class ContextSettingsBetaApi
+class ContextSettingsApi
 {
     /**
      * @var ClientInterface

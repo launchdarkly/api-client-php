@@ -1,6 +1,6 @@
 <?php
 /**
- * SegmentsBetaApiTest
+ * ContextSettingsApiTest
  * PHP version 7.4
  *
  * @category Class
@@ -34,14 +34,14 @@ use \LaunchDarklyApi\ObjectSerializer;
 use PHPUnit\Framework\TestCase;
 
 /**
- * SegmentsBetaApiTest Class Doc Comment
+ * ContextSettingsApiTest Class Doc Comment
  *
  * @category Class
  * @package  LaunchDarklyApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  */
-class SegmentsBetaApiTest extends TestCase
+class ContextSettingsApiTest extends TestCase
 {
 
     /**
@@ -73,48 +73,12 @@ class SegmentsBetaApiTest extends TestCase
     }
 
     /**
-     * Test case for createBigSegmentExport
+     * Test case for putContextFlagSetting
      *
-     * Create Big Segment export.
-     *
-     */
-    public function testCreateBigSegmentExport()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test case for createBigSegmentImport
-     *
-     * Create Big Segment import.
+     * Update flag settings for context.
      *
      */
-    public function testCreateBigSegmentImport()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test case for getBigSegmentExport
-     *
-     * Get Big Segment export.
-     *
-     */
-    public function testGetBigSegmentExport()
-    {
-        // TODO: implement
-        $this->markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test case for getBigSegmentImport
-     *
-     * Get Big Segment import.
-     *
-     */
-    public function testGetBigSegmentImport()
+    public function testPutContextFlagSetting()
     {
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
