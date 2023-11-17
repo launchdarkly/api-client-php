@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**name** | **string** |  |
-**key** | **string** |  |
+**name** | **string** | The flag name |
+**key** | **string** | The flag key |
 **_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) |  | [optional]
 **_site** | [**\LaunchDarklyApi\Model\Link**](Link.md) |  | [optional]
 

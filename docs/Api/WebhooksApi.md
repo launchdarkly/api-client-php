@@ -201,7 +201,7 @@ patchWebhook($id, $patch_operation): \LaunchDarklyApi\Model\Webhook
 
 Update webhook
 
-Update a webhook's settings. The request should be a valid JSON Patch document describing the changes to be made to the webhook.
+Update a webhook's settings. Updating webhook settings uses a [JSON patch](https://datatracker.ietf.org/doc/html/rfc6902) representation of the desired changes. To learn more, read [Updates](/#section/Overview/Updates).
 
 ### Example
 

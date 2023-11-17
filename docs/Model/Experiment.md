@@ -10,6 +10,7 @@ Name | Type | Description | Notes
 **description** | **string** | The experiment description | [optional]
 **_maintainer_id** | **string** | The ID of the member who maintains this experiment. |
 **_creation_date** | **int** |  |
+**environment_key** | **string** |  | [optional]
 **archived_date** | **int** |  | [optional]
 **_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) | The location and content type of related resources |
 **current_iteration** | [**\LaunchDarklyApi\Model\IterationRep**](IterationRep.md) |  | [optional]

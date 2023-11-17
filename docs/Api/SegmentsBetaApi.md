@@ -18,7 +18,7 @@ createBigSegmentExport($project_key, $environment_key, $segment_key)
 
 Create Big Segment export
 
-Starts a new export process for a Big Segment
+Starts a new export process for a Big Segment. This is an export for a list-based segment that can include more than 15,000 entries.
 
 ### Example
 
@@ -83,7 +83,7 @@ createBigSegmentImport($project_key, $environment_key, $segment_key, $file, $mod
 
 Create Big Segment import
 
-Start a new import process for a Big Segment.
+Start a new import process for a Big Segment. This is an import for a list-based segment that can include more than 15,000 entries.
 
 ### Example
 
@@ -152,7 +152,7 @@ getBigSegmentExport($project_key, $environment_key, $segment_key, $export_id): \
 
 Get Big Segment export
 
-Returns info about a Big Segment export process.
+Returns information about a Big Segment export process. This is the export of a list-based segment that can include more than 15,000 entries.
 
 ### Example
 
@@ -220,7 +220,7 @@ getBigSegmentImport($project_key, $environment_key, $segment_key, $import_id): \
 
 Get Big Segment import
 
-Returns info about a Big Segment import process.
+Returns information about a Big Segment import process. This is the import of a list-based segment that can include more than 15,000 entries.
 
 ### Example
 

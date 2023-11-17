@@ -205,7 +205,7 @@ patchToken($id, $patch_operation): \LaunchDarklyApi\Model\Token
 
 Patch access token
 
-Update an access token's settings. The request should be a valid JSON Patch document describing the changes to be made to the access token.
+Update an access token's settings. Updating an access token uses a [JSON patch](https://datatracker.ietf.org/doc/html/rfc6902) representation of the desired changes. To learn more, read [Updates](/#section/Overview/Updates).
 
 ### Example
 

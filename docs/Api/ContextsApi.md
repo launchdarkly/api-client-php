@@ -9,7 +9,9 @@ Method | HTTP request | Description
 [**getContextAttributeNames()**](ContextsApi.md#getContextAttributeNames) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/context-attributes | Get context attribute names
 [**getContextAttributeValues()**](ContextsApi.md#getContextAttributeValues) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/context-attributes/{attributeName} | Get context attribute values
 [**getContextInstances()**](ContextsApi.md#getContextInstances) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/context-instances/{id} | Get context instances
+[**getContextKindsByProjectKey()**](ContextsApi.md#getContextKindsByProjectKey) | **GET** /api/v2/projects/{projectKey}/context-kinds | Get context kinds
 [**getContexts()**](ContextsApi.md#getContexts) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/{kind}/{key} | Get contexts
+[**putContextKind()**](ContextsApi.md#putContextKind) | **PUT** /api/v2/projects/{projectKey}/context-kinds/{key} | Create or update context kind
 [**searchContextInstances()**](ContextsApi.md#searchContextInstances) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/context-instances/search | Search for context instances
 [**searchContexts()**](ContextsApi.md#searchContexts) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/contexts/search | Search for contexts
 
@@ -87,7 +89,7 @@ evaluateContextInstance($project_key, $environment_key, $request_body, $limit, $
 
 Evaluate flags for context instance
 
-Evaluate flags for a context instance, for example, to determine the expected flag variation. **Do not use this API instead of an SDK.** The LaunchDarkly SDKs are specialized for the tasks of evaluating feature flags in your application at scale and generating analytics events based on those evaluations. This API is not designed for that use case. Any evaluations you perform with this API will not be reflected in features such as flag statuses and flag insights. Context instances evaluated by this API will not appear in the Contexts list. To learn more, read [Comparing LaunchDarkly's SDKs and REST API](https://docs.launchdarkly.com/guide/api/comparing-sdk-rest-api).
+Evaluate flags for a context instance, for example, to determine the expected flag variation. **Do not use this API instead of an SDK.** The LaunchDarkly SDKs are specialized for the tasks of evaluating feature flags in your application at scale and generating analytics events based on those evaluations. This API is not designed for that use case. Any evaluations you perform with this API will not be reflected in features such as flag statuses and flag insights. Context instances evaluated by this API will not appear in the Contexts list. To learn more, read [Comparing LaunchDarkly's SDKs and REST API](https://docs.launchdarkly.com/guide/api/comparing-sdk-rest-api).  ### Filtering   LaunchDarkly supports the `filter` query param for filtering, with the following fields:  - `query` filters for a string that matches against the flags' keys and names. It is not case sensitive. For example: `filter=query equals dark-mode`. - `tags` filters the list to flags that have all of the tags in the list. For example: `filter=tags contains [\"beta\",\"q1\"]`.  You can also apply multiple filters at once. For example, setting `filter=query equals dark-mode, tags contains [\"beta\",\"q1\"]` matches flags which match the key or name `dark-mode` and are tagged `beta` and `q1`.
 
 ### Example
 
@@ -114,7 +116,7 @@ $request_body = {"key":"user-key-123abc","kind":"user","otherAttribute":"other a
 $limit = 56; // int | The number of feature flags to return. Defaults to -1, which returns all flags
 $offset = 56; // int | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
 $sort = 'sort_example'; // string | A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order
-$filter = 'filter_example'; // string | A comma-separated list of filters. Each filter is of the form field:value. Supports the same filters as the List Feature Flags API.
+$filter = 'filter_example'; // string | A comma-separated list of filters. Each filter is of the form `field operator value`. Supported fields are explained above.
 
 try {
     $result = $apiInstance->evaluateContextInstance($project_key, $environment_key, $request_body, $limit, $offset, $sort, $filter);
@@ -134,7 +136,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| The number of feature flags to return. Defaults to -1, which returns all flags | [optional]
  **offset** | **int**| Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional]
  **sort** | **string**| A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order | [optional]
- **filter** | **string**| A comma-separated list of filters. Each filter is of the form field:value. Supports the same filters as the List Feature Flags API. | [optional]
+ **filter** | **string**| A comma-separated list of filters. Each filter is of the form &#x60;field operator value&#x60;. Supported fields are explained above. | [optional]
 
 ### Return type
 
@@ -184,7 +186,7 @@ $apiInstance = new LaunchDarklyApi\Api\ContextsApi(
 );
 $project_key = 'project_key_example'; // string | The project key
 $environment_key = 'environment_key_example'; // string | The environment key
-$filter = 'filter_example'; // string | A comma-separated list of context filters. This endpoint only accepts `kind` filters, with the `equals` operator, and `name` filters, with the `startsWith` operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
+$filter = 'filter_example'; // string | A comma-separated list of context filters. This endpoint only accepts `kind` filters, with the `equals` operator, and `name` filters, with the `startsWith` operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances).
 
 try {
     $result = $apiInstance->getContextAttributeNames($project_key, $environment_key, $filter);
@@ -200,7 +202,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
  **environment_key** | **string**| The environment key |
- **filter** | **string**| A comma-separated list of context filters. This endpoint only accepts &#x60;kind&#x60; filters, with the &#x60;equals&#x60; operator, and &#x60;name&#x60; filters, with the &#x60;startsWith&#x60; operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances). | [optional]
+ **filter** | **string**| A comma-separated list of context filters. This endpoint only accepts &#x60;kind&#x60; filters, with the &#x60;equals&#x60; operator, and &#x60;name&#x60; filters, with the &#x60;startsWith&#x60; operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances). | [optional]
 
 ### Return type
 
@@ -251,7 +253,7 @@ $apiInstance = new LaunchDarklyApi\Api\ContextsApi(
 $project_key = 'project_key_example'; // string | The project key
 $environment_key = 'environment_key_example'; // string | The environment key
 $attribute_name = 'attribute_name_example'; // string | The attribute name
-$filter = 'filter_example'; // string | A comma-separated list of context filters. This endpoint only accepts `kind` filters, with the `equals` operator, and `value` filters, with the `startsWith` operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
+$filter = 'filter_example'; // string | A comma-separated list of context filters. This endpoint only accepts `kind` filters, with the `equals` operator, and `value` filters, with the `startsWith` operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances).
 
 try {
     $result = $apiInstance->getContextAttributeValues($project_key, $environment_key, $attribute_name, $filter);
@@ -268,7 +270,7 @@ Name | Type | Description  | Notes
  **project_key** | **string**| The project key |
  **environment_key** | **string**| The environment key |
  **attribute_name** | **string**| The attribute name |
- **filter** | **string**| A comma-separated list of context filters. This endpoint only accepts &#x60;kind&#x60; filters, with the &#x60;equals&#x60; operator, and &#x60;value&#x60; filters, with the &#x60;startsWith&#x60; operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances). | [optional]
+ **filter** | **string**| A comma-separated list of context filters. This endpoint only accepts &#x60;kind&#x60; filters, with the &#x60;equals&#x60; operator, and &#x60;value&#x60; filters, with the &#x60;startsWith&#x60; operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances). | [optional]
 
 ### Return type
 
@@ -322,7 +324,7 @@ $id = 'id_example'; // string | The context instance ID
 $limit = 56; // int | Specifies the maximum number of context instances to return (max: 50, default: 20)
 $continuation_token = 'continuation_token_example'; // string | Limits results to context instances with sort values after the value specified. You can use this for pagination, however, we recommend using the `next` link we provide instead.
 $sort = 'sort_example'; // string | Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying `ts` for this value, or descending order by specifying `-ts`.
-$filter = 'filter_example'; // string | A comma-separated list of context filters. This endpoint only accepts an `applicationId` filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
+$filter = 'filter_example'; // string | A comma-separated list of context filters. This endpoint only accepts an `applicationId` filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances).
 $include_total_count = True; // bool | Specifies whether to include or omit the total count of matching context instances. Defaults to true.
 
 try {
@@ -343,12 +345,74 @@ Name | Type | Description  | Notes
  **limit** | **int**| Specifies the maximum number of context instances to return (max: 50, default: 20) | [optional]
  **continuation_token** | **string**| Limits results to context instances with sort values after the value specified. You can use this for pagination, however, we recommend using the &#x60;next&#x60; link we provide instead. | [optional]
  **sort** | **string**| Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying &#x60;ts&#x60; for this value, or descending order by specifying &#x60;-ts&#x60;. | [optional]
- **filter** | **string**| A comma-separated list of context filters. This endpoint only accepts an &#x60;applicationId&#x60; filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances). | [optional]
+ **filter** | **string**| A comma-separated list of context filters. This endpoint only accepts an &#x60;applicationId&#x60; filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances). | [optional]
  **include_total_count** | **bool**| Specifies whether to include or omit the total count of matching context instances. Defaults to true. | [optional]
 
 ### Return type
 
 [**\LaunchDarklyApi\Model\ContextInstances**](../Model/ContextInstances.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getContextKindsByProjectKey()`
+
+```php
+getContextKindsByProjectKey($project_key): \LaunchDarklyApi\Model\ContextKindsCollectionRep
+```
+
+Get context kinds
+
+Get all context kinds for a given project.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\ContextsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = 'project_key_example'; // string | The project key
+
+try {
+    $result = $apiInstance->getContextKindsByProjectKey($project_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContextsApi->getContextKindsByProjectKey: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\ContextKindsCollectionRep**](../Model/ContextKindsCollectionRep.md)
 
 ### Authorization
 
@@ -399,7 +463,7 @@ $key = 'key_example'; // string | The context key
 $limit = 56; // int | Specifies the maximum number of items in the collection to return (max: 50, default: 20)
 $continuation_token = 'continuation_token_example'; // string | Limits results to contexts with sort values after the value specified. You can use this for pagination, however, we recommend using the `next` link we provide instead.
 $sort = 'sort_example'; // string | Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying `ts` for this value, or descending order by specifying `-ts`.
-$filter = 'filter_example'; // string | A comma-separated list of context filters. This endpoint only accepts an `applicationId` filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
+$filter = 'filter_example'; // string | A comma-separated list of context filters. This endpoint only accepts an `applicationId` filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances).
 $include_total_count = True; // bool | Specifies whether to include or omit the total count of matching contexts. Defaults to true.
 
 try {
@@ -421,7 +485,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| Specifies the maximum number of items in the collection to return (max: 50, default: 20) | [optional]
  **continuation_token** | **string**| Limits results to contexts with sort values after the value specified. You can use this for pagination, however, we recommend using the &#x60;next&#x60; link we provide instead. | [optional]
  **sort** | **string**| Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying &#x60;ts&#x60; for this value, or descending order by specifying &#x60;-ts&#x60;. | [optional]
- **filter** | **string**| A comma-separated list of context filters. This endpoint only accepts an &#x60;applicationId&#x60; filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances). | [optional]
+ **filter** | **string**| A comma-separated list of context filters. This endpoint only accepts an &#x60;applicationId&#x60; filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances). | [optional]
  **include_total_count** | **bool**| Specifies whether to include or omit the total count of matching contexts. Defaults to true. | [optional]
 
 ### Return type
@@ -441,6 +505,72 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `putContextKind()`
+
+```php
+putContextKind($project_key, $key, $upsert_context_kind_payload): \LaunchDarklyApi\Model\UpsertResponseRep
+```
+
+Create or update context kind
+
+Create or update a context kind by key. Only the included fields will be updated.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\ContextsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = 'project_key_example'; // string | The project key
+$key = 'key_example'; // string | The context kind key
+$upsert_context_kind_payload = new \LaunchDarklyApi\Model\UpsertContextKindPayload(); // \LaunchDarklyApi\Model\UpsertContextKindPayload
+
+try {
+    $result = $apiInstance->putContextKind($project_key, $key, $upsert_context_kind_payload);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ContextsApi->putContextKind: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key |
+ **key** | **string**| The context kind key |
+ **upsert_context_kind_payload** | [**\LaunchDarklyApi\Model\UpsertContextKindPayload**](../Model/UpsertContextKindPayload.md)|  |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\UpsertResponseRep**](../Model/UpsertResponseRep.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `searchContextInstances()`
 
 ```php
@@ -449,7 +579,7 @@ searchContextInstances($project_key, $environment_key, $context_instance_search,
 
 Search for context instances
 
-Search for context instances.  You can use either the query parameters or the request body parameters. If both are provided, there is an error.  To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances). To learn more about context instances, read [Understanding context instances](https://docs.launchdarkly.com/home/contexts#understanding-context-instances).
+Search for context instances.  You can use either the query parameters or the request body parameters. If both are provided, there is an error.  To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances). To learn more about context instances, read [Understanding context instances](https://docs.launchdarkly.com/home/contexts#understanding-context-instances).
 
 ### Example
 
@@ -476,7 +606,7 @@ $context_instance_search = new \LaunchDarklyApi\Model\ContextInstanceSearch(); /
 $limit = 56; // int | Specifies the maximum number of items in the collection to return (max: 50, default: 20)
 $continuation_token = 'continuation_token_example'; // string | Limits results to context instances with sort values after the value specified. You can use this for pagination, however, we recommend using the `next` link we provide instead.
 $sort = 'sort_example'; // string | Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying `ts` for this value, or descending order by specifying `-ts`.
-$filter = 'filter_example'; // string | A comma-separated list of context filters. This endpoint only accepts an `applicationId` filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
+$filter = 'filter_example'; // string | A comma-separated list of context filters. This endpoint only accepts an `applicationId` filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances).
 $include_total_count = True; // bool | Specifies whether to include or omit the total count of matching context instances. Defaults to true.
 
 try {
@@ -497,7 +627,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| Specifies the maximum number of items in the collection to return (max: 50, default: 20) | [optional]
  **continuation_token** | **string**| Limits results to context instances with sort values after the value specified. You can use this for pagination, however, we recommend using the &#x60;next&#x60; link we provide instead. | [optional]
  **sort** | **string**| Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying &#x60;ts&#x60; for this value, or descending order by specifying &#x60;-ts&#x60;. | [optional]
- **filter** | **string**| A comma-separated list of context filters. This endpoint only accepts an &#x60;applicationId&#x60; filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances). | [optional]
+ **filter** | **string**| A comma-separated list of context filters. This endpoint only accepts an &#x60;applicationId&#x60; filter. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances). | [optional]
  **include_total_count** | **bool**| Specifies whether to include or omit the total count of matching context instances. Defaults to true. | [optional]
 
 ### Return type
@@ -525,7 +655,7 @@ searchContexts($project_key, $environment_key, $context_search, $limit, $continu
 
 Search for contexts
 
-Search for contexts.  You can use either the query parameters or the request body parameters. If both are provided, there is an error.  To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances). To learn more about contexts, read [Understanding contexts and context kinds](https://docs.launchdarkly.com/home/contexts#understanding-contexts-and-context-kinds).
+Search for contexts.  You can use either the query parameters or the request body parameters. If both are provided, there is an error.  To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances). To learn more about contexts, read [Understanding contexts and context kinds](https://docs.launchdarkly.com/home/contexts#understanding-contexts-and-context-kinds).
 
 ### Example
 
@@ -552,7 +682,7 @@ $context_search = new \LaunchDarklyApi\Model\ContextSearch(); // \LaunchDarklyAp
 $limit = 56; // int | Specifies the maximum number of items in the collection to return (max: 50, default: 20)
 $continuation_token = 'continuation_token_example'; // string | Limits results to contexts with sort values after the value specified. You can use this for pagination, however, we recommend using the `next` link we provide instead.
 $sort = 'sort_example'; // string | Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying `ts` for this value, or descending order by specifying `-ts`.
-$filter = 'filter_example'; // string | A comma-separated list of context filters. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances).
+$filter = 'filter_example'; // string | A comma-separated list of context filters. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances).
 $include_total_count = True; // bool | Specifies whether to include or omit the total count of matching contexts. Defaults to true.
 
 try {
@@ -573,7 +703,7 @@ Name | Type | Description  | Notes
  **limit** | **int**| Specifies the maximum number of items in the collection to return (max: 50, default: 20) | [optional]
  **continuation_token** | **string**| Limits results to contexts with sort values after the value specified. You can use this for pagination, however, we recommend using the &#x60;next&#x60; link we provide instead. | [optional]
  **sort** | **string**| Specifies a field by which to sort. LaunchDarkly supports sorting by timestamp in ascending order by specifying &#x60;ts&#x60; for this value, or descending order by specifying &#x60;-ts&#x60;. | [optional]
- **filter** | **string**| A comma-separated list of context filters. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts-(beta)#filtering-contexts-and-context-instances). | [optional]
+ **filter** | **string**| A comma-separated list of context filters. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances). | [optional]
  **include_total_count** | **bool**| Specifies whether to include or omit the total count of matching contexts. Defaults to true. | [optional]
 
 ### Return type

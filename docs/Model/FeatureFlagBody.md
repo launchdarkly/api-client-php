@@ -14,5 +14,7 @@ Name | Type | Description | Notes
 **tags** | **string[]** | Tags for the feature flag. Defaults to an empty array. | [optional]
 **custom_properties** | [**array<string,\LaunchDarklyApi\Model\CustomProperty>**](CustomProperty.md) |  | [optional]
 **defaults** | [**\LaunchDarklyApi\Model\Defaults**](Defaults.md) |  | [optional]
+**purpose** | **string** | Purpose of the flag | [optional]
+**migration_settings** | [**\LaunchDarklyApi\Model\MigrationSettingsPost**](MigrationSettingsPost.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

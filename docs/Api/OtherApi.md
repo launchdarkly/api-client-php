@@ -130,7 +130,7 @@ void (empty response body)
 ## `getRoot()`
 
 ```php
-getRoot(): array<string,\LaunchDarklyApi\Model\Link>
+getRoot(): \LaunchDarklyApi\Model\RootResponse
 ```
 
 Root resource
@@ -171,7 +171,7 @@ This endpoint does not need any parameter.
 
 ### Return type
 
-[**array<string,\LaunchDarklyApi\Model\Link>**](../Model/Link.md)
+[**\LaunchDarklyApi\Model\RootResponse**](../Model/RootResponse.md)
 
 ### Authorization
 

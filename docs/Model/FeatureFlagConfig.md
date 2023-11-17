@@ -24,5 +24,6 @@ Name | Type | Description | Notes
 **_debug_events_until_date** | **int** |  | [optional]
 **_summary** | [**\LaunchDarklyApi\Model\FlagSummary**](FlagSummary.md) |  | [optional]
 **evaluation** | [**\LaunchDarklyApi\Model\FlagConfigEvaluation**](FlagConfigEvaluation.md) |  | [optional]
+**migration_settings** | [**\LaunchDarklyApi\Model\FlagConfigMigrationSettingsRep**](FlagConfigMigrationSettingsRep.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

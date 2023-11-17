@@ -39,7 +39,7 @@ $apiInstance = new LaunchDarklyApi\Api\AuditLogApi(
 );
 $before = 56; // int | A timestamp filter, expressed as a Unix epoch time in milliseconds.  All entries this returns occurred before the timestamp.
 $after = 56; // int | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries this returns occurred after the timestamp.
-$q = 'q_example'; // string | Text to search for. You can search for the full or partial name of the resource, or full or partial email address of the member who made a change.
+$q = 'q_example'; // string | Text to search for. You can search for the full or partial name of the resource.
 $limit = 56; // int | A limit on the number of audit log entries that return. Set between 1 and 20. The default is 10.
 $spec = 'spec_example'; // string | A resource specifier that lets you filter audit log listings by resource
 
@@ -57,7 +57,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **before** | **int**| A timestamp filter, expressed as a Unix epoch time in milliseconds.  All entries this returns occurred before the timestamp. | [optional]
  **after** | **int**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries this returns occurred after the timestamp. | [optional]
- **q** | **string**| Text to search for. You can search for the full or partial name of the resource, or full or partial email address of the member who made a change. | [optional]
+ **q** | **string**| Text to search for. You can search for the full or partial name of the resource. | [optional]
  **limit** | **int**| A limit on the number of audit log entries that return. Set between 1 and 20. The default is 10. | [optional]
  **spec** | **string**| A resource specifier that lets you filter audit log listings by resource | [optional]
 

@@ -20,12 +20,14 @@ Name | Type | Description | Notes
 **_maintainer** | [**\LaunchDarklyApi\Model\MemberSummary**](MemberSummary.md) |  | [optional]
 **maintainer_team_key** | **string** | The key of the associated team that maintains this feature flag | [optional]
 **_maintainer_team** | [**\LaunchDarklyApi\Model\MaintainerTeam**](MaintainerTeam.md) |  | [optional]
-**goal_ids** | **string[]** | Deprecated | [optional]
+**goal_ids** | **string[]** | Deprecated, use &lt;code&gt;experiments&lt;/code&gt; instead | [optional]
 **experiments** | [**\LaunchDarklyApi\Model\ExperimentInfoRep**](ExperimentInfoRep.md) |  |
 **custom_properties** | [**array<string,\LaunchDarklyApi\Model\CustomProperty>**](CustomProperty.md) |  |
 **archived** | **bool** | Boolean indicating if the feature flag is archived |
 **archived_date** | **int** |  | [optional]
 **defaults** | [**\LaunchDarklyApi\Model\Defaults**](Defaults.md) |  | [optional]
+**_purpose** | **string** |  | [optional]
+**migration_settings** | [**\LaunchDarklyApi\Model\FlagMigrationSettingsRep**](FlagMigrationSettingsRep.md) |  | [optional]
 **environments** | [**array<string,\LaunchDarklyApi\Model\FeatureFlagConfig>**](FeatureFlagConfig.md) | Details on the environments for this flag |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

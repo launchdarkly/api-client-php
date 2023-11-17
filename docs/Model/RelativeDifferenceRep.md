@@ -4,8 +4,8 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**upper** | **float** | The upper bound | [optional]
-**lower** | **float** | The lower bound | [optional]
-**from_treatment_id** | **string** | The treatment ID | [optional]
+**upper** | **float** | An upper bound of the relative difference between the treatment and the &lt;code&gt;fromTreatmentId&lt;/code&gt; | [optional]
+**lower** | **float** | A lower bound of the relative difference between the treatment and the &lt;code&gt;fromTreatmentId&lt;/code&gt; | [optional]
+**from_treatment_id** | **string** | The treatment ID of the treatment against which the relative difference is calculated | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

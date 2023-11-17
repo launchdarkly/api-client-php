@@ -15,6 +15,7 @@ Name | Type | Description | Notes
 **notify_member_ids** | **string[]** | An array of member IDs. These members are notified to review the approval request. |
 **applied_date** | **int** |  | [optional]
 **applied_by_member_id** | **string** | The member ID of the member who applied the approval request | [optional]
+**applied_by_service_token_id** | **string** | The service token ID of the service token which applied the approval request | [optional]
 **status** | **string** | Current status of the approval request |
 **instructions** | **array[]** |  |
 **conflicts** | [**\LaunchDarklyApi\Model\Conflict[]**](Conflict.md) | Details on any conflicting approval requests |
