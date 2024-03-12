@@ -11,6 +11,7 @@ Name | Type | Description | Notes
 **default_client_side_availability** | [**\LaunchDarklyApi\Model\ClientSideAvailability**](ClientSideAvailability.md) |  | [optional]
 **name** | **string** | A human-friendly name for the project |
 **tags** | **string[]** | A list of tags for the project |
+**default_release_pipeline_key** | **string** | The key of the default release pipeline for this project | [optional]
 **environments** | [**\LaunchDarklyApi\Model\Environments**](Environments.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

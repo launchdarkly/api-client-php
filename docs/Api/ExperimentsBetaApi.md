@@ -14,7 +14,6 @@ Method | HTTP request | Description
 [**getLegacyExperimentResults()**](ExperimentsBetaApi.md#getLegacyExperimentResults) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey} | Get legacy experiment results (deprecated)
 [**patchExperiment()**](ExperimentsBetaApi.md#patchExperiment) | **PATCH** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Patch experiment
 [**putExperimentationSettings()**](ExperimentsBetaApi.md#putExperimentationSettings) | **PUT** /api/v2/projects/{projectKey}/experimentation-settings | Update experimentation settings
-[**resetExperiment()**](ExperimentsBetaApi.md#resetExperiment) | **DELETE** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey}/results | Reset experiment results
 
 
 ## `createExperiment()`
@@ -222,12 +221,12 @@ Name | Type | Description  | Notes
 ## `getExperimentResults()`
 
 ```php
-getExperimentResults($project_key, $environment_key, $experiment_key, $metric_key, $iteration_id): \LaunchDarklyApi\Model\ExperimentBayesianResultsRep
+getExperimentResults($project_key, $environment_key, $experiment_key, $metric_key, $iteration_id, $expand): \LaunchDarklyApi\Model\ExperimentBayesianResultsRep
 ```
 
 Get experiment results
 
-Get results from an experiment for a particular metric.
+Get results from an experiment for a particular metric.  LaunchDarkly supports one field for expanding the \"Get experiment results\" response. By default, this field is **not** included in the response.  To expand the response, append the `expand` query parameter with the following field: * `traffic` includes the total count of units for each treatment.  For example, `expand=traffic` includes the `traffic` field for the project in the response.
 
 ### Example
 
@@ -253,9 +252,10 @@ $environment_key = 'environment_key_example'; // string | The environment key
 $experiment_key = 'experiment_key_example'; // string | The experiment key
 $metric_key = 'metric_key_example'; // string | The metric key
 $iteration_id = 'iteration_id_example'; // string | The iteration ID
+$expand = 'expand_example'; // string | A comma-separated list of fields to expand in the response. Supported fields are explained above.
 
 try {
-    $result = $apiInstance->getExperimentResults($project_key, $environment_key, $experiment_key, $metric_key, $iteration_id);
+    $result = $apiInstance->getExperimentResults($project_key, $environment_key, $experiment_key, $metric_key, $iteration_id, $expand);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ExperimentsBetaApi->getExperimentResults: ', $e->getMessage(), PHP_EOL;
@@ -271,6 +271,7 @@ Name | Type | Description  | Notes
  **experiment_key** | **string**| The experiment key |
  **metric_key** | **string**| The metric key |
  **iteration_id** | **string**| The iteration ID | [optional]
+ **expand** | **string**| A comma-separated list of fields to expand in the response. Supported fields are explained above. | [optional]
 
 ### Return type
 
@@ -362,7 +363,7 @@ Name | Type | Description  | Notes
 ## `getExperimentationSettings()`
 
 ```php
-getExperimentationSettings($project_key): \LaunchDarklyApi\Model\ExperimentationSettingsRep
+getExperimentationSettings($project_key): \LaunchDarklyApi\Model\RandomizationSettingsRep
 ```
 
 Get experimentation settings
@@ -406,7 +407,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\ExperimentationSettingsRep**](../Model/ExperimentationSettingsRep.md)
+[**\LaunchDarklyApi\Model\RandomizationSettingsRep**](../Model/RandomizationSettingsRep.md)
 
 ### Authorization
 
@@ -638,7 +639,7 @@ Name | Type | Description  | Notes
 ## `putExperimentationSettings()`
 
 ```php
-putExperimentationSettings($project_key, $experimentation_settings_put): \LaunchDarklyApi\Model\ExperimentationSettingsRep
+putExperimentationSettings($project_key, $randomization_settings_put): \LaunchDarklyApi\Model\RandomizationSettingsRep
 ```
 
 Update experimentation settings
@@ -665,10 +666,10 @@ $apiInstance = new LaunchDarklyApi\Api\ExperimentsBetaApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$experimentation_settings_put = new \LaunchDarklyApi\Model\ExperimentationSettingsPut(); // \LaunchDarklyApi\Model\ExperimentationSettingsPut
+$randomization_settings_put = new \LaunchDarklyApi\Model\RandomizationSettingsPut(); // \LaunchDarklyApi\Model\RandomizationSettingsPut
 
 try {
-    $result = $apiInstance->putExperimentationSettings($project_key, $experimentation_settings_put);
+    $result = $apiInstance->putExperimentationSettings($project_key, $randomization_settings_put);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ExperimentsBetaApi->putExperimentationSettings: ', $e->getMessage(), PHP_EOL;
@@ -680,11 +681,11 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **experimentation_settings_put** | [**\LaunchDarklyApi\Model\ExperimentationSettingsPut**](../Model/ExperimentationSettingsPut.md)|  |
+ **randomization_settings_put** | [**\LaunchDarklyApi\Model\RandomizationSettingsPut**](../Model/RandomizationSettingsPut.md)|  |
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\ExperimentationSettingsRep**](../Model/ExperimentationSettingsRep.md)
+[**\LaunchDarklyApi\Model\RandomizationSettingsRep**](../Model/RandomizationSettingsRep.md)
 
 ### Authorization
 
@@ -693,73 +694,6 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `resetExperiment()`
-
-```php
-resetExperiment($project_key, $feature_flag_key, $environment_key, $metric_key)
-```
-
-Reset experiment results
-
-Reset all experiment results by deleting all existing data for an experiment.
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: ApiKey
-$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-
-$apiInstance = new LaunchDarklyApi\Api\ExperimentsBetaApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$project_key = 'project_key_example'; // string | The project key
-$feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
-$environment_key = 'environment_key_example'; // string | The environment key
-$metric_key = 'metric_key_example'; // string | The metric's key
-
-try {
-    $apiInstance->resetExperiment($project_key, $feature_flag_key, $environment_key, $metric_key);
-} catch (Exception $e) {
-    echo 'Exception when calling ExperimentsBetaApi->resetExperiment: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag key |
- **environment_key** | **string**| The environment key |
- **metric_key** | **string**| The metric&#39;s key |
-
-### Return type
-
-void (empty response body)
-
-### Authorization
-
-[ApiKey](../../README.md#ApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

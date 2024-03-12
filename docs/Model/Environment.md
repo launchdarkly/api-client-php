@@ -18,5 +18,6 @@ Name | Type | Description | Notes
 **confirm_changes** | **bool** | Whether members who modify flags and segments through the LaunchDarkly user interface are required to confirm those changes |
 **tags** | **string[]** | A list of tags for this environment |
 **approval_settings** | [**\LaunchDarklyApi\Model\ApprovalSettings**](ApprovalSettings.md) |  | [optional]
+**critical** | **bool** | Whether the environment is critical |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -5,7 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **experiment_count** | **int** | The number of experiments using this metric | [optional]
+**metric_group_count** | **int** | The number of metric groups using this metric | [optional]
 **_id** | **string** | The ID of this metric |
+**_version_id** | **string** | The version ID of the metric |
 **key** | **string** | A unique key to reference the metric |
 **name** | **string** | A human-friendly name for the metric |
 **kind** | **string** | The kind of event the metric tracks |

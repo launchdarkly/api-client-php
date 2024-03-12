@@ -75,7 +75,7 @@ Name | Type | Description  | Notes
 ## `patchReleaseByFlagKey()`
 
 ```php
-patchReleaseByFlagKey($project_key, $flag_key, $patch_operation)
+patchReleaseByFlagKey($project_key, $flag_key, $patch_operation): \LaunchDarklyApi\Model\Release
 ```
 
 Patch release for flag
@@ -106,7 +106,8 @@ $flag_key = 'flag_key_example'; // string | The flag key
 $patch_operation = [{"op":"replace","path":"/phases/0/complete","value":true}]; // \LaunchDarklyApi\Model\PatchOperation[]
 
 try {
-    $apiInstance->patchReleaseByFlagKey($project_key, $flag_key, $patch_operation);
+    $result = $apiInstance->patchReleaseByFlagKey($project_key, $flag_key, $patch_operation);
+    print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReleasesBetaApi->patchReleaseByFlagKey: ', $e->getMessage(), PHP_EOL;
 }
@@ -122,7 +123,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-void (empty response body)
+[**\LaunchDarklyApi\Model\Release**](../Model/Release.md)
 
 ### Authorization
 
@@ -131,7 +132,7 @@ void (empty response body)
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
-- **Accept**: Not defined
+- **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
 [[Back to Model list]](../../README.md#models)

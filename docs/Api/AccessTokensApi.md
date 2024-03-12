@@ -138,7 +138,7 @@ Name | Type | Description  | Notes
 ## `getTokens()`
 
 ```php
-getTokens($show_all): \LaunchDarklyApi\Model\Tokens
+getTokens($show_all, $limit, $offset): \LaunchDarklyApi\Model\Tokens
 ```
 
 List access tokens
@@ -165,9 +165,11 @@ $apiInstance = new LaunchDarklyApi\Api\AccessTokensApi(
     $config
 );
 $show_all = True; // bool | If set to true, and the authentication access token has the 'Admin' role, personal access tokens for all members will be retrieved.
+$limit = 56; // int | The number of access tokens to return in the response. Defaults to 25.
+$offset = 56; // int | Where to start in the list. This is for use with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
 
 try {
-    $result = $apiInstance->getTokens($show_all);
+    $result = $apiInstance->getTokens($show_all, $limit, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccessTokensApi->getTokens: ', $e->getMessage(), PHP_EOL;
@@ -179,6 +181,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **show_all** | **bool**| If set to true, and the authentication access token has the &#39;Admin&#39; role, personal access tokens for all members will be retrieved. | [optional]
+ **limit** | **int**| The number of access tokens to return in the response. Defaults to 25. | [optional]
+ **offset** | **int**| Where to start in the list. This is for use with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional]
 
 ### Return type
 

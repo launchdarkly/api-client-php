@@ -1,0 +1,12 @@
+# # InsightScores
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**period** | [**\LaunchDarklyApi\Model\InsightPeriod**](InsightPeriod.md) |  |
+**last_period** | [**\LaunchDarklyApi\Model\InsightPeriod**](InsightPeriod.md) |  |
+**scores** | [**\LaunchDarklyApi\Model\InsightGroupScores**](InsightGroupScores.md) |  |
+**_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) | The location and content type of related resources | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

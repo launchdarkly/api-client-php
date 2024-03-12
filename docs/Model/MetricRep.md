@@ -5,7 +5,9 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **experiment_count** | **int** | The number of experiments using this metric | [optional]
+**metric_group_count** | **int** | The number of metric groups using this metric | [optional]
 **_id** | **string** | The ID of this metric |
+**_version_id** | **string** | The version ID of the metric |
 **key** | **string** | A unique key to reference the metric |
 **name** | **string** | A human-friendly name for the metric |
 **kind** | **string** | The kind of event the metric tracks |
@@ -29,6 +31,7 @@ Name | Type | Description | Notes
 **percentile_value** | **int** | The percentile, an integer denoting the target percentile between 0 and 100. Only present when &lt;code&gt;analysisType&lt;/code&gt; is &lt;code&gt;percentile&lt;/code&gt;. | [optional]
 **event_default** | [**\LaunchDarklyApi\Model\MetricEventDefaultRep**](MetricEventDefaultRep.md) |  | [optional]
 **experiments** | [**\LaunchDarklyApi\Model\DependentExperimentRep[]**](DependentExperimentRep.md) |  | [optional]
+**metric_groups** | [**\LaunchDarklyApi\Model\DependentMetricGroupRep[]**](DependentMetricGroupRep.md) | Metric groups that use this metric | [optional]
 **is_active** | **bool** | Whether the metric is active | [optional]
 **_attached_features** | [**\LaunchDarklyApi\Model\FlagListingRep[]**](FlagListingRep.md) | Details on the flags attached to this metric | [optional]
 **_version** | **int** | Version of the metric | [optional]

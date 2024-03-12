@@ -4,7 +4,6 @@ All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createApplication()**](ApplicationsBetaApi.md#createApplication) | **POST** /api/v2/applications | Post application
 [**deleteApplication()**](ApplicationsBetaApi.md#deleteApplication) | **DELETE** /api/v2/applications/{applicationKey} | Delete application
 [**deleteApplicationVersion()**](ApplicationsBetaApi.md#deleteApplicationVersion) | **DELETE** /api/v2/applications/{applicationKey}/versions/{versionKey} | Delete application version
 [**getApplication()**](ApplicationsBetaApi.md#getApplication) | **GET** /api/v2/applications/{applicationKey} | Get application by key
@@ -12,70 +11,7 @@ Method | HTTP request | Description
 [**getApplications()**](ApplicationsBetaApi.md#getApplications) | **GET** /api/v2/applications | Get applications
 [**patchApplication()**](ApplicationsBetaApi.md#patchApplication) | **PATCH** /api/v2/applications/{applicationKey} | Update application
 [**patchApplicationVersion()**](ApplicationsBetaApi.md#patchApplicationVersion) | **PATCH** /api/v2/applications/{applicationKey}/versions/{versionKey} | Update application version
-[**postApplicationVersion()**](ApplicationsBetaApi.md#postApplicationVersion) | **POST** /api/v2/applications/{applicationKey}/versions | Post application version
 
-
-## `createApplication()`
-
-```php
-createApplication($create_application_input): \LaunchDarklyApi\Model\ApplicationRep
-```
-
-Post application
-
-Create a new application
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: ApiKey
-$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-
-$apiInstance = new LaunchDarklyApi\Api\ApplicationsBetaApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$create_application_input = new \LaunchDarklyApi\Model\CreateApplicationInput(); // \LaunchDarklyApi\Model\CreateApplicationInput
-
-try {
-    $result = $apiInstance->createApplication($create_application_input);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ApplicationsBetaApi->createApplication: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **create_application_input** | [**\LaunchDarklyApi\Model\CreateApplicationInput**](../Model/CreateApplicationInput.md)|  |
-
-### Return type
-
-[**\LaunchDarklyApi\Model\ApplicationRep**](../Model/ApplicationRep.md)
-
-### Authorization
-
-[ApiKey](../../README.md#ApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
 
 ## `deleteApplication()`
 
@@ -517,70 +453,6 @@ Name | Type | Description  | Notes
  **application_key** | **string**| The application key |
  **version_key** | **string**| The application version key |
  **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
-
-### Return type
-
-[**\LaunchDarklyApi\Model\ApplicationVersionRep**](../Model/ApplicationVersionRep.md)
-
-### Authorization
-
-[ApiKey](../../README.md#ApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: `application/json`
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
-## `postApplicationVersion()`
-
-```php
-postApplicationVersion($application_key, $create_application_version_input): \LaunchDarklyApi\Model\ApplicationVersionRep
-```
-
-Post application version
-
-Create an application version
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: ApiKey
-$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-
-$apiInstance = new LaunchDarklyApi\Api\ApplicationsBetaApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$application_key = 'application_key_example'; // string | The application key
-$create_application_version_input = new \LaunchDarklyApi\Model\CreateApplicationVersionInput(); // \LaunchDarklyApi\Model\CreateApplicationVersionInput
-
-try {
-    $result = $apiInstance->postApplicationVersion($application_key, $create_application_version_input);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ApplicationsBetaApi->postApplicationVersion: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **application_key** | **string**| The application key |
- **create_application_version_input** | [**\LaunchDarklyApi\Model\CreateApplicationVersionInput**](../Model/CreateApplicationVersionInput.md)|  |
 
 ### Return type
 

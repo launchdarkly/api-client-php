@@ -14,5 +14,6 @@ Name | Type | Description | Notes
 **require_comments** | **bool** | Requires comments for all flag and segment changes via the UI in this environment | [optional]
 **tags** | **string[]** | Tags to apply to the new environment | [optional]
 **source** | [**\LaunchDarklyApi\Model\SourceEnv**](SourceEnv.md) |  | [optional]
+**critical** | **bool** | Whether the environment is critical | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -163,7 +163,7 @@ getContextAttributeNames($project_key, $environment_key, $filter): \LaunchDarkly
 
 Get context attribute names
 
-Get context attribute names.
+Get context attribute names. Returns only the first 100 attribute names per context.
 
 ### Example
 

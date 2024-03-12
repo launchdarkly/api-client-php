@@ -4,10 +4,10 @@ All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createBigSegmentExport()**](SegmentsBetaApi.md#createBigSegmentExport) | **POST** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports | Create Big Segment export
-[**createBigSegmentImport()**](SegmentsBetaApi.md#createBigSegmentImport) | **POST** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports | Create Big Segment import
-[**getBigSegmentExport()**](SegmentsBetaApi.md#getBigSegmentExport) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports/{exportID} | Get Big Segment export
-[**getBigSegmentImport()**](SegmentsBetaApi.md#getBigSegmentImport) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports/{importID} | Get Big Segment import
+[**createBigSegmentExport()**](SegmentsBetaApi.md#createBigSegmentExport) | **POST** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports | Create big segment export
+[**createBigSegmentImport()**](SegmentsBetaApi.md#createBigSegmentImport) | **POST** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports | Create big segment import
+[**getBigSegmentExport()**](SegmentsBetaApi.md#getBigSegmentExport) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/exports/{exportID} | Get big segment export
+[**getBigSegmentImport()**](SegmentsBetaApi.md#getBigSegmentImport) | **GET** /api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}/imports/{importID} | Get big segment import
 
 
 ## `createBigSegmentExport()`
@@ -16,9 +16,9 @@ Method | HTTP request | Description
 createBigSegmentExport($project_key, $environment_key, $segment_key)
 ```
 
-Create Big Segment export
+Create big segment export
 
-Starts a new export process for a Big Segment. This is an export for a list-based segment that can include more than 15,000 entries.
+Starts a new export process for a big segment. This is an export for a synced segment or a list-based segment that can include more than 15,000 entries.
 
 ### Example
 
@@ -81,9 +81,9 @@ void (empty response body)
 createBigSegmentImport($project_key, $environment_key, $segment_key, $file, $mode)
 ```
 
-Create Big Segment import
+Create big segment import
 
-Start a new import process for a Big Segment. This is an import for a list-based segment that can include more than 15,000 entries.
+Start a new import process for a big segment. This is an import for a list-based segment that can include more than 15,000 entries.
 
 ### Example
 
@@ -150,9 +150,9 @@ void (empty response body)
 getBigSegmentExport($project_key, $environment_key, $segment_key, $export_id): \LaunchDarklyApi\Model\Export
 ```
 
-Get Big Segment export
+Get big segment export
 
-Returns information about a Big Segment export process. This is the export of a list-based segment that can include more than 15,000 entries.
+Returns information about a big segment export process. This is an export for a synced segment or a list-based segment that can include more than 15,000 entries.
 
 ### Example
 
@@ -218,9 +218,9 @@ Name | Type | Description  | Notes
 getBigSegmentImport($project_key, $environment_key, $segment_key, $import_id): \LaunchDarklyApi\Model\Import
 ```
 
-Get Big Segment import
+Get big segment import
 
-Returns information about a Big Segment import process. This is the import of a list-based segment that can include more than 15,000 entries.
+Returns information about a big segment import process. This is the import of a list-based segment that can include more than 15,000 entries.
 
 ### Example
 

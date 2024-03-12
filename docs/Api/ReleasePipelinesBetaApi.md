@@ -19,7 +19,7 @@ deleteReleasePipeline($project_key, $pipeline_key)
 
 Delete release pipeline
 
-Delete a release pipeline
+Deletes a release pipeline.  You cannot delete the default release pipeline.  If you want to delete a release pipeline that is currently the default, create a second release pipeline and set it as the default. Then delete the first release pipeline. To change the default release pipeline, use the [Update project](/tag/Projects#operation/patchProject) API to set the `defaultReleasePipelineKey`.
 
 ### Example
 
@@ -77,12 +77,12 @@ void (empty response body)
 ## `getAllReleasePipelines()`
 
 ```php
-getAllReleasePipelines($project_key): \LaunchDarklyApi\Model\ReleasePipelineCollection
+getAllReleasePipelines($project_key, $filter, $limit, $offset): \LaunchDarklyApi\Model\ReleasePipelineCollection
 ```
 
 Get all release pipelines
 
-Get all release pipelines for a project
+Get all release pipelines for a project.  ### Filtering release pipelines  LaunchDarkly supports the following fields for filters:  - `query` is a string that matches against the release pipeline `key`, `name`, and `description`. It is not case sensitive. For example: `?filter=query:examplePipeline`.
 
 ### Example
 
@@ -104,9 +104,12 @@ $apiInstance = new LaunchDarklyApi\Api\ReleasePipelinesBetaApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
+$filter = 'filter_example'; // string | A comma-separated list of filters. Each filter is of the form field:value. Read the endpoint description for a full list of available filter fields.
+$limit = 56; // int | The maximum number of items to return. Defaults to 20.
+$offset = 56; // int | Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
 
 try {
-    $result = $apiInstance->getAllReleasePipelines($project_key);
+    $result = $apiInstance->getAllReleasePipelines($project_key, $filter, $limit, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ReleasePipelinesBetaApi->getAllReleasePipelines: ', $e->getMessage(), PHP_EOL;
@@ -118,6 +121,9 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
+ **filter** | **string**| A comma-separated list of filters. Each filter is of the form field:value. Read the endpoint description for a full list of available filter fields. | [optional]
+ **limit** | **int**| The maximum number of items to return. Defaults to 20. | [optional]
+ **offset** | **int**| Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional]
 
 ### Return type
 
@@ -272,7 +278,7 @@ postReleasePipeline($project_key, $create_release_pipeline_input): \LaunchDarkly
 
 Create a release pipeline
 
-Creates a new release pipeline
+Creates a new release pipeline.  The first release pipeline you create is automatically set as the default release pipeline for your project. To change the default release pipeline, use the [Update project](/tag/Projects#operation/patchProject) API to set the `defaultReleasePipelineKey`.  You can create up to 20 release pipelines per project.
 
 ### Example
 

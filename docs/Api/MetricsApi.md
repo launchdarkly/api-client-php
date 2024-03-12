@@ -77,12 +77,12 @@ void (empty response body)
 ## `getMetric()`
 
 ```php
-getMetric($project_key, $metric_key, $expand): \LaunchDarklyApi\Model\MetricRep
+getMetric($project_key, $metric_key, $expand, $version_id): \LaunchDarklyApi\Model\MetricRep
 ```
 
 Get metric
 
-Get information for a single metric from the specific project.  ### Expanding the metric response LaunchDarkly supports two fields for expanding the \"Get metric\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with any of the following fields:  - `experiments` includes all experiments from the specific project that use the metric - `experimentCount` includes the number of experiments from the specific project that use the metric  For example, `expand=experiments` includes the `experiments` field in the response.
+Get information for a single metric from the specific project.  ### Expanding the metric response LaunchDarkly supports four fields for expanding the \"Get metric\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with any of the following fields:  - `experiments` includes all experiments from the specific project that use the metric - `experimentCount` includes the number of experiments from the specific project that use the metric - `metricGroups` includes all metric groups from the specific project that use the metric - `metricGroupCount` includes the number of metric groups from the specific project that use the metric  For example, `expand=experiments` includes the `experiments` field in the response.
 
 ### Example
 
@@ -106,9 +106,10 @@ $apiInstance = new LaunchDarklyApi\Api\MetricsApi(
 $project_key = 'project_key_example'; // string | The project key
 $metric_key = 'metric_key_example'; // string | The metric key
 $expand = 'expand_example'; // string | A comma-separated list of properties that can reveal additional information in the response.
+$version_id = 'version_id_example'; // string | The specific version ID of the metric
 
 try {
-    $result = $apiInstance->getMetric($project_key, $metric_key, $expand);
+    $result = $apiInstance->getMetric($project_key, $metric_key, $expand, $version_id);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MetricsApi->getMetric: ', $e->getMessage(), PHP_EOL;
@@ -122,6 +123,7 @@ Name | Type | Description  | Notes
  **project_key** | **string**| The project key |
  **metric_key** | **string**| The metric key |
  **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional]
+ **version_id** | **string**| The specific version ID of the metric | [optional]
 
 ### Return type
 

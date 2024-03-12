@@ -25,6 +25,8 @@ Name | Type | Description | Notes
 **custom_properties** | [**array<string,\LaunchDarklyApi\Model\CustomProperty>**](CustomProperty.md) |  |
 **archived** | **bool** | Boolean indicating if the feature flag is archived |
 **archived_date** | **int** |  | [optional]
+**deprecated** | **bool** | Boolean indicating if the feature flag is deprecated |
+**deprecated_date** | **int** |  | [optional]
 **defaults** | [**\LaunchDarklyApi\Model\Defaults**](Defaults.md) |  | [optional]
 **_purpose** | **string** |  | [optional]
 **migration_settings** | [**\LaunchDarklyApi\Model\FlagMigrationSettingsRep**](FlagMigrationSettingsRep.md) |  | [optional]
