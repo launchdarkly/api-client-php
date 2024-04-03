@@ -66,6 +66,7 @@ class Project implements ModelInterface, ArrayAccess, \JsonSerializable
         'include_in_snippet_by_default' => 'bool',
         'default_client_side_availability' => '\LaunchDarklyApi\Model\ClientSideAvailability',
         'name' => 'string',
+        '_access' => '\LaunchDarklyApi\Model\Access',
         'tags' => 'string[]',
         'default_release_pipeline_key' => 'string',
         'environments' => '\LaunchDarklyApi\Model\Environments'
@@ -85,6 +86,7 @@ class Project implements ModelInterface, ArrayAccess, \JsonSerializable
         'include_in_snippet_by_default' => null,
         'default_client_side_availability' => null,
         'name' => null,
+        '_access' => null,
         'tags' => null,
         'default_release_pipeline_key' => null,
         'environments' => null
@@ -123,6 +125,7 @@ class Project implements ModelInterface, ArrayAccess, \JsonSerializable
         'include_in_snippet_by_default' => 'includeInSnippetByDefault',
         'default_client_side_availability' => 'defaultClientSideAvailability',
         'name' => 'name',
+        '_access' => '_access',
         'tags' => 'tags',
         'default_release_pipeline_key' => 'defaultReleasePipelineKey',
         'environments' => 'environments'
@@ -140,6 +143,7 @@ class Project implements ModelInterface, ArrayAccess, \JsonSerializable
         'include_in_snippet_by_default' => 'setIncludeInSnippetByDefault',
         'default_client_side_availability' => 'setDefaultClientSideAvailability',
         'name' => 'setName',
+        '_access' => 'setAccess',
         'tags' => 'setTags',
         'default_release_pipeline_key' => 'setDefaultReleasePipelineKey',
         'environments' => 'setEnvironments'
@@ -157,6 +161,7 @@ class Project implements ModelInterface, ArrayAccess, \JsonSerializable
         'include_in_snippet_by_default' => 'getIncludeInSnippetByDefault',
         'default_client_side_availability' => 'getDefaultClientSideAvailability',
         'name' => 'getName',
+        '_access' => 'getAccess',
         'tags' => 'getTags',
         'default_release_pipeline_key' => 'getDefaultReleasePipelineKey',
         'environments' => 'getEnvironments'
@@ -225,6 +230,7 @@ class Project implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['include_in_snippet_by_default'] = $data['include_in_snippet_by_default'] ?? null;
         $this->container['default_client_side_availability'] = $data['default_client_side_availability'] ?? null;
         $this->container['name'] = $data['name'] ?? null;
+        $this->container['_access'] = $data['_access'] ?? null;
         $this->container['tags'] = $data['tags'] ?? null;
         $this->container['default_release_pipeline_key'] = $data['default_release_pipeline_key'] ?? null;
         $this->container['environments'] = $data['environments'] ?? null;
@@ -412,6 +418,30 @@ class Project implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setName($name)
     {
         $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets _access
+     *
+     * @return \LaunchDarklyApi\Model\Access|null
+     */
+    public function getAccess()
+    {
+        return $this->container['_access'];
+    }
+
+    /**
+     * Sets _access
+     *
+     * @param \LaunchDarklyApi\Model\Access|null $_access _access
+     *
+     * @return self
+     */
+    public function setAccess($_access)
+    {
+        $this->container['_access'] = $_access;
 
         return $this;
     }

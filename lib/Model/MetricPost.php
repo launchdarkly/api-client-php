@@ -73,7 +73,10 @@ class MetricPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'success_criteria' => 'string',
         'tags' => 'string[]',
         'randomization_units' => 'string[]',
-        'unit_aggregation_type' => 'string'
+        'unit_aggregation_type' => 'string',
+        'analysis_type' => 'string',
+        'percentile_value' => 'int',
+        'event_default' => '\LaunchDarklyApi\Model\MetricEventDefaultRep'
     ];
 
     /**
@@ -97,7 +100,10 @@ class MetricPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'success_criteria' => null,
         'tags' => null,
         'randomization_units' => null,
-        'unit_aggregation_type' => null
+        'unit_aggregation_type' => null,
+        'analysis_type' => null,
+        'percentile_value' => null,
+        'event_default' => null
     ];
 
     /**
@@ -140,7 +146,10 @@ class MetricPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'success_criteria' => 'successCriteria',
         'tags' => 'tags',
         'randomization_units' => 'randomizationUnits',
-        'unit_aggregation_type' => 'unitAggregationType'
+        'unit_aggregation_type' => 'unitAggregationType',
+        'analysis_type' => 'analysisType',
+        'percentile_value' => 'percentileValue',
+        'event_default' => 'eventDefault'
     ];
 
     /**
@@ -162,7 +171,10 @@ class MetricPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'success_criteria' => 'setSuccessCriteria',
         'tags' => 'setTags',
         'randomization_units' => 'setRandomizationUnits',
-        'unit_aggregation_type' => 'setUnitAggregationType'
+        'unit_aggregation_type' => 'setUnitAggregationType',
+        'analysis_type' => 'setAnalysisType',
+        'percentile_value' => 'setPercentileValue',
+        'event_default' => 'setEventDefault'
     ];
 
     /**
@@ -184,7 +196,10 @@ class MetricPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'success_criteria' => 'getSuccessCriteria',
         'tags' => 'getTags',
         'randomization_units' => 'getRandomizationUnits',
-        'unit_aggregation_type' => 'getUnitAggregationType'
+        'unit_aggregation_type' => 'getUnitAggregationType',
+        'analysis_type' => 'getAnalysisType',
+        'percentile_value' => 'getPercentileValue',
+        'event_default' => 'getEventDefault'
     ];
 
     /**
@@ -305,6 +320,9 @@ class MetricPost implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['tags'] = $data['tags'] ?? null;
         $this->container['randomization_units'] = $data['randomization_units'] ?? null;
         $this->container['unit_aggregation_type'] = $data['unit_aggregation_type'] ?? null;
+        $this->container['analysis_type'] = $data['analysis_type'] ?? null;
+        $this->container['percentile_value'] = $data['percentile_value'] ?? null;
+        $this->container['event_default'] = $data['event_default'] ?? null;
     }
 
     /**
@@ -709,7 +727,7 @@ class MetricPost implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets unit_aggregation_type
      *
-     * @param string|null $unit_aggregation_type The method in which multiple unit event values are aggregated
+     * @param string|null $unit_aggregation_type The method by which multiple unit event values are aggregated
      *
      * @return self
      */
@@ -726,6 +744,78 @@ class MetricPost implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
         $this->container['unit_aggregation_type'] = $unit_aggregation_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets analysis_type
+     *
+     * @return string|null
+     */
+    public function getAnalysisType()
+    {
+        return $this->container['analysis_type'];
+    }
+
+    /**
+     * Sets analysis_type
+     *
+     * @param string|null $analysis_type The method for analyzing metric events
+     *
+     * @return self
+     */
+    public function setAnalysisType($analysis_type)
+    {
+        $this->container['analysis_type'] = $analysis_type;
+
+        return $this;
+    }
+
+    /**
+     * Gets percentile_value
+     *
+     * @return int|null
+     */
+    public function getPercentileValue()
+    {
+        return $this->container['percentile_value'];
+    }
+
+    /**
+     * Sets percentile_value
+     *
+     * @param int|null $percentile_value The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when <code>analysisType</code> is <code>percentile</code>.
+     *
+     * @return self
+     */
+    public function setPercentileValue($percentile_value)
+    {
+        $this->container['percentile_value'] = $percentile_value;
+
+        return $this;
+    }
+
+    /**
+     * Gets event_default
+     *
+     * @return \LaunchDarklyApi\Model\MetricEventDefaultRep|null
+     */
+    public function getEventDefault()
+    {
+        return $this->container['event_default'];
+    }
+
+    /**
+     * Sets event_default
+     *
+     * @param \LaunchDarklyApi\Model\MetricEventDefaultRep|null $event_default event_default
+     *
+     * @return self
+     */
+    public function setEventDefault($event_default)
+    {
+        $this->container['event_default'] = $event_default;
 
         return $this;
     }

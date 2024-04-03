@@ -7,7 +7,7 @@ Method | HTTP request | Description
 [**getDeploymentFrequencyChart()**](InsightsChartsBetaApi.md#getDeploymentFrequencyChart) | **GET** /api/v2/engineering-insights/charts/deployments/frequency | Get deployment frequency chart data
 [**getFlagStatusChart()**](InsightsChartsBetaApi.md#getFlagStatusChart) | **GET** /api/v2/engineering-insights/charts/flags/status | Get flag status chart data
 [**getLeadTimeChart()**](InsightsChartsBetaApi.md#getLeadTimeChart) | **GET** /api/v2/engineering-insights/charts/lead-time | Get lead time chart data
-[**getReleaseFrequencyChart()**](InsightsChartsBetaApi.md#getReleaseFrequencyChart) | **GET** /api/v2/engineering-insights/charts/releases/frequency | Get replease frequency chart data
+[**getReleaseFrequencyChart()**](InsightsChartsBetaApi.md#getReleaseFrequencyChart) | **GET** /api/v2/engineering-insights/charts/releases/frequency | Get release frequency chart data
 [**getStaleFlagsChart()**](InsightsChartsBetaApi.md#getStaleFlagsChart) | **GET** /api/v2/engineering-insights/charts/flags/stale | Get stale flags chart data
 
 
@@ -239,7 +239,7 @@ Name | Type | Description  | Notes
 getReleaseFrequencyChart($project_key, $environment_key, $application_key, $has_experiments, $global, $group_by, $from, $to, $bucket_type, $bucket_ms, $expand): \LaunchDarklyApi\Model\InsightsChart
 ```
 
-Get replease frequency chart data
+Get release frequency chart data
 
 Get release frequency chart data. Engineering insights displays release frequency data in the [release frequency metric view](https://docs.launchdarkly.com/home/engineering-insights/metrics/release).
 
@@ -265,7 +265,7 @@ $apiInstance = new LaunchDarklyApi\Api\InsightsChartsBetaApi(
 $project_key = 'project_key_example'; // string | The project key
 $environment_key = 'environment_key_example'; // string | The environment key
 $application_key = 'application_key_example'; // string | Comma separated list of application keys
-$has_experiments = True; // bool | Filter events to those associated with an experiment
+$has_experiments = True; // bool | Filter events to those associated with an experiment (`true`) or without an experiment (`false`)
 $global = 'global_example'; // string | Filter to include or exclude global events. Default value is `include`. Options: `include`, `exclude`
 $group_by = 'group_by_example'; // string | Property to group results by. Options: `impact`
 $from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Unix timestamp in milliseconds. Default value is 7 days ago.
@@ -289,7 +289,7 @@ Name | Type | Description  | Notes
  **project_key** | **string**| The project key |
  **environment_key** | **string**| The environment key |
  **application_key** | **string**| Comma separated list of application keys | [optional]
- **has_experiments** | **bool**| Filter events to those associated with an experiment | [optional]
+ **has_experiments** | **bool**| Filter events to those associated with an experiment (&#x60;true&#x60;) or without an experiment (&#x60;false&#x60;) | [optional]
  **global** | **string**| Filter to include or exclude global events. Default value is &#x60;include&#x60;. Options: &#x60;include&#x60;, &#x60;exclude&#x60; | [optional]
  **group_by** | **string**| Property to group results by. Options: &#x60;impact&#x60; | [optional]
  **from** | **\DateTime**| Unix timestamp in milliseconds. Default value is 7 days ago. | [optional]

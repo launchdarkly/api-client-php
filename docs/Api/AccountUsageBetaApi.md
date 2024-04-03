@@ -4,6 +4,7 @@ All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
+[**getDataExportEventsUsage()**](AccountUsageBetaApi.md#getDataExportEventsUsage) | **GET** /api/v2/usage/data-export-events | Get data export events usage
 [**getEvaluationsUsage()**](AccountUsageBetaApi.md#getEvaluationsUsage) | **GET** /api/v2/usage/evaluations/{projectKey}/{environmentKey}/{featureFlagKey} | Get evaluations usage
 [**getEventsUsage()**](AccountUsageBetaApi.md#getEventsUsage) | **GET** /api/v2/usage/events/{type} | Get events usage
 [**getExperimentationKeysUsage()**](AccountUsageBetaApi.md#getExperimentationKeysUsage) | **GET** /api/v2/usage/experimentation-keys | Get experimentation keys usage
@@ -11,10 +12,75 @@ Method | HTTP request | Description
 [**getMauSdksByType()**](AccountUsageBetaApi.md#getMauSdksByType) | **GET** /api/v2/usage/mau/sdks | Get MAU SDKs by type
 [**getMauUsage()**](AccountUsageBetaApi.md#getMauUsage) | **GET** /api/v2/usage/mau | Get MAU usage
 [**getMauUsageByCategory()**](AccountUsageBetaApi.md#getMauUsageByCategory) | **GET** /api/v2/usage/mau/bycategory | Get MAU usage by category
+[**getServiceConnectionUsage()**](AccountUsageBetaApi.md#getServiceConnectionUsage) | **GET** /api/v2/usage/service-connections | Get service connection usage
 [**getStreamUsage()**](AccountUsageBetaApi.md#getStreamUsage) | **GET** /api/v2/usage/streams/{source} | Get stream usage
 [**getStreamUsageBySdkVersion()**](AccountUsageBetaApi.md#getStreamUsageBySdkVersion) | **GET** /api/v2/usage/streams/{source}/bysdkversion | Get stream usage by SDK version
 [**getStreamUsageSdkversion()**](AccountUsageBetaApi.md#getStreamUsageSdkversion) | **GET** /api/v2/usage/streams/{source}/sdkversions | Get stream usage SDK versions
 
+
+## `getDataExportEventsUsage()`
+
+```php
+getDataExportEventsUsage($from, $to): \LaunchDarklyApi\Model\SeriesIntervalsRep
+```
+
+Get data export events usage
+
+Get a time-series array of the number of monthly data export events from your account. The granularity is always daily, with a maximum of 31 days.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\AccountUsageBetaApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$from = 'from_example'; // string | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
+$to = 'to_example'; // string | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+
+try {
+    $result = $apiInstance->getDataExportEventsUsage($from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountUsageBetaApi->getDataExportEventsUsage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **from** | **string**| The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month. | [optional]
+ **to** | **string**| The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time. | [optional]
+
+### Return type
+
+[**\LaunchDarklyApi\Model\SeriesIntervalsRep**](../Model/SeriesIntervalsRep.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
 
 ## `getEvaluationsUsage()`
 
@@ -474,6 +540,70 @@ Name | Type | Description  | Notes
 ### Return type
 
 [**\LaunchDarklyApi\Model\SeriesListRep**](../Model/SeriesListRep.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getServiceConnectionUsage()`
+
+```php
+getServiceConnectionUsage($from, $to): \LaunchDarklyApi\Model\SeriesIntervalsRep
+```
+
+Get service connection usage
+
+Get a time-series array of the number of monthly service connections from your account. The granularity is always daily, with a maximum of 31 days.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\AccountUsageBetaApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$from = 'from_example'; // string | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
+$to = 'to_example'; // string | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+
+try {
+    $result = $apiInstance->getServiceConnectionUsage($from, $to);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountUsageBetaApi->getServiceConnectionUsage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **from** | **string**| The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month. | [optional]
+ **to** | **string**| The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time. | [optional]
+
+### Return type
+
+[**\LaunchDarklyApi\Model\SeriesIntervalsRep**](../Model/SeriesIntervalsRep.md)
 
 ### Authorization
 

@@ -26,9 +26,9 @@ Name | Type | Description | Notes
 **unit** | **string** | For numeric custom metrics, the unit of measure | [optional]
 **event_key** | **string** | For custom metrics, the event key to use in your code | [optional]
 **randomization_units** | **string[]** | An array of randomization units allowed for this metric | [optional]
-**unit_aggregation_type** | **string** | The method in which multiple unit event values are aggregated | [optional]
-**analysis_type** | **string** | The strategy for analyzing metric events | [optional]
-**percentile_value** | **int** | The percentile, an integer denoting the target percentile between 0 and 100. Only present when &lt;code&gt;analysisType&lt;/code&gt; is &lt;code&gt;percentile&lt;/code&gt;. | [optional]
+**unit_aggregation_type** | **string** | The method by which multiple unit event values are aggregated | [optional]
+**analysis_type** | **string** | The method for analyzing metric events | [optional]
+**percentile_value** | **int** | The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when &lt;code&gt;analysisType&lt;/code&gt; is &lt;code&gt;percentile&lt;/code&gt;. | [optional]
 **event_default** | [**\LaunchDarklyApi\Model\MetricEventDefaultRep**](MetricEventDefaultRep.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -353,6 +353,7 @@ docs/Model/RelayAutoConfigCollectionRep.md
 docs/Model/RelayAutoConfigPost.md
 docs/Model/RelayAutoConfigRep.md
 docs/Model/Release.md
+docs/Model/ReleaseAudience.md
 docs/Model/ReleasePhase.md
 docs/Model/ReleasePipeline.md
 docs/Model/ReleasePipelineCollection.md
@@ -804,6 +805,7 @@ lib/Model/RelayAutoConfigCollectionRep.php
 lib/Model/RelayAutoConfigPost.php
 lib/Model/RelayAutoConfigRep.php
 lib/Model/Release.php
+lib/Model/ReleaseAudience.php
 lib/Model/ReleasePhase.php
 lib/Model/ReleasePipeline.php
 lib/Model/ReleasePipelineCollection.php
@@ -1251,6 +1253,7 @@ test/Model/RelativeDifferenceRepTest.php
 test/Model/RelayAutoConfigCollectionRepTest.php
 test/Model/RelayAutoConfigPostTest.php
 test/Model/RelayAutoConfigRepTest.php
+test/Model/ReleaseAudienceTest.php
 test/Model/ReleasePhaseTest.php
 test/Model/ReleasePipelineCollectionTest.php
 test/Model/ReleasePipelineTest.php

@@ -205,4 +205,31 @@ class MetricPostTest extends TestCase
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "analysis_type"
+     */
+    public function testPropertyAnalysisType()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "percentile_value"
+     */
+    public function testPropertyPercentileValue()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "event_default"
+     */
+    public function testPropertyEventDefault()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
 }

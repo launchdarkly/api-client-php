@@ -16,5 +16,7 @@ Name | Type | Description | Notes
 **defaults** | [**\LaunchDarklyApi\Model\Defaults**](Defaults.md) |  | [optional]
 **purpose** | **string** | Purpose of the flag | [optional]
 **migration_settings** | [**\LaunchDarklyApi\Model\MigrationSettingsPost**](MigrationSettingsPost.md) |  | [optional]
+**maintainer_id** | **string** | The ID of the member who maintains this feature flag | [optional]
+**maintainer_team_key** | **string** | The key of the team that maintains this feature flag | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

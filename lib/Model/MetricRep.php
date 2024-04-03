@@ -1081,7 +1081,7 @@ class MetricRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets unit_aggregation_type
      *
-     * @param string|null $unit_aggregation_type The method in which multiple unit event values are aggregated
+     * @param string|null $unit_aggregation_type The method by which multiple unit event values are aggregated
      *
      * @return self
      */
@@ -1115,7 +1115,7 @@ class MetricRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets analysis_type
      *
-     * @param string|null $analysis_type The strategy for analyzing metric events
+     * @param string|null $analysis_type The method for analyzing metric events
      *
      * @return self
      */
@@ -1149,7 +1149,7 @@ class MetricRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets percentile_value
      *
-     * @param int|null $percentile_value The percentile, an integer denoting the target percentile between 0 and 100. Only present when <code>analysisType</code> is <code>percentile</code>.
+     * @param int|null $percentile_value The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when <code>analysisType</code> is <code>percentile</code>.
      *
      * @return self
      */

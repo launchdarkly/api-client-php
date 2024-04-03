@@ -111,7 +111,7 @@ class InsightsChartsBetaApiTest extends TestCase
     /**
      * Test case for getReleaseFrequencyChart
      *
-     * Get replease frequency chart data.
+     * Get release frequency chart data.
      *
      */
     public function testGetReleaseFrequencyChart()

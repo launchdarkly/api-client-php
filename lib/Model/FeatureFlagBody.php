@@ -71,7 +71,9 @@ class FeatureFlagBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'custom_properties' => 'array<string,\LaunchDarklyApi\Model\CustomProperty>',
         'defaults' => '\LaunchDarklyApi\Model\Defaults',
         'purpose' => 'string',
-        'migration_settings' => '\LaunchDarklyApi\Model\MigrationSettingsPost'
+        'migration_settings' => '\LaunchDarklyApi\Model\MigrationSettingsPost',
+        'maintainer_id' => 'string',
+        'maintainer_team_key' => 'string'
     ];
 
     /**
@@ -93,7 +95,9 @@ class FeatureFlagBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'custom_properties' => null,
         'defaults' => null,
         'purpose' => null,
-        'migration_settings' => null
+        'migration_settings' => null,
+        'maintainer_id' => null,
+        'maintainer_team_key' => null
     ];
 
     /**
@@ -134,7 +138,9 @@ class FeatureFlagBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'custom_properties' => 'customProperties',
         'defaults' => 'defaults',
         'purpose' => 'purpose',
-        'migration_settings' => 'migrationSettings'
+        'migration_settings' => 'migrationSettings',
+        'maintainer_id' => 'maintainerId',
+        'maintainer_team_key' => 'maintainerTeamKey'
     ];
 
     /**
@@ -154,7 +160,9 @@ class FeatureFlagBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'custom_properties' => 'setCustomProperties',
         'defaults' => 'setDefaults',
         'purpose' => 'setPurpose',
-        'migration_settings' => 'setMigrationSettings'
+        'migration_settings' => 'setMigrationSettings',
+        'maintainer_id' => 'setMaintainerId',
+        'maintainer_team_key' => 'setMaintainerTeamKey'
     ];
 
     /**
@@ -174,7 +182,9 @@ class FeatureFlagBody implements ModelInterface, ArrayAccess, \JsonSerializable
         'custom_properties' => 'getCustomProperties',
         'defaults' => 'getDefaults',
         'purpose' => 'getPurpose',
-        'migration_settings' => 'getMigrationSettings'
+        'migration_settings' => 'getMigrationSettings',
+        'maintainer_id' => 'getMaintainerId',
+        'maintainer_team_key' => 'getMaintainerTeamKey'
     ];
 
     /**
@@ -259,6 +269,8 @@ class FeatureFlagBody implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->container['defaults'] = $data['defaults'] ?? null;
         $this->container['purpose'] = $data['purpose'] ?? null;
         $this->container['migration_settings'] = $data['migration_settings'] ?? null;
+        $this->container['maintainer_id'] = $data['maintainer_id'] ?? null;
+        $this->container['maintainer_team_key'] = $data['maintainer_team_key'] ?? null;
     }
 
     /**
@@ -596,6 +608,54 @@ class FeatureFlagBody implements ModelInterface, ArrayAccess, \JsonSerializable
     public function setMigrationSettings($migration_settings)
     {
         $this->container['migration_settings'] = $migration_settings;
+
+        return $this;
+    }
+
+    /**
+     * Gets maintainer_id
+     *
+     * @return string|null
+     */
+    public function getMaintainerId()
+    {
+        return $this->container['maintainer_id'];
+    }
+
+    /**
+     * Sets maintainer_id
+     *
+     * @param string|null $maintainer_id The ID of the member who maintains this feature flag
+     *
+     * @return self
+     */
+    public function setMaintainerId($maintainer_id)
+    {
+        $this->container['maintainer_id'] = $maintainer_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets maintainer_team_key
+     *
+     * @return string|null
+     */
+    public function getMaintainerTeamKey()
+    {
+        return $this->container['maintainer_team_key'];
+    }
+
+    /**
+     * Sets maintainer_team_key
+     *
+     * @param string|null $maintainer_team_key The key of the team that maintains this feature flag
+     *
+     * @return self
+     */
+    public function setMaintainerTeamKey($maintainer_team_key)
+    {
+        $this->container['maintainer_team_key'] = $maintainer_team_key;
 
         return $this;
     }

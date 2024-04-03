@@ -135,6 +135,15 @@ class ProjectTest extends TestCase
     }
 
     /**
+     * Test attribute "_access"
+     */
+    public function testPropertyAccess()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "tags"
      */
     public function testPropertyTags()

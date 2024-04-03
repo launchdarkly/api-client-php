@@ -187,4 +187,22 @@ class FeatureFlagBodyTest extends TestCase
         // TODO: implement
         $this->markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "maintainer_id"
+     */
+    public function testPropertyMaintainerId()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "maintainer_team_key"
+     */
+    public function testPropertyMaintainerTeamKey()
+    {
+        // TODO: implement
+        $this->markTestIncomplete('Not implemented');
+    }
 }

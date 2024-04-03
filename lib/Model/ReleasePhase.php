@@ -66,7 +66,7 @@ class ReleasePhase implements ModelInterface, ArrayAccess, \JsonSerializable
         '_creation_date' => 'int',
         '_completion_date' => 'int',
         '_completed_by' => '\LaunchDarklyApi\Model\CompletedBy',
-        '_audiences' => '\LaunchDarklyApi\Model\Audience[]'
+        '_audiences' => '\LaunchDarklyApi\Model\ReleaseAudience[]'
     ];
 
     /**
@@ -404,7 +404,7 @@ class ReleasePhase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets _audiences
      *
-     * @return \LaunchDarklyApi\Model\Audience[]
+     * @return \LaunchDarklyApi\Model\ReleaseAudience[]
      */
     public function getAudiences()
     {
@@ -414,7 +414,7 @@ class ReleasePhase implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets _audiences
      *
-     * @param \LaunchDarklyApi\Model\Audience[] $_audiences A logical grouping of one or more environments that share attributes for rolling out changes
+     * @param \LaunchDarklyApi\Model\ReleaseAudience[] $_audiences A logical grouping of one or more environments that share attributes for rolling out changes
      *
      * @return self
      */
