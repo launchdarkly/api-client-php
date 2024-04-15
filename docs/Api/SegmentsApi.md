@@ -516,7 +516,7 @@ $apiInstance = new LaunchDarklyApi\Api\SegmentsApi(
 );
 $project_key = 'project_key_example'; // string | The project key
 $environment_key = 'environment_key_example'; // string | The environment key
-$limit = 56; // int | The number of segments to return. Defaults to 50.
+$limit = 56; // int | The number of segments to return. Defaults to 20.
 $offset = 56; // int | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
 $sort = 'sort_example'; // string | Accepts sorting order and fields. Fields can be comma separated. Possible fields are 'creationDate', 'name', 'lastModified'. Example: `sort=name` sort by names ascending or `sort=-name,creationDate` sort by names descending and creationDate ascending.
 $filter = 'filter_example'; // string | Accepts filter by kind, query, tags, unbounded, or external. To filter by kind or query, use the `equals` operator. To filter by tags, use the `anyOf` operator. Query is a 'fuzzy' search across segment key, name, and description. Example: `filter=tags anyOf ['enterprise', 'beta'],query equals 'toggle'` returns segments with 'toggle' in their key, name, or description that also have 'enterprise' or 'beta' as a tag. To filter by unbounded, use the `equals` operator. Example: `filter=unbounded equals true`. To filter by external, use the `exists` operator. Example: `filter=external exists true`.
@@ -535,7 +535,7 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
  **environment_key** | **string**| The environment key |
- **limit** | **int**| The number of segments to return. Defaults to 50. | [optional]
+ **limit** | **int**| The number of segments to return. Defaults to 20. | [optional]
  **offset** | **int**| Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional]
  **sort** | **string**| Accepts sorting order and fields. Fields can be comma separated. Possible fields are &#39;creationDate&#39;, &#39;name&#39;, &#39;lastModified&#39;. Example: &#x60;sort&#x3D;name&#x60; sort by names ascending or &#x60;sort&#x3D;-name,creationDate&#x60; sort by names descending and creationDate ascending. | [optional]
  **filter** | **string**| Accepts filter by kind, query, tags, unbounded, or external. To filter by kind or query, use the &#x60;equals&#x60; operator. To filter by tags, use the &#x60;anyOf&#x60; operator. Query is a &#39;fuzzy&#39; search across segment key, name, and description. Example: &#x60;filter&#x3D;tags anyOf [&#39;enterprise&#39;, &#39;beta&#39;],query equals &#39;toggle&#39;&#x60; returns segments with &#39;toggle&#39; in their key, name, or description that also have &#39;enterprise&#39; or &#39;beta&#39; as a tag. To filter by unbounded, use the &#x60;equals&#x60; operator. Example: &#x60;filter&#x3D;unbounded equals true&#x60;. To filter by external, use the &#x60;exists&#x60; operator. Example: &#x60;filter&#x3D;external exists true&#x60;. | [optional]

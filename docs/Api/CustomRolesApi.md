@@ -137,7 +137,7 @@ Name | Type | Description  | Notes
 ## `getCustomRoles()`
 
 ```php
-getCustomRoles(): \LaunchDarklyApi\Model\CustomRoles
+getCustomRoles($limit, $offset): \LaunchDarklyApi\Model\CustomRoles
 ```
 
 List custom roles
@@ -163,9 +163,11 @@ $apiInstance = new LaunchDarklyApi\Api\CustomRolesApi(
     new GuzzleHttp\Client(),
     $config
 );
+$limit = 56; // int | The maximum number of custom roles to return. Defaults to 20.
+$offset = 56; // int | Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
 
 try {
-    $result = $apiInstance->getCustomRoles();
+    $result = $apiInstance->getCustomRoles($limit, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling CustomRolesApi->getCustomRoles: ', $e->getMessage(), PHP_EOL;
@@ -174,7 +176,10 @@ try {
 
 ### Parameters
 
-This endpoint does not need any parameter.
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **limit** | **int**| The maximum number of custom roles to return. Defaults to 20. | [optional]
+ **offset** | **int**| Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional]
 
 ### Return type
 

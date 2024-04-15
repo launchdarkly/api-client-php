@@ -148,7 +148,7 @@ Name | Type | Description  | Notes
 ## `getWorkflows()`
 
 ```php
-getWorkflows($project_key, $feature_flag_key, $environment_key, $status, $sort): \LaunchDarklyApi\Model\CustomWorkflowsListingOutput
+getWorkflows($project_key, $feature_flag_key, $environment_key, $status, $sort, $limit, $offset): \LaunchDarklyApi\Model\CustomWorkflowsListingOutput
 ```
 
 Get workflows
@@ -179,9 +179,11 @@ $feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key
 $environment_key = 'environment_key_example'; // string | The environment key
 $status = 'status_example'; // string | Filter results by workflow status. Valid status filters are `active`, `completed`, and `failed`.
 $sort = 'sort_example'; // string | A field to sort the items by. Prefix field by a dash ( - ) to sort in descending order. This endpoint supports sorting by `creationDate` or `stopDate`.
+$limit = 56; // int | The maximum number of workflows to return. Defaults to 20.
+$offset = 56; // int | Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
 
 try {
-    $result = $apiInstance->getWorkflows($project_key, $feature_flag_key, $environment_key, $status, $sort);
+    $result = $apiInstance->getWorkflows($project_key, $feature_flag_key, $environment_key, $status, $sort, $limit, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling WorkflowsApi->getWorkflows: ', $e->getMessage(), PHP_EOL;
@@ -197,6 +199,8 @@ Name | Type | Description  | Notes
  **environment_key** | **string**| The environment key |
  **status** | **string**| Filter results by workflow status. Valid status filters are &#x60;active&#x60;, &#x60;completed&#x60;, and &#x60;failed&#x60;. | [optional]
  **sort** | **string**| A field to sort the items by. Prefix field by a dash ( - ) to sort in descending order. This endpoint supports sorting by &#x60;creationDate&#x60; or &#x60;stopDate&#x60;. | [optional]
+ **limit** | **int**| The maximum number of workflows to return. Defaults to 20. | [optional]
+ **offset** | **int**| Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional]
 
 ### Return type
 
