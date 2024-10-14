@@ -145,12 +145,12 @@ Name | Type | Description  | Notes
 ## `getMetrics()`
 
 ```php
-getMetrics($project_key, $expand): \LaunchDarklyApi\Model\MetricCollectionRep
+getMetrics($project_key, $expand, $limit, $offset, $sort, $filter): \LaunchDarklyApi\Model\MetricCollectionRep
 ```
 
 List metrics
 
-Get a list of all metrics for the specified project.  ### Expanding the metric list response LaunchDarkly supports expanding the \"List metrics\" response. By default, the expandable field is **not** included in the response.  To expand the response, append the `expand` query parameter and add the following supported field:  - `experimentCount` includes the number of experiments from the specific project that use the metric  For example, `expand=experimentCount` includes the `experimentCount` field for each metric in the response.
+Get a list of all metrics for the specified project.  ### Filtering metrics  The `filter` parameter supports the following operators: `contains`.  #### Supported fields and operators  You can only filter certain fields in metrics when using the `filter` parameter. Additionally, you can only filter some fields with certain operators.  When you search for metrics, the `filter` parameter supports the following fields and operators:  |<div style=\"width:120px\">Field</div> |Description |Supported operators | |---|---|---| | `tags` | The metric tags. | `contains` |  For example, the filter `?filter=tags contains [\"tag1\", \"tag2\", \"tag3\"]` matches metrics that have all three tags.  The documented values for `filter` query parameters are prior to URL encoding. For example, the `[` in `?filter=tags contains [\"tag1\", \"tag2\", \"tag3\"]` must be encoded to `%5B`.  ### Expanding the metric list response  LaunchDarkly supports expanding the \"List metrics\" response. By default, the expandable field is **not** included in the response.  To expand the response, append the `expand` query parameter and add the following supported field:  - `experimentCount` includes the number of experiments from the specific project that use the metric  For example, `expand=experimentCount` includes the `experimentCount` field for each metric in the response.
 
 ### Example
 
@@ -173,9 +173,13 @@ $apiInstance = new LaunchDarklyApi\Api\MetricsApi(
 );
 $project_key = 'project_key_example'; // string | The project key
 $expand = 'expand_example'; // string | A comma-separated list of properties that can reveal additional information in the response.
+$limit = 56; // int | The number of metrics to return in the response. Defaults to 20. Maximum limit is 50.
+$offset = 56; // int | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next `limit` items.
+$sort = 'sort_example'; // string | A field to sort the items by. Prefix field by a dash ( - ) to sort in descending order. This endpoint supports sorting by `createdAt` or `name`.
+$filter = 'filter_example'; // string | A comma-separated list of filters. This endpoint only accepts filtering by `tags`. To learn more about the filter syntax, read the 'Filtering metrics' section above.
 
 try {
-    $result = $apiInstance->getMetrics($project_key, $expand);
+    $result = $apiInstance->getMetrics($project_key, $expand, $limit, $offset, $sort, $filter);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MetricsApi->getMetrics: ', $e->getMessage(), PHP_EOL;
@@ -188,6 +192,10 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
  **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional]
+ **limit** | **int**| The number of metrics to return in the response. Defaults to 20. Maximum limit is 50. | [optional]
+ **offset** | **int**| Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next &#x60;limit&#x60; items. | [optional]
+ **sort** | **string**| A field to sort the items by. Prefix field by a dash ( - ) to sort in descending order. This endpoint supports sorting by &#x60;createdAt&#x60; or &#x60;name&#x60;. | [optional]
+ **filter** | **string**| A comma-separated list of filters. This endpoint only accepts filtering by &#x60;tags&#x60;. To learn more about the filter syntax, read the &#39;Filtering metrics&#39; section above. | [optional]
 
 ### Return type
 

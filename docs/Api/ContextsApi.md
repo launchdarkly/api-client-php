@@ -158,12 +158,12 @@ Name | Type | Description  | Notes
 ## `getContextAttributeNames()`
 
 ```php
-getContextAttributeNames($project_key, $environment_key, $filter): \LaunchDarklyApi\Model\ContextAttributeNamesCollection
+getContextAttributeNames($project_key, $environment_key, $filter, $limit): \LaunchDarklyApi\Model\ContextAttributeNamesCollection
 ```
 
 Get context attribute names
 
-Get context attribute names. Returns only the first 100 attribute names per context.
+Get context attribute names.
 
 ### Example
 
@@ -187,9 +187,10 @@ $apiInstance = new LaunchDarklyApi\Api\ContextsApi(
 $project_key = 'project_key_example'; // string | The project key
 $environment_key = 'environment_key_example'; // string | The environment key
 $filter = 'filter_example'; // string | A comma-separated list of context filters. This endpoint only accepts `kind` filters, with the `equals` operator, and `name` filters, with the `startsWith` operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances).
+$limit = 56; // int | Specifies the maximum number of items in the collection to return (max: 100, default: 100)
 
 try {
-    $result = $apiInstance->getContextAttributeNames($project_key, $environment_key, $filter);
+    $result = $apiInstance->getContextAttributeNames($project_key, $environment_key, $filter, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContextsApi->getContextAttributeNames: ', $e->getMessage(), PHP_EOL;
@@ -203,6 +204,7 @@ Name | Type | Description  | Notes
  **project_key** | **string**| The project key |
  **environment_key** | **string**| The environment key |
  **filter** | **string**| A comma-separated list of context filters. This endpoint only accepts &#x60;kind&#x60; filters, with the &#x60;equals&#x60; operator, and &#x60;name&#x60; filters, with the &#x60;startsWith&#x60; operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances). | [optional]
+ **limit** | **int**| Specifies the maximum number of items in the collection to return (max: 100, default: 100) | [optional]
 
 ### Return type
 
@@ -224,7 +226,7 @@ Name | Type | Description  | Notes
 ## `getContextAttributeValues()`
 
 ```php
-getContextAttributeValues($project_key, $environment_key, $attribute_name, $filter): \LaunchDarklyApi\Model\ContextAttributeValuesCollection
+getContextAttributeValues($project_key, $environment_key, $attribute_name, $filter, $limit): \LaunchDarklyApi\Model\ContextAttributeValuesCollection
 ```
 
 Get context attribute values
@@ -254,9 +256,10 @@ $project_key = 'project_key_example'; // string | The project key
 $environment_key = 'environment_key_example'; // string | The environment key
 $attribute_name = 'attribute_name_example'; // string | The attribute name
 $filter = 'filter_example'; // string | A comma-separated list of context filters. This endpoint only accepts `kind` filters, with the `equals` operator, and `value` filters, with the `startsWith` operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances).
+$limit = 56; // int | Specifies the maximum number of items in the collection to return (max: 100, default: 50)
 
 try {
-    $result = $apiInstance->getContextAttributeValues($project_key, $environment_key, $attribute_name, $filter);
+    $result = $apiInstance->getContextAttributeValues($project_key, $environment_key, $attribute_name, $filter, $limit);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling ContextsApi->getContextAttributeValues: ', $e->getMessage(), PHP_EOL;
@@ -271,6 +274,7 @@ Name | Type | Description  | Notes
  **environment_key** | **string**| The environment key |
  **attribute_name** | **string**| The attribute name |
  **filter** | **string**| A comma-separated list of context filters. This endpoint only accepts &#x60;kind&#x60; filters, with the &#x60;equals&#x60; operator, and &#x60;value&#x60; filters, with the &#x60;startsWith&#x60; operator. To learn more about the filter syntax, read [Filtering contexts and context instances](/tag/Contexts#filtering-contexts-and-context-instances). | [optional]
+ **limit** | **int**| Specifies the maximum number of items in the collection to return (max: 100, default: 50) | [optional]
 
 ### Return type
 

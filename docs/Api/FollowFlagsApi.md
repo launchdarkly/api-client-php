@@ -4,16 +4,16 @@ All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**deleteFlagFollowers()**](FollowFlagsApi.md#deleteFlagFollowers) | **DELETE** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers/{memberId} | Remove a member as a follower of a flag in a project and environment
+[**deleteFlagFollower()**](FollowFlagsApi.md#deleteFlagFollower) | **DELETE** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers/{memberId} | Remove a member as a follower of a flag in a project and environment
 [**getFlagFollowers()**](FollowFlagsApi.md#getFlagFollowers) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers | Get followers of a flag in a project and environment
 [**getFollowersByProjEnv()**](FollowFlagsApi.md#getFollowersByProjEnv) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/followers | Get followers of all flags in a given project and environment
-[**putFlagFollowers()**](FollowFlagsApi.md#putFlagFollowers) | **PUT** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers/{memberId} | Add a member as a follower of a flag in a project and environment
+[**putFlagFollower()**](FollowFlagsApi.md#putFlagFollower) | **PUT** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers/{memberId} | Add a member as a follower of a flag in a project and environment
 
 
-## `deleteFlagFollowers()`
+## `deleteFlagFollower()`
 
 ```php
-deleteFlagFollowers($project_key, $feature_flag_key, $environment_key, $member_id)
+deleteFlagFollower($project_key, $feature_flag_key, $environment_key, $member_id)
 ```
 
 Remove a member as a follower of a flag in a project and environment
@@ -45,9 +45,9 @@ $environment_key = 'environment_key_example'; // string | The environment key
 $member_id = 'member_id_example'; // string | The memberId of the member to remove as a follower of the flag. Reader roles can only remove themselves.
 
 try {
-    $apiInstance->deleteFlagFollowers($project_key, $feature_flag_key, $environment_key, $member_id);
+    $apiInstance->deleteFlagFollower($project_key, $feature_flag_key, $environment_key, $member_id);
 } catch (Exception $e) {
-    echo 'Exception when calling FollowFlagsApi->deleteFlagFollowers: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FollowFlagsApi->deleteFlagFollower: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -207,10 +207,10 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `putFlagFollowers()`
+## `putFlagFollower()`
 
 ```php
-putFlagFollowers($project_key, $feature_flag_key, $environment_key, $member_id)
+putFlagFollower($project_key, $feature_flag_key, $environment_key, $member_id)
 ```
 
 Add a member as a follower of a flag in a project and environment
@@ -242,9 +242,9 @@ $environment_key = 'environment_key_example'; // string | The environment key
 $member_id = 'member_id_example'; // string | The memberId of the member to add as a follower of the flag. Reader roles can only add themselves.
 
 try {
-    $apiInstance->putFlagFollowers($project_key, $feature_flag_key, $environment_key, $member_id);
+    $apiInstance->putFlagFollower($project_key, $feature_flag_key, $environment_key, $member_id);
 } catch (Exception $e) {
-    echo 'Exception when calling FollowFlagsApi->putFlagFollowers: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling FollowFlagsApi->putFlagFollower: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

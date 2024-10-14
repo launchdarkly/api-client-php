@@ -23,5 +23,7 @@ Name | Type | Description | Notes
 **permission_grants** | [**\LaunchDarklyApi\Model\MemberPermissionGrantSummaryRep[]**](MemberPermissionGrantSummaryRep.md) | A list of permission grants. Permission grants allow a member to have access to a specific action, without having to create or update a custom role. | [optional]
 **creation_date** | **int** |  |
 **oauth_providers** | **string[]** | A list of OAuth providers | [optional]
+**version** | **int** | Version of the current configuration | [optional]
+**role_attributes** | **array<string,array>** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

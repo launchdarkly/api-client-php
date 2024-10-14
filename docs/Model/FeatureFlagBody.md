@@ -18,5 +18,6 @@ Name | Type | Description | Notes
 **migration_settings** | [**\LaunchDarklyApi\Model\MigrationSettingsPost**](MigrationSettingsPost.md) |  | [optional]
 **maintainer_id** | **string** | The ID of the member who maintains this feature flag | [optional]
 **maintainer_team_key** | **string** | The key of the team that maintains this feature flag | [optional]
+**initial_prerequisites** | [**\LaunchDarklyApi\Model\FlagPrerequisitePost[]**](FlagPrerequisitePost.md) | Initial set of prerequisite flags for all environments | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

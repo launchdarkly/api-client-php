@@ -1,19 +1,19 @@
-# LaunchDarklyApi\ExperimentsBetaApi
+# LaunchDarklyApi\ExperimentsApi
 
 All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createExperiment()**](ExperimentsBetaApi.md#createExperiment) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments | Create experiment
-[**createIteration()**](ExperimentsBetaApi.md#createIteration) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/iterations | Create iteration
-[**getExperiment()**](ExperimentsBetaApi.md#getExperiment) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Get experiment
-[**getExperimentResults()**](ExperimentsBetaApi.md#getExperimentResults) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metrics/{metricKey}/results | Get experiment results
-[**getExperimentResultsForMetricGroup()**](ExperimentsBetaApi.md#getExperimentResultsForMetricGroup) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metric-groups/{metricGroupKey}/results | Get experiment results for metric group
-[**getExperimentationSettings()**](ExperimentsBetaApi.md#getExperimentationSettings) | **GET** /api/v2/projects/{projectKey}/experimentation-settings | Get experimentation settings
-[**getExperiments()**](ExperimentsBetaApi.md#getExperiments) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments | Get experiments
-[**getLegacyExperimentResults()**](ExperimentsBetaApi.md#getLegacyExperimentResults) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey} | Get legacy experiment results (deprecated)
-[**patchExperiment()**](ExperimentsBetaApi.md#patchExperiment) | **PATCH** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Patch experiment
-[**putExperimentationSettings()**](ExperimentsBetaApi.md#putExperimentationSettings) | **PUT** /api/v2/projects/{projectKey}/experimentation-settings | Update experimentation settings
+[**createExperiment()**](ExperimentsApi.md#createExperiment) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments | Create experiment
+[**createIteration()**](ExperimentsApi.md#createIteration) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/iterations | Create iteration
+[**getExperiment()**](ExperimentsApi.md#getExperiment) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Get experiment
+[**getExperimentResults()**](ExperimentsApi.md#getExperimentResults) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metrics/{metricKey}/results | Get experiment results
+[**getExperimentResultsForMetricGroup()**](ExperimentsApi.md#getExperimentResultsForMetricGroup) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metric-groups/{metricGroupKey}/results | Get experiment results for metric group
+[**getExperimentationSettings()**](ExperimentsApi.md#getExperimentationSettings) | **GET** /api/v2/projects/{projectKey}/experimentation-settings | Get experimentation settings
+[**getExperiments()**](ExperimentsApi.md#getExperiments) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments | Get experiments
+[**getLegacyExperimentResults()**](ExperimentsApi.md#getLegacyExperimentResults) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/experiments/{environmentKey}/{metricKey} | Get legacy experiment results (deprecated)
+[**patchExperiment()**](ExperimentsApi.md#patchExperiment) | **PATCH** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Patch experiment
+[**putExperimentationSettings()**](ExperimentsApi.md#putExperimentationSettings) | **PUT** /api/v2/projects/{projectKey}/experimentation-settings | Update experimentation settings
 
 
 ## `createExperiment()`
@@ -39,7 +39,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
-$apiInstance = new LaunchDarklyApi\Api\ExperimentsBetaApi(
+$apiInstance = new LaunchDarklyApi\Api\ExperimentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -53,7 +53,7 @@ try {
     $result = $apiInstance->createExperiment($project_key, $environment_key, $experiment_post);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ExperimentsBetaApi->createExperiment: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ExperimentsApi->createExperiment: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -105,7 +105,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
-$apiInstance = new LaunchDarklyApi\Api\ExperimentsBetaApi(
+$apiInstance = new LaunchDarklyApi\Api\ExperimentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -120,7 +120,7 @@ try {
     $result = $apiInstance->createIteration($project_key, $environment_key, $experiment_key, $iteration_input);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ExperimentsBetaApi->createIteration: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ExperimentsApi->createIteration: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -173,7 +173,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
-$apiInstance = new LaunchDarklyApi\Api\ExperimentsBetaApi(
+$apiInstance = new LaunchDarklyApi\Api\ExperimentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -188,7 +188,7 @@ try {
     $result = $apiInstance->getExperiment($project_key, $environment_key, $experiment_key, $expand);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ExperimentsBetaApi->getExperiment: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ExperimentsApi->getExperiment: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -241,7 +241,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
-$apiInstance = new LaunchDarklyApi\Api\ExperimentsBetaApi(
+$apiInstance = new LaunchDarklyApi\Api\ExperimentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -258,7 +258,7 @@ try {
     $result = $apiInstance->getExperimentResults($project_key, $environment_key, $experiment_key, $metric_key, $iteration_id, $expand);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ExperimentsBetaApi->getExperimentResults: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ExperimentsApi->getExperimentResults: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -313,7 +313,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
-$apiInstance = new LaunchDarklyApi\Api\ExperimentsBetaApi(
+$apiInstance = new LaunchDarklyApi\Api\ExperimentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -329,7 +329,7 @@ try {
     $result = $apiInstance->getExperimentResultsForMetricGroup($project_key, $environment_key, $experiment_key, $metric_group_key, $iteration_id);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ExperimentsBetaApi->getExperimentResultsForMetricGroup: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ExperimentsApi->getExperimentResultsForMetricGroup: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -383,7 +383,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
-$apiInstance = new LaunchDarklyApi\Api\ExperimentsBetaApi(
+$apiInstance = new LaunchDarklyApi\Api\ExperimentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -395,7 +395,7 @@ try {
     $result = $apiInstance->getExperimentationSettings($project_key);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ExperimentsBetaApi->getExperimentationSettings: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ExperimentsApi->getExperimentationSettings: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -445,7 +445,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
-$apiInstance = new LaunchDarklyApi\Api\ExperimentsBetaApi(
+$apiInstance = new LaunchDarklyApi\Api\ExperimentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -463,7 +463,7 @@ try {
     $result = $apiInstance->getExperiments($project_key, $environment_key, $limit, $offset, $filter, $expand, $lifecycle_state);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ExperimentsBetaApi->getExperiments: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ExperimentsApi->getExperiments: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -519,7 +519,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
-$apiInstance = new LaunchDarklyApi\Api\ExperimentsBetaApi(
+$apiInstance = new LaunchDarklyApi\Api\ExperimentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -536,7 +536,7 @@ try {
     $result = $apiInstance->getLegacyExperimentResults($project_key, $feature_flag_key, $environment_key, $metric_key, $from, $to);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ExperimentsBetaApi->getLegacyExperimentResults: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ExperimentsApi->getLegacyExperimentResults: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -591,7 +591,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
-$apiInstance = new LaunchDarklyApi\Api\ExperimentsBetaApi(
+$apiInstance = new LaunchDarklyApi\Api\ExperimentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -606,7 +606,7 @@ try {
     $result = $apiInstance->patchExperiment($project_key, $environment_key, $experiment_key, $experiment_patch_input);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ExperimentsBetaApi->patchExperiment: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ExperimentsApi->patchExperiment: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -659,7 +659,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
-$apiInstance = new LaunchDarklyApi\Api\ExperimentsBetaApi(
+$apiInstance = new LaunchDarklyApi\Api\ExperimentsApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -672,7 +672,7 @@ try {
     $result = $apiInstance->putExperimentationSettings($project_key, $randomization_settings_put);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling ExperimentsBetaApi->putExperimentationSettings: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling ExperimentsApi->putExperimentationSettings: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

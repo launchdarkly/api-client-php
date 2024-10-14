@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **default_client_side_availability** | [**\LaunchDarklyApi\Model\DefaultClientSideAvailabilityPost**](DefaultClientSideAvailabilityPost.md) |  | [optional]
 **tags** | **string[]** | Tags for the project | [optional]
 **environments** | [**\LaunchDarklyApi\Model\EnvironmentPost[]**](EnvironmentPost.md) | Creates the provided environments for this project. If omitted default environments will be created instead. | [optional]
+**naming_convention** | [**\LaunchDarklyApi\Model\NamingConvention**](NamingConvention.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

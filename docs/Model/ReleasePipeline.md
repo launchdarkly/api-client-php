@@ -12,5 +12,7 @@ Name | Type | Description | Notes
 **tags** | **string[]** | A list of the release pipeline&#39;s tags | [optional]
 **_version** | **int** | The release pipeline version | [optional]
 **_access** | [**\LaunchDarklyApi\Model\Access**](Access.md) |  | [optional]
+**is_project_default** | **bool** | Whether this release pipeline is the default pipeline for the project | [optional]
+**_is_legacy** | **bool** | Whether this release pipeline is a legacy pipeline | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

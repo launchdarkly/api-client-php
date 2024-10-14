@@ -10,7 +10,7 @@ Method | HTTP request | Description
 ## `getTags()`
 
 ```php
-getTags($kind, $pre, $archived): \LaunchDarklyApi\Model\TagCollection
+getTags($kind, $pre, $archived, $limit, $offset, $as_of): \LaunchDarklyApi\Model\TagsCollection
 ```
 
 List tags
@@ -36,12 +36,15 @@ $apiInstance = new LaunchDarklyApi\Api\TagsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$kind = 'kind_example'; // string | Fetch tags associated with the specified resource type. Options are `flag`, `project`, `environment`, `segment`. Returns all types by default.
+$kind = array('kind_example'); // string[] | Fetch tags associated with the specified resource type. Options are `flag`, `project`, `environment`, `segment`. Returns all types by default.
 $pre = 'pre_example'; // string | Return tags with the specified prefix
 $archived = True; // bool | Whether or not to return archived flags
+$limit = 56; // int | The number of tags to return. Maximum is 1000.
+$offset = 56; // int | The index of the first tag to return. Default is 0.
+$as_of = 'as_of_example'; // string | The time to retrieve tags as of. Default is the current time.
 
 try {
-    $result = $apiInstance->getTags($kind, $pre, $archived);
+    $result = $apiInstance->getTags($kind, $pre, $archived, $limit, $offset, $as_of);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling TagsApi->getTags: ', $e->getMessage(), PHP_EOL;
@@ -52,13 +55,16 @@ try {
 
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
- **kind** | **string**| Fetch tags associated with the specified resource type. Options are &#x60;flag&#x60;, &#x60;project&#x60;, &#x60;environment&#x60;, &#x60;segment&#x60;. Returns all types by default. | [optional]
+ **kind** | [**string[]**](../Model/string.md)| Fetch tags associated with the specified resource type. Options are &#x60;flag&#x60;, &#x60;project&#x60;, &#x60;environment&#x60;, &#x60;segment&#x60;. Returns all types by default. | [optional]
  **pre** | **string**| Return tags with the specified prefix | [optional]
  **archived** | **bool**| Whether or not to return archived flags | [optional]
+ **limit** | **int**| The number of tags to return. Maximum is 1000. | [optional]
+ **offset** | **int**| The index of the first tag to return. Default is 0. | [optional]
+ **as_of** | **string**| The time to retrieve tags as of. Default is the current time. | [optional]
 
 ### Return type
 
-[**\LaunchDarklyApi\Model\TagCollection**](../Model/TagCollection.md)
+[**\LaunchDarklyApi\Model\TagsCollection**](../Model/TagsCollection.md)
 
 ### Authorization
 

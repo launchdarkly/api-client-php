@@ -21,7 +21,7 @@ Method | HTTP request | Description
 ## `getDataExportEventsUsage()`
 
 ```php
-getDataExportEventsUsage($from, $to): \LaunchDarklyApi\Model\SeriesIntervalsRep
+getDataExportEventsUsage($from, $to, $project_key, $environment_key): \LaunchDarklyApi\Model\SeriesIntervalsRep
 ```
 
 Get data export events usage
@@ -49,9 +49,11 @@ $apiInstance = new LaunchDarklyApi\Api\AccountUsageBetaApi(
 );
 $from = 'from_example'; // string | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
 $to = 'to_example'; // string | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+$project_key = 'project_key_example'; // string | A project key. If specified, `environmentKey` is required and results apply to the corresponding environment in this project.
+$environment_key = 'environment_key_example'; // string | An environment key. If specified, `projectKey` is required and results apply to the corresponding environment in this project.
 
 try {
-    $result = $apiInstance->getDataExportEventsUsage($from, $to);
+    $result = $apiInstance->getDataExportEventsUsage($from, $to, $project_key, $environment_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountUsageBetaApi->getDataExportEventsUsage: ', $e->getMessage(), PHP_EOL;
@@ -64,6 +66,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **from** | **string**| The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month. | [optional]
  **to** | **string**| The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time. | [optional]
+ **project_key** | **string**| A project key. If specified, &#x60;environmentKey&#x60; is required and results apply to the corresponding environment in this project. | [optional]
+ **environment_key** | **string**| An environment key. If specified, &#x60;projectKey&#x60; is required and results apply to the corresponding environment in this project. | [optional]
 
 ### Return type
 
@@ -223,7 +227,7 @@ Name | Type | Description  | Notes
 ## `getExperimentationKeysUsage()`
 
 ```php
-getExperimentationKeysUsage($from, $to): \LaunchDarklyApi\Model\SeriesIntervalsRep
+getExperimentationKeysUsage($from, $to, $project_key, $environment_key): \LaunchDarklyApi\Model\SeriesIntervalsRep
 ```
 
 Get experimentation keys usage
@@ -251,9 +255,11 @@ $apiInstance = new LaunchDarklyApi\Api\AccountUsageBetaApi(
 );
 $from = 'from_example'; // string | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
 $to = 'to_example'; // string | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+$project_key = 'project_key_example'; // string | A project key. If specified, `environmentKey` is required and results apply to the corresponding environment in this project.
+$environment_key = 'environment_key_example'; // string | An environment key. If specified, `projectKey` is required and results apply to the corresponding environment in this project.
 
 try {
-    $result = $apiInstance->getExperimentationKeysUsage($from, $to);
+    $result = $apiInstance->getExperimentationKeysUsage($from, $to, $project_key, $environment_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountUsageBetaApi->getExperimentationKeysUsage: ', $e->getMessage(), PHP_EOL;
@@ -266,6 +272,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **from** | **string**| The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month. | [optional]
  **to** | **string**| The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time. | [optional]
+ **project_key** | **string**| A project key. If specified, &#x60;environmentKey&#x60; is required and results apply to the corresponding environment in this project. | [optional]
+ **environment_key** | **string**| An environment key. If specified, &#x60;projectKey&#x60; is required and results apply to the corresponding environment in this project. | [optional]
 
 ### Return type
 
@@ -287,7 +295,7 @@ Name | Type | Description  | Notes
 ## `getExperimentationUnitsUsage()`
 
 ```php
-getExperimentationUnitsUsage($from, $to): \LaunchDarklyApi\Model\SeriesIntervalsRep
+getExperimentationUnitsUsage($from, $to, $project_key, $environment_key): \LaunchDarklyApi\Model\SeriesIntervalsRep
 ```
 
 Get experimentation units usage
@@ -315,9 +323,11 @@ $apiInstance = new LaunchDarklyApi\Api\AccountUsageBetaApi(
 );
 $from = 'from_example'; // string | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
 $to = 'to_example'; // string | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+$project_key = 'project_key_example'; // string | A project key. If specified, `environmentKey` is required and results apply to the corresponding environment in this project.
+$environment_key = 'environment_key_example'; // string | An environment key. If specified, `projectKey` is required and results apply to the corresponding environment in this project.
 
 try {
-    $result = $apiInstance->getExperimentationUnitsUsage($from, $to);
+    $result = $apiInstance->getExperimentationUnitsUsage($from, $to, $project_key, $environment_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountUsageBetaApi->getExperimentationUnitsUsage: ', $e->getMessage(), PHP_EOL;
@@ -330,6 +340,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **from** | **string**| The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month. | [optional]
  **to** | **string**| The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time. | [optional]
+ **project_key** | **string**| A project key. If specified, &#x60;environmentKey&#x60; is required and results apply to the corresponding environment in this project. | [optional]
+ **environment_key** | **string**| An environment key. If specified, &#x60;projectKey&#x60; is required and results apply to the corresponding environment in this project. | [optional]
 
 ### Return type
 
@@ -557,7 +569,7 @@ Name | Type | Description  | Notes
 ## `getServiceConnectionUsage()`
 
 ```php
-getServiceConnectionUsage($from, $to): \LaunchDarklyApi\Model\SeriesIntervalsRep
+getServiceConnectionUsage($from, $to, $project_key, $environment_key): \LaunchDarklyApi\Model\SeriesIntervalsRep
 ```
 
 Get service connection usage
@@ -585,9 +597,11 @@ $apiInstance = new LaunchDarklyApi\Api\AccountUsageBetaApi(
 );
 $from = 'from_example'; // string | The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month.
 $to = 'to_example'; // string | The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time.
+$project_key = 'project_key_example'; // string | A project key. If specified, `environmentKey` is required and results apply to the corresponding environment in this project.
+$environment_key = 'environment_key_example'; // string | An environment key. If specified, `projectKey` is required and results apply to the corresponding environment in this project.
 
 try {
-    $result = $apiInstance->getServiceConnectionUsage($from, $to);
+    $result = $apiInstance->getServiceConnectionUsage($from, $to, $project_key, $environment_key);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling AccountUsageBetaApi->getServiceConnectionUsage: ', $e->getMessage(), PHP_EOL;
@@ -600,6 +614,8 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **from** | **string**| The series of data returned starts from this timestamp (Unix seconds). Defaults to the beginning of the current month. | [optional]
  **to** | **string**| The series of data returned ends at this timestamp (Unix seconds). Defaults to the current time. | [optional]
+ **project_key** | **string**| A project key. If specified, &#x60;environmentKey&#x60; is required and results apply to the corresponding environment in this project. | [optional]
+ **environment_key** | **string**| An environment key. If specified, &#x60;projectKey&#x60; is required and results apply to the corresponding environment in this project. | [optional]
 
 ### Return type
 

@@ -6,6 +6,7 @@ Method | HTTP request | Description
 ------------- | ------------- | -------------
 [**getAuditLogEntries()**](AuditLogApi.md#getAuditLogEntries) | **GET** /api/v2/auditlog | List audit log entries
 [**getAuditLogEntry()**](AuditLogApi.md#getAuditLogEntry) | **GET** /api/v2/auditlog/{id} | Get audit log entry
+[**postAuditLogEntries()**](AuditLogApi.md#postAuditLogEntries) | **POST** /api/v2/auditlog | Search audit log entries
 
 
 ## `getAuditLogEntries()`
@@ -134,6 +135,76 @@ Name | Type | Description  | Notes
 ### HTTP request headers
 
 - **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `postAuditLogEntries()`
+
+```php
+postAuditLogEntries($before, $after, $q, $limit, $statement_post): \LaunchDarklyApi\Model\AuditLogEntryListingRepCollection
+```
+
+Search audit log entries
+
+Search your audit log entries. The query parameters let you restrict the results that return by date ranges, or a full-text search query. The request body lets you restrict the results that return by resource specifiers.  LaunchDarkly uses a resource specifier syntax to name resources or collections of resources. To learn more, read [About the resource specifier syntax](https://docs.launchdarkly.com/home/account/role-resources#about-the-resource-specifier-syntax).
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\AuditLogApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$before = 56; // int | A timestamp filter, expressed as a Unix epoch time in milliseconds.  All entries returned occurred before the timestamp.
+$after = 56; // int | A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned occurred after the timestamp.
+$q = 'q_example'; // string | Text to search for. You can search for the full or partial name of the resource.
+$limit = 56; // int | A limit on the number of audit log entries that return. Set between 1 and 20. The default is 10.
+$statement_post = array(new \LaunchDarklyApi\Model\StatementPost()); // \LaunchDarklyApi\Model\StatementPost[]
+
+try {
+    $result = $apiInstance->postAuditLogEntries($before, $after, $q, $limit, $statement_post);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AuditLogApi->postAuditLogEntries: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **before** | **int**| A timestamp filter, expressed as a Unix epoch time in milliseconds.  All entries returned occurred before the timestamp. | [optional]
+ **after** | **int**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned occurred after the timestamp. | [optional]
+ **q** | **string**| Text to search for. You can search for the full or partial name of the resource. | [optional]
+ **limit** | **int**| A limit on the number of audit log entries that return. Set between 1 and 20. The default is 10. | [optional]
+ **statement_post** | [**\LaunchDarklyApi\Model\StatementPost[]**](../Model/StatementPost.md)|  | [optional]
+
+### Return type
+
+[**\LaunchDarklyApi\Model\AuditLogEntryListingRepCollection**](../Model/AuditLogEntryListingRepCollection.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

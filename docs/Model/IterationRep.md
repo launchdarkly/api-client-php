@@ -18,8 +18,10 @@ Name | Type | Description | Notes
 **primary_single_metric** | [**\LaunchDarklyApi\Model\MetricV2Rep**](MetricV2Rep.md) |  | [optional]
 **primary_funnel** | [**\LaunchDarklyApi\Model\DependentMetricGroupRepWithMetrics**](DependentMetricGroupRepWithMetrics.md) |  | [optional]
 **randomization_unit** | **string** | The unit of randomization for this iteration | [optional]
+**attributes** | **string[]** | The available attribute filters for this iteration | [optional]
 **treatments** | [**\LaunchDarklyApi\Model\TreatmentRep[]**](TreatmentRep.md) | Details on the variations you are testing in the experiment | [optional]
 **secondary_metrics** | [**\LaunchDarklyApi\Model\MetricV2Rep[]**](MetricV2Rep.md) | Deprecated, use &lt;code&gt;metrics&lt;/code&gt; instead. Details on the secondary metrics for this experiment. | [optional]
 **metrics** | [**\LaunchDarklyApi\Model\DependentMetricOrMetricGroupRep[]**](DependentMetricOrMetricGroupRep.md) | Details on the metrics for this experiment | [optional]
+**layer_snapshot** | [**\LaunchDarklyApi\Model\LayerSnapshotRep**](LayerSnapshotRep.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
