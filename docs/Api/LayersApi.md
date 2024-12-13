@@ -1,12 +1,12 @@
-# LaunchDarklyApi\LayersBetaApi
+# LaunchDarklyApi\LayersApi
 
 All URIs are relative to https://app.launchdarkly.com.
 
 Method | HTTP request | Description
 ------------- | ------------- | -------------
-[**createLayer()**](LayersBetaApi.md#createLayer) | **POST** /api/v2/projects/{projectKey}/layers | Create layer
-[**getLayers()**](LayersBetaApi.md#getLayers) | **GET** /api/v2/projects/{projectKey}/layers | Get layers
-[**updateLayer()**](LayersBetaApi.md#updateLayer) | **PATCH** /api/v2/projects/{projectKey}/layers/{layerKey} | Update layer
+[**createLayer()**](LayersApi.md#createLayer) | **POST** /api/v2/projects/{projectKey}/layers | Create layer
+[**getLayers()**](LayersApi.md#getLayers) | **GET** /api/v2/projects/{projectKey}/layers | Get layers
+[**updateLayer()**](LayersApi.md#updateLayer) | **PATCH** /api/v2/projects/{projectKey}/layers/{layerKey} | Update layer
 
 
 ## `createLayer()`
@@ -32,7 +32,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
-$apiInstance = new LaunchDarklyApi\Api\LayersBetaApi(
+$apiInstance = new LaunchDarklyApi\Api\LayersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -45,7 +45,7 @@ try {
     $result = $apiInstance->createLayer($project_key, $layer_post);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LayersBetaApi->createLayer: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LayersApi->createLayer: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -96,7 +96,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
-$apiInstance = new LaunchDarklyApi\Api\LayersBetaApi(
+$apiInstance = new LaunchDarklyApi\Api\LayersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -109,7 +109,7 @@ try {
     $result = $apiInstance->getLayers($project_key, $filter);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LayersBetaApi->getLayers: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LayersApi->getLayers: ', $e->getMessage(), PHP_EOL;
 }
 ```
 
@@ -160,7 +160,7 @@ $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('A
 // $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
 
 
-$apiInstance = new LaunchDarklyApi\Api\LayersBetaApi(
+$apiInstance = new LaunchDarklyApi\Api\LayersApi(
     // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
     // This is optional, `GuzzleHttp\Client` will be used as default.
     new GuzzleHttp\Client(),
@@ -174,7 +174,7 @@ try {
     $result = $apiInstance->updateLayer($project_key, $layer_key, $layer_patch_input);
     print_r($result);
 } catch (Exception $e) {
-    echo 'Exception when calling LayersBetaApi->updateLayer: ', $e->getMessage(), PHP_EOL;
+    echo 'Exception when calling LayersApi->updateLayer: ', $e->getMessage(), PHP_EOL;
 }
 ```
 

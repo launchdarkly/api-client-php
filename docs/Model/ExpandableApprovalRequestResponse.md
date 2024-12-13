@@ -30,5 +30,6 @@ Name | Type | Description | Notes
 **project** | [**\LaunchDarklyApi\Model\Project**](Project.md) |  | [optional]
 **environments** | [**\LaunchDarklyApi\Model\Environment[]**](Environment.md) | List of environments the approval impacts | [optional]
 **flag** | [**\LaunchDarklyApi\Model\ExpandedFlagRep**](ExpandedFlagRep.md) |  | [optional]
+**resource** | [**\LaunchDarklyApi\Model\ExpandedResourceRep**](ExpandedResourceRep.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

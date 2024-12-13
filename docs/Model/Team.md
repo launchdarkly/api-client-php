@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **_last_modified** | **int** |  | [optional]
 **_version** | **int** | The team version | [optional]
 **_idp_synced** | **bool** | Whether the team has been synced with an external identity provider (IdP). Team sync is available to customers on an Enterprise plan. | [optional]
+**role_attributes** | **array<string,array>** |  | [optional]
 **roles** | [**\LaunchDarklyApi\Model\TeamCustomRoles**](TeamCustomRoles.md) |  | [optional]
 **members** | [**\LaunchDarklyApi\Model\TeamMembers**](TeamMembers.md) |  | [optional]
 **projects** | [**\LaunchDarklyApi\Model\TeamProjects**](TeamProjects.md) |  | [optional]

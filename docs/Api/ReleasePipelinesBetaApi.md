@@ -8,8 +8,8 @@ Method | HTTP request | Description
 [**getAllReleasePipelines()**](ReleasePipelinesBetaApi.md#getAllReleasePipelines) | **GET** /api/v2/projects/{projectKey}/release-pipelines | Get all release pipelines
 [**getAllReleaseProgressionsForReleasePipeline()**](ReleasePipelinesBetaApi.md#getAllReleaseProgressionsForReleasePipeline) | **GET** /api/v2/projects/{projectKey}/release-pipelines/{pipelineKey}/releases | Get release progressions for release pipeline
 [**getReleasePipelineByKey()**](ReleasePipelinesBetaApi.md#getReleasePipelineByKey) | **GET** /api/v2/projects/{projectKey}/release-pipelines/{pipelineKey} | Get release pipeline by key
-[**patchReleasePipeline()**](ReleasePipelinesBetaApi.md#patchReleasePipeline) | **PATCH** /api/v2/projects/{projectKey}/release-pipelines/{pipelineKey} | Update a release pipeline
 [**postReleasePipeline()**](ReleasePipelinesBetaApi.md#postReleasePipeline) | **POST** /api/v2/projects/{projectKey}/release-pipelines | Create a release pipeline
+[**putReleasePipeline()**](ReleasePipelinesBetaApi.md#putReleasePipeline) | **PUT** /api/v2/projects/{projectKey}/release-pipelines/{pipelineKey} | Update a release pipeline
 
 
 ## `deleteReleasePipeline()`
@@ -277,70 +277,6 @@ Name | Type | Description  | Notes
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
-## `patchReleasePipeline()`
-
-```php
-patchReleasePipeline($project_key, $pipeline_key): \LaunchDarklyApi\Model\ReleasePipeline
-```
-
-Update a release pipeline
-
-Updates a release pipeline. Updating a release pipeline uses a [JSON patch](https://datatracker.ietf.org/doc/html/rfc6902) representation of the desired changes. To learn more, read [Updates](/#section/Overview/Updates).
-
-### Example
-
-```php
-<?php
-require_once(__DIR__ . '/vendor/autoload.php');
-
-
-// Configure API key authorization: ApiKey
-$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
-// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
-// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
-
-
-$apiInstance = new LaunchDarklyApi\Api\ReleasePipelinesBetaApi(
-    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
-    // This is optional, `GuzzleHttp\Client` will be used as default.
-    new GuzzleHttp\Client(),
-    $config
-);
-$project_key = 'project_key_example'; // string | The project key
-$pipeline_key = 'pipeline_key_example'; // string | The release pipeline key
-
-try {
-    $result = $apiInstance->patchReleasePipeline($project_key, $pipeline_key);
-    print_r($result);
-} catch (Exception $e) {
-    echo 'Exception when calling ReleasePipelinesBetaApi->patchReleasePipeline: ', $e->getMessage(), PHP_EOL;
-}
-```
-
-### Parameters
-
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **pipeline_key** | **string**| The release pipeline key |
-
-### Return type
-
-[**\LaunchDarklyApi\Model\ReleasePipeline**](../Model/ReleasePipeline.md)
-
-### Authorization
-
-[ApiKey](../../README.md#ApiKey)
-
-### HTTP request headers
-
-- **Content-Type**: Not defined
-- **Accept**: `application/json`
-
-[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
-[[Back to Model list]](../../README.md#models)
-[[Back to README]](../../README.md)
-
 ## `postReleasePipeline()`
 
 ```php
@@ -387,6 +323,72 @@ Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
  **create_release_pipeline_input** | [**\LaunchDarklyApi\Model\CreateReleasePipelineInput**](../Model/CreateReleasePipelineInput.md)|  |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\ReleasePipeline**](../Model/ReleasePipeline.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `putReleasePipeline()`
+
+```php
+putReleasePipeline($project_key, $pipeline_key, $update_release_pipeline_input): \LaunchDarklyApi\Model\ReleasePipeline
+```
+
+Update a release pipeline
+
+Updates a release pipeline.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\ReleasePipelinesBetaApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$project_key = 'project_key_example'; // string | The project key
+$pipeline_key = 'pipeline_key_example'; // string | The release pipeline key
+$update_release_pipeline_input = new \LaunchDarklyApi\Model\UpdateReleasePipelineInput(); // \LaunchDarklyApi\Model\UpdateReleasePipelineInput
+
+try {
+    $result = $apiInstance->putReleasePipeline($project_key, $pipeline_key, $update_release_pipeline_input);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling ReleasePipelinesBetaApi->putReleasePipeline: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+Name | Type | Description  | Notes
+------------- | ------------- | ------------- | -------------
+ **project_key** | **string**| The project key |
+ **pipeline_key** | **string**| The release pipeline key |
+ **update_release_pipeline_input** | [**\LaunchDarklyApi\Model\UpdateReleasePipelineInput**](../Model/UpdateReleasePipelineInput.md)|  |
 
 ### Return type
 

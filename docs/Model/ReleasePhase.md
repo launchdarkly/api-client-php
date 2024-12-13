@@ -14,6 +14,6 @@ Name | Type | Description | Notes
 **status** | **string** |  | [optional]
 **started** | **bool** | Whether or not this phase has started | [optional]
 **_started_date** | **int** |  | [optional]
-**configuration** | [**\LaunchDarklyApi\Model\PhaseConfiguration**](PhaseConfiguration.md) |  | [optional]
+**configuration** | **object** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

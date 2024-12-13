@@ -6,7 +6,7 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_id** | **string** | The audience ID |
 **_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) | The location and content type of related resources | [optional]
-**environment** | [**\LaunchDarklyApi\Model\EnvironmentSummary**](EnvironmentSummary.md) |  |
+**environment** | [**\LaunchDarklyApi\Model\EnvironmentSummary**](EnvironmentSummary.md) |  | [optional]
 **name** | **string** | The release phase name |
 **configuration** | [**\LaunchDarklyApi\Model\AudienceConfiguration**](AudienceConfiguration.md) |  | [optional]
 **segment_keys** | **string[]** | A list of segment keys | [optional]

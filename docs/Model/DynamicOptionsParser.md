@@ -1,9 +1,10 @@
-# # PhaseConfiguration
+# # DynamicOptionsParser
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**bake_time_duration_ms** | **int** | The bake time duration in milliseconds | [optional]
+**options_items** | [**\LaunchDarklyApi\Model\OptionsArray**](OptionsArray.md) |  | [optional]
+**options_path** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)
