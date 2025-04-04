@@ -17,7 +17,7 @@ getAuditLogEntries($before, $after, $q, $limit, $spec): \LaunchDarklyApi\Model\A
 
 List audit log entries
 
-Get a list of all audit log entries. The query parameters let you restrict the results that return by date ranges, resource specifiers, or a full-text search query.  LaunchDarkly uses a resource specifier syntax to name resources or collections of resources. To learn more, read [About the resource specifier syntax](https://docs.launchdarkly.com/home/account/role-resources#about-the-resource-specifier-syntax).
+Get a list of all audit log entries. The query parameters let you restrict the results that return by date ranges, resource specifiers, or a full-text search query.  LaunchDarkly uses a resource specifier syntax to name resources or collections of resources. To learn more, read [About the resource specifier syntax](https://launchdarkly.com/docs/home/account/role-resources#about-the-resource-specifier-syntax).
 
 ### Example
 
@@ -149,7 +149,7 @@ postAuditLogEntries($before, $after, $q, $limit, $statement_post): \LaunchDarkly
 
 Search audit log entries
 
-Search your audit log entries. The query parameters let you restrict the results that return by date ranges, or a full-text search query. The request body lets you restrict the results that return by resource specifiers.  LaunchDarkly uses a resource specifier syntax to name resources or collections of resources. To learn more, read [About the resource specifier syntax](https://docs.launchdarkly.com/home/account/role-resources#about-the-resource-specifier-syntax).
+Search your audit log entries. The query parameters let you restrict the results that return by date ranges, or a full-text search query. The request body lets you restrict the results that return by resource specifiers.  LaunchDarkly uses a resource specifier syntax to name resources or collections of resources. To learn more, read [About the resource specifier syntax](https://launchdarkly.com/docs/home/account/role-resources#about-the-resource-specifier-syntax).
 
 ### Example
 

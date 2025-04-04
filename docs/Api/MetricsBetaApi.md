@@ -207,12 +207,12 @@ Name | Type | Description  | Notes
 ## `getMetricGroups()`
 
 ```php
-getMetricGroups($project_key, $filter, $expand, $limit, $offset): \LaunchDarklyApi\Model\MetricGroupCollectionRep
+getMetricGroups($project_key, $filter, $sort, $expand, $limit, $offset): \LaunchDarklyApi\Model\MetricGroupCollectionRep
 ```
 
 List metric groups
 
-Get a list of all metric groups for the specified project.  ### Expanding the metric groups response LaunchDarkly supports one field for expanding the \"Get metric groups\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with the following field:  - `experiments` includes all experiments from the specific project that use the metric group  For example, `expand=experiments` includes the `experiments` field in the response.  ### Filtering metric groups  The `filter` parameter supports the `equals` operator on the following fields: `experimentStatus`, `query`.  The `experimentStatus` field supports the following values: `not_started`, `running`, `stopped`, and `started`. The `query` field is a search query that is compared against the metric group name and key.   #### Sample query  `filter=experimentStatus equals 'not_started' and query equals 'metric name'`
+Get a list of all metric groups for the specified project.  ### Expanding the metric groups response LaunchDarkly supports one field for expanding the \"Get metric groups\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with the following field:  - `experiments` includes all experiments from the specific project that use the metric group  For example, `expand=experiments` includes the `experiments` field in the response.  ### Filtering metric groups  The `filter` parameter supports the following operators: `contains`, `equals`.  #### Supported fields and operators  You can only filter certain fields in metrics when using the `filter` parameter. Additionally, you can only filter some fields with certain operators.  When you search for metrics, the `filter` parameter supports the following fields and operators:  |<div style=\"width:120px\">Field</div> |Description |Supported operators | |---|---|---| | `experimentStatus` | The experiment's status. One of `not_started`, `running`, `stopped`, `started`. | `equals` | | `hasConnections` | Whether the metric group has connections to experiments or guarded rollouts. One of `true`, `false`. | `equals` | | `kind` | The metric group kind. One of `funnel`, `standard`. | `equals` | | `maintainerIds` | The metric maintainer IDs. | `equals` | | `maintainerTeamKey` | The metric maintainer team key. | `equals` | | `query` | A \"fuzzy\" search across metric group key and name. Supply a string or list of strings to the operator. | `equals` |  ### Sorting metric groups  LaunchDarkly supports the following fields for sorting:  - `name` sorts by metric group name. - `createdAt` sorts by the creation date of the metric group. - `connectionCount` sorts by the number of connections to experiments the metric group has.  By default, the sort is in ascending order. Use `-` to sort in descending order. For example, `?sort=name` sorts the response by metric group name in ascending order, and `?sort=-name` sorts in descending order.  #### Sample query  `filter=experimentStatus equals 'not_started' and query equals 'metric name'`
 
 ### Example
 
@@ -234,13 +234,14 @@ $apiInstance = new LaunchDarklyApi\Api\MetricsBetaApi(
     $config
 );
 $project_key = 'project_key_example'; // string | The project key
-$filter = 'filter_example'; // string | Accepts filter by `experimentStatus` and `query`. Example: `filter=experimentStatus equals 'running' and query equals 'test'`.
+$filter = 'filter_example'; // string | Accepts filter by `experimentStatus`, `query`, `kind`, `hasConnections`, `maintainerIds`, and `maintainerTeamKey`. Example: `filter=experimentStatus equals 'running' and query equals 'test'`.
+$sort = 'sort_example'; // string | A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. Read the endpoint description for a full list of available sort fields.
 $expand = 'expand_example'; // string | A comma-separated list of properties that can reveal additional information in the response.
 $limit = 56; // int | The number of metric groups to return in the response. Defaults to 20. Maximum limit is 50.
 $offset = 56; // int | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next `limit` items.
 
 try {
-    $result = $apiInstance->getMetricGroups($project_key, $filter, $expand, $limit, $offset);
+    $result = $apiInstance->getMetricGroups($project_key, $filter, $sort, $expand, $limit, $offset);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling MetricsBetaApi->getMetricGroups: ', $e->getMessage(), PHP_EOL;
@@ -252,7 +253,8 @@ try {
 Name | Type | Description  | Notes
 ------------- | ------------- | ------------- | -------------
  **project_key** | **string**| The project key |
- **filter** | **string**| Accepts filter by &#x60;experimentStatus&#x60; and &#x60;query&#x60;. Example: &#x60;filter&#x3D;experimentStatus equals &#39;running&#39; and query equals &#39;test&#39;&#x60;. | [optional]
+ **filter** | **string**| Accepts filter by &#x60;experimentStatus&#x60;, &#x60;query&#x60;, &#x60;kind&#x60;, &#x60;hasConnections&#x60;, &#x60;maintainerIds&#x60;, and &#x60;maintainerTeamKey&#x60;. Example: &#x60;filter&#x3D;experimentStatus equals &#39;running&#39; and query equals &#39;test&#39;&#x60;. | [optional]
+ **sort** | **string**| A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. Read the endpoint description for a full list of available sort fields. | [optional]
  **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional]
  **limit** | **int**| The number of metric groups to return in the response. Defaults to 20. Maximum limit is 50. | [optional]
  **offset** | **int**| Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next &#x60;limit&#x60; items. | [optional]

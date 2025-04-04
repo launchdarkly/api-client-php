@@ -276,7 +276,7 @@ patchFlagImportConfiguration($project_key, $integration_key, $integration_id, $p
 
 Update a flag import configuration
 
-Updating a flag import configuration uses a [JSON patch](https://datatracker.ietf.org/doc/html/rfc6902) representation of the desired changes. To learn more, read [Updates](/#section/Overview/Updates).<br/><br/>To add an element to the import configuration fields that are arrays, set the `path` to the name of the field and then append `/<array index>`. Use `/0` to add to the beginning of the array. Use `/-` to add to the end of the array.<br/><br/>You can update the `config`, `tags`, and `name` of the flag import configuration.
+Updating a flag import configuration uses a [JSON patch](https://datatracker.ietf.org/doc/html/rfc6902) representation of the desired changes. To learn more, read [Updates](https://launchdarkly.com/docs/api#updates).<br/><br/>To add an element to the import configuration fields that are arrays, set the `path` to the name of the field and then append `/<array index>`. Use `/0` to add to the beginning of the array. Use `/-` to add to the end of the array.<br/><br/>You can update the `config`, `tags`, and `name` of the flag import configuration.
 
 ### Example
 
@@ -339,7 +339,7 @@ Name | Type | Description  | Notes
 ## `triggerFlagImportJob()`
 
 ```php
-triggerFlagImportJob($project_key, $integration_key, $integration_id): object
+triggerFlagImportJob($project_key, $integration_key, $integration_id)
 ```
 
 Trigger a single flag import run
@@ -370,8 +370,7 @@ $integration_key = 'integration_key_example'; // string | The integration key
 $integration_id = 'integration_id_example'; // string | The integration ID
 
 try {
-    $result = $apiInstance->triggerFlagImportJob($project_key, $integration_key, $integration_id);
-    print_r($result);
+    $apiInstance->triggerFlagImportJob($project_key, $integration_key, $integration_id);
 } catch (Exception $e) {
     echo 'Exception when calling FlagImportConfigurationsBetaApi->triggerFlagImportJob: ', $e->getMessage(), PHP_EOL;
 }
@@ -387,7 +386,7 @@ Name | Type | Description  | Notes
 
 ### Return type
 
-**object**
+void (empty response body)
 
 ### Authorization
 

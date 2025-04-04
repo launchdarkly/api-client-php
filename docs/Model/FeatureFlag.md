@@ -30,6 +30,6 @@ Name | Type | Description | Notes
 **defaults** | [**\LaunchDarklyApi\Model\Defaults**](Defaults.md) |  | [optional]
 **_purpose** | **string** |  | [optional]
 **migration_settings** | [**\LaunchDarklyApi\Model\FlagMigrationSettingsRep**](FlagMigrationSettingsRep.md) |  | [optional]
-**environments** | [**array<string,\LaunchDarklyApi\Model\FeatureFlagConfig>**](FeatureFlagConfig.md) | Details on the environments for this flag. Only returned if the request is filtered by environment, using the &lt;code&gt;filterEnv&lt;/code&gt; query parameter. |
+**environments** | [**array<string,\LaunchDarklyApi\Model\FeatureFlagConfig>**](FeatureFlagConfig.md) | Details on the environments for this flag. Only returned if the request is filtered by environment, using the &lt;code&gt;filterEnv&lt;/code&gt; query parameter. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

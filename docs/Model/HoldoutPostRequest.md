@@ -13,5 +13,6 @@ Name | Type | Description | Notes
 **primarymetrickey** | **string** | The key of the primary metric for this holdout | [optional]
 **metrics** | [**\LaunchDarklyApi\Model\MetricInput[]**](MetricInput.md) | Details on the metrics for this experiment | [optional]
 **prerequisiteflagkey** | **string** | The key of the flag that the holdout is dependent on | [optional]
+**maintainer_id** | **string** | Maintainer id | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

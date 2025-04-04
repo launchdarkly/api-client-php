@@ -9,5 +9,6 @@ Name | Type | Description | Notes
 **description** | **string** | Description of custom role | [optional]
 **policy** | [**\LaunchDarklyApi\Model\StatementPost[]**](StatementPost.md) |  |
 **base_permissions** | **string** |  | [optional]
+**resource_category** | **string** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

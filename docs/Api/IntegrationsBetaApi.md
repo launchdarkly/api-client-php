@@ -19,7 +19,7 @@ createIntegrationConfiguration($integration_key, $integration_configuration_post
 
 Create integration configuration
 
-Create a new integration configuration. (Excludes [persistent store](/tag/Persistent-store-integrations-(beta)) and [flag import configurations](/tag/Flag-import-configurations-(beta)).)
+Create a new integration configuration. (Excludes [persistent store](https://launchdarkly.com/docs/api/persistent-store-integrations-beta) and [flag import configurations](https://launchdarkly.com/docs/api/flag-import-configurations-beta).)
 
 ### Example
 
@@ -83,7 +83,7 @@ deleteIntegrationConfiguration($integration_configuration_id)
 
 Delete integration configuration
 
-Delete an integration configuration by ID. (Excludes [persistent store](/tag/Persistent-store-integrations-(beta)) and [flag import configurations](/tag/Flag-import-configurations-(beta)).)
+Delete an integration configuration by ID. (Excludes [persistent store](https://launchdarkly.com/docs/api/persistent-store-integrations-beta) and [flag import configurations](https://launchdarkly.com/docs/api/flag-import-configurations-beta).)
 
 ### Example
 
@@ -144,7 +144,7 @@ getAllIntegrationConfigurations($integration_key): \LaunchDarklyApi\Model\Integr
 
 Get all configurations for the integration
 
-Get all integration configurations with the specified integration key. (Excludes [persistent store](/tag/Persistent-store-integrations-(beta)) and [flag import configurations](/tag/Flag-import-configurations-(beta))).
+Get all integration configurations with the specified integration key. (Excludes [persistent store](https://launchdarkly.com/docs/api/persistent-store-integrations-beta) and [flag import configurations](https://launchdarkly.com/docs/api/flag-import-configurations-beta).).
 
 ### Example
 
@@ -206,7 +206,7 @@ getIntegrationConfiguration($integration_configuration_id): \LaunchDarklyApi\Mod
 
 Get an integration configuration
 
-Get integration configuration with the specified ID. (Excludes [persistent store](/tag/Persistent-store-integrations-(beta)) and [flag import configurations](/tag/Flag-import-configurations-(beta)).)
+Get integration configuration with the specified ID. (Excludes [persistent store](https://launchdarkly.com/docs/api/persistent-store-integrations-beta) and [flag import configurations](https://launchdarkly.com/docs/api/flag-import-configurations-beta).)
 
 ### Example
 
@@ -268,7 +268,7 @@ updateIntegrationConfiguration($integration_configuration_id, $patch_operation):
 
 Update integration configuration
 
-Update an integration configuration. Updating an integration configuration uses a [JSON patch](https://datatracker.ietf.org/doc/html/rfc6902) representation of the desired changes. To learn more, read [Updates](/#section/Overview/Updates).
+Update an integration configuration. Updating an integration configuration uses a [JSON patch](https://datatracker.ietf.org/doc/html/rfc6902) representation of the desired changes. To learn more, read [Updates](https://launchdarkly.com/docs/api#updates).
 
 ### Example
 

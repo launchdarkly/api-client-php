@@ -14,5 +14,6 @@ Name | Type | Description | Notes
 **service_config** | **array<string,mixed>** |  |
 **required_approval_tags** | **string[]** | Require approval only on flags with the provided tags. Otherwise all flags will require approval. |
 **service_kind_configuration_id** | **string** | Optional field for integration configuration ID of a custom approval integration. This is an Enterprise-only feature. | [optional]
+**resource_kind** | **string** | The kind of resource for which the approval settings apply, for example, flag or segment | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

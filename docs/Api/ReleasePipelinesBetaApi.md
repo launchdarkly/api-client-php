@@ -20,7 +20,7 @@ deleteReleasePipeline($project_key, $pipeline_key)
 
 Delete release pipeline
 
-Deletes a release pipeline.  You cannot delete the default release pipeline.  If you want to delete a release pipeline that is currently the default, create a second release pipeline and set it as the default. Then delete the first release pipeline. To change the default release pipeline, use the [Update project](/tag/Projects#operation/patchProject) API to set the `defaultReleasePipelineKey`.
+Deletes a release pipeline.  You cannot delete the default release pipeline.  If you want to delete a release pipeline that is currently the default, create a second release pipeline and set it as the default. Then delete the first release pipeline. To change the default release pipeline, use the [Update project](https://launchdarkly.com/docs/ld-docs/api/projects/patch-project) API to set the `defaultReleasePipelineKey`.
 
 ### Example
 
@@ -285,7 +285,7 @@ postReleasePipeline($project_key, $create_release_pipeline_input): \LaunchDarkly
 
 Create a release pipeline
 
-Creates a new release pipeline.  The first release pipeline you create is automatically set as the default release pipeline for your project. To change the default release pipeline, use the [Update project](/tag/Projects#operation/patchProject) API to set the `defaultReleasePipelineKey`.  You can create up to 20 release pipelines per project.
+Creates a new release pipeline.  The first release pipeline you create is automatically set as the default release pipeline for your project. To change the default release pipeline, use the [Update project](https://launchdarkly.com/docs/ld-docs/api/projects/patch-project) API to set the `defaultReleasePipelineKey`.  You can create up to 20 release pipelines per project.
 
 ### Example
 
