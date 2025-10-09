@@ -1,12 +1,12 @@
 # LaunchDarklyApi\LayersApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createLayer()**](LayersApi.md#createLayer) | **POST** /api/v2/projects/{projectKey}/layers | Create layer
-[**getLayers()**](LayersApi.md#getLayers) | **GET** /api/v2/projects/{projectKey}/layers | Get layers
-[**updateLayer()**](LayersApi.md#updateLayer) | **PATCH** /api/v2/projects/{projectKey}/layers/{layerKey} | Update layer
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createLayer()**](LayersApi.md#createLayer) | **POST** /api/v2/projects/{projectKey}/layers | Create layer |
+| [**getLayers()**](LayersApi.md#getLayers) | **GET** /api/v2/projects/{projectKey}/layers | Get layers |
+| [**updateLayer()**](LayersApi.md#updateLayer) | **PATCH** /api/v2/projects/{projectKey}/layers/{layerKey} | Update layer |
 
 
 ## `createLayer()`
@@ -51,10 +51,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **layer_post** | [**\LaunchDarklyApi\Model\LayerPost**](../Model/LayerPost.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **layer_post** | [**\LaunchDarklyApi\Model\LayerPost**](../Model/LayerPost.md)|  | |
 
 ### Return type
 
@@ -115,10 +115,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **filter** | **string**| A comma-separated list of filters. This endpoint only accepts filtering by &#x60;experimentKey&#x60;. The filter returns layers which include that experiment for the selected environment(s). For example: &#x60;filter&#x3D;reservations.experimentKey contains expKey&#x60;. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **filter** | **string**| A comma-separated list of filters. This endpoint only accepts filtering by &#x60;experimentKey&#x60;. The filter returns layers which include that experiment for the selected environment(s). For example: &#x60;filter&#x3D;reservations.experimentKey contains expKey&#x60;. | [optional] |
 
 ### Return type
 
@@ -180,11 +180,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **layer_key** | **string**| The layer key |
- **layer_patch_input** | [**\LaunchDarklyApi\Model\LayerPatchInput**](../Model/LayerPatchInput.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **layer_key** | **string**| The layer key | |
+| **layer_patch_input** | [**\LaunchDarklyApi\Model\LayerPatchInput**](../Model/LayerPatchInput.md)|  | |
 
 ### Return type
 

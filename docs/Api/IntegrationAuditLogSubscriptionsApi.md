@@ -1,14 +1,14 @@
 # LaunchDarklyApi\IntegrationAuditLogSubscriptionsApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createSubscription()**](IntegrationAuditLogSubscriptionsApi.md#createSubscription) | **POST** /api/v2/integrations/{integrationKey} | Create audit log subscription
-[**deleteSubscription()**](IntegrationAuditLogSubscriptionsApi.md#deleteSubscription) | **DELETE** /api/v2/integrations/{integrationKey}/{id} | Delete audit log subscription
-[**getSubscriptionByID()**](IntegrationAuditLogSubscriptionsApi.md#getSubscriptionByID) | **GET** /api/v2/integrations/{integrationKey}/{id} | Get audit log subscription by ID
-[**getSubscriptions()**](IntegrationAuditLogSubscriptionsApi.md#getSubscriptions) | **GET** /api/v2/integrations/{integrationKey} | Get audit log subscriptions by integration
-[**updateSubscription()**](IntegrationAuditLogSubscriptionsApi.md#updateSubscription) | **PATCH** /api/v2/integrations/{integrationKey}/{id} | Update audit log subscription
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createSubscription()**](IntegrationAuditLogSubscriptionsApi.md#createSubscription) | **POST** /api/v2/integrations/{integrationKey} | Create audit log subscription |
+| [**deleteSubscription()**](IntegrationAuditLogSubscriptionsApi.md#deleteSubscription) | **DELETE** /api/v2/integrations/{integrationKey}/{id} | Delete audit log subscription |
+| [**getSubscriptionByID()**](IntegrationAuditLogSubscriptionsApi.md#getSubscriptionByID) | **GET** /api/v2/integrations/{integrationKey}/{id} | Get audit log subscription by ID |
+| [**getSubscriptions()**](IntegrationAuditLogSubscriptionsApi.md#getSubscriptions) | **GET** /api/v2/integrations/{integrationKey} | Get audit log subscriptions by integration |
+| [**updateSubscription()**](IntegrationAuditLogSubscriptionsApi.md#updateSubscription) | **PATCH** /api/v2/integrations/{integrationKey}/{id} | Update audit log subscription |
 
 
 ## `createSubscription()`
@@ -53,10 +53,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **integration_key** | **string**| The integration key |
- **subscription_post** | [**\LaunchDarklyApi\Model\SubscriptionPost**](../Model/SubscriptionPost.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **integration_key** | **string**| The integration key | |
+| **subscription_post** | [**\LaunchDarklyApi\Model\SubscriptionPost**](../Model/SubscriptionPost.md)|  | |
 
 ### Return type
 
@@ -116,10 +116,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **integration_key** | **string**| The integration key |
- **id** | **string**| The subscription ID |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **integration_key** | **string**| The integration key | |
+| **id** | **string**| The subscription ID | |
 
 ### Return type
 
@@ -180,10 +180,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **integration_key** | **string**| The integration key |
- **id** | **string**| The subscription ID |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **integration_key** | **string**| The integration key | |
+| **id** | **string**| The subscription ID | |
 
 ### Return type
 
@@ -243,9 +243,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **integration_key** | **string**| The integration key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **integration_key** | **string**| The integration key | |
 
 ### Return type
 
@@ -307,11 +307,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **integration_key** | **string**| The integration key |
- **id** | **string**| The ID of the audit log subscription |
- **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **integration_key** | **string**| The integration key | |
+| **id** | **string**| The ID of the audit log subscription | |
+| **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  | |
 
 ### Return type
 

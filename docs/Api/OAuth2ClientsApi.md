@@ -1,14 +1,14 @@
 # LaunchDarklyApi\OAuth2ClientsApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createOAuth2Client()**](OAuth2ClientsApi.md#createOAuth2Client) | **POST** /api/v2/oauth/clients | Create a LaunchDarkly OAuth 2.0 client
-[**deleteOAuthClient()**](OAuth2ClientsApi.md#deleteOAuthClient) | **DELETE** /api/v2/oauth/clients/{clientId} | Delete OAuth 2.0 client
-[**getOAuthClientById()**](OAuth2ClientsApi.md#getOAuthClientById) | **GET** /api/v2/oauth/clients/{clientId} | Get client by ID
-[**getOAuthClients()**](OAuth2ClientsApi.md#getOAuthClients) | **GET** /api/v2/oauth/clients | Get clients
-[**patchOAuthClient()**](OAuth2ClientsApi.md#patchOAuthClient) | **PATCH** /api/v2/oauth/clients/{clientId} | Patch client by ID
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createOAuth2Client()**](OAuth2ClientsApi.md#createOAuth2Client) | **POST** /api/v2/oauth/clients | Create a LaunchDarkly OAuth 2.0 client |
+| [**deleteOAuthClient()**](OAuth2ClientsApi.md#deleteOAuthClient) | **DELETE** /api/v2/oauth/clients/{clientId} | Delete OAuth 2.0 client |
+| [**getOAuthClientById()**](OAuth2ClientsApi.md#getOAuthClientById) | **GET** /api/v2/oauth/clients/{clientId} | Get client by ID |
+| [**getOAuthClients()**](OAuth2ClientsApi.md#getOAuthClients) | **GET** /api/v2/oauth/clients | Get clients |
+| [**patchOAuthClient()**](OAuth2ClientsApi.md#patchOAuthClient) | **PATCH** /api/v2/oauth/clients/{clientId} | Patch client by ID |
 
 
 ## `createOAuth2Client()`
@@ -52,9 +52,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **oauth_client_post** | [**\LaunchDarklyApi\Model\OauthClientPost**](../Model/OauthClientPost.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **oauth_client_post** | [**\LaunchDarklyApi\Model\OauthClientPost**](../Model/OauthClientPost.md)|  | |
 
 ### Return type
 
@@ -113,9 +113,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **client_id** | **string**| The client ID |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **client_id** | **string**| The client ID | |
 
 ### Return type
 
@@ -175,9 +175,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **client_id** | **string**| The client ID |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **client_id** | **string**| The client ID | |
 
 ### Return type
 
@@ -297,10 +297,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **client_id** | **string**| The client ID |
- **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **client_id** | **string**| The client ID | |
+| **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  | |
 
 ### Return type
 

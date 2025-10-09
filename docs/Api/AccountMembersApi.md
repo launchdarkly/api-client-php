@@ -1,15 +1,15 @@
 # LaunchDarklyApi\AccountMembersApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteMember()**](AccountMembersApi.md#deleteMember) | **DELETE** /api/v2/members/{id} | Delete account member
-[**getMember()**](AccountMembersApi.md#getMember) | **GET** /api/v2/members/{id} | Get account member
-[**getMembers()**](AccountMembersApi.md#getMembers) | **GET** /api/v2/members | List account members
-[**patchMember()**](AccountMembersApi.md#patchMember) | **PATCH** /api/v2/members/{id} | Modify an account member
-[**postMemberTeams()**](AccountMembersApi.md#postMemberTeams) | **POST** /api/v2/members/{id}/teams | Add a member to teams
-[**postMembers()**](AccountMembersApi.md#postMembers) | **POST** /api/v2/members | Invite new members
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**deleteMember()**](AccountMembersApi.md#deleteMember) | **DELETE** /api/v2/members/{id} | Delete account member |
+| [**getMember()**](AccountMembersApi.md#getMember) | **GET** /api/v2/members/{id} | Get account member |
+| [**getMembers()**](AccountMembersApi.md#getMembers) | **GET** /api/v2/members | List account members |
+| [**patchMember()**](AccountMembersApi.md#patchMember) | **PATCH** /api/v2/members/{id} | Modify an account member |
+| [**postMemberTeams()**](AccountMembersApi.md#postMemberTeams) | **POST** /api/v2/members/{id}/teams | Add a member to teams |
+| [**postMembers()**](AccountMembersApi.md#postMembers) | **POST** /api/v2/members | Invite new members |
 
 
 ## `deleteMember()`
@@ -52,9 +52,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| The member ID |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| The member ID | |
 
 ### Return type
 
@@ -115,10 +115,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| The member ID |
- **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| The member ID | |
+| **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional] |
 
 ### Return type
 
@@ -182,13 +182,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int**| The number of members to return in the response. Defaults to 20. | [optional]
- **offset** | **int**| Where to start in the list. This is for use with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional]
- **filter** | **string**| A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained above. | [optional]
- **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional]
- **sort** | **string**| A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| The number of members to return in the response. Defaults to 20. | [optional] |
+| **offset** | **int**| Where to start in the list. This is for use with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
+| **filter** | **string**| A comma-separated list of filters. Each filter is of the form &#x60;field:value&#x60;. Supported fields are explained above. | [optional] |
+| **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional] |
+| **sort** | **string**| A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. | [optional] |
 
 ### Return type
 
@@ -249,10 +249,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| The member ID |
- **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| The member ID | |
+| **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  | |
 
 ### Return type
 
@@ -313,10 +313,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| The member ID |
- **member_teams_post_input** | [**\LaunchDarklyApi\Model\MemberTeamsPostInput**](../Model/MemberTeamsPostInput.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| The member ID | |
+| **member_teams_post_input** | [**\LaunchDarklyApi\Model\MemberTeamsPostInput**](../Model/MemberTeamsPostInput.md)|  | |
 
 ### Return type
 
@@ -343,7 +343,7 @@ postMembers($new_member_form): \LaunchDarklyApi\Model\Members
 
 Invite new members
 
-Invite one or more new members to join an account. Each member is sent an invitation. Members with \"admin\" or \"owner\" roles may create new members, as well as anyone with a \"createMember\" permission for \"member/\\*\". If a member cannot be invited, the entire request is rejected and no members are invited from that request.  Each member _must_ have an `email` field and either a `role` or a `customRoles` field. If any of the fields are not populated correctly, the request is rejected with the reason specified in the \"message\" field of the response.  Requests to create account members will not work if SCIM is enabled for the account.  _No more than 50 members may be created per request._  A request may also fail because of conflicts with existing members. These conflicts are reported using the additional `code` and `invalid_emails` response fields with the following possible values for `code`:  - **email_already_exists_in_account**: A member with this email address already exists in this account. - **email_taken_in_different_account**: A member with this email address exists in another account. - **duplicate_email**s: This request contains two or more members with the same email address.  A request that fails for one of the above reasons returns an HTTP response code of 400 (Bad Request).
+Invite one or more new members to join an account. Each member is sent an invitation. Members with Admin or Owner roles may create new members, as well as anyone with a `createMember` permission for \"member/\\*\". If a member cannot be invited, the entire request is rejected and no members are invited from that request.  Each member _must_ have an `email` field and either a `role` or a `customRoles` field. If any of the fields are not populated correctly, the request is rejected with the reason specified in the \"message\" field of the response.  Valid base role names that you can provide for the `role` field include `reader`, `writer`, `admin`, `owner/admin`, and `no_access`. To learn more about base roles, read [Organization roles](https://launchdarkly.com/docs/home/account/roles/organization-roles).  If you are using the `customRoles` field instead, you can provide the key for any role that you have created, or for any preset [organization role](https://launchdarkly.com/docs/home/account/roles/organization-roles) or [project role](https://launchdarkly.com/docs/home/account/roles/project-roles) provided by LaunchDarkly. Some preset roles additionally require that you specify `roleAttributes`. To learn more, read [Using role scope](https://launchdarkly.com/docs/home/account/roles/role-scope).  Requests to create account members will not work if SCIM is enabled for the account.  _No more than 50 members may be created per request._  A request may also fail because of conflicts with existing members. These conflicts are reported using the additional `code` and `invalid_emails` response fields with the following possible values for `code`:  - **email_already_exists_in_account**: A member with this email address already exists in this account. - **email_taken_in_different_account**: A member with this email address exists in another account. - **duplicate_email**s: This request contains two or more members with the same email address.  A request that fails for one of the above reasons returns an HTTP response code of 400 (Bad Request).
 
 ### Example
 
@@ -376,9 +376,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **new_member_form** | [**\LaunchDarklyApi\Model\NewMemberForm[]**](../Model/NewMemberForm.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **new_member_form** | [**\LaunchDarklyApi\Model\NewMemberForm[]**](../Model/NewMemberForm.md)|  | |
 
 ### Return type
 

@@ -1,14 +1,14 @@
 # LaunchDarklyApi\InsightsChartsBetaApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getDeploymentFrequencyChart()**](InsightsChartsBetaApi.md#getDeploymentFrequencyChart) | **GET** /api/v2/engineering-insights/charts/deployments/frequency | Get deployment frequency chart data
-[**getFlagStatusChart()**](InsightsChartsBetaApi.md#getFlagStatusChart) | **GET** /api/v2/engineering-insights/charts/flags/status | Get flag status chart data
-[**getLeadTimeChart()**](InsightsChartsBetaApi.md#getLeadTimeChart) | **GET** /api/v2/engineering-insights/charts/lead-time | Get lead time chart data
-[**getReleaseFrequencyChart()**](InsightsChartsBetaApi.md#getReleaseFrequencyChart) | **GET** /api/v2/engineering-insights/charts/releases/frequency | Get release frequency chart data
-[**getStaleFlagsChart()**](InsightsChartsBetaApi.md#getStaleFlagsChart) | **GET** /api/v2/engineering-insights/charts/flags/stale | Get stale flags chart data
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**getDeploymentFrequencyChart()**](InsightsChartsBetaApi.md#getDeploymentFrequencyChart) | **GET** /api/v2/engineering-insights/charts/deployments/frequency | Get deployment frequency chart data |
+| [**getFlagStatusChart()**](InsightsChartsBetaApi.md#getFlagStatusChart) | **GET** /api/v2/engineering-insights/charts/flags/status | Get flag status chart data |
+| [**getLeadTimeChart()**](InsightsChartsBetaApi.md#getLeadTimeChart) | **GET** /api/v2/engineering-insights/charts/lead-time | Get lead time chart data |
+| [**getReleaseFrequencyChart()**](InsightsChartsBetaApi.md#getReleaseFrequencyChart) | **GET** /api/v2/engineering-insights/charts/releases/frequency | Get release frequency chart data |
+| [**getStaleFlagsChart()**](InsightsChartsBetaApi.md#getStaleFlagsChart) | **GET** /api/v2/engineering-insights/charts/flags/stale | Get stale flags chart data |
 
 
 ## `getDeploymentFrequencyChart()`
@@ -60,17 +60,17 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key | [optional]
- **environment_key** | **string**| The environment key | [optional]
- **application_key** | **string**| Comma separated list of application keys | [optional]
- **from** | **\DateTime**| Unix timestamp in milliseconds. Default value is 7 days ago. | [optional]
- **to** | **\DateTime**| Unix timestamp in milliseconds. Default value is now. | [optional]
- **bucket_type** | **string**| Specify type of bucket. Options: &#x60;rolling&#x60;, &#x60;hour&#x60;, &#x60;day&#x60;. Default: &#x60;rolling&#x60;. | [optional]
- **bucket_ms** | **int**| Duration of intervals for x-axis in milliseconds. Default value is one day (&#x60;86400000&#x60; milliseconds). | [optional]
- **group_by** | **string**| Options: &#x60;application&#x60;, &#x60;kind&#x60; | [optional]
- **expand** | **string**| Options: &#x60;metrics&#x60; | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | [optional] |
+| **environment_key** | **string**| The environment key | [optional] |
+| **application_key** | **string**| Comma separated list of application keys | [optional] |
+| **from** | **\DateTime**| Unix timestamp in milliseconds. Default value is 7 days ago. | [optional] |
+| **to** | **\DateTime**| Unix timestamp in milliseconds. Default value is now. | [optional] |
+| **bucket_type** | **string**| Specify type of bucket. Options: &#x60;rolling&#x60;, &#x60;hour&#x60;, &#x60;day&#x60;. Default: &#x60;rolling&#x60;. | [optional] |
+| **bucket_ms** | **int**| Duration of intervals for x-axis in milliseconds. Default value is one day (&#x60;86400000&#x60; milliseconds). | [optional] |
+| **group_by** | **string**| Options: &#x60;application&#x60;, &#x60;kind&#x60; | [optional] |
+| **expand** | **string**| Options: &#x60;metrics&#x60; | [optional] |
 
 ### Return type
 
@@ -132,11 +132,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key |
- **application_key** | **string**| Comma separated list of application keys | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | |
+| **application_key** | **string**| Comma separated list of application keys | [optional] |
 
 ### Return type
 
@@ -204,17 +204,17 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key | [optional]
- **application_key** | **string**| Comma separated list of application keys | [optional]
- **from** | **int**| Unix timestamp in milliseconds. Default value is 7 days ago. | [optional]
- **to** | **int**| Unix timestamp in milliseconds. Default value is now. | [optional]
- **bucket_type** | **string**| Specify type of bucket. Options: &#x60;rolling&#x60;, &#x60;hour&#x60;, &#x60;day&#x60;. Default: &#x60;rolling&#x60;. | [optional]
- **bucket_ms** | **int**| Duration of intervals for x-axis in milliseconds. Default value is one day (&#x60;86400000&#x60; milliseconds). | [optional]
- **group_by** | **string**| Options: &#x60;application&#x60;, &#x60;stage&#x60;. Default: &#x60;stage&#x60;. | [optional]
- **expand** | **string**| Options: &#x60;metrics&#x60;, &#x60;percentiles&#x60;. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | [optional] |
+| **application_key** | **string**| Comma separated list of application keys | [optional] |
+| **from** | **int**| Unix timestamp in milliseconds. Default value is 7 days ago. | [optional] |
+| **to** | **int**| Unix timestamp in milliseconds. Default value is now. | [optional] |
+| **bucket_type** | **string**| Specify type of bucket. Options: &#x60;rolling&#x60;, &#x60;hour&#x60;, &#x60;day&#x60;. Default: &#x60;rolling&#x60;. | [optional] |
+| **bucket_ms** | **int**| Duration of intervals for x-axis in milliseconds. Default value is one day (&#x60;86400000&#x60; milliseconds). | [optional] |
+| **group_by** | **string**| Options: &#x60;application&#x60;, &#x60;stage&#x60;. Default: &#x60;stage&#x60;. | [optional] |
+| **expand** | **string**| Options: &#x60;metrics&#x60;, &#x60;percentiles&#x60;. | [optional] |
 
 ### Return type
 
@@ -284,19 +284,19 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key |
- **application_key** | **string**| Comma separated list of application keys | [optional]
- **has_experiments** | **bool**| Filter events to those associated with an experiment (&#x60;true&#x60;) or without an experiment (&#x60;false&#x60;) | [optional]
- **global** | **string**| Filter to include or exclude global events. Default value is &#x60;include&#x60;. Options: &#x60;include&#x60;, &#x60;exclude&#x60; | [optional]
- **group_by** | **string**| Property to group results by. Options: &#x60;impact&#x60; | [optional]
- **from** | **\DateTime**| Unix timestamp in milliseconds. Default value is 7 days ago. | [optional]
- **to** | **\DateTime**| Unix timestamp in milliseconds. Default value is now. | [optional]
- **bucket_type** | **string**| Specify type of bucket. Options: &#x60;rolling&#x60;, &#x60;hour&#x60;, &#x60;day&#x60;. Default: &#x60;rolling&#x60;. | [optional]
- **bucket_ms** | **int**| Duration of intervals for x-axis in milliseconds. Default value is one day (&#x60;86400000&#x60; milliseconds). | [optional]
- **expand** | **string**| Options: &#x60;metrics&#x60; | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | |
+| **application_key** | **string**| Comma separated list of application keys | [optional] |
+| **has_experiments** | **bool**| Filter events to those associated with an experiment (&#x60;true&#x60;) or without an experiment (&#x60;false&#x60;) | [optional] |
+| **global** | **string**| Filter to include or exclude global events. Default value is &#x60;include&#x60;. Options: &#x60;include&#x60;, &#x60;exclude&#x60; | [optional] |
+| **group_by** | **string**| Property to group results by. Options: &#x60;impact&#x60; | [optional] |
+| **from** | **\DateTime**| Unix timestamp in milliseconds. Default value is 7 days ago. | [optional] |
+| **to** | **\DateTime**| Unix timestamp in milliseconds. Default value is now. | [optional] |
+| **bucket_type** | **string**| Specify type of bucket. Options: &#x60;rolling&#x60;, &#x60;hour&#x60;, &#x60;day&#x60;. Default: &#x60;rolling&#x60;. | [optional] |
+| **bucket_ms** | **int**| Duration of intervals for x-axis in milliseconds. Default value is one day (&#x60;86400000&#x60; milliseconds). | [optional] |
+| **expand** | **string**| Options: &#x60;metrics&#x60; | [optional] |
 
 ### Return type
 
@@ -362,15 +362,15 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key |
- **application_key** | **string**| Comma separated list of application keys | [optional]
- **group_by** | **string**| Property to group results by. Options: &#x60;maintainer&#x60; | [optional]
- **maintainer_id** | **string**| Comma-separated list of individual maintainers to filter results. | [optional]
- **maintainer_team_key** | **string**| Comma-separated list of team maintainer keys to filter results. | [optional]
- **expand** | **string**| Options: &#x60;metrics&#x60; | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | |
+| **application_key** | **string**| Comma separated list of application keys | [optional] |
+| **group_by** | **string**| Property to group results by. Options: &#x60;maintainer&#x60; | [optional] |
+| **maintainer_id** | **string**| Comma-separated list of individual maintainers to filter results. | [optional] |
+| **maintainer_team_key** | **string**| Comma-separated list of team maintainer keys to filter results. | [optional] |
+| **expand** | **string**| Options: &#x60;metrics&#x60; | [optional] |
 
 ### Return type
 

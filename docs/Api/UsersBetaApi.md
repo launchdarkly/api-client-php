@@ -1,10 +1,10 @@
 # LaunchDarklyApi\UsersBetaApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getUserAttributeNames()**](UsersBetaApi.md#getUserAttributeNames) | **GET** /api/v2/user-attributes/{projectKey}/{environmentKey} | Get user attribute names
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**getUserAttributeNames()**](UsersBetaApi.md#getUserAttributeNames) | **GET** /api/v2/user-attributes/{projectKey}/{environmentKey} | Get user attribute names |
 
 
 ## `getUserAttributeNames()`
@@ -15,7 +15,7 @@ getUserAttributeNames($project_key, $environment_key): \LaunchDarklyApi\Model\Us
 
 Get user attribute names
 
-> ### Use contexts instead > > After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should use [Get context attribute names ](https://launchdarkly.com/docs/ld-docs/api/contexts/get-context-attribute-names) instead of this endpoint.  Get all in-use user attributes in the specified environment. The set of in-use attributes typically consists of all attributes seen within the past 30 days.
+> ### Use contexts instead > > After you have upgraded your LaunchDarkly SDK to use contexts instead of users, you should use [Get context attribute names ](https://launchdarkly.com/docs/api/contexts/get-context-attribute-names) instead of this endpoint.  Get all in-use user attributes in the specified environment. The set of in-use attributes typically consists of all attributes seen within the past 30 days.
 
 ### Example
 
@@ -49,10 +49,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | |
 
 ### Return type
 

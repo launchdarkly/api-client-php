@@ -1,14 +1,14 @@
 # LaunchDarklyApi\ScheduledChangesApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteFlagConfigScheduledChanges()**](ScheduledChangesApi.md#deleteFlagConfigScheduledChanges) | **DELETE** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{id} | Delete scheduled changes workflow
-[**getFeatureFlagScheduledChange()**](ScheduledChangesApi.md#getFeatureFlagScheduledChange) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{id} | Get a scheduled change
-[**getFlagConfigScheduledChanges()**](ScheduledChangesApi.md#getFlagConfigScheduledChanges) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes | List scheduled changes
-[**patchFlagConfigScheduledChange()**](ScheduledChangesApi.md#patchFlagConfigScheduledChange) | **PATCH** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{id} | Update scheduled changes workflow
-[**postFlagConfigScheduledChanges()**](ScheduledChangesApi.md#postFlagConfigScheduledChanges) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes | Create scheduled changes workflow
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**deleteFlagConfigScheduledChanges()**](ScheduledChangesApi.md#deleteFlagConfigScheduledChanges) | **DELETE** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{id} | Delete scheduled changes workflow |
+| [**getFeatureFlagScheduledChange()**](ScheduledChangesApi.md#getFeatureFlagScheduledChange) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{id} | Get a scheduled change |
+| [**getFlagConfigScheduledChanges()**](ScheduledChangesApi.md#getFlagConfigScheduledChanges) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes | List scheduled changes |
+| [**patchFlagConfigScheduledChange()**](ScheduledChangesApi.md#patchFlagConfigScheduledChange) | **PATCH** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes/{id} | Update scheduled changes workflow |
+| [**postFlagConfigScheduledChanges()**](ScheduledChangesApi.md#postFlagConfigScheduledChanges) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/scheduled-changes | Create scheduled changes workflow |
 
 
 ## `deleteFlagConfigScheduledChanges()`
@@ -54,12 +54,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag key |
- **environment_key** | **string**| The environment key |
- **id** | **string**| The scheduled change id |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **feature_flag_key** | **string**| The feature flag key | |
+| **environment_key** | **string**| The environment key | |
+| **id** | **string**| The scheduled change id | |
 
 ### Return type
 
@@ -122,12 +122,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag key |
- **environment_key** | **string**| The environment key |
- **id** | **string**| The scheduled change id |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **feature_flag_key** | **string**| The feature flag key | |
+| **environment_key** | **string**| The environment key | |
+| **id** | **string**| The scheduled change id | |
 
 ### Return type
 
@@ -189,11 +189,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag key |
- **environment_key** | **string**| The environment key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **feature_flag_key** | **string**| The feature flag key | |
+| **environment_key** | **string**| The environment key | |
 
 ### Return type
 
@@ -258,14 +258,14 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag key |
- **environment_key** | **string**| The environment key |
- **id** | **string**| The scheduled change ID |
- **flag_scheduled_changes_input** | [**\LaunchDarklyApi\Model\FlagScheduledChangesInput**](../Model/FlagScheduledChangesInput.md)|  |
- **ignore_conflicts** | **bool**| Whether to succeed (&#x60;true&#x60;) or fail (&#x60;false&#x60;) when these new instructions conflict with existing scheduled changes | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **feature_flag_key** | **string**| The feature flag key | |
+| **environment_key** | **string**| The environment key | |
+| **id** | **string**| The scheduled change ID | |
+| **flag_scheduled_changes_input** | [**\LaunchDarklyApi\Model\FlagScheduledChangesInput**](../Model/FlagScheduledChangesInput.md)|  | |
+| **ignore_conflicts** | **bool**| Whether to succeed (&#x60;true&#x60;) or fail (&#x60;false&#x60;) when these new instructions conflict with existing scheduled changes | [optional] |
 
 ### Return type
 
@@ -292,7 +292,7 @@ postFlagConfigScheduledChanges($project_key, $feature_flag_key, $environment_key
 
 Create scheduled changes workflow
 
-Create scheduled changes for a feature flag. If the `ignoreConficts` query parameter is false and there are conflicts between these instructions and existing scheduled changes, the request will fail. If the parameter is true and there are conflicts, the request will succeed.
+Create scheduled changes for a feature flag. The changes you schedule may include any semantic patch instructions available when [updating a feature flag](https://launchdarkly.com/docs/api/feature-flags/patch-feature-flag#using-semantic-patches-on-a-feature-flag). If the `ignoreConficts` query parameter is false and there are conflicts between these instructions and existing scheduled changes, the request will fail. If the parameter is true and there are conflicts, the request will succeed.
 
 ### Example
 
@@ -329,13 +329,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag key |
- **environment_key** | **string**| The environment key |
- **post_flag_scheduled_changes_input** | [**\LaunchDarklyApi\Model\PostFlagScheduledChangesInput**](../Model/PostFlagScheduledChangesInput.md)|  |
- **ignore_conflicts** | **bool**| Whether to succeed (&#x60;true&#x60;) or fail (&#x60;false&#x60;) when these instructions conflict with existing scheduled changes | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **feature_flag_key** | **string**| The feature flag key | |
+| **environment_key** | **string**| The environment key | |
+| **post_flag_scheduled_changes_input** | [**\LaunchDarklyApi\Model\PostFlagScheduledChangesInput**](../Model/PostFlagScheduledChangesInput.md)|  | |
+| **ignore_conflicts** | **bool**| Whether to succeed (&#x60;true&#x60;) or fail (&#x60;false&#x60;) when these instructions conflict with existing scheduled changes | [optional] |
 
 ### Return type
 

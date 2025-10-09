@@ -1,22 +1,22 @@
 # LaunchDarklyApi\CodeReferencesApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteBranches()**](CodeReferencesApi.md#deleteBranches) | **POST** /api/v2/code-refs/repositories/{repo}/branch-delete-tasks | Delete branches
-[**deleteRepository()**](CodeReferencesApi.md#deleteRepository) | **DELETE** /api/v2/code-refs/repositories/{repo} | Delete repository
-[**getBranch()**](CodeReferencesApi.md#getBranch) | **GET** /api/v2/code-refs/repositories/{repo}/branches/{branch} | Get branch
-[**getBranches()**](CodeReferencesApi.md#getBranches) | **GET** /api/v2/code-refs/repositories/{repo}/branches | List branches
-[**getExtinctions()**](CodeReferencesApi.md#getExtinctions) | **GET** /api/v2/code-refs/extinctions | List extinctions
-[**getRepositories()**](CodeReferencesApi.md#getRepositories) | **GET** /api/v2/code-refs/repositories | List repositories
-[**getRepository()**](CodeReferencesApi.md#getRepository) | **GET** /api/v2/code-refs/repositories/{repo} | Get repository
-[**getRootStatistic()**](CodeReferencesApi.md#getRootStatistic) | **GET** /api/v2/code-refs/statistics | Get links to code reference repositories for each project
-[**getStatistics()**](CodeReferencesApi.md#getStatistics) | **GET** /api/v2/code-refs/statistics/{projectKey} | Get code references statistics for flags
-[**patchRepository()**](CodeReferencesApi.md#patchRepository) | **PATCH** /api/v2/code-refs/repositories/{repo} | Update repository
-[**postExtinction()**](CodeReferencesApi.md#postExtinction) | **POST** /api/v2/code-refs/repositories/{repo}/branches/{branch}/extinction-events | Create extinction
-[**postRepository()**](CodeReferencesApi.md#postRepository) | **POST** /api/v2/code-refs/repositories | Create repository
-[**putBranch()**](CodeReferencesApi.md#putBranch) | **PUT** /api/v2/code-refs/repositories/{repo}/branches/{branch} | Upsert branch
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**deleteBranches()**](CodeReferencesApi.md#deleteBranches) | **POST** /api/v2/code-refs/repositories/{repo}/branch-delete-tasks | Delete branches |
+| [**deleteRepository()**](CodeReferencesApi.md#deleteRepository) | **DELETE** /api/v2/code-refs/repositories/{repo} | Delete repository |
+| [**getBranch()**](CodeReferencesApi.md#getBranch) | **GET** /api/v2/code-refs/repositories/{repo}/branches/{branch} | Get branch |
+| [**getBranches()**](CodeReferencesApi.md#getBranches) | **GET** /api/v2/code-refs/repositories/{repo}/branches | List branches |
+| [**getExtinctions()**](CodeReferencesApi.md#getExtinctions) | **GET** /api/v2/code-refs/extinctions | List extinctions |
+| [**getRepositories()**](CodeReferencesApi.md#getRepositories) | **GET** /api/v2/code-refs/repositories | List repositories |
+| [**getRepository()**](CodeReferencesApi.md#getRepository) | **GET** /api/v2/code-refs/repositories/{repo} | Get repository |
+| [**getRootStatistic()**](CodeReferencesApi.md#getRootStatistic) | **GET** /api/v2/code-refs/statistics | Get links to code reference repositories for each project |
+| [**getStatistics()**](CodeReferencesApi.md#getStatistics) | **GET** /api/v2/code-refs/statistics/{projectKey} | Get code references statistics for flags |
+| [**patchRepository()**](CodeReferencesApi.md#patchRepository) | **PATCH** /api/v2/code-refs/repositories/{repo} | Update repository |
+| [**postExtinction()**](CodeReferencesApi.md#postExtinction) | **POST** /api/v2/code-refs/repositories/{repo}/branches/{branch}/extinction-events | Create extinction |
+| [**postRepository()**](CodeReferencesApi.md#postRepository) | **POST** /api/v2/code-refs/repositories | Create repository |
+| [**putBranch()**](CodeReferencesApi.md#putBranch) | **PUT** /api/v2/code-refs/repositories/{repo}/branches/{branch} | Upsert branch |
 
 
 ## `deleteBranches()`
@@ -60,10 +60,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **repo** | **string**| The repository name to delete branches for. |
- **request_body** | [**string[]**](../Model/string.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **repo** | **string**| The repository name to delete branches for. | |
+| **request_body** | [**string[]**](../Model/string.md)|  | |
 
 ### Return type
 
@@ -122,9 +122,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **repo** | **string**| The repository name |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **repo** | **string**| The repository name | |
 
 ### Return type
 
@@ -187,12 +187,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **repo** | **string**| The repository name |
- **branch** | **string**| The url-encoded branch name |
- **proj_key** | **string**| Filter results to a specific project | [optional]
- **flag_key** | **string**| Filter results to a specific flag key | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **repo** | **string**| The repository name | |
+| **branch** | **string**| The url-encoded branch name | |
+| **proj_key** | **string**| Filter results to a specific project | [optional] |
+| **flag_key** | **string**| Filter results to a specific flag key | [optional] |
 
 ### Return type
 
@@ -252,9 +252,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **repo** | **string**| The repository name |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **repo** | **string**| The repository name | |
 
 ### Return type
 
@@ -319,14 +319,14 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **repo_name** | **string**| Filter results to a specific repository | [optional]
- **branch_name** | **string**| Filter results to a specific branch. By default, only the default branch will be queried for extinctions. | [optional]
- **proj_key** | **string**| Filter results to a specific project | [optional]
- **flag_key** | **string**| Filter results to a specific flag key | [optional]
- **from** | **int**| Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;to&#x60;. | [optional]
- **to** | **int**| Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;from&#x60;. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **repo_name** | **string**| Filter results to a specific repository | [optional] |
+| **branch_name** | **string**| Filter results to a specific branch. By default, only the default branch will be queried for extinctions. | [optional] |
+| **proj_key** | **string**| Filter results to a specific project | [optional] |
+| **flag_key** | **string**| Filter results to a specific flag key | [optional] |
+| **from** | **int**| Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;to&#x60;. | [optional] |
+| **to** | **int**| Filter results to a specific timeframe based on commit time, expressed as a Unix epoch time in milliseconds. Must be used with &#x60;from&#x60;. | [optional] |
 
 ### Return type
 
@@ -389,12 +389,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **with_branches** | **string**| If set to any value, the endpoint returns repositories with associated branch data | [optional]
- **with_references_for_default_branch** | **string**| If set to any value, the endpoint returns repositories with associated branch data, as well as code references for the default git branch | [optional]
- **proj_key** | **string**| A LaunchDarkly project key. If provided, this filters code reference results to the specified project. | [optional]
- **flag_key** | **string**| If set to any value, the endpoint returns repositories with associated branch data, as well as code references for the default git branch | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **with_branches** | **string**| If set to any value, the endpoint returns repositories with associated branch data | [optional] |
+| **with_references_for_default_branch** | **string**| If set to any value, the endpoint returns repositories with associated branch data, as well as code references for the default git branch | [optional] |
+| **proj_key** | **string**| A LaunchDarkly project key. If provided, this filters code reference results to the specified project. | [optional] |
+| **flag_key** | **string**| If set to any value, the endpoint returns repositories with associated branch data, as well as code references for the default git branch | [optional] |
 
 ### Return type
 
@@ -454,9 +454,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **repo** | **string**| The repository name |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **repo** | **string**| The repository name | |
 
 ### Return type
 
@@ -576,10 +576,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **flag_key** | **string**| Filter results to a specific flag key | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **flag_key** | **string**| Filter results to a specific flag key | [optional] |
 
 ### Return type
 
@@ -640,10 +640,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **repo** | **string**| The repository name |
- **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **repo** | **string**| The repository name | |
+| **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  | |
 
 ### Return type
 
@@ -704,11 +704,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **repo** | **string**| The repository name |
- **branch** | **string**| The URL-encoded branch name |
- **extinction** | [**\LaunchDarklyApi\Model\Extinction[]**](../Model/Extinction.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **repo** | **string**| The repository name | |
+| **branch** | **string**| The URL-encoded branch name | |
+| **extinction** | [**\LaunchDarklyApi\Model\Extinction[]**](../Model/Extinction.md)|  | |
 
 ### Return type
 
@@ -768,9 +768,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **repository_post** | [**\LaunchDarklyApi\Model\RepositoryPost**](../Model/RepositoryPost.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **repository_post** | [**\LaunchDarklyApi\Model\RepositoryPost**](../Model/RepositoryPost.md)|  | |
 
 ### Return type
 
@@ -831,11 +831,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **repo** | **string**| The repository name |
- **branch** | **string**| The URL-encoded branch name |
- **put_branch** | [**\LaunchDarklyApi\Model\PutBranch**](../Model/PutBranch.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **repo** | **string**| The repository name | |
+| **branch** | **string**| The URL-encoded branch name | |
+| **put_branch** | [**\LaunchDarklyApi\Model\PutBranch**](../Model/PutBranch.md)|  | |
 
 ### Return type
 

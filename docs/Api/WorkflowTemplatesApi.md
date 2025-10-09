@@ -1,12 +1,12 @@
 # LaunchDarklyApi\WorkflowTemplatesApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createWorkflowTemplate()**](WorkflowTemplatesApi.md#createWorkflowTemplate) | **POST** /api/v2/templates | Create workflow template
-[**deleteWorkflowTemplate()**](WorkflowTemplatesApi.md#deleteWorkflowTemplate) | **DELETE** /api/v2/templates/{templateKey} | Delete workflow template
-[**getWorkflowTemplates()**](WorkflowTemplatesApi.md#getWorkflowTemplates) | **GET** /api/v2/templates | Get workflow templates
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createWorkflowTemplate()**](WorkflowTemplatesApi.md#createWorkflowTemplate) | **POST** /api/v2/templates | Create workflow template |
+| [**deleteWorkflowTemplate()**](WorkflowTemplatesApi.md#deleteWorkflowTemplate) | **DELETE** /api/v2/templates/{templateKey} | Delete workflow template |
+| [**getWorkflowTemplates()**](WorkflowTemplatesApi.md#getWorkflowTemplates) | **GET** /api/v2/templates | Get workflow templates |
 
 
 ## `createWorkflowTemplate()`
@@ -17,7 +17,7 @@ createWorkflowTemplate($create_workflow_template_input): \LaunchDarklyApi\Model\
 
 Create workflow template
 
-Create a template for a feature flag workflow
+> ### Workflows are in maintenance mode > > The workflows feature is in maintenance mode, and is planned for future deprecation at a date not yet specified. We will work with existing customers using workflows to migrate to a replacement solution when deprecation occurs.  Create a template for a feature flag workflow.
 
 ### Example
 
@@ -50,9 +50,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **create_workflow_template_input** | [**\LaunchDarklyApi\Model\CreateWorkflowTemplateInput**](../Model/CreateWorkflowTemplateInput.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_workflow_template_input** | [**\LaunchDarklyApi\Model\CreateWorkflowTemplateInput**](../Model/CreateWorkflowTemplateInput.md)|  | |
 
 ### Return type
 
@@ -111,9 +111,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **template_key** | **string**| The template key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **template_key** | **string**| The template key | |
 
 ### Return type
 
@@ -174,10 +174,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **summary** | **bool**| Whether the entire template object or just a summary should be returned | [optional]
- **search** | **string**| The substring in either the name or description of a template | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **summary** | **bool**| Whether the entire template object or just a summary should be returned | [optional] |
+| **search** | **string**| The substring in either the name or description of a template | [optional] |
 
 ### Return type
 

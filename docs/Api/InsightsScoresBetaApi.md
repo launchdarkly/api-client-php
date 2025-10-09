@@ -1,15 +1,15 @@
 # LaunchDarklyApi\InsightsScoresBetaApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createInsightGroup()**](InsightsScoresBetaApi.md#createInsightGroup) | **POST** /api/v2/engineering-insights/insights/group | Create insight group
-[**deleteInsightGroup()**](InsightsScoresBetaApi.md#deleteInsightGroup) | **DELETE** /api/v2/engineering-insights/insights/groups/{insightGroupKey} | Delete insight group
-[**getInsightGroup()**](InsightsScoresBetaApi.md#getInsightGroup) | **GET** /api/v2/engineering-insights/insights/groups/{insightGroupKey} | Get insight group
-[**getInsightGroups()**](InsightsScoresBetaApi.md#getInsightGroups) | **GET** /api/v2/engineering-insights/insights/groups | List insight groups
-[**getInsightsScores()**](InsightsScoresBetaApi.md#getInsightsScores) | **GET** /api/v2/engineering-insights/insights/scores | Get insight scores
-[**patchInsightGroup()**](InsightsScoresBetaApi.md#patchInsightGroup) | **PATCH** /api/v2/engineering-insights/insights/groups/{insightGroupKey} | Patch insight group
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createInsightGroup()**](InsightsScoresBetaApi.md#createInsightGroup) | **POST** /api/v2/engineering-insights/insights/group | Create insight group |
+| [**deleteInsightGroup()**](InsightsScoresBetaApi.md#deleteInsightGroup) | **DELETE** /api/v2/engineering-insights/insights/groups/{insightGroupKey} | Delete insight group |
+| [**getInsightGroup()**](InsightsScoresBetaApi.md#getInsightGroup) | **GET** /api/v2/engineering-insights/insights/groups/{insightGroupKey} | Get insight group |
+| [**getInsightGroups()**](InsightsScoresBetaApi.md#getInsightGroups) | **GET** /api/v2/engineering-insights/insights/groups | List insight groups |
+| [**getInsightsScores()**](InsightsScoresBetaApi.md#getInsightsScores) | **GET** /api/v2/engineering-insights/insights/scores | Get insight scores |
+| [**patchInsightGroup()**](InsightsScoresBetaApi.md#patchInsightGroup) | **PATCH** /api/v2/engineering-insights/insights/groups/{insightGroupKey} | Patch insight group |
 
 
 ## `createInsightGroup()`
@@ -53,9 +53,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **post_insight_group_params** | [**\LaunchDarklyApi\Model\PostInsightGroupParams**](../Model/PostInsightGroupParams.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **post_insight_group_params** | [**\LaunchDarklyApi\Model\PostInsightGroupParams**](../Model/PostInsightGroupParams.md)|  | |
 
 ### Return type
 
@@ -114,9 +114,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **insight_group_key** | **string**| The insight group key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **insight_group_key** | **string**| The insight group key | |
 
 ### Return type
 
@@ -177,10 +177,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **insight_group_key** | **string**| The insight group key |
- **expand** | **string**| Options: &#x60;scores&#x60;, &#x60;environment&#x60; | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **insight_group_key** | **string**| The insight group key | |
+| **expand** | **string**| Options: &#x60;scores&#x60;, &#x60;environment&#x60; | [optional] |
 
 ### Return type
 
@@ -244,13 +244,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int**| The number of insight groups to return. Default is 20. Must be between 1 and 20 inclusive. | [optional]
- **offset** | **int**| Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional]
- **sort** | **string**| Sort flag list by field. Prefix field with &lt;code&gt;-&lt;/code&gt; to sort in descending order. Allowed fields: name | [optional]
- **query** | **string**| Filter list of insights groups by name. | [optional]
- **expand** | **string**| Options: &#x60;scores&#x60;, &#x60;environment&#x60;, &#x60;metadata&#x60; | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| The number of insight groups to return. Default is 20. Must be between 1 and 20 inclusive. | [optional] |
+| **offset** | **int**| Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
+| **sort** | **string**| Sort flag list by field. Prefix field with &lt;code&gt;-&lt;/code&gt; to sort in descending order. Allowed fields: name | [optional] |
+| **query** | **string**| Filter list of insights groups by name. | [optional] |
+| **expand** | **string**| Options: &#x60;scores&#x60;, &#x60;environment&#x60;, &#x60;metadata&#x60; | [optional] |
 
 ### Return type
 
@@ -312,11 +312,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key |
- **application_key** | **string**| Comma separated list of application keys | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | |
+| **application_key** | **string**| Comma separated list of application keys | [optional] |
 
 ### Return type
 
@@ -377,10 +377,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **insight_group_key** | **string**| The insight group key |
- **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **insight_group_key** | **string**| The insight group key | |
+| **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  | |
 
 ### Return type
 

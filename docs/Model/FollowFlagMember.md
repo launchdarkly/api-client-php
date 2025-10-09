@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **_id** | **string** | The member&#39;s ID |
 **first_name** | **string** | The member&#39;s first name | [optional]
 **last_name** | **string** | The member&#39;s last name | [optional]
-**role** | **string** | The member&#39;s built-in role. If the member has no custom roles, this role will be in effect. |
+**role** | **string** | The member&#39;s base role. If the member has no additional roles, this role will be in effect. |
 **email** | **string** | The member&#39;s email address |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

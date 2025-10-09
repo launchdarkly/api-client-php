@@ -8,12 +8,12 @@ Name | Type | Description | Notes
 **_id** | **string** | The member&#39;s ID |
 **first_name** | **string** | The member&#39;s first name | [optional]
 **last_name** | **string** | The member&#39;s last name | [optional]
-**role** | **string** | The member&#39;s built-in role. If the member has no custom roles, this role will be in effect. |
+**role** | **string** | The member&#39;s base role. If the member has no additional roles, this role will be in effect. |
 **email** | **string** | The member&#39;s email address |
 **_pending_invite** | **bool** | Whether the member has a pending invitation |
 **_verified** | **bool** | Whether the member&#39;s email address has been verified |
 **_pending_email** | **string** | The member&#39;s email address before it has been verified, for accounts where email verification is required | [optional]
-**custom_roles** | **string[]** | The set of custom roles (as keys) assigned to the member |
+**custom_roles** | **string[]** | The set of additional roles, besides the base role, assigned to the member |
 **mfa** | **string** | Whether multi-factor authentication is enabled for this member |
 **excluded_dashboards** | **string[]** | Default dashboards that the member has chosen to ignore | [optional]
 **_last_seen** | **int** |  |

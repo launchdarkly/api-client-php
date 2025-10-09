@@ -1,14 +1,14 @@
 # LaunchDarklyApi\FlagTriggersApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createTriggerWorkflow()**](FlagTriggersApi.md#createTriggerWorkflow) | **POST** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey} | Create flag trigger
-[**deleteTriggerWorkflow()**](FlagTriggersApi.md#deleteTriggerWorkflow) | **DELETE** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id} | Delete flag trigger
-[**getTriggerWorkflowById()**](FlagTriggersApi.md#getTriggerWorkflowById) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id} | Get flag trigger by ID
-[**getTriggerWorkflows()**](FlagTriggersApi.md#getTriggerWorkflows) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey} | List flag triggers
-[**patchTriggerWorkflow()**](FlagTriggersApi.md#patchTriggerWorkflow) | **PATCH** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id} | Update flag trigger
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createTriggerWorkflow()**](FlagTriggersApi.md#createTriggerWorkflow) | **POST** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey} | Create flag trigger |
+| [**deleteTriggerWorkflow()**](FlagTriggersApi.md#deleteTriggerWorkflow) | **DELETE** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id} | Delete flag trigger |
+| [**getTriggerWorkflowById()**](FlagTriggersApi.md#getTriggerWorkflowById) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id} | Get flag trigger by ID |
+| [**getTriggerWorkflows()**](FlagTriggersApi.md#getTriggerWorkflows) | **GET** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey} | List flag triggers |
+| [**patchTriggerWorkflow()**](FlagTriggersApi.md#patchTriggerWorkflow) | **PATCH** /api/v2/flags/{projectKey}/{featureFlagKey}/triggers/{environmentKey}/{id} | Update flag trigger |
 
 
 ## `createTriggerWorkflow()`
@@ -55,12 +55,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key |
- **feature_flag_key** | **string**| The feature flag key |
- **trigger_post** | [**\LaunchDarklyApi\Model\TriggerPost**](../Model/TriggerPost.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | |
+| **feature_flag_key** | **string**| The feature flag key | |
+| **trigger_post** | [**\LaunchDarklyApi\Model\TriggerPost**](../Model/TriggerPost.md)|  | |
 
 ### Return type
 
@@ -122,12 +122,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key |
- **feature_flag_key** | **string**| The feature flag key |
- **id** | **string**| The flag trigger ID |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | |
+| **feature_flag_key** | **string**| The feature flag key | |
+| **id** | **string**| The flag trigger ID | |
 
 ### Return type
 
@@ -190,12 +190,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag key |
- **environment_key** | **string**| The environment key |
- **id** | **string**| The flag trigger ID |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **feature_flag_key** | **string**| The feature flag key | |
+| **environment_key** | **string**| The environment key | |
+| **id** | **string**| The flag trigger ID | |
 
 ### Return type
 
@@ -257,11 +257,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key |
- **feature_flag_key** | **string**| The feature flag key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | |
+| **feature_flag_key** | **string**| The feature flag key | |
 
 ### Return type
 
@@ -325,13 +325,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key |
- **feature_flag_key** | **string**| The feature flag key |
- **id** | **string**| The flag trigger ID |
- **flag_trigger_input** | [**\LaunchDarklyApi\Model\FlagTriggerInput**](../Model/FlagTriggerInput.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | |
+| **feature_flag_key** | **string**| The feature flag key | |
+| **id** | **string**| The flag trigger ID | |
+| **flag_trigger_input** | [**\LaunchDarklyApi\Model\FlagTriggerInput**](../Model/FlagTriggerInput.md)|  | |
 
 ### Return type
 

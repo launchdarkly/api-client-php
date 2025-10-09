@@ -6,8 +6,11 @@ Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **experiment_count** | **int** | The number of experiments using this metric | [optional]
 **metric_group_count** | **int** | The number of metric groups using this metric | [optional]
+**active_experiment_count** | **int** | The number of active experiments using this metric | [optional]
+**active_guarded_rollout_count** | **int** | The number of active guarded rollouts using this metric | [optional]
 **_id** | **string** | The ID of this metric |
 **_version_id** | **string** | The version ID of the metric |
+**_version** | **int** | Version of the metric | [optional]
 **key** | **string** | A unique key to reference the metric |
 **name** | **string** | A human-friendly name for the metric |
 **kind** | **string** | The kind of event the metric tracks |
@@ -27,16 +30,21 @@ Name | Type | Description | Notes
 **unit** | **string** | For numeric custom metrics, the unit of measure | [optional]
 **event_key** | **string** | For custom metrics, the event key to use in your code | [optional]
 **randomization_units** | **string[]** | An array of randomization units allowed for this metric | [optional]
+**filters** | [**\LaunchDarklyApi\Model\Filter**](Filter.md) |  | [optional]
 **unit_aggregation_type** | **string** | The method by which multiple unit event values are aggregated | [optional]
 **analysis_type** | **string** | The method for analyzing metric events | [optional]
 **percentile_value** | **int** | The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when &lt;code&gt;analysisType&lt;/code&gt; is &lt;code&gt;percentile&lt;/code&gt;. | [optional]
 **event_default** | [**\LaunchDarklyApi\Model\MetricEventDefaultRep**](MetricEventDefaultRep.md) |  | [optional]
-**experiments** | [**\LaunchDarklyApi\Model\DependentExperimentRep[]**](DependentExperimentRep.md) |  | [optional]
-**metric_groups** | [**\LaunchDarklyApi\Model\DependentMetricGroupRep[]**](DependentMetricGroupRep.md) | Metric groups that use this metric | [optional]
-**is_active** | **bool** | Whether the metric is active | [optional]
-**_attached_features** | [**\LaunchDarklyApi\Model\FlagListingRep[]**](FlagListingRep.md) | Details on the flags attached to this metric | [optional]
-**_version** | **int** | Version of the metric | [optional]
+**data_source** | [**\LaunchDarklyApi\Model\MetricDataSourceRefRep**](MetricDataSourceRefRep.md) |  | [optional]
+**archived** | **bool** | Whether the metric version is archived | [optional]
+**archived_at** | **int** |  | [optional]
 **selector** | **string** | For click metrics, the CSS selectors | [optional]
 **urls** | **array[]** |  | [optional]
+**experiments** | [**\LaunchDarklyApi\Model\DependentExperimentRep[]**](DependentExperimentRep.md) |  | [optional]
+**metric_groups** | [**\LaunchDarklyApi\Model\DependentMetricGroupRep[]**](DependentMetricGroupRep.md) | Metric groups that use this metric | [optional]
+**last_used_in_experiment** | [**\LaunchDarklyApi\Model\DependentExperimentRep**](DependentExperimentRep.md) |  | [optional]
+**last_used_in_guarded_rollout** | [**\LaunchDarklyApi\Model\DependentMeasuredRolloutRep**](DependentMeasuredRolloutRep.md) |  | [optional]
+**is_active** | **bool** | Whether the metric is active | [optional]
+**_attached_features** | [**\LaunchDarklyApi\Model\FlagListingRep[]**](FlagListingRep.md) | Details on the flags attached to this metric | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

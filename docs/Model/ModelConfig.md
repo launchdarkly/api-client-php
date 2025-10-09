@@ -15,7 +15,8 @@ Name | Type | Description | Notes
 **custom_params** | **object** |  | [optional]
 **tags** | **string[]** |  |
 **version** | **int** |  |
-**cost_per_input_token** | **double** | Cost per input token in USD | [optional]
-**cost_per_output_token** | **double** | Cost per output token in USD | [optional]
+**cost_per_input_token** | **float** | Cost per input token in USD | [optional]
+**cost_per_output_token** | **float** | Cost per output token in USD | [optional]
+**is_restricted** | **bool** | Whether the model is restricted |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

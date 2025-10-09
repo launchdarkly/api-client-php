@@ -21,5 +21,7 @@ Name | Type | Description | Notes
 **analysis_type** | **string** | The method for analyzing metric events | [optional]
 **percentile_value** | **int** | The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when &lt;code&gt;analysisType&lt;/code&gt; is &lt;code&gt;percentile&lt;/code&gt;. | [optional]
 **event_default** | [**\LaunchDarklyApi\Model\MetricEventDefaultRep**](MetricEventDefaultRep.md) |  | [optional]
+**data_source** | [**\LaunchDarklyApi\Model\MetricDataSourceRefRep**](MetricDataSourceRefRep.md) |  | [optional]
+**filters** | [**\LaunchDarklyApi\Model\EventFilter**](EventFilter.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -1,13 +1,13 @@
 # LaunchDarklyApi\FlagLinksBetaApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createFlagLink()**](FlagLinksBetaApi.md#createFlagLink) | **POST** /api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey} | Create flag link
-[**deleteFlagLink()**](FlagLinksBetaApi.md#deleteFlagLink) | **DELETE** /api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}/{id} | Delete flag link
-[**getFlagLinks()**](FlagLinksBetaApi.md#getFlagLinks) | **GET** /api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey} | List flag links
-[**updateFlagLink()**](FlagLinksBetaApi.md#updateFlagLink) | **PATCH** /api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}/{id} | Update flag link
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createFlagLink()**](FlagLinksBetaApi.md#createFlagLink) | **POST** /api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey} | Create flag link |
+| [**deleteFlagLink()**](FlagLinksBetaApi.md#deleteFlagLink) | **DELETE** /api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}/{id} | Delete flag link |
+| [**getFlagLinks()**](FlagLinksBetaApi.md#getFlagLinks) | **GET** /api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey} | List flag links |
+| [**updateFlagLink()**](FlagLinksBetaApi.md#updateFlagLink) | **PATCH** /api/v2/flag-links/projects/{projectKey}/flags/{featureFlagKey}/{id} | Update flag link |
 
 
 ## `createFlagLink()`
@@ -53,11 +53,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag key |
- **flag_link_post** | [**\LaunchDarklyApi\Model\FlagLinkPost**](../Model/FlagLinkPost.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **feature_flag_key** | **string**| The feature flag key | |
+| **flag_link_post** | [**\LaunchDarklyApi\Model\FlagLinkPost**](../Model/FlagLinkPost.md)|  | |
 
 ### Return type
 
@@ -118,11 +118,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag key |
- **id** | **string**| The flag link ID or Key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **feature_flag_key** | **string**| The feature flag key | |
+| **id** | **string**| The flag link ID or Key | |
 
 ### Return type
 
@@ -183,10 +183,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **feature_flag_key** | **string**| The feature flag key | |
 
 ### Return type
 
@@ -249,12 +249,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag key |
- **id** | **string**| The flag link ID |
- **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **feature_flag_key** | **string**| The feature flag key | |
+| **id** | **string**| The flag link ID | |
+| **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  | |
 
 ### Return type
 

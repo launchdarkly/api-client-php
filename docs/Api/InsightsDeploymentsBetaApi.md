@@ -1,13 +1,13 @@
 # LaunchDarklyApi\InsightsDeploymentsBetaApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createDeploymentEvent()**](InsightsDeploymentsBetaApi.md#createDeploymentEvent) | **POST** /api/v2/engineering-insights/deployment-events | Create deployment event
-[**getDeployment()**](InsightsDeploymentsBetaApi.md#getDeployment) | **GET** /api/v2/engineering-insights/deployments/{deploymentID} | Get deployment
-[**getDeployments()**](InsightsDeploymentsBetaApi.md#getDeployments) | **GET** /api/v2/engineering-insights/deployments | List deployments
-[**updateDeployment()**](InsightsDeploymentsBetaApi.md#updateDeployment) | **PATCH** /api/v2/engineering-insights/deployments/{deploymentID} | Update deployment
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createDeploymentEvent()**](InsightsDeploymentsBetaApi.md#createDeploymentEvent) | **POST** /api/v2/engineering-insights/deployment-events | Create deployment event |
+| [**getDeployment()**](InsightsDeploymentsBetaApi.md#getDeployment) | **GET** /api/v2/engineering-insights/deployments/{deploymentID} | Get deployment |
+| [**getDeployments()**](InsightsDeploymentsBetaApi.md#getDeployments) | **GET** /api/v2/engineering-insights/deployments | List deployments |
+| [**updateDeployment()**](InsightsDeploymentsBetaApi.md#updateDeployment) | **PATCH** /api/v2/engineering-insights/deployments/{deploymentID} | Update deployment |
 
 
 ## `createDeploymentEvent()`
@@ -50,9 +50,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **post_deployment_event_input** | [**\LaunchDarklyApi\Model\PostDeploymentEventInput**](../Model/PostDeploymentEventInput.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **post_deployment_event_input** | [**\LaunchDarklyApi\Model\PostDeploymentEventInput**](../Model/PostDeploymentEventInput.md)|  | |
 
 ### Return type
 
@@ -113,10 +113,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deployment_id** | **string**| The deployment ID |
- **expand** | **string**| Expand properties in response. Options: &#x60;pullRequests&#x60;, &#x60;flagReferences&#x60; | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **deployment_id** | **string**| The deployment ID | |
+| **expand** | **string**| Expand properties in response. Options: &#x60;pullRequests&#x60;, &#x60;flagReferences&#x60; | [optional] |
 
 ### Return type
 
@@ -186,19 +186,19 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key |
- **application_key** | **string**| Comma separated list of application keys | [optional]
- **limit** | **int**| The number of deployments to return. Default is 20. Maximum allowed is 100. | [optional]
- **expand** | **string**| Expand properties in response. Options: &#x60;pullRequests&#x60;, &#x60;flagReferences&#x60; | [optional]
- **from** | **int**| Unix timestamp in milliseconds. Default value is 7 days ago. | [optional]
- **to** | **int**| Unix timestamp in milliseconds. Default value is now. | [optional]
- **after** | **string**| Identifier used for pagination | [optional]
- **before** | **string**| Identifier used for pagination | [optional]
- **kind** | **string**| The deployment kind | [optional]
- **status** | **string**| The deployment status | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | |
+| **application_key** | **string**| Comma separated list of application keys | [optional] |
+| **limit** | **int**| The number of deployments to return. Default is 20. Maximum allowed is 100. | [optional] |
+| **expand** | **string**| Expand properties in response. Options: &#x60;pullRequests&#x60;, &#x60;flagReferences&#x60; | [optional] |
+| **from** | **int**| Unix timestamp in milliseconds. Default value is 7 days ago. | [optional] |
+| **to** | **int**| Unix timestamp in milliseconds. Default value is now. | [optional] |
+| **after** | **string**| Identifier used for pagination | [optional] |
+| **before** | **string**| Identifier used for pagination | [optional] |
+| **kind** | **string**| The deployment kind | [optional] |
+| **status** | **string**| The deployment status | [optional] |
 
 ### Return type
 
@@ -259,10 +259,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **deployment_id** | **string**| The deployment ID |
- **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **deployment_id** | **string**| The deployment ID | |
+| **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  | |
 
 ### Return type
 

@@ -1,17 +1,17 @@
 # LaunchDarklyApi\TeamsApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteTeam()**](TeamsApi.md#deleteTeam) | **DELETE** /api/v2/teams/{teamKey} | Delete team
-[**getTeam()**](TeamsApi.md#getTeam) | **GET** /api/v2/teams/{teamKey} | Get team
-[**getTeamMaintainers()**](TeamsApi.md#getTeamMaintainers) | **GET** /api/v2/teams/{teamKey}/maintainers | Get team maintainers
-[**getTeamRoles()**](TeamsApi.md#getTeamRoles) | **GET** /api/v2/teams/{teamKey}/roles | Get team custom roles
-[**getTeams()**](TeamsApi.md#getTeams) | **GET** /api/v2/teams | List teams
-[**patchTeam()**](TeamsApi.md#patchTeam) | **PATCH** /api/v2/teams/{teamKey} | Update team
-[**postTeam()**](TeamsApi.md#postTeam) | **POST** /api/v2/teams | Create team
-[**postTeamMembers()**](TeamsApi.md#postTeamMembers) | **POST** /api/v2/teams/{teamKey}/members | Add multiple members to team
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**deleteTeam()**](TeamsApi.md#deleteTeam) | **DELETE** /api/v2/teams/{teamKey} | Delete team |
+| [**getTeam()**](TeamsApi.md#getTeam) | **GET** /api/v2/teams/{teamKey} | Get team |
+| [**getTeamMaintainers()**](TeamsApi.md#getTeamMaintainers) | **GET** /api/v2/teams/{teamKey}/maintainers | Get team maintainers |
+| [**getTeamRoles()**](TeamsApi.md#getTeamRoles) | **GET** /api/v2/teams/{teamKey}/roles | Get team custom roles |
+| [**getTeams()**](TeamsApi.md#getTeams) | **GET** /api/v2/teams | List teams |
+| [**patchTeam()**](TeamsApi.md#patchTeam) | **PATCH** /api/v2/teams/{teamKey} | Update team |
+| [**postTeam()**](TeamsApi.md#postTeam) | **POST** /api/v2/teams | Create team |
+| [**postTeamMembers()**](TeamsApi.md#postTeamMembers) | **POST** /api/v2/teams/{teamKey}/members | Add multiple members to team |
 
 
 ## `deleteTeam()`
@@ -54,9 +54,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **team_key** | **string**| The team key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **team_key** | **string**| The team key | |
 
 ### Return type
 
@@ -117,10 +117,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **team_key** | **string**| The team key. |
- **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **team_key** | **string**| The team key. | |
+| **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional] |
 
 ### Return type
 
@@ -182,11 +182,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **team_key** | **string**| The team key |
- **limit** | **int**| The number of maintainers to return in the response. Defaults to 20. | [optional]
- **offset** | **int**| Where to start in the list. This is for use with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **team_key** | **string**| The team key | |
+| **limit** | **int**| The number of maintainers to return in the response. Defaults to 20. | [optional] |
+| **offset** | **int**| Where to start in the list. This is for use with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 
 ### Return type
 
@@ -248,11 +248,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **team_key** | **string**| The team key |
- **limit** | **int**| The number of roles to return in the response. Defaults to 20. | [optional]
- **offset** | **int**| Where to start in the list. This is for use with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **team_key** | **string**| The team key | |
+| **limit** | **int**| The number of roles to return in the response. Defaults to 20. | [optional] |
+| **offset** | **int**| Where to start in the list. This is for use with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 
 ### Return type
 
@@ -315,12 +315,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int**| The number of teams to return in the response. Defaults to 20. | [optional]
- **offset** | **int**| Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next &#x60;limit&#x60; items. | [optional]
- **filter** | **string**| A comma-separated list of filters. Each filter is constructed as &#x60;field:value&#x60;. | [optional]
- **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| The number of teams to return in the response. Defaults to 20. | [optional] |
+| **offset** | **int**| Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next &#x60;limit&#x60; items. | [optional] |
+| **filter** | **string**| A comma-separated list of filters. Each filter is constructed as &#x60;field:value&#x60;. | [optional] |
+| **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional] |
 
 ### Return type
 
@@ -347,7 +347,7 @@ patchTeam($team_key, $team_patch_input, $expand): \LaunchDarklyApi\Model\Team
 
 Update team
 
-Perform a partial update to a team. Updating a team uses the semantic patch format.  To make a semantic patch request, you must append `domain-model=launchdarkly.semanticpatch` to your `Content-Type` header. To learn more, read [Updates using semantic patch](https://launchdarkly.com/docs/api#updates-using-semantic-patch).  ### Instructions  Semantic patch requests support the following `kind` instructions for updating teams. Several of the instructions require one or more member IDs as parameters. The member ID is returned as part of the [List account members](https://launchdarkly.com/docs/ld-docs/api/account-members/get-members) response. It is the `_id` field of each element in the `items` array.   <details> <summary>Click to expand instructions for <strong>updating teams</strong></summary>  #### addCustomRoles  Adds custom roles to the team. Team members will have these custom roles granted to them.  ##### Parameters  - `values`: List of custom role keys.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"addCustomRoles\",     \"values\": [ \"example-custom-role\" ]   }] } ```  #### removeCustomRoles  Removes custom roles from the team. The app will no longer grant these custom roles to the team members.  ##### Parameters  - `values`: List of custom role keys.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"removeCustomRoles\",     \"values\": [ \"example-custom-role\" ]   }] } ```  #### addRoleAttribute  Adds a role attribute to a team. Team members will have these role attribute values scoped for all custom roles granted to them.  ##### Parameters  - `key`: The role attribute key to add. - `values`: List of role attribute values for that key.  Here's an example:  ```json {   \"instructions\": [     {       \"kind\": \"addRoleAttribute\",       \"key\": \"testAttribute\",       \"values\": [\"someNewValue\", \"someOtherNewValue\"]     }   ] } ``` #### updateRoleAttribute  Updates a role attribute on the team. Any existing values for the given key will be replaced with the new values. Team members will have these role attribute values scoped for all custom roles granted to them.  ##### Parameters  - `key`: The role attribute key to update. - `values`: List of role attribute values for that key.  Here's an example: ```json {   \"instructions\": [     {       \"kind\": \"updateRoleAttribute\",       \"key\": \"testAttribute\",       \"values\": [\"someNewValue\", \"someOtherNewValue\"]     }   ] } ``` #### removeRoleAttribute  Removes a role attribute from the team.  ##### Parameters  - `key`: The role attribute key to remove.  Here's an example: ```json {   \"instructions\": [     {       \"kind\": \"removeRoleAttribute\",       \"key\": \"testAttribute\"     }   ] } ```  #### addMembers  Adds members to the team.  ##### Parameters  - `values`: List of member IDs to add.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"addMembers\",     \"values\": [ \"1234a56b7c89d012345e678f\", \"507f1f77bcf86cd799439011\" ]   }] } ```  #### removeMembers  Removes members from the team.  ##### Parameters  - `values`: List of member IDs to remove.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"removeMembers\",     \"values\": [ \"1234a56b7c89d012345e678f\", \"507f1f77bcf86cd799439011\" ]   }] } ```  #### replaceMembers  Replaces the existing members of the team with the new members.  ##### Parameters  - `values`: List of member IDs of the new members.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"replaceMembers\",     \"values\": [ \"1234a56b7c89d012345e678f\", \"507f1f77bcf86cd799439011\" ]   }] } ```  #### addPermissionGrants  Adds permission grants to members for the team. For example, a permission grant could allow a member to act as a team maintainer. A permission grant may have either an `actionSet` or a list of `actions` but not both at the same time. The members do not have to be team members to have a permission grant for the team.  ##### Parameters  - `actionSet`: Name of the action set. - `actions`: List of actions. - `memberIDs`: List of member IDs.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"addPermissionGrants\",     \"actions\": [ \"updateTeamName\", \"updateTeamDescription\" ],     \"memberIDs\": [ \"1234a56b7c89d012345e678f\", \"507f1f77bcf86cd799439011\" ]   }] } ```  #### removePermissionGrants  Removes permission grants from members for the team. A permission grant may have either an `actionSet` or a list of `actions` but not both at the same time. The `actionSet` and `actions` must match an existing permission grant.  ##### Parameters  - `actionSet`: Name of the action set. - `actions`: List of actions. - `memberIDs`: List of member IDs.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"removePermissionGrants\",     \"actions\": [ \"updateTeamName\", \"updateTeamDescription\" ],     \"memberIDs\": [ \"1234a56b7c89d012345e678f\", \"507f1f77bcf86cd799439011\" ]   }] } ```  #### updateDescription  Updates the description of the team.  ##### Parameters  - `value`: The new description.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"updateDescription\",     \"value\": \"Updated team description\"   }] } ```  #### updateName  Updates the name of the team.  ##### Parameters  - `value`: The new name.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"updateName\",     \"value\": \"Updated team name\"   }] } ```  </details>  ### Expanding the teams response LaunchDarkly supports four fields for expanding the \"Update team\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with any of the following fields:  * `members` includes the total count of members that belong to the team. * `roles` includes a paginated list of the custom roles that you have assigned to the team. * `projects` includes a paginated list of the projects that the team has any write access to. * `maintainers` includes a paginated list of the maintainers that you have assigned to the team.  For example, `expand=members,roles` includes the `members` and `roles` fields in the response.
+Perform a partial update to a team. Updating a team uses the semantic patch format.  To make a semantic patch request, you must append `domain-model=launchdarkly.semanticpatch` to your `Content-Type` header. To learn more, read [Updates using semantic patch](https://launchdarkly.com/docs/api#updates-using-semantic-patch).  ### Instructions  Semantic patch requests support the following `kind` instructions for updating teams. Several of the instructions require one or more member IDs as parameters. The member ID is returned as part of the [List account members](https://launchdarkly.com/docs/api/account-members/get-members) response. It is the `_id` field of each element in the `items` array.   <details> <summary>Click to expand instructions for <strong>updating teams</strong></summary>  #### addCustomRoles  Adds custom roles to the team. Team members will have these custom roles granted to them.  ##### Parameters  - `values`: List of custom role keys.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"addCustomRoles\",     \"values\": [ \"example-custom-role\" ]   }] } ```  #### addMembers  Adds members to the team.  ##### Parameters  - `values`: List of member IDs to add.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"addMembers\",     \"values\": [ \"1234a56b7c89d012345e678f\", \"507f1f77bcf86cd799439011\" ]   }] } ```  #### addPermissionGrants  Adds permission grants to members for the team. For example, a permission grant could allow a member to act as a team maintainer. A permission grant may have either an `actionSet` or a list of `actions` but not both at the same time. The members do not have to be team members to have a permission grant for the team.  ##### Parameters  - `actionSet`: Name of the action set. - `actions`: List of actions. - `memberIDs`: List of member IDs.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"addPermissionGrants\",     \"actions\": [ \"updateTeamName\", \"updateTeamDescription\" ],     \"memberIDs\": [ \"1234a56b7c89d012345e678f\", \"507f1f77bcf86cd799439011\" ]   }] } ```  #### addRoleAttribute  Adds a role attribute to a team. Team members will have these role attribute values scoped for all custom roles granted to them.  ##### Parameters  - `key`: The role attribute key to add. - `values`: List of role attribute values for that key.  Here's an example:  ```json {   \"instructions\": [     {       \"kind\": \"addRoleAttribute\",       \"key\": \"testAttribute\",       \"values\": [\"someNewValue\", \"someOtherNewValue\"]     }   ] } ```  #### removeCustomRoles  Removes custom roles from the team. The app will no longer grant these custom roles to the team members.  ##### Parameters  - `values`: List of custom role keys.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"removeCustomRoles\",     \"values\": [ \"example-custom-role\" ]   }] } ```  #### removeMembers  Removes members from the team.  ##### Parameters  - `values`: List of member IDs to remove.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"removeMembers\",     \"values\": [ \"1234a56b7c89d012345e678f\", \"507f1f77bcf86cd799439011\" ]   }] } ```  #### removePermissionGrants  Removes permission grants from members for the team. A permission grant may have either an `actionSet` or a list of `actions` but not both at the same time. The `actionSet` and `actions` must match an existing permission grant.  ##### Parameters  - `actionSet`: Name of the action set. - `actions`: List of actions. - `memberIDs`: List of member IDs.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"removePermissionGrants\",     \"actions\": [ \"updateTeamName\", \"updateTeamDescription\" ],     \"memberIDs\": [ \"1234a56b7c89d012345e678f\", \"507f1f77bcf86cd799439011\" ]   }] } ```  #### removeRoleAttribute  Removes a role attribute from the team.  ##### Parameters  - `key`: The role attribute key to remove.  Here's an example: ```json {   \"instructions\": [     {       \"kind\": \"removeRoleAttribute\",       \"key\": \"testAttribute\"     }   ] } ```  #### replaceMembers  Replaces the existing members of the team with the new members.  ##### Parameters  - `values`: List of member IDs of the new members.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"replaceMembers\",     \"values\": [ \"1234a56b7c89d012345e678f\", \"507f1f77bcf86cd799439011\" ]   }] } ```  #### replaceRoleAttributes  Replaces the existing role attributes for the team with new role attributes.  ##### Parameters  - `value`: A map of role attribute keys to lists of role attribute values  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"replaceRoleAttributes\",     \"value\": {       \"testAttribute\": [ \"someNewValue\", \"someOtherNewValue\" ],       \"projectRoleAttribute\": [ \"project1\", \"project2\"]     }   }] } ```  #### updateDescription  Updates the description of the team.  ##### Parameters  - `value`: The new description.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"updateDescription\",     \"value\": \"Updated team description\"   }] } ```  #### updateName  Updates the name of the team.  ##### Parameters  - `value`: The new name.  Here's an example:  ```json {   \"instructions\": [{     \"kind\": \"updateName\",     \"value\": \"Updated team name\"   }] } ```  #### updateRoleAttribute  Updates a role attribute on the team. Any existing values for the given key will be replaced with the new values. Team members will have these role attribute values scoped for all custom roles granted to them.  ##### Parameters  - `key`: The role attribute key to update. - `values`: List of role attribute values for that key.  Here's an example: ```json {   \"instructions\": [     {       \"kind\": \"updateRoleAttribute\",       \"key\": \"testAttribute\",       \"values\": [\"someNewValue\", \"someOtherNewValue\"]     }   ] } ```  </details>  ### Expanding the teams response LaunchDarkly supports four fields for expanding the \"Update team\" response. By default, these fields are **not** included in the response.  To expand the response, append the `expand` query parameter and add a comma-separated list with any of the following fields:  * `members` includes the total count of members that belong to the team. * `roles` includes a paginated list of the custom roles that you have assigned to the team. * `projects` includes a paginated list of the projects that the team has any write access to. * `maintainers` includes a paginated list of the maintainers that you have assigned to the team.  For example, `expand=members,roles` includes the `members` and `roles` fields in the response.
 
 ### Example
 
@@ -382,11 +382,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **team_key** | **string**| The team key |
- **team_patch_input** | [**\LaunchDarklyApi\Model\TeamPatchInput**](../Model/TeamPatchInput.md)|  |
- **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **team_key** | **string**| The team key | |
+| **team_patch_input** | [**\LaunchDarklyApi\Model\TeamPatchInput**](../Model/TeamPatchInput.md)|  | |
+| **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above. | [optional] |
 
 ### Return type
 
@@ -447,10 +447,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **team_post_input** | [**\LaunchDarklyApi\Model\TeamPostInput**](../Model/TeamPostInput.md)|  |
- **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **team_post_input** | [**\LaunchDarklyApi\Model\TeamPostInput**](../Model/TeamPostInput.md)|  | |
+| **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. Supported fields are explained above. | [optional] |
 
 ### Return type
 
@@ -511,10 +511,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **team_key** | **string**| The team key |
- **file** | **\SplFileObject****\SplFileObject**| CSV file containing email addresses | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **team_key** | **string**| The team key | |
+| **file** | **\SplFileObject****\SplFileObject**| CSV file containing email addresses | [optional] |
 
 ### Return type
 

@@ -1,10 +1,10 @@
 # LaunchDarklyApi\TagsApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getTags()**](TagsApi.md#getTags) | **GET** /api/v2/tags | List tags
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**getTags()**](TagsApi.md#getTags) | **GET** /api/v2/tags | List tags |
 
 
 ## `getTags()`
@@ -36,7 +36,7 @@ $apiInstance = new LaunchDarklyApi\Api\TagsApi(
     new GuzzleHttp\Client(),
     $config
 );
-$kind = array('kind_example'); // string[] | Fetch tags associated with the specified resource type. Options are `flag`, `project`, `environment`, `segment`, `metric`. Returns all types by default.
+$kind = array('kind_example'); // string[] | Fetch tags associated with the specified resource type. Options are `flag`, `project`, `environment`, `segment`, `metric`, `aiconfig`, and `view`. Returns all types by default.
 $pre = 'pre_example'; // string | Return tags with the specified prefix
 $archived = True; // bool | Whether or not to return archived flags
 $limit = 56; // int | The number of tags to return. Maximum is 1000.
@@ -53,14 +53,14 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **kind** | [**string[]**](../Model/string.md)| Fetch tags associated with the specified resource type. Options are &#x60;flag&#x60;, &#x60;project&#x60;, &#x60;environment&#x60;, &#x60;segment&#x60;, &#x60;metric&#x60;. Returns all types by default. | [optional]
- **pre** | **string**| Return tags with the specified prefix | [optional]
- **archived** | **bool**| Whether or not to return archived flags | [optional]
- **limit** | **int**| The number of tags to return. Maximum is 1000. | [optional]
- **offset** | **int**| The index of the first tag to return. Default is 0. | [optional]
- **as_of** | **string**| The time to retrieve tags as of. Default is the current time. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **kind** | [**string[]**](../Model/string.md)| Fetch tags associated with the specified resource type. Options are &#x60;flag&#x60;, &#x60;project&#x60;, &#x60;environment&#x60;, &#x60;segment&#x60;, &#x60;metric&#x60;, &#x60;aiconfig&#x60;, and &#x60;view&#x60;. Returns all types by default. | [optional] |
+| **pre** | **string**| Return tags with the specified prefix | [optional] |
+| **archived** | **bool**| Whether or not to return archived flags | [optional] |
+| **limit** | **int**| The number of tags to return. Maximum is 1000. | [optional] |
+| **offset** | **int**| The index of the first tag to return. Default is 0. | [optional] |
+| **as_of** | **string**| The time to retrieve tags as of. Default is the current time. | [optional] |
 
 ### Return type
 

@@ -1,15 +1,15 @@
 # LaunchDarklyApi\AccessTokensApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteToken()**](AccessTokensApi.md#deleteToken) | **DELETE** /api/v2/tokens/{id} | Delete access token
-[**getToken()**](AccessTokensApi.md#getToken) | **GET** /api/v2/tokens/{id} | Get access token
-[**getTokens()**](AccessTokensApi.md#getTokens) | **GET** /api/v2/tokens | List access tokens
-[**patchToken()**](AccessTokensApi.md#patchToken) | **PATCH** /api/v2/tokens/{id} | Patch access token
-[**postToken()**](AccessTokensApi.md#postToken) | **POST** /api/v2/tokens | Create access token
-[**resetToken()**](AccessTokensApi.md#resetToken) | **POST** /api/v2/tokens/{id}/reset | Reset access token
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**deleteToken()**](AccessTokensApi.md#deleteToken) | **DELETE** /api/v2/tokens/{id} | Delete access token |
+| [**getToken()**](AccessTokensApi.md#getToken) | **GET** /api/v2/tokens/{id} | Get access token |
+| [**getTokens()**](AccessTokensApi.md#getTokens) | **GET** /api/v2/tokens | List access tokens |
+| [**patchToken()**](AccessTokensApi.md#patchToken) | **PATCH** /api/v2/tokens/{id} | Patch access token |
+| [**postToken()**](AccessTokensApi.md#postToken) | **POST** /api/v2/tokens | Create access token |
+| [**resetToken()**](AccessTokensApi.md#resetToken) | **POST** /api/v2/tokens/{id}/reset | Reset access token |
 
 
 ## `deleteToken()`
@@ -52,9 +52,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| The ID of the access token to update |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| The ID of the access token to update | |
 
 ### Return type
 
@@ -114,9 +114,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| The ID of the access token |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| The ID of the access token | |
 
 ### Return type
 
@@ -178,11 +178,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **show_all** | **bool**| If set to true, and the authentication access token has the &#39;Admin&#39; role, personal access tokens for all members will be retrieved. | [optional]
- **limit** | **int**| The number of access tokens to return in the response. Defaults to 25. | [optional]
- **offset** | **int**| Where to start in the list. This is for use with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **show_all** | **bool**| If set to true, and the authentication access token has the &#39;Admin&#39; role, personal access tokens for all members will be retrieved. | [optional] |
+| **limit** | **int**| The number of access tokens to return in the response. Defaults to 25. | [optional] |
+| **offset** | **int**| Where to start in the list. This is for use with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 
 ### Return type
 
@@ -243,10 +243,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| The ID of the access token to update |
- **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| The ID of the access token to update | |
+| **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  | |
 
 ### Return type
 
@@ -306,9 +306,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **access_token_post** | [**\LaunchDarklyApi\Model\AccessTokenPost**](../Model/AccessTokenPost.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **access_token_post** | [**\LaunchDarklyApi\Model\AccessTokenPost**](../Model/AccessTokenPost.md)|  | |
 
 ### Return type
 
@@ -369,10 +369,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| The ID of the access token to update |
- **expiry** | **int**| An expiration time for the old token key, expressed as a Unix epoch time in milliseconds. By default, the token will expire immediately. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| The ID of the access token to update | |
+| **expiry** | **int**| An expiration time for the old token key, expressed as a Unix epoch time in milliseconds. By default, the token will expire immediately. | [optional] |
 
 ### Return type
 

@@ -1,14 +1,14 @@
 # LaunchDarklyApi\UserSettingsApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getExpiringFlagsForUser()**](UserSettingsApi.md#getExpiringFlagsForUser) | **GET** /api/v2/users/{projectKey}/{userKey}/expiring-user-targets/{environmentKey} | Get expiring dates on flags for user
-[**getUserFlagSetting()**](UserSettingsApi.md#getUserFlagSetting) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Get flag setting for user
-[**getUserFlagSettings()**](UserSettingsApi.md#getUserFlagSettings) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags | List flag settings for user
-[**patchExpiringFlagsForUser()**](UserSettingsApi.md#patchExpiringFlagsForUser) | **PATCH** /api/v2/users/{projectKey}/{userKey}/expiring-user-targets/{environmentKey} | Update expiring user target for flags
-[**putFlagSetting()**](UserSettingsApi.md#putFlagSetting) | **PUT** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Update flag settings for user
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**getExpiringFlagsForUser()**](UserSettingsApi.md#getExpiringFlagsForUser) | **GET** /api/v2/users/{projectKey}/{userKey}/expiring-user-targets/{environmentKey} | Get expiring dates on flags for user |
+| [**getUserFlagSetting()**](UserSettingsApi.md#getUserFlagSetting) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Get flag setting for user |
+| [**getUserFlagSettings()**](UserSettingsApi.md#getUserFlagSettings) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags | List flag settings for user |
+| [**patchExpiringFlagsForUser()**](UserSettingsApi.md#patchExpiringFlagsForUser) | **PATCH** /api/v2/users/{projectKey}/{userKey}/expiring-user-targets/{environmentKey} | Update expiring user target for flags |
+| [**putFlagSetting()**](UserSettingsApi.md#putFlagSetting) | **PUT** /api/v2/users/{projectKey}/{environmentKey}/{userKey}/flags/{featureFlagKey} | Update flag settings for user |
 
 
 ## `getExpiringFlagsForUser()`
@@ -54,11 +54,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **user_key** | **string**| The user key |
- **environment_key** | **string**| The environment key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **user_key** | **string**| The user key | |
+| **environment_key** | **string**| The environment key | |
 
 ### Return type
 
@@ -121,12 +121,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key |
- **user_key** | **string**| The user key |
- **feature_flag_key** | **string**| The feature flag key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | |
+| **user_key** | **string**| The user key | |
+| **feature_flag_key** | **string**| The feature flag key | |
 
 ### Return type
 
@@ -188,11 +188,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key |
- **user_key** | **string**| The user key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | |
+| **user_key** | **string**| The user key | |
 
 ### Return type
 
@@ -255,12 +255,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **user_key** | **string**| The user key |
- **environment_key** | **string**| The environment key |
- **patch_users_request** | [**\LaunchDarklyApi\Model\PatchUsersRequest**](../Model/PatchUsersRequest.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **user_key** | **string**| The user key | |
+| **environment_key** | **string**| The environment key | |
+| **patch_users_request** | [**\LaunchDarklyApi\Model\PatchUsersRequest**](../Model/PatchUsersRequest.md)|  | |
 
 ### Return type
 
@@ -323,13 +323,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key |
- **user_key** | **string**| The user key |
- **feature_flag_key** | **string**| The feature flag key |
- **value_put** | [**\LaunchDarklyApi\Model\ValuePut**](../Model/ValuePut.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | |
+| **user_key** | **string**| The user key | |
+| **feature_flag_key** | **string**| The feature flag key | |
+| **value_put** | [**\LaunchDarklyApi\Model\ValuePut**](../Model/ValuePut.md)|  | |
 
 ### Return type
 

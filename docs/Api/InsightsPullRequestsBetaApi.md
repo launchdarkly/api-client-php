@@ -1,10 +1,10 @@
 # LaunchDarklyApi\InsightsPullRequestsBetaApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getPullRequests()**](InsightsPullRequestsBetaApi.md#getPullRequests) | **GET** /api/v2/engineering-insights/pull-requests | List pull requests
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**getPullRequests()**](InsightsPullRequestsBetaApi.md#getPullRequests) | **GET** /api/v2/engineering-insights/pull-requests | List pull requests |
 
 
 ## `getPullRequests()`
@@ -59,20 +59,20 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| Required if you are using the &lt;code&gt;sort&lt;/code&gt; parameter&#39;s &lt;code&gt;leadTime&lt;/code&gt; option to sort pull requests. | [optional]
- **application_key** | **string**| Filter the results to pull requests deployed to a comma separated list of applications | [optional]
- **status** | **string**| Filter results to pull requests with the given status. Options: &#x60;open&#x60;, &#x60;merged&#x60;, &#x60;closed&#x60;, &#x60;deployed&#x60;. | [optional]
- **query** | **string**| Filter list of pull requests by title or author | [optional]
- **limit** | **int**| The number of pull requests to return. Default is 20. Maximum allowed is 100. | [optional]
- **expand** | **string**| Expand properties in response. Options: &#x60;deployments&#x60;, &#x60;flagReferences&#x60;, &#x60;leadTime&#x60;. | [optional]
- **sort** | **string**| Sort results. Requires the &#x60;environmentKey&#x60; to be set. Options: &#x60;leadTime&#x60; (asc) and &#x60;-leadTime&#x60; (desc). When query option is excluded, default sort is by created or merged date. | [optional]
- **from** | **\DateTime**| Unix timestamp in milliseconds. Default value is 7 days ago. | [optional]
- **to** | **\DateTime**| Unix timestamp in milliseconds. Default value is now. | [optional]
- **after** | **string**| Identifier used for pagination | [optional]
- **before** | **string**| Identifier used for pagination | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| Required if you are using the &lt;code&gt;sort&lt;/code&gt; parameter&#39;s &lt;code&gt;leadTime&lt;/code&gt; option to sort pull requests. | [optional] |
+| **application_key** | **string**| Filter the results to pull requests deployed to a comma separated list of applications | [optional] |
+| **status** | **string**| Filter results to pull requests with the given status. Options: &#x60;open&#x60;, &#x60;merged&#x60;, &#x60;closed&#x60;, &#x60;deployed&#x60;. | [optional] |
+| **query** | **string**| Filter list of pull requests by title or author | [optional] |
+| **limit** | **int**| The number of pull requests to return. Default is 20. Maximum allowed is 100. | [optional] |
+| **expand** | **string**| Expand properties in response. Options: &#x60;deployments&#x60;, &#x60;flagReferences&#x60;, &#x60;leadTime&#x60;. | [optional] |
+| **sort** | **string**| Sort results. Requires the &#x60;environmentKey&#x60; to be set. Options: &#x60;leadTime&#x60; (asc) and &#x60;-leadTime&#x60; (desc). When query option is excluded, default sort is by created or merged date. | [optional] |
+| **from** | **\DateTime**| Unix timestamp in milliseconds. Default value is 7 days ago. | [optional] |
+| **to** | **\DateTime**| Unix timestamp in milliseconds. Default value is now. | [optional] |
+| **after** | **string**| Identifier used for pagination | [optional] |
+| **before** | **string**| Identifier used for pagination | [optional] |
 
 ### Return type
 

@@ -9,6 +9,7 @@ Name | Type | Description | Notes
 **description** | **string** |  |
 **key** | **string** |  |
 **_maintainer** | [**\LaunchDarklyApi\Model\AIConfigMaintainer**](AIConfigMaintainer.md) |  | [optional]
+**mode** | **string** |  | [optional] [default to 'completion']
 **name** | **string** |  |
 **tags** | **string[]** |  |
 **version** | **int** |  |

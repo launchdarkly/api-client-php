@@ -1,14 +1,14 @@
 # LaunchDarklyApi\IntegrationsBetaApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createIntegrationConfiguration()**](IntegrationsBetaApi.md#createIntegrationConfiguration) | **POST** /api/v2/integration-configurations/keys/{integrationKey} | Create integration configuration
-[**deleteIntegrationConfiguration()**](IntegrationsBetaApi.md#deleteIntegrationConfiguration) | **DELETE** /api/v2/integration-configurations/{integrationConfigurationId} | Delete integration configuration
-[**getAllIntegrationConfigurations()**](IntegrationsBetaApi.md#getAllIntegrationConfigurations) | **GET** /api/v2/integration-configurations/keys/{integrationKey} | Get all configurations for the integration
-[**getIntegrationConfiguration()**](IntegrationsBetaApi.md#getIntegrationConfiguration) | **GET** /api/v2/integration-configurations/{integrationConfigurationId} | Get an integration configuration
-[**updateIntegrationConfiguration()**](IntegrationsBetaApi.md#updateIntegrationConfiguration) | **PATCH** /api/v2/integration-configurations/{integrationConfigurationId} | Update integration configuration
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createIntegrationConfiguration()**](IntegrationsBetaApi.md#createIntegrationConfiguration) | **POST** /api/v2/integration-configurations/keys/{integrationKey} | Create integration configuration |
+| [**deleteIntegrationConfiguration()**](IntegrationsBetaApi.md#deleteIntegrationConfiguration) | **DELETE** /api/v2/integration-configurations/{integrationConfigurationId} | Delete integration configuration |
+| [**getAllIntegrationConfigurations()**](IntegrationsBetaApi.md#getAllIntegrationConfigurations) | **GET** /api/v2/integration-configurations/keys/{integrationKey} | Get all configurations for the integration |
+| [**getIntegrationConfiguration()**](IntegrationsBetaApi.md#getIntegrationConfiguration) | **GET** /api/v2/integration-configurations/{integrationConfigurationId} | Get an integration configuration |
+| [**updateIntegrationConfiguration()**](IntegrationsBetaApi.md#updateIntegrationConfiguration) | **PATCH** /api/v2/integration-configurations/{integrationConfigurationId} | Update integration configuration |
 
 
 ## `createIntegrationConfiguration()`
@@ -53,10 +53,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **integration_key** | **string**| The integration key |
- **integration_configuration_post** | [**\LaunchDarklyApi\Model\IntegrationConfigurationPost**](../Model/IntegrationConfigurationPost.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **integration_key** | **string**| The integration key | |
+| **integration_configuration_post** | [**\LaunchDarklyApi\Model\IntegrationConfigurationPost**](../Model/IntegrationConfigurationPost.md)|  | |
 
 ### Return type
 
@@ -115,9 +115,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **integration_configuration_id** | **string**| The ID of the integration configuration to be deleted |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **integration_configuration_id** | **string**| The ID of the integration configuration to be deleted | |
 
 ### Return type
 
@@ -177,9 +177,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **integration_key** | **string**| Integration key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **integration_key** | **string**| Integration key | |
 
 ### Return type
 
@@ -239,9 +239,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **integration_configuration_id** | **string**| Integration configuration ID |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **integration_configuration_id** | **string**| Integration configuration ID | |
 
 ### Return type
 
@@ -302,10 +302,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **integration_configuration_id** | **string**| The ID of the integration configuration |
- **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **integration_configuration_id** | **string**| The ID of the integration configuration | |
+| **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  | |
 
 ### Return type
 

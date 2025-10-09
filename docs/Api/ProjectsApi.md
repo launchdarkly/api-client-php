@@ -1,17 +1,17 @@
 # LaunchDarklyApi\ProjectsApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteProject()**](ProjectsApi.md#deleteProject) | **DELETE** /api/v2/projects/{projectKey} | Delete project
-[**getFlagDefaultsByProject()**](ProjectsApi.md#getFlagDefaultsByProject) | **GET** /api/v2/projects/{projectKey}/flag-defaults | Get flag defaults for project
-[**getProject()**](ProjectsApi.md#getProject) | **GET** /api/v2/projects/{projectKey} | Get project
-[**getProjects()**](ProjectsApi.md#getProjects) | **GET** /api/v2/projects | List projects
-[**patchFlagDefaultsByProject()**](ProjectsApi.md#patchFlagDefaultsByProject) | **PATCH** /api/v2/projects/{projectKey}/flag-defaults | Update flag default for project
-[**patchProject()**](ProjectsApi.md#patchProject) | **PATCH** /api/v2/projects/{projectKey} | Update project
-[**postProject()**](ProjectsApi.md#postProject) | **POST** /api/v2/projects | Create project
-[**putFlagDefaultsByProject()**](ProjectsApi.md#putFlagDefaultsByProject) | **PUT** /api/v2/projects/{projectKey}/flag-defaults | Create or update flag defaults for project
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**deleteProject()**](ProjectsApi.md#deleteProject) | **DELETE** /api/v2/projects/{projectKey} | Delete project |
+| [**getFlagDefaultsByProject()**](ProjectsApi.md#getFlagDefaultsByProject) | **GET** /api/v2/projects/{projectKey}/flag-defaults | Get flag defaults for project |
+| [**getProject()**](ProjectsApi.md#getProject) | **GET** /api/v2/projects/{projectKey} | Get project |
+| [**getProjects()**](ProjectsApi.md#getProjects) | **GET** /api/v2/projects | List projects |
+| [**patchFlagDefaultsByProject()**](ProjectsApi.md#patchFlagDefaultsByProject) | **PATCH** /api/v2/projects/{projectKey}/flag-defaults | Update flag default for project |
+| [**patchProject()**](ProjectsApi.md#patchProject) | **PATCH** /api/v2/projects/{projectKey} | Update project |
+| [**postProject()**](ProjectsApi.md#postProject) | **POST** /api/v2/projects | Create project |
+| [**putFlagDefaultsByProject()**](ProjectsApi.md#putFlagDefaultsByProject) | **PUT** /api/v2/projects/{projectKey}/flag-defaults | Create or update flag defaults for project |
 
 
 ## `deleteProject()`
@@ -54,9 +54,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
 
 ### Return type
 
@@ -116,9 +116,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
 
 ### Return type
 
@@ -179,10 +179,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key. |
- **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key. | |
+| **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional] |
 
 ### Return type
 
@@ -246,13 +246,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int**| The number of projects to return in the response. Defaults to 20. | [optional]
- **offset** | **int**| Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next &#x60;limit&#x60; items. | [optional]
- **filter** | **string**| A comma-separated list of filters. Each filter is constructed as &#x60;field:value&#x60;. | [optional]
- **sort** | **string**| A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. | [optional]
- **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| The number of projects to return in the response. Defaults to 20. | [optional] |
+| **offset** | **int**| Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next &#x60;limit&#x60; items. | [optional] |
+| **filter** | **string**| A comma-separated list of filters. Each filter is constructed as &#x60;field:value&#x60;. | [optional] |
+| **sort** | **string**| A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. | [optional] |
+| **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional] |
 
 ### Return type
 
@@ -313,10 +313,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  | |
 
 ### Return type
 
@@ -377,10 +377,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  | |
 
 ### Return type
 
@@ -440,9 +440,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_post** | [**\LaunchDarklyApi\Model\ProjectPost**](../Model/ProjectPost.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_post** | [**\LaunchDarklyApi\Model\ProjectPost**](../Model/ProjectPost.md)|  | |
 
 ### Return type
 
@@ -503,10 +503,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **upsert_flag_defaults_payload** | [**\LaunchDarklyApi\Model\UpsertFlagDefaultsPayload**](../Model/UpsertFlagDefaultsPayload.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **upsert_flag_defaults_payload** | [**\LaunchDarklyApi\Model\UpsertFlagDefaultsPayload**](../Model/UpsertFlagDefaultsPayload.md)|  | |
 
 ### Return type
 

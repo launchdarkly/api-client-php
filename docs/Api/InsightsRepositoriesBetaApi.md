@@ -1,12 +1,12 @@
 # LaunchDarklyApi\InsightsRepositoriesBetaApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**associateRepositoriesAndProjects()**](InsightsRepositoriesBetaApi.md#associateRepositoriesAndProjects) | **PUT** /api/v2/engineering-insights/repositories/projects | Associate repositories with projects
-[**deleteRepositoryProject()**](InsightsRepositoriesBetaApi.md#deleteRepositoryProject) | **DELETE** /api/v2/engineering-insights/repositories/{repositoryKey}/projects/{projectKey} | Remove repository project association
-[**getInsightsRepositories()**](InsightsRepositoriesBetaApi.md#getInsightsRepositories) | **GET** /api/v2/engineering-insights/repositories | List repositories
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**associateRepositoriesAndProjects()**](InsightsRepositoriesBetaApi.md#associateRepositoriesAndProjects) | **PUT** /api/v2/engineering-insights/repositories/projects | Associate repositories with projects |
+| [**deleteRepositoryProject()**](InsightsRepositoriesBetaApi.md#deleteRepositoryProject) | **DELETE** /api/v2/engineering-insights/repositories/{repositoryKey}/projects/{projectKey} | Remove repository project association |
+| [**getInsightsRepositories()**](InsightsRepositoriesBetaApi.md#getInsightsRepositories) | **GET** /api/v2/engineering-insights/repositories | List repositories |
 
 
 ## `associateRepositoriesAndProjects()`
@@ -50,9 +50,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **insights_repository_project_mappings** | [**\LaunchDarklyApi\Model\InsightsRepositoryProjectMappings**](../Model/InsightsRepositoryProjectMappings.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **insights_repository_project_mappings** | [**\LaunchDarklyApi\Model\InsightsRepositoryProjectMappings**](../Model/InsightsRepositoryProjectMappings.md)|  | |
 
 ### Return type
 
@@ -112,10 +112,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **repository_key** | **string**| The repository key |
- **project_key** | **string**| The project key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **repository_key** | **string**| The repository key | |
+| **project_key** | **string**| The project key | |
 
 ### Return type
 
@@ -175,9 +175,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **expand** | **string**| Expand properties in response. Options: &#x60;projects&#x60; | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **expand** | **string**| Expand properties in response. Options: &#x60;projects&#x60; | [optional] |
 
 ### Return type
 

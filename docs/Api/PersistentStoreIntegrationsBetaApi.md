@@ -1,14 +1,14 @@
 # LaunchDarklyApi\PersistentStoreIntegrationsBetaApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createBigSegmentStoreIntegration()**](PersistentStoreIntegrationsBetaApi.md#createBigSegmentStoreIntegration) | **POST** /api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey} | Create big segment store integration
-[**deleteBigSegmentStoreIntegration()**](PersistentStoreIntegrationsBetaApi.md#deleteBigSegmentStoreIntegration) | **DELETE** /api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}/{integrationId} | Delete big segment store integration
-[**getBigSegmentStoreIntegration()**](PersistentStoreIntegrationsBetaApi.md#getBigSegmentStoreIntegration) | **GET** /api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}/{integrationId} | Get big segment store integration by ID
-[**getBigSegmentStoreIntegrations()**](PersistentStoreIntegrationsBetaApi.md#getBigSegmentStoreIntegrations) | **GET** /api/v2/integration-capabilities/big-segment-store | List all big segment store integrations
-[**patchBigSegmentStoreIntegration()**](PersistentStoreIntegrationsBetaApi.md#patchBigSegmentStoreIntegration) | **PATCH** /api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}/{integrationId} | Update big segment store integration
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createBigSegmentStoreIntegration()**](PersistentStoreIntegrationsBetaApi.md#createBigSegmentStoreIntegration) | **POST** /api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey} | Create big segment store integration |
+| [**deleteBigSegmentStoreIntegration()**](PersistentStoreIntegrationsBetaApi.md#deleteBigSegmentStoreIntegration) | **DELETE** /api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}/{integrationId} | Delete big segment store integration |
+| [**getBigSegmentStoreIntegration()**](PersistentStoreIntegrationsBetaApi.md#getBigSegmentStoreIntegration) | **GET** /api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}/{integrationId} | Get big segment store integration by ID |
+| [**getBigSegmentStoreIntegrations()**](PersistentStoreIntegrationsBetaApi.md#getBigSegmentStoreIntegrations) | **GET** /api/v2/integration-capabilities/big-segment-store | List all big segment store integrations |
+| [**patchBigSegmentStoreIntegration()**](PersistentStoreIntegrationsBetaApi.md#patchBigSegmentStoreIntegration) | **PATCH** /api/v2/integration-capabilities/big-segment-store/{projectKey}/{environmentKey}/{integrationKey}/{integrationId} | Update big segment store integration |
 
 
 ## `createBigSegmentStoreIntegration()`
@@ -55,12 +55,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key |
- **integration_key** | **string**| The integration key, either &#x60;redis&#x60; or &#x60;dynamodb&#x60; |
- **integration_delivery_configuration_post** | [**\LaunchDarklyApi\Model\IntegrationDeliveryConfigurationPost**](../Model/IntegrationDeliveryConfigurationPost.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | |
+| **integration_key** | **string**| The integration key, either &#x60;redis&#x60; or &#x60;dynamodb&#x60; | |
+| **integration_delivery_configuration_post** | [**\LaunchDarklyApi\Model\IntegrationDeliveryConfigurationPost**](../Model/IntegrationDeliveryConfigurationPost.md)|  | |
 
 ### Return type
 
@@ -122,12 +122,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key |
- **integration_key** | **string**| The integration key, either &#x60;redis&#x60; or &#x60;dynamodb&#x60; |
- **integration_id** | **string**| The integration ID |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | |
+| **integration_key** | **string**| The integration key, either &#x60;redis&#x60; or &#x60;dynamodb&#x60; | |
+| **integration_id** | **string**| The integration ID | |
 
 ### Return type
 
@@ -190,12 +190,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key |
- **integration_key** | **string**| The integration key, either &#x60;redis&#x60; or &#x60;dynamodb&#x60; |
- **integration_id** | **string**| The integration ID |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | |
+| **integration_key** | **string**| The integration key, either &#x60;redis&#x60; or &#x60;dynamodb&#x60; | |
+| **integration_id** | **string**| The integration ID | |
 
 ### Return type
 
@@ -318,13 +318,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key |
- **integration_key** | **string**| The integration key, either &#x60;redis&#x60; or &#x60;dynamodb&#x60; |
- **integration_id** | **string**| The integration ID |
- **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | |
+| **integration_key** | **string**| The integration key, either &#x60;redis&#x60; or &#x60;dynamodb&#x60; | |
+| **integration_id** | **string**| The integration ID | |
+| **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  | |
 
 ### Return type
 

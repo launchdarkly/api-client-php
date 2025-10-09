@@ -1,14 +1,14 @@
 # LaunchDarklyApi\OtherApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getCallerIdentity()**](OtherApi.md#getCallerIdentity) | **GET** /api/v2/caller-identity | Identify the caller
-[**getIps()**](OtherApi.md#getIps) | **GET** /api/v2/public-ip-list | Gets the public IP list
-[**getOpenapiSpec()**](OtherApi.md#getOpenapiSpec) | **GET** /api/v2/openapi.json | Gets the OpenAPI spec in json
-[**getRoot()**](OtherApi.md#getRoot) | **GET** /api/v2 | Root resource
-[**getVersions()**](OtherApi.md#getVersions) | **GET** /api/v2/versions | Get version information
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**getCallerIdentity()**](OtherApi.md#getCallerIdentity) | **GET** /api/v2/caller-identity | Identify the caller |
+| [**getIps()**](OtherApi.md#getIps) | **GET** /api/v2/public-ip-list | Gets the public IP list |
+| [**getOpenapiSpec()**](OtherApi.md#getOpenapiSpec) | **GET** /api/v2/openapi.json | Gets the OpenAPI spec in json |
+| [**getRoot()**](OtherApi.md#getRoot) | **GET** /api/v2 | Root resource |
+| [**getVersions()**](OtherApi.md#getVersions) | **GET** /api/v2/versions | Get version information |
 
 
 ## `getCallerIdentity()`

@@ -6,9 +6,9 @@ This REST API is for custom integrations, data export, or automating your featur
 This client library is only compatible with the latest version of our REST API. Previous versions of this client library are compatible with earlier versions of our REST API. When you create an access token, you can set the REST API version associated with the token. By default, API requests you send using the token will use the specified API version. To learn more, read [Versioning](https://apidocs.launchdarkly.com/#section/Overview/Versioning).
 # OpenAPIClient-php
 
-This documentation describes LaunchDarkly's REST API.
+This documentation describes LaunchDarkly's REST API. To access the complete OpenAPI spec directly, use [Get OpenAPI spec](https://launchdarkly.com/docs/api/other/get-openapi-spec).
 
-To access the complete OpenAPI spec directly, use [Get OpenAPI spec](https://launchdarkly.com/docs/api/other/get-openapi-spec).
+To learn how to use LaunchDarkly using the user interface (UI) instead, read our [product documentation](https://launchdarkly.com/docs/home).
 
 ## Authentication
 
@@ -41,7 +41,7 @@ Manage personal access tokens from the [**Authorization**](https://app.launchdar
 
 For testing purposes, you can make API calls directly from your web browser. If you are logged in to the LaunchDarkly application, the API will use your existing session to authenticate calls.
 
-If you have a [role](https://launchdarkly.com/docs/home/account/built-in-roles) other than Admin, or have a [custom role](https://launchdarkly.com/docs/home/account/custom-roles) defined, you may not have permission to perform some API calls. You will receive a `401` response code in that case.
+Depending on the permissions granted as part of your [role](https://launchdarkly.com/docs/home/account/roles), you may not have permission to perform some API calls. You will receive a `401` response code in that case.
 
 > ### Modifying the Origin header causes an error
 >
@@ -345,13 +345,25 @@ Use this header:
 LD-API-Version: beta
 ```
 
-## Federal environments
+## Federal and EU environments
+
+In addition to the commercial versions, LaunchDarkly offers instances for federal agencies and those based in the European Union (EU).
+
+### Federal environments
 
 The version of LaunchDarkly that is available on domains controlled by the United States government is different from the version of LaunchDarkly available to the general public. If you are an employee or contractor for a United States federal agency and use LaunchDarkly in your work, you likely use the federal instance of LaunchDarkly.
 
 If you are working in the federal instance of LaunchDarkly, the base URI for each request is `https://app.launchdarkly.us`.
 
 To learn more, read [LaunchDarkly in federal environments](https://launchdarkly.com/docs/home/infrastructure/federal).
+
+### EU environments
+
+The version of LaunchDarkly that is available in the EU is different from the version of LaunchDarkly available to other regions. If you are based in the EU, you likely use the EU instance of LaunchDarkly. The LaunchDarkly EU instance complies with EU data residency principles, including the protection and confidentiality of EU customer information.
+
+If you are working in the EU instance of LaunchDarkly, the base URI for each request is `https://app.eu.launchdarkly.com`.
+
+To learn more, read [LaunchDarkly in the European Union (EU)](https://launchdarkly.com/docs/home/infrastructure/eu).
 
 ## Versioning
 
@@ -511,19 +523,29 @@ Class | Method | HTTP request | Description
 ------------ | ------------- | ------------- | -------------
 *AIConfigsBetaApi* | [**deleteAIConfig**](docs/Api/AIConfigsBetaApi.md#deleteaiconfig) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Delete AI Config
 *AIConfigsBetaApi* | [**deleteAIConfigVariation**](docs/Api/AIConfigsBetaApi.md#deleteaiconfigvariation) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Delete AI Config variation
+*AIConfigsBetaApi* | [**deleteAITool**](docs/Api/AIConfigsBetaApi.md#deleteaitool) | **DELETE** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Delete AI tool
 *AIConfigsBetaApi* | [**deleteModelConfig**](docs/Api/AIConfigsBetaApi.md#deletemodelconfig) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey} | Delete an AI model config
+*AIConfigsBetaApi* | [**deleteRestrictedModels**](docs/Api/AIConfigsBetaApi.md#deleterestrictedmodels) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/model-configs/restricted | Remove AI models from the restricted list
 *AIConfigsBetaApi* | [**getAIConfig**](docs/Api/AIConfigsBetaApi.md#getaiconfig) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Get AI Config
 *AIConfigsBetaApi* | [**getAIConfigMetrics**](docs/Api/AIConfigsBetaApi.md#getaiconfigmetrics) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics | Get AI Config metrics
 *AIConfigsBetaApi* | [**getAIConfigMetricsByVariation**](docs/Api/AIConfigsBetaApi.md#getaiconfigmetricsbyvariation) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/metrics-by-variation | Get AI Config metrics by variation
+*AIConfigsBetaApi* | [**getAIConfigTargeting**](docs/Api/AIConfigsBetaApi.md#getaiconfigtargeting) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting | Show an AI Config&#39;s targeting
 *AIConfigsBetaApi* | [**getAIConfigVariation**](docs/Api/AIConfigsBetaApi.md#getaiconfigvariation) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Get AI Config variation
 *AIConfigsBetaApi* | [**getAIConfigs**](docs/Api/AIConfigsBetaApi.md#getaiconfigs) | **GET** /api/v2/projects/{projectKey}/ai-configs | List AI Configs
+*AIConfigsBetaApi* | [**getAITool**](docs/Api/AIConfigsBetaApi.md#getaitool) | **GET** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Get AI tool
 *AIConfigsBetaApi* | [**getModelConfig**](docs/Api/AIConfigsBetaApi.md#getmodelconfig) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey} | Get AI model config
+*AIConfigsBetaApi* | [**listAIToolVersions**](docs/Api/AIConfigsBetaApi.md#listaitoolversions) | **GET** /api/v2/projects/{projectKey}/ai-tools/{toolKey}/versions | List AI tool versions
+*AIConfigsBetaApi* | [**listAITools**](docs/Api/AIConfigsBetaApi.md#listaitools) | **GET** /api/v2/projects/{projectKey}/ai-tools | List AI tools
 *AIConfigsBetaApi* | [**listModelConfigs**](docs/Api/AIConfigsBetaApi.md#listmodelconfigs) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs | List AI model configs
 *AIConfigsBetaApi* | [**patchAIConfig**](docs/Api/AIConfigsBetaApi.md#patchaiconfig) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Update AI Config
+*AIConfigsBetaApi* | [**patchAIConfigTargeting**](docs/Api/AIConfigsBetaApi.md#patchaiconfigtargeting) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting | Update AI Config targeting
 *AIConfigsBetaApi* | [**patchAIConfigVariation**](docs/Api/AIConfigsBetaApi.md#patchaiconfigvariation) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Update AI Config variation
+*AIConfigsBetaApi* | [**patchAITool**](docs/Api/AIConfigsBetaApi.md#patchaitool) | **PATCH** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Update AI tool
 *AIConfigsBetaApi* | [**postAIConfig**](docs/Api/AIConfigsBetaApi.md#postaiconfig) | **POST** /api/v2/projects/{projectKey}/ai-configs | Create new AI Config
 *AIConfigsBetaApi* | [**postAIConfigVariation**](docs/Api/AIConfigsBetaApi.md#postaiconfigvariation) | **POST** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations | Create AI Config variation
+*AIConfigsBetaApi* | [**postAITool**](docs/Api/AIConfigsBetaApi.md#postaitool) | **POST** /api/v2/projects/{projectKey}/ai-tools | Create an AI tool
 *AIConfigsBetaApi* | [**postModelConfig**](docs/Api/AIConfigsBetaApi.md#postmodelconfig) | **POST** /api/v2/projects/{projectKey}/ai-configs/model-configs | Create an AI model config
+*AIConfigsBetaApi* | [**postRestrictedModels**](docs/Api/AIConfigsBetaApi.md#postrestrictedmodels) | **POST** /api/v2/projects/{projectKey}/ai-configs/model-configs/restricted | Add AI models to the restricted list
 *AccessTokensApi* | [**deleteToken**](docs/Api/AccessTokensApi.md#deletetoken) | **DELETE** /api/v2/tokens/{id} | Delete access token
 *AccessTokensApi* | [**getToken**](docs/Api/AccessTokensApi.md#gettoken) | **GET** /api/v2/tokens/{id} | Get access token
 *AccessTokensApi* | [**getTokens**](docs/Api/AccessTokensApi.md#gettokens) | **GET** /api/v2/tokens | List access tokens
@@ -537,15 +559,22 @@ Class | Method | HTTP request | Description
 *AccountMembersApi* | [**postMemberTeams**](docs/Api/AccountMembersApi.md#postmemberteams) | **POST** /api/v2/members/{id}/teams | Add a member to teams
 *AccountMembersApi* | [**postMembers**](docs/Api/AccountMembersApi.md#postmembers) | **POST** /api/v2/members | Invite new members
 *AccountMembersBetaApi* | [**patchMembers**](docs/Api/AccountMembersBetaApi.md#patchmembers) | **PATCH** /api/v2/members | Modify account members
+*AccountUsageBetaApi* | [**getContextsClientsideUsage**](docs/Api/AccountUsageBetaApi.md#getcontextsclientsideusage) | **GET** /api/v2/usage/clientside-contexts | Get contexts clientside usage
+*AccountUsageBetaApi* | [**getContextsServersideUsage**](docs/Api/AccountUsageBetaApi.md#getcontextsserversideusage) | **GET** /api/v2/usage/serverside-contexts | Get contexts serverside usage
+*AccountUsageBetaApi* | [**getContextsTotalUsage**](docs/Api/AccountUsageBetaApi.md#getcontextstotalusage) | **GET** /api/v2/usage/total-contexts | Get contexts total usage
 *AccountUsageBetaApi* | [**getDataExportEventsUsage**](docs/Api/AccountUsageBetaApi.md#getdataexporteventsusage) | **GET** /api/v2/usage/data-export-events | Get data export events usage
 *AccountUsageBetaApi* | [**getEvaluationsUsage**](docs/Api/AccountUsageBetaApi.md#getevaluationsusage) | **GET** /api/v2/usage/evaluations/{projectKey}/{environmentKey}/{featureFlagKey} | Get evaluations usage
 *AccountUsageBetaApi* | [**getEventsUsage**](docs/Api/AccountUsageBetaApi.md#geteventsusage) | **GET** /api/v2/usage/events/{type} | Get events usage
+*AccountUsageBetaApi* | [**getExperimentationEventsUsage**](docs/Api/AccountUsageBetaApi.md#getexperimentationeventsusage) | **GET** /api/v2/usage/experimentation-events | Get experimentation events usage
 *AccountUsageBetaApi* | [**getExperimentationKeysUsage**](docs/Api/AccountUsageBetaApi.md#getexperimentationkeysusage) | **GET** /api/v2/usage/experimentation-keys | Get experimentation keys usage
-*AccountUsageBetaApi* | [**getExperimentationUnitsUsage**](docs/Api/AccountUsageBetaApi.md#getexperimentationunitsusage) | **GET** /api/v2/usage/experimentation-units | Get experimentation units usage
 *AccountUsageBetaApi* | [**getMauSdksByType**](docs/Api/AccountUsageBetaApi.md#getmausdksbytype) | **GET** /api/v2/usage/mau/sdks | Get MAU SDKs by type
 *AccountUsageBetaApi* | [**getMauUsage**](docs/Api/AccountUsageBetaApi.md#getmauusage) | **GET** /api/v2/usage/mau | Get MAU usage
 *AccountUsageBetaApi* | [**getMauUsageByCategory**](docs/Api/AccountUsageBetaApi.md#getmauusagebycategory) | **GET** /api/v2/usage/mau/bycategory | Get MAU usage by category
-*AccountUsageBetaApi* | [**getServiceConnectionUsage**](docs/Api/AccountUsageBetaApi.md#getserviceconnectionusage) | **GET** /api/v2/usage/service-connections | Get service connection usage
+*AccountUsageBetaApi* | [**getObservabilityErrorsUsage**](docs/Api/AccountUsageBetaApi.md#getobservabilityerrorsusage) | **GET** /api/v2/usage/observability/errors | Get observability errors usage
+*AccountUsageBetaApi* | [**getObservabilityLogsUsage**](docs/Api/AccountUsageBetaApi.md#getobservabilitylogsusage) | **GET** /api/v2/usage/observability/logs | Get observability logs usage
+*AccountUsageBetaApi* | [**getObservabilitySessionsUsage**](docs/Api/AccountUsageBetaApi.md#getobservabilitysessionsusage) | **GET** /api/v2/usage/observability/sessions | Get observability sessions usage
+*AccountUsageBetaApi* | [**getObservabilityTracesUsage**](docs/Api/AccountUsageBetaApi.md#getobservabilitytracesusage) | **GET** /api/v2/usage/observability/traces | Get observability traces usage
+*AccountUsageBetaApi* | [**getServiceConnectionsUsage**](docs/Api/AccountUsageBetaApi.md#getserviceconnectionsusage) | **GET** /api/v2/usage/service-connections | Get service connections usage
 *AccountUsageBetaApi* | [**getStreamUsage**](docs/Api/AccountUsageBetaApi.md#getstreamusage) | **GET** /api/v2/usage/streams/{source} | Get stream usage
 *AccountUsageBetaApi* | [**getStreamUsageBySdkVersion**](docs/Api/AccountUsageBetaApi.md#getstreamusagebysdkversion) | **GET** /api/v2/usage/streams/{source}/bysdkversion | Get stream usage by SDK version
 *AccountUsageBetaApi* | [**getStreamUsageSdkversion**](docs/Api/AccountUsageBetaApi.md#getstreamusagesdkversion) | **GET** /api/v2/usage/streams/{source}/sdkversions | Get stream usage SDK versions
@@ -573,7 +602,9 @@ Class | Method | HTTP request | Description
 *ApprovalsApi* | [**postApprovalRequestReview**](docs/Api/ApprovalsApi.md#postapprovalrequestreview) | **POST** /api/v2/approval-requests/{id}/reviews | Review approval request
 *ApprovalsApi* | [**postApprovalRequestReviewForFlag**](docs/Api/ApprovalsApi.md#postapprovalrequestreviewforflag) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id}/reviews | Review approval request for a flag
 *ApprovalsApi* | [**postFlagCopyConfigApprovalRequest**](docs/Api/ApprovalsApi.md#postflagcopyconfigapprovalrequest) | **POST** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests-flag-copy | Create approval request to copy flag configurations across environments
+*ApprovalsBetaApi* | [**getApprovalRequestSettings**](docs/Api/ApprovalsBetaApi.md#getapprovalrequestsettings) | **GET** /api/v2/approval-requests/projects/{projectKey}/settings | Get approval request settings
 *ApprovalsBetaApi* | [**patchApprovalRequest**](docs/Api/ApprovalsBetaApi.md#patchapprovalrequest) | **PATCH** /api/v2/approval-requests/{id} | Update approval request
+*ApprovalsBetaApi* | [**patchApprovalRequestSettings**](docs/Api/ApprovalsBetaApi.md#patchapprovalrequestsettings) | **PATCH** /api/v2/approval-requests/projects/{projectKey}/settings | Update approval request settings
 *ApprovalsBetaApi* | [**patchFlagConfigApprovalRequest**](docs/Api/ApprovalsBetaApi.md#patchflagconfigapprovalrequest) | **PATCH** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/approval-requests/{id} | Update flag approval request
 *AuditLogApi* | [**getAuditLogEntries**](docs/Api/AuditLogApi.md#getauditlogentries) | **GET** /api/v2/auditlog | List audit log entries
 *AuditLogApi* | [**getAuditLogEntry**](docs/Api/AuditLogApi.md#getauditlogentry) | **GET** /api/v2/auditlog/{id} | Get audit log entry
@@ -623,8 +654,6 @@ Class | Method | HTTP request | Description
 *ExperimentsApi* | [**createExperiment**](docs/Api/ExperimentsApi.md#createexperiment) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments | Create experiment
 *ExperimentsApi* | [**createIteration**](docs/Api/ExperimentsApi.md#createiteration) | **POST** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/iterations | Create iteration
 *ExperimentsApi* | [**getExperiment**](docs/Api/ExperimentsApi.md#getexperiment) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Get experiment
-*ExperimentsApi* | [**getExperimentResults**](docs/Api/ExperimentsApi.md#getexperimentresults) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metrics/{metricKey}/results | Get experiment results (Deprecated)
-*ExperimentsApi* | [**getExperimentResultsForMetricGroup**](docs/Api/ExperimentsApi.md#getexperimentresultsformetricgroup) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey}/metric-groups/{metricGroupKey}/results | Get experiment results for metric group (Deprecated)
 *ExperimentsApi* | [**getExperimentationSettings**](docs/Api/ExperimentsApi.md#getexperimentationsettings) | **GET** /api/v2/projects/{projectKey}/experimentation-settings | Get experimentation settings
 *ExperimentsApi* | [**getExperiments**](docs/Api/ExperimentsApi.md#getexperiments) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments | Get experiments
 *ExperimentsApi* | [**patchExperiment**](docs/Api/ExperimentsApi.md#patchexperiment) | **PATCH** /api/v2/projects/{projectKey}/environments/{environmentKey}/experiments/{experimentKey} | Patch experiment
@@ -754,6 +783,12 @@ Class | Method | HTTP request | Description
 *ReleasePipelinesBetaApi* | [**getReleasePipelineByKey**](docs/Api/ReleasePipelinesBetaApi.md#getreleasepipelinebykey) | **GET** /api/v2/projects/{projectKey}/release-pipelines/{pipelineKey} | Get release pipeline by key
 *ReleasePipelinesBetaApi* | [**postReleasePipeline**](docs/Api/ReleasePipelinesBetaApi.md#postreleasepipeline) | **POST** /api/v2/projects/{projectKey}/release-pipelines | Create a release pipeline
 *ReleasePipelinesBetaApi* | [**putReleasePipeline**](docs/Api/ReleasePipelinesBetaApi.md#putreleasepipeline) | **PUT** /api/v2/projects/{projectKey}/release-pipelines/{pipelineKey} | Update a release pipeline
+*ReleasePoliciesBetaApi* | [**deleteReleasePolicy**](docs/Api/ReleasePoliciesBetaApi.md#deletereleasepolicy) | **DELETE** /api/v2/projects/{projectKey}/release-policies/{policyKey} | Delete a release policy
+*ReleasePoliciesBetaApi* | [**getReleasePolicies**](docs/Api/ReleasePoliciesBetaApi.md#getreleasepolicies) | **GET** /api/v2/projects/{projectKey}/release-policies | List release policies
+*ReleasePoliciesBetaApi* | [**getReleasePolicy**](docs/Api/ReleasePoliciesBetaApi.md#getreleasepolicy) | **GET** /api/v2/projects/{projectKey}/release-policies/{policyKey} | Get a release policy by key
+*ReleasePoliciesBetaApi* | [**postReleasePoliciesOrder**](docs/Api/ReleasePoliciesBetaApi.md#postreleasepoliciesorder) | **POST** /api/v2/projects/{projectKey}/release-policies/order | Update the order of existing release policies
+*ReleasePoliciesBetaApi* | [**postReleasePolicy**](docs/Api/ReleasePoliciesBetaApi.md#postreleasepolicy) | **POST** /api/v2/projects/{projectKey}/release-policies | Create a release policy
+*ReleasePoliciesBetaApi* | [**putReleasePolicy**](docs/Api/ReleasePoliciesBetaApi.md#putreleasepolicy) | **PUT** /api/v2/projects/{projectKey}/release-policies/{policyKey} | Update a release policy
 *ReleasesBetaApi* | [**createReleaseForFlag**](docs/Api/ReleasesBetaApi.md#createreleaseforflag) | **PUT** /api/v2/projects/{projectKey}/flags/{flagKey}/release | Create a new release for flag
 *ReleasesBetaApi* | [**deleteReleaseByFlagKey**](docs/Api/ReleasesBetaApi.md#deletereleasebyflagkey) | **DELETE** /api/v2/flags/{projectKey}/{flagKey}/release | Delete a release for flag
 *ReleasesBetaApi* | [**getReleaseByFlagKey**](docs/Api/ReleasesBetaApi.md#getreleasebyflagkey) | **GET** /api/v2/flags/{projectKey}/{flagKey}/release | Get release for flag
@@ -802,6 +837,15 @@ Class | Method | HTTP request | Description
 *UsersApi* | [**getUser**](docs/Api/UsersApi.md#getuser) | **GET** /api/v2/users/{projectKey}/{environmentKey}/{userKey} | Get user
 *UsersApi* | [**getUsers**](docs/Api/UsersApi.md#getusers) | **GET** /api/v2/users/{projectKey}/{environmentKey} | List users
 *UsersBetaApi* | [**getUserAttributeNames**](docs/Api/UsersBetaApi.md#getuserattributenames) | **GET** /api/v2/user-attributes/{projectKey}/{environmentKey} | Get user attribute names
+*ViewsBetaApi* | [**createView**](docs/Api/ViewsBetaApi.md#createview) | **POST** /api/v2/projects/{projectKey}/views | Create view
+*ViewsBetaApi* | [**deleteView**](docs/Api/ViewsBetaApi.md#deleteview) | **DELETE** /api/v2/projects/{projectKey}/views/{viewKey} | Delete view
+*ViewsBetaApi* | [**getLinkedResources**](docs/Api/ViewsBetaApi.md#getlinkedresources) | **GET** /api/v2/projects/{projectKey}/views/{viewKey}/linked/{resourceType} | Get linked resources
+*ViewsBetaApi* | [**getLinkedViews**](docs/Api/ViewsBetaApi.md#getlinkedviews) | **GET** /api/v2/projects/{projectKey}/view-associations/{resourceType}/{resourceKey} | Get linked views for a given resource
+*ViewsBetaApi* | [**getView**](docs/Api/ViewsBetaApi.md#getview) | **GET** /api/v2/projects/{projectKey}/views/{viewKey} | Get view
+*ViewsBetaApi* | [**getViews**](docs/Api/ViewsBetaApi.md#getviews) | **GET** /api/v2/projects/{projectKey}/views | List views
+*ViewsBetaApi* | [**linkResource**](docs/Api/ViewsBetaApi.md#linkresource) | **POST** /api/v2/projects/{projectKey}/views/{viewKey}/link/{resourceType} | Link resource
+*ViewsBetaApi* | [**unlinkResource**](docs/Api/ViewsBetaApi.md#unlinkresource) | **DELETE** /api/v2/projects/{projectKey}/views/{viewKey}/link/{resourceType} | Unlink resource
+*ViewsBetaApi* | [**updateView**](docs/Api/ViewsBetaApi.md#updateview) | **PATCH** /api/v2/projects/{projectKey}/views/{viewKey} | Update view
 *WebhooksApi* | [**deleteWebhook**](docs/Api/WebhooksApi.md#deletewebhook) | **DELETE** /api/v2/webhooks/{id} | Delete webhook
 *WebhooksApi* | [**getAllWebhooks**](docs/Api/WebhooksApi.md#getallwebhooks) | **GET** /api/v2/webhooks | List webhooks
 *WebhooksApi* | [**getWebhook**](docs/Api/WebhooksApi.md#getwebhook) | **GET** /api/v2/webhooks/{id} | Get webhook
@@ -821,11 +865,30 @@ Class | Method | HTTP request | Description
 - [AIConfigMaintainer](docs/Model/AIConfigMaintainer.md)
 - [AIConfigPatch](docs/Model/AIConfigPatch.md)
 - [AIConfigPost](docs/Model/AIConfigPost.md)
+- [AIConfigRep](docs/Model/AIConfigRep.md)
+- [AIConfigTargeting](docs/Model/AIConfigTargeting.md)
+- [AIConfigTargetingDefaults](docs/Model/AIConfigTargetingDefaults.md)
+- [AIConfigTargetingEnvironment](docs/Model/AIConfigTargetingEnvironment.md)
+- [AIConfigTargetingEnvironmentFallthrough](docs/Model/AIConfigTargetingEnvironmentFallthrough.md)
+- [AIConfigTargetingEnvironmentFallthroughRollout](docs/Model/AIConfigTargetingEnvironmentFallthroughRollout.md)
+- [AIConfigTargetingEnvironmentFallthroughRolloutExperimentationAllocation](docs/Model/AIConfigTargetingEnvironmentFallthroughRolloutExperimentationAllocation.md)
+- [AIConfigTargetingEnvironmentFallthroughRolloutVariation](docs/Model/AIConfigTargetingEnvironmentFallthroughRolloutVariation.md)
+- [AIConfigTargetingEnvironmentRule](docs/Model/AIConfigTargetingEnvironmentRule.md)
+- [AIConfigTargetingEnvironmentRuleClause](docs/Model/AIConfigTargetingEnvironmentRuleClause.md)
+- [AIConfigTargetingEnvironmentTarget](docs/Model/AIConfigTargetingEnvironmentTarget.md)
+- [AIConfigTargetingPatch](docs/Model/AIConfigTargetingPatch.md)
+- [AIConfigTargetingVariation](docs/Model/AIConfigTargetingVariation.md)
+- [AIConfigTargetingVariationValue](docs/Model/AIConfigTargetingVariationValue.md)
 - [AIConfigVariation](docs/Model/AIConfigVariation.md)
 - [AIConfigVariationPatch](docs/Model/AIConfigVariationPatch.md)
 - [AIConfigVariationPost](docs/Model/AIConfigVariationPost.md)
 - [AIConfigVariationsResponse](docs/Model/AIConfigVariationsResponse.md)
 - [AIConfigs](docs/Model/AIConfigs.md)
+- [AIConfigsSummary](docs/Model/AIConfigsSummary.md)
+- [AITool](docs/Model/AITool.md)
+- [AIToolPatch](docs/Model/AIToolPatch.md)
+- [AIToolPost](docs/Model/AIToolPost.md)
+- [AITools](docs/Model/AITools.md)
 - [Access](docs/Model/Access.md)
 - [AccessAllowedReason](docs/Model/AccessAllowedReason.md)
 - [AccessAllowedRep](docs/Model/AccessAllowedRep.md)
@@ -839,8 +902,18 @@ Class | Method | HTTP request | Description
 - [AiConfigsAccessAllowedRep](docs/Model/AiConfigsAccessAllowedRep.md)
 - [AiConfigsAccessDenied](docs/Model/AiConfigsAccessDenied.md)
 - [AiConfigsAccessDeniedReason](docs/Model/AiConfigsAccessDeniedReason.md)
+- [AiConfigsExperimentEnabledPeriodRep](docs/Model/AiConfigsExperimentEnabledPeriodRep.md)
+- [AiConfigsExperimentEnvironmentSettingRep](docs/Model/AiConfigsExperimentEnvironmentSettingRep.md)
+- [AiConfigsExperimentInfoRep](docs/Model/AiConfigsExperimentInfoRep.md)
+- [AiConfigsFilter](docs/Model/AiConfigsFilter.md)
+- [AiConfigsLegacyExperimentRep](docs/Model/AiConfigsLegacyExperimentRep.md)
 - [AiConfigsLink](docs/Model/AiConfigsLink.md)
 - [AiConfigsMaintainerTeam](docs/Model/AiConfigsMaintainerTeam.md)
+- [AiConfigsMemberSummary](docs/Model/AiConfigsMemberSummary.md)
+- [AiConfigsMetricDataSourceRefRep](docs/Model/AiConfigsMetricDataSourceRefRep.md)
+- [AiConfigsMetricEventDefaultRep](docs/Model/AiConfigsMetricEventDefaultRep.md)
+- [AiConfigsMetricListingRep](docs/Model/AiConfigsMetricListingRep.md)
+- [AiConfigsModification](docs/Model/AiConfigsModification.md)
 - [AnnouncementAccess](docs/Model/AnnouncementAccess.md)
 - [AnnouncementAccessAllowedReason](docs/Model/AnnouncementAccessAllowedReason.md)
 - [AnnouncementAccessAllowedRep](docs/Model/AnnouncementAccessAllowedRep.md)
@@ -858,6 +931,9 @@ Class | Method | HTTP request | Description
 - [ApplicationVersionRep](docs/Model/ApplicationVersionRep.md)
 - [ApplicationVersionsCollectionRep](docs/Model/ApplicationVersionsCollectionRep.md)
 - [ApprovalRequestResponse](docs/Model/ApprovalRequestResponse.md)
+- [ApprovalRequestSetting](docs/Model/ApprovalRequestSetting.md)
+- [ApprovalRequestSettingWithEnvs](docs/Model/ApprovalRequestSettingWithEnvs.md)
+- [ApprovalRequestSettingsPatch](docs/Model/ApprovalRequestSettingsPatch.md)
 - [ApprovalSettings](docs/Model/ApprovalSettings.md)
 - [ApprovalsCapabilityConfig](docs/Model/ApprovalsCapabilityConfig.md)
 - [AssignedToRep](docs/Model/AssignedToRep.md)
@@ -870,8 +946,6 @@ Class | Method | HTTP request | Description
 - [AuditLogEventsHookCapabilityConfigPost](docs/Model/AuditLogEventsHookCapabilityConfigPost.md)
 - [AuditLogEventsHookCapabilityConfigRep](docs/Model/AuditLogEventsHookCapabilityConfigRep.md)
 - [AuthorizedAppDataRep](docs/Model/AuthorizedAppDataRep.md)
-- [BayesianBetaBinomialStatsRep](docs/Model/BayesianBetaBinomialStatsRep.md)
-- [BayesianNormalStatsRep](docs/Model/BayesianNormalStatsRep.md)
 - [BigSegmentStoreIntegration](docs/Model/BigSegmentStoreIntegration.md)
 - [BigSegmentStoreIntegrationCollection](docs/Model/BigSegmentStoreIntegrationCollection.md)
 - [BigSegmentStoreIntegrationCollectionLinks](docs/Model/BigSegmentStoreIntegrationCollectionLinks.md)
@@ -926,7 +1000,6 @@ Class | Method | HTTP request | Description
 - [CreateReleaseInput](docs/Model/CreateReleaseInput.md)
 - [CreateReleasePipelineInput](docs/Model/CreateReleasePipelineInput.md)
 - [CreateWorkflowTemplateInput](docs/Model/CreateWorkflowTemplateInput.md)
-- [CredibleIntervalRep](docs/Model/CredibleIntervalRep.md)
 - [CustomProperty](docs/Model/CustomProperty.md)
 - [CustomRole](docs/Model/CustomRole.md)
 - [CustomRolePost](docs/Model/CustomRolePost.md)
@@ -943,6 +1016,7 @@ Class | Method | HTTP request | Description
 - [DependentFlag](docs/Model/DependentFlag.md)
 - [DependentFlagEnvironment](docs/Model/DependentFlagEnvironment.md)
 - [DependentFlagsByEnvironment](docs/Model/DependentFlagsByEnvironment.md)
+- [DependentMeasuredRolloutRep](docs/Model/DependentMeasuredRolloutRep.md)
 - [DependentMetricGroupRep](docs/Model/DependentMetricGroupRep.md)
 - [DependentMetricGroupRepWithMetrics](docs/Model/DependentMetricGroupRepWithMetrics.md)
 - [DependentMetricOrMetricGroupRep](docs/Model/DependentMetricOrMetricGroupRep.md)
@@ -951,7 +1025,6 @@ Class | Method | HTTP request | Description
 - [Destination](docs/Model/Destination.md)
 - [DestinationPost](docs/Model/DestinationPost.md)
 - [Destinations](docs/Model/Destinations.md)
-- [Distribution](docs/Model/Distribution.md)
 - [DynamicOptions](docs/Model/DynamicOptions.md)
 - [DynamicOptionsParser](docs/Model/DynamicOptionsParser.md)
 - [Endpoint](docs/Model/Endpoint.md)
@@ -962,14 +1035,32 @@ Class | Method | HTTP request | Description
 - [Error](docs/Model/Error.md)
 - [EvaluationReason](docs/Model/EvaluationReason.md)
 - [EvaluationsSummary](docs/Model/EvaluationsSummary.md)
+- [EventFilter](docs/Model/EventFilter.md)
 - [ExecutionOutput](docs/Model/ExecutionOutput.md)
 - [ExpandableApprovalRequestResponse](docs/Model/ExpandableApprovalRequestResponse.md)
 - [ExpandableApprovalRequestsResponse](docs/Model/ExpandableApprovalRequestsResponse.md)
+- [ExpandedAIConfig](docs/Model/ExpandedAIConfig.md)
+- [ExpandedDirectlyLinkedFlag](docs/Model/ExpandedDirectlyLinkedFlag.md)
+- [ExpandedDirectlyLinkedFlags](docs/Model/ExpandedDirectlyLinkedFlags.md)
+- [ExpandedDirectlyLinkedSegment](docs/Model/ExpandedDirectlyLinkedSegment.md)
+- [ExpandedDirectlyLinkedSegments](docs/Model/ExpandedDirectlyLinkedSegments.md)
+- [ExpandedFlag](docs/Model/ExpandedFlag.md)
 - [ExpandedFlagRep](docs/Model/ExpandedFlagRep.md)
+- [ExpandedLinkedAIConfigs](docs/Model/ExpandedLinkedAIConfigs.md)
+- [ExpandedLinkedFlags](docs/Model/ExpandedLinkedFlags.md)
+- [ExpandedLinkedMetrics](docs/Model/ExpandedLinkedMetrics.md)
+- [ExpandedLinkedResources](docs/Model/ExpandedLinkedResources.md)
+- [ExpandedLinkedResourcesAIConfigs](docs/Model/ExpandedLinkedResourcesAIConfigs.md)
+- [ExpandedLinkedResourcesFlags](docs/Model/ExpandedLinkedResourcesFlags.md)
+- [ExpandedLinkedResourcesItems](docs/Model/ExpandedLinkedResourcesItems.md)
+- [ExpandedLinkedResourcesMetrics](docs/Model/ExpandedLinkedResourcesMetrics.md)
+- [ExpandedLinkedResourcesSegments](docs/Model/ExpandedLinkedResourcesSegments.md)
+- [ExpandedLinkedSegments](docs/Model/ExpandedLinkedSegments.md)
+- [ExpandedMetric](docs/Model/ExpandedMetric.md)
 - [ExpandedResourceRep](docs/Model/ExpandedResourceRep.md)
+- [ExpandedSegment](docs/Model/ExpandedSegment.md)
 - [Experiment](docs/Model/Experiment.md)
 - [ExperimentAllocationRep](docs/Model/ExperimentAllocationRep.md)
-- [ExperimentBayesianResultsRep](docs/Model/ExperimentBayesianResultsRep.md)
 - [ExperimentCollectionRep](docs/Model/ExperimentCollectionRep.md)
 - [ExperimentEnabledPeriodRep](docs/Model/ExperimentEnabledPeriodRep.md)
 - [ExperimentEnvironmentSettingRep](docs/Model/ExperimentEnvironmentSettingRep.md)
@@ -986,6 +1077,7 @@ Class | Method | HTTP request | Description
 - [Export](docs/Model/Export.md)
 - [Extinction](docs/Model/Extinction.md)
 - [ExtinctionCollectionRep](docs/Model/ExtinctionCollectionRep.md)
+- [FailedResourceLink](docs/Model/FailedResourceLink.md)
 - [FailureReasonRep](docs/Model/FailureReasonRep.md)
 - [FeatureFlag](docs/Model/FeatureFlag.md)
 - [FeatureFlagBody](docs/Model/FeatureFlagBody.md)
@@ -997,6 +1089,7 @@ Class | Method | HTTP request | Description
 - [FeatureFlagStatuses](docs/Model/FeatureFlagStatuses.md)
 - [FeatureFlags](docs/Model/FeatureFlags.md)
 - [FileRep](docs/Model/FileRep.md)
+- [Filter](docs/Model/Filter.md)
 - [FlagConfigApprovalRequestResponse](docs/Model/FlagConfigApprovalRequestResponse.md)
 - [FlagConfigApprovalRequestsResponse](docs/Model/FlagConfigApprovalRequestsResponse.md)
 - [FlagConfigEvaluation](docs/Model/FlagConfigEvaluation.md)
@@ -1035,12 +1128,14 @@ Class | Method | HTTP request | Description
 - [FlagStatusRep](docs/Model/FlagStatusRep.md)
 - [FlagSummary](docs/Model/FlagSummary.md)
 - [FlagTriggerInput](docs/Model/FlagTriggerInput.md)
+- [FlagsSummary](docs/Model/FlagsSummary.md)
 - [FollowFlagMember](docs/Model/FollowFlagMember.md)
 - [FollowersPerFlag](docs/Model/FollowersPerFlag.md)
 - [ForbiddenErrorRep](docs/Model/ForbiddenErrorRep.md)
 - [FormVariable](docs/Model/FormVariable.md)
 - [GenerateWarehouseDestinationKeyPairPostRep](docs/Model/GenerateWarehouseDestinationKeyPairPostRep.md)
 - [GetAnnouncementsPublic200Response](docs/Model/GetAnnouncementsPublic200Response.md)
+- [GuardedReleaseConfig](docs/Model/GuardedReleaseConfig.md)
 - [HMACSignature](docs/Model/HMACSignature.md)
 - [HeaderItems](docs/Model/HeaderItems.md)
 - [HoldoutDetailRep](docs/Model/HoldoutDetailRep.md)
@@ -1095,6 +1190,8 @@ Class | Method | HTTP request | Description
 - [IpList](docs/Model/IpList.md)
 - [IterationInput](docs/Model/IterationInput.md)
 - [IterationRep](docs/Model/IterationRep.md)
+- [JudgeAttachment](docs/Model/JudgeAttachment.md)
+- [JudgeConfiguration](docs/Model/JudgeConfiguration.md)
 - [LastSeenMetadata](docs/Model/LastSeenMetadata.md)
 - [LayerCollectionRep](docs/Model/LayerCollectionRep.md)
 - [LayerConfigurationRep](docs/Model/LayerConfigurationRep.md)
@@ -1106,6 +1203,8 @@ Class | Method | HTTP request | Description
 - [LeadTimeStagesRep](docs/Model/LeadTimeStagesRep.md)
 - [LegacyExperimentRep](docs/Model/LegacyExperimentRep.md)
 - [Link](docs/Model/Link.md)
+- [LinkResourceSuccessResponse](docs/Model/LinkResourceSuccessResponse.md)
+- [Maintainer](docs/Model/Maintainer.md)
 - [MaintainerMember](docs/Model/MaintainerMember.md)
 - [MaintainerRep](docs/Model/MaintainerRep.md)
 - [MaintainerTeam](docs/Model/MaintainerTeam.md)
@@ -1122,21 +1221,20 @@ Class | Method | HTTP request | Description
 - [MethodNotAllowedErrorRep](docs/Model/MethodNotAllowedErrorRep.md)
 - [MetricByVariation](docs/Model/MetricByVariation.md)
 - [MetricCollectionRep](docs/Model/MetricCollectionRep.md)
+- [MetricDataSourceRefRep](docs/Model/MetricDataSourceRefRep.md)
 - [MetricEventDefaultRep](docs/Model/MetricEventDefaultRep.md)
 - [MetricGroupCollectionRep](docs/Model/MetricGroupCollectionRep.md)
 - [MetricGroupPost](docs/Model/MetricGroupPost.md)
 - [MetricGroupRep](docs/Model/MetricGroupRep.md)
-- [MetricGroupResultsRep](docs/Model/MetricGroupResultsRep.md)
 - [MetricInGroupRep](docs/Model/MetricInGroupRep.md)
-- [MetricInGroupResultsRep](docs/Model/MetricInGroupResultsRep.md)
 - [MetricInMetricGroupInput](docs/Model/MetricInMetricGroupInput.md)
 - [MetricInput](docs/Model/MetricInput.md)
 - [MetricListingRep](docs/Model/MetricListingRep.md)
 - [MetricPost](docs/Model/MetricPost.md)
 - [MetricRep](docs/Model/MetricRep.md)
-- [MetricSeen](docs/Model/MetricSeen.md)
 - [MetricV2Rep](docs/Model/MetricV2Rep.md)
 - [Metrics](docs/Model/Metrics.md)
+- [MetricsSummary](docs/Model/MetricsSummary.md)
 - [MigrationSafetyIssueRep](docs/Model/MigrationSafetyIssueRep.md)
 - [MigrationSettingsPost](docs/Model/MigrationSettingsPost.md)
 - [ModelConfig](docs/Model/ModelConfig.md)
@@ -1172,6 +1270,7 @@ Class | Method | HTTP request | Description
 - [PostDeploymentEventInput](docs/Model/PostDeploymentEventInput.md)
 - [PostFlagScheduledChangesInput](docs/Model/PostFlagScheduledChangesInput.md)
 - [PostInsightGroupParams](docs/Model/PostInsightGroupParams.md)
+- [PostReleasePolicyRequest](docs/Model/PostReleasePolicyRequest.md)
 - [Prerequisite](docs/Model/Prerequisite.md)
 - [Project](docs/Model/Project.md)
 - [ProjectPost](docs/Model/ProjectPost.md)
@@ -1183,6 +1282,7 @@ Class | Method | HTTP request | Description
 - [PullRequestLeadTimeRep](docs/Model/PullRequestLeadTimeRep.md)
 - [PullRequestRep](docs/Model/PullRequestRep.md)
 - [PutBranch](docs/Model/PutBranch.md)
+- [PutReleasePolicyRequest](docs/Model/PutReleasePolicyRequest.md)
 - [RandomizationSettingsPut](docs/Model/RandomizationSettingsPut.md)
 - [RandomizationSettingsRep](docs/Model/RandomizationSettingsRep.md)
 - [RandomizationUnitInput](docs/Model/RandomizationUnitInput.md)
@@ -1191,7 +1291,6 @@ Class | Method | HTTP request | Description
 - [RecentTriggerBody](docs/Model/RecentTriggerBody.md)
 - [ReferenceRep](docs/Model/ReferenceRep.md)
 - [RelatedExperimentRep](docs/Model/RelatedExperimentRep.md)
-- [RelativeDifferenceRep](docs/Model/RelativeDifferenceRep.md)
 - [RelayAutoConfigCollectionRep](docs/Model/RelayAutoConfigCollectionRep.md)
 - [RelayAutoConfigPost](docs/Model/RelayAutoConfigPost.md)
 - [RelayAutoConfigRep](docs/Model/RelayAutoConfigRep.md)
@@ -1199,9 +1298,19 @@ Class | Method | HTTP request | Description
 - [ReleaseAudience](docs/Model/ReleaseAudience.md)
 - [ReleaseGuardianConfiguration](docs/Model/ReleaseGuardianConfiguration.md)
 - [ReleaseGuardianConfigurationInput](docs/Model/ReleaseGuardianConfigurationInput.md)
+- [ReleaseMethod](docs/Model/ReleaseMethod.md)
 - [ReleasePhase](docs/Model/ReleasePhase.md)
 - [ReleasePipeline](docs/Model/ReleasePipeline.md)
 - [ReleasePipelineCollection](docs/Model/ReleasePipelineCollection.md)
+- [ReleasePoliciesAccess](docs/Model/ReleasePoliciesAccess.md)
+- [ReleasePoliciesAccessAllowedReason](docs/Model/ReleasePoliciesAccessAllowedReason.md)
+- [ReleasePoliciesAccessAllowedRep](docs/Model/ReleasePoliciesAccessAllowedRep.md)
+- [ReleasePoliciesAccessDenied](docs/Model/ReleasePoliciesAccessDenied.md)
+- [ReleasePoliciesAccessDeniedReason](docs/Model/ReleasePoliciesAccessDeniedReason.md)
+- [ReleasePoliciesAccessRep](docs/Model/ReleasePoliciesAccessRep.md)
+- [ReleasePoliciesResponse](docs/Model/ReleasePoliciesResponse.md)
+- [ReleasePolicy](docs/Model/ReleasePolicy.md)
+- [ReleasePolicyScope](docs/Model/ReleasePolicyScope.md)
 - [ReleaseProgression](docs/Model/ReleaseProgression.md)
 - [ReleaseProgressionCollection](docs/Model/ReleaseProgressionCollection.md)
 - [ReleaserAudienceConfigInput](docs/Model/ReleaserAudienceConfigInput.md)
@@ -1211,6 +1320,10 @@ Class | Method | HTTP request | Description
 - [ResourceAccess](docs/Model/ResourceAccess.md)
 - [ResourceIDResponse](docs/Model/ResourceIDResponse.md)
 - [ResourceId](docs/Model/ResourceId.md)
+- [ResourceSummary](docs/Model/ResourceSummary.md)
+- [RestrictedModelError](docs/Model/RestrictedModelError.md)
+- [RestrictedModelsRequest](docs/Model/RestrictedModelsRequest.md)
+- [RestrictedModelsResponse](docs/Model/RestrictedModelsResponse.md)
 - [ReviewOutput](docs/Model/ReviewOutput.md)
 - [ReviewResponse](docs/Model/ReviewResponse.md)
 - [Rollout](docs/Model/Rollout.md)
@@ -1225,11 +1338,10 @@ Class | Method | HTTP request | Description
 - [SegmentTarget](docs/Model/SegmentTarget.md)
 - [SegmentUserList](docs/Model/SegmentUserList.md)
 - [SegmentUserState](docs/Model/SegmentUserState.md)
-- [Series](docs/Model/Series.md)
-- [SeriesIntervalsRep](docs/Model/SeriesIntervalsRep.md)
+- [SegmentsSummary](docs/Model/SegmentsSummary.md)
 - [SeriesListRep](docs/Model/SeriesListRep.md)
+- [SeriesListRepFloat](docs/Model/SeriesListRepFloat.md)
 - [SimpleHoldoutRep](docs/Model/SimpleHoldoutRep.md)
-- [SlicedResultsRep](docs/Model/SlicedResultsRep.md)
 - [SourceEnv](docs/Model/SourceEnv.md)
 - [SourceFlag](docs/Model/SourceFlag.md)
 - [StageInput](docs/Model/StageInput.md)
@@ -1267,11 +1379,11 @@ Class | Method | HTTP request | Description
 - [TreatmentInput](docs/Model/TreatmentInput.md)
 - [TreatmentParameterInput](docs/Model/TreatmentParameterInput.md)
 - [TreatmentRep](docs/Model/TreatmentRep.md)
-- [TreatmentResultRep](docs/Model/TreatmentResultRep.md)
 - [TriggerPost](docs/Model/TriggerPost.md)
 - [TriggerWorkflowCollectionRep](docs/Model/TriggerWorkflowCollectionRep.md)
 - [TriggerWorkflowRep](docs/Model/TriggerWorkflowRep.md)
 - [UnauthorizedErrorRep](docs/Model/UnauthorizedErrorRep.md)
+- [UnlinkResourceSuccessResponse](docs/Model/UnlinkResourceSuccessResponse.md)
 - [UpdatePhaseStatusInput](docs/Model/UpdatePhaseStatusInput.md)
 - [UpdateReleasePipelineInput](docs/Model/UpdateReleasePipelineInput.md)
 - [UpsertContextKindPayload](docs/Model/UpsertContextKindPayload.md)
@@ -1295,7 +1407,31 @@ Class | Method | HTTP request | Description
 - [VariationEvalSummary](docs/Model/VariationEvalSummary.md)
 - [VariationOrRolloutRep](docs/Model/VariationOrRolloutRep.md)
 - [VariationSummary](docs/Model/VariationSummary.md)
+- [VariationTool](docs/Model/VariationTool.md)
+- [VariationToolPost](docs/Model/VariationToolPost.md)
 - [VersionsRep](docs/Model/VersionsRep.md)
+- [View](docs/Model/View.md)
+- [ViewLinkRequest](docs/Model/ViewLinkRequest.md)
+- [ViewLinkRequestKeys](docs/Model/ViewLinkRequestKeys.md)
+- [ViewLinkRequestSegmentIdentifier](docs/Model/ViewLinkRequestSegmentIdentifier.md)
+- [ViewLinkRequestSegmentIdentifiers](docs/Model/ViewLinkRequestSegmentIdentifiers.md)
+- [ViewLinkedResource](docs/Model/ViewLinkedResource.md)
+- [ViewLinkedResourceDetails](docs/Model/ViewLinkedResourceDetails.md)
+- [ViewLinkedResources](docs/Model/ViewLinkedResources.md)
+- [ViewPatch](docs/Model/ViewPatch.md)
+- [ViewPost](docs/Model/ViewPost.md)
+- [Views](docs/Model/Views.md)
+- [ViewsAccess](docs/Model/ViewsAccess.md)
+- [ViewsAccessAllowedReason](docs/Model/ViewsAccessAllowedReason.md)
+- [ViewsAccessAllowedRep](docs/Model/ViewsAccessAllowedRep.md)
+- [ViewsAccessDenied](docs/Model/ViewsAccessDenied.md)
+- [ViewsAccessDeniedReason](docs/Model/ViewsAccessDeniedReason.md)
+- [ViewsAccessRep](docs/Model/ViewsAccessRep.md)
+- [ViewsLink](docs/Model/ViewsLink.md)
+- [ViewsMaintainerMember](docs/Model/ViewsMaintainerMember.md)
+- [ViewsMaintainerTeam](docs/Model/ViewsMaintainerTeam.md)
+- [ViewsPaginatedLinks](docs/Model/ViewsPaginatedLinks.md)
+- [ViewsSelfLink](docs/Model/ViewsSelfLink.md)
 - [Webhook](docs/Model/Webhook.md)
 - [WebhookPost](docs/Model/WebhookPost.md)
 - [Webhooks](docs/Model/Webhooks.md)
@@ -1307,6 +1443,7 @@ Class | Method | HTTP request | Description
 
 ## Authorization
 
+Authentication schemes defined for the API:
 ### ApiKey
 
 - **Type**: API key
@@ -1332,5 +1469,6 @@ support@launchdarkly.com
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `2.0`
-    - Package version: `17.2.0`
+    - Package version: `18.0.0`
+    - Generator version: `7.5.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

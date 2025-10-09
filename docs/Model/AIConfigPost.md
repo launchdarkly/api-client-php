@@ -8,6 +8,7 @@ Name | Type | Description | Notes
 **key** | **string** |  |
 **maintainer_id** | **string** |  | [optional]
 **maintainer_team_key** | **string** |  | [optional]
+**mode** | **string** |  | [optional] [default to 'completion']
 **name** | **string** |  |
 **tags** | **string[]** |  | [optional]
 

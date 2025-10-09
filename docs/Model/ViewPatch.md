@@ -1,0 +1,15 @@
+# # ViewPatch
+
+## Properties
+
+Name | Type | Description | Notes
+------------ | ------------- | ------------- | -------------
+**name** | **string** | Human-readable name for the view | [optional]
+**description** | **string** | Optional detailed description of the view | [optional]
+**generate_sdk_keys** | **bool** | Whether to generate SDK keys for this view | [optional]
+**maintainer_id** | **string** | Member ID of the maintainer for this view. Only one of &#x60;maintainerId&#x60; or &#x60;maintainerTeamKey&#x60; can be specified. | [optional]
+**maintainer_team_key** | **string** | Key of the maintainer team for this view. Only one of &#x60;maintainerId&#x60; or &#x60;maintainerTeamKey&#x60; can be specified. | [optional]
+**tags** | **string[]** | Tags associated with this view | [optional]
+**archived** | **bool** | Whether or not the view is archived | [optional]
+
+[[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

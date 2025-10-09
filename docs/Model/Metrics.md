@@ -15,7 +15,7 @@ Name | Type | Description | Notes
 **duration_ms** | **int** |  | [optional]
 **time_to_first_token_ms** | **int** |  | [optional]
 **satisfaction_rating** | **float** | A value between 0 and 1 representing satisfaction rating | [optional]
-**input_cost** | **double** | Cost of input tokens in USD | [optional]
-**output_cost** | **double** | Cost of output tokens in USD | [optional]
+**input_cost** | **float** | Cost of input tokens in USD | [optional]
+**output_cost** | **float** | Cost of output tokens in USD | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

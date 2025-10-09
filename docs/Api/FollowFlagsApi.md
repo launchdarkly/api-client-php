@@ -1,13 +1,13 @@
 # LaunchDarklyApi\FollowFlagsApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteFlagFollower()**](FollowFlagsApi.md#deleteFlagFollower) | **DELETE** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers/{memberId} | Remove a member as a follower of a flag in a project and environment
-[**getFlagFollowers()**](FollowFlagsApi.md#getFlagFollowers) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers | Get followers of a flag in a project and environment
-[**getFollowersByProjEnv()**](FollowFlagsApi.md#getFollowersByProjEnv) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/followers | Get followers of all flags in a given project and environment
-[**putFlagFollower()**](FollowFlagsApi.md#putFlagFollower) | **PUT** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers/{memberId} | Add a member as a follower of a flag in a project and environment
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**deleteFlagFollower()**](FollowFlagsApi.md#deleteFlagFollower) | **DELETE** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers/{memberId} | Remove a member as a follower of a flag in a project and environment |
+| [**getFlagFollowers()**](FollowFlagsApi.md#getFlagFollowers) | **GET** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers | Get followers of a flag in a project and environment |
+| [**getFollowersByProjEnv()**](FollowFlagsApi.md#getFollowersByProjEnv) | **GET** /api/v2/projects/{projectKey}/environments/{environmentKey}/followers | Get followers of all flags in a given project and environment |
+| [**putFlagFollower()**](FollowFlagsApi.md#putFlagFollower) | **PUT** /api/v2/projects/{projectKey}/flags/{featureFlagKey}/environments/{environmentKey}/followers/{memberId} | Add a member as a follower of a flag in a project and environment |
 
 
 ## `deleteFlagFollower()`
@@ -53,12 +53,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag key |
- **environment_key** | **string**| The environment key |
- **member_id** | **string**| The memberId of the member to remove as a follower of the flag. Reader roles can only remove themselves. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **feature_flag_key** | **string**| The feature flag key | |
+| **environment_key** | **string**| The environment key | |
+| **member_id** | **string**| The memberId of the member to remove as a follower of the flag. Reader roles can only remove themselves. | |
 
 ### Return type
 
@@ -120,11 +120,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag key |
- **environment_key** | **string**| The environment key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **feature_flag_key** | **string**| The feature flag key | |
+| **environment_key** | **string**| The environment key | |
 
 ### Return type
 
@@ -185,10 +185,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **environment_key** | **string**| The environment key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **environment_key** | **string**| The environment key | |
 
 ### Return type
 
@@ -250,12 +250,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **feature_flag_key** | **string**| The feature flag key |
- **environment_key** | **string**| The environment key |
- **member_id** | **string**| The memberId of the member to add as a follower of the flag. Reader roles can only add themselves. |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **feature_flag_key** | **string**| The feature flag key | |
+| **environment_key** | **string**| The environment key | |
+| **member_id** | **string**| The memberId of the member to add as a follower of the flag. Reader roles can only add themselves. | |
 
 ### Return type
 

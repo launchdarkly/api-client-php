@@ -1,13 +1,13 @@
 # LaunchDarklyApi\AnnouncementsApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createAnnouncementPublic()**](AnnouncementsApi.md#createAnnouncementPublic) | **POST** /api/v2/announcements | Create an announcement
-[**deleteAnnouncementPublic()**](AnnouncementsApi.md#deleteAnnouncementPublic) | **DELETE** /api/v2/announcements/{announcementId} | Delete an announcement
-[**getAnnouncementsPublic()**](AnnouncementsApi.md#getAnnouncementsPublic) | **GET** /api/v2/announcements | Get announcements
-[**updateAnnouncementPublic()**](AnnouncementsApi.md#updateAnnouncementPublic) | **PATCH** /api/v2/announcements/{announcementId} | Update an announcement
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createAnnouncementPublic()**](AnnouncementsApi.md#createAnnouncementPublic) | **POST** /api/v2/announcements | Create an announcement |
+| [**deleteAnnouncementPublic()**](AnnouncementsApi.md#deleteAnnouncementPublic) | **DELETE** /api/v2/announcements/{announcementId} | Delete an announcement |
+| [**getAnnouncementsPublic()**](AnnouncementsApi.md#getAnnouncementsPublic) | **GET** /api/v2/announcements | Get announcements |
+| [**updateAnnouncementPublic()**](AnnouncementsApi.md#updateAnnouncementPublic) | **PATCH** /api/v2/announcements/{announcementId} | Update an announcement |
 
 
 ## `createAnnouncementPublic()`
@@ -51,9 +51,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **create_announcement_body** | [**\LaunchDarklyApi\Model\CreateAnnouncementBody**](../Model/CreateAnnouncementBody.md)| Announcement request body |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **create_announcement_body** | [**\LaunchDarklyApi\Model\CreateAnnouncementBody**](../Model/CreateAnnouncementBody.md)| Announcement request body | |
 
 ### Return type
 
@@ -112,9 +112,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **announcement_id** | **string**|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **announcement_id** | **string**|  | |
 
 ### Return type
 
@@ -176,11 +176,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **status** | **string**| Filter announcements by status. | [optional]
- **limit** | **int**| The number of announcements to return. | [optional]
- **offset** | **int**| Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **status** | **string**| Filter announcements by status. | [optional] |
+| **limit** | **int**| The number of announcements to return. | [optional] |
+| **offset** | **int**| Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 
 ### Return type
 
@@ -241,10 +241,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **announcement_id** | **string**|  |
- **announcement_patch_operation** | [**\LaunchDarklyApi\Model\AnnouncementPatchOperation[]**](../Model/AnnouncementPatchOperation.md)| Update announcement request body |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **announcement_id** | **string**|  | |
+| **announcement_patch_operation** | [**\LaunchDarklyApi\Model\AnnouncementPatchOperation[]**](../Model/AnnouncementPatchOperation.md)| Update announcement request body | |
 
 ### Return type
 

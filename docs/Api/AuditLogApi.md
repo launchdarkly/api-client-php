@@ -1,12 +1,12 @@
 # LaunchDarklyApi\AuditLogApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**getAuditLogEntries()**](AuditLogApi.md#getAuditLogEntries) | **GET** /api/v2/auditlog | List audit log entries
-[**getAuditLogEntry()**](AuditLogApi.md#getAuditLogEntry) | **GET** /api/v2/auditlog/{id} | Get audit log entry
-[**postAuditLogEntries()**](AuditLogApi.md#postAuditLogEntries) | **POST** /api/v2/auditlog | Search audit log entries
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**getAuditLogEntries()**](AuditLogApi.md#getAuditLogEntries) | **GET** /api/v2/auditlog | List audit log entries |
+| [**getAuditLogEntry()**](AuditLogApi.md#getAuditLogEntry) | **GET** /api/v2/auditlog/{id} | Get audit log entry |
+| [**postAuditLogEntries()**](AuditLogApi.md#postAuditLogEntries) | **POST** /api/v2/auditlog | Search audit log entries |
 
 
 ## `getAuditLogEntries()`
@@ -54,13 +54,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **before** | **int**| A timestamp filter, expressed as a Unix epoch time in milliseconds.  All entries this returns occurred before the timestamp. | [optional]
- **after** | **int**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries this returns occurred after the timestamp. | [optional]
- **q** | **string**| Text to search for. You can search for the full or partial name of the resource. | [optional]
- **limit** | **int**| A limit on the number of audit log entries that return. Set between 1 and 20. The default is 10. | [optional]
- **spec** | **string**| A resource specifier that lets you filter audit log listings by resource | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **before** | **int**| A timestamp filter, expressed as a Unix epoch time in milliseconds.  All entries this returns occurred before the timestamp. | [optional] |
+| **after** | **int**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries this returns occurred after the timestamp. | [optional] |
+| **q** | **string**| Text to search for. You can search for the full or partial name of the resource. | [optional] |
+| **limit** | **int**| A limit on the number of audit log entries that return. Set between 1 and 20. The default is 10. | [optional] |
+| **spec** | **string**| A resource specifier that lets you filter audit log listings by resource | [optional] |
 
 ### Return type
 
@@ -87,7 +87,7 @@ getAuditLogEntry($id): \LaunchDarklyApi\Model\AuditLogEntryRep
 
 Get audit log entry
 
-Fetch a detailed audit log entry representation. The detailed representation includes several fields that are not present in the summary representation, including:  - `delta`: the JSON patch body that was used in the request to update the entity - `previousVersion`: a JSON representation of the previous version of the entity - `currentVersion`: a JSON representation of the current version of the entity
+Fetch a detailed audit log entry representation. The detailed representation includes several fields that are not present in the summary representation, including:  - `previousVersion`: a JSON representation of the previous version of the entity. - `currentVersion`: a JSON representation of the current version of the entity. - `delta`: the JSON patch body that was used in the request to update the entity. This is only included if the update was made through a [JSON patch](https://launchdarkly.com/docs/api#updates-using-json-patch). It is null when the update was made using [semantic patch](https://launchdarkly.com/docs/api#updates-using-semantic-patch). Because most [flag updates](https://launchdarkly.com/docs/api/feature-flags/patch-feature-flag) are made using semantic patch, this field is rarely returned.
 
 ### Example
 
@@ -120,9 +120,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| The ID of the audit log entry |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| The ID of the audit log entry | |
 
 ### Return type
 
@@ -186,13 +186,13 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **before** | **int**| A timestamp filter, expressed as a Unix epoch time in milliseconds.  All entries returned occurred before the timestamp. | [optional]
- **after** | **int**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned occurred after the timestamp. | [optional]
- **q** | **string**| Text to search for. You can search for the full or partial name of the resource. | [optional]
- **limit** | **int**| A limit on the number of audit log entries that return. Set between 1 and 20. The default is 10. | [optional]
- **statement_post** | [**\LaunchDarklyApi\Model\StatementPost[]**](../Model/StatementPost.md)|  | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **before** | **int**| A timestamp filter, expressed as a Unix epoch time in milliseconds.  All entries returned occurred before the timestamp. | [optional] |
+| **after** | **int**| A timestamp filter, expressed as a Unix epoch time in milliseconds. All entries returned occurred after the timestamp. | [optional] |
+| **q** | **string**| Text to search for. You can search for the full or partial name of the resource. | [optional] |
+| **limit** | **int**| A limit on the number of audit log entries that return. Set between 1 and 20. The default is 10. | [optional] |
+| **statement_post** | [**\LaunchDarklyApi\Model\StatementPost[]**](../Model/StatementPost.md)|  | [optional] |
 
 ### Return type
 

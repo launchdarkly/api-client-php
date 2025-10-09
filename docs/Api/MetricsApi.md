@@ -1,14 +1,14 @@
 # LaunchDarklyApi\MetricsApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteMetric()**](MetricsApi.md#deleteMetric) | **DELETE** /api/v2/metrics/{projectKey}/{metricKey} | Delete metric
-[**getMetric()**](MetricsApi.md#getMetric) | **GET** /api/v2/metrics/{projectKey}/{metricKey} | Get metric
-[**getMetrics()**](MetricsApi.md#getMetrics) | **GET** /api/v2/metrics/{projectKey} | List metrics
-[**patchMetric()**](MetricsApi.md#patchMetric) | **PATCH** /api/v2/metrics/{projectKey}/{metricKey} | Update metric
-[**postMetric()**](MetricsApi.md#postMetric) | **POST** /api/v2/metrics/{projectKey} | Create metric
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**deleteMetric()**](MetricsApi.md#deleteMetric) | **DELETE** /api/v2/metrics/{projectKey}/{metricKey} | Delete metric |
+| [**getMetric()**](MetricsApi.md#getMetric) | **GET** /api/v2/metrics/{projectKey}/{metricKey} | Get metric |
+| [**getMetrics()**](MetricsApi.md#getMetrics) | **GET** /api/v2/metrics/{projectKey} | List metrics |
+| [**patchMetric()**](MetricsApi.md#patchMetric) | **PATCH** /api/v2/metrics/{projectKey}/{metricKey} | Update metric |
+| [**postMetric()**](MetricsApi.md#postMetric) | **POST** /api/v2/metrics/{projectKey} | Create metric |
 
 
 ## `deleteMetric()`
@@ -52,10 +52,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **metric_key** | **string**| The metric key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **metric_key** | **string**| The metric key | |
 
 ### Return type
 
@@ -105,7 +105,7 @@ $apiInstance = new LaunchDarklyApi\Api\MetricsApi(
 );
 $project_key = 'project_key_example'; // string | The project key
 $metric_key = 'metric_key_example'; // string | The metric key
-$expand = 'expand_example'; // string | A comma-separated list of properties that can reveal additional information in the response.
+$expand = 'expand_example'; // string | A comma-separated list of properties that can reveal additional information in the response. Supported fields are `experiments`, `experimentCount`, `metricGroups`, `metricGroupCount`, `eventSources`, `guardedRollouts`, `guardedRolloutCount`, and `lastUsedInEntity`.
 $version_id = 'version_id_example'; // string | The specific version ID of the metric
 
 try {
@@ -118,12 +118,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **metric_key** | **string**| The metric key |
- **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional]
- **version_id** | **string**| The specific version ID of the metric | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **metric_key** | **string**| The metric key | |
+| **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. Supported fields are &#x60;experiments&#x60;, &#x60;experimentCount&#x60;, &#x60;metricGroups&#x60;, &#x60;metricGroupCount&#x60;, &#x60;eventSources&#x60;, &#x60;guardedRollouts&#x60;, &#x60;guardedRolloutCount&#x60;, and &#x60;lastUsedInEntity&#x60;. | [optional] |
+| **version_id** | **string**| The specific version ID of the metric | [optional] |
 
 ### Return type
 
@@ -176,7 +176,7 @@ $expand = 'expand_example'; // string | A comma-separated list of properties tha
 $limit = 56; // int | The number of metrics to return in the response. Defaults to 20. Maximum limit is 50.
 $offset = 56; // int | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next `limit` items.
 $sort = 'sort_example'; // string | A field to sort the items by. Prefix field by a dash ( - ) to sort in descending order. This endpoint supports sorting by `createdAt` or `name`.
-$filter = 'filter_example'; // string | A comma-separated list of filters. This endpoint accepts filtering by `query`, `tags`, 'eventKind', 'isNumeric', 'unitAggregationType`, `hasConnections`, `maintainerIds`, and `maintainerTeamKey`. To learn more about the filter syntax, read the 'Filtering metrics' section above.
+$filter = 'filter_example'; // string | A comma-separated list of filters. This endpoint accepts filtering by `query`, `tags`, 'eventKind', 'isNumeric', 'unitAggregationType`, `hasConnections`, `maintainerIds`, `maintainerTeamKey` and `view`. To learn more about the filter syntax, read the 'Filtering metrics' section above.
 
 try {
     $result = $apiInstance->getMetrics($project_key, $expand, $limit, $offset, $sort, $filter);
@@ -188,14 +188,14 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional]
- **limit** | **int**| The number of metrics to return in the response. Defaults to 20. Maximum limit is 50. | [optional]
- **offset** | **int**| Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next &#x60;limit&#x60; items. | [optional]
- **sort** | **string**| A field to sort the items by. Prefix field by a dash ( - ) to sort in descending order. This endpoint supports sorting by &#x60;createdAt&#x60; or &#x60;name&#x60;. | [optional]
- **filter** | **string**| A comma-separated list of filters. This endpoint accepts filtering by &#x60;query&#x60;, &#x60;tags&#x60;, &#39;eventKind&#39;, &#39;isNumeric&#39;, &#39;unitAggregationType&#x60;, &#x60;hasConnections&#x60;, &#x60;maintainerIds&#x60;, and &#x60;maintainerTeamKey&#x60;. To learn more about the filter syntax, read the &#39;Filtering metrics&#39; section above. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **expand** | **string**| A comma-separated list of properties that can reveal additional information in the response. | [optional] |
+| **limit** | **int**| The number of metrics to return in the response. Defaults to 20. Maximum limit is 50. | [optional] |
+| **offset** | **int**| Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next &#x60;limit&#x60; items. | [optional] |
+| **sort** | **string**| A field to sort the items by. Prefix field by a dash ( - ) to sort in descending order. This endpoint supports sorting by &#x60;createdAt&#x60; or &#x60;name&#x60;. | [optional] |
+| **filter** | **string**| A comma-separated list of filters. This endpoint accepts filtering by &#x60;query&#x60;, &#x60;tags&#x60;, &#39;eventKind&#39;, &#39;isNumeric&#39;, &#39;unitAggregationType&#x60;, &#x60;hasConnections&#x60;, &#x60;maintainerIds&#x60;, &#x60;maintainerTeamKey&#x60; and &#x60;view&#x60;. To learn more about the filter syntax, read the &#39;Filtering metrics&#39; section above. | [optional] |
 
 ### Return type
 
@@ -257,11 +257,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **metric_key** | **string**| The metric key |
- **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **metric_key** | **string**| The metric key | |
+| **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  | |
 
 ### Return type
 
@@ -322,10 +322,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **metric_post** | [**\LaunchDarklyApi\Model\MetricPost**](../Model/MetricPost.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **metric_post** | [**\LaunchDarklyApi\Model\MetricPost**](../Model/MetricPost.md)|  | |
 
 ### Return type
 

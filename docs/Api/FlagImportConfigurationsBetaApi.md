@@ -1,15 +1,15 @@
 # LaunchDarklyApi\FlagImportConfigurationsBetaApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**createFlagImportConfiguration()**](FlagImportConfigurationsBetaApi.md#createFlagImportConfiguration) | **POST** /api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey} | Create a flag import configuration
-[**deleteFlagImportConfiguration()**](FlagImportConfigurationsBetaApi.md#deleteFlagImportConfiguration) | **DELETE** /api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey}/{integrationId} | Delete a flag import configuration
-[**getFlagImportConfiguration()**](FlagImportConfigurationsBetaApi.md#getFlagImportConfiguration) | **GET** /api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey}/{integrationId} | Get a single flag import configuration
-[**getFlagImportConfigurations()**](FlagImportConfigurationsBetaApi.md#getFlagImportConfigurations) | **GET** /api/v2/integration-capabilities/flag-import | List all flag import configurations
-[**patchFlagImportConfiguration()**](FlagImportConfigurationsBetaApi.md#patchFlagImportConfiguration) | **PATCH** /api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey}/{integrationId} | Update a flag import configuration
-[**triggerFlagImportJob()**](FlagImportConfigurationsBetaApi.md#triggerFlagImportJob) | **POST** /api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey}/{integrationId}/trigger | Trigger a single flag import run
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**createFlagImportConfiguration()**](FlagImportConfigurationsBetaApi.md#createFlagImportConfiguration) | **POST** /api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey} | Create a flag import configuration |
+| [**deleteFlagImportConfiguration()**](FlagImportConfigurationsBetaApi.md#deleteFlagImportConfiguration) | **DELETE** /api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey}/{integrationId} | Delete a flag import configuration |
+| [**getFlagImportConfiguration()**](FlagImportConfigurationsBetaApi.md#getFlagImportConfiguration) | **GET** /api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey}/{integrationId} | Get a single flag import configuration |
+| [**getFlagImportConfigurations()**](FlagImportConfigurationsBetaApi.md#getFlagImportConfigurations) | **GET** /api/v2/integration-capabilities/flag-import | List all flag import configurations |
+| [**patchFlagImportConfiguration()**](FlagImportConfigurationsBetaApi.md#patchFlagImportConfiguration) | **PATCH** /api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey}/{integrationId} | Update a flag import configuration |
+| [**triggerFlagImportJob()**](FlagImportConfigurationsBetaApi.md#triggerFlagImportJob) | **POST** /api/v2/integration-capabilities/flag-import/{projectKey}/{integrationKey}/{integrationId}/trigger | Trigger a single flag import run |
 
 
 ## `createFlagImportConfiguration()`
@@ -55,11 +55,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **integration_key** | **string**| The integration key |
- **flag_import_configuration_post** | [**\LaunchDarklyApi\Model\FlagImportConfigurationPost**](../Model/FlagImportConfigurationPost.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **integration_key** | **string**| The integration key | |
+| **flag_import_configuration_post** | [**\LaunchDarklyApi\Model\FlagImportConfigurationPost**](../Model/FlagImportConfigurationPost.md)|  | |
 
 ### Return type
 
@@ -120,11 +120,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **integration_key** | **string**| The integration key |
- **integration_id** | **string**| The integration ID |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **integration_key** | **string**| The integration key | |
+| **integration_id** | **string**| The integration ID | |
 
 ### Return type
 
@@ -186,11 +186,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **integration_key** | **string**| The integration key, for example, &#x60;split&#x60; |
- **integration_id** | **string**| The integration ID |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **integration_key** | **string**| The integration key, for example, &#x60;split&#x60; | |
+| **integration_id** | **string**| The integration ID | |
 
 ### Return type
 
@@ -312,12 +312,12 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **integration_key** | **string**| The integration key |
- **integration_id** | **string**| The integration ID |
- **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **integration_key** | **string**| The integration key | |
+| **integration_id** | **string**| The integration ID | |
+| **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  | |
 
 ### Return type
 
@@ -378,11 +378,11 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **project_key** | **string**| The project key |
- **integration_key** | **string**| The integration key |
- **integration_id** | **string**| The integration ID |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **project_key** | **string**| The project key | |
+| **integration_key** | **string**| The integration key | |
+| **integration_id** | **string**| The integration ID | |
 
 ### Return type
 

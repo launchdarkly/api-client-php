@@ -14,6 +14,8 @@ Name | Type | Description | Notes
 **winning_reason** | **string** | The reason you stopped the experiment | [optional]
 **can_reshuffle_traffic** | **bool** | Whether the experiment may reassign traffic to different variations when the experiment audience changes (true) or must keep all traffic assigned to its initial variation (false). | [optional]
 **flags** | [**array<string,\LaunchDarklyApi\Model\FlagRep>**](FlagRep.md) | Details on the flag used in this experiment | [optional]
+**reallocation_frequency_millis** | **int** | The cadence (in milliseconds) to update the allocation. Only present for multi-armed bandits. | [optional]
+**version** | **int** | The current version that the iteration is on | [optional]
 **primary_metric** | [**\LaunchDarklyApi\Model\DependentMetricOrMetricGroupRep**](DependentMetricOrMetricGroupRep.md) |  | [optional]
 **primary_single_metric** | [**\LaunchDarklyApi\Model\MetricV2Rep**](MetricV2Rep.md) |  | [optional]
 **primary_funnel** | [**\LaunchDarklyApi\Model\DependentMetricGroupRepWithMetrics**](DependentMetricGroupRepWithMetrics.md) |  | [optional]

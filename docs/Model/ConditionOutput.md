@@ -16,5 +16,6 @@ Name | Type | Description | Notes
 **all_reviews** | [**\LaunchDarklyApi\Model\ReviewOutput[]**](ReviewOutput.md) |  |
 **review_status** | **string** |  |
 **applied_date** | **int** |  | [optional]
+**creation_config** | **array<string,mixed>** |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

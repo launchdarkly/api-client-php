@@ -1,14 +1,14 @@
 # LaunchDarklyApi\WebhooksApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteWebhook()**](WebhooksApi.md#deleteWebhook) | **DELETE** /api/v2/webhooks/{id} | Delete webhook
-[**getAllWebhooks()**](WebhooksApi.md#getAllWebhooks) | **GET** /api/v2/webhooks | List webhooks
-[**getWebhook()**](WebhooksApi.md#getWebhook) | **GET** /api/v2/webhooks/{id} | Get webhook
-[**patchWebhook()**](WebhooksApi.md#patchWebhook) | **PATCH** /api/v2/webhooks/{id} | Update webhook
-[**postWebhook()**](WebhooksApi.md#postWebhook) | **POST** /api/v2/webhooks | Creates a webhook
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**deleteWebhook()**](WebhooksApi.md#deleteWebhook) | **DELETE** /api/v2/webhooks/{id} | Delete webhook |
+| [**getAllWebhooks()**](WebhooksApi.md#getAllWebhooks) | **GET** /api/v2/webhooks | List webhooks |
+| [**getWebhook()**](WebhooksApi.md#getWebhook) | **GET** /api/v2/webhooks/{id} | Get webhook |
+| [**patchWebhook()**](WebhooksApi.md#patchWebhook) | **PATCH** /api/v2/webhooks/{id} | Update webhook |
+| [**postWebhook()**](WebhooksApi.md#postWebhook) | **POST** /api/v2/webhooks | Creates a webhook |
 
 
 ## `deleteWebhook()`
@@ -51,9 +51,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| The ID of the webhook to delete |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| The ID of the webhook to delete | |
 
 ### Return type
 
@@ -172,9 +172,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| The ID of the webhook |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| The ID of the webhook | |
 
 ### Return type
 
@@ -235,10 +235,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **id** | **string**| The ID of the webhook to update |
- **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **id** | **string**| The ID of the webhook to update | |
+| **patch_operation** | [**\LaunchDarklyApi\Model\PatchOperation[]**](../Model/PatchOperation.md)|  | |
 
 ### Return type
 
@@ -298,9 +298,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **webhook_post** | [**\LaunchDarklyApi\Model\WebhookPost**](../Model/WebhookPost.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **webhook_post** | [**\LaunchDarklyApi\Model\WebhookPost**](../Model/WebhookPost.md)|  | |
 
 ### Return type
 

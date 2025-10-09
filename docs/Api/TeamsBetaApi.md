@@ -1,10 +1,10 @@
 # LaunchDarklyApi\TeamsBetaApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**patchTeams()**](TeamsBetaApi.md#patchTeams) | **PATCH** /api/v2/teams | Update teams
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**patchTeams()**](TeamsBetaApi.md#patchTeams) | **PATCH** /api/v2/teams | Update teams |
 
 
 ## `patchTeams()`
@@ -48,9 +48,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **teams_patch_input** | [**\LaunchDarklyApi\Model\TeamsPatchInput**](../Model/TeamsPatchInput.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **teams_patch_input** | [**\LaunchDarklyApi\Model\TeamsPatchInput**](../Model/TeamsPatchInput.md)|  | |
 
 ### Return type
 

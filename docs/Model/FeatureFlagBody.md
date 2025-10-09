@@ -19,5 +19,6 @@ Name | Type | Description | Notes
 **maintainer_id** | **string** | The ID of the member who maintains this feature flag | [optional]
 **maintainer_team_key** | **string** | The key of the team that maintains this feature flag | [optional]
 **initial_prerequisites** | [**\LaunchDarklyApi\Model\FlagPrerequisitePost[]**](FlagPrerequisitePost.md) | Initial set of prerequisite flags for all environments | [optional]
+**is_flag_on** | **bool** | Whether to automatically turn the flag on across all environments at creation. Defaults to &lt;code&gt;false&lt;/code&gt;. | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

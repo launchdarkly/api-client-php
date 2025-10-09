@@ -1,14 +1,14 @@
 # LaunchDarklyApi\CustomRolesApi
 
-All URIs are relative to https://app.launchdarkly.com.
+All URIs are relative to https://app.launchdarkly.com, except if the operation defines another base path.
 
-Method | HTTP request | Description
-------------- | ------------- | -------------
-[**deleteCustomRole()**](CustomRolesApi.md#deleteCustomRole) | **DELETE** /api/v2/roles/{customRoleKey} | Delete custom role
-[**getCustomRole()**](CustomRolesApi.md#getCustomRole) | **GET** /api/v2/roles/{customRoleKey} | Get custom role
-[**getCustomRoles()**](CustomRolesApi.md#getCustomRoles) | **GET** /api/v2/roles | List custom roles
-[**patchCustomRole()**](CustomRolesApi.md#patchCustomRole) | **PATCH** /api/v2/roles/{customRoleKey} | Update custom role
-[**postCustomRole()**](CustomRolesApi.md#postCustomRole) | **POST** /api/v2/roles | Create custom role
+| Method | HTTP request | Description |
+| ------------- | ------------- | ------------- |
+| [**deleteCustomRole()**](CustomRolesApi.md#deleteCustomRole) | **DELETE** /api/v2/roles/{customRoleKey} | Delete custom role |
+| [**getCustomRole()**](CustomRolesApi.md#getCustomRole) | **GET** /api/v2/roles/{customRoleKey} | Get custom role |
+| [**getCustomRoles()**](CustomRolesApi.md#getCustomRoles) | **GET** /api/v2/roles | List custom roles |
+| [**patchCustomRole()**](CustomRolesApi.md#patchCustomRole) | **PATCH** /api/v2/roles/{customRoleKey} | Update custom role |
+| [**postCustomRole()**](CustomRolesApi.md#postCustomRole) | **POST** /api/v2/roles | Create custom role |
 
 
 ## `deleteCustomRole()`
@@ -51,9 +51,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **custom_role_key** | **string**| The custom role key |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **custom_role_key** | **string**| The custom role key | |
 
 ### Return type
 
@@ -113,9 +113,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **custom_role_key** | **string**| The custom role key or ID |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **custom_role_key** | **string**| The custom role key or ID | |
 
 ### Return type
 
@@ -142,7 +142,7 @@ getCustomRoles($limit, $offset): \LaunchDarklyApi\Model\CustomRoles
 
 List custom roles
 
-Get a complete list of custom roles. Custom roles let you create flexible policies providing fine-grained access control to everything in LaunchDarkly, from feature flags to goals, environments, and teams. With custom roles, it's possible to enforce access policies that meet your exact workflow needs. Custom roles are available to customers on our enterprise plans. If you're interested in learning more about our enterprise plans, contact sales@launchdarkly.com.
+Get a complete list of custom roles. This includes project and organization roles that you create, or that are provided as presets by LaunchDarkly. It does not include base roles.
 
 ### Example
 
@@ -176,10 +176,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **limit** | **int**| The maximum number of custom roles to return. Defaults to 20. | [optional]
- **offset** | **int**| Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional]
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **limit** | **int**| The maximum number of custom roles to return. Defaults to 20. | [optional] |
+| **offset** | **int**| Where to start in the list. Defaults to 0. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
 
 ### Return type
 
@@ -240,10 +240,10 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **custom_role_key** | **string**| The custom role key |
- **patch_with_comment** | [**\LaunchDarklyApi\Model\PatchWithComment**](../Model/PatchWithComment.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **custom_role_key** | **string**| The custom role key | |
+| **patch_with_comment** | [**\LaunchDarklyApi\Model\PatchWithComment**](../Model/PatchWithComment.md)|  | |
 
 ### Return type
 
@@ -303,9 +303,9 @@ try {
 
 ### Parameters
 
-Name | Type | Description  | Notes
-------------- | ------------- | ------------- | -------------
- **custom_role_post** | [**\LaunchDarklyApi\Model\CustomRolePost**](../Model/CustomRolePost.md)|  |
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **custom_role_post** | [**\LaunchDarklyApi\Model\CustomRolePost**](../Model/CustomRolePost.md)|  | |
 
 ### Return type
 
