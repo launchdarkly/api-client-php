@@ -121,7 +121,7 @@ $apiInstance = new LaunchDarklyApi\Api\SegmentsApi(
 $project_key = 'project_key_example'; // string | The project key
 $environment_key = 'environment_key_example'; // string | The environment key
 $segment_key = 'segment_key_example'; // string | The segment key
-$file = "/path/to/file.txt"; // \SplFileObject | CSV file containing keys
+$file = '/path/to/file.txt'; // \SplFileObject | CSV file containing keys
 $mode = 'mode_example'; // string | Import mode. Use either `merge` or `replace`
 $wait_on_approvals = True; // bool | Whether to wait for approvals before processing the import
 

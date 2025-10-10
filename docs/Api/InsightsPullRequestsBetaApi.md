@@ -44,8 +44,8 @@ $query = 'query_example'; // string | Filter list of pull requests by title or a
 $limit = 56; // int | The number of pull requests to return. Default is 20. Maximum allowed is 100.
 $expand = 'expand_example'; // string | Expand properties in response. Options: `deployments`, `flagReferences`, `leadTime`.
 $sort = 'sort_example'; // string | Sort results. Requires the `environmentKey` to be set. Options: `leadTime` (asc) and `-leadTime` (desc). When query option is excluded, default sort is by created or merged date.
-$from = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Unix timestamp in milliseconds. Default value is 7 days ago.
-$to = new \DateTime("2013-10-20T19:20:30+01:00"); // \DateTime | Unix timestamp in milliseconds. Default value is now.
+$from = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Unix timestamp in milliseconds. Default value is 7 days ago.
+$to = new \DateTime('2013-10-20T19:20:30+01:00'); // \DateTime | Unix timestamp in milliseconds. Default value is now.
 $after = 'after_example'; // string | Identifier used for pagination
 $before = 'before_example'; // string | Identifier used for pagination
 

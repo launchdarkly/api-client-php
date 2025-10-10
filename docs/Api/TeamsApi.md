@@ -499,7 +499,7 @@ $apiInstance = new LaunchDarklyApi\Api\TeamsApi(
     $config
 );
 $team_key = 'team_key_example'; // string | The team key
-$file = "/path/to/file.txt"; // \SplFileObject | CSV file containing email addresses
+$file = '/path/to/file.txt'; // \SplFileObject | CSV file containing email addresses
 
 try {
     $result = $apiInstance->postTeamMembers($team_key, $file);
