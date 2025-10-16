@@ -214,4 +214,40 @@ class MetricGroupRepTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "active_experiment_count"
+     */
+    public function testPropertyActiveExperimentCount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "active_guarded_rollout_count"
+     */
+    public function testPropertyActiveGuardedRolloutCount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "total_connections_count"
+     */
+    public function testPropertyTotalConnectionsCount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "total_active_connections_count"
+     */
+    public function testPropertyTotalActiveConnectionsCount()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }
