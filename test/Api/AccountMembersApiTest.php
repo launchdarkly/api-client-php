@@ -121,6 +121,18 @@ class AccountMembersApiTest extends TestCase
     }
 
     /**
+     * Test case for patchMembers
+     *
+     * Modify account members.
+     *
+     */
+    public function testPatchMembers()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for postMemberTeams
      *
      * Add a member to teams.

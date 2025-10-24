@@ -8,7 +8,7 @@ Name | Type | Description | Notes
 **description** | **string** | Returns the description for the agent. This is only returned for agent variations. | [optional]
 **instructions** | **string** | Returns the instructions for the agent. This is only returned for agent variations. | [optional]
 **key** | **string** |  |
-**messages** | [**\LaunchDarklyApi\Model\Message[]**](Message.md) |  |
+**messages** | [**\LaunchDarklyApi\Model\Message[]**](Message.md) |  | [optional]
 **model** | **object** |  | [optional]
 **name** | **string** |  |
 **model_config_key** | **string** |  | [optional]

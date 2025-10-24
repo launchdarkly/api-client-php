@@ -153,6 +153,15 @@ class IterationInputTest extends TestCase
     }
 
     /**
+     * Test attribute "covariance_id"
+     */
+    public function testPropertyCovarianceId()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "attributes"
      */
     public function testPropertyAttributes()

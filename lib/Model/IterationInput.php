@@ -66,6 +66,7 @@ class IterationInput implements ModelInterface, ArrayAccess, \JsonSerializable
         'treatments' => '\LaunchDarklyApi\Model\TreatmentInput[]',
         'flags' => 'array<string,\LaunchDarklyApi\Model\FlagInput>',
         'randomization_unit' => 'string',
+        'covariance_id' => 'string',
         'attributes' => 'string[]'
     ];
 
@@ -85,6 +86,7 @@ class IterationInput implements ModelInterface, ArrayAccess, \JsonSerializable
         'treatments' => null,
         'flags' => null,
         'randomization_unit' => null,
+        'covariance_id' => null,
         'attributes' => null
     ];
 
@@ -102,6 +104,7 @@ class IterationInput implements ModelInterface, ArrayAccess, \JsonSerializable
         'treatments' => false,
         'flags' => false,
         'randomization_unit' => false,
+        'covariance_id' => false,
         'attributes' => false
     ];
 
@@ -199,6 +202,7 @@ class IterationInput implements ModelInterface, ArrayAccess, \JsonSerializable
         'treatments' => 'treatments',
         'flags' => 'flags',
         'randomization_unit' => 'randomizationUnit',
+        'covariance_id' => 'covarianceId',
         'attributes' => 'attributes'
     ];
 
@@ -216,6 +220,7 @@ class IterationInput implements ModelInterface, ArrayAccess, \JsonSerializable
         'treatments' => 'setTreatments',
         'flags' => 'setFlags',
         'randomization_unit' => 'setRandomizationUnit',
+        'covariance_id' => 'setCovarianceId',
         'attributes' => 'setAttributes'
     ];
 
@@ -233,6 +238,7 @@ class IterationInput implements ModelInterface, ArrayAccess, \JsonSerializable
         'treatments' => 'getTreatments',
         'flags' => 'getFlags',
         'randomization_unit' => 'getRandomizationUnit',
+        'covariance_id' => 'getCovarianceId',
         'attributes' => 'getAttributes'
     ];
 
@@ -301,6 +307,7 @@ class IterationInput implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('treatments', $data ?? [], null);
         $this->setIfExists('flags', $data ?? [], null);
         $this->setIfExists('randomization_unit', $data ?? [], null);
+        $this->setIfExists('covariance_id', $data ?? [], null);
         $this->setIfExists('attributes', $data ?? [], null);
     }
 
@@ -570,6 +577,33 @@ class IterationInput implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable randomization_unit cannot be null');
         }
         $this->container['randomization_unit'] = $randomization_unit;
+
+        return $this;
+    }
+
+    /**
+     * Gets covariance_id
+     *
+     * @return string|null
+     */
+    public function getCovarianceId()
+    {
+        return $this->container['covariance_id'];
+    }
+
+    /**
+     * Sets covariance_id
+     *
+     * @param string|null $covariance_id The ID of the covariance CSV
+     *
+     * @return self
+     */
+    public function setCovarianceId($covariance_id)
+    {
+        if (is_null($covariance_id)) {
+            throw new \InvalidArgumentException('non-nullable covariance_id cannot be null');
+        }
+        $this->container['covariance_id'] = $covariance_id;
 
         return $this;
     }

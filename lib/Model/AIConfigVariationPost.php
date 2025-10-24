@@ -348,9 +348,6 @@ class AIConfigVariationPost implements ModelInterface, ArrayAccess, \JsonSeriali
         if ($this->container['key'] === null) {
             $invalidProperties[] = "'key' can't be null";
         }
-        if ($this->container['messages'] === null) {
-            $invalidProperties[] = "'messages' can't be null";
-        }
         if ($this->container['name'] === null) {
             $invalidProperties[] = "'name' can't be null";
         }
@@ -480,7 +477,7 @@ class AIConfigVariationPost implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Gets messages
      *
-     * @return \LaunchDarklyApi\Model\Message[]
+     * @return \LaunchDarklyApi\Model\Message[]|null
      */
     public function getMessages()
     {
@@ -490,7 +487,7 @@ class AIConfigVariationPost implements ModelInterface, ArrayAccess, \JsonSeriali
     /**
      * Sets messages
      *
-     * @param \LaunchDarklyApi\Model\Message[] $messages messages
+     * @param \LaunchDarklyApi\Model\Message[]|null $messages messages
      *
      * @return self
      */

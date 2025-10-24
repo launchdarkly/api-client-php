@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **treatments** | [**\LaunchDarklyApi\Model\TreatmentInput[]**](TreatmentInput.md) |  |
 **flags** | [**array<string,\LaunchDarklyApi\Model\FlagInput>**](FlagInput.md) |  |
 **randomization_unit** | **string** | The unit of randomization for this iteration. Defaults to user. | [optional]
+**covariance_id** | **string** | The ID of the covariance CSV | [optional]
 **attributes** | **string[]** | The attributes that this iteration&#39;s results can be sliced by | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

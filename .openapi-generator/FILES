@@ -7,7 +7,6 @@ composer.json
 docs/Api/AIConfigsBetaApi.md
 docs/Api/AccessTokensApi.md
 docs/Api/AccountMembersApi.md
-docs/Api/AccountMembersBetaApi.md
 docs/Api/AccountUsageBetaApi.md
 docs/Api/AnnouncementsApi.md
 docs/Api/ApplicationsBetaApi.md
@@ -191,6 +190,7 @@ docs/Model/ContextSearch.md
 docs/Model/Contexts.md
 docs/Model/CopiedFromEnv.md
 docs/Model/CoreLink.md
+docs/Model/CovarianceInfoRep.md
 docs/Model/CreateAnnouncementBody.md
 docs/Model/CreateApprovalRequestRequest.md
 docs/Model/CreateCopyFlagConfigApprovalRequestRequest.md
@@ -643,7 +643,6 @@ git_push.sh
 lib/Api/AIConfigsBetaApi.php
 lib/Api/AccessTokensApi.php
 lib/Api/AccountMembersApi.php
-lib/Api/AccountMembersBetaApi.php
 lib/Api/AccountUsageBetaApi.php
 lib/Api/AnnouncementsApi.php
 lib/Api/ApplicationsBetaApi.php
@@ -831,6 +830,7 @@ lib/Model/ContextSearch.php
 lib/Model/Contexts.php
 lib/Model/CopiedFromEnv.php
 lib/Model/CoreLink.php
+lib/Model/CovarianceInfoRep.php
 lib/Model/CreateAnnouncementBody.php
 lib/Model/CreateApprovalRequestRequest.php
 lib/Model/CreateCopyFlagConfigApprovalRequestRequest.php
@@ -1285,7 +1285,6 @@ phpunit.xml.dist
 test/Api/AIConfigsBetaApiTest.php
 test/Api/AccessTokensApiTest.php
 test/Api/AccountMembersApiTest.php
-test/Api/AccountMembersBetaApiTest.php
 test/Api/AccountUsageBetaApiTest.php
 test/Api/AnnouncementsApiTest.php
 test/Api/ApplicationsBetaApiTest.php
@@ -1469,6 +1468,7 @@ test/Model/ContextSearchTest.php
 test/Model/ContextsTest.php
 test/Model/CopiedFromEnvTest.php
 test/Model/CoreLinkTest.php
+test/Model/CovarianceInfoRepTest.php
 test/Model/CreateAnnouncementBodyTest.php
 test/Model/CreateApprovalRequestRequestTest.php
 test/Model/CreateCopyFlagConfigApprovalRequestRequestTest.php
