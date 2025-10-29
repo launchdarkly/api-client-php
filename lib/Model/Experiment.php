@@ -66,6 +66,7 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         '_creation_date' => 'int',
         'environment_key' => 'string',
         'archived_date' => 'int',
+        'tags' => 'string[]',
         '_links' => 'array<string,\LaunchDarklyApi\Model\Link>',
         'holdout_id' => 'string',
         'current_iteration' => '\LaunchDarklyApi\Model\IterationRep',
@@ -89,6 +90,7 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         '_creation_date' => 'int64',
         'environment_key' => null,
         'archived_date' => 'int64',
+        'tags' => null,
         '_links' => null,
         'holdout_id' => null,
         'current_iteration' => null,
@@ -110,6 +112,7 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         '_creation_date' => false,
         'environment_key' => false,
         'archived_date' => false,
+        'tags' => false,
         '_links' => false,
         'holdout_id' => false,
         'current_iteration' => false,
@@ -211,6 +214,7 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         '_creation_date' => '_creationDate',
         'environment_key' => 'environmentKey',
         'archived_date' => 'archivedDate',
+        'tags' => 'tags',
         '_links' => '_links',
         'holdout_id' => 'holdoutId',
         'current_iteration' => 'currentIteration',
@@ -232,6 +236,7 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         '_creation_date' => 'setCreationDate',
         'environment_key' => 'setEnvironmentKey',
         'archived_date' => 'setArchivedDate',
+        'tags' => 'setTags',
         '_links' => 'setLinks',
         'holdout_id' => 'setHoldoutId',
         'current_iteration' => 'setCurrentIteration',
@@ -253,6 +258,7 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         '_creation_date' => 'getCreationDate',
         'environment_key' => 'getEnvironmentKey',
         'archived_date' => 'getArchivedDate',
+        'tags' => 'getTags',
         '_links' => 'getLinks',
         'holdout_id' => 'getHoldoutId',
         'current_iteration' => 'getCurrentIteration',
@@ -325,6 +331,7 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('_creation_date', $data ?? [], null);
         $this->setIfExists('environment_key', $data ?? [], null);
         $this->setIfExists('archived_date', $data ?? [], null);
+        $this->setIfExists('tags', $data ?? [], null);
         $this->setIfExists('_links', $data ?? [], null);
         $this->setIfExists('holdout_id', $data ?? [], null);
         $this->setIfExists('current_iteration', $data ?? [], null);
@@ -604,6 +611,33 @@ class Experiment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable archived_date cannot be null');
         }
         $this->container['archived_date'] = $archived_date;
+
+        return $this;
+    }
+
+    /**
+     * Gets tags
+     *
+     * @return string[]|null
+     */
+    public function getTags()
+    {
+        return $this->container['tags'];
+    }
+
+    /**
+     * Sets tags
+     *
+     * @param string[]|null $tags Tags for the experiment
+     *
+     * @return self
+     */
+    public function setTags($tags)
+    {
+        if (is_null($tags)) {
+            throw new \InvalidArgumentException('non-nullable tags cannot be null');
+        }
+        $this->container['tags'] = $tags;
 
         return $this;
     }

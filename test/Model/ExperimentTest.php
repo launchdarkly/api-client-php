@@ -153,6 +153,15 @@ class ExperimentTest extends TestCase
     }
 
     /**
+     * Test attribute "tags"
+     */
+    public function testPropertyTags()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "_links"
      */
     public function testPropertyLinks()

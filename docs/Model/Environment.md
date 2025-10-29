@@ -13,6 +13,7 @@ Name | Type | Description | Notes
 **color** | **string** | The color used to indicate this environment in the UI |
 **default_ttl** | **int** | The default time (in minutes) that the PHP SDK can cache feature flag rules locally |
 **secure_mode** | **bool** | Ensures that one end user of the client-side SDK cannot inspect the variations for another end user |
+**_access** | [**\LaunchDarklyApi\Model\Access**](Access.md) |  | [optional]
 **default_track_events** | **bool** | Enables tracking detailed information for new flags by default |
 **require_comments** | **bool** | Whether members who modify flags and segments through the LaunchDarkly user interface are required to add a comment |
 **confirm_changes** | **bool** | Whether members who modify flags and segments through the LaunchDarkly user interface are required to confirm those changes |

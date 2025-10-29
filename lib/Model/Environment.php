@@ -67,6 +67,7 @@ class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
         'color' => 'string',
         'default_ttl' => 'int',
         'secure_mode' => 'bool',
+        '_access' => '\LaunchDarklyApi\Model\Access',
         'default_track_events' => 'bool',
         'require_comments' => 'bool',
         'confirm_changes' => 'bool',
@@ -93,6 +94,7 @@ class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
         'color' => null,
         'default_ttl' => null,
         'secure_mode' => null,
+        '_access' => null,
         'default_track_events' => null,
         'require_comments' => null,
         'confirm_changes' => null,
@@ -117,6 +119,7 @@ class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
         'color' => false,
         'default_ttl' => false,
         'secure_mode' => false,
+        '_access' => false,
         'default_track_events' => false,
         'require_comments' => false,
         'confirm_changes' => false,
@@ -221,6 +224,7 @@ class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
         'color' => 'color',
         'default_ttl' => 'defaultTtl',
         'secure_mode' => 'secureMode',
+        '_access' => '_access',
         'default_track_events' => 'defaultTrackEvents',
         'require_comments' => 'requireComments',
         'confirm_changes' => 'confirmChanges',
@@ -245,6 +249,7 @@ class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
         'color' => 'setColor',
         'default_ttl' => 'setDefaultTtl',
         'secure_mode' => 'setSecureMode',
+        '_access' => 'setAccess',
         'default_track_events' => 'setDefaultTrackEvents',
         'require_comments' => 'setRequireComments',
         'confirm_changes' => 'setConfirmChanges',
@@ -269,6 +274,7 @@ class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
         'color' => 'getColor',
         'default_ttl' => 'getDefaultTtl',
         'secure_mode' => 'getSecureMode',
+        '_access' => 'getAccess',
         'default_track_events' => 'getDefaultTrackEvents',
         'require_comments' => 'getRequireComments',
         'confirm_changes' => 'getConfirmChanges',
@@ -344,6 +350,7 @@ class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('color', $data ?? [], null);
         $this->setIfExists('default_ttl', $data ?? [], null);
         $this->setIfExists('secure_mode', $data ?? [], null);
+        $this->setIfExists('_access', $data ?? [], null);
         $this->setIfExists('default_track_events', $data ?? [], null);
         $this->setIfExists('require_comments', $data ?? [], null);
         $this->setIfExists('confirm_changes', $data ?? [], null);
@@ -676,6 +683,33 @@ class Environment implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable secure_mode cannot be null');
         }
         $this->container['secure_mode'] = $secure_mode;
+
+        return $this;
+    }
+
+    /**
+     * Gets _access
+     *
+     * @return \LaunchDarklyApi\Model\Access|null
+     */
+    public function getAccess()
+    {
+        return $this->container['_access'];
+    }
+
+    /**
+     * Sets _access
+     *
+     * @param \LaunchDarklyApi\Model\Access|null $_access _access
+     *
+     * @return self
+     */
+    public function setAccess($_access)
+    {
+        if (is_null($_access)) {
+            throw new \InvalidArgumentException('non-nullable _access cannot be null');
+        }
+        $this->container['_access'] = $_access;
 
         return $this;
     }

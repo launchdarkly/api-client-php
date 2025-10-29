@@ -63,7 +63,8 @@ class ExperimentPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'maintainer_id' => 'string',
         'key' => 'string',
         'iteration' => '\LaunchDarklyApi\Model\IterationInput',
-        'holdout_id' => 'string'
+        'holdout_id' => 'string',
+        'tags' => 'string[]'
     ];
 
     /**
@@ -79,7 +80,8 @@ class ExperimentPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'maintainer_id' => null,
         'key' => null,
         'iteration' => null,
-        'holdout_id' => null
+        'holdout_id' => null,
+        'tags' => null
     ];
 
     /**
@@ -93,7 +95,8 @@ class ExperimentPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'maintainer_id' => false,
         'key' => false,
         'iteration' => false,
-        'holdout_id' => false
+        'holdout_id' => false,
+        'tags' => false
     ];
 
     /**
@@ -187,7 +190,8 @@ class ExperimentPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'maintainer_id' => 'maintainerId',
         'key' => 'key',
         'iteration' => 'iteration',
-        'holdout_id' => 'holdoutId'
+        'holdout_id' => 'holdoutId',
+        'tags' => 'tags'
     ];
 
     /**
@@ -201,7 +205,8 @@ class ExperimentPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'maintainer_id' => 'setMaintainerId',
         'key' => 'setKey',
         'iteration' => 'setIteration',
-        'holdout_id' => 'setHoldoutId'
+        'holdout_id' => 'setHoldoutId',
+        'tags' => 'setTags'
     ];
 
     /**
@@ -215,7 +220,8 @@ class ExperimentPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'maintainer_id' => 'getMaintainerId',
         'key' => 'getKey',
         'iteration' => 'getIteration',
-        'holdout_id' => 'getHoldoutId'
+        'holdout_id' => 'getHoldoutId',
+        'tags' => 'getTags'
     ];
 
     /**
@@ -281,6 +287,7 @@ class ExperimentPost implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('key', $data ?? [], null);
         $this->setIfExists('iteration', $data ?? [], null);
         $this->setIfExists('holdout_id', $data ?? [], null);
+        $this->setIfExists('tags', $data ?? [], null);
     }
 
     /**
@@ -492,6 +499,33 @@ class ExperimentPost implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable holdout_id cannot be null');
         }
         $this->container['holdout_id'] = $holdout_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets tags
+     *
+     * @return string[]|null
+     */
+    public function getTags()
+    {
+        return $this->container['tags'];
+    }
+
+    /**
+     * Sets tags
+     *
+     * @param string[]|null $tags Tags for the experiment
+     *
+     * @return self
+     */
+    public function setTags($tags)
+    {
+        if (is_null($tags)) {
+            throw new \InvalidArgumentException('non-nullable tags cannot be null');
+        }
+        $this->container['tags'] = $tags;
 
         return $this;
     }

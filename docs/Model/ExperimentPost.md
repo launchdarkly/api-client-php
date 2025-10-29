@@ -10,5 +10,6 @@ Name | Type | Description | Notes
 **key** | **string** | The experiment key |
 **iteration** | [**\LaunchDarklyApi\Model\IterationInput**](IterationInput.md) |  |
 **holdout_id** | **string** | The ID of the holdout | [optional]
+**tags** | **string[]** | Tags for the experiment | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

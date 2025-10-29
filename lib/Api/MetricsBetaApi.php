@@ -1205,7 +1205,7 @@ class MetricsBetaApi
      * @param  string $project_key The project key (required)
      * @param  string|null $filter Accepts filter by &#x60;experimentStatus&#x60;, &#x60;query&#x60;, &#x60;kind&#x60;, &#x60;hasConnections&#x60;, &#x60;maintainerIds&#x60;, and &#x60;maintainerTeamKey&#x60;. Example: &#x60;filter&#x3D;experimentStatus equals &#39;running&#39; and query equals &#39;test&#39;&#x60;. (optional)
      * @param  string|null $sort A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. Read the endpoint description for a full list of available sort fields. (optional)
-     * @param  string|null $expand A comma-separated list of properties that can reveal additional information in the response. (optional)
+     * @param  string|null $expand This parameter is reserved for future use and is not currently supported on this endpoint. (optional)
      * @param  int|null $limit The number of metric groups to return in the response. Defaults to 20. Maximum limit is 50. (optional)
      * @param  int|null $offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next &#x60;limit&#x60; items. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMetricGroups'] to see the possible values for this operation
@@ -1228,7 +1228,7 @@ class MetricsBetaApi
      * @param  string $project_key The project key (required)
      * @param  string|null $filter Accepts filter by &#x60;experimentStatus&#x60;, &#x60;query&#x60;, &#x60;kind&#x60;, &#x60;hasConnections&#x60;, &#x60;maintainerIds&#x60;, and &#x60;maintainerTeamKey&#x60;. Example: &#x60;filter&#x3D;experimentStatus equals &#39;running&#39; and query equals &#39;test&#39;&#x60;. (optional)
      * @param  string|null $sort A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. Read the endpoint description for a full list of available sort fields. (optional)
-     * @param  string|null $expand A comma-separated list of properties that can reveal additional information in the response. (optional)
+     * @param  string|null $expand This parameter is reserved for future use and is not currently supported on this endpoint. (optional)
      * @param  int|null $limit The number of metric groups to return in the response. Defaults to 20. Maximum limit is 50. (optional)
      * @param  int|null $offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next &#x60;limit&#x60; items. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMetricGroups'] to see the possible values for this operation
@@ -1402,7 +1402,7 @@ class MetricsBetaApi
      * @param  string $project_key The project key (required)
      * @param  string|null $filter Accepts filter by &#x60;experimentStatus&#x60;, &#x60;query&#x60;, &#x60;kind&#x60;, &#x60;hasConnections&#x60;, &#x60;maintainerIds&#x60;, and &#x60;maintainerTeamKey&#x60;. Example: &#x60;filter&#x3D;experimentStatus equals &#39;running&#39; and query equals &#39;test&#39;&#x60;. (optional)
      * @param  string|null $sort A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. Read the endpoint description for a full list of available sort fields. (optional)
-     * @param  string|null $expand A comma-separated list of properties that can reveal additional information in the response. (optional)
+     * @param  string|null $expand This parameter is reserved for future use and is not currently supported on this endpoint. (optional)
      * @param  int|null $limit The number of metric groups to return in the response. Defaults to 20. Maximum limit is 50. (optional)
      * @param  int|null $offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next &#x60;limit&#x60; items. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMetricGroups'] to see the possible values for this operation
@@ -1428,7 +1428,7 @@ class MetricsBetaApi
      * @param  string $project_key The project key (required)
      * @param  string|null $filter Accepts filter by &#x60;experimentStatus&#x60;, &#x60;query&#x60;, &#x60;kind&#x60;, &#x60;hasConnections&#x60;, &#x60;maintainerIds&#x60;, and &#x60;maintainerTeamKey&#x60;. Example: &#x60;filter&#x3D;experimentStatus equals &#39;running&#39; and query equals &#39;test&#39;&#x60;. (optional)
      * @param  string|null $sort A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. Read the endpoint description for a full list of available sort fields. (optional)
-     * @param  string|null $expand A comma-separated list of properties that can reveal additional information in the response. (optional)
+     * @param  string|null $expand This parameter is reserved for future use and is not currently supported on this endpoint. (optional)
      * @param  int|null $limit The number of metric groups to return in the response. Defaults to 20. Maximum limit is 50. (optional)
      * @param  int|null $offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next &#x60;limit&#x60; items. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMetricGroups'] to see the possible values for this operation
@@ -1483,7 +1483,7 @@ class MetricsBetaApi
      * @param  string $project_key The project key (required)
      * @param  string|null $filter Accepts filter by &#x60;experimentStatus&#x60;, &#x60;query&#x60;, &#x60;kind&#x60;, &#x60;hasConnections&#x60;, &#x60;maintainerIds&#x60;, and &#x60;maintainerTeamKey&#x60;. Example: &#x60;filter&#x3D;experimentStatus equals &#39;running&#39; and query equals &#39;test&#39;&#x60;. (optional)
      * @param  string|null $sort A comma-separated list of fields to sort by. Fields prefixed by a dash ( - ) sort in descending order. Read the endpoint description for a full list of available sort fields. (optional)
-     * @param  string|null $expand A comma-separated list of properties that can reveal additional information in the response. (optional)
+     * @param  string|null $expand This parameter is reserved for future use and is not currently supported on this endpoint. (optional)
      * @param  int|null $limit The number of metric groups to return in the response. Defaults to 20. Maximum limit is 50. (optional)
      * @param  int|null $offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and returns the next &#x60;limit&#x60; items. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMetricGroups'] to see the possible values for this operation

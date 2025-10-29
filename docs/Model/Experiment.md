@@ -12,6 +12,7 @@ Name | Type | Description | Notes
 **_creation_date** | **int** |  |
 **environment_key** | **string** |  |
 **archived_date** | **int** |  | [optional]
+**tags** | **string[]** | Tags for the experiment | [optional]
 **_links** | [**array<string,\LaunchDarklyApi\Model\Link>**](Link.md) | The location and content type of related resources |
 **holdout_id** | **string** | The holdout ID | [optional]
 **current_iteration** | [**\LaunchDarklyApi\Model\IterationRep**](IterationRep.md) |  | [optional]
