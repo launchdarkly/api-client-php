@@ -332,6 +332,7 @@ docs/Model/FollowFlagMember.md
 docs/Model/FollowersPerFlag.md
 docs/Model/ForbiddenErrorRep.md
 docs/Model/FormVariable.md
+docs/Model/GenerateTrustPolicyPostRep.md
 docs/Model/GenerateWarehouseDestinationKeyPairPostRep.md
 docs/Model/GetAnnouncementsPublic200Response.md
 docs/Model/GuardedReleaseConfig.md
@@ -581,6 +582,8 @@ docs/Model/TreatmentRep.md
 docs/Model/TriggerPost.md
 docs/Model/TriggerWorkflowCollectionRep.md
 docs/Model/TriggerWorkflowRep.md
+docs/Model/TrustPolicyDetails.md
+docs/Model/TrustPolicyStatement.md
 docs/Model/UnauthorizedErrorRep.md
 docs/Model/UnlinkResourceSuccessResponse.md
 docs/Model/UpdatePhaseStatusInput.md
@@ -972,6 +975,7 @@ lib/Model/FollowFlagMember.php
 lib/Model/FollowersPerFlag.php
 lib/Model/ForbiddenErrorRep.php
 lib/Model/FormVariable.php
+lib/Model/GenerateTrustPolicyPostRep.php
 lib/Model/GenerateWarehouseDestinationKeyPairPostRep.php
 lib/Model/GetAnnouncementsPublic200Response.php
 lib/Model/GuardedReleaseConfig.php
@@ -1222,6 +1226,8 @@ lib/Model/TreatmentRep.php
 lib/Model/TriggerPost.php
 lib/Model/TriggerWorkflowCollectionRep.php
 lib/Model/TriggerWorkflowRep.php
+lib/Model/TrustPolicyDetails.php
+lib/Model/TrustPolicyStatement.php
 lib/Model/UnauthorizedErrorRep.php
 lib/Model/UnlinkResourceSuccessResponse.php
 lib/Model/UpdatePhaseStatusInput.php
@@ -1610,6 +1616,7 @@ test/Model/FollowFlagMemberTest.php
 test/Model/FollowersPerFlagTest.php
 test/Model/ForbiddenErrorRepTest.php
 test/Model/FormVariableTest.php
+test/Model/GenerateTrustPolicyPostRepTest.php
 test/Model/GenerateWarehouseDestinationKeyPairPostRepTest.php
 test/Model/GetAnnouncementsPublic200ResponseTest.php
 test/Model/GuardedReleaseConfigTest.php
@@ -1859,6 +1866,8 @@ test/Model/TreatmentRepTest.php
 test/Model/TriggerPostTest.php
 test/Model/TriggerWorkflowCollectionRepTest.php
 test/Model/TriggerWorkflowRepTest.php
+test/Model/TrustPolicyDetailsTest.php
+test/Model/TrustPolicyStatementTest.php
 test/Model/UnauthorizedErrorRepTest.php
 test/Model/UnlinkResourceSuccessResponseTest.php
 test/Model/UpdatePhaseStatusInputTest.php

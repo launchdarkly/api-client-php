@@ -69,7 +69,8 @@ class AIConfig implements ModelInterface, ArrayAccess, \JsonSerializable
         'version' => 'int',
         'variations' => '\LaunchDarklyApi\Model\AIConfigVariation[]',
         'created_at' => 'int',
-        'updated_at' => 'int'
+        'updated_at' => 'int',
+        'evaluation_metric_keys' => 'string[]'
     ];
 
     /**
@@ -91,7 +92,8 @@ class AIConfig implements ModelInterface, ArrayAccess, \JsonSerializable
         'version' => null,
         'variations' => null,
         'created_at' => 'int64',
-        'updated_at' => 'int64'
+        'updated_at' => 'int64',
+        'evaluation_metric_keys' => null
     ];
 
     /**
@@ -111,7 +113,8 @@ class AIConfig implements ModelInterface, ArrayAccess, \JsonSerializable
         'version' => false,
         'variations' => false,
         'created_at' => false,
-        'updated_at' => false
+        'updated_at' => false,
+        'evaluation_metric_keys' => false
     ];
 
     /**
@@ -211,7 +214,8 @@ class AIConfig implements ModelInterface, ArrayAccess, \JsonSerializable
         'version' => 'version',
         'variations' => 'variations',
         'created_at' => 'createdAt',
-        'updated_at' => 'updatedAt'
+        'updated_at' => 'updatedAt',
+        'evaluation_metric_keys' => 'evaluationMetricKeys'
     ];
 
     /**
@@ -231,7 +235,8 @@ class AIConfig implements ModelInterface, ArrayAccess, \JsonSerializable
         'version' => 'setVersion',
         'variations' => 'setVariations',
         'created_at' => 'setCreatedAt',
-        'updated_at' => 'setUpdatedAt'
+        'updated_at' => 'setUpdatedAt',
+        'evaluation_metric_keys' => 'setEvaluationMetricKeys'
     ];
 
     /**
@@ -251,7 +256,8 @@ class AIConfig implements ModelInterface, ArrayAccess, \JsonSerializable
         'version' => 'getVersion',
         'variations' => 'getVariations',
         'created_at' => 'getCreatedAt',
-        'updated_at' => 'getUpdatedAt'
+        'updated_at' => 'getUpdatedAt',
+        'evaluation_metric_keys' => 'getEvaluationMetricKeys'
     ];
 
     /**
@@ -340,6 +346,7 @@ class AIConfig implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('variations', $data ?? [], null);
         $this->setIfExists('created_at', $data ?? [], null);
         $this->setIfExists('updated_at', $data ?? [], null);
+        $this->setIfExists('evaluation_metric_keys', $data ?? [], null);
     }
 
     /**
@@ -747,6 +754,33 @@ class AIConfig implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable updated_at cannot be null');
         }
         $this->container['updated_at'] = $updated_at;
+
+        return $this;
+    }
+
+    /**
+     * Gets evaluation_metric_keys
+     *
+     * @return string[]|null
+     */
+    public function getEvaluationMetricKeys()
+    {
+        return $this->container['evaluation_metric_keys'];
+    }
+
+    /**
+     * Sets evaluation_metric_keys
+     *
+     * @param string[]|null $evaluation_metric_keys List of evaluation metric keys for this AI config
+     *
+     * @return self
+     */
+    public function setEvaluationMetricKeys($evaluation_metric_keys)
+    {
+        if (is_null($evaluation_metric_keys)) {
+            throw new \InvalidArgumentException('non-nullable evaluation_metric_keys cannot be null');
+        }
+        $this->container['evaluation_metric_keys'] = $evaluation_metric_keys;
 
         return $this;
     }

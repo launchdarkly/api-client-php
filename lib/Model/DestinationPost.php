@@ -255,6 +255,7 @@ class DestinationPost implements ModelInterface, ArrayAccess, \JsonSerializable
     public const KIND_SNOWFLAKE_V2 = 'snowflake-v2';
     public const KIND_DATABRICKS = 'databricks';
     public const KIND_BIGQUERY = 'bigquery';
+    public const KIND_REDSHIFT = 'redshift';
 
     /**
      * Gets allowable values of the enum
@@ -272,6 +273,7 @@ class DestinationPost implements ModelInterface, ArrayAccess, \JsonSerializable
             self::KIND_SNOWFLAKE_V2,
             self::KIND_DATABRICKS,
             self::KIND_BIGQUERY,
+            self::KIND_REDSHIFT,
         ];
     }
 

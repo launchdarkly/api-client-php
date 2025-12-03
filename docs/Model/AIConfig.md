@@ -16,5 +16,6 @@ Name | Type | Description | Notes
 **variations** | [**\LaunchDarklyApi\Model\AIConfigVariation[]**](AIConfigVariation.md) |  |
 **created_at** | **int** |  |
 **updated_at** | **int** |  |
+**evaluation_metric_keys** | **string[]** | List of evaluation metric keys for this AI config | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

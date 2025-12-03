@@ -9,7 +9,7 @@ Name | Type | Description | Notes
 **_access** | [**\LaunchDarklyApi\Model\Access**](Access.md) |  | [optional]
 **name** | **string** | A human-friendly name for the Relay Proxy configuration |
 **policy** | [**\LaunchDarklyApi\Model\Statement[]**](Statement.md) | A description of what environments and projects the Relay Proxy should include or exclude |
-**full_key** | **string** | The Relay Proxy configuration key |
+**full_key** | **string** | The Relay Proxy configuration key | [optional]
 **display_key** | **string** | The last few characters of the Relay Proxy configuration key, displayed in the LaunchDarkly UI |
 **creation_date** | **int** |  |
 **last_modified** | **int** |  |

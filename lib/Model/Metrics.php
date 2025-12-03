@@ -70,7 +70,10 @@ class Metrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'time_to_first_token_ms' => 'int',
         'satisfaction_rating' => 'float',
         'input_cost' => 'float',
-        'output_cost' => 'float'
+        'output_cost' => 'float',
+        'judge_accuracy' => 'float',
+        'judge_relevance' => 'float',
+        'judge_toxicity' => 'float'
     ];
 
     /**
@@ -93,7 +96,10 @@ class Metrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'time_to_first_token_ms' => null,
         'satisfaction_rating' => 'float',
         'input_cost' => 'double',
-        'output_cost' => 'double'
+        'output_cost' => 'double',
+        'judge_accuracy' => 'float',
+        'judge_relevance' => 'float',
+        'judge_toxicity' => 'float'
     ];
 
     /**
@@ -114,7 +120,10 @@ class Metrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'time_to_first_token_ms' => false,
         'satisfaction_rating' => false,
         'input_cost' => false,
-        'output_cost' => false
+        'output_cost' => false,
+        'judge_accuracy' => false,
+        'judge_relevance' => false,
+        'judge_toxicity' => false
     ];
 
     /**
@@ -215,7 +224,10 @@ class Metrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'time_to_first_token_ms' => 'timeToFirstTokenMs',
         'satisfaction_rating' => 'satisfactionRating',
         'input_cost' => 'inputCost',
-        'output_cost' => 'outputCost'
+        'output_cost' => 'outputCost',
+        'judge_accuracy' => 'judgeAccuracy',
+        'judge_relevance' => 'judgeRelevance',
+        'judge_toxicity' => 'judgeToxicity'
     ];
 
     /**
@@ -236,7 +248,10 @@ class Metrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'time_to_first_token_ms' => 'setTimeToFirstTokenMs',
         'satisfaction_rating' => 'setSatisfactionRating',
         'input_cost' => 'setInputCost',
-        'output_cost' => 'setOutputCost'
+        'output_cost' => 'setOutputCost',
+        'judge_accuracy' => 'setJudgeAccuracy',
+        'judge_relevance' => 'setJudgeRelevance',
+        'judge_toxicity' => 'setJudgeToxicity'
     ];
 
     /**
@@ -257,7 +272,10 @@ class Metrics implements ModelInterface, ArrayAccess, \JsonSerializable
         'time_to_first_token_ms' => 'getTimeToFirstTokenMs',
         'satisfaction_rating' => 'getSatisfactionRating',
         'input_cost' => 'getInputCost',
-        'output_cost' => 'getOutputCost'
+        'output_cost' => 'getOutputCost',
+        'judge_accuracy' => 'getJudgeAccuracy',
+        'judge_relevance' => 'getJudgeRelevance',
+        'judge_toxicity' => 'getJudgeToxicity'
     ];
 
     /**
@@ -330,6 +348,9 @@ class Metrics implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('satisfaction_rating', $data ?? [], null);
         $this->setIfExists('input_cost', $data ?? [], null);
         $this->setIfExists('output_cost', $data ?? [], null);
+        $this->setIfExists('judge_accuracy', $data ?? [], null);
+        $this->setIfExists('judge_relevance', $data ?? [], null);
+        $this->setIfExists('judge_toxicity', $data ?? [], null);
     }
 
     /**
@@ -365,6 +386,30 @@ class Metrics implements ModelInterface, ArrayAccess, \JsonSerializable
 
         if (!is_null($this->container['satisfaction_rating']) && ($this->container['satisfaction_rating'] < 0)) {
             $invalidProperties[] = "invalid value for 'satisfaction_rating', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['judge_accuracy']) && ($this->container['judge_accuracy'] > 1)) {
+            $invalidProperties[] = "invalid value for 'judge_accuracy', must be smaller than or equal to 1.";
+        }
+
+        if (!is_null($this->container['judge_accuracy']) && ($this->container['judge_accuracy'] < 0)) {
+            $invalidProperties[] = "invalid value for 'judge_accuracy', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['judge_relevance']) && ($this->container['judge_relevance'] > 1)) {
+            $invalidProperties[] = "invalid value for 'judge_relevance', must be smaller than or equal to 1.";
+        }
+
+        if (!is_null($this->container['judge_relevance']) && ($this->container['judge_relevance'] < 0)) {
+            $invalidProperties[] = "invalid value for 'judge_relevance', must be bigger than or equal to 0.";
+        }
+
+        if (!is_null($this->container['judge_toxicity']) && ($this->container['judge_toxicity'] > 1)) {
+            $invalidProperties[] = "invalid value for 'judge_toxicity', must be smaller than or equal to 1.";
+        }
+
+        if (!is_null($this->container['judge_toxicity']) && ($this->container['judge_toxicity'] < 0)) {
+            $invalidProperties[] = "invalid value for 'judge_toxicity', must be bigger than or equal to 0.";
         }
 
         return $invalidProperties;
@@ -739,6 +784,111 @@ class Metrics implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable output_cost cannot be null');
         }
         $this->container['output_cost'] = $output_cost;
+
+        return $this;
+    }
+
+    /**
+     * Gets judge_accuracy
+     *
+     * @return float|null
+     */
+    public function getJudgeAccuracy()
+    {
+        return $this->container['judge_accuracy'];
+    }
+
+    /**
+     * Sets judge_accuracy
+     *
+     * @param float|null $judge_accuracy Average accuracy judge score (0.0-1.0)
+     *
+     * @return self
+     */
+    public function setJudgeAccuracy($judge_accuracy)
+    {
+        if (is_null($judge_accuracy)) {
+            throw new \InvalidArgumentException('non-nullable judge_accuracy cannot be null');
+        }
+
+        if (($judge_accuracy > 1)) {
+            throw new \InvalidArgumentException('invalid value for $judge_accuracy when calling Metrics., must be smaller than or equal to 1.');
+        }
+        if (($judge_accuracy < 0)) {
+            throw new \InvalidArgumentException('invalid value for $judge_accuracy when calling Metrics., must be bigger than or equal to 0.');
+        }
+
+        $this->container['judge_accuracy'] = $judge_accuracy;
+
+        return $this;
+    }
+
+    /**
+     * Gets judge_relevance
+     *
+     * @return float|null
+     */
+    public function getJudgeRelevance()
+    {
+        return $this->container['judge_relevance'];
+    }
+
+    /**
+     * Sets judge_relevance
+     *
+     * @param float|null $judge_relevance Average relevance judge score (0.0-1.0)
+     *
+     * @return self
+     */
+    public function setJudgeRelevance($judge_relevance)
+    {
+        if (is_null($judge_relevance)) {
+            throw new \InvalidArgumentException('non-nullable judge_relevance cannot be null');
+        }
+
+        if (($judge_relevance > 1)) {
+            throw new \InvalidArgumentException('invalid value for $judge_relevance when calling Metrics., must be smaller than or equal to 1.');
+        }
+        if (($judge_relevance < 0)) {
+            throw new \InvalidArgumentException('invalid value for $judge_relevance when calling Metrics., must be bigger than or equal to 0.');
+        }
+
+        $this->container['judge_relevance'] = $judge_relevance;
+
+        return $this;
+    }
+
+    /**
+     * Gets judge_toxicity
+     *
+     * @return float|null
+     */
+    public function getJudgeToxicity()
+    {
+        return $this->container['judge_toxicity'];
+    }
+
+    /**
+     * Sets judge_toxicity
+     *
+     * @param float|null $judge_toxicity Average toxicity judge score (0.0-1.0)
+     *
+     * @return self
+     */
+    public function setJudgeToxicity($judge_toxicity)
+    {
+        if (is_null($judge_toxicity)) {
+            throw new \InvalidArgumentException('non-nullable judge_toxicity cannot be null');
+        }
+
+        if (($judge_toxicity > 1)) {
+            throw new \InvalidArgumentException('invalid value for $judge_toxicity when calling Metrics., must be smaller than or equal to 1.');
+        }
+        if (($judge_toxicity < 0)) {
+            throw new \InvalidArgumentException('invalid value for $judge_toxicity when calling Metrics., must be bigger than or equal to 0.');
+        }
+
+        $this->container['judge_toxicity'] = $judge_toxicity;
 
         return $this;
     }

@@ -187,4 +187,13 @@ class AIConfigTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "evaluation_metric_keys"
+     */
+    public function testPropertyEvaluationMetricKeys()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

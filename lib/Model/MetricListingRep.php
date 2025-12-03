@@ -642,6 +642,9 @@ class MetricListingRep implements ModelInterface, ArrayAccess, \JsonSerializable
             );
         }
 
+        if ($this->container['data_source'] === null) {
+            $invalidProperties[] = "'data_source' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -1537,7 +1540,7 @@ class MetricListingRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets data_source
      *
-     * @return \LaunchDarklyApi\Model\MetricDataSourceRefRep|null
+     * @return \LaunchDarklyApi\Model\MetricDataSourceRefRep
      */
     public function getDataSource()
     {
@@ -1547,7 +1550,7 @@ class MetricListingRep implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets data_source
      *
-     * @param \LaunchDarklyApi\Model\MetricDataSourceRefRep|null $data_source data_source
+     * @param \LaunchDarklyApi\Model\MetricDataSourceRefRep $data_source data_source
      *
      * @return self
      */

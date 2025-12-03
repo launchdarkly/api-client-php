@@ -340,9 +340,6 @@ class RelayAutoConfigRep implements ModelInterface, ArrayAccess, \JsonSerializab
         if ($this->container['policy'] === null) {
             $invalidProperties[] = "'policy' can't be null";
         }
-        if ($this->container['full_key'] === null) {
-            $invalidProperties[] = "'full_key' can't be null";
-        }
         if ($this->container['display_key'] === null) {
             $invalidProperties[] = "'display_key' can't be null";
         }
@@ -505,7 +502,7 @@ class RelayAutoConfigRep implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Gets full_key
      *
-     * @return string
+     * @return string|null
      */
     public function getFullKey()
     {
@@ -515,7 +512,7 @@ class RelayAutoConfigRep implements ModelInterface, ArrayAccess, \JsonSerializab
     /**
      * Sets full_key
      *
-     * @param string $full_key The Relay Proxy configuration key
+     * @param string|null $full_key The Relay Proxy configuration key
      *
      * @return self
      */

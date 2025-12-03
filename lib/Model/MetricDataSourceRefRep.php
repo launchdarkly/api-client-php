@@ -296,6 +296,9 @@ class MetricDataSourceRefRep implements ModelInterface, ArrayAccess, \JsonSerial
     {
         $invalidProperties = [];
 
+        if ($this->container['key'] === null) {
+            $invalidProperties[] = "'key' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -314,7 +317,7 @@ class MetricDataSourceRefRep implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Gets key
      *
-     * @return string|null
+     * @return string
      */
     public function getKey()
     {
@@ -324,7 +327,7 @@ class MetricDataSourceRefRep implements ModelInterface, ArrayAccess, \JsonSerial
     /**
      * Sets key
      *
-     * @param string|null $key key
+     * @param string $key key
      *
      * @return self
      */

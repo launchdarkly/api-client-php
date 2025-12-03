@@ -9,6 +9,7 @@ All URIs are relative to https://app.launchdarkly.com, except if the operation d
 | [**getDestinations()**](DataExportDestinationsApi.md#getDestinations) | **GET** /api/v2/destinations | List destinations |
 | [**patchDestination()**](DataExportDestinationsApi.md#patchDestination) | **PATCH** /api/v2/destinations/{projectKey}/{environmentKey}/{id} | Update Data Export destination |
 | [**postDestination()**](DataExportDestinationsApi.md#postDestination) | **POST** /api/v2/destinations/{projectKey}/{environmentKey} | Create Data Export destination |
+| [**postGenerateTrustPolicy()**](DataExportDestinationsApi.md#postGenerateTrustPolicy) | **POST** /api/v2/destinations/projects/{projKey}/environments/{envKey}/generate-trust-policy | Generate trust policy |
 | [**postGenerateWarehouseDestinationKeyPair()**](DataExportDestinationsApi.md#postGenerateWarehouseDestinationKeyPair) | **POST** /api/v2/destinations/generate-warehouse-destination-key-pair | Generate Snowflake destination key pair |
 
 
@@ -330,6 +331,70 @@ try {
 ### HTTP request headers
 
 - **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `postGenerateTrustPolicy()`
+
+```php
+postGenerateTrustPolicy($proj_key, $env_key): \LaunchDarklyApi\Model\GenerateTrustPolicyPostRep
+```
+
+Generate trust policy
+
+Trust policy to allow Data Export to assume the role and perform operations on AWS resources
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\DataExportDestinationsApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$proj_key = 'proj_key_example'; // string | The project key
+$env_key = 'env_key_example'; // string | The environment key
+
+try {
+    $result = $apiInstance->postGenerateTrustPolicy($proj_key, $env_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling DataExportDestinationsApi->postGenerateTrustPolicy: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **proj_key** | **string**| The project key | |
+| **env_key** | **string**| The environment key | |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\GenerateTrustPolicyPostRep**](../Model/GenerateTrustPolicyPostRep.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
 - **Accept**: `application/json`
 
 [[Back to top]](#) [[Back to API list]](../../README.md#endpoints)

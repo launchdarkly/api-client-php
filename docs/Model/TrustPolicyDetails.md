@@ -1,12 +1,10 @@
-# # AiConfigsMetricDataSourceRefRep
+# # TrustPolicyDetails
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**key** | **string** |  |
-**environment_key** | **string** |  | [optional]
-**_name** | **string** |  | [optional]
-**_integration_key** | **string** |  | [optional]
+**version** | **string** | The version of the trust policy | [optional]
+**statement** | [**\LaunchDarklyApi\Model\TrustPolicyStatement[]**](TrustPolicyStatement.md) | The statements of the trust policy | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

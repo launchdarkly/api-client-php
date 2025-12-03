@@ -21,7 +21,5 @@ Name | Type | Description | Notes
 **experiment_count** | **int** | The number of experiments using this metric group | [optional]
 **active_experiment_count** | **int** | The number of active experiments using this metric group | [optional]
 **active_guarded_rollout_count** | **int** | The number of active guarded rollouts using this metric group | [optional]
-**total_connections_count** | **int** | The total number of connections using this metric group | [optional]
-**total_active_connections_count** | **int** | The total number of active connections using this metric group | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

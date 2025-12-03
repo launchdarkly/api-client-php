@@ -1,6 +1,6 @@
 <?php
 /**
- * AiConfigsMetricListingRep
+ * TrustPolicyStatement
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \LaunchDarklyApi\ObjectSerializer;
 
 /**
- * AiConfigsMetricListingRep Class Doc Comment
+ * TrustPolicyStatement Class Doc Comment
  *
  * @category Class
  * @package  LaunchDarklyApi
@@ -41,7 +41,7 @@ use \LaunchDarklyApi\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AiConfigsMetricListingRep implements ModelInterface, ArrayAccess, \JsonSerializable
+class TrustPolicyStatement implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AiConfigsMetricListingRep implements ModelInterface, ArrayAccess, \JsonSer
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AiConfigsMetricListingRep';
+    protected static $openAPIModelName = 'TrustPolicyStatement';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,43 +58,10 @@ class AiConfigsMetricListingRep implements ModelInterface, ArrayAccess, \JsonSer
       * @var string[]
       */
     protected static $openAPITypes = [
-        'experiment_count' => 'int',
-        'metric_group_count' => 'int',
-        'guarded_rollout_count' => 'int',
-        'active_experiment_count' => 'int',
-        'active_guarded_rollout_count' => 'int',
-        '_id' => 'string',
-        '_version_id' => 'string',
-        '_version' => 'int',
-        'key' => 'string',
-        'name' => 'string',
-        'kind' => 'string',
-        '_attached_flag_count' => 'int',
-        '_links' => 'array<string,\LaunchDarklyApi\Model\AiConfigsLink>',
-        '_site' => '\LaunchDarklyApi\Model\AiConfigsLink',
-        '_access' => '\LaunchDarklyApi\Model\AiConfigsAccess',
-        'tags' => 'string[]',
-        '_creation_date' => 'int',
-        'last_modified' => '\LaunchDarklyApi\Model\AiConfigsModification',
-        'maintainer_id' => 'string',
-        '_maintainer' => '\LaunchDarklyApi\Model\AiConfigsMemberSummary',
-        'description' => 'string',
-        'category' => 'string',
-        'is_numeric' => 'bool',
-        'success_criteria' => 'string',
-        'unit' => 'string',
-        'event_key' => 'string',
-        'randomization_units' => 'string[]',
-        'filters' => '\LaunchDarklyApi\Model\AiConfigsFilter',
-        'unit_aggregation_type' => 'string',
-        'analysis_type' => 'string',
-        'percentile_value' => 'int',
-        'event_default' => '\LaunchDarklyApi\Model\AiConfigsMetricEventDefaultRep',
-        'data_source' => '\LaunchDarklyApi\Model\AiConfigsMetricDataSourceRefRep',
-        'archived' => 'bool',
-        'archived_at' => 'int',
-        'selector' => 'string',
-        'urls' => 'array[]'
+        'effect' => 'string',
+        'action' => 'string[]',
+        'principal' => 'mixed',
+        'condition' => 'mixed'
     ];
 
     /**
@@ -105,43 +72,10 @@ class AiConfigsMetricListingRep implements ModelInterface, ArrayAccess, \JsonSer
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'experiment_count' => null,
-        'metric_group_count' => null,
-        'guarded_rollout_count' => null,
-        'active_experiment_count' => null,
-        'active_guarded_rollout_count' => null,
-        '_id' => null,
-        '_version_id' => null,
-        '_version' => null,
-        'key' => null,
-        'name' => null,
-        'kind' => null,
-        '_attached_flag_count' => null,
-        '_links' => null,
-        '_site' => null,
-        '_access' => null,
-        'tags' => null,
-        '_creation_date' => 'int64',
-        'last_modified' => null,
-        'maintainer_id' => null,
-        '_maintainer' => null,
-        'description' => null,
-        'category' => null,
-        'is_numeric' => null,
-        'success_criteria' => null,
-        'unit' => null,
-        'event_key' => null,
-        'randomization_units' => null,
-        'filters' => null,
-        'unit_aggregation_type' => null,
-        'analysis_type' => null,
-        'percentile_value' => null,
-        'event_default' => null,
-        'data_source' => null,
-        'archived' => null,
-        'archived_at' => 'int64',
-        'selector' => null,
-        'urls' => null
+        'effect' => null,
+        'action' => null,
+        'principal' => null,
+        'condition' => null
     ];
 
     /**
@@ -150,43 +84,10 @@ class AiConfigsMetricListingRep implements ModelInterface, ArrayAccess, \JsonSer
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'experiment_count' => false,
-        'metric_group_count' => false,
-        'guarded_rollout_count' => false,
-        'active_experiment_count' => false,
-        'active_guarded_rollout_count' => false,
-        '_id' => false,
-        '_version_id' => false,
-        '_version' => false,
-        'key' => false,
-        'name' => false,
-        'kind' => false,
-        '_attached_flag_count' => false,
-        '_links' => false,
-        '_site' => false,
-        '_access' => false,
-        'tags' => false,
-        '_creation_date' => false,
-        'last_modified' => false,
-        'maintainer_id' => false,
-        '_maintainer' => false,
-        'description' => false,
-        'category' => false,
-        'is_numeric' => false,
-        'success_criteria' => false,
-        'unit' => false,
-        'event_key' => false,
-        'randomization_units' => false,
-        'filters' => false,
-        'unit_aggregation_type' => false,
-        'analysis_type' => false,
-        'percentile_value' => false,
-        'event_default' => false,
-        'data_source' => false,
-        'archived' => false,
-        'archived_at' => false,
-        'selector' => false,
-        'urls' => false
+        'effect' => false,
+        'action' => false,
+        'principal' => true,
+        'condition' => true
     ];
 
     /**
@@ -275,43 +176,10 @@ class AiConfigsMetricListingRep implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $attributeMap = [
-        'experiment_count' => 'experimentCount',
-        'metric_group_count' => 'metricGroupCount',
-        'guarded_rollout_count' => 'guardedRolloutCount',
-        'active_experiment_count' => 'activeExperimentCount',
-        'active_guarded_rollout_count' => 'activeGuardedRolloutCount',
-        '_id' => '_id',
-        '_version_id' => '_versionId',
-        '_version' => '_version',
-        'key' => 'key',
-        'name' => 'name',
-        'kind' => 'kind',
-        '_attached_flag_count' => '_attachedFlagCount',
-        '_links' => '_links',
-        '_site' => '_site',
-        '_access' => '_access',
-        'tags' => 'tags',
-        '_creation_date' => '_creationDate',
-        'last_modified' => 'lastModified',
-        'maintainer_id' => 'maintainerId',
-        '_maintainer' => '_maintainer',
-        'description' => 'description',
-        'category' => 'category',
-        'is_numeric' => 'isNumeric',
-        'success_criteria' => 'successCriteria',
-        'unit' => 'unit',
-        'event_key' => 'eventKey',
-        'randomization_units' => 'randomizationUnits',
-        'filters' => 'filters',
-        'unit_aggregation_type' => 'unitAggregationType',
-        'analysis_type' => 'analysisType',
-        'percentile_value' => 'percentileValue',
-        'event_default' => 'eventDefault',
-        'data_source' => 'dataSource',
-        'archived' => 'archived',
-        'archived_at' => 'archivedAt',
-        'selector' => 'selector',
-        'urls' => 'urls'
+        'effect' => 'Effect',
+        'action' => 'Action',
+        'principal' => 'Principal',
+        'condition' => 'Condition'
     ];
 
     /**
@@ -320,43 +188,10 @@ class AiConfigsMetricListingRep implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $setters = [
-        'experiment_count' => 'setExperimentCount',
-        'metric_group_count' => 'setMetricGroupCount',
-        'guarded_rollout_count' => 'setGuardedRolloutCount',
-        'active_experiment_count' => 'setActiveExperimentCount',
-        'active_guarded_rollout_count' => 'setActiveGuardedRolloutCount',
-        '_id' => 'setId',
-        '_version_id' => 'setVersionId',
-        '_version' => 'setVersion',
-        'key' => 'setKey',
-        'name' => 'setName',
-        'kind' => 'setKind',
-        '_attached_flag_count' => 'setAttachedFlagCount',
-        '_links' => 'setLinks',
-        '_site' => 'setSite',
-        '_access' => 'setAccess',
-        'tags' => 'setTags',
-        '_creation_date' => 'setCreationDate',
-        'last_modified' => 'setLastModified',
-        'maintainer_id' => 'setMaintainerId',
-        '_maintainer' => 'setMaintainer',
-        'description' => 'setDescription',
-        'category' => 'setCategory',
-        'is_numeric' => 'setIsNumeric',
-        'success_criteria' => 'setSuccessCriteria',
-        'unit' => 'setUnit',
-        'event_key' => 'setEventKey',
-        'randomization_units' => 'setRandomizationUnits',
-        'filters' => 'setFilters',
-        'unit_aggregation_type' => 'setUnitAggregationType',
-        'analysis_type' => 'setAnalysisType',
-        'percentile_value' => 'setPercentileValue',
-        'event_default' => 'setEventDefault',
-        'data_source' => 'setDataSource',
-        'archived' => 'setArchived',
-        'archived_at' => 'setArchivedAt',
-        'selector' => 'setSelector',
-        'urls' => 'setUrls'
+        'effect' => 'setEffect',
+        'action' => 'setAction',
+        'principal' => 'setPrincipal',
+        'condition' => 'setCondition'
     ];
 
     /**
@@ -365,43 +200,10 @@ class AiConfigsMetricListingRep implements ModelInterface, ArrayAccess, \JsonSer
      * @var string[]
      */
     protected static $getters = [
-        'experiment_count' => 'getExperimentCount',
-        'metric_group_count' => 'getMetricGroupCount',
-        'guarded_rollout_count' => 'getGuardedRolloutCount',
-        'active_experiment_count' => 'getActiveExperimentCount',
-        'active_guarded_rollout_count' => 'getActiveGuardedRolloutCount',
-        '_id' => 'getId',
-        '_version_id' => 'getVersionId',
-        '_version' => 'getVersion',
-        'key' => 'getKey',
-        'name' => 'getName',
-        'kind' => 'getKind',
-        '_attached_flag_count' => 'getAttachedFlagCount',
-        '_links' => 'getLinks',
-        '_site' => 'getSite',
-        '_access' => 'getAccess',
-        'tags' => 'getTags',
-        '_creation_date' => 'getCreationDate',
-        'last_modified' => 'getLastModified',
-        'maintainer_id' => 'getMaintainerId',
-        '_maintainer' => 'getMaintainer',
-        'description' => 'getDescription',
-        'category' => 'getCategory',
-        'is_numeric' => 'getIsNumeric',
-        'success_criteria' => 'getSuccessCriteria',
-        'unit' => 'getUnit',
-        'event_key' => 'getEventKey',
-        'randomization_units' => 'getRandomizationUnits',
-        'filters' => 'getFilters',
-        'unit_aggregation_type' => 'getUnitAggregationType',
-        'analysis_type' => 'getAnalysisType',
-        'percentile_value' => 'getPercentileValue',
-        'event_default' => 'getEventDefault',
-        'data_source' => 'getDataSource',
-        'archived' => 'getArchived',
-        'archived_at' => 'getArchivedAt',
-        'selector' => 'getSelector',
-        'urls' => 'getUrls'
+        'effect' => 'getEffect',
+        'action' => 'getAction',
+        'principal' => 'getPrincipal',
+        'condition' => 'getCondition'
     ];
 
     /**
@@ -445,68 +247,6 @@ class AiConfigsMetricListingRep implements ModelInterface, ArrayAccess, \JsonSer
         return self::$openAPIModelName;
     }
 
-    public const KIND_PAGEVIEW = 'pageview';
-    public const KIND_CLICK = 'click';
-    public const KIND_CUSTOM = 'custom';
-    public const SUCCESS_CRITERIA_HIGHER_THAN_BASELINE = 'HigherThanBaseline';
-    public const SUCCESS_CRITERIA_LOWER_THAN_BASELINE = 'LowerThanBaseline';
-    public const UNIT_AGGREGATION_TYPE_AVERAGE = 'average';
-    public const UNIT_AGGREGATION_TYPE_SUM = 'sum';
-    public const ANALYSIS_TYPE_MEAN = 'mean';
-    public const ANALYSIS_TYPE_PERCENTILE = 'percentile';
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getKindAllowableValues()
-    {
-        return [
-            self::KIND_PAGEVIEW,
-            self::KIND_CLICK,
-            self::KIND_CUSTOM,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getSuccessCriteriaAllowableValues()
-    {
-        return [
-            self::SUCCESS_CRITERIA_HIGHER_THAN_BASELINE,
-            self::SUCCESS_CRITERIA_LOWER_THAN_BASELINE,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getUnitAggregationTypeAllowableValues()
-    {
-        return [
-            self::UNIT_AGGREGATION_TYPE_AVERAGE,
-            self::UNIT_AGGREGATION_TYPE_SUM,
-        ];
-    }
-
-    /**
-     * Gets allowable values of the enum
-     *
-     * @return string[]
-     */
-    public function getAnalysisTypeAllowableValues()
-    {
-        return [
-            self::ANALYSIS_TYPE_MEAN,
-            self::ANALYSIS_TYPE_PERCENTILE,
-        ];
-    }
 
     /**
      * Associative array for storing property values
@@ -523,43 +263,10 @@ class AiConfigsMetricListingRep implements ModelInterface, ArrayAccess, \JsonSer
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('experiment_count', $data ?? [], null);
-        $this->setIfExists('metric_group_count', $data ?? [], null);
-        $this->setIfExists('guarded_rollout_count', $data ?? [], null);
-        $this->setIfExists('active_experiment_count', $data ?? [], null);
-        $this->setIfExists('active_guarded_rollout_count', $data ?? [], null);
-        $this->setIfExists('_id', $data ?? [], null);
-        $this->setIfExists('_version_id', $data ?? [], null);
-        $this->setIfExists('_version', $data ?? [], null);
-        $this->setIfExists('key', $data ?? [], null);
-        $this->setIfExists('name', $data ?? [], null);
-        $this->setIfExists('kind', $data ?? [], null);
-        $this->setIfExists('_attached_flag_count', $data ?? [], null);
-        $this->setIfExists('_links', $data ?? [], null);
-        $this->setIfExists('_site', $data ?? [], null);
-        $this->setIfExists('_access', $data ?? [], null);
-        $this->setIfExists('tags', $data ?? [], null);
-        $this->setIfExists('_creation_date', $data ?? [], null);
-        $this->setIfExists('last_modified', $data ?? [], null);
-        $this->setIfExists('maintainer_id', $data ?? [], null);
-        $this->setIfExists('_maintainer', $data ?? [], null);
-        $this->setIfExists('description', $data ?? [], null);
-        $this->setIfExists('category', $data ?? [], null);
-        $this->setIfExists('is_numeric', $data ?? [], null);
-        $this->setIfExists('success_criteria', $data ?? [], null);
-        $this->setIfExists('unit', $data ?? [], null);
-        $this->setIfExists('event_key', $data ?? [], null);
-        $this->setIfExists('randomization_units', $data ?? [], null);
-        $this->setIfExists('filters', $data ?? [], null);
-        $this->setIfExists('unit_aggregation_type', $data ?? [], null);
-        $this->setIfExists('analysis_type', $data ?? [], null);
-        $this->setIfExists('percentile_value', $data ?? [], null);
-        $this->setIfExists('event_default', $data ?? [], null);
-        $this->setIfExists('data_source', $data ?? [], null);
-        $this->setIfExists('archived', $data ?? [], null);
-        $this->setIfExists('archived_at', $data ?? [], null);
-        $this->setIfExists('selector', $data ?? [], null);
-        $this->setIfExists('urls', $data ?? [], null);
+        $this->setIfExists('effect', $data ?? [], null);
+        $this->setIfExists('action', $data ?? [], null);
+        $this->setIfExists('principal', $data ?? [], null);
+        $this->setIfExists('condition', $data ?? [], null);
     }
 
     /**
@@ -589,69 +296,6 @@ class AiConfigsMetricListingRep implements ModelInterface, ArrayAccess, \JsonSer
     {
         $invalidProperties = [];
 
-        if ($this->container['_id'] === null) {
-            $invalidProperties[] = "'_id' can't be null";
-        }
-        if ($this->container['_version_id'] === null) {
-            $invalidProperties[] = "'_version_id' can't be null";
-        }
-        if ($this->container['key'] === null) {
-            $invalidProperties[] = "'key' can't be null";
-        }
-        if ($this->container['name'] === null) {
-            $invalidProperties[] = "'name' can't be null";
-        }
-        if ($this->container['kind'] === null) {
-            $invalidProperties[] = "'kind' can't be null";
-        }
-        $allowedValues = $this->getKindAllowableValues();
-        if (!is_null($this->container['kind']) && !in_array($this->container['kind'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'kind', must be one of '%s'",
-                $this->container['kind'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['_links'] === null) {
-            $invalidProperties[] = "'_links' can't be null";
-        }
-        if ($this->container['tags'] === null) {
-            $invalidProperties[] = "'tags' can't be null";
-        }
-        if ($this->container['_creation_date'] === null) {
-            $invalidProperties[] = "'_creation_date' can't be null";
-        }
-        $allowedValues = $this->getSuccessCriteriaAllowableValues();
-        if (!is_null($this->container['success_criteria']) && !in_array($this->container['success_criteria'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'success_criteria', must be one of '%s'",
-                $this->container['success_criteria'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getUnitAggregationTypeAllowableValues();
-        if (!is_null($this->container['unit_aggregation_type']) && !in_array($this->container['unit_aggregation_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'unit_aggregation_type', must be one of '%s'",
-                $this->container['unit_aggregation_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        $allowedValues = $this->getAnalysisTypeAllowableValues();
-        if (!is_null($this->container['analysis_type']) && !in_array($this->container['analysis_type'], $allowedValues, true)) {
-            $invalidProperties[] = sprintf(
-                "invalid value '%s' for 'analysis_type', must be one of '%s'",
-                $this->container['analysis_type'],
-                implode("', '", $allowedValues)
-            );
-        }
-
-        if ($this->container['data_source'] === null) {
-            $invalidProperties[] = "'data_source' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -668,1040 +312,123 @@ class AiConfigsMetricListingRep implements ModelInterface, ArrayAccess, \JsonSer
 
 
     /**
-     * Gets experiment_count
-     *
-     * @return int|null
-     */
-    public function getExperimentCount()
-    {
-        return $this->container['experiment_count'];
-    }
-
-    /**
-     * Sets experiment_count
-     *
-     * @param int|null $experiment_count The number of experiments using this metric
-     *
-     * @return self
-     */
-    public function setExperimentCount($experiment_count)
-    {
-        if (is_null($experiment_count)) {
-            throw new \InvalidArgumentException('non-nullable experiment_count cannot be null');
-        }
-        $this->container['experiment_count'] = $experiment_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets metric_group_count
-     *
-     * @return int|null
-     */
-    public function getMetricGroupCount()
-    {
-        return $this->container['metric_group_count'];
-    }
-
-    /**
-     * Sets metric_group_count
-     *
-     * @param int|null $metric_group_count The number of metric groups using this metric
-     *
-     * @return self
-     */
-    public function setMetricGroupCount($metric_group_count)
-    {
-        if (is_null($metric_group_count)) {
-            throw new \InvalidArgumentException('non-nullable metric_group_count cannot be null');
-        }
-        $this->container['metric_group_count'] = $metric_group_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets guarded_rollout_count
-     *
-     * @return int|null
-     */
-    public function getGuardedRolloutCount()
-    {
-        return $this->container['guarded_rollout_count'];
-    }
-
-    /**
-     * Sets guarded_rollout_count
-     *
-     * @param int|null $guarded_rollout_count The number of guarded rollouts using this metric
-     *
-     * @return self
-     */
-    public function setGuardedRolloutCount($guarded_rollout_count)
-    {
-        if (is_null($guarded_rollout_count)) {
-            throw new \InvalidArgumentException('non-nullable guarded_rollout_count cannot be null');
-        }
-        $this->container['guarded_rollout_count'] = $guarded_rollout_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets active_experiment_count
-     *
-     * @return int|null
-     */
-    public function getActiveExperimentCount()
-    {
-        return $this->container['active_experiment_count'];
-    }
-
-    /**
-     * Sets active_experiment_count
-     *
-     * @param int|null $active_experiment_count The number of active experiments using this metric
-     *
-     * @return self
-     */
-    public function setActiveExperimentCount($active_experiment_count)
-    {
-        if (is_null($active_experiment_count)) {
-            throw new \InvalidArgumentException('non-nullable active_experiment_count cannot be null');
-        }
-        $this->container['active_experiment_count'] = $active_experiment_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets active_guarded_rollout_count
-     *
-     * @return int|null
-     */
-    public function getActiveGuardedRolloutCount()
-    {
-        return $this->container['active_guarded_rollout_count'];
-    }
-
-    /**
-     * Sets active_guarded_rollout_count
-     *
-     * @param int|null $active_guarded_rollout_count The number of active guarded rollouts using this metric
-     *
-     * @return self
-     */
-    public function setActiveGuardedRolloutCount($active_guarded_rollout_count)
-    {
-        if (is_null($active_guarded_rollout_count)) {
-            throw new \InvalidArgumentException('non-nullable active_guarded_rollout_count cannot be null');
-        }
-        $this->container['active_guarded_rollout_count'] = $active_guarded_rollout_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets _id
-     *
-     * @return string
-     */
-    public function getId()
-    {
-        return $this->container['_id'];
-    }
-
-    /**
-     * Sets _id
-     *
-     * @param string $_id The ID of this metric
-     *
-     * @return self
-     */
-    public function setId($_id)
-    {
-        if (is_null($_id)) {
-            throw new \InvalidArgumentException('non-nullable _id cannot be null');
-        }
-        $this->container['_id'] = $_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets _version_id
-     *
-     * @return string
-     */
-    public function getVersionId()
-    {
-        return $this->container['_version_id'];
-    }
-
-    /**
-     * Sets _version_id
-     *
-     * @param string $_version_id The version ID of the metric
-     *
-     * @return self
-     */
-    public function setVersionId($_version_id)
-    {
-        if (is_null($_version_id)) {
-            throw new \InvalidArgumentException('non-nullable _version_id cannot be null');
-        }
-        $this->container['_version_id'] = $_version_id;
-
-        return $this;
-    }
-
-    /**
-     * Gets _version
-     *
-     * @return int|null
-     */
-    public function getVersion()
-    {
-        return $this->container['_version'];
-    }
-
-    /**
-     * Sets _version
-     *
-     * @param int|null $_version Version of the metric
-     *
-     * @return self
-     */
-    public function setVersion($_version)
-    {
-        if (is_null($_version)) {
-            throw new \InvalidArgumentException('non-nullable _version cannot be null');
-        }
-        $this->container['_version'] = $_version;
-
-        return $this;
-    }
-
-    /**
-     * Gets key
-     *
-     * @return string
-     */
-    public function getKey()
-    {
-        return $this->container['key'];
-    }
-
-    /**
-     * Sets key
-     *
-     * @param string $key A unique key to reference the metric
-     *
-     * @return self
-     */
-    public function setKey($key)
-    {
-        if (is_null($key)) {
-            throw new \InvalidArgumentException('non-nullable key cannot be null');
-        }
-        $this->container['key'] = $key;
-
-        return $this;
-    }
-
-    /**
-     * Gets name
-     *
-     * @return string
-     */
-    public function getName()
-    {
-        return $this->container['name'];
-    }
-
-    /**
-     * Sets name
-     *
-     * @param string $name A human-friendly name for the metric
-     *
-     * @return self
-     */
-    public function setName($name)
-    {
-        if (is_null($name)) {
-            throw new \InvalidArgumentException('non-nullable name cannot be null');
-        }
-        $this->container['name'] = $name;
-
-        return $this;
-    }
-
-    /**
-     * Gets kind
-     *
-     * @return string
-     */
-    public function getKind()
-    {
-        return $this->container['kind'];
-    }
-
-    /**
-     * Sets kind
-     *
-     * @param string $kind The kind of event the metric tracks
-     *
-     * @return self
-     */
-    public function setKind($kind)
-    {
-        if (is_null($kind)) {
-            throw new \InvalidArgumentException('non-nullable kind cannot be null');
-        }
-        $allowedValues = $this->getKindAllowableValues();
-        if (!in_array($kind, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'kind', must be one of '%s'",
-                    $kind,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['kind'] = $kind;
-
-        return $this;
-    }
-
-    /**
-     * Gets _attached_flag_count
-     *
-     * @return int|null
-     */
-    public function getAttachedFlagCount()
-    {
-        return $this->container['_attached_flag_count'];
-    }
-
-    /**
-     * Sets _attached_flag_count
-     *
-     * @param int|null $_attached_flag_count The number of feature flags currently attached to this metric
-     *
-     * @return self
-     */
-    public function setAttachedFlagCount($_attached_flag_count)
-    {
-        if (is_null($_attached_flag_count)) {
-            throw new \InvalidArgumentException('non-nullable _attached_flag_count cannot be null');
-        }
-        $this->container['_attached_flag_count'] = $_attached_flag_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets _links
-     *
-     * @return array<string,\LaunchDarklyApi\Model\AiConfigsLink>
-     */
-    public function getLinks()
-    {
-        return $this->container['_links'];
-    }
-
-    /**
-     * Sets _links
-     *
-     * @param array<string,\LaunchDarklyApi\Model\AiConfigsLink> $_links The location and content type of related resources
-     *
-     * @return self
-     */
-    public function setLinks($_links)
-    {
-        if (is_null($_links)) {
-            throw new \InvalidArgumentException('non-nullable _links cannot be null');
-        }
-        $this->container['_links'] = $_links;
-
-        return $this;
-    }
-
-    /**
-     * Gets _site
-     *
-     * @return \LaunchDarklyApi\Model\AiConfigsLink|null
-     */
-    public function getSite()
-    {
-        return $this->container['_site'];
-    }
-
-    /**
-     * Sets _site
-     *
-     * @param \LaunchDarklyApi\Model\AiConfigsLink|null $_site _site
-     *
-     * @return self
-     */
-    public function setSite($_site)
-    {
-        if (is_null($_site)) {
-            throw new \InvalidArgumentException('non-nullable _site cannot be null');
-        }
-        $this->container['_site'] = $_site;
-
-        return $this;
-    }
-
-    /**
-     * Gets _access
-     *
-     * @return \LaunchDarklyApi\Model\AiConfigsAccess|null
-     */
-    public function getAccess()
-    {
-        return $this->container['_access'];
-    }
-
-    /**
-     * Sets _access
-     *
-     * @param \LaunchDarklyApi\Model\AiConfigsAccess|null $_access _access
-     *
-     * @return self
-     */
-    public function setAccess($_access)
-    {
-        if (is_null($_access)) {
-            throw new \InvalidArgumentException('non-nullable _access cannot be null');
-        }
-        $this->container['_access'] = $_access;
-
-        return $this;
-    }
-
-    /**
-     * Gets tags
-     *
-     * @return string[]
-     */
-    public function getTags()
-    {
-        return $this->container['tags'];
-    }
-
-    /**
-     * Sets tags
-     *
-     * @param string[] $tags Tags for the metric
-     *
-     * @return self
-     */
-    public function setTags($tags)
-    {
-        if (is_null($tags)) {
-            throw new \InvalidArgumentException('non-nullable tags cannot be null');
-        }
-        $this->container['tags'] = $tags;
-
-        return $this;
-    }
-
-    /**
-     * Gets _creation_date
-     *
-     * @return int
-     */
-    public function getCreationDate()
-    {
-        return $this->container['_creation_date'];
-    }
-
-    /**
-     * Sets _creation_date
-     *
-     * @param int $_creation_date _creation_date
-     *
-     * @return self
-     */
-    public function setCreationDate($_creation_date)
-    {
-        if (is_null($_creation_date)) {
-            throw new \InvalidArgumentException('non-nullable _creation_date cannot be null');
-        }
-        $this->container['_creation_date'] = $_creation_date;
-
-        return $this;
-    }
-
-    /**
-     * Gets last_modified
-     *
-     * @return \LaunchDarklyApi\Model\AiConfigsModification|null
-     */
-    public function getLastModified()
-    {
-        return $this->container['last_modified'];
-    }
-
-    /**
-     * Sets last_modified
-     *
-     * @param \LaunchDarklyApi\Model\AiConfigsModification|null $last_modified last_modified
-     *
-     * @return self
-     */
-    public function setLastModified($last_modified)
-    {
-        if (is_null($last_modified)) {
-            throw new \InvalidArgumentException('non-nullable last_modified cannot be null');
-        }
-        $this->container['last_modified'] = $last_modified;
-
-        return $this;
-    }
-
-    /**
-     * Gets maintainer_id
+     * Gets effect
      *
      * @return string|null
      */
-    public function getMaintainerId()
+    public function getEffect()
     {
-        return $this->container['maintainer_id'];
+        return $this->container['effect'];
     }
 
     /**
-     * Sets maintainer_id
+     * Sets effect
      *
-     * @param string|null $maintainer_id The ID of the member who maintains this metric
+     * @param string|null $effect The effect of trust policy statement
      *
      * @return self
      */
-    public function setMaintainerId($maintainer_id)
+    public function setEffect($effect)
     {
-        if (is_null($maintainer_id)) {
-            throw new \InvalidArgumentException('non-nullable maintainer_id cannot be null');
+        if (is_null($effect)) {
+            throw new \InvalidArgumentException('non-nullable effect cannot be null');
         }
-        $this->container['maintainer_id'] = $maintainer_id;
+        $this->container['effect'] = $effect;
 
         return $this;
     }
 
     /**
-     * Gets _maintainer
-     *
-     * @return \LaunchDarklyApi\Model\AiConfigsMemberSummary|null
-     */
-    public function getMaintainer()
-    {
-        return $this->container['_maintainer'];
-    }
-
-    /**
-     * Sets _maintainer
-     *
-     * @param \LaunchDarklyApi\Model\AiConfigsMemberSummary|null $_maintainer _maintainer
-     *
-     * @return self
-     */
-    public function setMaintainer($_maintainer)
-    {
-        if (is_null($_maintainer)) {
-            throw new \InvalidArgumentException('non-nullable _maintainer cannot be null');
-        }
-        $this->container['_maintainer'] = $_maintainer;
-
-        return $this;
-    }
-
-    /**
-     * Gets description
-     *
-     * @return string|null
-     */
-    public function getDescription()
-    {
-        return $this->container['description'];
-    }
-
-    /**
-     * Sets description
-     *
-     * @param string|null $description Description of the metric
-     *
-     * @return self
-     */
-    public function setDescription($description)
-    {
-        if (is_null($description)) {
-            throw new \InvalidArgumentException('non-nullable description cannot be null');
-        }
-        $this->container['description'] = $description;
-
-        return $this;
-    }
-
-    /**
-     * Gets category
-     *
-     * @return string|null
-     */
-    public function getCategory()
-    {
-        return $this->container['category'];
-    }
-
-    /**
-     * Sets category
-     *
-     * @param string|null $category The category of the metric
-     *
-     * @return self
-     */
-    public function setCategory($category)
-    {
-        if (is_null($category)) {
-            throw new \InvalidArgumentException('non-nullable category cannot be null');
-        }
-        $this->container['category'] = $category;
-
-        return $this;
-    }
-
-    /**
-     * Gets is_numeric
-     *
-     * @return bool|null
-     */
-    public function getIsNumeric()
-    {
-        return $this->container['is_numeric'];
-    }
-
-    /**
-     * Sets is_numeric
-     *
-     * @param bool|null $is_numeric For custom metrics, whether to track numeric changes in value against a baseline (<code>true</code>) or to track a conversion when an end user takes an action (<code>false</code>).
-     *
-     * @return self
-     */
-    public function setIsNumeric($is_numeric)
-    {
-        if (is_null($is_numeric)) {
-            throw new \InvalidArgumentException('non-nullable is_numeric cannot be null');
-        }
-        $this->container['is_numeric'] = $is_numeric;
-
-        return $this;
-    }
-
-    /**
-     * Gets success_criteria
-     *
-     * @return string|null
-     */
-    public function getSuccessCriteria()
-    {
-        return $this->container['success_criteria'];
-    }
-
-    /**
-     * Sets success_criteria
-     *
-     * @param string|null $success_criteria For custom metrics, the success criteria
-     *
-     * @return self
-     */
-    public function setSuccessCriteria($success_criteria)
-    {
-        if (is_null($success_criteria)) {
-            throw new \InvalidArgumentException('non-nullable success_criteria cannot be null');
-        }
-        $allowedValues = $this->getSuccessCriteriaAllowableValues();
-        if (!in_array($success_criteria, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'success_criteria', must be one of '%s'",
-                    $success_criteria,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['success_criteria'] = $success_criteria;
-
-        return $this;
-    }
-
-    /**
-     * Gets unit
-     *
-     * @return string|null
-     */
-    public function getUnit()
-    {
-        return $this->container['unit'];
-    }
-
-    /**
-     * Sets unit
-     *
-     * @param string|null $unit For numeric custom metrics, the unit of measure
-     *
-     * @return self
-     */
-    public function setUnit($unit)
-    {
-        if (is_null($unit)) {
-            throw new \InvalidArgumentException('non-nullable unit cannot be null');
-        }
-        $this->container['unit'] = $unit;
-
-        return $this;
-    }
-
-    /**
-     * Gets event_key
-     *
-     * @return string|null
-     */
-    public function getEventKey()
-    {
-        return $this->container['event_key'];
-    }
-
-    /**
-     * Sets event_key
-     *
-     * @param string|null $event_key For custom metrics, the event key to use in your code
-     *
-     * @return self
-     */
-    public function setEventKey($event_key)
-    {
-        if (is_null($event_key)) {
-            throw new \InvalidArgumentException('non-nullable event_key cannot be null');
-        }
-        $this->container['event_key'] = $event_key;
-
-        return $this;
-    }
-
-    /**
-     * Gets randomization_units
+     * Gets action
      *
      * @return string[]|null
      */
-    public function getRandomizationUnits()
+    public function getAction()
     {
-        return $this->container['randomization_units'];
+        return $this->container['action'];
     }
 
     /**
-     * Sets randomization_units
+     * Sets action
      *
-     * @param string[]|null $randomization_units An array of randomization units allowed for this metric
+     * @param string[]|null $action The action of trust policy statement
      *
      * @return self
      */
-    public function setRandomizationUnits($randomization_units)
+    public function setAction($action)
     {
-        if (is_null($randomization_units)) {
-            throw new \InvalidArgumentException('non-nullable randomization_units cannot be null');
+        if (is_null($action)) {
+            throw new \InvalidArgumentException('non-nullable action cannot be null');
         }
-        $this->container['randomization_units'] = $randomization_units;
+        $this->container['action'] = $action;
 
         return $this;
     }
 
     /**
-     * Gets filters
+     * Gets principal
      *
-     * @return \LaunchDarklyApi\Model\AiConfigsFilter|null
+     * @return mixed|null
      */
-    public function getFilters()
+    public function getPrincipal()
     {
-        return $this->container['filters'];
+        return $this->container['principal'];
     }
 
     /**
-     * Sets filters
+     * Sets principal
      *
-     * @param \LaunchDarklyApi\Model\AiConfigsFilter|null $filters filters
+     * @param mixed|null $principal The principal of trust policy statement
      *
      * @return self
      */
-    public function setFilters($filters)
+    public function setPrincipal($principal)
     {
-        if (is_null($filters)) {
-            throw new \InvalidArgumentException('non-nullable filters cannot be null');
+        if (is_null($principal)) {
+            array_push($this->openAPINullablesSetToNull, 'principal');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('principal', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $this->container['filters'] = $filters;
+        $this->container['principal'] = $principal;
 
         return $this;
     }
 
     /**
-     * Gets unit_aggregation_type
+     * Gets condition
      *
-     * @return string|null
+     * @return mixed|null
      */
-    public function getUnitAggregationType()
+    public function getCondition()
     {
-        return $this->container['unit_aggregation_type'];
+        return $this->container['condition'];
     }
 
     /**
-     * Sets unit_aggregation_type
+     * Sets condition
      *
-     * @param string|null $unit_aggregation_type The method by which multiple unit event values are aggregated
+     * @param mixed|null $condition The condition of trust policy statement
      *
      * @return self
      */
-    public function setUnitAggregationType($unit_aggregation_type)
+    public function setCondition($condition)
     {
-        if (is_null($unit_aggregation_type)) {
-            throw new \InvalidArgumentException('non-nullable unit_aggregation_type cannot be null');
+        if (is_null($condition)) {
+            array_push($this->openAPINullablesSetToNull, 'condition');
+        } else {
+            $nullablesSetToNull = $this->getOpenAPINullablesSetToNull();
+            $index = array_search('condition', $nullablesSetToNull);
+            if ($index !== FALSE) {
+                unset($nullablesSetToNull[$index]);
+                $this->setOpenAPINullablesSetToNull($nullablesSetToNull);
+            }
         }
-        $allowedValues = $this->getUnitAggregationTypeAllowableValues();
-        if (!in_array($unit_aggregation_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'unit_aggregation_type', must be one of '%s'",
-                    $unit_aggregation_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['unit_aggregation_type'] = $unit_aggregation_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets analysis_type
-     *
-     * @return string|null
-     */
-    public function getAnalysisType()
-    {
-        return $this->container['analysis_type'];
-    }
-
-    /**
-     * Sets analysis_type
-     *
-     * @param string|null $analysis_type The method for analyzing metric events
-     *
-     * @return self
-     */
-    public function setAnalysisType($analysis_type)
-    {
-        if (is_null($analysis_type)) {
-            throw new \InvalidArgumentException('non-nullable analysis_type cannot be null');
-        }
-        $allowedValues = $this->getAnalysisTypeAllowableValues();
-        if (!in_array($analysis_type, $allowedValues, true)) {
-            throw new \InvalidArgumentException(
-                sprintf(
-                    "Invalid value '%s' for 'analysis_type', must be one of '%s'",
-                    $analysis_type,
-                    implode("', '", $allowedValues)
-                )
-            );
-        }
-        $this->container['analysis_type'] = $analysis_type;
-
-        return $this;
-    }
-
-    /**
-     * Gets percentile_value
-     *
-     * @return int|null
-     */
-    public function getPercentileValue()
-    {
-        return $this->container['percentile_value'];
-    }
-
-    /**
-     * Sets percentile_value
-     *
-     * @param int|null $percentile_value The percentile for the analysis method. An integer denoting the target percentile between 0 and 100. Required when <code>analysisType</code> is <code>percentile</code>.
-     *
-     * @return self
-     */
-    public function setPercentileValue($percentile_value)
-    {
-        if (is_null($percentile_value)) {
-            throw new \InvalidArgumentException('non-nullable percentile_value cannot be null');
-        }
-        $this->container['percentile_value'] = $percentile_value;
-
-        return $this;
-    }
-
-    /**
-     * Gets event_default
-     *
-     * @return \LaunchDarklyApi\Model\AiConfigsMetricEventDefaultRep|null
-     */
-    public function getEventDefault()
-    {
-        return $this->container['event_default'];
-    }
-
-    /**
-     * Sets event_default
-     *
-     * @param \LaunchDarklyApi\Model\AiConfigsMetricEventDefaultRep|null $event_default event_default
-     *
-     * @return self
-     */
-    public function setEventDefault($event_default)
-    {
-        if (is_null($event_default)) {
-            throw new \InvalidArgumentException('non-nullable event_default cannot be null');
-        }
-        $this->container['event_default'] = $event_default;
-
-        return $this;
-    }
-
-    /**
-     * Gets data_source
-     *
-     * @return \LaunchDarklyApi\Model\AiConfigsMetricDataSourceRefRep
-     */
-    public function getDataSource()
-    {
-        return $this->container['data_source'];
-    }
-
-    /**
-     * Sets data_source
-     *
-     * @param \LaunchDarklyApi\Model\AiConfigsMetricDataSourceRefRep $data_source data_source
-     *
-     * @return self
-     */
-    public function setDataSource($data_source)
-    {
-        if (is_null($data_source)) {
-            throw new \InvalidArgumentException('non-nullable data_source cannot be null');
-        }
-        $this->container['data_source'] = $data_source;
-
-        return $this;
-    }
-
-    /**
-     * Gets archived
-     *
-     * @return bool|null
-     */
-    public function getArchived()
-    {
-        return $this->container['archived'];
-    }
-
-    /**
-     * Sets archived
-     *
-     * @param bool|null $archived Whether the metric version is archived
-     *
-     * @return self
-     */
-    public function setArchived($archived)
-    {
-        if (is_null($archived)) {
-            throw new \InvalidArgumentException('non-nullable archived cannot be null');
-        }
-        $this->container['archived'] = $archived;
-
-        return $this;
-    }
-
-    /**
-     * Gets archived_at
-     *
-     * @return int|null
-     */
-    public function getArchivedAt()
-    {
-        return $this->container['archived_at'];
-    }
-
-    /**
-     * Sets archived_at
-     *
-     * @param int|null $archived_at archived_at
-     *
-     * @return self
-     */
-    public function setArchivedAt($archived_at)
-    {
-        if (is_null($archived_at)) {
-            throw new \InvalidArgumentException('non-nullable archived_at cannot be null');
-        }
-        $this->container['archived_at'] = $archived_at;
-
-        return $this;
-    }
-
-    /**
-     * Gets selector
-     *
-     * @return string|null
-     */
-    public function getSelector()
-    {
-        return $this->container['selector'];
-    }
-
-    /**
-     * Sets selector
-     *
-     * @param string|null $selector For click metrics, the CSS selectors
-     *
-     * @return self
-     */
-    public function setSelector($selector)
-    {
-        if (is_null($selector)) {
-            throw new \InvalidArgumentException('non-nullable selector cannot be null');
-        }
-        $this->container['selector'] = $selector;
-
-        return $this;
-    }
-
-    /**
-     * Gets urls
-     *
-     * @return array[]|null
-     */
-    public function getUrls()
-    {
-        return $this->container['urls'];
-    }
-
-    /**
-     * Sets urls
-     *
-     * @param array[]|null $urls urls
-     *
-     * @return self
-     */
-    public function setUrls($urls)
-    {
-        if (is_null($urls)) {
-            throw new \InvalidArgumentException('non-nullable urls cannot be null');
-        }
-        $this->container['urls'] = $urls;
+        $this->container['condition'] = $condition;
 
         return $this;
     }

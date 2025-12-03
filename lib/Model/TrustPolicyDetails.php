@@ -1,6 +1,6 @@
 <?php
 /**
- * AiConfigsMetricDataSourceRefRep
+ * TrustPolicyDetails
  *
  * PHP version 8.1
  *
@@ -33,7 +33,7 @@ use \ArrayAccess;
 use \LaunchDarklyApi\ObjectSerializer;
 
 /**
- * AiConfigsMetricDataSourceRefRep Class Doc Comment
+ * TrustPolicyDetails Class Doc Comment
  *
  * @category Class
  * @package  LaunchDarklyApi
@@ -41,7 +41,7 @@ use \LaunchDarklyApi\ObjectSerializer;
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AiConfigsMetricDataSourceRefRep implements ModelInterface, ArrayAccess, \JsonSerializable
+class TrustPolicyDetails implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +50,7 @@ class AiConfigsMetricDataSourceRefRep implements ModelInterface, ArrayAccess, \J
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AiConfigsMetricDataSourceRefRep';
+    protected static $openAPIModelName = 'TrustPolicyDetails';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,10 +58,8 @@ class AiConfigsMetricDataSourceRefRep implements ModelInterface, ArrayAccess, \J
       * @var string[]
       */
     protected static $openAPITypes = [
-        'key' => 'string',
-        'environment_key' => 'string',
-        '_name' => 'string',
-        '_integration_key' => 'string'
+        'version' => 'string',
+        'statement' => '\LaunchDarklyApi\Model\TrustPolicyStatement[]'
     ];
 
     /**
@@ -72,10 +70,8 @@ class AiConfigsMetricDataSourceRefRep implements ModelInterface, ArrayAccess, \J
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'key' => null,
-        'environment_key' => null,
-        '_name' => null,
-        '_integration_key' => null
+        'version' => null,
+        'statement' => null
     ];
 
     /**
@@ -84,10 +80,8 @@ class AiConfigsMetricDataSourceRefRep implements ModelInterface, ArrayAccess, \J
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'key' => false,
-        'environment_key' => false,
-        '_name' => false,
-        '_integration_key' => false
+        'version' => false,
+        'statement' => false
     ];
 
     /**
@@ -176,10 +170,8 @@ class AiConfigsMetricDataSourceRefRep implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $attributeMap = [
-        'key' => 'key',
-        'environment_key' => 'environmentKey',
-        '_name' => '_name',
-        '_integration_key' => '_integrationKey'
+        'version' => 'Version',
+        'statement' => 'Statement'
     ];
 
     /**
@@ -188,10 +180,8 @@ class AiConfigsMetricDataSourceRefRep implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $setters = [
-        'key' => 'setKey',
-        'environment_key' => 'setEnvironmentKey',
-        '_name' => 'setName',
-        '_integration_key' => 'setIntegrationKey'
+        'version' => 'setVersion',
+        'statement' => 'setStatement'
     ];
 
     /**
@@ -200,10 +190,8 @@ class AiConfigsMetricDataSourceRefRep implements ModelInterface, ArrayAccess, \J
      * @var string[]
      */
     protected static $getters = [
-        'key' => 'getKey',
-        'environment_key' => 'getEnvironmentKey',
-        '_name' => 'getName',
-        '_integration_key' => 'getIntegrationKey'
+        'version' => 'getVersion',
+        'statement' => 'getStatement'
     ];
 
     /**
@@ -263,10 +251,8 @@ class AiConfigsMetricDataSourceRefRep implements ModelInterface, ArrayAccess, \J
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('key', $data ?? [], null);
-        $this->setIfExists('environment_key', $data ?? [], null);
-        $this->setIfExists('_name', $data ?? [], null);
-        $this->setIfExists('_integration_key', $data ?? [], null);
+        $this->setIfExists('version', $data ?? [], null);
+        $this->setIfExists('statement', $data ?? [], null);
     }
 
     /**
@@ -296,9 +282,6 @@ class AiConfigsMetricDataSourceRefRep implements ModelInterface, ArrayAccess, \J
     {
         $invalidProperties = [];
 
-        if ($this->container['key'] === null) {
-            $invalidProperties[] = "'key' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -315,109 +298,55 @@ class AiConfigsMetricDataSourceRefRep implements ModelInterface, ArrayAccess, \J
 
 
     /**
-     * Gets key
+     * Gets version
      *
-     * @return string
+     * @return string|null
      */
-    public function getKey()
+    public function getVersion()
     {
-        return $this->container['key'];
+        return $this->container['version'];
     }
 
     /**
-     * Sets key
+     * Sets version
      *
-     * @param string $key key
+     * @param string|null $version The version of the trust policy
      *
      * @return self
      */
-    public function setKey($key)
+    public function setVersion($version)
     {
-        if (is_null($key)) {
-            throw new \InvalidArgumentException('non-nullable key cannot be null');
+        if (is_null($version)) {
+            throw new \InvalidArgumentException('non-nullable version cannot be null');
         }
-        $this->container['key'] = $key;
+        $this->container['version'] = $version;
 
         return $this;
     }
 
     /**
-     * Gets environment_key
+     * Gets statement
      *
-     * @return string|null
+     * @return \LaunchDarklyApi\Model\TrustPolicyStatement[]|null
      */
-    public function getEnvironmentKey()
+    public function getStatement()
     {
-        return $this->container['environment_key'];
+        return $this->container['statement'];
     }
 
     /**
-     * Sets environment_key
+     * Sets statement
      *
-     * @param string|null $environment_key environment_key
+     * @param \LaunchDarklyApi\Model\TrustPolicyStatement[]|null $statement The statements of the trust policy
      *
      * @return self
      */
-    public function setEnvironmentKey($environment_key)
+    public function setStatement($statement)
     {
-        if (is_null($environment_key)) {
-            throw new \InvalidArgumentException('non-nullable environment_key cannot be null');
+        if (is_null($statement)) {
+            throw new \InvalidArgumentException('non-nullable statement cannot be null');
         }
-        $this->container['environment_key'] = $environment_key;
-
-        return $this;
-    }
-
-    /**
-     * Gets _name
-     *
-     * @return string|null
-     */
-    public function getName()
-    {
-        return $this->container['_name'];
-    }
-
-    /**
-     * Sets _name
-     *
-     * @param string|null $_name _name
-     *
-     * @return self
-     */
-    public function setName($_name)
-    {
-        if (is_null($_name)) {
-            throw new \InvalidArgumentException('non-nullable _name cannot be null');
-        }
-        $this->container['_name'] = $_name;
-
-        return $this;
-    }
-
-    /**
-     * Gets _integration_key
-     *
-     * @return string|null
-     */
-    public function getIntegrationKey()
-    {
-        return $this->container['_integration_key'];
-    }
-
-    /**
-     * Sets _integration_key
-     *
-     * @param string|null $_integration_key _integration_key
-     *
-     * @return self
-     */
-    public function setIntegrationKey($_integration_key)
-    {
-        if (is_null($_integration_key)) {
-            throw new \InvalidArgumentException('non-nullable _integration_key cannot be null');
-        }
-        $this->container['_integration_key'] = $_integration_key;
+        $this->container['statement'] = $statement;
 
         return $this;
     }

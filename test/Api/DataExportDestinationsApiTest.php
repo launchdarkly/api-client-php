@@ -133,6 +133,18 @@ class DataExportDestinationsApiTest extends TestCase
     }
 
     /**
+     * Test case for postGenerateTrustPolicy
+     *
+     * Generate trust policy.
+     *
+     */
+    public function testPostGenerateTrustPolicy()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for postGenerateWarehouseDestinationKeyPair
      *
      * Generate Snowflake destination key pair.

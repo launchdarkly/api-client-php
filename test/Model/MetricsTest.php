@@ -196,4 +196,31 @@ class MetricsTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "judge_accuracy"
+     */
+    public function testPropertyJudgeAccuracy()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "judge_relevance"
+     */
+    public function testPropertyJudgeRelevance()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "judge_toxicity"
+     */
+    public function testPropertyJudgeToxicity()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

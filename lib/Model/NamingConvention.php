@@ -239,6 +239,7 @@ class NamingConvention implements ModelInterface, ArrayAccess, \JsonSerializable
     public const MODEL_CASE_UPPER_CAMEL_CASE = 'upperCamelCase';
     public const MODEL_CASE_SNAKE_CASE = 'snakeCase';
     public const MODEL_CASE_KEBAB_CASE = 'kebabCase';
+    public const MODEL_CASE_CONSTANT_CASE = 'constantCase';
 
     /**
      * Gets allowable values of the enum
@@ -252,6 +253,7 @@ class NamingConvention implements ModelInterface, ArrayAccess, \JsonSerializable
             self::MODEL_CASE_UPPER_CAMEL_CASE,
             self::MODEL_CASE_SNAKE_CASE,
             self::MODEL_CASE_KEBAB_CASE,
+            self::MODEL_CASE_CONSTANT_CASE,
         ];
     }
 

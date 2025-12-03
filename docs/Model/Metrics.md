@@ -17,5 +17,8 @@ Name | Type | Description | Notes
 **satisfaction_rating** | **float** | A value between 0 and 1 representing satisfaction rating | [optional]
 **input_cost** | **float** | Cost of input tokens in USD | [optional]
 **output_cost** | **float** | Cost of output tokens in USD | [optional]
+**judge_accuracy** | **float** | Average accuracy judge score (0.0-1.0) | [optional]
+**judge_relevance** | **float** | Average relevance judge score (0.0-1.0) | [optional]
+**judge_toxicity** | **float** | Average toxicity judge score (0.0-1.0) | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

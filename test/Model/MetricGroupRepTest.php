@@ -232,22 +232,4 @@ class MetricGroupRepTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
-
-    /**
-     * Test attribute "total_connections_count"
-     */
-    public function testPropertyTotalConnectionsCount()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
-
-    /**
-     * Test attribute "total_active_connections_count"
-     */
-    public function testPropertyTotalActiveConnectionsCount()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
 }

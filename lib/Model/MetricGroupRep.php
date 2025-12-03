@@ -74,9 +74,7 @@ class MetricGroupRep implements ModelInterface, ArrayAccess, \JsonSerializable
         'experiments' => '\LaunchDarklyApi\Model\DependentExperimentRep[]',
         'experiment_count' => 'int',
         'active_experiment_count' => 'int',
-        'active_guarded_rollout_count' => 'int',
-        'total_connections_count' => 'int',
-        'total_active_connections_count' => 'int'
+        'active_guarded_rollout_count' => 'int'
     ];
 
     /**
@@ -103,9 +101,7 @@ class MetricGroupRep implements ModelInterface, ArrayAccess, \JsonSerializable
         'experiments' => null,
         'experiment_count' => null,
         'active_experiment_count' => null,
-        'active_guarded_rollout_count' => null,
-        'total_connections_count' => null,
-        'total_active_connections_count' => null
+        'active_guarded_rollout_count' => null
     ];
 
     /**
@@ -130,9 +126,7 @@ class MetricGroupRep implements ModelInterface, ArrayAccess, \JsonSerializable
         'experiments' => false,
         'experiment_count' => false,
         'active_experiment_count' => false,
-        'active_guarded_rollout_count' => false,
-        'total_connections_count' => false,
-        'total_active_connections_count' => false
+        'active_guarded_rollout_count' => false
     ];
 
     /**
@@ -237,9 +231,7 @@ class MetricGroupRep implements ModelInterface, ArrayAccess, \JsonSerializable
         'experiments' => 'experiments',
         'experiment_count' => 'experimentCount',
         'active_experiment_count' => 'activeExperimentCount',
-        'active_guarded_rollout_count' => 'activeGuardedRolloutCount',
-        'total_connections_count' => 'totalConnectionsCount',
-        'total_active_connections_count' => 'totalActiveConnectionsCount'
+        'active_guarded_rollout_count' => 'activeGuardedRolloutCount'
     ];
 
     /**
@@ -264,9 +256,7 @@ class MetricGroupRep implements ModelInterface, ArrayAccess, \JsonSerializable
         'experiments' => 'setExperiments',
         'experiment_count' => 'setExperimentCount',
         'active_experiment_count' => 'setActiveExperimentCount',
-        'active_guarded_rollout_count' => 'setActiveGuardedRolloutCount',
-        'total_connections_count' => 'setTotalConnectionsCount',
-        'total_active_connections_count' => 'setTotalActiveConnectionsCount'
+        'active_guarded_rollout_count' => 'setActiveGuardedRolloutCount'
     ];
 
     /**
@@ -291,9 +281,7 @@ class MetricGroupRep implements ModelInterface, ArrayAccess, \JsonSerializable
         'experiments' => 'getExperiments',
         'experiment_count' => 'getExperimentCount',
         'active_experiment_count' => 'getActiveExperimentCount',
-        'active_guarded_rollout_count' => 'getActiveGuardedRolloutCount',
-        'total_connections_count' => 'getTotalConnectionsCount',
-        'total_active_connections_count' => 'getTotalActiveConnectionsCount'
+        'active_guarded_rollout_count' => 'getActiveGuardedRolloutCount'
     ];
 
     /**
@@ -387,8 +375,6 @@ class MetricGroupRep implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('experiment_count', $data ?? [], null);
         $this->setIfExists('active_experiment_count', $data ?? [], null);
         $this->setIfExists('active_guarded_rollout_count', $data ?? [], null);
-        $this->setIfExists('total_connections_count', $data ?? [], null);
-        $this->setIfExists('total_active_connections_count', $data ?? [], null);
     }
 
     /**
@@ -940,60 +926,6 @@ class MetricGroupRep implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable active_guarded_rollout_count cannot be null');
         }
         $this->container['active_guarded_rollout_count'] = $active_guarded_rollout_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_connections_count
-     *
-     * @return int|null
-     */
-    public function getTotalConnectionsCount()
-    {
-        return $this->container['total_connections_count'];
-    }
-
-    /**
-     * Sets total_connections_count
-     *
-     * @param int|null $total_connections_count The total number of connections using this metric group
-     *
-     * @return self
-     */
-    public function setTotalConnectionsCount($total_connections_count)
-    {
-        if (is_null($total_connections_count)) {
-            throw new \InvalidArgumentException('non-nullable total_connections_count cannot be null');
-        }
-        $this->container['total_connections_count'] = $total_connections_count;
-
-        return $this;
-    }
-
-    /**
-     * Gets total_active_connections_count
-     *
-     * @return int|null
-     */
-    public function getTotalActiveConnectionsCount()
-    {
-        return $this->container['total_active_connections_count'];
-    }
-
-    /**
-     * Sets total_active_connections_count
-     *
-     * @param int|null $total_active_connections_count The total number of active connections using this metric group
-     *
-     * @return self
-     */
-    public function setTotalActiveConnectionsCount($total_active_connections_count)
-    {
-        if (is_null($total_active_connections_count)) {
-            throw new \InvalidArgumentException('non-nullable total_active_connections_count cannot be null');
-        }
-        $this->container['total_active_connections_count'] = $total_active_connections_count;
 
         return $this;
     }
