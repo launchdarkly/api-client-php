@@ -98,6 +98,7 @@ docs/Model/ActionOutput.md
 docs/Model/AgentGraph.md
 docs/Model/AgentGraphEdge.md
 docs/Model/AgentGraphEdgePost.md
+docs/Model/AgentGraphPatch.md
 docs/Model/AgentGraphPost.md
 docs/Model/AgentGraphs.md
 docs/Model/AiConfigsAccess.md
@@ -747,6 +748,7 @@ lib/Model/ActionOutput.php
 lib/Model/AgentGraph.php
 lib/Model/AgentGraphEdge.php
 lib/Model/AgentGraphEdgePost.php
+lib/Model/AgentGraphPatch.php
 lib/Model/AgentGraphPost.php
 lib/Model/AgentGraphs.php
 lib/Model/AiConfigsAccess.php
@@ -1393,6 +1395,7 @@ test/Model/ActionInputTest.php
 test/Model/ActionOutputTest.php
 test/Model/AgentGraphEdgePostTest.php
 test/Model/AgentGraphEdgeTest.php
+test/Model/AgentGraphPatchTest.php
 test/Model/AgentGraphPostTest.php
 test/Model/AgentGraphTest.php
 test/Model/AgentGraphsTest.php

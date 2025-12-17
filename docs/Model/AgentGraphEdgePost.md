@@ -4,6 +4,7 @@
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
+**key** | **string** | A unique key for this edge within the graph |
 **source_config** | **string** | The AI Config key that is the source of this edge |
 **target_config** | **string** | The AI Config key that is the target of this edge |
 **handoff** | **object** | The handoff options from the source AI Config to the target AI Config | [optional]

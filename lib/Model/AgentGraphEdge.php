@@ -59,6 +59,7 @@ class AgentGraphEdge implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var string[]
       */
     protected static $openAPITypes = [
+        'key' => 'string',
         'source_config' => 'string',
         'target_config' => 'string',
         'handoff' => 'object'
@@ -72,6 +73,7 @@ class AgentGraphEdge implements ModelInterface, ArrayAccess, \JsonSerializable
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
+        'key' => null,
         'source_config' => null,
         'target_config' => null,
         'handoff' => null
@@ -83,6 +85,7 @@ class AgentGraphEdge implements ModelInterface, ArrayAccess, \JsonSerializable
       * @var boolean[]
       */
     protected static array $openAPINullables = [
+        'key' => false,
         'source_config' => false,
         'target_config' => false,
         'handoff' => false
@@ -174,6 +177,7 @@ class AgentGraphEdge implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $attributeMap = [
+        'key' => 'key',
         'source_config' => 'sourceConfig',
         'target_config' => 'targetConfig',
         'handoff' => 'handoff'
@@ -185,6 +189,7 @@ class AgentGraphEdge implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $setters = [
+        'key' => 'setKey',
         'source_config' => 'setSourceConfig',
         'target_config' => 'setTargetConfig',
         'handoff' => 'setHandoff'
@@ -196,6 +201,7 @@ class AgentGraphEdge implements ModelInterface, ArrayAccess, \JsonSerializable
      * @var string[]
      */
     protected static $getters = [
+        'key' => 'getKey',
         'source_config' => 'getSourceConfig',
         'target_config' => 'getTargetConfig',
         'handoff' => 'getHandoff'
@@ -258,6 +264,7 @@ class AgentGraphEdge implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     public function __construct(?array $data = null)
     {
+        $this->setIfExists('key', $data ?? [], null);
         $this->setIfExists('source_config', $data ?? [], null);
         $this->setIfExists('target_config', $data ?? [], null);
         $this->setIfExists('handoff', $data ?? [], null);
@@ -290,6 +297,9 @@ class AgentGraphEdge implements ModelInterface, ArrayAccess, \JsonSerializable
     {
         $invalidProperties = [];
 
+        if ($this->container['key'] === null) {
+            $invalidProperties[] = "'key' can't be null";
+        }
         if ($this->container['source_config'] === null) {
             $invalidProperties[] = "'source_config' can't be null";
         }
@@ -310,6 +320,33 @@ class AgentGraphEdge implements ModelInterface, ArrayAccess, \JsonSerializable
         return count($this->listInvalidProperties()) === 0;
     }
 
+
+    /**
+     * Gets key
+     *
+     * @return string
+     */
+    public function getKey()
+    {
+        return $this->container['key'];
+    }
+
+    /**
+     * Sets key
+     *
+     * @param string $key A unique key for this edge within the graph
+     *
+     * @return self
+     */
+    public function setKey($key)
+    {
+        if (is_null($key)) {
+            throw new \InvalidArgumentException('non-nullable key cannot be null');
+        }
+        $this->container['key'] = $key;
+
+        return $this;
+    }
 
     /**
      * Gets source_config

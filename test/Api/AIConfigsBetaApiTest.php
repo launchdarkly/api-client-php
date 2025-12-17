@@ -109,6 +109,18 @@ class AIConfigsBetaApiTest extends TestCase
     }
 
     /**
+     * Test case for deleteAgentGraph
+     *
+     * Delete agent graph.
+     *
+     */
+    public function testDeleteAgentGraph()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for deleteModelConfig
      *
      * Delete an AI model config.
@@ -217,6 +229,18 @@ class AIConfigsBetaApiTest extends TestCase
     }
 
     /**
+     * Test case for getAgentGraph
+     *
+     * Get agent graph.
+     *
+     */
+    public function testGetAgentGraph()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for getModelConfig
      *
      * Get AI model config.
@@ -319,6 +343,18 @@ class AIConfigsBetaApiTest extends TestCase
      *
      */
     public function testPatchAITool()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for patchAgentGraph
+     *
+     * Update agent graph.
+     *
+     */
+    public function testPatchAgentGraph()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

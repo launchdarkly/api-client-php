@@ -1,6 +1,6 @@
 <?php
 /**
- * AgentGraphEdgePost
+ * AgentGraphPatch
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \LaunchDarklyApi\ObjectSerializer;
 
 /**
- * AgentGraphEdgePost Class Doc Comment
+ * AgentGraphPatch Class Doc Comment
  *
  * @category Class
- * @description An edge in an agent graph connecting two AI Configs
+ * @description Request body for updating an agent graph. If rootConfigKey or edges are present, both must be present.
  * @package  LaunchDarklyApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class AgentGraphEdgePost implements ModelInterface, ArrayAccess, \JsonSerializable
+class AgentGraphPatch implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class AgentGraphEdgePost implements ModelInterface, ArrayAccess, \JsonSerializab
       *
       * @var string
       */
-    protected static $openAPIModelName = 'AgentGraphEdgePost';
+    protected static $openAPIModelName = 'AgentGraphPatch';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,10 +59,10 @@ class AgentGraphEdgePost implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'key' => 'string',
-        'source_config' => 'string',
-        'target_config' => 'string',
-        'handoff' => 'object'
+        'name' => 'string',
+        'description' => 'string',
+        'root_config_key' => 'string',
+        'edges' => '\LaunchDarklyApi\Model\AgentGraphEdge[]'
     ];
 
     /**
@@ -73,10 +73,10 @@ class AgentGraphEdgePost implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'key' => null,
-        'source_config' => null,
-        'target_config' => null,
-        'handoff' => null
+        'name' => null,
+        'description' => null,
+        'root_config_key' => null,
+        'edges' => null
     ];
 
     /**
@@ -85,10 +85,10 @@ class AgentGraphEdgePost implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'key' => false,
-        'source_config' => false,
-        'target_config' => false,
-        'handoff' => false
+        'name' => false,
+        'description' => false,
+        'root_config_key' => false,
+        'edges' => false
     ];
 
     /**
@@ -177,10 +177,10 @@ class AgentGraphEdgePost implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'key' => 'key',
-        'source_config' => 'sourceConfig',
-        'target_config' => 'targetConfig',
-        'handoff' => 'handoff'
+        'name' => 'name',
+        'description' => 'description',
+        'root_config_key' => 'rootConfigKey',
+        'edges' => 'edges'
     ];
 
     /**
@@ -189,10 +189,10 @@ class AgentGraphEdgePost implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'key' => 'setKey',
-        'source_config' => 'setSourceConfig',
-        'target_config' => 'setTargetConfig',
-        'handoff' => 'setHandoff'
+        'name' => 'setName',
+        'description' => 'setDescription',
+        'root_config_key' => 'setRootConfigKey',
+        'edges' => 'setEdges'
     ];
 
     /**
@@ -201,10 +201,10 @@ class AgentGraphEdgePost implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'key' => 'getKey',
-        'source_config' => 'getSourceConfig',
-        'target_config' => 'getTargetConfig',
-        'handoff' => 'getHandoff'
+        'name' => 'getName',
+        'description' => 'getDescription',
+        'root_config_key' => 'getRootConfigKey',
+        'edges' => 'getEdges'
     ];
 
     /**
@@ -264,10 +264,10 @@ class AgentGraphEdgePost implements ModelInterface, ArrayAccess, \JsonSerializab
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('key', $data ?? [], null);
-        $this->setIfExists('source_config', $data ?? [], null);
-        $this->setIfExists('target_config', $data ?? [], null);
-        $this->setIfExists('handoff', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('root_config_key', $data ?? [], null);
+        $this->setIfExists('edges', $data ?? [], null);
     }
 
     /**
@@ -297,15 +297,6 @@ class AgentGraphEdgePost implements ModelInterface, ArrayAccess, \JsonSerializab
     {
         $invalidProperties = [];
 
-        if ($this->container['key'] === null) {
-            $invalidProperties[] = "'key' can't be null";
-        }
-        if ($this->container['source_config'] === null) {
-            $invalidProperties[] = "'source_config' can't be null";
-        }
-        if ($this->container['target_config'] === null) {
-            $invalidProperties[] = "'target_config' can't be null";
-        }
         return $invalidProperties;
     }
 
@@ -322,109 +313,109 @@ class AgentGraphEdgePost implements ModelInterface, ArrayAccess, \JsonSerializab
 
 
     /**
-     * Gets key
+     * Gets name
      *
-     * @return string
+     * @return string|null
      */
-    public function getKey()
+    public function getName()
     {
-        return $this->container['key'];
+        return $this->container['name'];
     }
 
     /**
-     * Sets key
+     * Sets name
      *
-     * @param string $key A unique key for this edge within the graph
+     * @param string|null $name A human-readable name for the agent graph
      *
      * @return self
      */
-    public function setKey($key)
+    public function setName($name)
     {
-        if (is_null($key)) {
-            throw new \InvalidArgumentException('non-nullable key cannot be null');
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
         }
-        $this->container['key'] = $key;
+        $this->container['name'] = $name;
 
         return $this;
     }
 
     /**
-     * Gets source_config
+     * Gets description
      *
-     * @return string
+     * @return string|null
      */
-    public function getSourceConfig()
+    public function getDescription()
     {
-        return $this->container['source_config'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets source_config
+     * Sets description
      *
-     * @param string $source_config The AI Config key that is the source of this edge
+     * @param string|null $description A description of the agent graph
      *
      * @return self
      */
-    public function setSourceConfig($source_config)
+    public function setDescription($description)
     {
-        if (is_null($source_config)) {
-            throw new \InvalidArgumentException('non-nullable source_config cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        $this->container['source_config'] = $source_config;
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets target_config
+     * Gets root_config_key
      *
-     * @return string
+     * @return string|null
      */
-    public function getTargetConfig()
+    public function getRootConfigKey()
     {
-        return $this->container['target_config'];
+        return $this->container['root_config_key'];
     }
 
     /**
-     * Sets target_config
+     * Sets root_config_key
      *
-     * @param string $target_config The AI Config key that is the target of this edge
+     * @param string|null $root_config_key The AI Config key of the root node. If present, edges must also be present.
      *
      * @return self
      */
-    public function setTargetConfig($target_config)
+    public function setRootConfigKey($root_config_key)
     {
-        if (is_null($target_config)) {
-            throw new \InvalidArgumentException('non-nullable target_config cannot be null');
+        if (is_null($root_config_key)) {
+            throw new \InvalidArgumentException('non-nullable root_config_key cannot be null');
         }
-        $this->container['target_config'] = $target_config;
+        $this->container['root_config_key'] = $root_config_key;
 
         return $this;
     }
 
     /**
-     * Gets handoff
+     * Gets edges
      *
-     * @return object|null
+     * @return \LaunchDarklyApi\Model\AgentGraphEdge[]|null
      */
-    public function getHandoff()
+    public function getEdges()
     {
-        return $this->container['handoff'];
+        return $this->container['edges'];
     }
 
     /**
-     * Sets handoff
+     * Sets edges
      *
-     * @param object|null $handoff The handoff options from the source AI Config to the target AI Config
+     * @param \LaunchDarklyApi\Model\AgentGraphEdge[]|null $edges The edges in the graph. If present, rootConfigKey must also be present. Replaces all existing edges.
      *
      * @return self
      */
-    public function setHandoff($handoff)
+    public function setEdges($edges)
     {
-        if (is_null($handoff)) {
-            throw new \InvalidArgumentException('non-nullable handoff cannot be null');
+        if (is_null($edges)) {
+            throw new \InvalidArgumentException('non-nullable edges cannot be null');
         }
-        $this->container['handoff'] = $handoff;
+        $this->container['edges'] = $edges;
 
         return $this;
     }

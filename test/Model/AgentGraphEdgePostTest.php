@@ -81,6 +81,15 @@ class AgentGraphEdgePostTest extends TestCase
     }
 
     /**
+     * Test attribute "key"
+     */
+    public function testPropertyKey()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "source_config"
      */
     public function testPropertySourceConfig()

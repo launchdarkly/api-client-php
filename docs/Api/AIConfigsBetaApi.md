@@ -7,6 +7,7 @@ All URIs are relative to https://app.launchdarkly.com, except if the operation d
 | [**deleteAIConfig()**](AIConfigsBetaApi.md#deleteAIConfig) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Delete AI Config |
 | [**deleteAIConfigVariation()**](AIConfigsBetaApi.md#deleteAIConfigVariation) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Delete AI Config variation |
 | [**deleteAITool()**](AIConfigsBetaApi.md#deleteAITool) | **DELETE** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Delete AI tool |
+| [**deleteAgentGraph()**](AIConfigsBetaApi.md#deleteAgentGraph) | **DELETE** /api/v2/projects/{projectKey}/agent-graphs/{graphKey} | Delete agent graph |
 | [**deleteModelConfig()**](AIConfigsBetaApi.md#deleteModelConfig) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey} | Delete an AI model config |
 | [**deleteRestrictedModels()**](AIConfigsBetaApi.md#deleteRestrictedModels) | **DELETE** /api/v2/projects/{projectKey}/ai-configs/model-configs/restricted | Remove AI models from the restricted list |
 | [**getAIConfig()**](AIConfigsBetaApi.md#getAIConfig) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Get AI Config |
@@ -16,6 +17,7 @@ All URIs are relative to https://app.launchdarkly.com, except if the operation d
 | [**getAIConfigVariation()**](AIConfigsBetaApi.md#getAIConfigVariation) | **GET** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Get AI Config variation |
 | [**getAIConfigs()**](AIConfigsBetaApi.md#getAIConfigs) | **GET** /api/v2/projects/{projectKey}/ai-configs | List AI Configs |
 | [**getAITool()**](AIConfigsBetaApi.md#getAITool) | **GET** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Get AI tool |
+| [**getAgentGraph()**](AIConfigsBetaApi.md#getAgentGraph) | **GET** /api/v2/projects/{projectKey}/agent-graphs/{graphKey} | Get agent graph |
 | [**getModelConfig()**](AIConfigsBetaApi.md#getModelConfig) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey} | Get AI model config |
 | [**listAIToolVersions()**](AIConfigsBetaApi.md#listAIToolVersions) | **GET** /api/v2/projects/{projectKey}/ai-tools/{toolKey}/versions | List AI tool versions |
 | [**listAITools()**](AIConfigsBetaApi.md#listAITools) | **GET** /api/v2/projects/{projectKey}/ai-tools | List AI tools |
@@ -25,6 +27,7 @@ All URIs are relative to https://app.launchdarkly.com, except if the operation d
 | [**patchAIConfigTargeting()**](AIConfigsBetaApi.md#patchAIConfigTargeting) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting | Update AI Config targeting |
 | [**patchAIConfigVariation()**](AIConfigsBetaApi.md#patchAIConfigVariation) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations/{variationKey} | Update AI Config variation |
 | [**patchAITool()**](AIConfigsBetaApi.md#patchAITool) | **PATCH** /api/v2/projects/{projectKey}/ai-tools/{toolKey} | Update AI tool |
+| [**patchAgentGraph()**](AIConfigsBetaApi.md#patchAgentGraph) | **PATCH** /api/v2/projects/{projectKey}/agent-graphs/{graphKey} | Update agent graph |
 | [**postAIConfig()**](AIConfigsBetaApi.md#postAIConfig) | **POST** /api/v2/projects/{projectKey}/ai-configs | Create new AI Config |
 | [**postAIConfigVariation()**](AIConfigsBetaApi.md#postAIConfigVariation) | **POST** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations | Create AI Config variation |
 | [**postAITool()**](AIConfigsBetaApi.md#postAITool) | **POST** /api/v2/projects/{projectKey}/ai-tools | Create an AI tool |
@@ -212,6 +215,71 @@ try {
 | **ld_api_version** | **string**| Version of the endpoint. | |
 | **project_key** | **string**|  | |
 | **tool_key** | **string**|  | |
+
+### Return type
+
+void (empty response body)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `deleteAgentGraph()`
+
+```php
+deleteAgentGraph($ld_api_version, $project_key, $graph_key)
+```
+
+Delete agent graph
+
+Delete an existing agent graph and all of its edges.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\AIConfigsBetaApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ld_api_version = 'ld_api_version_example'; // string | Version of the endpoint.
+$project_key = 'project_key_example'; // string
+$graph_key = 'graph_key_example'; // string
+
+try {
+    $apiInstance->deleteAgentGraph($ld_api_version, $project_key, $graph_key);
+} catch (Exception $e) {
+    echo 'Exception when calling AIConfigsBetaApi->deleteAgentGraph: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ld_api_version** | **string**| Version of the endpoint. | |
+| **project_key** | **string**|  | |
+| **graph_key** | **string**|  | |
 
 ### Return type
 
@@ -842,6 +910,72 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `getAgentGraph()`
+
+```php
+getAgentGraph($ld_api_version, $project_key, $graph_key): \LaunchDarklyApi\Model\AgentGraph
+```
+
+Get agent graph
+
+Retrieve a specific agent graph by its key, including its edges.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\AIConfigsBetaApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ld_api_version = 'ld_api_version_example'; // string | Version of the endpoint.
+$project_key = 'project_key_example'; // string
+$graph_key = 'graph_key_example'; // string
+
+try {
+    $result = $apiInstance->getAgentGraph($ld_api_version, $project_key, $graph_key);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AIConfigsBetaApi->getAgentGraph: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ld_api_version** | **string**| Version of the endpoint. | |
+| **project_key** | **string**|  | |
+| **graph_key** | **string**|  | |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\AgentGraph**](../Model/AgentGraph.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `getModelConfig()`
 
 ```php
@@ -1446,6 +1580,74 @@ try {
 ### Return type
 
 [**\LaunchDarklyApi\Model\AITool**](../Model/AITool.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `patchAgentGraph()`
+
+```php
+patchAgentGraph($ld_api_version, $project_key, $graph_key, $agent_graph_patch): \LaunchDarklyApi\Model\AgentGraph
+```
+
+Update agent graph
+
+Edit an existing agent graph.  The request body must be a JSON object of the fields to update. The values you include replace the existing values for the fields.  If the update includes `rootConfigKey` or `edges`, both must be present and will be treated as full replacements.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\AIConfigsBetaApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ld_api_version = 'ld_api_version_example'; // string | Version of the endpoint.
+$project_key = 'project_key_example'; // string
+$graph_key = 'graph_key_example'; // string
+$agent_graph_patch = new \LaunchDarklyApi\Model\AgentGraphPatch(); // \LaunchDarklyApi\Model\AgentGraphPatch | Agent graph object to update
+
+try {
+    $result = $apiInstance->patchAgentGraph($ld_api_version, $project_key, $graph_key, $agent_graph_patch);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AIConfigsBetaApi->patchAgentGraph: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ld_api_version** | **string**| Version of the endpoint. | |
+| **project_key** | **string**|  | |
+| **graph_key** | **string**|  | |
+| **agent_graph_patch** | [**\LaunchDarklyApi\Model\AgentGraphPatch**](../Model/AgentGraphPatch.md)| Agent graph object to update | [optional] |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\AgentGraph**](../Model/AgentGraph.md)
 
 ### Authorization
 
