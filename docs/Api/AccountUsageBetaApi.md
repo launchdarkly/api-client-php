@@ -12,6 +12,8 @@ All URIs are relative to https://app.launchdarkly.com, except if the operation d
 | [**getEventsUsage()**](AccountUsageBetaApi.md#getEventsUsage) | **GET** /api/v2/usage/events/{type} | Get events usage |
 | [**getExperimentationEventsUsage()**](AccountUsageBetaApi.md#getExperimentationEventsUsage) | **GET** /api/v2/usage/experimentation-events | Get experimentation events usage |
 | [**getExperimentationKeysUsage()**](AccountUsageBetaApi.md#getExperimentationKeysUsage) | **GET** /api/v2/usage/experimentation-keys | Get experimentation keys usage |
+| [**getMAUClientsideUsage()**](AccountUsageBetaApi.md#getMAUClientsideUsage) | **GET** /api/v2/usage/clientside-mau | Get MAU clientside usage |
+| [**getMAUTotalUsage()**](AccountUsageBetaApi.md#getMAUTotalUsage) | **GET** /api/v2/usage/total-mau | Get MAU total usage |
 | [**getMauSdksByType()**](AccountUsageBetaApi.md#getMauSdksByType) | **GET** /api/v2/usage/mau/sdks | Get MAU SDKs by type |
 | [**getMauUsage()**](AccountUsageBetaApi.md#getMauUsage) | **GET** /api/v2/usage/mau | Get MAU usage |
 | [**getMauUsageByCategory()**](AccountUsageBetaApi.md#getMauUsageByCategory) | **GET** /api/v2/usage/mau/bycategory | Get MAU usage by category |
@@ -617,6 +619,164 @@ try {
 | **group_by** | **string**| If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;experimentId&#x60;. | [optional] |
 | **aggregation_type** | **string**| Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;. | [optional] |
 | **granularity** | **string**| Specifies the data granularity. Defaults to &#x60;daily&#x60;. &#x60;monthly&#x60; granularity is only supported with the **month_to_date** aggregation type.&lt;br/&gt;Valid values: &#x60;daily&#x60;, &#x60;hourly&#x60;, &#x60;monthly&#x60;. | [optional] |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\SeriesListRep**](../Model/SeriesListRep.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getMAUClientsideUsage()`
+
+```php
+getMAUClientsideUsage($from, $to, $project_key, $environment_key, $sdk_name, $anonymous, $group_by, $aggregation_type, $granularity): \LaunchDarklyApi\Model\SeriesListRep
+```
+
+Get MAU clientside usage
+
+Get a time series of the number of context key usages observed by LaunchDarkly in your account, for the primary context kind only. The counts reflect data reported from client-side SDKs.<br/><br/>For past months, the primary context kind is fixed and reflects the last known primary kind for that month. For the current month, it may vary as new primary context kinds are observed.<br/><br/>The supported granularity varies by aggregation type. The maximum time range is 365 days.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\AccountUsageBetaApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$from = 'from_example'; // string | The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month.
+$to = 'to_example'; // string | The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time.
+$project_key = 'project_key_example'; // string | A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+$environment_key = 'environment_key_example'; // string | An environment key to filter results by. If specified, exactly one `projectKey` must be provided. Can be specified multiple times, one query parameter per environment key.
+$sdk_name = 'sdk_name_example'; // string | An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name.
+$anonymous = 'anonymous_example'; // string | An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.<br/>Valid values: `true`, `false`.
+$group_by = 'group_by_example'; // string | If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.<br/>Valid values: `projectId`, `environmentId`, `sdkName`, `sdkAppId`, `anonymousV2`.
+$aggregation_type = 'aggregation_type_example'; // string | Specifies the aggregation method. Defaults to `month_to_date`.<br/>Valid values: `month_to_date`, `incremental`, `rolling_30d`.
+$granularity = 'granularity_example'; // string | Specifies the data granularity. Defaults to `daily`. Valid values depend on `aggregationType`: **month_to_date** supports `daily` and `monthly`; **incremental** and **rolling_30d** support `daily` only.
+
+try {
+    $result = $apiInstance->getMAUClientsideUsage($from, $to, $project_key, $environment_key, $sdk_name, $anonymous, $group_by, $aggregation_type, $granularity);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountUsageBetaApi->getMAUClientsideUsage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **from** | **string**| The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month. | [optional] |
+| **to** | **string**| The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time. | [optional] |
+| **project_key** | **string**| A project key to filter results by. Can be specified multiple times, one query parameter per project key. | [optional] |
+| **environment_key** | **string**| An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key. | [optional] |
+| **sdk_name** | **string**| An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name. | [optional] |
+| **anonymous** | **string**| An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;. | [optional] |
+| **group_by** | **string**| If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;. | [optional] |
+| **aggregation_type** | **string**| Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;. | [optional] |
+| **granularity** | **string**| Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only. | [optional] |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\SeriesListRep**](../Model/SeriesListRep.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `getMAUTotalUsage()`
+
+```php
+getMAUTotalUsage($from, $to, $project_key, $environment_key, $sdk_name, $sdk_type, $anonymous, $group_by, $aggregation_type, $granularity): \LaunchDarklyApi\Model\SeriesListRep
+```
+
+Get MAU total usage
+
+Get a time series of the number of context key usages observed by LaunchDarkly in your account, for the primary context kind only.<br/><br/>For past months, this reflects the context kind that was most recently marked as primary for that month. For the current month, the context kind may vary as new primary kinds are observed.<br/><br/>The supported granularity varies by aggregation type. The maximum time range is 365 days.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\AccountUsageBetaApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$from = 'from_example'; // string | The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month.
+$to = 'to_example'; // string | The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time.
+$project_key = 'project_key_example'; // string | A project key to filter results by. Can be specified multiple times, one query parameter per project key.
+$environment_key = 'environment_key_example'; // string | An environment key to filter results by. If specified, exactly one `projectKey` must be provided. Can be specified multiple times, one query parameter per environment key.
+$sdk_name = 'sdk_name_example'; // string | An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name.
+$sdk_type = 'sdk_type_example'; // string | An SDK type to filter results by. Can be specified multiple times, one query parameter per SDK type.
+$anonymous = 'anonymous_example'; // string | An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.<br/>Valid values: `true`, `false`.
+$group_by = 'group_by_example'; // string | If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.<br/>Valid values: `projectId`, `environmentId`, `sdkName`, `sdkType`, `sdkAppId`, `anonymousV2`.
+$aggregation_type = 'aggregation_type_example'; // string | Specifies the aggregation method. Defaults to `month_to_date`.<br/>Valid values: `month_to_date`, `incremental`, `rolling_30d`.
+$granularity = 'granularity_example'; // string | Specifies the data granularity. Defaults to `daily`. Valid values depend on `aggregationType`: **month_to_date** supports `daily` and `monthly`; **incremental** and **rolling_30d** support `daily` only.
+
+try {
+    $result = $apiInstance->getMAUTotalUsage($from, $to, $project_key, $environment_key, $sdk_name, $sdk_type, $anonymous, $group_by, $aggregation_type, $granularity);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AccountUsageBetaApi->getMAUTotalUsage: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **from** | **string**| The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month. | [optional] |
+| **to** | **string**| The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time. | [optional] |
+| **project_key** | **string**| A project key to filter results by. Can be specified multiple times, one query parameter per project key. | [optional] |
+| **environment_key** | **string**| An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key. | [optional] |
+| **sdk_name** | **string**| An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name. | [optional] |
+| **sdk_type** | **string**| An SDK type to filter results by. Can be specified multiple times, one query parameter per SDK type. | [optional] |
+| **anonymous** | **string**| An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;. | [optional] |
+| **group_by** | **string**| If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkType&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;. | [optional] |
+| **aggregation_type** | **string**| Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;. | [optional] |
+| **granularity** | **string**| Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only. | [optional] |
 
 ### Return type
 

@@ -64,7 +64,8 @@ class AIConfigPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'maintainer_team_key' => 'string',
         'mode' => 'string',
         'name' => 'string',
-        'tags' => 'string[]'
+        'tags' => 'string[]',
+        'default_variation' => '\LaunchDarklyApi\Model\AIConfigVariationPost'
     ];
 
     /**
@@ -81,7 +82,8 @@ class AIConfigPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'maintainer_team_key' => null,
         'mode' => null,
         'name' => null,
-        'tags' => null
+        'tags' => null,
+        'default_variation' => null
     ];
 
     /**
@@ -96,7 +98,8 @@ class AIConfigPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'maintainer_team_key' => false,
         'mode' => false,
         'name' => false,
-        'tags' => false
+        'tags' => false,
+        'default_variation' => false
     ];
 
     /**
@@ -191,7 +194,8 @@ class AIConfigPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'maintainer_team_key' => 'maintainerTeamKey',
         'mode' => 'mode',
         'name' => 'name',
-        'tags' => 'tags'
+        'tags' => 'tags',
+        'default_variation' => 'defaultVariation'
     ];
 
     /**
@@ -206,7 +210,8 @@ class AIConfigPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'maintainer_team_key' => 'setMaintainerTeamKey',
         'mode' => 'setMode',
         'name' => 'setName',
-        'tags' => 'setTags'
+        'tags' => 'setTags',
+        'default_variation' => 'setDefaultVariation'
     ];
 
     /**
@@ -221,7 +226,8 @@ class AIConfigPost implements ModelInterface, ArrayAccess, \JsonSerializable
         'maintainer_team_key' => 'getMaintainerTeamKey',
         'mode' => 'getMode',
         'name' => 'getName',
-        'tags' => 'getTags'
+        'tags' => 'getTags',
+        'default_variation' => 'getDefaultVariation'
     ];
 
     /**
@@ -305,6 +311,7 @@ class AIConfigPost implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('mode', $data ?? [], 'completion');
         $this->setIfExists('name', $data ?? [], null);
         $this->setIfExists('tags', $data ?? [], null);
+        $this->setIfExists('default_variation', $data ?? [], null);
     }
 
     /**
@@ -559,6 +566,33 @@ class AIConfigPost implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable tags cannot be null');
         }
         $this->container['tags'] = $tags;
+
+        return $this;
+    }
+
+    /**
+     * Gets default_variation
+     *
+     * @return \LaunchDarklyApi\Model\AIConfigVariationPost|null
+     */
+    public function getDefaultVariation()
+    {
+        return $this->container['default_variation'];
+    }
+
+    /**
+     * Sets default_variation
+     *
+     * @param \LaunchDarklyApi\Model\AIConfigVariationPost|null $default_variation default_variation
+     *
+     * @return self
+     */
+    public function setDefaultVariation($default_variation)
+    {
+        if (is_null($default_variation)) {
+            throw new \InvalidArgumentException('non-nullable default_variation cannot be null');
+        }
+        $this->container['default_variation'] = $default_variation;
 
         return $this;
     }

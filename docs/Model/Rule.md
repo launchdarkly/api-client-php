@@ -5,6 +5,7 @@
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
 **_id** | **string** | The flag rule ID | [optional]
+**disabled** | **bool** | Whether the rule is disabled | [optional]
 **variation** | **int** | The index of the variation, from the array of variations for this flag | [optional]
 **rollout** | [**\LaunchDarklyApi\Model\Rollout**](Rollout.md) |  | [optional]
 **clauses** | [**\LaunchDarklyApi\Model\Clause[]**](Clause.md) | An array of clauses used for individual targeting based on attributes |

@@ -10,7 +10,7 @@ Name | Type | Description | Notes
 **rank** | **int** | The rank/priority of the release policy |
 **release_method** | [**\LaunchDarklyApi\Model\ReleaseMethod**](ReleaseMethod.md) |  |
 **guarded_release_config** | [**\LaunchDarklyApi\Model\GuardedReleaseConfig**](GuardedReleaseConfig.md) |  | [optional]
-**progressive_release_config** | **object** | Configuration for progressive releases | [optional]
+**progressive_release_config** | [**\LaunchDarklyApi\Model\ProgressiveReleaseConfig**](ProgressiveReleaseConfig.md) |  | [optional]
 **name** | **string** | The name of the release policy |
 **key** | **string** | The human-readable key of the release policy |
 

@@ -5277,15 +5277,16 @@ class SegmentsApi
      * @param  string $environment_key The environment key (required)
      * @param  string $segment_key The segment key (required)
      * @param  \LaunchDarklyApi\Model\PatchWithComment $patch_with_comment patch_with_comment (required)
+     * @param  bool|null $dry_run If true, the patch will be validated but not persisted. Returns a preview of the segment after the patch is applied. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchSegment'] to see the possible values for this operation
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \LaunchDarklyApi\Model\UserSegment|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\StatusConflictErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
-    public function patchSegment($project_key, $environment_key, $segment_key, $patch_with_comment, string $contentType = self::contentTypes['patchSegment'][0])
+    public function patchSegment($project_key, $environment_key, $segment_key, $patch_with_comment, $dry_run = null, string $contentType = self::contentTypes['patchSegment'][0])
     {
-        list($response) = $this->patchSegmentWithHttpInfo($project_key, $environment_key, $segment_key, $patch_with_comment, $contentType);
+        list($response) = $this->patchSegmentWithHttpInfo($project_key, $environment_key, $segment_key, $patch_with_comment, $dry_run, $contentType);
         return $response;
     }
 
@@ -5298,15 +5299,16 @@ class SegmentsApi
      * @param  string $environment_key The environment key (required)
      * @param  string $segment_key The segment key (required)
      * @param  \LaunchDarklyApi\Model\PatchWithComment $patch_with_comment (required)
+     * @param  bool|null $dry_run If true, the patch will be validated but not persisted. Returns a preview of the segment after the patch is applied. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchSegment'] to see the possible values for this operation
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \LaunchDarklyApi\Model\UserSegment|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\StatusConflictErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
-    public function patchSegmentWithHttpInfo($project_key, $environment_key, $segment_key, $patch_with_comment, string $contentType = self::contentTypes['patchSegment'][0])
+    public function patchSegmentWithHttpInfo($project_key, $environment_key, $segment_key, $patch_with_comment, $dry_run = null, string $contentType = self::contentTypes['patchSegment'][0])
     {
-        $request = $this->patchSegmentRequest($project_key, $environment_key, $segment_key, $patch_with_comment, $contentType);
+        $request = $this->patchSegmentRequest($project_key, $environment_key, $segment_key, $patch_with_comment, $dry_run, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -5470,14 +5472,15 @@ class SegmentsApi
      * @param  string $environment_key The environment key (required)
      * @param  string $segment_key The segment key (required)
      * @param  \LaunchDarklyApi\Model\PatchWithComment $patch_with_comment (required)
+     * @param  bool|null $dry_run If true, the patch will be validated but not persisted. Returns a preview of the segment after the patch is applied. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchSegment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchSegmentAsync($project_key, $environment_key, $segment_key, $patch_with_comment, string $contentType = self::contentTypes['patchSegment'][0])
+    public function patchSegmentAsync($project_key, $environment_key, $segment_key, $patch_with_comment, $dry_run = null, string $contentType = self::contentTypes['patchSegment'][0])
     {
-        return $this->patchSegmentAsyncWithHttpInfo($project_key, $environment_key, $segment_key, $patch_with_comment, $contentType)
+        return $this->patchSegmentAsyncWithHttpInfo($project_key, $environment_key, $segment_key, $patch_with_comment, $dry_run, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -5494,15 +5497,16 @@ class SegmentsApi
      * @param  string $environment_key The environment key (required)
      * @param  string $segment_key The segment key (required)
      * @param  \LaunchDarklyApi\Model\PatchWithComment $patch_with_comment (required)
+     * @param  bool|null $dry_run If true, the patch will be validated but not persisted. Returns a preview of the segment after the patch is applied. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchSegment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchSegmentAsyncWithHttpInfo($project_key, $environment_key, $segment_key, $patch_with_comment, string $contentType = self::contentTypes['patchSegment'][0])
+    public function patchSegmentAsyncWithHttpInfo($project_key, $environment_key, $segment_key, $patch_with_comment, $dry_run = null, string $contentType = self::contentTypes['patchSegment'][0])
     {
         $returnType = '\LaunchDarklyApi\Model\UserSegment';
-        $request = $this->patchSegmentRequest($project_key, $environment_key, $segment_key, $patch_with_comment, $contentType);
+        $request = $this->patchSegmentRequest($project_key, $environment_key, $segment_key, $patch_with_comment, $dry_run, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -5547,12 +5551,13 @@ class SegmentsApi
      * @param  string $environment_key The environment key (required)
      * @param  string $segment_key The segment key (required)
      * @param  \LaunchDarklyApi\Model\PatchWithComment $patch_with_comment (required)
+     * @param  bool|null $dry_run If true, the patch will be validated but not persisted. Returns a preview of the segment after the patch is applied. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchSegment'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function patchSegmentRequest($project_key, $environment_key, $segment_key, $patch_with_comment, string $contentType = self::contentTypes['patchSegment'][0])
+    public function patchSegmentRequest($project_key, $environment_key, $segment_key, $patch_with_comment, $dry_run = null, string $contentType = self::contentTypes['patchSegment'][0])
     {
 
         // verify the required parameter 'project_key' is set
@@ -5584,6 +5589,7 @@ class SegmentsApi
         }
 
 
+
         $resourcePath = '/api/v2/segments/{projectKey}/{environmentKey}/{segmentKey}';
         $formParams = [];
         $queryParams = [];
@@ -5591,6 +5597,15 @@ class SegmentsApi
         $httpBody = '';
         $multipart = false;
 
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $dry_run,
+            'dryRun', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
 
 
         // path params

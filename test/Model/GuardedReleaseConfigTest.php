@@ -81,6 +81,15 @@ class GuardedReleaseConfigTest extends TestCase
     }
 
     /**
+     * Test attribute "rollout_context_kind_key"
+     */
+    public function testPropertyRolloutContextKindKey()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "min_sample_size"
      */
     public function testPropertyMinSampleSize()
@@ -93,6 +102,33 @@ class GuardedReleaseConfigTest extends TestCase
      * Test attribute "rollback_on_regression"
      */
     public function testPropertyRollbackOnRegression()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "metric_keys"
+     */
+    public function testPropertyMetricKeys()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "metric_group_keys"
+     */
+    public function testPropertyMetricGroupKeys()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "stages"
+     */
+    public function testPropertyStages()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

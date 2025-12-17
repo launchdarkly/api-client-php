@@ -766,7 +766,7 @@ try {
 ## `patchFeatureFlag()`
 
 ```php
-patchFeatureFlag($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts): \LaunchDarklyApi\Model\FeatureFlag
+patchFeatureFlag($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts, $dry_run): \LaunchDarklyApi\Model\FeatureFlag
 ```
 
 Update feature flag
@@ -796,9 +796,10 @@ $project_key = 'project_key_example'; // string | The project key
 $feature_flag_key = 'feature_flag_key_example'; // string | The feature flag key. The key identifies the flag in your code.
 $patch_with_comment = {"patch":[{"op":"replace","path":"/description","value":"New description for this flag"}]}; // \LaunchDarklyApi\Model\PatchWithComment
 $ignore_conflicts = True; // bool | If true, the patch will be applied even if it causes a pending scheduled change or approval request to fail.
+$dry_run = True; // bool | If true, the patch will be validated but not persisted. Returns a preview of the flag after the patch is applied.
 
 try {
-    $result = $apiInstance->patchFeatureFlag($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts);
+    $result = $apiInstance->patchFeatureFlag($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts, $dry_run);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling FeatureFlagsApi->patchFeatureFlag: ', $e->getMessage(), PHP_EOL;
@@ -813,6 +814,7 @@ try {
 | **feature_flag_key** | **string**| The feature flag key. The key identifies the flag in your code. | |
 | **patch_with_comment** | [**\LaunchDarklyApi\Model\PatchWithComment**](../Model/PatchWithComment.md)|  | |
 | **ignore_conflicts** | **bool**| If true, the patch will be applied even if it causes a pending scheduled change or approval request to fail. | [optional] |
+| **dry_run** | **bool**| If true, the patch will be validated but not persisted. Returns a preview of the flag after the patch is applied. | [optional] |
 
 ### Return type
 

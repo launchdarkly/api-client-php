@@ -1,10 +1,10 @@
-# # ReleasePolicyScope
+# # ReleasePolicyStage
 
 ## Properties
 
 Name | Type | Description | Notes
 ------------ | ------------- | ------------- | -------------
-**environment_keys** | **string[]** | List of environment keys this policy applies to | [optional]
-**flag_tag_keys** | **string[]** | List of flag tag keys this policy applies to | [optional]
+**allocation** | **int** |  |
+**duration_millis** | **int** |  |
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

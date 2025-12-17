@@ -1,6 +1,6 @@
 <?php
 /**
- * CovarianceInfoRep
+ * AgentGraphEdge
  *
  * PHP version 8.1
  *
@@ -33,15 +33,16 @@ use \ArrayAccess;
 use \LaunchDarklyApi\ObjectSerializer;
 
 /**
- * CovarianceInfoRep Class Doc Comment
+ * AgentGraphEdge Class Doc Comment
  *
  * @category Class
+ * @description An edge in an agent graph connecting two AI Configs
  * @package  LaunchDarklyApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class CovarianceInfoRep implements ModelInterface, ArrayAccess, \JsonSerializable
+class AgentGraphEdge implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -50,7 +51,7 @@ class CovarianceInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
       *
       * @var string
       */
-    protected static $openAPIModelName = 'CovarianceInfoRep';
+    protected static $openAPIModelName = 'AgentGraphEdge';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -58,9 +59,9 @@ class CovarianceInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var string[]
       */
     protected static $openAPITypes = [
-        'id' => 'string',
-        'file_name' => 'string',
-        'created_at' => 'int'
+        'source_config' => 'string',
+        'target_config' => 'string',
+        'handoff' => 'object'
     ];
 
     /**
@@ -71,9 +72,9 @@ class CovarianceInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'id' => null,
-        'file_name' => null,
-        'created_at' => 'int64'
+        'source_config' => null,
+        'target_config' => null,
+        'handoff' => null
     ];
 
     /**
@@ -82,9 +83,9 @@ class CovarianceInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'id' => false,
-        'file_name' => false,
-        'created_at' => false
+        'source_config' => false,
+        'target_config' => false,
+        'handoff' => false
     ];
 
     /**
@@ -173,9 +174,9 @@ class CovarianceInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $attributeMap = [
-        'id' => 'id',
-        'file_name' => 'fileName',
-        'created_at' => 'createdAt'
+        'source_config' => 'sourceConfig',
+        'target_config' => 'targetConfig',
+        'handoff' => 'handoff'
     ];
 
     /**
@@ -184,9 +185,9 @@ class CovarianceInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $setters = [
-        'id' => 'setId',
-        'file_name' => 'setFileName',
-        'created_at' => 'setCreatedAt'
+        'source_config' => 'setSourceConfig',
+        'target_config' => 'setTargetConfig',
+        'handoff' => 'setHandoff'
     ];
 
     /**
@@ -195,9 +196,9 @@ class CovarianceInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      * @var string[]
      */
     protected static $getters = [
-        'id' => 'getId',
-        'file_name' => 'getFileName',
-        'created_at' => 'getCreatedAt'
+        'source_config' => 'getSourceConfig',
+        'target_config' => 'getTargetConfig',
+        'handoff' => 'getHandoff'
     ];
 
     /**
@@ -257,9 +258,9 @@ class CovarianceInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('id', $data ?? [], null);
-        $this->setIfExists('file_name', $data ?? [], null);
-        $this->setIfExists('created_at', $data ?? [], null);
+        $this->setIfExists('source_config', $data ?? [], null);
+        $this->setIfExists('target_config', $data ?? [], null);
+        $this->setIfExists('handoff', $data ?? [], null);
     }
 
     /**
@@ -289,14 +290,11 @@ class CovarianceInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
     {
         $invalidProperties = [];
 
-        if ($this->container['id'] === null) {
-            $invalidProperties[] = "'id' can't be null";
+        if ($this->container['source_config'] === null) {
+            $invalidProperties[] = "'source_config' can't be null";
         }
-        if ($this->container['file_name'] === null) {
-            $invalidProperties[] = "'file_name' can't be null";
-        }
-        if ($this->container['created_at'] === null) {
-            $invalidProperties[] = "'created_at' can't be null";
+        if ($this->container['target_config'] === null) {
+            $invalidProperties[] = "'target_config' can't be null";
         }
         return $invalidProperties;
     }
@@ -314,82 +312,82 @@ class CovarianceInfoRep implements ModelInterface, ArrayAccess, \JsonSerializabl
 
 
     /**
-     * Gets id
+     * Gets source_config
      *
      * @return string
      */
-    public function getId()
+    public function getSourceConfig()
     {
-        return $this->container['id'];
+        return $this->container['source_config'];
     }
 
     /**
-     * Sets id
+     * Sets source_config
      *
-     * @param string $id The ID of the covariance matrix
+     * @param string $source_config The AI Config key that is the source of this edge
      *
      * @return self
      */
-    public function setId($id)
+    public function setSourceConfig($source_config)
     {
-        if (is_null($id)) {
-            throw new \InvalidArgumentException('non-nullable id cannot be null');
+        if (is_null($source_config)) {
+            throw new \InvalidArgumentException('non-nullable source_config cannot be null');
         }
-        $this->container['id'] = $id;
+        $this->container['source_config'] = $source_config;
 
         return $this;
     }
 
     /**
-     * Gets file_name
+     * Gets target_config
      *
      * @return string
      */
-    public function getFileName()
+    public function getTargetConfig()
     {
-        return $this->container['file_name'];
+        return $this->container['target_config'];
     }
 
     /**
-     * Sets file_name
+     * Sets target_config
      *
-     * @param string $file_name The file name of the uploaded covariance matrix
+     * @param string $target_config The AI Config key that is the target of this edge
      *
      * @return self
      */
-    public function setFileName($file_name)
+    public function setTargetConfig($target_config)
     {
-        if (is_null($file_name)) {
-            throw new \InvalidArgumentException('non-nullable file_name cannot be null');
+        if (is_null($target_config)) {
+            throw new \InvalidArgumentException('non-nullable target_config cannot be null');
         }
-        $this->container['file_name'] = $file_name;
+        $this->container['target_config'] = $target_config;
 
         return $this;
     }
 
     /**
-     * Gets created_at
+     * Gets handoff
      *
-     * @return int
+     * @return object|null
      */
-    public function getCreatedAt()
+    public function getHandoff()
     {
-        return $this->container['created_at'];
+        return $this->container['handoff'];
     }
 
     /**
-     * Sets created_at
+     * Sets handoff
      *
-     * @param int $created_at created_at
+     * @param object|null $handoff The handoff options from the source AI Config to the target AI Config
      *
      * @return self
      */
-    public function setCreatedAt($created_at)
+    public function setHandoff($handoff)
     {
-        if (is_null($created_at)) {
-            throw new \InvalidArgumentException('non-nullable created_at cannot be null');
+        if (is_null($handoff)) {
+            throw new \InvalidArgumentException('non-nullable handoff cannot be null');
         }
-        $this->container['created_at'] = $created_at;
+        $this->container['handoff'] = $handoff;
 
         return $this;
     }

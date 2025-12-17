@@ -58,7 +58,8 @@ class ReleasePolicyScope implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var string[]
       */
     protected static $openAPITypes = [
-        'environment_keys' => 'string[]'
+        'environment_keys' => 'string[]',
+        'flag_tag_keys' => 'string[]'
     ];
 
     /**
@@ -69,7 +70,8 @@ class ReleasePolicyScope implements ModelInterface, ArrayAccess, \JsonSerializab
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'environment_keys' => null
+        'environment_keys' => null,
+        'flag_tag_keys' => null
     ];
 
     /**
@@ -78,7 +80,8 @@ class ReleasePolicyScope implements ModelInterface, ArrayAccess, \JsonSerializab
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'environment_keys' => false
+        'environment_keys' => false,
+        'flag_tag_keys' => false
     ];
 
     /**
@@ -167,7 +170,8 @@ class ReleasePolicyScope implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $attributeMap = [
-        'environment_keys' => 'environmentKeys'
+        'environment_keys' => 'environmentKeys',
+        'flag_tag_keys' => 'flagTagKeys'
     ];
 
     /**
@@ -176,7 +180,8 @@ class ReleasePolicyScope implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $setters = [
-        'environment_keys' => 'setEnvironmentKeys'
+        'environment_keys' => 'setEnvironmentKeys',
+        'flag_tag_keys' => 'setFlagTagKeys'
     ];
 
     /**
@@ -185,7 +190,8 @@ class ReleasePolicyScope implements ModelInterface, ArrayAccess, \JsonSerializab
      * @var string[]
      */
     protected static $getters = [
-        'environment_keys' => 'getEnvironmentKeys'
+        'environment_keys' => 'getEnvironmentKeys',
+        'flag_tag_keys' => 'getFlagTagKeys'
     ];
 
     /**
@@ -246,6 +252,7 @@ class ReleasePolicyScope implements ModelInterface, ArrayAccess, \JsonSerializab
     public function __construct(?array $data = null)
     {
         $this->setIfExists('environment_keys', $data ?? [], null);
+        $this->setIfExists('flag_tag_keys', $data ?? [], null);
     }
 
     /**
@@ -313,6 +320,33 @@ class ReleasePolicyScope implements ModelInterface, ArrayAccess, \JsonSerializab
             throw new \InvalidArgumentException('non-nullable environment_keys cannot be null');
         }
         $this->container['environment_keys'] = $environment_keys;
+
+        return $this;
+    }
+
+    /**
+     * Gets flag_tag_keys
+     *
+     * @return string[]|null
+     */
+    public function getFlagTagKeys()
+    {
+        return $this->container['flag_tag_keys'];
+    }
+
+    /**
+     * Sets flag_tag_keys
+     *
+     * @param string[]|null $flag_tag_keys List of flag tag keys this policy applies to
+     *
+     * @return self
+     */
+    public function setFlagTagKeys($flag_tag_keys)
+    {
+        if (is_null($flag_tag_keys)) {
+            throw new \InvalidArgumentException('non-nullable flag_tag_keys cannot be null');
+        }
+        $this->container['flag_tag_keys'] = $flag_tag_keys;
 
         return $this;
     }

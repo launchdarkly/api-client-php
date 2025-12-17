@@ -99,6 +99,12 @@ class AccountUsageBetaApi
         'getExperimentationKeysUsage' => [
             'application/json',
         ],
+        'getMAUClientsideUsage' => [
+            'application/json',
+        ],
+        'getMAUTotalUsage' => [
+            'application/json',
+        ],
         'getMauSdksByType' => [
             'application/json',
         ],
@@ -3760,6 +3766,937 @@ class AccountUsageBetaApi
     }
 
     /**
+     * Operation getMAUClientsideUsage
+     *
+     * Get MAU clientside usage
+     *
+     * @param  string|null $from The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month. (optional)
+     * @param  string|null $to The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time. (optional)
+     * @param  string|null $project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key. (optional)
+     * @param  string|null $environment_key An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key. (optional)
+     * @param  string|null $sdk_name An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name. (optional)
+     * @param  string|null $anonymous An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;. (optional)
+     * @param  string|null $group_by If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;. (optional)
+     * @param  string|null $aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;. (optional)
+     * @param  string|null $granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMAUClientsideUsage'] to see the possible values for this operation
+     *
+     * @throws \LaunchDarklyApi\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep|\LaunchDarklyApi\Model\StatusServiceUnavailable
+     */
+    public function getMAUClientsideUsage($from = null, $to = null, $project_key = null, $environment_key = null, $sdk_name = null, $anonymous = null, $group_by = null, $aggregation_type = null, $granularity = null, string $contentType = self::contentTypes['getMAUClientsideUsage'][0])
+    {
+        list($response) = $this->getMAUClientsideUsageWithHttpInfo($from, $to, $project_key, $environment_key, $sdk_name, $anonymous, $group_by, $aggregation_type, $granularity, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getMAUClientsideUsageWithHttpInfo
+     *
+     * Get MAU clientside usage
+     *
+     * @param  string|null $from The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month. (optional)
+     * @param  string|null $to The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time. (optional)
+     * @param  string|null $project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key. (optional)
+     * @param  string|null $environment_key An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key. (optional)
+     * @param  string|null $sdk_name An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name. (optional)
+     * @param  string|null $anonymous An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;. (optional)
+     * @param  string|null $group_by If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;. (optional)
+     * @param  string|null $aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;. (optional)
+     * @param  string|null $granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMAUClientsideUsage'] to see the possible values for this operation
+     *
+     * @throws \LaunchDarklyApi\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep|\LaunchDarklyApi\Model\StatusServiceUnavailable, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getMAUClientsideUsageWithHttpInfo($from = null, $to = null, $project_key = null, $environment_key = null, $sdk_name = null, $anonymous = null, $group_by = null, $aggregation_type = null, $granularity = null, string $contentType = self::contentTypes['getMAUClientsideUsage'][0])
+    {
+        $request = $this->getMAUClientsideUsageRequest($from, $to, $project_key, $environment_key, $sdk_name, $anonymous, $group_by, $aggregation_type, $granularity, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\SeriesListRep',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
+                        $request,
+                        $response,
+                    );
+                case 503:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\StatusServiceUnavailable',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\LaunchDarklyApi\Model\SeriesListRep',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\SeriesListRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\StatusServiceUnavailable',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getMAUClientsideUsageAsync
+     *
+     * Get MAU clientside usage
+     *
+     * @param  string|null $from The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month. (optional)
+     * @param  string|null $to The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time. (optional)
+     * @param  string|null $project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key. (optional)
+     * @param  string|null $environment_key An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key. (optional)
+     * @param  string|null $sdk_name An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name. (optional)
+     * @param  string|null $anonymous An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;. (optional)
+     * @param  string|null $group_by If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;. (optional)
+     * @param  string|null $aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;. (optional)
+     * @param  string|null $granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMAUClientsideUsage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getMAUClientsideUsageAsync($from = null, $to = null, $project_key = null, $environment_key = null, $sdk_name = null, $anonymous = null, $group_by = null, $aggregation_type = null, $granularity = null, string $contentType = self::contentTypes['getMAUClientsideUsage'][0])
+    {
+        return $this->getMAUClientsideUsageAsyncWithHttpInfo($from, $to, $project_key, $environment_key, $sdk_name, $anonymous, $group_by, $aggregation_type, $granularity, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getMAUClientsideUsageAsyncWithHttpInfo
+     *
+     * Get MAU clientside usage
+     *
+     * @param  string|null $from The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month. (optional)
+     * @param  string|null $to The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time. (optional)
+     * @param  string|null $project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key. (optional)
+     * @param  string|null $environment_key An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key. (optional)
+     * @param  string|null $sdk_name An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name. (optional)
+     * @param  string|null $anonymous An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;. (optional)
+     * @param  string|null $group_by If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;. (optional)
+     * @param  string|null $aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;. (optional)
+     * @param  string|null $granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMAUClientsideUsage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getMAUClientsideUsageAsyncWithHttpInfo($from = null, $to = null, $project_key = null, $environment_key = null, $sdk_name = null, $anonymous = null, $group_by = null, $aggregation_type = null, $granularity = null, string $contentType = self::contentTypes['getMAUClientsideUsage'][0])
+    {
+        $returnType = '\LaunchDarklyApi\Model\SeriesListRep';
+        $request = $this->getMAUClientsideUsageRequest($from, $to, $project_key, $environment_key, $sdk_name, $anonymous, $group_by, $aggregation_type, $granularity, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getMAUClientsideUsage'
+     *
+     * @param  string|null $from The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month. (optional)
+     * @param  string|null $to The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time. (optional)
+     * @param  string|null $project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key. (optional)
+     * @param  string|null $environment_key An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key. (optional)
+     * @param  string|null $sdk_name An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name. (optional)
+     * @param  string|null $anonymous An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;. (optional)
+     * @param  string|null $group_by If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;. (optional)
+     * @param  string|null $aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;. (optional)
+     * @param  string|null $granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMAUClientsideUsage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getMAUClientsideUsageRequest($from = null, $to = null, $project_key = null, $environment_key = null, $sdk_name = null, $anonymous = null, $group_by = null, $aggregation_type = null, $granularity = null, string $contentType = self::contentTypes['getMAUClientsideUsage'][0])
+    {
+
+
+
+
+
+
+
+
+
+
+
+        $resourcePath = '/api/v2/usage/clientside-mau';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from,
+            'from', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to,
+            'to', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $project_key,
+            'projectKey', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $environment_key,
+            'environmentKey', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sdk_name,
+            'sdkName', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $anonymous,
+            'anonymous', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $group_by,
+            'groupBy', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $aggregation_type,
+            'aggregationType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $granularity,
+            'granularity', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation getMAUTotalUsage
+     *
+     * Get MAU total usage
+     *
+     * @param  string|null $from The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month. (optional)
+     * @param  string|null $to The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time. (optional)
+     * @param  string|null $project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key. (optional)
+     * @param  string|null $environment_key An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key. (optional)
+     * @param  string|null $sdk_name An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name. (optional)
+     * @param  string|null $sdk_type An SDK type to filter results by. Can be specified multiple times, one query parameter per SDK type. (optional)
+     * @param  string|null $anonymous An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;. (optional)
+     * @param  string|null $group_by If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkType&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;. (optional)
+     * @param  string|null $aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;. (optional)
+     * @param  string|null $granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMAUTotalUsage'] to see the possible values for this operation
+     *
+     * @throws \LaunchDarklyApi\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep|\LaunchDarklyApi\Model\StatusServiceUnavailable
+     */
+    public function getMAUTotalUsage($from = null, $to = null, $project_key = null, $environment_key = null, $sdk_name = null, $sdk_type = null, $anonymous = null, $group_by = null, $aggregation_type = null, $granularity = null, string $contentType = self::contentTypes['getMAUTotalUsage'][0])
+    {
+        list($response) = $this->getMAUTotalUsageWithHttpInfo($from, $to, $project_key, $environment_key, $sdk_name, $sdk_type, $anonymous, $group_by, $aggregation_type, $granularity, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation getMAUTotalUsageWithHttpInfo
+     *
+     * Get MAU total usage
+     *
+     * @param  string|null $from The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month. (optional)
+     * @param  string|null $to The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time. (optional)
+     * @param  string|null $project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key. (optional)
+     * @param  string|null $environment_key An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key. (optional)
+     * @param  string|null $sdk_name An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name. (optional)
+     * @param  string|null $sdk_type An SDK type to filter results by. Can be specified multiple times, one query parameter per SDK type. (optional)
+     * @param  string|null $anonymous An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;. (optional)
+     * @param  string|null $group_by If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkType&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;. (optional)
+     * @param  string|null $aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;. (optional)
+     * @param  string|null $granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMAUTotalUsage'] to see the possible values for this operation
+     *
+     * @throws \LaunchDarklyApi\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep|\LaunchDarklyApi\Model\StatusServiceUnavailable, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function getMAUTotalUsageWithHttpInfo($from = null, $to = null, $project_key = null, $environment_key = null, $sdk_name = null, $sdk_type = null, $anonymous = null, $group_by = null, $aggregation_type = null, $granularity = null, string $contentType = self::contentTypes['getMAUTotalUsage'][0])
+    {
+        $request = $this->getMAUTotalUsageRequest($from, $to, $project_key, $environment_key, $sdk_name, $sdk_type, $anonymous, $group_by, $aggregation_type, $granularity, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\SeriesListRep',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $request,
+                        $response,
+                    );
+                case 401:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $request,
+                        $response,
+                    );
+                case 429:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
+                        $request,
+                        $response,
+                    );
+                case 503:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\StatusServiceUnavailable',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\LaunchDarklyApi\Model\SeriesListRep',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\SeriesListRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\InvalidRequestErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 401:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\UnauthorizedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\ForbiddenErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 429:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\RateLimitedErrorRep',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 503:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\StatusServiceUnavailable',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation getMAUTotalUsageAsync
+     *
+     * Get MAU total usage
+     *
+     * @param  string|null $from The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month. (optional)
+     * @param  string|null $to The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time. (optional)
+     * @param  string|null $project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key. (optional)
+     * @param  string|null $environment_key An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key. (optional)
+     * @param  string|null $sdk_name An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name. (optional)
+     * @param  string|null $sdk_type An SDK type to filter results by. Can be specified multiple times, one query parameter per SDK type. (optional)
+     * @param  string|null $anonymous An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;. (optional)
+     * @param  string|null $group_by If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkType&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;. (optional)
+     * @param  string|null $aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;. (optional)
+     * @param  string|null $granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMAUTotalUsage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getMAUTotalUsageAsync($from = null, $to = null, $project_key = null, $environment_key = null, $sdk_name = null, $sdk_type = null, $anonymous = null, $group_by = null, $aggregation_type = null, $granularity = null, string $contentType = self::contentTypes['getMAUTotalUsage'][0])
+    {
+        return $this->getMAUTotalUsageAsyncWithHttpInfo($from, $to, $project_key, $environment_key, $sdk_name, $sdk_type, $anonymous, $group_by, $aggregation_type, $granularity, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation getMAUTotalUsageAsyncWithHttpInfo
+     *
+     * Get MAU total usage
+     *
+     * @param  string|null $from The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month. (optional)
+     * @param  string|null $to The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time. (optional)
+     * @param  string|null $project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key. (optional)
+     * @param  string|null $environment_key An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key. (optional)
+     * @param  string|null $sdk_name An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name. (optional)
+     * @param  string|null $sdk_type An SDK type to filter results by. Can be specified multiple times, one query parameter per SDK type. (optional)
+     * @param  string|null $anonymous An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;. (optional)
+     * @param  string|null $group_by If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkType&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;. (optional)
+     * @param  string|null $aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;. (optional)
+     * @param  string|null $granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMAUTotalUsage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function getMAUTotalUsageAsyncWithHttpInfo($from = null, $to = null, $project_key = null, $environment_key = null, $sdk_name = null, $sdk_type = null, $anonymous = null, $group_by = null, $aggregation_type = null, $granularity = null, string $contentType = self::contentTypes['getMAUTotalUsage'][0])
+    {
+        $returnType = '\LaunchDarklyApi\Model\SeriesListRep';
+        $request = $this->getMAUTotalUsageRequest($from, $to, $project_key, $environment_key, $sdk_name, $sdk_type, $anonymous, $group_by, $aggregation_type, $granularity, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'getMAUTotalUsage'
+     *
+     * @param  string|null $from The series of data returned starts from this timestamp (Unix milliseconds). Defaults to the beginning of the current month. (optional)
+     * @param  string|null $to The series of data returned ends at this timestamp (Unix milliseconds). Defaults to the current time. (optional)
+     * @param  string|null $project_key A project key to filter results by. Can be specified multiple times, one query parameter per project key. (optional)
+     * @param  string|null $environment_key An environment key to filter results by. If specified, exactly one &#x60;projectKey&#x60; must be provided. Can be specified multiple times, one query parameter per environment key. (optional)
+     * @param  string|null $sdk_name An SDK name to filter results by. Can be specified multiple times, one query parameter per SDK name. (optional)
+     * @param  string|null $sdk_type An SDK type to filter results by. Can be specified multiple times, one query parameter per SDK type. (optional)
+     * @param  string|null $anonymous An anonymous value to filter results by. Can be specified multiple times, one query parameter per anonymous value.&lt;br/&gt;Valid values: &#x60;true&#x60;, &#x60;false&#x60;. (optional)
+     * @param  string|null $group_by If specified, returns data for each distinct value of the given field. Can be specified multiple times to group data by multiple dimensions, one query parameter per dimension.&lt;br/&gt;Valid values: &#x60;projectId&#x60;, &#x60;environmentId&#x60;, &#x60;sdkName&#x60;, &#x60;sdkType&#x60;, &#x60;sdkAppId&#x60;, &#x60;anonymousV2&#x60;. (optional)
+     * @param  string|null $aggregation_type Specifies the aggregation method. Defaults to &#x60;month_to_date&#x60;.&lt;br/&gt;Valid values: &#x60;month_to_date&#x60;, &#x60;incremental&#x60;, &#x60;rolling_30d&#x60;. (optional)
+     * @param  string|null $granularity Specifies the data granularity. Defaults to &#x60;daily&#x60;. Valid values depend on &#x60;aggregationType&#x60;: **month_to_date** supports &#x60;daily&#x60; and &#x60;monthly&#x60;; **incremental** and **rolling_30d** support &#x60;daily&#x60; only. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['getMAUTotalUsage'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function getMAUTotalUsageRequest($from = null, $to = null, $project_key = null, $environment_key = null, $sdk_name = null, $sdk_type = null, $anonymous = null, $group_by = null, $aggregation_type = null, $granularity = null, string $contentType = self::contentTypes['getMAUTotalUsage'][0])
+    {
+
+
+
+
+
+
+
+
+
+
+
+
+        $resourcePath = '/api/v2/usage/total-mau';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $from,
+            'from', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $to,
+            'to', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $project_key,
+            'projectKey', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $environment_key,
+            'environmentKey', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sdk_name,
+            'sdkName', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $sdk_type,
+            'sdkType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $anonymous,
+            'anonymous', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $group_by,
+            'groupBy', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $aggregation_type,
+            'aggregationType', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $granularity,
+            'granularity', // param base name
+            'string', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation getMauSdksByType
      *
      * Get MAU SDKs by type
@@ -4133,6 +5070,7 @@ class AccountUsageBetaApi
      * @throws \LaunchDarklyApi\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
+     * @deprecated
      */
     public function getMauUsage($from = null, $to = null, $project = null, $environment = null, $sdktype = null, $sdk = null, $anonymous = null, $groupby = null, $aggregation_type = null, $context_kind = null, string $contentType = self::contentTypes['getMauUsage'][0])
     {
@@ -4160,6 +5098,7 @@ class AccountUsageBetaApi
      * @throws \LaunchDarklyApi\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getMauUsageWithHttpInfo($from = null, $to = null, $project = null, $environment = null, $sdktype = null, $sdk = null, $anonymous = null, $groupby = null, $aggregation_type = null, $context_kind = null, string $contentType = self::contentTypes['getMauUsage'][0])
     {
@@ -4309,6 +5248,7 @@ class AccountUsageBetaApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getMauUsageAsync($from = null, $to = null, $project = null, $environment = null, $sdktype = null, $sdk = null, $anonymous = null, $groupby = null, $aggregation_type = null, $context_kind = null, string $contentType = self::contentTypes['getMauUsage'][0])
     {
@@ -4339,6 +5279,7 @@ class AccountUsageBetaApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getMauUsageAsyncWithHttpInfo($from = null, $to = null, $project = null, $environment = null, $sdktype = null, $sdk = null, $anonymous = null, $groupby = null, $aggregation_type = null, $context_kind = null, string $contentType = self::contentTypes['getMauUsage'][0])
     {
@@ -4398,6 +5339,7 @@ class AccountUsageBetaApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getMauUsageRequest($from = null, $to = null, $project = null, $environment = null, $sdktype = null, $sdk = null, $anonymous = null, $groupby = null, $aggregation_type = null, $context_kind = null, string $contentType = self::contentTypes['getMauUsage'][0])
     {
@@ -4584,6 +5526,7 @@ class AccountUsageBetaApi
      * @throws \LaunchDarklyApi\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
+     * @deprecated
      */
     public function getMauUsageByCategory($from = null, $to = null, string $contentType = self::contentTypes['getMauUsageByCategory'][0])
     {
@@ -4603,6 +5546,7 @@ class AccountUsageBetaApi
      * @throws \LaunchDarklyApi\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \LaunchDarklyApi\Model\SeriesListRep|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\ForbiddenErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
+     * @deprecated
      */
     public function getMauUsageByCategoryWithHttpInfo($from = null, $to = null, string $contentType = self::contentTypes['getMauUsageByCategory'][0])
     {
@@ -4758,6 +5702,7 @@ class AccountUsageBetaApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getMauUsageByCategoryAsync($from = null, $to = null, string $contentType = self::contentTypes['getMauUsageByCategory'][0])
     {
@@ -4780,6 +5725,7 @@ class AccountUsageBetaApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
+     * @deprecated
      */
     public function getMauUsageByCategoryAsyncWithHttpInfo($from = null, $to = null, string $contentType = self::contentTypes['getMauUsageByCategory'][0])
     {
@@ -4831,6 +5777,7 @@ class AccountUsageBetaApi
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
+     * @deprecated
      */
     public function getMauUsageByCategoryRequest($from = null, $to = null, string $contentType = self::contentTypes['getMauUsageByCategory'][0])
     {

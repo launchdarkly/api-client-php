@@ -131,7 +131,7 @@ class TagsApi
      *
      * List tags
      *
-     * @param  string[]|null $kind Fetch tags associated with the specified resource type. Options are &#x60;flag&#x60;, &#x60;project&#x60;, &#x60;environment&#x60;, &#x60;segment&#x60;, &#x60;metric&#x60;, &#x60;aiconfig&#x60;, and &#x60;view&#x60;. Returns all types by default. (optional)
+     * @param  string[]|null $kind Fetch tags associated with the specified resource type. Options are &#x60;flag&#x60;, &#x60;project&#x60;, &#x60;environment&#x60;, &#x60;segment&#x60;, &#x60;metric&#x60;, &#x60;metric-data-source&#x60;, &#x60;aiconfig&#x60;, and &#x60;view&#x60;. Returns all types by default. (optional)
      * @param  string|null $pre Return tags with the specified prefix (optional)
      * @param  bool|null $archived Whether or not to return archived flags (optional)
      * @param  int|null $limit The number of tags to return. Maximum is 1000. (optional)
@@ -154,7 +154,7 @@ class TagsApi
      *
      * List tags
      *
-     * @param  string[]|null $kind Fetch tags associated with the specified resource type. Options are &#x60;flag&#x60;, &#x60;project&#x60;, &#x60;environment&#x60;, &#x60;segment&#x60;, &#x60;metric&#x60;, &#x60;aiconfig&#x60;, and &#x60;view&#x60;. Returns all types by default. (optional)
+     * @param  string[]|null $kind Fetch tags associated with the specified resource type. Options are &#x60;flag&#x60;, &#x60;project&#x60;, &#x60;environment&#x60;, &#x60;segment&#x60;, &#x60;metric&#x60;, &#x60;metric-data-source&#x60;, &#x60;aiconfig&#x60;, and &#x60;view&#x60;. Returns all types by default. (optional)
      * @param  string|null $pre Return tags with the specified prefix (optional)
      * @param  bool|null $archived Whether or not to return archived flags (optional)
      * @param  int|null $limit The number of tags to return. Maximum is 1000. (optional)
@@ -314,7 +314,7 @@ class TagsApi
      *
      * List tags
      *
-     * @param  string[]|null $kind Fetch tags associated with the specified resource type. Options are &#x60;flag&#x60;, &#x60;project&#x60;, &#x60;environment&#x60;, &#x60;segment&#x60;, &#x60;metric&#x60;, &#x60;aiconfig&#x60;, and &#x60;view&#x60;. Returns all types by default. (optional)
+     * @param  string[]|null $kind Fetch tags associated with the specified resource type. Options are &#x60;flag&#x60;, &#x60;project&#x60;, &#x60;environment&#x60;, &#x60;segment&#x60;, &#x60;metric&#x60;, &#x60;metric-data-source&#x60;, &#x60;aiconfig&#x60;, and &#x60;view&#x60;. Returns all types by default. (optional)
      * @param  string|null $pre Return tags with the specified prefix (optional)
      * @param  bool|null $archived Whether or not to return archived flags (optional)
      * @param  int|null $limit The number of tags to return. Maximum is 1000. (optional)
@@ -340,7 +340,7 @@ class TagsApi
      *
      * List tags
      *
-     * @param  string[]|null $kind Fetch tags associated with the specified resource type. Options are &#x60;flag&#x60;, &#x60;project&#x60;, &#x60;environment&#x60;, &#x60;segment&#x60;, &#x60;metric&#x60;, &#x60;aiconfig&#x60;, and &#x60;view&#x60;. Returns all types by default. (optional)
+     * @param  string[]|null $kind Fetch tags associated with the specified resource type. Options are &#x60;flag&#x60;, &#x60;project&#x60;, &#x60;environment&#x60;, &#x60;segment&#x60;, &#x60;metric&#x60;, &#x60;metric-data-source&#x60;, &#x60;aiconfig&#x60;, and &#x60;view&#x60;. Returns all types by default. (optional)
      * @param  string|null $pre Return tags with the specified prefix (optional)
      * @param  bool|null $archived Whether or not to return archived flags (optional)
      * @param  int|null $limit The number of tags to return. Maximum is 1000. (optional)
@@ -395,7 +395,7 @@ class TagsApi
     /**
      * Create request for operation 'getTags'
      *
-     * @param  string[]|null $kind Fetch tags associated with the specified resource type. Options are &#x60;flag&#x60;, &#x60;project&#x60;, &#x60;environment&#x60;, &#x60;segment&#x60;, &#x60;metric&#x60;, &#x60;aiconfig&#x60;, and &#x60;view&#x60;. Returns all types by default. (optional)
+     * @param  string[]|null $kind Fetch tags associated with the specified resource type. Options are &#x60;flag&#x60;, &#x60;project&#x60;, &#x60;environment&#x60;, &#x60;segment&#x60;, &#x60;metric&#x60;, &#x60;metric-data-source&#x60;, &#x60;aiconfig&#x60;, and &#x60;view&#x60;. Returns all types by default. (optional)
      * @param  string|null $pre Return tags with the specified prefix (optional)
      * @param  bool|null $archived Whether or not to return archived flags (optional)
      * @param  int|null $limit The number of tags to return. Maximum is 1000. (optional)

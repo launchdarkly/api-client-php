@@ -1,6 +1,6 @@
 <?php
 /**
- * CovarianceInfoRepTest
+ * AgentGraphPostTest
  *
  * PHP version 8.1
  *
@@ -32,15 +32,15 @@ namespace LaunchDarklyApi\Test\Model;
 use PHPUnit\Framework\TestCase;
 
 /**
- * CovarianceInfoRepTest Class Doc Comment
+ * AgentGraphPostTest Class Doc Comment
  *
  * @category    Class
- * @description CovarianceInfoRep
+ * @description Request body for creating an agent graph
  * @package     LaunchDarklyApi
  * @author      OpenAPI Generator team
  * @link        https://openapi-generator.tech
  */
-class CovarianceInfoRepTest extends TestCase
+class AgentGraphPostTest extends TestCase
 {
 
     /**
@@ -72,36 +72,54 @@ class CovarianceInfoRepTest extends TestCase
     }
 
     /**
-     * Test "CovarianceInfoRep"
+     * Test "AgentGraphPost"
      */
-    public function testCovarianceInfoRep()
+    public function testAgentGraphPost()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "id"
+     * Test attribute "key"
      */
-    public function testPropertyId()
+    public function testPropertyKey()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "file_name"
+     * Test attribute "name"
      */
-    public function testPropertyFileName()
+    public function testPropertyName()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
 
     /**
-     * Test attribute "created_at"
+     * Test attribute "description"
      */
-    public function testPropertyCreatedAt()
+    public function testPropertyDescription()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "root_config_key"
+     */
+    public function testPropertyRootConfigKey()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test attribute "edges"
+     */
+    public function testPropertyEdges()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

@@ -120,6 +120,9 @@ class AIConfigsBetaApi
         'listAITools' => [
             'application/json',
         ],
+        'listAgentGraphs' => [
+            'application/json',
+        ],
         'listModelConfigs' => [
             'application/json',
         ],
@@ -142,6 +145,9 @@ class AIConfigsBetaApi
             'application/json',
         ],
         'postAITool' => [
+            'application/json',
+        ],
+        'postAgentGraph' => [
             'application/json',
         ],
         'postModelConfig' => [
@@ -5552,6 +5558,367 @@ class AIConfigsBetaApi
     }
 
     /**
+     * Operation listAgentGraphs
+     *
+     * List agent graphs
+     *
+     * @param  string $ld_api_version Version of the endpoint. (required)
+     * @param  string $project_key project_key (required)
+     * @param  int|null $limit The number of AI Configs to return. (optional)
+     * @param  int|null $offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAgentGraphs'] to see the possible values for this operation
+     *
+     * @throws \LaunchDarklyApi\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \LaunchDarklyApi\Model\AgentGraphs|\LaunchDarklyApi\Model\Error|\LaunchDarklyApi\Model\Error|\LaunchDarklyApi\Model\Error
+     */
+    public function listAgentGraphs($ld_api_version, $project_key, $limit = null, $offset = null, string $contentType = self::contentTypes['listAgentGraphs'][0])
+    {
+        list($response) = $this->listAgentGraphsWithHttpInfo($ld_api_version, $project_key, $limit, $offset, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation listAgentGraphsWithHttpInfo
+     *
+     * List agent graphs
+     *
+     * @param  string $ld_api_version Version of the endpoint. (required)
+     * @param  string $project_key (required)
+     * @param  int|null $limit The number of AI Configs to return. (optional)
+     * @param  int|null $offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAgentGraphs'] to see the possible values for this operation
+     *
+     * @throws \LaunchDarklyApi\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \LaunchDarklyApi\Model\AgentGraphs|\LaunchDarklyApi\Model\Error|\LaunchDarklyApi\Model\Error|\LaunchDarklyApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function listAgentGraphsWithHttpInfo($ld_api_version, $project_key, $limit = null, $offset = null, string $contentType = self::contentTypes['listAgentGraphs'][0])
+    {
+        $request = $this->listAgentGraphsRequest($ld_api_version, $project_key, $limit, $offset, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 200:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\AgentGraphs',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\LaunchDarklyApi\Model\AgentGraphs',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 200:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\AgentGraphs',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation listAgentGraphsAsync
+     *
+     * List agent graphs
+     *
+     * @param  string $ld_api_version Version of the endpoint. (required)
+     * @param  string $project_key (required)
+     * @param  int|null $limit The number of AI Configs to return. (optional)
+     * @param  int|null $offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAgentGraphs'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAgentGraphsAsync($ld_api_version, $project_key, $limit = null, $offset = null, string $contentType = self::contentTypes['listAgentGraphs'][0])
+    {
+        return $this->listAgentGraphsAsyncWithHttpInfo($ld_api_version, $project_key, $limit, $offset, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation listAgentGraphsAsyncWithHttpInfo
+     *
+     * List agent graphs
+     *
+     * @param  string $ld_api_version Version of the endpoint. (required)
+     * @param  string $project_key (required)
+     * @param  int|null $limit The number of AI Configs to return. (optional)
+     * @param  int|null $offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAgentGraphs'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function listAgentGraphsAsyncWithHttpInfo($ld_api_version, $project_key, $limit = null, $offset = null, string $contentType = self::contentTypes['listAgentGraphs'][0])
+    {
+        $returnType = '\LaunchDarklyApi\Model\AgentGraphs';
+        $request = $this->listAgentGraphsRequest($ld_api_version, $project_key, $limit, $offset, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'listAgentGraphs'
+     *
+     * @param  string $ld_api_version Version of the endpoint. (required)
+     * @param  string $project_key (required)
+     * @param  int|null $limit The number of AI Configs to return. (optional)
+     * @param  int|null $offset Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. (optional)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['listAgentGraphs'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function listAgentGraphsRequest($ld_api_version, $project_key, $limit = null, $offset = null, string $contentType = self::contentTypes['listAgentGraphs'][0])
+    {
+
+        // verify the required parameter 'ld_api_version' is set
+        if ($ld_api_version === null || (is_array($ld_api_version) && count($ld_api_version) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ld_api_version when calling listAgentGraphs'
+            );
+        }
+
+        // verify the required parameter 'project_key' is set
+        if ($project_key === null || (is_array($project_key) && count($project_key) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $project_key when calling listAgentGraphs'
+            );
+        }
+
+
+
+
+        $resourcePath = '/api/v2/projects/{projectKey}/agent-graphs';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $limit,
+            'limit', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $offset,
+            'offset', // param base name
+            'integer', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+
+        // header params
+        if ($ld_api_version !== null) {
+            $headerParams['LD-API-Version'] = ObjectSerializer::toHeaderValue($ld_api_version);
+        }
+
+        // path params
+        if ($project_key !== null) {
+            $resourcePath = str_replace(
+                '{' . 'projectKey' . '}',
+                ObjectSerializer::toPathValue($project_key),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'GET',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
      * Operation listModelConfigs
      *
      * List AI model configs
@@ -8461,6 +8828,370 @@ class AIConfigsBetaApi
                 $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($ai_tool_post));
             } else {
                 $httpBody = $ai_tool_post;
+            }
+        } elseif (count($formParams) > 0) {
+            if ($multipart) {
+                $multipartContents = [];
+                foreach ($formParams as $formParamName => $formParamValue) {
+                    $formParamValueItems = is_array($formParamValue) ? $formParamValue : [$formParamValue];
+                    foreach ($formParamValueItems as $formParamValueItem) {
+                        $multipartContents[] = [
+                            'name' => $formParamName,
+                            'contents' => $formParamValueItem
+                        ];
+                    }
+                }
+                // for HTTP post (form)
+                $httpBody = new MultipartStream($multipartContents);
+
+            } elseif (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the form parameters
+                $httpBody = \GuzzleHttp\Utils::jsonEncode($formParams);
+            } else {
+                // for HTTP post (form)
+                $httpBody = ObjectSerializer::buildQuery($formParams);
+            }
+        }
+
+        // this endpoint requires API key authentication
+        $apiKey = $this->config->getApiKeyWithPrefix('Authorization');
+        if ($apiKey !== null) {
+            $headers['Authorization'] = $apiKey;
+        }
+
+        $defaultHeaders = [];
+        if ($this->config->getUserAgent()) {
+            $defaultHeaders['User-Agent'] = $this->config->getUserAgent();
+        }
+
+        $headers = array_merge(
+            $defaultHeaders,
+            $headerParams,
+            $headers
+        );
+
+        $operationHost = $this->config->getHost();
+        $query = ObjectSerializer::buildQuery($queryParams);
+        return new Request(
+            'POST',
+            $operationHost . $resourcePath . ($query ? "?{$query}" : ''),
+            $headers,
+            $httpBody
+        );
+    }
+
+    /**
+     * Operation postAgentGraph
+     *
+     * Create new agent graph
+     *
+     * @param  string $ld_api_version Version of the endpoint. (required)
+     * @param  string $project_key project_key (required)
+     * @param  \LaunchDarklyApi\Model\AgentGraphPost $agent_graph_post Agent graph object to create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAgentGraph'] to see the possible values for this operation
+     *
+     * @throws \LaunchDarklyApi\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return \LaunchDarklyApi\Model\AgentGraph|\LaunchDarklyApi\Model\Error|\LaunchDarklyApi\Model\Error|\LaunchDarklyApi\Model\Error|\LaunchDarklyApi\Model\Error
+     */
+    public function postAgentGraph($ld_api_version, $project_key, $agent_graph_post, string $contentType = self::contentTypes['postAgentGraph'][0])
+    {
+        list($response) = $this->postAgentGraphWithHttpInfo($ld_api_version, $project_key, $agent_graph_post, $contentType);
+        return $response;
+    }
+
+    /**
+     * Operation postAgentGraphWithHttpInfo
+     *
+     * Create new agent graph
+     *
+     * @param  string $ld_api_version Version of the endpoint. (required)
+     * @param  string $project_key (required)
+     * @param  \LaunchDarklyApi\Model\AgentGraphPost $agent_graph_post Agent graph object to create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAgentGraph'] to see the possible values for this operation
+     *
+     * @throws \LaunchDarklyApi\ApiException on non-2xx response or if the response body is not in the expected format
+     * @throws \InvalidArgumentException
+     * @return array of \LaunchDarklyApi\Model\AgentGraph|\LaunchDarklyApi\Model\Error|\LaunchDarklyApi\Model\Error|\LaunchDarklyApi\Model\Error|\LaunchDarklyApi\Model\Error, HTTP status code, HTTP response headers (array of strings)
+     */
+    public function postAgentGraphWithHttpInfo($ld_api_version, $project_key, $agent_graph_post, string $contentType = self::contentTypes['postAgentGraph'][0])
+    {
+        $request = $this->postAgentGraphRequest($ld_api_version, $project_key, $agent_graph_post, $contentType);
+
+        try {
+            $options = $this->createHttpClientOption();
+            try {
+                $response = $this->client->send($request, $options);
+            } catch (RequestException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    $e->getResponse() ? $e->getResponse()->getHeaders() : null,
+                    $e->getResponse() ? (string) $e->getResponse()->getBody() : null
+                );
+            } catch (ConnectException $e) {
+                throw new ApiException(
+                    "[{$e->getCode()}] {$e->getMessage()}",
+                    (int) $e->getCode(),
+                    null,
+                    null
+                );
+            }
+
+            $statusCode = $response->getStatusCode();
+
+
+            switch($statusCode) {
+                case 201:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\AgentGraph',
+                        $request,
+                        $response,
+                    );
+                case 400:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 403:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 413:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\Error',
+                        $request,
+                        $response,
+                    );
+                case 500:
+                    return $this->handleResponseWithDataType(
+                        '\LaunchDarklyApi\Model\Error',
+                        $request,
+                        $response,
+                    );
+            }
+
+            
+
+            if ($statusCode < 200 || $statusCode > 299) {
+                throw new ApiException(
+                    sprintf(
+                        '[%d] Error connecting to the API (%s)',
+                        $statusCode,
+                        (string) $request->getUri()
+                    ),
+                    $statusCode,
+                    $response->getHeaders(),
+                    (string) $response->getBody()
+                );
+            }
+
+            return $this->handleResponseWithDataType(
+                '\LaunchDarklyApi\Model\AgentGraph',
+                $request,
+                $response,
+            );
+        } catch (ApiException $e) {
+            switch ($e->getCode()) {
+                case 201:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\AgentGraph',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 400:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 403:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 413:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+                case 500:
+                    $data = ObjectSerializer::deserialize(
+                        $e->getResponseBody(),
+                        '\LaunchDarklyApi\Model\Error',
+                        $e->getResponseHeaders()
+                    );
+                    $e->setResponseObject($data);
+                    throw $e;
+            }
+        
+
+            throw $e;
+        }
+    }
+
+    /**
+     * Operation postAgentGraphAsync
+     *
+     * Create new agent graph
+     *
+     * @param  string $ld_api_version Version of the endpoint. (required)
+     * @param  string $project_key (required)
+     * @param  \LaunchDarklyApi\Model\AgentGraphPost $agent_graph_post Agent graph object to create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAgentGraph'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postAgentGraphAsync($ld_api_version, $project_key, $agent_graph_post, string $contentType = self::contentTypes['postAgentGraph'][0])
+    {
+        return $this->postAgentGraphAsyncWithHttpInfo($ld_api_version, $project_key, $agent_graph_post, $contentType)
+            ->then(
+                function ($response) {
+                    return $response[0];
+                }
+            );
+    }
+
+    /**
+     * Operation postAgentGraphAsyncWithHttpInfo
+     *
+     * Create new agent graph
+     *
+     * @param  string $ld_api_version Version of the endpoint. (required)
+     * @param  string $project_key (required)
+     * @param  \LaunchDarklyApi\Model\AgentGraphPost $agent_graph_post Agent graph object to create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAgentGraph'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Promise\PromiseInterface
+     */
+    public function postAgentGraphAsyncWithHttpInfo($ld_api_version, $project_key, $agent_graph_post, string $contentType = self::contentTypes['postAgentGraph'][0])
+    {
+        $returnType = '\LaunchDarklyApi\Model\AgentGraph';
+        $request = $this->postAgentGraphRequest($ld_api_version, $project_key, $agent_graph_post, $contentType);
+
+        return $this->client
+            ->sendAsync($request, $this->createHttpClientOption())
+            ->then(
+                function ($response) use ($returnType) {
+                    if ($returnType === '\SplFileObject') {
+                        $content = $response->getBody(); //stream goes to serializer
+                    } else {
+                        $content = (string) $response->getBody();
+                        if ($returnType !== 'string') {
+                            $content = json_decode($content);
+                        }
+                    }
+
+                    return [
+                        ObjectSerializer::deserialize($content, $returnType, []),
+                        $response->getStatusCode(),
+                        $response->getHeaders()
+                    ];
+                },
+                function ($exception) {
+                    $response = $exception->getResponse();
+                    $statusCode = $response->getStatusCode();
+                    throw new ApiException(
+                        sprintf(
+                            '[%d] Error connecting to the API (%s)',
+                            $statusCode,
+                            $exception->getRequest()->getUri()
+                        ),
+                        $statusCode,
+                        $response->getHeaders(),
+                        (string) $response->getBody()
+                    );
+                }
+            );
+    }
+
+    /**
+     * Create request for operation 'postAgentGraph'
+     *
+     * @param  string $ld_api_version Version of the endpoint. (required)
+     * @param  string $project_key (required)
+     * @param  \LaunchDarklyApi\Model\AgentGraphPost $agent_graph_post Agent graph object to create (required)
+     * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['postAgentGraph'] to see the possible values for this operation
+     *
+     * @throws \InvalidArgumentException
+     * @return \GuzzleHttp\Psr7\Request
+     */
+    public function postAgentGraphRequest($ld_api_version, $project_key, $agent_graph_post, string $contentType = self::contentTypes['postAgentGraph'][0])
+    {
+
+        // verify the required parameter 'ld_api_version' is set
+        if ($ld_api_version === null || (is_array($ld_api_version) && count($ld_api_version) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $ld_api_version when calling postAgentGraph'
+            );
+        }
+
+        // verify the required parameter 'project_key' is set
+        if ($project_key === null || (is_array($project_key) && count($project_key) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $project_key when calling postAgentGraph'
+            );
+        }
+
+        // verify the required parameter 'agent_graph_post' is set
+        if ($agent_graph_post === null || (is_array($agent_graph_post) && count($agent_graph_post) === 0)) {
+            throw new \InvalidArgumentException(
+                'Missing the required parameter $agent_graph_post when calling postAgentGraph'
+            );
+        }
+
+
+        $resourcePath = '/api/v2/projects/{projectKey}/agent-graphs';
+        $formParams = [];
+        $queryParams = [];
+        $headerParams = [];
+        $httpBody = '';
+        $multipart = false;
+
+
+        // header params
+        if ($ld_api_version !== null) {
+            $headerParams['LD-API-Version'] = ObjectSerializer::toHeaderValue($ld_api_version);
+        }
+
+        // path params
+        if ($project_key !== null) {
+            $resourcePath = str_replace(
+                '{' . 'projectKey' . '}',
+                ObjectSerializer::toPathValue($project_key),
+                $resourcePath
+            );
+        }
+
+
+        $headers = $this->headerSelector->selectHeaders(
+            ['application/json', ],
+            $contentType,
+            $multipart
+        );
+
+        // for model (json/xml)
+        if (isset($agent_graph_post)) {
+            if (stripos($headers['Content-Type'], 'application/json') !== false) {
+                # if Content-Type contains "application/json", json_encode the body
+                $httpBody = \GuzzleHttp\Utils::jsonEncode(ObjectSerializer::sanitizeForSerialization($agent_graph_post));
+            } else {
+                $httpBody = $agent_graph_post;
             }
         } elseif (count($formParams) > 0) {
             if ($multipart) {

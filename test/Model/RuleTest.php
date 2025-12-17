@@ -90,6 +90,15 @@ class RuleTest extends TestCase
     }
 
     /**
+     * Test attribute "disabled"
+     */
+    public function testPropertyDisabled()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test attribute "variation"
      */
     public function testPropertyVariation()

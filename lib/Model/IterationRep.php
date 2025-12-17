@@ -78,8 +78,7 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
         'treatments' => '\LaunchDarklyApi\Model\TreatmentRep[]',
         'secondary_metrics' => '\LaunchDarklyApi\Model\MetricV2Rep[]',
         'metrics' => '\LaunchDarklyApi\Model\DependentMetricOrMetricGroupRep[]',
-        'layer_snapshot' => '\LaunchDarklyApi\Model\LayerSnapshotRep',
-        'covariance_info' => '\LaunchDarklyApi\Model\CovarianceInfoRep'
+        'layer_snapshot' => '\LaunchDarklyApi\Model\LayerSnapshotRep'
     ];
 
     /**
@@ -110,8 +109,7 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
         'treatments' => null,
         'secondary_metrics' => null,
         'metrics' => null,
-        'layer_snapshot' => null,
-        'covariance_info' => null
+        'layer_snapshot' => null
     ];
 
     /**
@@ -140,8 +138,7 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
         'treatments' => false,
         'secondary_metrics' => false,
         'metrics' => false,
-        'layer_snapshot' => false,
-        'covariance_info' => false
+        'layer_snapshot' => false
     ];
 
     /**
@@ -250,8 +247,7 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
         'treatments' => 'treatments',
         'secondary_metrics' => 'secondaryMetrics',
         'metrics' => 'metrics',
-        'layer_snapshot' => 'layerSnapshot',
-        'covariance_info' => 'covarianceInfo'
+        'layer_snapshot' => 'layerSnapshot'
     ];
 
     /**
@@ -280,8 +276,7 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
         'treatments' => 'setTreatments',
         'secondary_metrics' => 'setSecondaryMetrics',
         'metrics' => 'setMetrics',
-        'layer_snapshot' => 'setLayerSnapshot',
-        'covariance_info' => 'setCovarianceInfo'
+        'layer_snapshot' => 'setLayerSnapshot'
     ];
 
     /**
@@ -310,8 +305,7 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
         'treatments' => 'getTreatments',
         'secondary_metrics' => 'getSecondaryMetrics',
         'metrics' => 'getMetrics',
-        'layer_snapshot' => 'getLayerSnapshot',
-        'covariance_info' => 'getCovarianceInfo'
+        'layer_snapshot' => 'getLayerSnapshot'
     ];
 
     /**
@@ -409,7 +403,6 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
         $this->setIfExists('secondary_metrics', $data ?? [], null);
         $this->setIfExists('metrics', $data ?? [], null);
         $this->setIfExists('layer_snapshot', $data ?? [], null);
-        $this->setIfExists('covariance_info', $data ?? [], null);
     }
 
     /**
@@ -1047,33 +1040,6 @@ class IterationRep implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable layer_snapshot cannot be null');
         }
         $this->container['layer_snapshot'] = $layer_snapshot;
-
-        return $this;
-    }
-
-    /**
-     * Gets covariance_info
-     *
-     * @return \LaunchDarklyApi\Model\CovarianceInfoRep|null
-     */
-    public function getCovarianceInfo()
-    {
-        return $this->container['covariance_info'];
-    }
-
-    /**
-     * Sets covariance_info
-     *
-     * @param \LaunchDarklyApi\Model\CovarianceInfoRep|null $covariance_info covariance_info
-     *
-     * @return self
-     */
-    public function setCovarianceInfo($covariance_info)
-    {
-        if (is_null($covariance_info)) {
-            throw new \InvalidArgumentException('non-nullable covariance_info cannot be null');
-        }
-        $this->container['covariance_info'] = $covariance_info;
 
         return $this;
     }

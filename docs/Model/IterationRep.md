@@ -25,6 +25,5 @@ Name | Type | Description | Notes
 **secondary_metrics** | [**\LaunchDarklyApi\Model\MetricV2Rep[]**](MetricV2Rep.md) | Deprecated, use &lt;code&gt;metrics&lt;/code&gt; instead. Details on the secondary metrics for this experiment. | [optional]
 **metrics** | [**\LaunchDarklyApi\Model\DependentMetricOrMetricGroupRep[]**](DependentMetricOrMetricGroupRep.md) | Details on the metrics for this experiment | [optional]
 **layer_snapshot** | [**\LaunchDarklyApi\Model\LayerSnapshotRep**](LayerSnapshotRep.md) |  | [optional]
-**covariance_info** | [**\LaunchDarklyApi\Model\CovarianceInfoRep**](CovarianceInfoRep.md) |  | [optional]
 
 [[Back to Model list]](../../README.md#models) [[Back to API list]](../../README.md#endpoints) [[Back to README]](../../README.md)

@@ -95,6 +95,11 @@ docs/Model/AccessDeniedReason.md
 docs/Model/AccessTokenPost.md
 docs/Model/ActionInput.md
 docs/Model/ActionOutput.md
+docs/Model/AgentGraph.md
+docs/Model/AgentGraphEdge.md
+docs/Model/AgentGraphEdgePost.md
+docs/Model/AgentGraphPost.md
+docs/Model/AgentGraphs.md
 docs/Model/AiConfigsAccess.md
 docs/Model/AiConfigsAccessAllowedReason.md
 docs/Model/AiConfigsAccessAllowedRep.md
@@ -190,7 +195,6 @@ docs/Model/ContextSearch.md
 docs/Model/Contexts.md
 docs/Model/CopiedFromEnv.md
 docs/Model/CoreLink.md
-docs/Model/CovarianceInfoRep.md
 docs/Model/CreateAnnouncementBody.md
 docs/Model/CreateApprovalRequestRequest.md
 docs/Model/CreateCopyFlagConfigApprovalRequestRequest.md
@@ -472,6 +476,7 @@ docs/Model/PostFlagScheduledChangesInput.md
 docs/Model/PostInsightGroupParams.md
 docs/Model/PostReleasePolicyRequest.md
 docs/Model/Prerequisite.md
+docs/Model/ProgressiveReleaseConfig.md
 docs/Model/Project.md
 docs/Model/ProjectPost.md
 docs/Model/ProjectRep.md
@@ -511,6 +516,7 @@ docs/Model/ReleasePoliciesAccessRep.md
 docs/Model/ReleasePoliciesResponse.md
 docs/Model/ReleasePolicy.md
 docs/Model/ReleasePolicyScope.md
+docs/Model/ReleasePolicyStage.md
 docs/Model/ReleaseProgression.md
 docs/Model/ReleaseProgressionCollection.md
 docs/Model/ReleaserAudienceConfigInput.md
@@ -738,6 +744,11 @@ lib/Model/AccessDeniedReason.php
 lib/Model/AccessTokenPost.php
 lib/Model/ActionInput.php
 lib/Model/ActionOutput.php
+lib/Model/AgentGraph.php
+lib/Model/AgentGraphEdge.php
+lib/Model/AgentGraphEdgePost.php
+lib/Model/AgentGraphPost.php
+lib/Model/AgentGraphs.php
 lib/Model/AiConfigsAccess.php
 lib/Model/AiConfigsAccessAllowedReason.php
 lib/Model/AiConfigsAccessAllowedRep.php
@@ -833,7 +844,6 @@ lib/Model/ContextSearch.php
 lib/Model/Contexts.php
 lib/Model/CopiedFromEnv.php
 lib/Model/CoreLink.php
-lib/Model/CovarianceInfoRep.php
 lib/Model/CreateAnnouncementBody.php
 lib/Model/CreateApprovalRequestRequest.php
 lib/Model/CreateCopyFlagConfigApprovalRequestRequest.php
@@ -1116,6 +1126,7 @@ lib/Model/PostFlagScheduledChangesInput.php
 lib/Model/PostInsightGroupParams.php
 lib/Model/PostReleasePolicyRequest.php
 lib/Model/Prerequisite.php
+lib/Model/ProgressiveReleaseConfig.php
 lib/Model/Project.php
 lib/Model/ProjectPost.php
 lib/Model/ProjectRep.php
@@ -1155,6 +1166,7 @@ lib/Model/ReleasePoliciesAccessRep.php
 lib/Model/ReleasePoliciesResponse.php
 lib/Model/ReleasePolicy.php
 lib/Model/ReleasePolicyScope.php
+lib/Model/ReleasePolicyStage.php
 lib/Model/ReleaseProgression.php
 lib/Model/ReleaseProgressionCollection.php
 lib/Model/ReleaserAudienceConfigInput.php
@@ -1379,6 +1391,11 @@ test/Model/AccessTest.php
 test/Model/AccessTokenPostTest.php
 test/Model/ActionInputTest.php
 test/Model/ActionOutputTest.php
+test/Model/AgentGraphEdgePostTest.php
+test/Model/AgentGraphEdgeTest.php
+test/Model/AgentGraphPostTest.php
+test/Model/AgentGraphTest.php
+test/Model/AgentGraphsTest.php
 test/Model/AiConfigsAccessAllowedReasonTest.php
 test/Model/AiConfigsAccessAllowedRepTest.php
 test/Model/AiConfigsAccessDeniedReasonTest.php
@@ -1474,7 +1491,6 @@ test/Model/ContextSearchTest.php
 test/Model/ContextsTest.php
 test/Model/CopiedFromEnvTest.php
 test/Model/CoreLinkTest.php
-test/Model/CovarianceInfoRepTest.php
 test/Model/CreateAnnouncementBodyTest.php
 test/Model/CreateApprovalRequestRequestTest.php
 test/Model/CreateCopyFlagConfigApprovalRequestRequestTest.php
@@ -1756,6 +1772,7 @@ test/Model/PostFlagScheduledChangesInputTest.php
 test/Model/PostInsightGroupParamsTest.php
 test/Model/PostReleasePolicyRequestTest.php
 test/Model/PrerequisiteTest.php
+test/Model/ProgressiveReleaseConfigTest.php
 test/Model/ProjectPostTest.php
 test/Model/ProjectRepTest.php
 test/Model/ProjectSummaryCollectionTest.php
@@ -1793,6 +1810,7 @@ test/Model/ReleasePoliciesAccessRepTest.php
 test/Model/ReleasePoliciesAccessTest.php
 test/Model/ReleasePoliciesResponseTest.php
 test/Model/ReleasePolicyScopeTest.php
+test/Model/ReleasePolicyStageTest.php
 test/Model/ReleasePolicyTest.php
 test/Model/ReleaseProgressionCollectionTest.php
 test/Model/ReleaseProgressionTest.php

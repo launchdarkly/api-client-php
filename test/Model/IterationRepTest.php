@@ -268,13 +268,4 @@ class IterationRepTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
-
-    /**
-     * Test attribute "covariance_info"
-     */
-    public function testPropertyCovarianceInfo()
-    {
-        // TODO: implement
-        self::markTestIncomplete('Not implemented');
-    }
 }

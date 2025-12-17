@@ -253,6 +253,18 @@ class AIConfigsBetaApiTest extends TestCase
     }
 
     /**
+     * Test case for listAgentGraphs
+     *
+     * List agent graphs.
+     *
+     */
+    public function testListAgentGraphs()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for listModelConfigs
      *
      * List AI model configs.
@@ -343,6 +355,18 @@ class AIConfigsBetaApiTest extends TestCase
      *
      */
     public function testPostAITool()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for postAgentGraph
+     *
+     * Create new agent graph.
+     *
+     */
+    public function testPostAgentGraph()
     {
         // TODO: implement
         self::markTestIncomplete('Not implemented');

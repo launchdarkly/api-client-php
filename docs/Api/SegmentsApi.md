@@ -972,7 +972,7 @@ try {
 ## `patchSegment()`
 
 ```php
-patchSegment($project_key, $environment_key, $segment_key, $patch_with_comment): \LaunchDarklyApi\Model\UserSegment
+patchSegment($project_key, $environment_key, $segment_key, $patch_with_comment, $dry_run): \LaunchDarklyApi\Model\UserSegment
 ```
 
 Patch segment
@@ -1002,9 +1002,10 @@ $project_key = 'project_key_example'; // string | The project key
 $environment_key = 'environment_key_example'; // string | The environment key
 $segment_key = 'segment_key_example'; // string | The segment key
 $patch_with_comment = {"patch":[{"op":"replace","path":"/description","value":"New description for this segment"},{"op":"add","path":"/tags/0","value":"example"}]}; // \LaunchDarklyApi\Model\PatchWithComment
+$dry_run = True; // bool | If true, the patch will be validated but not persisted. Returns a preview of the segment after the patch is applied.
 
 try {
-    $result = $apiInstance->patchSegment($project_key, $environment_key, $segment_key, $patch_with_comment);
+    $result = $apiInstance->patchSegment($project_key, $environment_key, $segment_key, $patch_with_comment, $dry_run);
     print_r($result);
 } catch (Exception $e) {
     echo 'Exception when calling SegmentsApi->patchSegment: ', $e->getMessage(), PHP_EOL;
@@ -1019,6 +1020,7 @@ try {
 | **environment_key** | **string**| The environment key | |
 | **segment_key** | **string**| The segment key | |
 | **patch_with_comment** | [**\LaunchDarklyApi\Model\PatchWithComment**](../Model/PatchWithComment.md)|  | |
+| **dry_run** | **bool**| If true, the patch will be validated but not persisted. Returns a preview of the segment after the patch is applied. | [optional] |
 
 ### Return type
 

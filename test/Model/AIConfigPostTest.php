@@ -142,4 +142,13 @@ class AIConfigPostTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "default_variation"
+     */
+    public function testPropertyDefaultVariation()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

@@ -1,6 +1,6 @@
 <?php
 /**
- * GuardedReleaseConfig
+ * ProgressiveReleaseConfig
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \LaunchDarklyApi\ObjectSerializer;
 
 /**
- * GuardedReleaseConfig Class Doc Comment
+ * ProgressiveReleaseConfig Class Doc Comment
  *
  * @category Class
- * @description Configuration for guarded releases
+ * @description Configuration for progressive releases
  * @package  LaunchDarklyApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializable
+class ProgressiveReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'GuardedReleaseConfig';
+    protected static $openAPIModelName = 'ProgressiveReleaseConfig';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -60,10 +60,6 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPITypes = [
         'rollout_context_kind_key' => 'string',
-        'min_sample_size' => 'int',
-        'rollback_on_regression' => 'bool',
-        'metric_keys' => 'string[]',
-        'metric_group_keys' => 'string[]',
         'stages' => '\LaunchDarklyApi\Model\ReleasePolicyStage[]'
     ];
 
@@ -76,10 +72,6 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static $openAPIFormats = [
         'rollout_context_kind_key' => null,
-        'min_sample_size' => null,
-        'rollback_on_regression' => null,
-        'metric_keys' => null,
-        'metric_group_keys' => null,
         'stages' => null
     ];
 
@@ -90,10 +82,6 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
       */
     protected static array $openAPINullables = [
         'rollout_context_kind_key' => false,
-        'min_sample_size' => false,
-        'rollback_on_regression' => false,
-        'metric_keys' => false,
-        'metric_group_keys' => false,
         'stages' => false
     ];
 
@@ -184,10 +172,6 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $attributeMap = [
         'rollout_context_kind_key' => 'rolloutContextKindKey',
-        'min_sample_size' => 'minSampleSize',
-        'rollback_on_regression' => 'rollbackOnRegression',
-        'metric_keys' => 'metricKeys',
-        'metric_group_keys' => 'metricGroupKeys',
         'stages' => 'stages'
     ];
 
@@ -198,10 +182,6 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $setters = [
         'rollout_context_kind_key' => 'setRolloutContextKindKey',
-        'min_sample_size' => 'setMinSampleSize',
-        'rollback_on_regression' => 'setRollbackOnRegression',
-        'metric_keys' => 'setMetricKeys',
-        'metric_group_keys' => 'setMetricGroupKeys',
         'stages' => 'setStages'
     ];
 
@@ -212,10 +192,6 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     protected static $getters = [
         'rollout_context_kind_key' => 'getRolloutContextKindKey',
-        'min_sample_size' => 'getMinSampleSize',
-        'rollback_on_regression' => 'getRollbackOnRegression',
-        'metric_keys' => 'getMetricKeys',
-        'metric_group_keys' => 'getMetricGroupKeys',
         'stages' => 'getStages'
     ];
 
@@ -277,10 +253,6 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
     public function __construct(?array $data = null)
     {
         $this->setIfExists('rollout_context_kind_key', $data ?? [], null);
-        $this->setIfExists('min_sample_size', $data ?? [], null);
-        $this->setIfExists('rollback_on_regression', $data ?? [], null);
-        $this->setIfExists('metric_keys', $data ?? [], null);
-        $this->setIfExists('metric_group_keys', $data ?? [], null);
         $this->setIfExists('stages', $data ?? [], null);
     }
 
@@ -349,114 +321,6 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
             throw new \InvalidArgumentException('non-nullable rollout_context_kind_key cannot be null');
         }
         $this->container['rollout_context_kind_key'] = $rollout_context_kind_key;
-
-        return $this;
-    }
-
-    /**
-     * Gets min_sample_size
-     *
-     * @return int|null
-     */
-    public function getMinSampleSize()
-    {
-        return $this->container['min_sample_size'];
-    }
-
-    /**
-     * Sets min_sample_size
-     *
-     * @param int|null $min_sample_size The minimum number of samples required to make a decision
-     *
-     * @return self
-     */
-    public function setMinSampleSize($min_sample_size)
-    {
-        if (is_null($min_sample_size)) {
-            throw new \InvalidArgumentException('non-nullable min_sample_size cannot be null');
-        }
-        $this->container['min_sample_size'] = $min_sample_size;
-
-        return $this;
-    }
-
-    /**
-     * Gets rollback_on_regression
-     *
-     * @return bool|null
-     */
-    public function getRollbackOnRegression()
-    {
-        return $this->container['rollback_on_regression'];
-    }
-
-    /**
-     * Sets rollback_on_regression
-     *
-     * @param bool|null $rollback_on_regression Whether to roll back on regression
-     *
-     * @return self
-     */
-    public function setRollbackOnRegression($rollback_on_regression)
-    {
-        if (is_null($rollback_on_regression)) {
-            throw new \InvalidArgumentException('non-nullable rollback_on_regression cannot be null');
-        }
-        $this->container['rollback_on_regression'] = $rollback_on_regression;
-
-        return $this;
-    }
-
-    /**
-     * Gets metric_keys
-     *
-     * @return string[]|null
-     */
-    public function getMetricKeys()
-    {
-        return $this->container['metric_keys'];
-    }
-
-    /**
-     * Sets metric_keys
-     *
-     * @param string[]|null $metric_keys List of metric keys
-     *
-     * @return self
-     */
-    public function setMetricKeys($metric_keys)
-    {
-        if (is_null($metric_keys)) {
-            throw new \InvalidArgumentException('non-nullable metric_keys cannot be null');
-        }
-        $this->container['metric_keys'] = $metric_keys;
-
-        return $this;
-    }
-
-    /**
-     * Gets metric_group_keys
-     *
-     * @return string[]|null
-     */
-    public function getMetricGroupKeys()
-    {
-        return $this->container['metric_group_keys'];
-    }
-
-    /**
-     * Sets metric_group_keys
-     *
-     * @param string[]|null $metric_group_keys List of metric group keys
-     *
-     * @return self
-     */
-    public function setMetricGroupKeys($metric_group_keys)
-    {
-        if (is_null($metric_group_keys)) {
-            throw new \InvalidArgumentException('non-nullable metric_group_keys cannot be null');
-        }
-        $this->container['metric_group_keys'] = $metric_group_keys;
 
         return $this;
     }

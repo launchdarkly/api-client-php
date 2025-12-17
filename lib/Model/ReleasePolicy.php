@@ -64,7 +64,7 @@ class ReleasePolicy implements ModelInterface, ArrayAccess, \JsonSerializable
         'rank' => 'int',
         'release_method' => '\LaunchDarklyApi\Model\ReleaseMethod',
         'guarded_release_config' => '\LaunchDarklyApi\Model\GuardedReleaseConfig',
-        'progressive_release_config' => 'object',
+        'progressive_release_config' => '\LaunchDarklyApi\Model\ProgressiveReleaseConfig',
         'name' => 'string',
         'key' => 'string'
     ];
@@ -530,7 +530,7 @@ class ReleasePolicy implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Gets progressive_release_config
      *
-     * @return object|null
+     * @return \LaunchDarklyApi\Model\ProgressiveReleaseConfig|null
      */
     public function getProgressiveReleaseConfig()
     {
@@ -540,7 +540,7 @@ class ReleasePolicy implements ModelInterface, ArrayAccess, \JsonSerializable
     /**
      * Sets progressive_release_config
      *
-     * @param object|null $progressive_release_config Configuration for progressive releases
+     * @param \LaunchDarklyApi\Model\ProgressiveReleaseConfig|null $progressive_release_config progressive_release_config
      *
      * @return self
      */

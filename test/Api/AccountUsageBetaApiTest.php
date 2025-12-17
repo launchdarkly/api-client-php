@@ -169,6 +169,30 @@ class AccountUsageBetaApiTest extends TestCase
     }
 
     /**
+     * Test case for getMAUClientsideUsage
+     *
+     * Get MAU clientside usage.
+     *
+     */
+    public function testGetMAUClientsideUsage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
+     * Test case for getMAUTotalUsage
+     *
+     * Get MAU total usage.
+     *
+     */
+    public function testGetMAUTotalUsage()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
+
+    /**
      * Test case for getMauSdksByType
      *
      * Get MAU SDKs by type.

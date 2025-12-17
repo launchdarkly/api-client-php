@@ -1,6 +1,6 @@
 <?php
 /**
- * GuardedReleaseConfig
+ * AgentGraphPost
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \LaunchDarklyApi\ObjectSerializer;
 
 /**
- * GuardedReleaseConfig Class Doc Comment
+ * AgentGraphPost Class Doc Comment
  *
  * @category Class
- * @description Configuration for guarded releases
+ * @description Request body for creating an agent graph
  * @package  LaunchDarklyApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializable
+class AgentGraphPost implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'GuardedReleaseConfig';
+    protected static $openAPIModelName = 'AgentGraphPost';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,11 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'rollout_context_kind_key' => 'string',
-        'min_sample_size' => 'int',
-        'rollback_on_regression' => 'bool',
-        'metric_keys' => 'string[]',
-        'metric_group_keys' => 'string[]',
-        'stages' => '\LaunchDarklyApi\Model\ReleasePolicyStage[]'
+        'key' => 'string',
+        'name' => 'string',
+        'description' => 'string',
+        'root_config_key' => 'string',
+        'edges' => '\LaunchDarklyApi\Model\AgentGraphEdgePost[]'
     ];
 
     /**
@@ -75,12 +74,11 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'rollout_context_kind_key' => null,
-        'min_sample_size' => null,
-        'rollback_on_regression' => null,
-        'metric_keys' => null,
-        'metric_group_keys' => null,
-        'stages' => null
+        'key' => null,
+        'name' => null,
+        'description' => null,
+        'root_config_key' => null,
+        'edges' => null
     ];
 
     /**
@@ -89,12 +87,11 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'rollout_context_kind_key' => false,
-        'min_sample_size' => false,
-        'rollback_on_regression' => false,
-        'metric_keys' => false,
-        'metric_group_keys' => false,
-        'stages' => false
+        'key' => false,
+        'name' => false,
+        'description' => false,
+        'root_config_key' => false,
+        'edges' => false
     ];
 
     /**
@@ -183,12 +180,11 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'rollout_context_kind_key' => 'rolloutContextKindKey',
-        'min_sample_size' => 'minSampleSize',
-        'rollback_on_regression' => 'rollbackOnRegression',
-        'metric_keys' => 'metricKeys',
-        'metric_group_keys' => 'metricGroupKeys',
-        'stages' => 'stages'
+        'key' => 'key',
+        'name' => 'name',
+        'description' => 'description',
+        'root_config_key' => 'rootConfigKey',
+        'edges' => 'edges'
     ];
 
     /**
@@ -197,12 +193,11 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'rollout_context_kind_key' => 'setRolloutContextKindKey',
-        'min_sample_size' => 'setMinSampleSize',
-        'rollback_on_regression' => 'setRollbackOnRegression',
-        'metric_keys' => 'setMetricKeys',
-        'metric_group_keys' => 'setMetricGroupKeys',
-        'stages' => 'setStages'
+        'key' => 'setKey',
+        'name' => 'setName',
+        'description' => 'setDescription',
+        'root_config_key' => 'setRootConfigKey',
+        'edges' => 'setEdges'
     ];
 
     /**
@@ -211,12 +206,11 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'rollout_context_kind_key' => 'getRolloutContextKindKey',
-        'min_sample_size' => 'getMinSampleSize',
-        'rollback_on_regression' => 'getRollbackOnRegression',
-        'metric_keys' => 'getMetricKeys',
-        'metric_group_keys' => 'getMetricGroupKeys',
-        'stages' => 'getStages'
+        'key' => 'getKey',
+        'name' => 'getName',
+        'description' => 'getDescription',
+        'root_config_key' => 'getRootConfigKey',
+        'edges' => 'getEdges'
     ];
 
     /**
@@ -276,12 +270,11 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('rollout_context_kind_key', $data ?? [], null);
-        $this->setIfExists('min_sample_size', $data ?? [], null);
-        $this->setIfExists('rollback_on_regression', $data ?? [], null);
-        $this->setIfExists('metric_keys', $data ?? [], null);
-        $this->setIfExists('metric_group_keys', $data ?? [], null);
-        $this->setIfExists('stages', $data ?? [], null);
+        $this->setIfExists('key', $data ?? [], null);
+        $this->setIfExists('name', $data ?? [], null);
+        $this->setIfExists('description', $data ?? [], null);
+        $this->setIfExists('root_config_key', $data ?? [], null);
+        $this->setIfExists('edges', $data ?? [], null);
     }
 
     /**
@@ -311,6 +304,12 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['key'] === null) {
+            $invalidProperties[] = "'key' can't be null";
+        }
+        if ($this->container['name'] === null) {
+            $invalidProperties[] = "'name' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -327,163 +326,136 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets rollout_context_kind_key
+     * Gets key
+     *
+     * @return string
+     */
+    public function getKey()
+    {
+        return $this->container['key'];
+    }
+
+    /**
+     * Sets key
+     *
+     * @param string $key A unique key for the agent graph
+     *
+     * @return self
+     */
+    public function setKey($key)
+    {
+        if (is_null($key)) {
+            throw new \InvalidArgumentException('non-nullable key cannot be null');
+        }
+        $this->container['key'] = $key;
+
+        return $this;
+    }
+
+    /**
+     * Gets name
+     *
+     * @return string
+     */
+    public function getName()
+    {
+        return $this->container['name'];
+    }
+
+    /**
+     * Sets name
+     *
+     * @param string $name A human-readable name for the agent graph
+     *
+     * @return self
+     */
+    public function setName($name)
+    {
+        if (is_null($name)) {
+            throw new \InvalidArgumentException('non-nullable name cannot be null');
+        }
+        $this->container['name'] = $name;
+
+        return $this;
+    }
+
+    /**
+     * Gets description
      *
      * @return string|null
      */
-    public function getRolloutContextKindKey()
+    public function getDescription()
     {
-        return $this->container['rollout_context_kind_key'];
+        return $this->container['description'];
     }
 
     /**
-     * Sets rollout_context_kind_key
+     * Sets description
      *
-     * @param string|null $rollout_context_kind_key Context kind key to use as the randomization unit for the rollout
+     * @param string|null $description A description of the agent graph
      *
      * @return self
      */
-    public function setRolloutContextKindKey($rollout_context_kind_key)
+    public function setDescription($description)
     {
-        if (is_null($rollout_context_kind_key)) {
-            throw new \InvalidArgumentException('non-nullable rollout_context_kind_key cannot be null');
+        if (is_null($description)) {
+            throw new \InvalidArgumentException('non-nullable description cannot be null');
         }
-        $this->container['rollout_context_kind_key'] = $rollout_context_kind_key;
+        $this->container['description'] = $description;
 
         return $this;
     }
 
     /**
-     * Gets min_sample_size
+     * Gets root_config_key
      *
-     * @return int|null
+     * @return string|null
      */
-    public function getMinSampleSize()
+    public function getRootConfigKey()
     {
-        return $this->container['min_sample_size'];
+        return $this->container['root_config_key'];
     }
 
     /**
-     * Sets min_sample_size
+     * Sets root_config_key
      *
-     * @param int|null $min_sample_size The minimum number of samples required to make a decision
+     * @param string|null $root_config_key The AI Config key of the root node. A missing root implies a newly created graph with metadata only.
      *
      * @return self
      */
-    public function setMinSampleSize($min_sample_size)
+    public function setRootConfigKey($root_config_key)
     {
-        if (is_null($min_sample_size)) {
-            throw new \InvalidArgumentException('non-nullable min_sample_size cannot be null');
+        if (is_null($root_config_key)) {
+            throw new \InvalidArgumentException('non-nullable root_config_key cannot be null');
         }
-        $this->container['min_sample_size'] = $min_sample_size;
+        $this->container['root_config_key'] = $root_config_key;
 
         return $this;
     }
 
     /**
-     * Gets rollback_on_regression
+     * Gets edges
      *
-     * @return bool|null
+     * @return \LaunchDarklyApi\Model\AgentGraphEdgePost[]|null
      */
-    public function getRollbackOnRegression()
+    public function getEdges()
     {
-        return $this->container['rollback_on_regression'];
+        return $this->container['edges'];
     }
 
     /**
-     * Sets rollback_on_regression
+     * Sets edges
      *
-     * @param bool|null $rollback_on_regression Whether to roll back on regression
+     * @param \LaunchDarklyApi\Model\AgentGraphEdgePost[]|null $edges The edges in the graph. If edges or rootConfigKey is present, both must be present.
      *
      * @return self
      */
-    public function setRollbackOnRegression($rollback_on_regression)
+    public function setEdges($edges)
     {
-        if (is_null($rollback_on_regression)) {
-            throw new \InvalidArgumentException('non-nullable rollback_on_regression cannot be null');
+        if (is_null($edges)) {
+            throw new \InvalidArgumentException('non-nullable edges cannot be null');
         }
-        $this->container['rollback_on_regression'] = $rollback_on_regression;
-
-        return $this;
-    }
-
-    /**
-     * Gets metric_keys
-     *
-     * @return string[]|null
-     */
-    public function getMetricKeys()
-    {
-        return $this->container['metric_keys'];
-    }
-
-    /**
-     * Sets metric_keys
-     *
-     * @param string[]|null $metric_keys List of metric keys
-     *
-     * @return self
-     */
-    public function setMetricKeys($metric_keys)
-    {
-        if (is_null($metric_keys)) {
-            throw new \InvalidArgumentException('non-nullable metric_keys cannot be null');
-        }
-        $this->container['metric_keys'] = $metric_keys;
-
-        return $this;
-    }
-
-    /**
-     * Gets metric_group_keys
-     *
-     * @return string[]|null
-     */
-    public function getMetricGroupKeys()
-    {
-        return $this->container['metric_group_keys'];
-    }
-
-    /**
-     * Sets metric_group_keys
-     *
-     * @param string[]|null $metric_group_keys List of metric group keys
-     *
-     * @return self
-     */
-    public function setMetricGroupKeys($metric_group_keys)
-    {
-        if (is_null($metric_group_keys)) {
-            throw new \InvalidArgumentException('non-nullable metric_group_keys cannot be null');
-        }
-        $this->container['metric_group_keys'] = $metric_group_keys;
-
-        return $this;
-    }
-
-    /**
-     * Gets stages
-     *
-     * @return \LaunchDarklyApi\Model\ReleasePolicyStage[]|null
-     */
-    public function getStages()
-    {
-        return $this->container['stages'];
-    }
-
-    /**
-     * Sets stages
-     *
-     * @param \LaunchDarklyApi\Model\ReleasePolicyStage[]|null $stages List of stages
-     *
-     * @return self
-     */
-    public function setStages($stages)
-    {
-        if (is_null($stages)) {
-            throw new \InvalidArgumentException('non-nullable stages cannot be null');
-        }
-        $this->container['stages'] = $stages;
+        $this->container['edges'] = $edges;
 
         return $this;
     }

@@ -1,6 +1,6 @@
 <?php
 /**
- * GuardedReleaseConfig
+ * AgentGraphEdgePost
  *
  * PHP version 8.1
  *
@@ -33,16 +33,16 @@ use \ArrayAccess;
 use \LaunchDarklyApi\ObjectSerializer;
 
 /**
- * GuardedReleaseConfig Class Doc Comment
+ * AgentGraphEdgePost Class Doc Comment
  *
  * @category Class
- * @description Configuration for guarded releases
+ * @description An edge in an agent graph connecting two AI Configs
  * @package  LaunchDarklyApi
  * @author   OpenAPI Generator team
  * @link     https://openapi-generator.tech
  * @implements \ArrayAccess<string, mixed>
  */
-class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializable
+class AgentGraphEdgePost implements ModelInterface, ArrayAccess, \JsonSerializable
 {
     public const DISCRIMINATOR = null;
 
@@ -51,7 +51,7 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
       *
       * @var string
       */
-    protected static $openAPIModelName = 'GuardedReleaseConfig';
+    protected static $openAPIModelName = 'AgentGraphEdgePost';
 
     /**
       * Array of property to type mappings. Used for (de)serialization
@@ -59,12 +59,9 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var string[]
       */
     protected static $openAPITypes = [
-        'rollout_context_kind_key' => 'string',
-        'min_sample_size' => 'int',
-        'rollback_on_regression' => 'bool',
-        'metric_keys' => 'string[]',
-        'metric_group_keys' => 'string[]',
-        'stages' => '\LaunchDarklyApi\Model\ReleasePolicyStage[]'
+        'source_config' => 'string',
+        'target_config' => 'string',
+        'handoff' => 'object'
     ];
 
     /**
@@ -75,12 +72,9 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
       * @psalm-var array<string, string|null>
       */
     protected static $openAPIFormats = [
-        'rollout_context_kind_key' => null,
-        'min_sample_size' => null,
-        'rollback_on_regression' => null,
-        'metric_keys' => null,
-        'metric_group_keys' => null,
-        'stages' => null
+        'source_config' => null,
+        'target_config' => null,
+        'handoff' => null
     ];
 
     /**
@@ -89,12 +83,9 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
       * @var boolean[]
       */
     protected static array $openAPINullables = [
-        'rollout_context_kind_key' => false,
-        'min_sample_size' => false,
-        'rollback_on_regression' => false,
-        'metric_keys' => false,
-        'metric_group_keys' => false,
-        'stages' => false
+        'source_config' => false,
+        'target_config' => false,
+        'handoff' => false
     ];
 
     /**
@@ -183,12 +174,9 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $attributeMap = [
-        'rollout_context_kind_key' => 'rolloutContextKindKey',
-        'min_sample_size' => 'minSampleSize',
-        'rollback_on_regression' => 'rollbackOnRegression',
-        'metric_keys' => 'metricKeys',
-        'metric_group_keys' => 'metricGroupKeys',
-        'stages' => 'stages'
+        'source_config' => 'sourceConfig',
+        'target_config' => 'targetConfig',
+        'handoff' => 'handoff'
     ];
 
     /**
@@ -197,12 +185,9 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $setters = [
-        'rollout_context_kind_key' => 'setRolloutContextKindKey',
-        'min_sample_size' => 'setMinSampleSize',
-        'rollback_on_regression' => 'setRollbackOnRegression',
-        'metric_keys' => 'setMetricKeys',
-        'metric_group_keys' => 'setMetricGroupKeys',
-        'stages' => 'setStages'
+        'source_config' => 'setSourceConfig',
+        'target_config' => 'setTargetConfig',
+        'handoff' => 'setHandoff'
     ];
 
     /**
@@ -211,12 +196,9 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
      * @var string[]
      */
     protected static $getters = [
-        'rollout_context_kind_key' => 'getRolloutContextKindKey',
-        'min_sample_size' => 'getMinSampleSize',
-        'rollback_on_regression' => 'getRollbackOnRegression',
-        'metric_keys' => 'getMetricKeys',
-        'metric_group_keys' => 'getMetricGroupKeys',
-        'stages' => 'getStages'
+        'source_config' => 'getSourceConfig',
+        'target_config' => 'getTargetConfig',
+        'handoff' => 'getHandoff'
     ];
 
     /**
@@ -276,12 +258,9 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
      */
     public function __construct(?array $data = null)
     {
-        $this->setIfExists('rollout_context_kind_key', $data ?? [], null);
-        $this->setIfExists('min_sample_size', $data ?? [], null);
-        $this->setIfExists('rollback_on_regression', $data ?? [], null);
-        $this->setIfExists('metric_keys', $data ?? [], null);
-        $this->setIfExists('metric_group_keys', $data ?? [], null);
-        $this->setIfExists('stages', $data ?? [], null);
+        $this->setIfExists('source_config', $data ?? [], null);
+        $this->setIfExists('target_config', $data ?? [], null);
+        $this->setIfExists('handoff', $data ?? [], null);
     }
 
     /**
@@ -311,6 +290,12 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
     {
         $invalidProperties = [];
 
+        if ($this->container['source_config'] === null) {
+            $invalidProperties[] = "'source_config' can't be null";
+        }
+        if ($this->container['target_config'] === null) {
+            $invalidProperties[] = "'target_config' can't be null";
+        }
         return $invalidProperties;
     }
 
@@ -327,163 +312,82 @@ class GuardedReleaseConfig implements ModelInterface, ArrayAccess, \JsonSerializ
 
 
     /**
-     * Gets rollout_context_kind_key
+     * Gets source_config
      *
-     * @return string|null
+     * @return string
      */
-    public function getRolloutContextKindKey()
+    public function getSourceConfig()
     {
-        return $this->container['rollout_context_kind_key'];
+        return $this->container['source_config'];
     }
 
     /**
-     * Sets rollout_context_kind_key
+     * Sets source_config
      *
-     * @param string|null $rollout_context_kind_key Context kind key to use as the randomization unit for the rollout
+     * @param string $source_config The AI Config key that is the source of this edge
      *
      * @return self
      */
-    public function setRolloutContextKindKey($rollout_context_kind_key)
+    public function setSourceConfig($source_config)
     {
-        if (is_null($rollout_context_kind_key)) {
-            throw new \InvalidArgumentException('non-nullable rollout_context_kind_key cannot be null');
+        if (is_null($source_config)) {
+            throw new \InvalidArgumentException('non-nullable source_config cannot be null');
         }
-        $this->container['rollout_context_kind_key'] = $rollout_context_kind_key;
+        $this->container['source_config'] = $source_config;
 
         return $this;
     }
 
     /**
-     * Gets min_sample_size
+     * Gets target_config
      *
-     * @return int|null
+     * @return string
      */
-    public function getMinSampleSize()
+    public function getTargetConfig()
     {
-        return $this->container['min_sample_size'];
+        return $this->container['target_config'];
     }
 
     /**
-     * Sets min_sample_size
+     * Sets target_config
      *
-     * @param int|null $min_sample_size The minimum number of samples required to make a decision
+     * @param string $target_config The AI Config key that is the target of this edge
      *
      * @return self
      */
-    public function setMinSampleSize($min_sample_size)
+    public function setTargetConfig($target_config)
     {
-        if (is_null($min_sample_size)) {
-            throw new \InvalidArgumentException('non-nullable min_sample_size cannot be null');
+        if (is_null($target_config)) {
+            throw new \InvalidArgumentException('non-nullable target_config cannot be null');
         }
-        $this->container['min_sample_size'] = $min_sample_size;
+        $this->container['target_config'] = $target_config;
 
         return $this;
     }
 
     /**
-     * Gets rollback_on_regression
+     * Gets handoff
      *
-     * @return bool|null
+     * @return object|null
      */
-    public function getRollbackOnRegression()
+    public function getHandoff()
     {
-        return $this->container['rollback_on_regression'];
+        return $this->container['handoff'];
     }
 
     /**
-     * Sets rollback_on_regression
+     * Sets handoff
      *
-     * @param bool|null $rollback_on_regression Whether to roll back on regression
+     * @param object|null $handoff The handoff options from the source AI Config to the target AI Config
      *
      * @return self
      */
-    public function setRollbackOnRegression($rollback_on_regression)
+    public function setHandoff($handoff)
     {
-        if (is_null($rollback_on_regression)) {
-            throw new \InvalidArgumentException('non-nullable rollback_on_regression cannot be null');
+        if (is_null($handoff)) {
+            throw new \InvalidArgumentException('non-nullable handoff cannot be null');
         }
-        $this->container['rollback_on_regression'] = $rollback_on_regression;
-
-        return $this;
-    }
-
-    /**
-     * Gets metric_keys
-     *
-     * @return string[]|null
-     */
-    public function getMetricKeys()
-    {
-        return $this->container['metric_keys'];
-    }
-
-    /**
-     * Sets metric_keys
-     *
-     * @param string[]|null $metric_keys List of metric keys
-     *
-     * @return self
-     */
-    public function setMetricKeys($metric_keys)
-    {
-        if (is_null($metric_keys)) {
-            throw new \InvalidArgumentException('non-nullable metric_keys cannot be null');
-        }
-        $this->container['metric_keys'] = $metric_keys;
-
-        return $this;
-    }
-
-    /**
-     * Gets metric_group_keys
-     *
-     * @return string[]|null
-     */
-    public function getMetricGroupKeys()
-    {
-        return $this->container['metric_group_keys'];
-    }
-
-    /**
-     * Sets metric_group_keys
-     *
-     * @param string[]|null $metric_group_keys List of metric group keys
-     *
-     * @return self
-     */
-    public function setMetricGroupKeys($metric_group_keys)
-    {
-        if (is_null($metric_group_keys)) {
-            throw new \InvalidArgumentException('non-nullable metric_group_keys cannot be null');
-        }
-        $this->container['metric_group_keys'] = $metric_group_keys;
-
-        return $this;
-    }
-
-    /**
-     * Gets stages
-     *
-     * @return \LaunchDarklyApi\Model\ReleasePolicyStage[]|null
-     */
-    public function getStages()
-    {
-        return $this->container['stages'];
-    }
-
-    /**
-     * Sets stages
-     *
-     * @param \LaunchDarklyApi\Model\ReleasePolicyStage[]|null $stages List of stages
-     *
-     * @return self
-     */
-    public function setStages($stages)
-    {
-        if (is_null($stages)) {
-            throw new \InvalidArgumentException('non-nullable stages cannot be null');
-        }
-        $this->container['stages'] = $stages;
+        $this->container['handoff'] = $handoff;
 
         return $this;
     }

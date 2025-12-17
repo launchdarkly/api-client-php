@@ -535,6 +535,7 @@ Class | Method | HTTP request | Description
 *AIConfigsBetaApi* | [**getModelConfig**](docs/Api/AIConfigsBetaApi.md#getmodelconfig) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey} | Get AI model config
 *AIConfigsBetaApi* | [**listAIToolVersions**](docs/Api/AIConfigsBetaApi.md#listaitoolversions) | **GET** /api/v2/projects/{projectKey}/ai-tools/{toolKey}/versions | List AI tool versions
 *AIConfigsBetaApi* | [**listAITools**](docs/Api/AIConfigsBetaApi.md#listaitools) | **GET** /api/v2/projects/{projectKey}/ai-tools | List AI tools
+*AIConfigsBetaApi* | [**listAgentGraphs**](docs/Api/AIConfigsBetaApi.md#listagentgraphs) | **GET** /api/v2/projects/{projectKey}/agent-graphs | List agent graphs
 *AIConfigsBetaApi* | [**listModelConfigs**](docs/Api/AIConfigsBetaApi.md#listmodelconfigs) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs | List AI model configs
 *AIConfigsBetaApi* | [**patchAIConfig**](docs/Api/AIConfigsBetaApi.md#patchaiconfig) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Update AI Config
 *AIConfigsBetaApi* | [**patchAIConfigTargeting**](docs/Api/AIConfigsBetaApi.md#patchaiconfigtargeting) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting | Update AI Config targeting
@@ -543,6 +544,7 @@ Class | Method | HTTP request | Description
 *AIConfigsBetaApi* | [**postAIConfig**](docs/Api/AIConfigsBetaApi.md#postaiconfig) | **POST** /api/v2/projects/{projectKey}/ai-configs | Create new AI Config
 *AIConfigsBetaApi* | [**postAIConfigVariation**](docs/Api/AIConfigsBetaApi.md#postaiconfigvariation) | **POST** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations | Create AI Config variation
 *AIConfigsBetaApi* | [**postAITool**](docs/Api/AIConfigsBetaApi.md#postaitool) | **POST** /api/v2/projects/{projectKey}/ai-tools | Create an AI tool
+*AIConfigsBetaApi* | [**postAgentGraph**](docs/Api/AIConfigsBetaApi.md#postagentgraph) | **POST** /api/v2/projects/{projectKey}/agent-graphs | Create new agent graph
 *AIConfigsBetaApi* | [**postModelConfig**](docs/Api/AIConfigsBetaApi.md#postmodelconfig) | **POST** /api/v2/projects/{projectKey}/ai-configs/model-configs | Create an AI model config
 *AIConfigsBetaApi* | [**postRestrictedModels**](docs/Api/AIConfigsBetaApi.md#postrestrictedmodels) | **POST** /api/v2/projects/{projectKey}/ai-configs/model-configs/restricted | Add AI models to the restricted list
 *AccessTokensApi* | [**deleteToken**](docs/Api/AccessTokensApi.md#deletetoken) | **DELETE** /api/v2/tokens/{id} | Delete access token
@@ -566,6 +568,8 @@ Class | Method | HTTP request | Description
 *AccountUsageBetaApi* | [**getEventsUsage**](docs/Api/AccountUsageBetaApi.md#geteventsusage) | **GET** /api/v2/usage/events/{type} | Get events usage
 *AccountUsageBetaApi* | [**getExperimentationEventsUsage**](docs/Api/AccountUsageBetaApi.md#getexperimentationeventsusage) | **GET** /api/v2/usage/experimentation-events | Get experimentation events usage
 *AccountUsageBetaApi* | [**getExperimentationKeysUsage**](docs/Api/AccountUsageBetaApi.md#getexperimentationkeysusage) | **GET** /api/v2/usage/experimentation-keys | Get experimentation keys usage
+*AccountUsageBetaApi* | [**getMAUClientsideUsage**](docs/Api/AccountUsageBetaApi.md#getmauclientsideusage) | **GET** /api/v2/usage/clientside-mau | Get MAU clientside usage
+*AccountUsageBetaApi* | [**getMAUTotalUsage**](docs/Api/AccountUsageBetaApi.md#getmautotalusage) | **GET** /api/v2/usage/total-mau | Get MAU total usage
 *AccountUsageBetaApi* | [**getMauSdksByType**](docs/Api/AccountUsageBetaApi.md#getmausdksbytype) | **GET** /api/v2/usage/mau/sdks | Get MAU SDKs by type
 *AccountUsageBetaApi* | [**getMauUsage**](docs/Api/AccountUsageBetaApi.md#getmauusage) | **GET** /api/v2/usage/mau | Get MAU usage
 *AccountUsageBetaApi* | [**getMauUsageByCategory**](docs/Api/AccountUsageBetaApi.md#getmauusagebycategory) | **GET** /api/v2/usage/mau/bycategory | Get MAU usage by category
@@ -897,6 +901,11 @@ Class | Method | HTTP request | Description
 - [AccessTokenPost](docs/Model/AccessTokenPost.md)
 - [ActionInput](docs/Model/ActionInput.md)
 - [ActionOutput](docs/Model/ActionOutput.md)
+- [AgentGraph](docs/Model/AgentGraph.md)
+- [AgentGraphEdge](docs/Model/AgentGraphEdge.md)
+- [AgentGraphEdgePost](docs/Model/AgentGraphEdgePost.md)
+- [AgentGraphPost](docs/Model/AgentGraphPost.md)
+- [AgentGraphs](docs/Model/AgentGraphs.md)
 - [AiConfigsAccess](docs/Model/AiConfigsAccess.md)
 - [AiConfigsAccessAllowedReason](docs/Model/AiConfigsAccessAllowedReason.md)
 - [AiConfigsAccessAllowedRep](docs/Model/AiConfigsAccessAllowedRep.md)
@@ -992,7 +1001,6 @@ Class | Method | HTTP request | Description
 - [Contexts](docs/Model/Contexts.md)
 - [CopiedFromEnv](docs/Model/CopiedFromEnv.md)
 - [CoreLink](docs/Model/CoreLink.md)
-- [CovarianceInfoRep](docs/Model/CovarianceInfoRep.md)
 - [CreateAnnouncementBody](docs/Model/CreateAnnouncementBody.md)
 - [CreateApprovalRequestRequest](docs/Model/CreateApprovalRequestRequest.md)
 - [CreateCopyFlagConfigApprovalRequestRequest](docs/Model/CreateCopyFlagConfigApprovalRequestRequest.md)
@@ -1274,6 +1282,7 @@ Class | Method | HTTP request | Description
 - [PostInsightGroupParams](docs/Model/PostInsightGroupParams.md)
 - [PostReleasePolicyRequest](docs/Model/PostReleasePolicyRequest.md)
 - [Prerequisite](docs/Model/Prerequisite.md)
+- [ProgressiveReleaseConfig](docs/Model/ProgressiveReleaseConfig.md)
 - [Project](docs/Model/Project.md)
 - [ProjectPost](docs/Model/ProjectPost.md)
 - [ProjectRep](docs/Model/ProjectRep.md)
@@ -1313,6 +1322,7 @@ Class | Method | HTTP request | Description
 - [ReleasePoliciesResponse](docs/Model/ReleasePoliciesResponse.md)
 - [ReleasePolicy](docs/Model/ReleasePolicy.md)
 - [ReleasePolicyScope](docs/Model/ReleasePolicyScope.md)
+- [ReleasePolicyStage](docs/Model/ReleasePolicyStage.md)
 - [ReleaseProgression](docs/Model/ReleaseProgression.md)
 - [ReleaseProgressionCollection](docs/Model/ReleaseProgressionCollection.md)
 - [ReleaserAudienceConfigInput](docs/Model/ReleaserAudienceConfigInput.md)
@@ -1473,6 +1483,6 @@ support@launchdarkly.com
 This PHP package is automatically generated by the [OpenAPI Generator](https://openapi-generator.tech) project:
 
 - API version: `2.0`
-    - Package version: `19.0.0`
+    - Package version: `20.0.0`
     - Generator version: `7.16.0`
 - Build package: `org.openapitools.codegen.languages.PhpClientCodegen`

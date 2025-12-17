@@ -88,4 +88,13 @@ class ReleasePolicyScopeTest extends TestCase
         // TODO: implement
         self::markTestIncomplete('Not implemented');
     }
+
+    /**
+     * Test attribute "flag_tag_keys"
+     */
+    public function testPropertyFlagTagKeys()
+    {
+        // TODO: implement
+        self::markTestIncomplete('Not implemented');
+    }
 }

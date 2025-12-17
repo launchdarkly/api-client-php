@@ -59,6 +59,7 @@ class Rule implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPITypes = [
         '_id' => 'string',
+        'disabled' => 'bool',
         'variation' => 'int',
         'rollout' => '\LaunchDarklyApi\Model\Rollout',
         'clauses' => '\LaunchDarklyApi\Model\Clause[]',
@@ -76,6 +77,7 @@ class Rule implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static $openAPIFormats = [
         '_id' => null,
+        'disabled' => null,
         'variation' => null,
         'rollout' => null,
         'clauses' => null,
@@ -91,6 +93,7 @@ class Rule implements ModelInterface, ArrayAccess, \JsonSerializable
       */
     protected static array $openAPINullables = [
         '_id' => false,
+        'disabled' => false,
         'variation' => false,
         'rollout' => false,
         'clauses' => false,
@@ -186,6 +189,7 @@ class Rule implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $attributeMap = [
         '_id' => '_id',
+        'disabled' => 'disabled',
         'variation' => 'variation',
         'rollout' => 'rollout',
         'clauses' => 'clauses',
@@ -201,6 +205,7 @@ class Rule implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $setters = [
         '_id' => 'setId',
+        'disabled' => 'setDisabled',
         'variation' => 'setVariation',
         'rollout' => 'setRollout',
         'clauses' => 'setClauses',
@@ -216,6 +221,7 @@ class Rule implements ModelInterface, ArrayAccess, \JsonSerializable
      */
     protected static $getters = [
         '_id' => 'getId',
+        'disabled' => 'getDisabled',
         'variation' => 'getVariation',
         'rollout' => 'getRollout',
         'clauses' => 'getClauses',
@@ -282,6 +288,7 @@ class Rule implements ModelInterface, ArrayAccess, \JsonSerializable
     public function __construct(?array $data = null)
     {
         $this->setIfExists('_id', $data ?? [], null);
+        $this->setIfExists('disabled', $data ?? [], null);
         $this->setIfExists('variation', $data ?? [], null);
         $this->setIfExists('rollout', $data ?? [], null);
         $this->setIfExists('clauses', $data ?? [], null);
@@ -361,6 +368,33 @@ class Rule implements ModelInterface, ArrayAccess, \JsonSerializable
             throw new \InvalidArgumentException('non-nullable _id cannot be null');
         }
         $this->container['_id'] = $_id;
+
+        return $this;
+    }
+
+    /**
+     * Gets disabled
+     *
+     * @return bool|null
+     */
+    public function getDisabled()
+    {
+        return $this->container['disabled'];
+    }
+
+    /**
+     * Sets disabled
+     *
+     * @param bool|null $disabled Whether the rule is disabled
+     *
+     * @return self
+     */
+    public function setDisabled($disabled)
+    {
+        if (is_null($disabled)) {
+            throw new \InvalidArgumentException('non-nullable disabled cannot be null');
+        }
+        $this->container['disabled'] = $disabled;
 
         return $this;
     }

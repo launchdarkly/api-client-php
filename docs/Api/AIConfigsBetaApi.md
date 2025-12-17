@@ -19,6 +19,7 @@ All URIs are relative to https://app.launchdarkly.com, except if the operation d
 | [**getModelConfig()**](AIConfigsBetaApi.md#getModelConfig) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs/{modelConfigKey} | Get AI model config |
 | [**listAIToolVersions()**](AIConfigsBetaApi.md#listAIToolVersions) | **GET** /api/v2/projects/{projectKey}/ai-tools/{toolKey}/versions | List AI tool versions |
 | [**listAITools()**](AIConfigsBetaApi.md#listAITools) | **GET** /api/v2/projects/{projectKey}/ai-tools | List AI tools |
+| [**listAgentGraphs()**](AIConfigsBetaApi.md#listAgentGraphs) | **GET** /api/v2/projects/{projectKey}/agent-graphs | List agent graphs |
 | [**listModelConfigs()**](AIConfigsBetaApi.md#listModelConfigs) | **GET** /api/v2/projects/{projectKey}/ai-configs/model-configs | List AI model configs |
 | [**patchAIConfig()**](AIConfigsBetaApi.md#patchAIConfig) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey} | Update AI Config |
 | [**patchAIConfigTargeting()**](AIConfigsBetaApi.md#patchAIConfigTargeting) | **PATCH** /api/v2/projects/{projectKey}/ai-configs/{configKey}/targeting | Update AI Config targeting |
@@ -27,6 +28,7 @@ All URIs are relative to https://app.launchdarkly.com, except if the operation d
 | [**postAIConfig()**](AIConfigsBetaApi.md#postAIConfig) | **POST** /api/v2/projects/{projectKey}/ai-configs | Create new AI Config |
 | [**postAIConfigVariation()**](AIConfigsBetaApi.md#postAIConfigVariation) | **POST** /api/v2/projects/{projectKey}/ai-configs/{configKey}/variations | Create AI Config variation |
 | [**postAITool()**](AIConfigsBetaApi.md#postAITool) | **POST** /api/v2/projects/{projectKey}/ai-tools | Create an AI tool |
+| [**postAgentGraph()**](AIConfigsBetaApi.md#postAgentGraph) | **POST** /api/v2/projects/{projectKey}/agent-graphs | Create new agent graph |
 | [**postModelConfig()**](AIConfigsBetaApi.md#postModelConfig) | **POST** /api/v2/projects/{projectKey}/ai-configs/model-configs | Create an AI model config |
 | [**postRestrictedModels()**](AIConfigsBetaApi.md#postRestrictedModels) | **POST** /api/v2/projects/{projectKey}/ai-configs/model-configs/restricted | Add AI models to the restricted list |
 
@@ -1050,6 +1052,74 @@ try {
 [[Back to Model list]](../../README.md#models)
 [[Back to README]](../../README.md)
 
+## `listAgentGraphs()`
+
+```php
+listAgentGraphs($ld_api_version, $project_key, $limit, $offset): \LaunchDarklyApi\Model\AgentGraphs
+```
+
+List agent graphs
+
+Get a list of all agent graphs in the given project. Returns metadata only, without edge data.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\AIConfigsBetaApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ld_api_version = 'ld_api_version_example'; // string | Version of the endpoint.
+$project_key = 'project_key_example'; // string
+$limit = 56; // int | The number of AI Configs to return.
+$offset = 56; // int | Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query `limit`.
+
+try {
+    $result = $apiInstance->listAgentGraphs($ld_api_version, $project_key, $limit, $offset);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AIConfigsBetaApi->listAgentGraphs: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ld_api_version** | **string**| Version of the endpoint. | |
+| **project_key** | **string**|  | |
+| **limit** | **int**| The number of AI Configs to return. | [optional] |
+| **offset** | **int**| Where to start in the list. Use this with pagination. For example, an offset of 10 skips the first ten items and then returns the next items in the list, up to the query &#x60;limit&#x60;. | [optional] |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\AgentGraphs**](../Model/AgentGraphs.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: Not defined
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
 ## `listModelConfigs()`
 
 ```php
@@ -1576,6 +1646,72 @@ try {
 ### Return type
 
 [**\LaunchDarklyApi\Model\AITool**](../Model/AITool.md)
+
+### Authorization
+
+[ApiKey](../../README.md#ApiKey)
+
+### HTTP request headers
+
+- **Content-Type**: `application/json`
+- **Accept**: `application/json`
+
+[[Back to top]](#) [[Back to API list]](../../README.md#endpoints)
+[[Back to Model list]](../../README.md#models)
+[[Back to README]](../../README.md)
+
+## `postAgentGraph()`
+
+```php
+postAgentGraph($ld_api_version, $project_key, $agent_graph_post): \LaunchDarklyApi\Model\AgentGraph
+```
+
+Create new agent graph
+
+Create a new agent graph within the given project.
+
+### Example
+
+```php
+<?php
+require_once(__DIR__ . '/vendor/autoload.php');
+
+
+// Configure API key authorization: ApiKey
+$config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKey('Authorization', 'YOUR_API_KEY');
+// Uncomment below to setup prefix (e.g. Bearer) for API key, if needed
+// $config = LaunchDarklyApi\Configuration::getDefaultConfiguration()->setApiKeyPrefix('Authorization', 'Bearer');
+
+
+$apiInstance = new LaunchDarklyApi\Api\AIConfigsBetaApi(
+    // If you want use custom http client, pass your client which implements `GuzzleHttp\ClientInterface`.
+    // This is optional, `GuzzleHttp\Client` will be used as default.
+    new GuzzleHttp\Client(),
+    $config
+);
+$ld_api_version = 'ld_api_version_example'; // string | Version of the endpoint.
+$project_key = 'project_key_example'; // string
+$agent_graph_post = new \LaunchDarklyApi\Model\AgentGraphPost(); // \LaunchDarklyApi\Model\AgentGraphPost | Agent graph object to create
+
+try {
+    $result = $apiInstance->postAgentGraph($ld_api_version, $project_key, $agent_graph_post);
+    print_r($result);
+} catch (Exception $e) {
+    echo 'Exception when calling AIConfigsBetaApi->postAgentGraph: ', $e->getMessage(), PHP_EOL;
+}
+```
+
+### Parameters
+
+| Name | Type | Description  | Notes |
+| ------------- | ------------- | ------------- | ------------- |
+| **ld_api_version** | **string**| Version of the endpoint. | |
+| **project_key** | **string**|  | |
+| **agent_graph_post** | [**\LaunchDarklyApi\Model\AgentGraphPost**](../Model/AgentGraphPost.md)| Agent graph object to create | |
+
+### Return type
+
+[**\LaunchDarklyApi\Model\AgentGraph**](../Model/AgentGraph.md)
 
 ### Authorization
 

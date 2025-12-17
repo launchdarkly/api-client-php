@@ -4327,15 +4327,16 @@ class FeatureFlagsApi
      * @param  string $feature_flag_key The feature flag key. The key identifies the flag in your code. (required)
      * @param  \LaunchDarklyApi\Model\PatchWithComment $patch_with_comment patch_with_comment (required)
      * @param  bool|null $ignore_conflicts If true, the patch will be applied even if it causes a pending scheduled change or approval request to fail. (optional)
+     * @param  bool|null $dry_run If true, the patch will be validated but not persisted. Returns a preview of the flag after the patch is applied. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchFeatureFlag'] to see the possible values for this operation
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return \LaunchDarklyApi\Model\FeatureFlag|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\MethodNotAllowedErrorRep|\LaunchDarklyApi\Model\StatusConflictErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep
      */
-    public function patchFeatureFlag($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts = null, string $contentType = self::contentTypes['patchFeatureFlag'][0])
+    public function patchFeatureFlag($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts = null, $dry_run = null, string $contentType = self::contentTypes['patchFeatureFlag'][0])
     {
-        list($response) = $this->patchFeatureFlagWithHttpInfo($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts, $contentType);
+        list($response) = $this->patchFeatureFlagWithHttpInfo($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts, $dry_run, $contentType);
         return $response;
     }
 
@@ -4348,15 +4349,16 @@ class FeatureFlagsApi
      * @param  string $feature_flag_key The feature flag key. The key identifies the flag in your code. (required)
      * @param  \LaunchDarklyApi\Model\PatchWithComment $patch_with_comment (required)
      * @param  bool|null $ignore_conflicts If true, the patch will be applied even if it causes a pending scheduled change or approval request to fail. (optional)
+     * @param  bool|null $dry_run If true, the patch will be validated but not persisted. Returns a preview of the flag after the patch is applied. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchFeatureFlag'] to see the possible values for this operation
      *
      * @throws \LaunchDarklyApi\ApiException on non-2xx response or if the response body is not in the expected format
      * @throws \InvalidArgumentException
      * @return array of \LaunchDarklyApi\Model\FeatureFlag|\LaunchDarklyApi\Model\InvalidRequestErrorRep|\LaunchDarklyApi\Model\UnauthorizedErrorRep|\LaunchDarklyApi\Model\NotFoundErrorRep|\LaunchDarklyApi\Model\MethodNotAllowedErrorRep|\LaunchDarklyApi\Model\StatusConflictErrorRep|\LaunchDarklyApi\Model\RateLimitedErrorRep, HTTP status code, HTTP response headers (array of strings)
      */
-    public function patchFeatureFlagWithHttpInfo($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts = null, string $contentType = self::contentTypes['patchFeatureFlag'][0])
+    public function patchFeatureFlagWithHttpInfo($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts = null, $dry_run = null, string $contentType = self::contentTypes['patchFeatureFlag'][0])
     {
-        $request = $this->patchFeatureFlagRequest($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts, $contentType);
+        $request = $this->patchFeatureFlagRequest($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts, $dry_run, $contentType);
 
         try {
             $options = $this->createHttpClientOption();
@@ -4520,14 +4522,15 @@ class FeatureFlagsApi
      * @param  string $feature_flag_key The feature flag key. The key identifies the flag in your code. (required)
      * @param  \LaunchDarklyApi\Model\PatchWithComment $patch_with_comment (required)
      * @param  bool|null $ignore_conflicts If true, the patch will be applied even if it causes a pending scheduled change or approval request to fail. (optional)
+     * @param  bool|null $dry_run If true, the patch will be validated but not persisted. Returns a preview of the flag after the patch is applied. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchFeatureFlag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchFeatureFlagAsync($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts = null, string $contentType = self::contentTypes['patchFeatureFlag'][0])
+    public function patchFeatureFlagAsync($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts = null, $dry_run = null, string $contentType = self::contentTypes['patchFeatureFlag'][0])
     {
-        return $this->patchFeatureFlagAsyncWithHttpInfo($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts, $contentType)
+        return $this->patchFeatureFlagAsyncWithHttpInfo($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts, $dry_run, $contentType)
             ->then(
                 function ($response) {
                     return $response[0];
@@ -4544,15 +4547,16 @@ class FeatureFlagsApi
      * @param  string $feature_flag_key The feature flag key. The key identifies the flag in your code. (required)
      * @param  \LaunchDarklyApi\Model\PatchWithComment $patch_with_comment (required)
      * @param  bool|null $ignore_conflicts If true, the patch will be applied even if it causes a pending scheduled change or approval request to fail. (optional)
+     * @param  bool|null $dry_run If true, the patch will be validated but not persisted. Returns a preview of the flag after the patch is applied. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchFeatureFlag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Promise\PromiseInterface
      */
-    public function patchFeatureFlagAsyncWithHttpInfo($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts = null, string $contentType = self::contentTypes['patchFeatureFlag'][0])
+    public function patchFeatureFlagAsyncWithHttpInfo($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts = null, $dry_run = null, string $contentType = self::contentTypes['patchFeatureFlag'][0])
     {
         $returnType = '\LaunchDarklyApi\Model\FeatureFlag';
-        $request = $this->patchFeatureFlagRequest($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts, $contentType);
+        $request = $this->patchFeatureFlagRequest($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts, $dry_run, $contentType);
 
         return $this->client
             ->sendAsync($request, $this->createHttpClientOption())
@@ -4597,12 +4601,13 @@ class FeatureFlagsApi
      * @param  string $feature_flag_key The feature flag key. The key identifies the flag in your code. (required)
      * @param  \LaunchDarklyApi\Model\PatchWithComment $patch_with_comment (required)
      * @param  bool|null $ignore_conflicts If true, the patch will be applied even if it causes a pending scheduled change or approval request to fail. (optional)
+     * @param  bool|null $dry_run If true, the patch will be validated but not persisted. Returns a preview of the flag after the patch is applied. (optional)
      * @param  string $contentType The value for the Content-Type header. Check self::contentTypes['patchFeatureFlag'] to see the possible values for this operation
      *
      * @throws \InvalidArgumentException
      * @return \GuzzleHttp\Psr7\Request
      */
-    public function patchFeatureFlagRequest($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts = null, string $contentType = self::contentTypes['patchFeatureFlag'][0])
+    public function patchFeatureFlagRequest($project_key, $feature_flag_key, $patch_with_comment, $ignore_conflicts = null, $dry_run = null, string $contentType = self::contentTypes['patchFeatureFlag'][0])
     {
 
         // verify the required parameter 'project_key' is set
@@ -4628,6 +4633,7 @@ class FeatureFlagsApi
 
 
 
+
         $resourcePath = '/api/v2/flags/{projectKey}/{featureFlagKey}';
         $formParams = [];
         $queryParams = [];
@@ -4639,6 +4645,15 @@ class FeatureFlagsApi
         $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
             $ignore_conflicts,
             'ignoreConflicts', // param base name
+            'boolean', // openApiType
+            'form', // style
+            true, // explode
+            false // required
+        ) ?? []);
+        // query params
+        $queryParams = array_merge($queryParams, ObjectSerializer::toQueryValue(
+            $dry_run,
+            'dryRun', // param base name
             'boolean', // openApiType
             'form', // style
             true, // explode
